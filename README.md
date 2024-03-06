@@ -1,6 +1,4 @@
 # finalproject
- 
-# JD Survival (Jae Dragon Survival)
 1. [게임소개](#게임소개)
 2. [시작 씬](#시작-씬)
 3. [개발 인원 및 작업분배](#개발인원)
