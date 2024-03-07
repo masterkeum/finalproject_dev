@@ -6,8 +6,8 @@ public class LoadingScene : MonoBehaviour
 {
     private void Awake()
     {
-        _ = GameManager.Instance;
-        //_ = DataManager.Instance;
+        //_ = GameManager.Instance;
+        _ = DataManager.Instance;
     }
 
     private void Start()

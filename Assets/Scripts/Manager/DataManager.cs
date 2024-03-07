@@ -15,8 +15,20 @@ public class DataManager : SingletoneBase<DataManager>
         _pidStr = _pid.ToString();
         base.Init();
 
+
+        /*
+            데이터 로드해서 세팅
+        
+            NOTE: 데이터를 어떻게 관리할 것인가.
+            1. Json 으로
+            2. CSV to SO
+            3. csvHelper 등 외부 ?
+            4. https://bravenewmethod.com/2014/09/13/lightweight-csv-reader-for-unity/
+
+        */
+
         // 데이터 관리
-        ReadUnitData();
+        //ReadUnitData();
 
         // 프리팹 관리
     }
@@ -27,12 +39,6 @@ public class DataManager : SingletoneBase<DataManager>
         itemDataDictionary = new Dictionary<int, UnitData>();
         TextAsset TextFile = Resources.Load<TextAsset>(unitDataFilePath);
 
-
-        // NOTE: 데이터를 어떻게 관리할 것인가.
-        // 1. Json 으로
-        // 2. CSV to SO
-        // csvHelper 등 외부 
-        // https://bravenewmethod.com/2014/09/13/lightweight-csv-reader-for-unity/
 
 
 
