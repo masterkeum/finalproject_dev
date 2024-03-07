@@ -1,0 +1,76 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+public class ScrollUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+{
+    public Scrollbar scrollbar;
+
+    private const int _size = 3;
+    private float[] _position = new float[_size];
+    private float _distance;
+    private float _curPositon;
+    private float _targetPosition;
+    private int _targetIndex;
+    private bool _isDrag;
+
+    void Start()
+    {
+        _distance = 1f / (_size - 1);
+        for (int i = 0; i < _size; i++)
+        {
+            _position[i] = _distance * i;
+        }
+    }
+    private float SetPosition()
+    {
+        for (int i = 0; i < _size; ++i)
+        {
+            if (scrollbar.value < _position[i] + _distance * .5f && scrollbar.value > _position[i] - _distance * .5f)
+            {
+                _targetIndex = i;
+                return _position[i];
+            }
+        }
+        return 0f;
+    }
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        _curPositon = SetPosition();
+    }
+    public void OnDrag(PointerEventData eventData)
+    {
+        _isDrag = true;
+    }
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        _isDrag = false;
+        _targetPosition = SetPosition();
+        
+        if(_curPositon == _targetPosition)
+        {
+            if (eventData.delta.x > 18 && _curPositon - _distance >= 0)
+            {
+                --_targetIndex;
+                _targetPosition = _curPositon - _distance;
+            }
+            else if (eventData.delta.x < -18 && _curPositon + _distance <= 1.01f)
+            {
+                ++_targetIndex;
+                _targetPosition = _curPositon + _distance;
+            }
+        }
+    }
+    void Update()
+    {
+        if (!_isDrag)
+        {
+            scrollbar.value = Mathf.Lerp(scrollbar.value, _targetPosition, 0.1f);
+        }
+
+    }
+
+
+}
