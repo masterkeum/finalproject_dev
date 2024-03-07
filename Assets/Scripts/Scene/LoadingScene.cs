@@ -12,6 +12,6 @@ public class LoadingScene : MonoBehaviour
 
     private void Start()
     {
-        //UIManager.Instance.ShowUI<UIIntro>();
+        UIManager.Instance.ShowUI<UILoading>();
     }
 }
