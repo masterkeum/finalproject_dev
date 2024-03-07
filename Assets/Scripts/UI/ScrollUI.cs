@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class ScrollUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Scrollbar scrollbar;
+    public Transform contentContainer;
 
     private const int _size = 3;
     private float[] _position = new float[_size];
@@ -16,7 +17,7 @@ public class ScrollUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private int _targetIndex;
     private bool _isDrag;
 
-    void Start()
+    private void Start()
     {
         _distance = 1f / (_size - 1);
         for (int i = 0; i < _size; i++)
@@ -62,8 +63,16 @@ public class ScrollUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                 _targetPosition = _curPositon + _distance;
             }
         }
+        
+        for(int i = 0; i < _size; i++)
+        {
+            if (contentContainer.GetChild(i).GetComponent<ChildScrollUI>() && _curPositon != _position[i] && _targetPosition == _position[i])
+            {
+                contentContainer.GetChild(i).GetChild(1).GetComponent<Scrollbar>().value = 1;
+            }
+        }
     }
-    void Update()
+    private void Update()
     {
         if (!_isDrag)
         {
@@ -72,5 +81,10 @@ public class ScrollUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     }
 
+    public void TabClick(int n)
+    {
+        _targetIndex = n;
+        _targetPosition = _position[n];
+    }
 
 }
