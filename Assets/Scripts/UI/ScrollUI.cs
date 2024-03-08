@@ -9,6 +9,9 @@ public class ScrollUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public Scrollbar scrollbar;
     public Transform contentContainer;
 
+    public Slider tabSlider;
+    public RectTransform[] buttonRect;
+
     private const int _size = 3;
     private float[] _position = new float[_size];
     private float _distance;
@@ -24,6 +27,10 @@ public class ScrollUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         {
             _position[i] = _distance * i;
         }
+        GetComponent<ScrollRect>().horizontalScrollbar.value = 0.5f;
+        scrollbar.value = 0.5f;
+        tabSlider.value = 0.5f;
+        TabClick(1);
     }
     private float SetPosition()
     {
@@ -74,9 +81,23 @@ public class ScrollUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
     private void Update()
     {
+        tabSlider.value = scrollbar.value;
+
         if (!_isDrag)
         {
             scrollbar.value = Mathf.Lerp(scrollbar.value, _targetPosition, 0.1f);
+            for(int i = 0; i < _size; i++)
+            {
+                buttonRect[i].sizeDelta = new Vector2(i == _targetIndex? 450 : 300, buttonRect[i].sizeDelta.y);
+                if (buttonRect[2].sizeDelta.x == 450)
+                {
+                    buttonRect[1].pivot = new Vector2(1.5f,0.5f) ;
+                }
+                else
+                {
+                    buttonRect[1].pivot = new Vector2(1, 0.5f);
+                }
+            }
         }
 
     }
