@@ -8,6 +8,10 @@ using UnityEngine;
 public class CSVReader : MonoBehaviour
 {
     // 테이블에 맞게 수정
+    /*
+    https://gist.github.com/kennir/77a216141ca8fb9efacaf52cebe43307
+
+    */
 
     static string SPLIT_RE = @",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))";
     static string LINE_SPLIT_RE = @"\r\n|\n\r|\n|\r";
