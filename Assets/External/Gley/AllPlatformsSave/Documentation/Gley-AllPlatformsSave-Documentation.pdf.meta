@@ -1,8 +1,14 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/UI Toolkit.meta
+guid: 6d205c82a73e2f344869b8d22d9e5c54
+folderAsset: yes
+========
 guid: edda6c8ba1d9aea408e9d71578679a0e
 timeCreated: 1523470745
 licenseType: Store
+>>>>>>>> Develop:Assets/External/Gley/AllPlatformsSave/Documentation/Gley-AllPlatformsSave-Documentation.pdf.meta
 DefaultImporter:
+  externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
