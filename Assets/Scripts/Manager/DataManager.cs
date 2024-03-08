@@ -1,14 +1,18 @@
+using Gley.Localization.Internal;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class DataManager : SingletoneBase<DataManager>
 {
     [ReadOnly, SerializeField] private string _pidStr;
 
     // 데이터 파일 경로
-    private string unitDataFilePath = "DataTable/UnitTable.csv";
-    public Dictionary<int, UnitData> itemDataDictionary { get; private set; }
+    //private string unitDataFilePath = "DataTable/UnitTable.csv";
+    //public Dictionary<int, UnitData> itemDataDictionary { get; private set; }
+    private string unitDataFilePath = "DataTable/QuestInfoTable.csv";
+    public Dictionary<int, Quest> QuestDataDictionary { get; private set; }
 
     protected override void Init()
     {
@@ -21,14 +25,16 @@ public class DataManager : SingletoneBase<DataManager>
         
             NOTE: 데이터를 어떻게 관리할 것인가.
             1. Json 으로
-            2. CSV to SO
-            3. csvHelper 등 외부 ?
-            4. https://bravenewmethod.com/2014/09/13/lightweight-csv-reader-for-unity/
+            2. CSV to SO https://github.com/mikito/unity-excel-importer?tab=readme-ov-file
+            3. csvHelper 등 외부 라이브러리
+            4. 스크립트 https://bravenewmethod.com/2014/09/13/lightweight-csv-reader-for-unity/
+                https://fkdl0048.github.io/unity/unity_in_CSV/
 
         */
 
         // 데이터 관리
         //ReadUnitData();
+        //QuestDataDictionary = CSVReader.Read(unitDataFilePath);
 
         // 프리팹 관리
     }
@@ -36,7 +42,7 @@ public class DataManager : SingletoneBase<DataManager>
 
     private void ReadUnitData()
     {
-        itemDataDictionary = new Dictionary<int, UnitData>();
+        //itemDataDictionary = new Dictionary<int, UnitData>();
         TextAsset TextFile = Resources.Load<TextAsset>(unitDataFilePath);
 
 
