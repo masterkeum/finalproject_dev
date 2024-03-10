@@ -12,9 +12,17 @@ public class StageSlotUI : MonoBehaviour
 
     public bool isCurStage;
 
+    private void Start()
+    {
+        SetIndex();
+    }
     public void UpdateMark()
     {
         _selectMark.SetActive(isCurStage);
     }
 
+    private void SetIndex()
+    {
+        index = transform.GetSiblingIndex();
+    }
 }

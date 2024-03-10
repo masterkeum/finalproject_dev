@@ -27,5 +27,9 @@ public class OutGameHUD : MonoBehaviour
     {
         UIManager.Instance.ShowUI<UIStageSelect>();
     }
+    public void OnClickListButton()
+    {
+        UIManager.Instance.ShowUI<UIPropertiesList>();
+    }
 
 }
