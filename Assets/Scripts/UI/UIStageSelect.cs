@@ -30,7 +30,6 @@ public class UIStageSelect : UIBase
 
     public void SelectCurSlot(int index)
     {
-        Debug.Log(index + "할당");
         _curStage = _stageSlots[index];
         for(int i = 0; i < _stageSlots.Length; i++)
         {

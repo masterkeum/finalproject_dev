@@ -479,7 +479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stageBanner: {fileID: 7859074925760834168}
   _selectMark: {fileID: 1854980980816289300}
-  index: 2
+  index: 0
   isCurStage: 0
 --- !u!114 &2684496325479028505
 MonoBehaviour:
@@ -1254,7 +1254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stageBanner: {fileID: 1536916530256598702}
   _selectMark: {fileID: 4297327311081030299}
-  index: 1
+  index: 0
   isCurStage: 0
 --- !u!114 &2957550878426036268
 MonoBehaviour:
@@ -1870,7 +1870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stageBanner: {fileID: 8101993829509486571}
   _selectMark: {fileID: 5291169125578040576}
-  index: 3
+  index: 0
   isCurStage: 0
 --- !u!114 &4870992213528727869
 MonoBehaviour:
