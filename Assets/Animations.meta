@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Animations.meta
 guid: 9080a4d30fa64f14d86e91070c7c8a69
+========
+guid: bedabe6c73534ebc8aa2ead297a5dcd9
+>>>>>>>> 408b9702a (Revert "map and ingameUI"):Assets/External/RPGMonsterBundlePolyart/HDRP_URP.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
