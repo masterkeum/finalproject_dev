@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class SoundManager : SingletoneBase<SoundManager>
 {
+    public static SoundManager Instance;
 
     [SerializeField][Range(0f, 1f)] private float soundEffectVolume;
     [SerializeField][Range(0f, 1f)] private float musicVolume;
 
+    Pooling objectPool;
     AudioSource musicAudioSource;
     public AudioClip clip;
 
@@ -20,8 +22,8 @@ public class SoundManager : SingletoneBase<SoundManager>
         musicAudioSource.loop = true;
         musicAudioSource.Play();
 
-
-        // 풀링
+        objectPool = GetComponent<Pooling>();
+        objectPool.CreatePool(transform);
     }
 
 
@@ -35,17 +37,17 @@ public class SoundManager : SingletoneBase<SoundManager>
     }
     public void PlayClip(AudioClip clip, float volume)
     {
-        //curObj = objectPool.GetPoolItem("SoundSource");
-        //curObj.SetActive(true);
-        //SoundSource soundSource = curObj.GetComponent<SoundSource>();
-        //soundSource.Play(clip, volume);
+        curObj = objectPool.GetPoolItem("SoundSource");
+        curObj.SetActive(true);
+        SoundSource soundSource = curObj.GetComponent<SoundSource>();
+        soundSource.Play(clip, volume);
     }
     public void PlayClip(AudioClip clip)
     {
-        //curObj = objectPool.GetPoolItem("SoundSource");
-        //curObj.SetActive(true);
-        //SoundSource soundSource = curObj.GetComponent<SoundSource>();
-        //soundSource.Play(clip, soundEffectVolume);
+        curObj = objectPool.GetPoolItem("SoundSource");
+        curObj.SetActive(true);
+        SoundSource soundSource = curObj.GetComponent<SoundSource>();
+        soundSource.Play(clip, soundEffectVolume);
     }
 
     public GameObject CurSoundSource()
