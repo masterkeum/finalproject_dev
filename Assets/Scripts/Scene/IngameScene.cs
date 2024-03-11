@@ -8,7 +8,7 @@ public class IngameScene : MonoBehaviour
     {
         // 풀 생성
         _ = DataManager.Instance;
-        _ = PoolManager.Instance;
+        //_ = PoolManager.Instance;
 
         //_ = GameManager.Instance;
     }
