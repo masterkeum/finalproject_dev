@@ -1,8 +1,5 @@
-using Gley.Localization.Internal;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class DataManager : SingletoneBase<DataManager>
 {
