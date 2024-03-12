@@ -9,19 +9,19 @@ public class OutGameHUD : MonoBehaviour
     [Header("UserData")]
     public Slider expSlider;
     public Image userProfileIcon;
-    public TextMeshPro levelText;
-    public TextMeshPro userNameText;
-    public TextMeshPro energyQuantityText;
-    public TextMeshPro gemQuantityText;
-    public TextMeshPro goldQuantityText;
+    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI userNameText;
+    public TextMeshProUGUI energyQuantityText;
+    public TextMeshProUGUI gemQuantityText;
+    public TextMeshProUGUI goldQuantityText;
 
     [Header("Battle")]
-    public TextMeshPro StageNameText;
+    public TextMeshProUGUI StageNameText;
     public Image StageImage;
 
     [Header("Inventory")]
-    public TextMeshPro userTotalAtkText;
-    public TextMeshPro userTotalHpText;
+    public TextMeshProUGUI userTotalAtkText;
+    public TextMeshProUGUI userTotalHpText;
 
     public void OnClickStageSelect()
     {
