@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 3951824511259377014}
   - component: {fileID: 1564702957610648692}
   m_Layer: 5
-  m_Name: Variable Joystick
+  m_Name: VariableJoystick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
