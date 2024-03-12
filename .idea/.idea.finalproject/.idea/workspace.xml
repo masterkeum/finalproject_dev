@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c427198-eeb5-4fa1-84de-a1b0c3284c41" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/External/Gley/MobileAds/Patches/AdmobPatch.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/External/polyperfect/Low Poly Animated People/- Animator Controllers/Base Controller.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/polyperfect/Low Poly Animated People/- Animator Controllers/Base Controller.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/man_casual_shorts.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player/man_casual_shorts.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.finalproject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.finalproject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Joystick.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Joystick/Variable Joystick.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Joystick/Variable Joystick.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/man_casual_shorts.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/man_casual_shorts.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/IngameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/IngameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +43,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;InGameScene&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Ingame__Player__KKH&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -98,7 +105,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709855388092</updated>
-      <workItem from="1709855390516" duration="3663000" />
+      <workItem from="1709855390516" duration="7590000" />
+      <workItem from="1710223244764" duration="7288000" />
     </task>
     <servers />
   </component>
