@@ -29,7 +29,7 @@ public class SkillSlotUI : MonoBehaviour
         //{
         //    if(level == 0)
         //    {
-        //        starSlot.Clear();
+        //        starSlot[i].ClearYellowStar();
         //    }
 
         //    else if (starSlot[i].starSlotIndex > level)

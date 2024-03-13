@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class UILevelUP : UIBase
 {
-    public SkillSlot[] selectableSkills;
-    public SkillSlotUI[] selectableSkillsUI;
+    public List<SkillSlotUI> selectableSkillUI = new List<SkillSlotUI>();
     public List<SkillSlotUI> curAcitveSkillUI =new List<SkillSlotUI>();
     public List<SkillSlotUI> curPassiveSkillUI = new List<SkillSlotUI>();
 

@@ -21,7 +21,9 @@ public class OutGameHUD : MonoBehaviour
 
     [Header("Inventory")]
     public TextMeshProUGUI userTotalAtkText;
-    public TextMeshProUGUI userTotalHpText;
+    public TextMeshProUGUI userTotalDefText;
+    public TextMeshProUGUI userTotalMoveSpeed;
+    public TextMeshProUGUI userTotalAttackSpeed;
 
     public void OnClickStageSelect()
     {
