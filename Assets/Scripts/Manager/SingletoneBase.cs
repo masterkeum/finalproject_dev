@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class SingletoneBase<T> : MonoBehaviour where T : Component // where = 제약절
+public abstract class SingletoneBase<T> : MonoBehaviour where T : Component // where = 제약절
 {
     private static bool _ShuttingDown = false;
     private static object _Lock = new object();
@@ -29,7 +29,7 @@ public class SingletoneBase<T> : MonoBehaviour where T : Component // where = �
                     if (_instance == null)
                     {
                         _pid = Guid.NewGuid();
-                        GameObject obj = new GameObject(typeof(T).Name, typeof(T)); // 이름을 세팅해준다
+                        GameObject obj = new GameObject(typeof(T).Name, typeof(T)); // 이름을 세팅해준다. 새로 생성돼서 init 실행
                         _instance = obj.GetComponent<T>();
                     }
 
