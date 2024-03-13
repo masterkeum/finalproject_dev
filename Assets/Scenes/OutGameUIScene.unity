@@ -498,11 +498,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2213243824788931694, guid: 2be73a3fab2174b489747050628cad66,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -50
-      objectReference: {fileID: 0}
     - target: {fileID: 3225071570082773528, guid: 2be73a3fab2174b489747050628cad66,
         type: 3}
       propertyPath: m_Pivot.x
@@ -608,16 +603,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3778166282580610347, guid: 2be73a3fab2174b489747050628cad66,
-        type: 3}
-      propertyPath: m_Name
-      value: GoldText
-      objectReference: {fileID: 0}
-    - target: {fileID: 4254612793350962882, guid: 2be73a3fab2174b489747050628cad66,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 7141950806118886037, guid: 2be73a3fab2174b489747050628cad66,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -632,11 +617,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InGameHUD
-      objectReference: {fileID: 0}
-    - target: {fileID: 7869754955384849508, guid: 2be73a3fab2174b489747050628cad66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

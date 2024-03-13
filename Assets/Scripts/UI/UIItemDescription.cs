@@ -35,7 +35,7 @@ public class UIItemDescription : UIBase
 
     public void ClosePopup()
     {
-
+        gameObject.SetActive(false);
     }
 
 }

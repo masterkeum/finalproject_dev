@@ -321,7 +321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: 0}
+  m_AnchoredPosition: {x: -50, y: 0}
   m_SizeDelta: {x: 150, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &453473166386271908
@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 8630249006076559718}
   - component: {fileID: 2657558530592961833}
   m_Layer: 5
-  m_Name: KillText (1)
+  m_Name: GoldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -684,7 +684,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 0}
+  m_AnchoredPosition: {x: 50, y: 0}
   m_SizeDelta: {x: 150, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &8630249006076559718
@@ -981,7 +981,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 655106566077686046}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5966028643596204348}
+        m_TargetAssemblyTypeName: InGameHUD, Assembly-CSharp
+        m_MethodName: OnPauseButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6110739669906556457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,6 +1350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3225071570082773528}
   - component: {fileID: 1666912474959196707}
+  - component: {fileID: 5966028643596204348}
   - component: {fileID: 2631043973160857495}
   - component: {fileID: 8226621330523704795}
   m_Layer: 5
@@ -1365,7 +1378,7 @@ RectTransform:
   - {fileID: 2692236256488383267}
   - {fileID: 2639053458471240630}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1395,6 +1408,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &5966028643596204348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7869754955384849508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc0a96f317a1f045b6a1bcd93357d1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killText: {fileID: 2426659284002628106}
+  goldText: {fileID: 2657558530592961833}
+  expSlider: {fileID: 3670952851308892577}
+  timeText: {fileID: 7675351453431919769}
+  curLevelText: {fileID: 173576785563138372}
 --- !u!114 &2631043973160857495
 MonoBehaviour:
   m_ObjectHideFlags: 0

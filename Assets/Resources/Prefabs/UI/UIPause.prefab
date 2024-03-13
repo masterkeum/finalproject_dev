@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 7033232786052685627}
   - component: {fileID: 4447883098459799209}
   - component: {fileID: 8292236297276414062}
+  - component: {fileID: 4493422992819576819}
   m_Layer: 5
   m_Name: UIPause
   m_TagString: Untagged
@@ -424,6 +425,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4493422992819576819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562869872522110694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b72985631ba1241a0217c9a1ff15c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseText: {fileID: 7985373720481427589}
+  slotsUI: []
 --- !u!1 &1674736838214352744
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,6 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79099d44f84547a4cb76074bb681d791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skills: []
 --- !u!1 &2564262455858908209
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,7 +914,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3472826382350855847}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4493422992819576819}
+        m_TargetAssemblyTypeName: UIPause, Assembly-CSharp
+        m_MethodName: ContinueButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2669675046918122266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1048,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1364033976720193525}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4493422992819576819}
+        m_TargetAssemblyTypeName: UIPause, Assembly-CSharp
+        m_MethodName: GoToMainButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2983902918037042916
 GameObject:
   m_ObjectHideFlags: 0

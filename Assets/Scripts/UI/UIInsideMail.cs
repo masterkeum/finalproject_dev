@@ -10,6 +10,6 @@ public class UIInsideMail : UIBase
 
     public void ClosePopup()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

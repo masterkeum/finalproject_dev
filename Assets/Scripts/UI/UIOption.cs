@@ -15,6 +15,6 @@ public class UIOption : UIBase
     public Slider SFXSlider;
     public void ClosePopup()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

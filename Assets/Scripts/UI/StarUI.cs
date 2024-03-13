@@ -5,22 +5,25 @@ using UnityEngine;
 public class StarUI : MonoBehaviour
 {
     public GameObject yellowStar;
-    private int _starSlotIndex;
+    public int starSlotIndex;
    
     private void Start()
     {
         SetIndex();
-        SetYellowStar();
     }
 
-    private void SetYellowStar()
+    public void SetYellowStar()
     {
-
+        yellowStar.SetActive(true);
+    }
+    public void ClearYellowStar()
+    {
+        yellowStar.SetActive(false);
     }
 
     private void SetIndex()
     {
-        _starSlotIndex = transform.GetSiblingIndex();
+        starSlotIndex = transform.GetSiblingIndex();
     }
 
 }

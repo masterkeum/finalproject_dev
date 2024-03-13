@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UINotice : MonoBehaviour
+public class UINotice : UIBase
 {
     public Image noticeImage;
     
@@ -13,7 +13,7 @@ public class UINotice : MonoBehaviour
     }
     public void ClosePopup()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 }

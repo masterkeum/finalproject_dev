@@ -1,10 +1,12 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : SingletoneBase<UIManager>
 {
-    private List<UIBase> popups = new List<UIBase>();
+    //private List<UIBase> popups = new List<UIBase>();
+    public Dictionary<string, UIBase> UIDictionary = new Dictionary<string, UIBase>();
 
     public UIBase ShowUI(string uiName)
     {
@@ -19,7 +21,16 @@ public class UIManager : SingletoneBase<UIManager>
 
     public T ShowUI<T>() where T : UIBase
     {
-        return ShowUI(typeof(T).Name) as T;
+        string keyString = typeof(T).Name;
+        if (UIDictionary.ContainsKey(keyString))
+        {
+            UIDictionary[keyString].gameObject.SetActive(true);
+            return (T)UIDictionary[keyString];
+        }
+        else
+        {
+            return ShowUI(typeof(T).Name) as T;
+        }
     }
 
     public UIBase ShowPopupWithPrefab(GameObject prefab, string popupName)
@@ -31,7 +42,8 @@ public class UIManager : SingletoneBase<UIManager>
     public UIBase ShowUI(GameObject obj, string popupname)
     {
         var popup = obj.GetComponent<UIBase>();
-        popups.Insert(0, popup);
+        //popups.Add(popup);
+        UIDictionary[popupname] = popup;
 
         obj.SetActive(true);
         return popup;
