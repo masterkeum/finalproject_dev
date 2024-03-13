@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyMeleeController : EnemyBaseController
 {
+    private bool _isCollidingWithTarget;
 
 
 

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class SingletoneBase<T> : MonoBehaviour where T : Component // where = 제약절
+public abstract class SingletoneBase<T> : MonoBehaviour where T : Component // where = 제약절
 {
     private static bool _ShuttingDown = false;
     private static object _Lock = new object();

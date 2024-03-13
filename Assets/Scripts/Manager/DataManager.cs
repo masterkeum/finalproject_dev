@@ -35,7 +35,7 @@ public class DataManager : SingletoneBase<DataManager>
 
     public void ConvertJsonToDictionary(string json)
     {
-        Root jsonData = JsonUtility.FromJson<Root>(json);
+        DataTable jsonData = JsonUtility.FromJson<DataTable>(json);
 
         characterInfoDict = new Dictionary<int, CharacterInfo>();
         StageInfoDict = new Dictionary<int, List<StageInfoTable>>();
@@ -44,12 +44,13 @@ public class DataManager : SingletoneBase<DataManager>
         foreach (CharacterInfo characterInfo in jsonData.CharacterInfo)
         {
             characterInfoDict.Add(characterInfo.uid, characterInfo);
+            //characterInfo.monsterLevelData = new Dictionary<int, MonsterLevel>();
         }
         foreach (MonsterLevel monsterLevel in jsonData.MonsterLevel)
         {
             if (characterInfoDict.ContainsKey(monsterLevel.uid))
             {
-                characterInfoDict[monsterLevel.uid].monsterLevelData.Add(monsterLevel);
+                characterInfoDict[monsterLevel.uid].monsterLevelData.Add(monsterLevel.level, monsterLevel);
             }
             else
             {
@@ -78,61 +79,16 @@ public class DataManager : SingletoneBase<DataManager>
         // GC에서 언제 가져갈지 모르니 jsonData를 명시적으로 null 로 만들거나 destroy 하고싶다.
         jsonData = null;
     }
+
+
+    public CharacterInfo GetCharacterInfo(int uid)
+    {
+        if (characterInfoDict.ContainsKey(uid))
+            return characterInfoDict[uid];
+        else
+            return null;
+    }
+
+
 }
 
-
-public class Root
-{
-    public List<CharacterInfo> CharacterInfo;
-    public List<MonsterLevel> MonsterLevel;
-    public List<StageInfoTable> StageInfoTable;
-}
-
-
-[Serializable]
-public class CharacterInfo
-{
-    public int uid;
-    public string characterType;
-    public string name;
-    public int minLevel;
-    public int maxLevel;
-    public int hp;
-    public int ap;
-    public int? sensoryRange;
-    public int attackRange;
-    public int attackSpeed;
-    public int moveSpeed;
-    public int defaultSkill;
-    public string prefabFile;
-
-    public List<MonsterLevel> monsterLevelData;
-}
-
-
-[Serializable]
-public class MonsterLevel
-{
-    public int uid;
-    public int level;
-    public int addHP;
-    public int addAP;
-    public int gold;
-    public int exp;
-    public string rewardType;
-    public int? rewardID;
-}
-
-[Serializable]
-public class StageInfoTable
-{
-    public int stageId;
-    public int monsterId;
-    public int level;
-    public string characterType;
-    public int genTimeStart;
-    public int genTimeEnd;
-    public int genAmount;
-    public int genTime;
-    public int genMax;
-}

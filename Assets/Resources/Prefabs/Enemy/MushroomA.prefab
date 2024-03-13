@@ -217,7 +217,7 @@ Transform:
   m_Children:
   - {fileID: 7003597701358762015}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7762682649876939509
 MonoBehaviour:
@@ -231,6 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee2ed215b267be04a83ce88e6eae31de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterID: 0
+  level: 0
 --- !u!136 &5463170837020171558
 CapsuleCollider:
   m_ObjectHideFlags: 0
