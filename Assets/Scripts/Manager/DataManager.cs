@@ -1,4 +1,3 @@
-using Gley.Localization.Internal;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +10,7 @@ public class DataManager : SingletoneBase<DataManager>
     private string DataFilePath = "DataTables/DataTable";
 
     public Dictionary<int, CharacterInfo> characterInfoDict;
-    public Dictionary<int, MonsterLevel> monsterLevelDict;
+    public Dictionary<int, List<StageInfoTable>> StageInfoDict;
 
     protected override void Init()
     {
@@ -19,7 +18,6 @@ public class DataManager : SingletoneBase<DataManager>
         base.Init();
         LoadJsonData();
     }
-
 
     private void LoadJsonData()
     {
@@ -40,18 +38,45 @@ public class DataManager : SingletoneBase<DataManager>
         Root jsonData = JsonUtility.FromJson<Root>(json);
 
         characterInfoDict = new Dictionary<int, CharacterInfo>();
-        monsterLevelDict = new Dictionary<int, MonsterLevel>();
+        StageInfoDict = new Dictionary<int, List<StageInfoTable>>();
 
+        // 캐릭터 정보
         foreach (CharacterInfo characterInfo in jsonData.CharacterInfo)
         {
             characterInfoDict.Add(characterInfo.uid, characterInfo);
-            Debug.Log(characterInfo.uid);
         }
         foreach (MonsterLevel monsterLevel in jsonData.MonsterLevel)
         {
-            characterInfoDict[monsterLevel.uid].monsterLevelData.Add(monsterLevel);
+            if (characterInfoDict.ContainsKey(monsterLevel.uid))
+            {
+                characterInfoDict[monsterLevel.uid].monsterLevelData.Add(monsterLevel);
+            }
+            else
+            {
+                Debug.LogError($"monsterLevel 데이터 불량 {monsterLevel.uid}");
+            }
         }
+        Debug.Log("케릭터 정보 로드 완료");
 
+        // 스테이지 정보
+        foreach (StageInfoTable stageInfoTable in jsonData.StageInfoTable)
+        {
+            int stageId = stageInfoTable.stageId;
+            if (StageInfoDict.ContainsKey(stageId))
+            {
+                StageInfoDict[stageId].Add(stageInfoTable);
+            }
+            else
+            {
+                // 새로 생성
+                StageInfoDict.Add(stageId, new List<StageInfoTable>());
+                StageInfoDict[stageId].Add(stageInfoTable);
+            }
+        }
+        Debug.Log("스테이지 정보 로드 완료");
+
+        // GC에서 언제 가져갈지 모르니 jsonData를 명시적으로 null 로 만들거나 destroy 하고싶다.
+        jsonData = null;
     }
 }
 
@@ -85,7 +110,7 @@ public class CharacterInfo
 }
 
 
-[System.Serializable]
+[Serializable]
 public class MonsterLevel
 {
     public int uid;
@@ -98,10 +123,11 @@ public class MonsterLevel
     public int? rewardID;
 }
 
+[Serializable]
 public class StageInfoTable
 {
-    public int stage;
-    public int uid;
+    public int stageId;
+    public int monsterId;
     public int level;
     public string characterType;
     public int genTimeStart;

@@ -361,8 +361,8 @@
   ],
   "StageInfoTable": [
     {
-      "stage": 101,
-      "uid": 20000001,
+      "stageId": 101,
+      "monsterId": 20000001,
       "level": 1,
       "characterType": "Monster",
       "genTimeStart": 0,
@@ -372,8 +372,8 @@
       "genMax": 30
     },
     {
-      "stage": 101,
-      "uid": 20000001,
+      "stageId": 101,
+      "monsterId": 20000001,
       "level": 2,
       "characterType": "Monster",
       "genTimeStart": 10,
@@ -383,8 +383,8 @@
       "genMax": 30
     },
     {
-      "stage": 101,
-      "uid": 20000001,
+      "stageId": 101,
+      "monsterId": 20000001,
       "level": 3,
       "characterType": "Monster",
       "genTimeStart": 40,
@@ -394,8 +394,8 @@
       "genMax": 30
     },
     {
-      "stage": 101,
-      "uid": 20000001,
+      "stageId": 101,
+      "monsterId": 20000001,
       "level": 4,
       "characterType": "Monster",
       "genTimeStart": 70,
@@ -405,8 +405,8 @@
       "genMax": 30
     },
     {
-      "stage": 101,
-      "uid": 20000002,
+      "stageId": 101,
+      "monsterId": 20000002,
       "level": 1,
       "characterType": "Monster",
       "genTimeStart": 15,
@@ -416,8 +416,8 @@
       "genMax": 30
     },
     {
-      "stage": 101,
-      "uid": 20000002,
+      "stageId": 101,
+      "monsterId": 20000002,
       "level": 2,
       "characterType": "Monster",
       "genTimeStart": 30,
@@ -427,8 +427,8 @@
       "genMax": 30
     },
     {
-      "stage": 101,
-      "uid": 20000002,
+      "stageId": 101,
+      "monsterId": 20000002,
       "level": 3,
       "characterType": "Monster",
       "genTimeStart": 150,
@@ -438,8 +438,8 @@
       "genMax": 30
     },
     {
-      "stage": 101,
-      "uid": 20000002,
+      "stageId": 101,
+      "monsterId": 20000002,
       "level": 4,
       "characterType": "Monster",
       "genTimeStart": 200,
@@ -449,8 +449,8 @@
       "genMax": 30
     },
     {
-      "stage": 101,
-      "uid": 20000003,
+      "stageId": 101,
+      "monsterId": 20000003,
       "level": 1,
       "characterType": "BossMonster",
       "genTimeStart": 0,

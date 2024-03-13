@@ -9,6 +9,11 @@ public class GameManager : SingletoneBase<GameManager>
 
     public Transform Player { get; private set; }
 
+    /*
+        진입한 스테이지ID
+        몬스터 생성
+
+    */
 
     protected override void Init()
     {
