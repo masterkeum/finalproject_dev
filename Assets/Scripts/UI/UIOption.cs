@@ -13,6 +13,8 @@ public class UIOption : UIBase
     public Slider volumeSlider;
     public Slider BGMSlider;
     public Slider SFXSlider;
+
+   
     public void ClosePopup()
     {
         gameObject.SetActive(false);
