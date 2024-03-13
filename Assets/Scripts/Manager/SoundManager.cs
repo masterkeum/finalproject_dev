@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class SoundManager : SingletoneBase<SoundManager>
 {
-    public static SoundManager Instance;
-
     [SerializeField][Range(0f, 1f)] private float soundEffectVolume;
     [SerializeField][Range(0f, 1f)] private float musicVolume;
 
