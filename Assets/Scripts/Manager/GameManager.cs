@@ -1,16 +1,20 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : SingletoneBase<GameManager>
 {
     [ReadOnly, SerializeField] private string _pidStr;
     private GameObject player;
-    [SerializeField] private Transform playerParent;
     private VariableJoystick joyStick;
+
+
+    [SerializeField] private Transform playerParent;
     [SerializeField] private Transform parentCanvas;
-    
+
+
+    // 나중에는 시리얼라이즈 해제
+    [SerializeField] private int stageId = 0;
 
     /*
     게임매니저
@@ -38,15 +42,35 @@ public class GameManager : SingletoneBase<GameManager>
 
     private void Start()
     {
+        // 필드 생성
+
+        // 플레이어 생성
         MakePlayer();
+
+        // 플레이 기본 세팅
+
+        // 몬스터 생성
+        StartStage(stageId);
     }
+
 
     private void MakePlayer()
     {
         player = Instantiate(Resources.Load<GameObject>("Prefabs/Player/man_casual_shorts"), playerParent);
         joyStick = Instantiate(Resources.Load<VariableJoystick>("Prefabs/Joystick/VariableJoystick"), parentCanvas);
         player.GetComponent<Player>().JoyStick(joyStick);
-
     }
 
+    private void StartStage(int stageId)
+    {
+        // 보스 세팅
+        StartCoroutine(GenMonster());
+    }
+
+    IEnumerator GenMonster()
+    {
+
+        yield return null;
+
+    }
 }
