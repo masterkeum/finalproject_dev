@@ -5,17 +5,87 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c427198-eeb5-4fa1-84de-a1b0c3284c41" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Weapons.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Weapons/ElementalAuraLife2.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Weapons/ElementalAuraLife2.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Weapons/ElementalAuraNature.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Weapons/ElementalAuraNature.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.finalproject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.finalproject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Joystick.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Joystick/Variable Joystick.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Joystick/Variable Joystick.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/man_casual_shorts.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/man_casual_shorts.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Gley/Jumpy/Graphics/Chicken/Materials/Chicken.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Gley/Jumpy/Graphics/Chicken/Materials/Chicken.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Gley/Jumpy/Graphics/FX/roll.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Gley/Jumpy/Graphics/FX/roll.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Hovl Studio/HSFiles/Materials/Floor2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Hovl Studio/HSFiles/Materials/Floor2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Hovl Studio/HSFiles/Materials/Gray.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Hovl Studio/HSFiles/Materials/Gray.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Hovl Studio/HSFiles/Materials/Wall.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Hovl Studio/HSFiles/Materials/Wall.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Joystick Pack/Examples/Ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Joystick Pack/Examples/Ground.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Joystick Pack/Examples/Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Joystick Pack/Examples/Player.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Demo Prefabs/GUI/CanvasMissiles.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Demo Prefabs/GUI/CanvasMissiles.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Demo Prefabs/Scene/MainSceneLight.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Demo Prefabs/Scene/MainSceneLight.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/Liquids/PA_LiquidAcid.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/Liquids/PA_LiquidAcid.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/Liquids/PA_LiquidLava.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/Liquids/PA_LiquidLava.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/Liquids/PA_LiquidSlime.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/Liquids/PA_LiquidSlime.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/Liquids/PA_LiquidWater.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/Liquids/PA_LiquidWater.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_ConcreteBlock.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_ConcreteBlock.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Crate01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Crate01.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Crate02.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Crate02.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Cylinder.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Cylinder.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Flat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Flat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Floor_4x4_Big.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Floor_4x4_Big.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Floor_4x4_Small.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Floor_4x4_Small.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Sword_Glowy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Sword_Glowy.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Sword_Metal.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Sword_Metal.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Wall.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Wall.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_dirt.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_dirt.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_glass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_glass.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_gore.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_gore.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_grass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_grass.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_leaves.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_leaves.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_metal.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_metal.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_stone.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_stone.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_wood.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/SurfaceTypes/PA_wood.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Scenes/Combat/PolyAura4.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Scenes/Combat/PolyAura4.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Lights/PolygonLight.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Lights/PolygonLight.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolyGradientMirror_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolyGradientMirror_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolyGradientOrbital_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolyGradientOrbital_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolyGradientSoftMirror_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolyGradientSoftMirror_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolyGradientSoft_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolyGradientSoft_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolyGradient_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolyGradient_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolySpriteGlowDark_M.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolySpriteGlowDark_M.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolySpriteGlow_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolySpriteGlow_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolySpriteGlow_NS_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Gradients/PolySpriteGlow_NS_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Main/PolyGlow_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Main/PolyGlow_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Main/PolySolidGlow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Main/PolySolidGlow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/Grenade-Fire.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/Grenade-Fire.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/Grenade-Flash.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/Grenade-Flash.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/Grenade-Gas.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/Grenade-Gas.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/Grenade-Smoke.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/Grenade-Smoke.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/GrenadeBlue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/GrenadeBlue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/GrenadeGreen.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/GrenadeGreen.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/GrenadePink.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/GrenadePink.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/GrenadePurple.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/GrenadePurple.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/GrenadeRed.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/GrenadeRed.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/GrenadeYellow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/Grenades/GrenadeYellow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/PolyDollarBill.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/PolyDollarBill.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/PolyGoreAtlasGreen.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/PolyGoreAtlasGreen.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/PolyGoreAtlasRed.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Misc/PolyGoreAtlasRed.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Solids/PolyRocketGradient.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Solids/PolyRocketGradient.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Solids/PolySolidGlass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Solids/PolySolidGlass.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Solids/PolySolidRough.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Solids/PolySolidRough.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Solids/PolySolidShiny.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Solids/PolySolidShiny.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolyIconEye.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolyIconEye.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolyIconSilence.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolyIconSilence.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySlash01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySlash01.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySlash02.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySlash02.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySlash03.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySlash03.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySlash04.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySlash04.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySlash05.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySlash05.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySplat_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySplat_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySpriteRingGlowSharp_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySpriteRingGlowSharp_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySpriteRingGlowSoft_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySpriteRingGlowSoft_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySprite_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySprite_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySprite_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolySprite_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolyZzZ.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Materials/Sprites/PolyZzZ.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/IngameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/IngameScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,26 +109,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Ingame__Player__KKH&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Rebasing Ingame__Player__KKH",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;/Users/kyongheekeum/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
-      &quot;/Users/kyongheekeum/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
-      &quot;/Users/kyongheekeum/.local/share/Symbols/src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/Users/kyongheekeum/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
+      "/Users/kyongheekeum/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache",
+      "/Users/kyongheekeum/.local/share/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2022.3.2f1/Unity.app/Contents/MacOS/Unity" />
@@ -106,7 +176,7 @@
       <option name="presentableId" value="Default" />
       <updated>1709855388092</updated>
       <workItem from="1709855390516" duration="7590000" />
-      <workItem from="1710223244764" duration="7288000" />
+      <workItem from="1710223244764" duration="15275000" />
     </task>
     <servers />
   </component>

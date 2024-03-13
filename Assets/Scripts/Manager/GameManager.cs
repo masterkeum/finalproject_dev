@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : SingletoneBase<GameManager>
 {
     [ReadOnly, SerializeField] private string _pidStr;
-    private GameObject player;
+    private Player player;
     [SerializeField] private Transform playerParent;
     private VariableJoystick joyStick;
     [SerializeField] private Transform parentCanvas;
@@ -43,10 +43,13 @@ public class GameManager : SingletoneBase<GameManager>
 
     private void MakePlayer()
     {
-        player = Instantiate(Resources.Load<GameObject>("Prefabs/Player/man_casual_shorts"), playerParent);
-        joyStick = Instantiate(Resources.Load<VariableJoystick>("Prefabs/Joystick/VariableJoystick"), parentCanvas);
-        player.GetComponent<Player>().JoyStick(joyStick);
-
+        var playerRes = Resources.Load<Player>("Prefabs/Player/man_casual_shorts");
+        player = Instantiate(playerRes, playerParent);
+        
+        var joyStickRes = Resources.Load<VariableJoystick>("Prefabs/Joystick/VariableJoystick");
+        joyStick = Instantiate(joyStickRes, parentCanvas);
+        
+        player.JoyStick(joyStick);
     }
 
 }
