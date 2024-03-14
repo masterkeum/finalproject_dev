@@ -936,7 +936,6 @@ GameObject:
   - component: {fileID: 1602863607126342026}
   - component: {fileID: 6446238752709716495}
   - component: {fileID: 7324469652228032322}
-  - component: {fileID: -8038854423612059283}
   - component: {fileID: 6053582205048346811}
   - component: {fileID: 3463605804005350780}
   - component: {fileID: 4758343507107146786}
@@ -1027,24 +1026,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joy: {fileID: 1564702957610648692, guid: cc48298562bcb499bae3ef15d7b0452b, type: 3}
   speed: 2
---- !u!114 &-8038854423612059283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2256107177232466635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1c2f472420ca0a4cb18d5d82bb57310, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curLevel: 0
-  maxLevel: 0
-  curExp: 0
-  maxExp: 0
-  killCount: 0
-  gold: 0
 --- !u!114 &6053582205048346811
 MonoBehaviour:
   m_ObjectHideFlags: 0
