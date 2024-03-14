@@ -99,9 +99,17 @@ public class DataManager : SingletoneBase<DataManager>
             return null;
     }
 
+    public List<StageInfoTable> GetStageInfo(int stageId)
+    {
+        if (StageInfoDict.ContainsKey(stageId))
+            return StageInfoDict[stageId];
+        else
+            return null;
+    }
+
     public PlayerIngameLevel GetPlayerIngameLevel(int level)
     {
-        if(PlayerIngameLevelDict.ContainsKey(level))
+        if (PlayerIngameLevelDict.ContainsKey(level))
             return PlayerIngameLevelDict[level];
         else return null;
     }
