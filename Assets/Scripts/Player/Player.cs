@@ -13,6 +13,19 @@ public class Player : MonoBehaviour
     private Animator anim;
     private Vector3 moveVec;
 
+    [SerializeField] private string characterType;
+    [SerializeField] private string name;
+    [SerializeField] private int minLevel;
+    [SerializeField] private int maxLevel;
+    [SerializeField] private int hp;
+    [SerializeField] private int attackPower;
+    [SerializeField] private float sensoryRange;
+    [SerializeField] private float attackRange;
+    [SerializeField] private int attackSpeed;
+    [SerializeField] private int moveSpeed;
+    [SerializeField] private string defaultSkill;
+    [SerializeField] private string prefabFile;
+    
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -38,7 +51,7 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
-        anim.SetFloat("Move", moveVec.sqrMagnitude);
+        anim.SetFloat("Move", moveVec.sqrMagnitude); 
     }
 
     public void JoyStick(VariableJoystick joy)
