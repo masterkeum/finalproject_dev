@@ -1,5 +1,8 @@
+using Gley.Jumpy;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class TestScene : MonoBehaviour
@@ -19,7 +22,7 @@ public class TestScene : MonoBehaviour
     */
 
     private GameObject player;
-    private VariableJoystick joyStick;
+    private GameObject joyStick;
 
 
     private void Awake()
@@ -32,6 +35,7 @@ public class TestScene : MonoBehaviour
     private void Start()
     {
         // 스테이지에 맞는 필드 생성
+        GenerateLevel();
 
         // 플레이어 생성
         MakePlayer();
@@ -41,12 +45,18 @@ public class TestScene : MonoBehaviour
         StartStage(GameManager.Instance.stageId);
     }
 
+    private void GenerateLevel()
+    {
+        Instantiate(Resources.Load<GameObject>("Prefabs/Level/Level1"));
+    }
 
     private void MakePlayer()
     {
         player = Instantiate(Resources.Load<GameObject>("Prefabs/Player/man_casual_shorts"), GameManager.Instance.playerParent);
-        joyStick = Instantiate(Resources.Load<VariableJoystick>("Prefabs/Joystick/VariableJoystick"), GameManager.Instance.parentCanvas);
-        player.GetComponent<Player>().JoyStick(joyStick);
+        player.transform.position = new Vector3(0, 10, 0);
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
+        player.GetComponent<Player>().JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
     }
 
 
@@ -58,7 +68,7 @@ public class TestScene : MonoBehaviour
 
     IEnumerator GenMonster()
     {
-
+        // 몬스터 리젠
         yield return null;
 
     }
