@@ -2,6 +2,7 @@ using Gley.Jumpy;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ public class TestScene : MonoBehaviour
 
     private GameObject player;
     private GameObject joyStick;
+    private GameObject virtualCamera;
 
 
     private void Awake()
@@ -30,6 +32,7 @@ public class TestScene : MonoBehaviour
         _ = DataManager.Instance;
         _ = GameManager.Instance;
         _ = AccountInfo.Instance;// 사용자 계정 데이터 접근
+        virtualCamera = GameObject.Find("Virtual Camera");
     }
 
     private void Start()
@@ -39,6 +42,10 @@ public class TestScene : MonoBehaviour
 
         // 플레이어 생성
         MakePlayer();
+        
+        // 버츄얼 카메라 세팅
+        VirtualCameraSettiing();
+        
         // 플레이 기본 세팅
 
         // 몬스터 생성
@@ -57,6 +64,11 @@ public class TestScene : MonoBehaviour
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
         player.GetComponent<Player>().JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
+    }
+
+    private void VirtualCameraSettiing()
+    {
+        virtualCamera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
     }
 
 
