@@ -13,8 +13,10 @@ public class UIOption : UIBase
     public Slider volumeSlider;
     public Slider BGMSlider;
     public Slider SFXSlider;
+
+   
     public void ClosePopup()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

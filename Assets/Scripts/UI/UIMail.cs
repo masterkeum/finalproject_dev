@@ -6,6 +6,6 @@ public class UIMail : UIBase
 {
     public void ClosePopup()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
