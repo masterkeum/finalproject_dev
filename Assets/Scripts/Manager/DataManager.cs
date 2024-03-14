@@ -12,6 +12,7 @@ public class DataManager : SingletoneBase<DataManager>
     public Dictionary<int, CharacterInfo> characterInfoDict;
     public Dictionary<int, List<StageInfoTable>> StageInfoDict;
     public Dictionary<int, PlayerIngameLevel> PlayerIngameLevelDict;
+    public Dictionary<int, SkillTable> SkillTableDict;
 
     protected override void Init()
     {
@@ -86,6 +87,13 @@ public class DataManager : SingletoneBase<DataManager>
         }
         Debug.Log("유저 인게임 레벨 정보 로드 완료");
 
+        // 스킬 정보
+
+        foreach (SkillTable skillTable in jsonData.SkillTable)
+        {
+            SkillTableDict.Add(skillTable.sID, skillTable);
+        }
+
         // GC에서 언제 가져갈지 모르니 jsonData를 명시적으로 null 로 만들거나 destroy 하고싶다.
         jsonData = null;
     }
@@ -111,6 +119,13 @@ public class DataManager : SingletoneBase<DataManager>
     {
         if (PlayerIngameLevelDict.ContainsKey(level))
             return PlayerIngameLevelDict[level];
+        else return null;
+    }
+
+    public SkillTable GetSkillTable(int sID)
+    {
+        if(SkillTableDict.ContainsKey(sID))
+            return SkillTableDict[sID];
         else return null;
     }
 

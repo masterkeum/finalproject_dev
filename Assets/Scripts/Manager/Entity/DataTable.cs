@@ -9,6 +9,7 @@ public class DataTable
     public List<MonsterLevel> MonsterLevel;
     public List<StageInfoTable> StageInfoTable;
     public List<PlayerIngameLevel> PlayerIngameLevel;
+    public List<SkillTable> SkillTable;
 }
 
 
@@ -67,4 +68,29 @@ public class PlayerIngameLevel
     public int level;
     public int exp;
     public int totalExp;
+}
+
+[Serializable]
+public class SkillTable
+{
+    public int sID;
+    public string skill;
+    public string skillType;
+    public string subskill;
+    public int dMG;
+    public int dMGPersec;
+    public int dMGPerEffect;
+    public int perDMG;
+    public int probabilityPerDMG;
+    public int genNumPerSec;
+    public int levelAdjustmentNum;
+    public int levelAdjustmentper;
+    public float paralyzeSec;
+    public float duration;
+    public float durationIncreasePer;
+    public float coolDownTime;
+    public float sizeEnhancementPer;
+    public float rangeExpansionPer;
+    public string skillStatsExplanation;
+    public string skillExplanation;
 }
