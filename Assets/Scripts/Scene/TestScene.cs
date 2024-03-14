@@ -52,7 +52,7 @@ public class TestScene : MonoBehaviour
 
     private void MakePlayer()
     {
-        player = Instantiate(Resources.Load<GameObject>("Prefabs/Player/man_casual_shorts"), GameManager.Instance.playerParent);
+        player = Instantiate(Resources.Load<GameObject>("Prefabs/Player/Player"));
         player.transform.position = new Vector3(0, 10, 0);
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
