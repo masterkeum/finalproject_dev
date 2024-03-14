@@ -99,10 +99,10 @@ public class DataManager : SingletoneBase<DataManager>
             return null;
     }
 
-    public PlayerIngameLevel GetPlayerIngameLevel(int uid)
+    public PlayerIngameLevel GetPlayerIngameLevel(int level)
     {
-        if(PlayerIngameLevelDict.ContainsKey(uid))
-            return PlayerIngameLevelDict[uid];
+        if(PlayerIngameLevelDict.ContainsKey(level))
+            return PlayerIngameLevelDict[level];
         else return null;
     }
 

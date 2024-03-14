@@ -10,6 +10,7 @@ public class MainScene : MonoBehaviour
     {
         _=DataManager.Instance;
         _=UIManager.Instance;
+        _=GameManager.Instance;
     }
     void Start()
     {
