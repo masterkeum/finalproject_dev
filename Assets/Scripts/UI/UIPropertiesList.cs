@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class UIPropertiesList : UIBase
 {
-   public void Mail()
+    public void Mail()
     {
         UIManager.Instance.ShowUI<UIMail>();
     }
     public void Notice()
     {
-
+        UIManager.Instance.ShowUI<UINotice>();
     }
     public void Option()
     {
@@ -19,6 +19,6 @@ public class UIPropertiesList : UIBase
 
     public void ClosePopup()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

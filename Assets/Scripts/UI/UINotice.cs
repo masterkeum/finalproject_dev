@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UIInsideMail : UIBase
+public class UINotice : UIBase
 {
-    public TextMeshProUGUI titleText;
-    public TextMeshProUGUI mainText;
+    public Image noticeImage;
+    
+    public void OnclickNotice(int index)
+    {
 
+    }
     public void ClosePopup()
     {
         gameObject.SetActive(false);
     }
+
 }

@@ -24,7 +24,7 @@ public class UIStageSelect : UIBase
     }
     public void OnCancelButton()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     
 
