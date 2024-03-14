@@ -6,8 +6,6 @@ public class EnemyMeleeController : EnemyBaseController
 {
     private bool _isCollidingWithTarget;
 
-
-
     private void Update()
     {
         
