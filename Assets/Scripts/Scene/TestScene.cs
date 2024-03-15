@@ -2,6 +2,8 @@ using Gley.Jumpy;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -24,6 +26,7 @@ public class TestScene : MonoBehaviour
 
     private Player player;
     private GameObject joyStick;
+    private GameObject virtualCamera;
 
     private int stageId;
     List<StageInfoTable> stageMonsterList;
@@ -37,6 +40,8 @@ public class TestScene : MonoBehaviour
         _ = GameManager.Instance;
         _ = AccountInfo.Instance;// 사용자 계정 데이터 접근
 
+        virtualCamera = GameObject.Find("Virtual Camera");
+        
         objectPool = GetComponent<Pooling>();
         stageId = GameManager.Instance.stageId;
         stageMonsterList = DataManager.Instance.GetStageInfo(stageId);
@@ -49,6 +54,10 @@ public class TestScene : MonoBehaviour
 
         // 플레이어 생성
         MakePlayer();
+        
+        // 버츄얼 카메라 세팅
+        VirtualCameraSettiing();
+        
         // 플레이 기본 세팅
 
         // 몬스터 생성
@@ -68,6 +77,11 @@ public class TestScene : MonoBehaviour
             RigidbodyConstraints.FreezeRotation;
         joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
         player.GetComponent<Player>().JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
+    }
+
+    private void VirtualCameraSettiing()
+    {
+        virtualCamera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
     }
 
 
