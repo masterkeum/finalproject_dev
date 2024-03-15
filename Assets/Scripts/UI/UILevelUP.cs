@@ -1,13 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UILevelUP : UIBase
 {
+    private List<SkillTable> variableSkills = new List<SkillTable>();
+    private List<SkillTable> randomSkills = new List<SkillTable>();
+
     public List<SkillSlotUI> selectableSkillUI = new List<SkillSlotUI>();
     public List<SkillSlotUI> curAcitveSkillUI =new List<SkillSlotUI>();
     public List<SkillSlotUI> curPassiveSkillUI = new List<SkillSlotUI>();
 
+
+    private void Awake()
+    {
+        foreach(SkillTable skill in DataManager.Instance.SkillTableDict.Values)
+        {
+            if(skill.skillId >30000000 && skill.skillId < 30000300)
+            {
+                variableSkills.Add(skill);
+            }
+        }
+        
+    }
     private void OnEnable()
     {
         SetSelectableSkills();
@@ -17,6 +33,21 @@ public class UILevelUP : UIBase
     private void SetSelectableSkills()
     {
         //랜덤스킬 생성, 현재레벨표시
+        System.Random random = new System.Random();
+        while (randomSkills.Count < selectableSkillUI.Count)
+        {
+            int randomIndex = random.Next(0, variableSkills.Count);
+            if (randomSkills.Count >= selectableSkillUI.Count)
+            { break; }
+            if (!randomSkills.Contains(variableSkills[randomIndex]))
+            randomSkills.Add(variableSkills[randomIndex]);
+        }
+
+        for(int i = 0; i< selectableSkillUI.Count; i++)
+        {
+            selectableSkillUI[i].skillNameText.text = randomSkills[i].skill;
+            selectableSkillUI[i].skillDescriptionText.text = randomSkills[i].skillStatsExplanation;
+        }
     }
     private void SetCurSkills()
     {

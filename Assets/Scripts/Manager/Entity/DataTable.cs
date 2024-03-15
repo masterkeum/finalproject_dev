@@ -73,15 +73,16 @@ public class PlayerIngameLevel
 [Serializable]
 public class SkillTable
 {
-    public int sID;
+    public int skillId;
     public string skill;
+    public string type;
     public string skillType;
-    public string subskill;
-    public int dMG;
-    public int dMGPersec;
-    public int dMGPerEffect;
-    public int perDMG;
-    public int probabilityPerDMG;
+    public int subskill;
+    public int damage;
+    public int damagePersec;
+    public int damagePerEffect;
+    public int perDamage;
+    public int probabilityPerDamage;
     public int genNumPerSec;
     public int levelAdjustmentNum;
     public int levelAdjustmentper;
@@ -91,6 +92,7 @@ public class SkillTable
     public float coolDownTime;
     public float sizeEnhancementPer;
     public float rangeExpansionPer;
+    public float acquisitionIncreasePer;
     public string skillStatsExplanation;
     public string skillExplanation;
 }
