@@ -12,9 +12,15 @@ public class UILevelUP : UIBase
     public List<SkillSlotUI> curAcitveSkillUI =new List<SkillSlotUI>();
     public List<SkillSlotUI> curPassiveSkillUI = new List<SkillSlotUI>();
 
+    private GameObject player;
+    private PlayerIngameData playerData;
+
 
     private void Awake()
     {
+        player = GameObject.Find("Player");
+        playerData = player.GetComponent<PlayerIngameData>();
+
         foreach(SkillTable skill in DataManager.Instance.SkillTableDict.Values)
         {
             if(skill.skillId >30000000 && skill.skillId < 30000300)
@@ -52,5 +58,19 @@ public class UILevelUP : UIBase
     private void SetCurSkills()
     {
         //현재 가진 스킬 종류만 표시
+    }
+
+    public void OnButtonSelect(int index)
+    {
+        if (randomSkills[index].type == "Active")
+        {
+            playerData.activeSkillSlot.Add(randomSkills[index]);
+        }
+        else
+        {
+            playerData.passiveSkillSlot.Add(randomSkills[index]);
+        }
+        gameObject.SetActive(false);
+        randomSkills.Clear();
     }
 }
