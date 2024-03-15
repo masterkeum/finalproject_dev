@@ -13,8 +13,8 @@ public class PlayerIngameData : MonoBehaviour
     public int killCount = 0;
     public int gold = 0;
 
-    public List<SkillSlot> activeSkillSlot = new List<SkillSlot>();
-    public List<SkillSlot> passiveSkillSlot = new List<SkillSlot>();
+    public List<SkillTable> activeSkillSlot = new List<SkillTable>();
+    public List<SkillTable> passiveSkillSlot = new List<SkillTable>();
 
 
     private void Start()
@@ -24,13 +24,10 @@ public class PlayerIngameData : MonoBehaviour
 
     public void LevelUp()
     {
-        if(curExp >= DataManager.Instance.GetPlayerIngameLevel(curLevel).totalExp)
-        {
-            curLevel++;
-            sliderCurExp = 0;
-            sliderMaxExp = DataManager.Instance.GetPlayerIngameLevel(curLevel).exp;
-            UIManager.Instance.ShowUI<UILevelUP>();
-        }
+        curLevel++;
+        sliderCurExp = 0;
+        sliderMaxExp = DataManager.Instance.GetPlayerIngameLevel(curLevel).exp;
+        UIManager.Instance.ShowUI<UILevelUP>();
     }
 
 }
