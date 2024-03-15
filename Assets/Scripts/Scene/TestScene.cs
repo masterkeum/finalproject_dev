@@ -41,7 +41,7 @@ public class TestScene : MonoBehaviour
         _ = AccountInfo.Instance;// 사용자 계정 데이터 접근
 
         virtualCamera = GameObject.Find("Virtual Camera");
-        
+
         objectPool = GetComponent<Pooling>();
         stageId = GameManager.Instance.stageId;
         stageMonsterList = DataManager.Instance.GetStageInfo(stageId);
@@ -54,10 +54,10 @@ public class TestScene : MonoBehaviour
 
         // 플레이어 생성
         MakePlayer();
-        
+
         // 버츄얼 카메라 세팅
         VirtualCameraSettiing();
-        
+
         // 플레이 기본 세팅
 
         // 몬스터 생성
@@ -73,8 +73,8 @@ public class TestScene : MonoBehaviour
     {
         player = Instantiate(Resources.Load<Player>("Prefabs/Player/Player"));
         player.transform.position = new Vector3(0, 10, 0);
-        player.GetComponent<Rigidbody>().constraints =
-            RigidbodyConstraints.FreezeRotation;
+        Rigidbody playerRigid = player.GetComponent<Rigidbody>();
+        playerRigid.constraints = RigidbodyConstraints.FreezeRotation;
         joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
         player.GetComponent<Player>().JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
     }

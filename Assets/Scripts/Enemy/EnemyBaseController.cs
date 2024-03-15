@@ -73,7 +73,7 @@ public class EnemyBaseController : MonoBehaviour
 
     public void Init(int _monsterID, int _level, Player target)
     {
-        Debug.Log(IsInit);
+        //Debug.Log(IsInit);
         if (IsInit) return;
 
         monsterID = _monsterID;
