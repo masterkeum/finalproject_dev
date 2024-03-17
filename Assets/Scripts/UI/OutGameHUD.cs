@@ -15,23 +15,20 @@ public class OutGameHUD : MonoBehaviour
     public TextMeshProUGUI gemQuantityText;
     public TextMeshProUGUI goldQuantityText;
 
-    [Header("Battle")]
-    public TextMeshProUGUI StageNameText;
-    public Image StageImage;
 
-    [Header("Inventory")]
-    public TextMeshProUGUI userTotalAtkText;
-    public TextMeshProUGUI userTotalDefText;
-    public TextMeshProUGUI userTotalMoveSpeed;
-    public TextMeshProUGUI userTotalAttackSpeed;
-
-    public void OnClickStageSelect()
+    private void Awake()
     {
-        UIManager.Instance.ShowUI<UIStageSelect>();
+        UIManager.Instance.ShowUI<UIBattle>();
     }
-    public void OnClickListButton()
+    private void Start()
     {
-        UIManager.Instance.ShowUI<UIPropertiesList>();
+        UpdateUI();
     }
 
+    public void UpdateUI()
+    {
+
+    }
+
+   
 }
