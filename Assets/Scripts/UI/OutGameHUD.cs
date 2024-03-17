@@ -25,6 +25,8 @@ public class OutGameHUD : MonoBehaviour
     public TextMeshProUGUI userTotalMoveSpeed;
     public TextMeshProUGUI userTotalAttackSpeed;
 
+
+
     public void OnClickStageSelect()
     {
         UIManager.Instance.ShowUI<UIStageSelect>();
@@ -33,5 +35,8 @@ public class OutGameHUD : MonoBehaviour
     {
         UIManager.Instance.ShowUI<UIPropertiesList>();
     }
-
+    public void OnClickMimic()
+    {
+        UIManager.Instance.ShowUI<UIMimicGacha>();
+    }
 }
