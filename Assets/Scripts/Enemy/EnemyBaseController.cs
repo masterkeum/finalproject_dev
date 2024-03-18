@@ -76,8 +76,6 @@ public class EnemyBaseController : MonoBehaviour
     public virtual void Init(int _monsterID, int _level, Player target)
     {
         if (IsInit) return;
-
-        Debug.Log("Base.Init");
         monsterID = _monsterID;
         level = _level;
         targetPlayerTransform = target.transform;
@@ -88,10 +86,6 @@ public class EnemyBaseController : MonoBehaviour
         // 몬스터 스탯초기화
         navMeshAgent.speed = characterInfo.moveSpeed;
         navMeshAgent.stoppingDistance = characterInfo.attackRange;
-
-
-        // 적 루틴 실행
-        //StartCoroutine(CheckState());
 
         IsInit = true;
     }
@@ -135,7 +129,7 @@ public class EnemyBaseController : MonoBehaviour
         return Vector3.Distance(transform.position, targetPlayerTransform.position);
     }
 
-    protected Vector2 DirectionToTarget()
+    protected Vector3 DirectionToTarget()
     {
         // 방향벡터
         return (targetPlayerTransform.position - transform.position).normalized;

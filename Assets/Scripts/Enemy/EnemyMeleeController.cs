@@ -1,8 +1,5 @@
-using Polyperfect.People;
-using System;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditorInternal.ReorderableList;
 
 public class EnemyMeleeController : EnemyBaseController
 {

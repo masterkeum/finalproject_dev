@@ -1,4 +1,3 @@
-using Polyperfect.Common;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,7 +19,6 @@ public class EnemyBossController : EnemyBaseController
     public override void Init(int _monsterID, int _level, Player target)
     {
         base.Init(_monsterID, _level, target);
-        Debug.Log("Boss.Init");
 
         defaultPos = transform.position;
 
@@ -52,8 +50,6 @@ public class EnemyBossController : EnemyBaseController
 
     private void WanderUpdate()
     {
-        //Debug.Log($"{playerDistance} / {characterInfo.sensoryRange}");
-
         //플레이어 거리가 감지 범위 내로 들어왔을 경우
         if (playerDistance < characterInfo.sensoryRange)
         {
@@ -91,8 +87,6 @@ public class EnemyBossController : EnemyBaseController
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(gizmoDestination, Vector3.up);
-        //Gizmos.color = gizmoColor;
-        //Gizmos.DrawSphere(gizmoPosition, gizmoRadius);
     }
 
     private void TraceUpdate()
@@ -127,7 +121,7 @@ public class EnemyBossController : EnemyBaseController
         {
             SetState(EnemyState.Trace);
         }
-
+        transform.Rotate(DirectionToTarget());
         if (Time.time - lastAttackTime > characterInfo.attackSpeed)
         {
             lastAttackTime = Time.time;
@@ -135,8 +129,6 @@ public class EnemyBossController : EnemyBaseController
             animator.SetTrigger(Attack);
         }
     }
-
-
 
     private void FleeUpdate()
     {
@@ -147,21 +139,6 @@ public class EnemyBossController : EnemyBaseController
             animator.SetBool(IsWalking, false);
             SetState(EnemyState.Wander);
         }
-
     }
-
-
-    //// 거리가 가까울때만 반응
-    //private void FixedUpdate()
-    //{
-    //    // 이동 및 공격거리판단
-    //    //navMeshAgent.SetDestination(targetPlayerTransform.position);
-    //    //NavMeshPath path = new NavMeshPath();
-    //    //navMeshAgent.CalculatePath(targetPlayerTransform.position, path);
-    //    //navMeshAgent.SetPath(path);
-
-    //    //Debug.Log(playerDistance);
-    //}
-
 
 }
