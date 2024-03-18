@@ -32,7 +32,7 @@ public class TestScene : MonoBehaviour
     List<StageInfoTable> stageMonsterList;
 
 
-    private float spawnRadius = 20f;
+    private float spawnRadius = 30f; // 30은 돼야 화면밖인듯
 
     private void Awake()
     {
