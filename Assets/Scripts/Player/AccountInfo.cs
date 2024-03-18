@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public class AccountInfo : SingletoneBase<AccountInfo>
+public class AccountInfo : MonoBehaviour
 {
     // 복사해둘것. 나중에 지우고 컨플릭트 없이 합칠 예정
     /*
@@ -12,26 +12,32 @@ public class AccountInfo : SingletoneBase<AccountInfo>
     계정 데이터 저장
         계정 레벨
         보유 재화
+            
         클리어 스테이지
         퀘스트 상태
         인벤토리 상태
         
     */
-    [ReadOnly, SerializeField] private string _pidStr;
     [ReadOnly, SerializeField] private string aId;
 
     [Header("Inventory")] //인벤토리 아이템들
     public Dictionary<string,ItemTable> equipItems = new Dictionary<string,ItemTable>();
 
+    
+    private string _name;
+    private string _level;
+    private string _totalExp;
+
+    private int actionPoint; // 행동력
+    private int gem;
+    private int gold;
+
+    private Time lastUpdateTime;
+
     public ItemTable newItem = new ItemTable();
 
    
 
-    protected override void Init()
-    {
-        _pidStr = _pid.ToString();
-        base.Init();
-    }
 
     private void AddEquipDict()
     {

@@ -3,6 +3,8 @@ using UnityEngine;
 public class GameManager : SingletoneBase<GameManager>
 {
     [ReadOnly, SerializeField] private string _pidStr;
+    private AccountInfo accountInfo;
+
     // 필요한가?
     public Transform playerParent;
     public Transform parentCanvas;
@@ -17,7 +19,14 @@ public class GameManager : SingletoneBase<GameManager>
         base.Init();
         // 초기화
 
+
+        // 계정 세팅
+
+
+
+
         stageId = 101; // !NOTE : Test코드
+
     }
 
 

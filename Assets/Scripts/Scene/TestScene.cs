@@ -35,7 +35,7 @@ public class TestScene : MonoBehaviour
     {
         _ = DataManager.Instance;
         _ = GameManager.Instance;
-        _ = AccountInfo.Instance;// 사용자 계정 데이터 접근
+        //_ = AccountInfo.Instance;// 사용자 계정 데이터 접근
 
         virtualCamera = GameObject.Find("Virtual Camera");
 
