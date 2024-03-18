@@ -22,5 +22,7 @@ public class UIMimicGacha : UIBase
     {
         isMimiced = false;
         gameObject.SetActive(false);
+        UIManager.Instance.ShowUI<UIEquipChange>();
     }
+
 }

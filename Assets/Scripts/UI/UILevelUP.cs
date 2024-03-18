@@ -9,8 +9,9 @@ public class UILevelUP : UIBase
     private List<SkillTable> randomSkills = new List<SkillTable>();
 
     public List<SkillSlotUI> selectableSkillUI = new List<SkillSlotUI>();
-    public List<SkillSlotUI> curAcitveSkillUI =new List<SkillSlotUI>();
+    public List<SkillSlotUI> curAcitveSkillUI = new List<SkillSlotUI>();
     public List<SkillSlotUI> curPassiveSkillUI = new List<SkillSlotUI>();
+
 
     private GameObject player;
     private PlayerIngameData playerData;
@@ -20,20 +21,24 @@ public class UILevelUP : UIBase
     {
         player = GameObject.Find("Player");
         playerData = player.GetComponent<PlayerIngameData>();
+        
 
-        foreach(SkillTable skill in DataManager.Instance.SkillTableDict.Values)
+        foreach (SkillTable skill in DataManager.Instance.SkillTableDict.Values)
         {
-            if(skill.skillId >30000000 && skill.skillId < 30000300)
+            if (skill.skillId > 30000000 && skill.skillId < 30000300)
             {
                 variableSkills.Add(skill);
             }
         }
-        
+
     }
     private void OnEnable()
     {
         SetSelectableSkills();
         SetCurSkills();
+        SetStar();
+
+
     }
 
     private void SetSelectableSkills()
@@ -46,10 +51,10 @@ public class UILevelUP : UIBase
             if (randomSkills.Count >= selectableSkillUI.Count)
             { break; }
             if (!randomSkills.Contains(variableSkills[randomIndex]))
-            randomSkills.Add(variableSkills[randomIndex]);
+                randomSkills.Add(variableSkills[randomIndex]);
         }
 
-        for(int i = 0; i< selectableSkillUI.Count; i++)
+        for (int i = 0; i < selectableSkillUI.Count; i++)
         {
             selectableSkillUI[i].skillNameText.text = randomSkills[i].skill;
             selectableSkillUI[i].skillDescriptionText.text = randomSkills[i].skillStatsExplanation;
@@ -58,19 +63,91 @@ public class UILevelUP : UIBase
     private void SetCurSkills()
     {
         //현재 가진 스킬 종류만 표시
+        for(int i = 0; i<playerData.activeSkillSlot.Count; i++)
+        {
+           // curAcitveSkillUI[i].skillSprite.sprite = playerData.activeSkillSlot[i].?;
+        }
     }
 
     public void OnButtonSelect(int index)
     {
+        
         if (randomSkills[index].type == "Active")
         {
-            playerData.activeSkillSlot.Add(randomSkills[index]);
+            if (playerData.activeSkillSlot.Count == 0)
+            {
+                playerData.activeSkillSlot.Add(randomSkills[index]);
+            }
+            else
+            {
+                bool skillFound = false;
+                for (int i = 0; i<playerData.activeSkillSlot.Count; i++)
+                {
+                    if (randomSkills[index] == playerData.activeSkillSlot[i])
+                    {
+                        playerData.activeSkillLevels[i]++;
+                        skillFound = true;
+                        break;
+                    }
+                }
+                if (!skillFound)
+                {
+                    playerData.activeSkillSlot.Add(randomSkills[index]);
+                }
+            }
+
         }
         else
         {
-            playerData.passiveSkillSlot.Add(randomSkills[index]);
+
+            if (playerData.passiveSkillSlot.Count == 0)
+            {             
+                playerData.passiveSkillSlot.Add(randomSkills[index]);
+            }
+            else
+            {
+                bool skillFound = false;
+                for (int i = 0; i < playerData.passiveSkillSlot.Count; i++)
+                {
+                    if (randomSkills[index] == playerData.passiveSkillSlot[i])
+                    {
+
+                        playerData.passiveSkillLevels[i]++;
+                        skillFound = true;
+                        break;
+                    }
+                }
+                if (!skillFound)
+                {
+                    playerData.passiveSkillSlot.Add(randomSkills[index]);
+                }
+            }
         }
         gameObject.SetActive(false);
         randomSkills.Clear();
+    }
+
+    private void SetStar()
+    {
+        for (int i = 0; i < selectableSkillUI.Count; i++)
+        {
+            for (int j = 0; j<playerData.activeSkillSlot.Count; j++)
+            {
+                if (selectableSkillUI[i].skillNameText.text == playerData.activeSkillSlot[j].skill)
+                {
+                    selectableSkillUI[i].SetStars(playerData.activeSkillLevels[j]);
+                }
+            }
+        }
+        for (int i = 0; i < selectableSkillUI.Count; i++)
+        {
+            for (int j = 0; j < playerData.passiveSkillSlot.Count; j++)
+            {
+                if (selectableSkillUI[i].skillNameText.text == playerData.passiveSkillSlot[j].skill)
+                {
+                    selectableSkillUI[i].SetStars(playerData.passiveSkillLevels[j]);
+                }
+            }
+        }
     }
 }
