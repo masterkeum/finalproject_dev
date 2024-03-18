@@ -1,7 +1,6 @@
 
 using System.Collections.Generic;
 using System;
-using System.Numerics;
 
 public class DataTable
 {
@@ -10,25 +9,23 @@ public class DataTable
     public List<StageInfoTable> StageInfoTable;
     public List<PlayerIngameLevel> PlayerIngameLevel;
     public List<SkillTable> SkillTable;
-    public List<ItemTable> ItemTable;
 }
-
 
 
 [Serializable]
 public class CharacterInfo
 {
     public int uid;
-    public CharacterType characterType;
+    public string characterType;
     public string name;
     public int minLevel;
     public int maxLevel;
     public int hp;
     public int ap;
-    public float? sensoryRange;
-    public float attackRange;
-    public float attackSpeed;
-    public float moveSpeed;
+    public int? sensoryRange;
+    public int attackRange;
+    public int attackSpeed;
+    public int moveSpeed;
     public int defaultSkill;
     public string prefabFile;
 
@@ -55,12 +52,12 @@ public class StageInfoTable
     public int stageId;
     public int monsterId;
     public int level;
+    public string characterType;
     public int genTimeStart;
     public int genTimeEnd;
     public int genAmount;
     public int genTime;
     public int genMax;
-    public int[] genPosVecter3;
 }
 
 [Serializable]
@@ -79,7 +76,6 @@ public class SkillTable
     public string type;
     public string skillType;
     public int subskill;
-    public int level;
     public int maxLevel;
     public int nextSkill;
     public int damage;
@@ -99,22 +95,4 @@ public class SkillTable
     public float acquisitionIncreasePer;
     public string skillStatsExplanation;
     public string skillExplanation;
-}
-
-[Serializable]
-public class ItemTable
-{
-    public int itemId;
-    public string itemCategory;
-    public string itemType;
-    public string nameAlias;
-    public string descAlias;
-    public int maxStack;
-    public string ImageFile;
-    public string categoryTextId;
-    public int hp;
-    public int dp;
-    public int ap;
-    public int speed;
-
 }

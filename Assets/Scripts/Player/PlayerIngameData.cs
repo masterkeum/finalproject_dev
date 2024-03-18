@@ -12,6 +12,8 @@ public class PlayerIngameData : MonoBehaviour
     public int maxExp;
     public int killCount = 0;
     public int gold = 0;
+    public int[] activeSkillLevels = new int[6];
+    public int[] passiveSkillLevels = new int[6];
 
     public List<SkillTable> activeSkillSlot = new List<SkillTable>();
     public List<SkillTable> passiveSkillSlot = new List<SkillTable>();
