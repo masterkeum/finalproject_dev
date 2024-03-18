@@ -1,9 +1,6 @@
-using Gley.Jumpy;
-using JetBrains.Annotations;
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
-using Cinemachine;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -146,7 +143,7 @@ public class TestScene : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogError("없어");
+                    Debug.LogError("몬스터 생성할 위치 못찾음.");
                 }
 
                 // TODO : 풀매니저 적용해야됨
