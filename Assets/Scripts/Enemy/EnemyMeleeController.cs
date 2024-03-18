@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyMeleeController : EnemyBaseController
@@ -25,6 +26,9 @@ public class EnemyMeleeController : EnemyBaseController
 
     private void FixedUpdate()
     {
+        playerDistance = DistanceToTarget();
+
+
         // 이동 및 공격거리판단
         //navMeshAgent.SetDestination(targetPlayerTransform.position);
         NavMeshPath path = new NavMeshPath();

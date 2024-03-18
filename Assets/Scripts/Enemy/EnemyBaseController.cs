@@ -1,3 +1,4 @@
+using Polyperfect.Common;
 using System;
 using System.Collections;
 using Unity.VisualScripting;
@@ -47,23 +48,27 @@ public class EnemyBaseController : MonoBehaviour
     private static readonly int Hit = Animator.StringToHash("Hit");
     private static readonly int Die = Animator.StringToHash("Die");
 
+    [SerializeField] protected Transform targetPlayerTransform;
     // 몬스터 정보
     protected CharacterInfo characterInfo;
     protected MonsterLevel monsterLevel;
 
-    private EnemyState enemyState;
-
-    [SerializeField] protected Transform targetPlayerTransform;
     protected NavMeshAgent navMeshAgent;
     protected Animator animator;
 
+    // 몬스터 상태관리
+    private EnemyState enemyState;
+    protected float playerDistance;
+
+    protected float sensoryRange; // 보스 탐지영역
+    protected float attackRange;
+    protected float attackSpeed;
+    protected float lastAttackTime;
+
     protected void Awake()
     {
-        //Debug.Log("On EnemyBase Awake");
-
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
-
     }
 
     public virtual void Init(int _monsterID, int _level, Player target)
@@ -80,15 +85,11 @@ public class EnemyBaseController : MonoBehaviour
 
         // 몬스터 스탯초기화
         navMeshAgent.speed = characterInfo.moveSpeed;
-
-
-
-
-
+        navMeshAgent.stoppingDistance = characterInfo.attackRange;
         //Debug.Log(targetPlayerTransform.position);
 
         // 상태 초기화
-        //SetState(EnemyState.Trace);
+        SetState(EnemyState.Trace);
 
         // 적 루틴 실행
         //StartCoroutine(CheckState());
@@ -96,20 +97,51 @@ public class EnemyBaseController : MonoBehaviour
         IsInit = true;
     }
 
+    private void SetState(EnemyState newState)
+    {
+        enemyState = newState;
+        switch (enemyState)
+        {
+            case EnemyState.Trace:
+                {
+                    navMeshAgent.isStopped = false;
+                }
+                break;
+            case EnemyState.Attack:
+                {
+                    navMeshAgent.isStopped = false;
+                }
+                break;
+            case EnemyState.Die:
+                {
+                    navMeshAgent.isStopped = true;
+                }
+                break;
+        }
 
+        //animator.speed = agent.speed / walkSpeed;
+    }
+
+    private void Update()
+    {
+        playerDistance = DistanceToTarget();
+
+    }
 
     private void OnDead()
     {
-        // 죽으면 반환
+        SetState(EnemyState.Die);
+
+        // 죽으면 풀 반환
 
     }
 
 
-    //protected float DistanceToTarget()
-    //{
-    //    // 플레이어와 거리
-    //    return Vector3.Distance(transform.position, targetPlayerTransform.position);
-    //}
+    protected float DistanceToTarget()
+    {
+        // 플레이어와 거리
+        return Vector3.Distance(transform.position, targetPlayerTransform.position);
+    }
 
 
     //protected Vector2 DirectionToTarget()

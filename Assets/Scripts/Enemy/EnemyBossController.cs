@@ -1,4 +1,4 @@
-using UnityEngine.AI;
+using UnityEngine;
 
 public class EnemyBossController : EnemyBaseController
 {
@@ -23,6 +23,9 @@ public class EnemyBossController : EnemyBaseController
         //NavMeshPath path = new NavMeshPath();
         //navMeshAgent.CalculatePath(targetPlayerTransform.position, path);
         //navMeshAgent.SetPath(path);
+
+        //Debug.Log(playerDistance);
     }
+
 
 }
