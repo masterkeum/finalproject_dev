@@ -32,7 +32,7 @@ public class TestScene : MonoBehaviour
     List<StageInfoTable> stageMonsterList;
 
 
-    private float spawnRadius = 50f;
+    private float spawnRadius = 20f;
 
     private void Awake()
     {
@@ -72,9 +72,11 @@ public class TestScene : MonoBehaviour
     private void MakePlayer()
     {
         player = Instantiate(Resources.Load<Player>("Prefabs/Player/Player"));
-        player.transform.position = new Vector3(0, 10, 0);
+        player.transform.position = new Vector3(0, 0.5f, 0);
+
         Rigidbody playerRigid = player.GetComponent<Rigidbody>();
         playerRigid.constraints = RigidbodyConstraints.FreezeRotation;
+
         joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
         player.GetComponent<Player>().JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
     }
@@ -87,9 +89,6 @@ public class TestScene : MonoBehaviour
 
     private void StartStage()
     {
-        // 보스 세팅
-
-
         foreach (StageInfoTable monsterData in stageMonsterList)
         {
             StartCoroutine(SpawnEnemyRoutine(monsterData));
@@ -99,8 +98,17 @@ public class TestScene : MonoBehaviour
     IEnumerator SpawnEnemyRoutine(StageInfoTable monsterData)
     {
         // 프리팹 세팅
-        GameObject monster = Resources.Load<GameObject>("Prefabs/Enemy/MushroomA");
+        CharacterInfo monsterInfo = DataManager.Instance.GetCharacterInfo(monsterData.monsterId);
+        GameObject monster = Resources.Load<GameObject>(monsterInfo.prefabFile);
 
+        if (monsterData.genPosVecter3.Length > 0)
+        {
+            // 좌표있으면 다른것 무시하고 단발성 생성
+            GameObject go = Instantiate(monster, new Vector3(monsterData.genPosVecter3[0], monsterData.genPosVecter3[1], monsterData.genPosVecter3[2]), Quaternion.identity);
+            go.GetComponent<EnemyBaseController>().Init(monsterData.monsterId, monsterData.level, player);
+
+            yield break;
+        }
 
         yield return new WaitForSeconds(monsterData.genTimeStart);
         float startTime = Time.time;

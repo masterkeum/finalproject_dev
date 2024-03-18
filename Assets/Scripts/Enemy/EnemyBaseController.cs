@@ -53,25 +53,20 @@ public class EnemyBaseController : MonoBehaviour
 
     private EnemyState enemyState;
 
-
-    //protected float walkSpeed;
-    //protected float runSpeed;
-
-
-    protected Transform targetPlayerTransform;
+    [SerializeField] protected Transform targetPlayerTransform;
     protected NavMeshAgent navMeshAgent;
     protected Animator animator;
 
-    protected virtual void Awake()
+    protected void Awake()
     {
-        Debug.Log("On EnemyBase Awake");
+        //Debug.Log("On EnemyBase Awake");
 
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
 
     }
 
-    public void Init(int _monsterID, int _level, Player target)
+    public virtual void Init(int _monsterID, int _level, Player target)
     {
         //Debug.Log(IsInit);
         if (IsInit) return;
@@ -82,11 +77,15 @@ public class EnemyBaseController : MonoBehaviour
 
         characterInfo = DataManager.Instance.characterInfoDict[monsterID];
         monsterLevel = characterInfo.monsterLevelData[level];
+
         // 몬스터 스탯초기화
-        Debug.Log(targetPlayerTransform.position);
+        navMeshAgent.speed = characterInfo.moveSpeed;
 
-        navMeshAgent.SetDestination(targetPlayerTransform.position);
 
+
+
+
+        //Debug.Log(targetPlayerTransform.position);
 
         // 상태 초기화
         //SetState(EnemyState.Trace);
@@ -96,6 +95,8 @@ public class EnemyBaseController : MonoBehaviour
 
         IsInit = true;
     }
+
+
 
     private void OnDead()
     {

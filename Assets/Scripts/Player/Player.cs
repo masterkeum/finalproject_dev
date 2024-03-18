@@ -25,12 +25,22 @@ public class Player : MonoBehaviour
     [SerializeField] private int moveSpeed;
     [SerializeField] private string defaultSkill;
     [SerializeField] private string prefabFile;
-    
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
     }
+
+    private void Update()
+    {
+        if (transform.position.y < -10)
+        {
+            // 임시방편. 바닥밑으로 떨어지면 위치이동
+            transform.position = Vector3.zero;
+        }
+    }
+
 
     private void FixedUpdate()
     {

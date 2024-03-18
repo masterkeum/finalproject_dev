@@ -19,7 +19,6 @@
     {},
     {},
     {},
-    {},
     {}
   ],
   "Info_Index": [
@@ -73,21 +72,20 @@
     {}
   ],
   "Info_Enum": [
-    {
-      "Enum": null
-    },
-    {
-      "Enum": null
-    },
-    {
-      "Enum": null
-    },
-    {
-      "Enum": null
-    },
-    {
-      "Enum": null
-    }
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "CharacterInfo": [
     {
@@ -101,7 +99,7 @@
       "sensoryRange": null,
       "attackRange": 70,
       "attackSpeed": 1200,
-      "moveSpeed": 60,
+      "moveSpeed": 4,
       "defaultSkill": 30000001,
       "prefabFile": "Prefabs/Player/Player"
     },
@@ -116,9 +114,9 @@
       "sensoryRange": null,
       "attackRange": 50,
       "attackSpeed": 1000,
-      "moveSpeed": 60,
+      "moveSpeed": 2,
       "defaultSkill": 30100001,
-      "prefabFile": "Prefabs/Enemy/MushroomA"
+      "prefabFile": "Prefabs/Enemy/SlimeRed"
     },
     {
       "uid": 20000002,
@@ -131,7 +129,7 @@
       "sensoryRange": null,
       "attackRange": 60,
       "attackSpeed": 1100,
-      "moveSpeed": 60,
+      "moveSpeed": 3.5,
       "defaultSkill": 30100001,
       "prefabFile": "Prefabs/Enemy/MushroomA"
     },
@@ -146,9 +144,9 @@
       "sensoryRange": 450,
       "attackRange": 120,
       "attackSpeed": 1300,
-      "moveSpeed": 70,
+      "moveSpeed": 3.5,
       "defaultSkill": 30100003,
-      "prefabFile": "Prefabs/Enemy/MushroomA"
+      "prefabFile": "Prefabs/Enemy/OrcGreen"
     }
   ],
   "MonsterLevel": [
@@ -1713,26 +1711,34 @@
       "totalExp": 7000
     }
   ],
-  "WIP_ItemTable": [
+  "ItemTable": [
     {
       "itemId": 50000001,
       "itemCategory": "Resource",
       "itemType": "Gold",
       "nameAlias": "GOLD",
-      "descAlias": "아이템을 살수 있는",
+      "descAlias": "레벨업을 할수 있는 재화",
       "maxStack": null,
       "ImageFile": null,
-      "categoryTextId": null
+      "categoryTextId": null,
+      "hp": null,
+      "dp": null,
+      "ap": null,
+      "speed": null
     },
     {
       "itemId": 50000002,
       "itemCategory": "Resource",
       "itemType": "Cash",
       "nameAlias": "GEM",
-      "descAlias": null,
+      "descAlias": "아이템을 살 수 있는 재화",
       "maxStack": null,
       "ImageFile": "스프라이트나 기타",
-      "categoryTextId": null
+      "categoryTextId": null,
+      "hp": null,
+      "dp": null,
+      "ap": null,
+      "speed": null
     },
     {
       "itemId": 50000003,
@@ -1742,17 +1748,95 @@
       "descAlias": null,
       "maxStack": null,
       "ImageFile": null,
-      "categoryTextId": null
+      "categoryTextId": null,
+      "hp": null,
+      "dp": null,
+      "ap": null,
+      "speed": null
     },
     {
       "itemId": 60000001,
       "itemCategory": "Equipment",
-      "itemType": "EquipItem",
+      "itemType": "Weapon",
       "nameAlias": null,
       "descAlias": null,
       "maxStack": null,
       "ImageFile": null,
-      "categoryTextId": null
+      "categoryTextId": null,
+      "hp": 5,
+      "dp": 5,
+      "ap": 10,
+      "speed": 1
+    },
+    {
+      "itemId": 60000101,
+      "itemCategory": null,
+      "itemType": "Armor",
+      "nameAlias": null,
+      "descAlias": null,
+      "maxStack": null,
+      "ImageFile": null,
+      "categoryTextId": null,
+      "hp": 1,
+      "dp": 1,
+      "ap": 4,
+      "speed": 2
+    },
+    {
+      "itemId": 60000201,
+      "itemCategory": null,
+      "itemType": "Helmet",
+      "nameAlias": null,
+      "descAlias": null,
+      "maxStack": null,
+      "ImageFile": null,
+      "categoryTextId": null,
+      "hp": 8,
+      "dp": 4,
+      "ap": 5,
+      "speed": 3
+    },
+    {
+      "itemId": 60000301,
+      "itemCategory": null,
+      "itemType": "Gloves",
+      "nameAlias": null,
+      "descAlias": null,
+      "maxStack": null,
+      "ImageFile": null,
+      "categoryTextId": null,
+      "hp": 6,
+      "dp": 4,
+      "ap": 3,
+      "speed": 1
+    },
+    {
+      "itemId": 60000401,
+      "itemCategory": null,
+      "itemType": "Boots",
+      "nameAlias": null,
+      "descAlias": null,
+      "maxStack": null,
+      "ImageFile": null,
+      "categoryTextId": null,
+      "hp": 7,
+      "dp": 3,
+      "ap": 4,
+      "speed": 3
+    },
+    {
+      "itemId": 60000501,
+      "itemCategory": null,
+      "itemType": "Accessorries",
+      "nameAlias": null,
+      "descAlias": null,
+      "maxStack": null,
+      "ImageFile": null,
+      "categoryTextId": null,
+      "hp": 30,
+      "dp": 40,
+      "ap": 5,
+      "speed": 4
     },
     {
       "itemId": 70000001,
@@ -1762,7 +1846,11 @@
       "descAlias": null,
       "maxStack": null,
       "ImageFile": null,
-      "categoryTextId": null
+      "categoryTextId": null,
+      "hp": null,
+      "dp": null,
+      "ap": null,
+      "speed": null
     }
   ],
   "WIP_RandomBoxTable": [
@@ -2469,40 +2557,6 @@
       "rewardQ": 10
     }
   ],
-  "X_MonsterInfo-폐기": [
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {}
-  ],
   "WIP_IAPTable": [
     {},
     {},
@@ -2608,6 +2662,40 @@
     {}
   ],
   "계산식 아이디어": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "X_MonsterInfo-폐기": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
     {},
     {},
     {},
