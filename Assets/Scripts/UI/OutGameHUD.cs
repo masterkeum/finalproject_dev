@@ -22,6 +22,7 @@ public class OutGameHUD : MonoBehaviour
     [Header("Battle")]
     public TextMeshProUGUI StageNameText;
     public Image StageImage;
+    public int SelectedStageId;
 
 
     private void Start()
@@ -53,5 +54,9 @@ public class OutGameHUD : MonoBehaviour
     public void OnClickMimic()
     {
         UIManager.Instance.ShowUI<UIMimicGacha>();
+    }
+    public void OnStartbutton()
+    {
+        
     }
 }

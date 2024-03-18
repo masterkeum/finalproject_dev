@@ -631,7 +631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stageBanner: {fileID: 7859074925760834168}
   _selectMark: {fileID: 1854980980816289300}
-  index: 0
+  index: 103
   isCurStage: 0
 --- !u!114 &2684496325479028505
 MonoBehaviour:
@@ -1131,7 +1131,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &4701084504194777673
 MonoBehaviour:
@@ -1190,6 +1190,7 @@ MonoBehaviour:
   - {fileID: 5010291060186075705}
   - {fileID: 8760080103678208534}
   - {fileID: 8912964020242023896}
+  outHUD: {fileID: 0}
 --- !u!1 &5054731938656040684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,7 +1485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stageBanner: {fileID: 1536916530256598702}
   _selectMark: {fileID: 4297327311081030299}
-  index: 0
+  index: 102
   isCurStage: 0
 --- !u!114 &2957550878426036268
 MonoBehaviour:
@@ -1537,7 +1538,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 101
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2100,7 +2101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stageBanner: {fileID: 8101993829509486571}
   _selectMark: {fileID: 5291169125578040576}
-  index: 0
+  index: 104
   isCurStage: 0
 --- !u!114 &4870992213528727869
 MonoBehaviour:
@@ -2742,7 +2743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stageBanner: {fileID: 7819815219154514703}
   _selectMark: {fileID: 8714818270154300926}
-  index: 0
+  index: 101
   isCurStage: 0
 --- !u!114 &928903737604398362
 MonoBehaviour:
@@ -2854,7 +2855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stageBanner: {fileID: 1586543129993612886}
   _selectMark: {fileID: 2400831179349404930}
-  index: 0
+  index: 105
   isCurStage: 0
 --- !u!114 &4755653468086085173
 MonoBehaviour:
@@ -3170,7 +3171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stageBanner: {fileID: 8897913612286180554}
   _selectMark: {fileID: 4234916227140268904}
-  index: 0
+  index: 106
   isCurStage: 0
 --- !u!114 &2116468755226307640
 MonoBehaviour:

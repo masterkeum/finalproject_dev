@@ -59,6 +59,7 @@ public class StageInfoTable
     public int genAmount;
     public int genTime;
     public int genMax;
+    public float[] genPosVecter3;
 }
 
 [Serializable]

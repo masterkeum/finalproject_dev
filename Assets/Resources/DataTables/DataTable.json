@@ -85,6 +85,15 @@
     {},
     {},
     {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
     {}
   ],
   "CharacterInfo": [
@@ -127,7 +136,7 @@
       "hp": 55,
       "attackPower": 12,
       "sensoryRange": null,
-      "attackRange": 1,
+      "attackRange": 1.2,
       "attackSpeed": 1.1,
       "moveSpeed": 3.5,
       "defaultSkill": 30100001,
@@ -492,7 +501,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": "데미지: 60 + (레벨 x 20)",
-      "skillExplanation": "미믹이 화염을 내뿜어 원거리 적에게 데미지를 입힙니다. 초월시 추가로 화상 피해를 도트 데미지로  줍니다."
+      "skillExplanation": "미믹이 화염을 내뿜어 원거리 적에게 데미지를 입힙니다. 초월시 추가로 화상 피해를 도트 데미지로  줍니다.",
+      "imageAddress": "Taxture/SkillIcon/Fire"
     },
     {
       "skillId": 30000002,
@@ -519,7 +529,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": "데미지: 80 + (레벨 x 15)",
-      "skillExplanation": "미믹이 얼음 미사일을 발사하여 원거리의 적에게 데미지를 입힙니다. 초월시 적을 3초 동안 동결하여 움직이지 못하게 합니다. 보스 면역"
+      "skillExplanation": "미믹이 얼음 미사일을 발사하여 원거리의 적에게 데미지를 입힙니다. 초월시 적을 3초 동안 동결하여 움직이지 못하게 합니다. 보스 면역",
+      "imageAddress": "Taxture/SkillIcon/Ice"
     },
     {
       "skillId": 30000003,
@@ -546,7 +557,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": "데미지: 40 + (레벨 x 25)",
-      "skillExplanation": "미믹이 번개를 내려 적에게 강력한 일격을 가합니다. 초월시  번개의 추락지점에 [스플레쉬] 데미지를 더합니다."
+      "skillExplanation": "미믹이 번개를 내려 적에게 강력한 일격을 가합니다. 초월시  번개의 추락지점에 [스플레쉬] 데미지를 더합니다.",
+      "imageAddress": "Taxture/SkillIcon/Thunder"
     },
     {
       "skillId": 30000004,
@@ -573,7 +585,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": "데미지: 35 + (레벨 x 30)",
-      "skillExplanation": "미믹이 하늘에서 유성을 소환하여 적에게 떨어 뜨립니다.. 초월시 한 자리에 메테오 스웜을 3초 동안 불러 일으킵니다."
+      "skillExplanation": "미믹이 하늘에서 유성을 소환하여 적에게 떨어 뜨립니다.. 초월시 한 자리에 메테오 스웜을 3초 동안 불러 일으킵니다.",
+      "imageAddress": "Taxture/SkillIcon/Meteo"
     },
     {
       "skillId": 30000005,
@@ -604,7 +617,8 @@
         "범위증가 (레벨 x10%)",
         "지속시간 2초 +(레벨x 10%)"
       ],
-      "skillExplanation": "미믹의 중심에서 오로라를 뿜으며 주변의 적에게 피해를 끼칩니다.   초월시 10%확률로 넉백 효과를 줍니다."
+      "skillExplanation": "미믹의 중심에서 오로라를 뿜으며 주변의 적에게 피해를 끼칩니다.   초월시 10%확률로 넉백 효과를 줍니다.",
+      "imageAddress": "Taxture/SkillIcon/Santuary"
     },
     {
       "skillId": 30000006,
@@ -635,7 +649,8 @@
         "크기증가 (레벨 x 10%)",
         "지속시간 2초 +(레벨x10%)"
       ],
-      "skillExplanation": "미믹이 신성한 불꽃을 소환하여 주변에 적을 태웁니다. 초월시 미믹이 걸어다니는 지역에 1.5초동안에 불의 장벽을 만들어 적을 불태웁니다"
+      "skillExplanation": "미믹이 신성한 불꽃을 소환하여 주변에 적을 태웁니다. 초월시 미믹이 걸어다니는 지역에 1.5초동안에 불의 장벽을 만들어 적을 불태웁니다",
+      "imageAddress": "Taxture/SkillIcon/Flame"
     },
     {
       "skillId": 30000101,
@@ -662,7 +677,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": "방어력 증가: 10 + (레벨 x 5)",
-      "skillExplanation": "미믹의 방어력이 상승하여 받는 피해를 감소시킵니다."
+      "skillExplanation": "미믹의 방어력이 상승하여 받는 피해를 감소시킵니다.",
+      "imageAddress": "Taxture/SkillIcon/Def"
     },
     {
       "skillId": 30000102,
@@ -689,7 +705,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": "체력 증가량: 30 + (레벨 x 10)",
-      "skillExplanation": "미믹의 HP가 증가합니다."
+      "skillExplanation": "미믹의 HP가 증가합니다.",
+      "imageAddress": "Taxture/SkillIcon/Life"
     },
     {
       "skillId": 30000103,
@@ -716,7 +733,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": "체력 회복량: 5 + (레벨 x 2)",
-      "skillExplanation": "미믹의 HP가 천천히 회복 됩니다."
+      "skillExplanation": "미믹의 HP가 천천히 회복 됩니다.",
+      "imageAddress": "Taxture/SkillIcon/Heal"
     },
     {
       "skillId": 30000104,
@@ -743,7 +761,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": "공격력 증가: 10 + (레벨 x 15)",
-      "skillExplanation": "미믹이 공격력이 증가하여 더 강력한 공격을 가합니다."
+      "skillExplanation": "미믹이 공격력이 증가하여 더 강력한 공격을 가합니다.",
+      "imageAddress": "Taxture/SkillIcon/Atk"
     },
     {
       "skillId": 30000105,
@@ -770,7 +789,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": 10,
       "skillStatsExplanation": "레벨  x 경험지 획득량 10% 증가",
-      "skillExplanation": "미믹이 전투에서 얻는 경험치가 증가합니다."
+      "skillExplanation": "미믹이 전투에서 얻는 경험치가 증가합니다.",
+      "imageAddress": "Taxture/SkillIcon/Stone"
     },
     {
       "skillId": 30000106,
@@ -797,7 +817,8 @@
       "rangeExpansionPer": 10,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": "레벨 x 재화 획득 범위 10% 증가",
-      "skillExplanation": "미믹이 주변의 재화를 자동으로 끌어당깁니다."
+      "skillExplanation": "미믹이 주변의 재화를 자동으로 끌어당깁니다.",
+      "imageAddress": "Taxture/SkillIcon/BlackHole"
     },
     {
       "skillId": 30000301,
@@ -824,7 +845,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": "데미지: 180 + 초당 도트 데미지 20",
-      "skillExplanation": "화염폭발의 초월 스킬입니다. 기본공격력에  추가로 화상 피해를 도트 데미지로  줍니다."
+      "skillExplanation": "화염폭발의 초월 스킬입니다. 기본공격력에  추가로 화상 피해를 도트 데미지로  줍니다.",
+      "imageAddress": "Taxture/SkillIcon/Fire_S"
     },
     {
       "skillId": 30000302,
@@ -851,7 +873,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": "데미지: 170   + 적 동결 3초",
-      "skillExplanation": "얼음 미사일  초월 스킬입니다."
+      "skillExplanation": "얼음 미사일  초월 스킬입니다.",
+      "imageAddress": "Taxture/SkillIcon/Ice_S"
     },
     {
       "skillId": 30000303,
@@ -881,7 +904,8 @@
         "데미지 135",
         "주변 적 스플레쉬 공격 (70 데미지)"
       ],
-      "skillExplanation": "번개의 일격  초월 스킬입니다."
+      "skillExplanation": "번개의 일격  초월 스킬입니다.",
+      "imageAddress": "Taxture/SkillIcon/Thunder_S"
     },
     {
       "skillId": 30000304,
@@ -911,7 +935,8 @@
         "데미지 : 200",
         "메테오 스웜 (메테오 개당  50 데미지)"
       ],
-      "skillExplanation": "유성 폭풍  초월 스킬입니다."
+      "skillExplanation": "유성 폭풍  초월 스킬입니다.",
+      "imageAddress": "Taxture/SkillIcon/Meteo_S"
     },
     {
       "skillId": 30000305,
@@ -938,7 +963,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": "초당 데미지: 80 + 넉백시 추가 5% 데미지",
-      "skillExplanation": "생츄어리  초월 스킬입니다."
+      "skillExplanation": "생츄어리  초월 스킬입니다.",
+      "imageAddress": "Taxture/SkillIcon/Santuary_S"
     },
     {
       "skillId": 30000306,
@@ -968,7 +994,8 @@
         "데미지 140",
         "불의장벽 데미지 100 (지속시간 1.5초)"
       ],
-      "skillExplanation": "신성한 불꽃  초월 스킬입니다."
+      "skillExplanation": "신성한 불꽃  초월 스킬입니다.",
+      "imageAddress": "Taxture/SkillIcon/Flame_S"
     },
     {
       "skillId": 30000501,
@@ -995,7 +1022,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": null,
-      "skillExplanation": null
+      "skillExplanation": null,
+      "imageAddress": null
     },
     {
       "skillId": 30100001,
@@ -1022,7 +1050,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": null,
-      "skillExplanation": "보스 근거리 공격"
+      "skillExplanation": "보스 근거리 공격",
+      "imageAddress": null
     },
     {
       "skillId": 30100002,
@@ -1049,7 +1078,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": null,
-      "skillExplanation": "보스 원거리 공격"
+      "skillExplanation": "보스 원거리 공격",
+      "imageAddress": null
     },
     {
       "skillId": 30100003,
@@ -1076,7 +1106,8 @@
       "rangeExpansionPer": null,
       "acquisitionIncreasePer": null,
       "skillStatsExplanation": null,
-      "skillExplanation": "보스"
+      "skillExplanation": "보스",
+      "imageAddress": null
     }
   ],
   "PlayerLevel": [
@@ -1738,7 +1769,7 @@
       "itemId": 50000001,
       "itemCategory": "Resource",
       "itemType": "Gold",
-      "nameAlias": "GOLD",
+      "nameAlias": "Gold",
       "descAlias": "레벨업을 할수 있는 재화",
       "maxStack": null,
       "ImageFile": null,
@@ -1752,8 +1783,8 @@
       "itemId": 50000002,
       "itemCategory": "Resource",
       "itemType": "Cash",
-      "nameAlias": "GEM",
-      "descAlias": "아이템을 살 수 있는 재화",
+      "nameAlias": "Gem",
+      "descAlias": null,
       "maxStack": null,
       "ImageFile": "스프라이트나 기타",
       "categoryTextId": null,
@@ -1764,10 +1795,10 @@
     },
     {
       "itemId": 50000003,
-      "itemCategory": null,
-      "itemType": null,
-      "nameAlias": null,
-      "descAlias": null,
+      "itemCategory": "Resource",
+      "itemType": "ItemCore",
+      "nameAlias": "Core",
+      "descAlias": "아이템을 뽑을 수 있는 재화",
       "maxStack": null,
       "ImageFile": null,
       "categoryTextId": null,
@@ -1792,7 +1823,7 @@
     },
     {
       "itemId": 60000101,
-      "itemCategory": null,
+      "itemCategory": "Equipment",
       "itemType": "Armor",
       "nameAlias": null,
       "descAlias": null,
@@ -1806,7 +1837,7 @@
     },
     {
       "itemId": 60000201,
-      "itemCategory": null,
+      "itemCategory": "Equipment",
       "itemType": "Helmet",
       "nameAlias": null,
       "descAlias": null,
@@ -1820,7 +1851,7 @@
     },
     {
       "itemId": 60000301,
-      "itemCategory": null,
+      "itemCategory": "Equipment",
       "itemType": "Gloves",
       "nameAlias": null,
       "descAlias": null,
@@ -1834,7 +1865,7 @@
     },
     {
       "itemId": 60000401,
-      "itemCategory": null,
+      "itemCategory": "Equipment",
       "itemType": "Boots",
       "nameAlias": null,
       "descAlias": null,
@@ -1848,7 +1879,7 @@
     },
     {
       "itemId": 60000501,
-      "itemCategory": null,
+      "itemCategory": "Equipment",
       "itemType": "Accessorries",
       "nameAlias": null,
       "descAlias": null,
@@ -1864,7 +1895,7 @@
       "itemId": 70000001,
       "itemCategory": "GachaBox",
       "itemType": "RandomBox",
-      "nameAlias": "랜덤박스",
+      "nameAlias": "아이템정수",
       "descAlias": null,
       "maxStack": null,
       "ImageFile": null,
