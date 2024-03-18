@@ -39,6 +39,14 @@ public class SkillSlotUI : MonoBehaviour
         }
     }
 
+    public void ClearStars()
+    {
+        for(int i = 0; i < starSlot.Count; i++)
+        {
+            starSlot[i].ClearYellowStar();
+        }
+    }
+
     private void SetIndex()
     {
         _skillIndex = transform.GetSiblingIndex();

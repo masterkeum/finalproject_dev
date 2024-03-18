@@ -65,7 +65,13 @@ public class UILevelUP : UIBase
         //현재 가진 스킬 종류만 표시
         for(int i = 0; i<playerData.activeSkillSlot.Count; i++)
         {
+            curAcitveSkillUI[i].skillIcon.SetActive(true);
            // curAcitveSkillUI[i].skillSprite.sprite = playerData.activeSkillSlot[i].?;
+        }
+        for (int i = 0; i<playerData.passiveSkillSlot.Count; i++)
+        {
+            curPassiveSkillUI[i].skillIcon.SetActive(true);
+            //
         }
     }
 
@@ -77,6 +83,7 @@ public class UILevelUP : UIBase
             if (playerData.activeSkillSlot.Count == 0)
             {
                 playerData.activeSkillSlot.Add(randomSkills[index]);
+                
             }
             else
             {
@@ -85,7 +92,7 @@ public class UILevelUP : UIBase
                 {
                     if (randomSkills[index] == playerData.activeSkillSlot[i])
                     {
-                        playerData.activeSkillLevels[i]++;
+                        playerData.activeSkillSlot[i].level++;
                         skillFound = true;
                         break;
                     }
@@ -112,7 +119,7 @@ public class UILevelUP : UIBase
                     if (randomSkills[index] == playerData.passiveSkillSlot[i])
                     {
 
-                        playerData.passiveSkillLevels[i]++;
+                        playerData.passiveSkillSlot[i].level++;
                         skillFound = true;
                         break;
                     }
@@ -131,21 +138,19 @@ public class UILevelUP : UIBase
     {
         for (int i = 0; i < selectableSkillUI.Count; i++)
         {
+            selectableSkillUI[i].ClearStars();
             for (int j = 0; j<playerData.activeSkillSlot.Count; j++)
             {
                 if (selectableSkillUI[i].skillNameText.text == playerData.activeSkillSlot[j].skill)
                 {
-                    selectableSkillUI[i].SetStars(playerData.activeSkillLevels[j]);
+                    selectableSkillUI[i].SetStars(playerData.activeSkillSlot[j].level);
                 }
             }
-        }
-        for (int i = 0; i < selectableSkillUI.Count; i++)
-        {
             for (int j = 0; j < playerData.passiveSkillSlot.Count; j++)
             {
                 if (selectableSkillUI[i].skillNameText.text == playerData.passiveSkillSlot[j].skill)
                 {
-                    selectableSkillUI[i].SetStars(playerData.passiveSkillLevels[j]);
+                    selectableSkillUI[i].SetStars(playerData.passiveSkillSlot[j].level);
                 }
             }
         }
