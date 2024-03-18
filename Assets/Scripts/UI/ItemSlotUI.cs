@@ -29,8 +29,4 @@ public class ItemSlotUI : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Onclick()
-    {
-        UIManager.Instance.ShowUI<UIItemDescription>();
-    }
 }

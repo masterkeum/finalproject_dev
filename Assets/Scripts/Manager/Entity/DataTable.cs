@@ -78,6 +78,8 @@ public class SkillTable
     public string type;
     public string skillType;
     public int subskill;
+    public int maxLevel;
+    public int nextSkill;
     public int damage;
     public int damagePersec;
     public int damagePerEffect;
