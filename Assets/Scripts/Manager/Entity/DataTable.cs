@@ -22,8 +22,8 @@ public class CharacterInfo
     public int minLevel;
     public int maxLevel;
     public int hp;
-    public int ap;
-    public float? sensoryRange;
+    public int attackPower;
+    public float sensoryRange;
     public float attackRange;
     public float attackSpeed;
     public float moveSpeed;
