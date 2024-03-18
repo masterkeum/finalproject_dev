@@ -9,6 +9,7 @@ public class DataTable
     public List<StageInfoTable> StageInfoTable;
     public List<PlayerIngameLevel> PlayerIngameLevel;
     public List<SkillTable> SkillTable;
+    public List<ItemTable> ItemTable;
 }
 
 
@@ -76,6 +77,7 @@ public class SkillTable
     public string type;
     public string skillType;
     public int subskill;
+    public int level;
     public int maxLevel;
     public int nextSkill;
     public int damage;
@@ -95,4 +97,20 @@ public class SkillTable
     public float acquisitionIncreasePer;
     public string skillStatsExplanation;
     public string skillExplanation;
+}
+[Serializable]
+public class ItemTable
+{
+    public int itemId;
+    public string itemCategory;
+    public string itemType;
+    public string nameAlias;
+    public string descAlias;
+    public int maxStack;
+    public string ImageFile;
+    public int categoryTextId;
+    public int hp;
+    public int dp;
+    public int ap;
+    public int speed;
 }
