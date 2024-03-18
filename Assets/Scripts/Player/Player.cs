@@ -25,18 +25,28 @@ public class Player : MonoBehaviour
     [SerializeField] private int moveSpeed;
     [SerializeField] private string defaultSkill;
     [SerializeField] private string prefabFile;
-    
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
     }
 
+    private void Update()
+    {
+        if (transform.position.y < -10)
+        {
+            // 임시방편. 바닥밑으로 떨어지면 위치이동
+            transform.position = Vector3.zero;
+        }
+    }
+
+
     private void FixedUpdate()
     {
         float x = joy.Horizontal;
         float z = joy.Vertical;
-        Debug.Log($"{x}, {z}");
+        //Debug.Log($"{x}, {z}");
 
         moveVec = new Vector3(x, 0, z) * speed * Time.deltaTime;
         rigid.MovePosition(rigid.position + moveVec);
@@ -51,7 +61,7 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
-        anim.SetFloat("Move", moveVec.sqrMagnitude); 
+        //anim.SetFloat("Move", moveVec.sqrMagnitude); 
     }
 
     public void JoyStick(VariableJoystick joy)

@@ -25,11 +25,11 @@ public class UIManager : SingletoneBase<UIManager>
         if (UIDictionary.ContainsKey(keyString))
         {
             UIDictionary[keyString].gameObject.SetActive(true);
-            return (T)UIDictionary[keyString];
+            return UIDictionary[keyString] as T;
         }
         else
         {
-            return ShowUI(typeof(T).Name) as T;
+            return ShowUI(keyString) as T;
         }
     }
 

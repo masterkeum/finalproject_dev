@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joy: {fileID: 0}
-  speed: 3
+  speed: 4
   characterType: 
   name: 
   minLevel: 0
@@ -87,7 +87,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!136 &4965856122858794532
 CapsuleCollider:
@@ -120,6 +120,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1496020128821492958}
     m_Modifications:
+    - target: {fileID: 1602863607126342026, guid: 2cd8f2141153f4362ad807de4a675813,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2256107177232466635, guid: 2cd8f2141153f4362ad807de4a675813,
         type: 3}
       propertyPath: m_Name
@@ -178,6 +183,16 @@ PrefabInstance:
     - target: {fileID: 3226691091404020614, guid: 2cd8f2141153f4362ad807de4a675813,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463605804005350780, guid: 2cd8f2141153f4362ad807de4a675813,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053582205048346811, guid: 2cd8f2141153f4362ad807de4a675813,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

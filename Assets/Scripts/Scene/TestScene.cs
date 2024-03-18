@@ -1,10 +1,11 @@
 using Gley.Jumpy;
-using System;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TestScene : MonoBehaviour
 {
@@ -21,18 +22,29 @@ public class TestScene : MonoBehaviour
 
         일시정지 로직
     */
+    Pooling objectPool;
 
-    private GameObject player;
+    private Player player;
     private GameObject joyStick;
     private GameObject virtualCamera;
 
+    private int stageId;
+    List<StageInfoTable> stageMonsterList;
+
+
+    private float spawnRadius = 30f; // 30은 돼야 화면밖인듯
 
     private void Awake()
     {
         _ = DataManager.Instance;
         _ = GameManager.Instance;
         _ = AccountInfo.Instance;// 사용자 계정 데이터 접근
+
         virtualCamera = GameObject.Find("Virtual Camera");
+
+        objectPool = GetComponent<Pooling>();
+        stageId = GameManager.Instance.stageId;
+        stageMonsterList = DataManager.Instance.GetStageInfo(stageId);
     }
 
     private void Start()
@@ -42,14 +54,14 @@ public class TestScene : MonoBehaviour
 
         // 플레이어 생성
         MakePlayer();
-        
+
         // 버츄얼 카메라 세팅
         VirtualCameraSettiing();
-        
+
         // 플레이 기본 세팅
 
         // 몬스터 생성
-        StartStage(GameManager.Instance.stageId);
+        StartStage();
     }
 
     private void GenerateLevel()
@@ -59,9 +71,12 @@ public class TestScene : MonoBehaviour
 
     private void MakePlayer()
     {
-        player = Instantiate(Resources.Load<GameObject>("Prefabs/Player/Player"));
-        player.transform.position = new Vector3(0, 10, 0);
-        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        player = Instantiate(Resources.Load<Player>("Prefabs/Player/Player"));
+        player.transform.position = new Vector3(0, 0.5f, 0);
+
+        Rigidbody playerRigid = player.GetComponent<Rigidbody>();
+        playerRigid.constraints = RigidbodyConstraints.FreezeRotation;
+
         joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
         player.GetComponent<Player>().JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
     }
@@ -72,16 +87,75 @@ public class TestScene : MonoBehaviour
     }
 
 
-    private void StartStage(int stageId)
+    private void StartStage()
     {
-        // 보스 세팅
-        StartCoroutine(GenMonster());
+        foreach (StageInfoTable monsterData in stageMonsterList)
+        {
+            StartCoroutine(SpawnEnemyRoutine(monsterData));
+        }
     }
 
-    IEnumerator GenMonster()
+    IEnumerator SpawnEnemyRoutine(StageInfoTable monsterData)
     {
+        // 프리팹 세팅
+        CharacterInfo monsterInfo = DataManager.Instance.GetCharacterInfo(monsterData.monsterId);
+        GameObject monster = Resources.Load<GameObject>(monsterInfo.prefabFile);
+
+        if (monsterData.genPosVecter3.Length > 0)
+        {
+            // 좌표있으면 다른것 무시하고 단발성 생성
+            GameObject go = Instantiate(monster, new Vector3(monsterData.genPosVecter3[0], monsterData.genPosVecter3[1], monsterData.genPosVecter3[2]), Quaternion.identity);
+            go.GetComponent<EnemyBaseController>().Init(monsterData.monsterId, monsterData.level, player);
+
+            yield break;
+        }
+
+        yield return new WaitForSeconds(monsterData.genTimeStart);
+        float startTime = Time.time;
+
         // 몬스터 리젠
-        yield return null;
+        //int spawnedCount = 0;
+        while (Time.time - startTime < monsterData.genTimeEnd)
+        {
+            for (int i = 0; i < monsterData.genAmount; i++)
+            {
+                //if (spawnedCount >= monsterData.genMax) break;
+
+                // X와 Z 좌표상에서의 랜덤한 각도를 결정 (0에서 360도 사이)
+                float randomAngle = Random.Range(0, 360) * Mathf.Deg2Rad;
+
+                // 각도를 바탕으로 X와 Z 좌표 계산
+                float x = Mathf.Cos(randomAngle) * spawnRadius;
+                float z = Mathf.Sin(randomAngle) * spawnRadius;
+                Vector3 randomPosition = player.transform.position + new Vector3(x, 100f, z);
+
+                // 맵크기에 따른 보정 
+                randomPosition.x = Mathf.Clamp(randomPosition.x, -105, 105);
+                randomPosition.z = Mathf.Clamp(randomPosition.z, -105, 105);
+
+                Ray ray = new Ray(randomPosition, Vector3.down);
+                RaycastHit hit;
+                NavMeshHit navhit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                {
+                    if (NavMesh.SamplePosition(hit.point, out navhit, spawnRadius, NavMesh.AllAreas))
+                    {
+                        GameObject go = Instantiate(monster, navhit.position, Quaternion.identity);
+                        go.GetComponent<EnemyBaseController>().Init(monsterData.monsterId, monsterData.level, player);
+                    }
+                }
+                else
+                {
+                    Debug.LogError("없어");
+                }
+
+                // TODO : 풀매니저 적용해야됨
+
+                //spawnedCount++;
+            }
+
+            yield return new WaitForSeconds(monsterData.genTime);
+        }
 
     }
 

@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using System;
+using System.Numerics;
 
 public class DataTable
 {
@@ -11,20 +12,21 @@ public class DataTable
 }
 
 
+
 [Serializable]
 public class CharacterInfo
 {
     public int uid;
-    public string characterType;
+    public CharacterType characterType;
     public string name;
     public int minLevel;
     public int maxLevel;
     public int hp;
     public int ap;
-    public int? sensoryRange;
-    public int attackRange;
-    public int attackSpeed;
-    public int moveSpeed;
+    public float? sensoryRange;
+    public float attackRange;
+    public float attackSpeed;
+    public float moveSpeed;
     public int defaultSkill;
     public string prefabFile;
 
@@ -51,12 +53,12 @@ public class StageInfoTable
     public int stageId;
     public int monsterId;
     public int level;
-    public string characterType;
     public int genTimeStart;
     public int genTimeEnd;
     public int genAmount;
     public int genTime;
     public int genMax;
+    public int[] genPosVecter3;
 }
 
 [Serializable]

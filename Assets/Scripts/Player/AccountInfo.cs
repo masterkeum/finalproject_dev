@@ -15,7 +15,15 @@ public class AccountInfo : SingletoneBase<AccountInfo>
         인벤토리 상태
         
     */
+    [ReadOnly, SerializeField] private string _pidStr;
+    [ReadOnly, SerializeField] private string aId;
 
 
+
+    protected override void Init()
+    {
+        _pidStr = _pid.ToString();
+        base.Init();
+    }
 
 }
