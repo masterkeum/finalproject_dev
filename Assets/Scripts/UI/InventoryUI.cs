@@ -16,7 +16,7 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-       
+       UpdateUI();
         
     }
     
@@ -33,14 +33,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    private Sprite LoadSpriteFromAsset(string path)
-    {
-#if UNITY_EDITOR
-        return UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>(path);
-#else
-
-#endif
-    }
+ 
 
 
 

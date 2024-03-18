@@ -75,7 +75,7 @@ public class SkillTable
 {
     public int skillId;
     public string skill;
-    public string type;
+    public string applyType;
     public string skillType;
     public int subskill;
     public int level;
@@ -98,6 +98,7 @@ public class SkillTable
     public float acquisitionIncreasePer;
     public string skillStatsExplanation;
     public string skillExplanation;
+    public string imageAddress;
 }
 [Serializable]
 public class ItemTable

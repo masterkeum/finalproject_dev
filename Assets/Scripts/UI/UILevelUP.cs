@@ -48,6 +48,7 @@ public class UILevelUP : UIBase
         while (randomSkills.Count < selectableSkillUI.Count)
         {
             int randomIndex = random.Next(0, variableSkills.Count);
+          
             if (randomSkills.Count >= selectableSkillUI.Count)
             { break; }
             if (!randomSkills.Contains(variableSkills[randomIndex]))
@@ -63,22 +64,32 @@ public class UILevelUP : UIBase
     private void SetCurSkills()
     {
         //현재 가진 스킬 종류만 표시
+        
         for(int i = 0; i<playerData.activeSkillSlot.Count; i++)
         {
             curAcitveSkillUI[i].skillIcon.SetActive(true);
-           // curAcitveSkillUI[i].skillSprite.sprite = playerData.activeSkillSlot[i].?;
+            string path = playerData.activeSkillSlot[i].imageAddress;
+            Sprite sprite = Resources.Load<Sprite>(path);
+            curAcitveSkillUI[i].skillSprite.sprite = sprite;
+            if(sprite == null)
+            {
+                Debug.LogError("스프라이트 없음");
+            }
         }
         for (int i = 0; i<playerData.passiveSkillSlot.Count; i++)
         {
             curPassiveSkillUI[i].skillIcon.SetActive(true);
-            //
+            string path = playerData.passiveSkillSlot[i].imageAddress;
+            Sprite sprite = Resources.Load<Sprite>(path);
+            curPassiveSkillUI[i].skillSprite.sprite = sprite;
+            
         }
     }
 
     public void OnButtonSelect(int index)
     {
         
-        if (randomSkills[index].type == "Active")
+        if (randomSkills[index].applyType == "Active")
         {
             if (playerData.activeSkillSlot.Count == 0)
             {
