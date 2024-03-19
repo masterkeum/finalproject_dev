@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameManager : SingletoneBase<GameManager>
 {
     [ReadOnly, SerializeField] private string _pidStr;
-    private AccountInfo accountInfo;
+    public AccountInfo accountInfo;
 
     // 필요한가?
     public Transform playerParent;

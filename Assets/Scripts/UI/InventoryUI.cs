@@ -16,24 +16,24 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-       UpdateUI();
-        
+        UpdateUI();
+
     }
-    
+
     private void UpdateUI()
     {
         if (weaponSlot != null)
         {
-            string imagePath = AccountInfo.Instance.equipItems["Weapon"].ImageFile;
+            string imagePath = GameManager.Instance.accountInfo.equipItems["Weapon"].ImageFile;
             Resources.Load(imagePath);
-           
+
             weaponSlot.transform.GetChild(1).gameObject.SetActive(true);
             //weaponSlot.transform.GetChild(1).GetComponent<Image>().sprite = 
 
         }
     }
 
- 
+
 
 
 
