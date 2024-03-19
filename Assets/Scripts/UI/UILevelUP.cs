@@ -21,7 +21,7 @@ public class UILevelUP : UIBase
     {
         player = GameObject.Find("Player");
         playerData = player.GetComponent<PlayerIngameData>();
-        
+
 
         foreach (SkillTable skill in DataManager.Instance.SkillTableDict.Values)
         {
@@ -34,6 +34,13 @@ public class UILevelUP : UIBase
     }
     private void OnEnable()
     {
+        foreach (SkillTable skill in variableSkills)
+        {
+            if (skill.skillId > 30000300 && skill.skillId < 30000501 && playerData.activeSkillSlot.Contains(skill))
+            {
+                variableSkills.Remove(skill);
+            }
+        }
         SetSelectableSkills();
         SetCurSkills();
         SetStar();
@@ -48,7 +55,7 @@ public class UILevelUP : UIBase
         while (randomSkills.Count < selectableSkillUI.Count)
         {
             int randomIndex = random.Next(0, variableSkills.Count);
-          
+
             if (randomSkills.Count >= selectableSkillUI.Count)
             { break; }
             if (!randomSkills.Contains(variableSkills[randomIndex]))
@@ -61,65 +68,81 @@ public class UILevelUP : UIBase
             selectableSkillUI[i].skillDescriptionText.text = randomSkills[i].skillStatsExplanation;
             string path = randomSkills[i].imageAddress;
             Sprite sprite = Resources.Load<Sprite>(path);
-            selectableSkillUI[i].skillSprite.sprite = sprite; 
+            selectableSkillUI[i].skillSprite.sprite = sprite;
         }
     }
     private void SetCurSkills()
     {
         //현재 가진 스킬 종류만 표시
-        
-        for(int i = 0; i<playerData.activeSkillSlot.Count; i++)
+
+        for (int i = 0; i < playerData.activeSkillSlot.Count; i++)
         {
             curAcitveSkillUI[i].skillIcon.SetActive(true);
             string path = playerData.activeSkillSlot[i].imageAddress;
             Sprite sprite = Resources.Load<Sprite>(path);
             curAcitveSkillUI[i].skillSprite.sprite = sprite;
-          
+
         }
-        for (int i = 0; i<playerData.passiveSkillSlot.Count; i++)
+        for (int i = 0; i < playerData.passiveSkillSlot.Count; i++)
         {
             curPassiveSkillUI[i].skillIcon.SetActive(true);
             string path = playerData.passiveSkillSlot[i].imageAddress;
             Sprite sprite = Resources.Load<Sprite>(path);
             curPassiveSkillUI[i].skillSprite.sprite = sprite;
-            
+
         }
     }
 
     public void OnButtonSelect(int index)
     {
-        
-        if (randomSkills[index].applyType == "Active")
+        if (randomSkills[index].skillId == 30000301)  // 초월스킬 변경
+        {
+            for (int i = 0; i < playerData.activeSkillSlot.Count; i++)
+            {
+                if (playerData.activeSkillSlot[i].skillId == 30000001)
+                {
+                    playerData.activeSkillSlot.Remove(playerData.activeSkillSlot[i]);
+                    playerData.activeSkillSlot.Add(randomSkills[index]);
+
+                }
+            }
+
+        }
+
+        else if (randomSkills[index].applyType == "Active")
         {
             if (playerData.activeSkillSlot.Count == 0)
             {
                 playerData.activeSkillSlot.Add(randomSkills[index]);
-                
+
             }
             else
             {
                 bool skillFound = false;
-                for (int i = 0; i<playerData.activeSkillSlot.Count; i++)
+                for (int i = 0; i < playerData.activeSkillSlot.Count; i++)
                 {
                     if (randomSkills[index] == playerData.activeSkillSlot[i])
                     {
                         playerData.activeSkillSlot[i].level++;
                         skillFound = true;
+
                         break;
                     }
                 }
                 if (!skillFound)
                 {
                     playerData.activeSkillSlot.Add(randomSkills[index]);
-                }
-            }
 
+                }
+
+            }
+            SkillTransform();
         }
         else
         {
 
             if (playerData.passiveSkillSlot.Count == 0)
-            {             
+            {
                 playerData.passiveSkillSlot.Add(randomSkills[index]);
             }
             else
@@ -141,6 +164,7 @@ public class UILevelUP : UIBase
                 }
             }
         }
+
         gameObject.SetActive(false);
         randomSkills.Clear();
     }
@@ -150,7 +174,7 @@ public class UILevelUP : UIBase
         for (int i = 0; i < selectableSkillUI.Count; i++)
         {
             selectableSkillUI[i].ClearStars();
-            for (int j = 0; j<playerData.activeSkillSlot.Count; j++)
+            for (int j = 0; j < playerData.activeSkillSlot.Count; j++)
             {
                 if (selectableSkillUI[i].skillNameText.text == playerData.activeSkillSlot[j].skill)
                 {
@@ -167,6 +191,43 @@ public class UILevelUP : UIBase
         }
     }
 
+    private void SkillTransform()
+    {
+        foreach (SkillTable skill in playerData.activeSkillSlot)
+        {
+            if (skill.level >= 5)
+            {
+                switch (skill.skillId)
+                {
+                    case 30000001:
+                        variableSkills.Remove(skill);
+                        variableSkills.Add(DataManager.Instance.SkillTableDict[30000301]);
+                        break;
+                    case 30000002:
+                        variableSkills.Remove(skill);
+                        variableSkills.Add(DataManager.Instance.SkillTableDict[30000302]);
+                        break;
+                    case 30000003:
+                        variableSkills.Remove(skill);
+                        variableSkills.Add(DataManager.Instance.SkillTableDict[30000303]);
+                        break;
+                    case 30000004:
+                        variableSkills.Remove(skill);
+                        variableSkills.Add(DataManager.Instance.SkillTableDict[30000304]);
+                        break;
+                    case 30000005:
+                        variableSkills.Remove(skill);
+                        variableSkills.Add(DataManager.Instance.SkillTableDict[30000305]);
+                        break;
+                    case 30000006:
+                        variableSkills.Remove(skill);
+                        variableSkills.Add(DataManager.Instance.SkillTableDict[30000306]);
+                        break;
+                }
+            }
+
+        }
+    }
     public void OnReRollButton()
     {
         randomSkills.Clear();
