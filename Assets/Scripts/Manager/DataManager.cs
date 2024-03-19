@@ -106,13 +106,13 @@ public class DataManager : SingletoneBase<DataManager>
     }
 
 
-    public CharacterInfo GetCharacterInfo(int uid)
-    {
-        if (characterInfoDict.ContainsKey(uid))
-            return characterInfoDict[uid];
-        else
-            return null;
-    }
+        public CharacterInfo GetCharacterInfo(int uid)
+        {
+            if (characterInfoDict.ContainsKey(uid))
+                return characterInfoDict[uid];
+            else
+                return null;
+        }
 
     public List<StageInfoTable> GetStageInfo(int stageId)
     {
