@@ -59,6 +59,9 @@ public class UILevelUP : UIBase
         {
             selectableSkillUI[i].skillNameText.text = randomSkills[i].skill;
             selectableSkillUI[i].skillDescriptionText.text = randomSkills[i].skillStatsExplanation;
+            string path = randomSkills[i].imageAddress;
+            Sprite sprite = Resources.Load<Sprite>(path);
+            selectableSkillUI[i].skillSprite.sprite = sprite; 
         }
     }
     private void SetCurSkills()
@@ -71,10 +74,7 @@ public class UILevelUP : UIBase
             string path = playerData.activeSkillSlot[i].imageAddress;
             Sprite sprite = Resources.Load<Sprite>(path);
             curAcitveSkillUI[i].skillSprite.sprite = sprite;
-            if(sprite == null)
-            {
-                Debug.LogError("스프라이트 없음");
-            }
+          
         }
         for (int i = 0; i<playerData.passiveSkillSlot.Count; i++)
         {
