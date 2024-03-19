@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private Vector3 moveVec;
 
     [SerializeField] private string characterType;
-    [SerializeField] private string name;
+    [SerializeField] private string playerName;
     [SerializeField] private int minLevel;
     [SerializeField] private int maxLevel;
     [SerializeField] private int hp;
