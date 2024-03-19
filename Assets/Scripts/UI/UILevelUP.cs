@@ -166,4 +166,11 @@ public class UILevelUP : UIBase
             }
         }
     }
+
+    public void OnReRollButton()
+    {
+        randomSkills.Clear();
+        SetSelectableSkills();
+        SetStar();
+    }
 }
