@@ -1,6 +1,7 @@
 
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+
 
 public class DataTable
 {
@@ -22,11 +23,11 @@ public class CharacterInfo
     public int minLevel;
     public int maxLevel;
     public int hp;
-    public int ap;
-    public int? sensoryRange;
-    public int attackRange;
-    public int attackSpeed;
-    public int moveSpeed;
+    public int attackPower;
+    public float sensoryRange;
+    public float attackRange;
+    public float attackSpeed;
+    public float moveSpeed;
     public int defaultSkill;
     public string prefabFile;
 

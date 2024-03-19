@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="7c427198-eeb5-4fa1-84de-a1b0c3284c41" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.finalproject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.finalproject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Player/man_casual_shorts.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Player/man_casual_shorts.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Weapons/ElementalAuraLife2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Weapons/ElementalAuraLife2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/IngameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/IngameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Hovl Studio/HSFiles/Materials/Floor2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Hovl Studio/HSFiles/Materials/Floor2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Hovl Studio/HSFiles/Materials/Gray.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Hovl Studio/HSFiles/Materials/Gray.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Hovl Studio/HSFiles/Materials/Wall.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Hovl Studio/HSFiles/Materials/Wall.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Hovl Studio/Toon projectiles/Prefabs/Projectile 1 magic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Hovl Studio/Toon projectiles/Prefabs/Projectile 1 magic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Hovl Studio/Toon projectiles/Prefabs/Projectile 14 huricara.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Hovl Studio/Toon projectiles/Prefabs/Projectile 14 huricara.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Crate01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External/Polygon Arsenal/Demo/Materials/PA_Crate01.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Weapons/ElementalAuraNature.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Weapons/ElementalAuraNature.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +23,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/T_Enemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Health.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Weapon.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -33,26 +39,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Ingame__Player__KKH",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;IngameScene__hk__0315&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "/Users/kyongheekeum/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
-      "/Users/kyongheekeum/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache",
-      "/Users/kyongheekeum/.local/share/Symbols/src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/Users/kyongheekeum/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
+      &quot;/Users/kyongheekeum/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
+      &quot;/Users/kyongheekeum/.local/share/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2022.3.2f1/Unity.app/Contents/MacOS/Unity" />
@@ -100,7 +106,9 @@
       <option name="presentableId" value="Default" />
       <updated>1709855388092</updated>
       <workItem from="1709855390516" duration="7590000" />
-      <workItem from="1710223244764" duration="19144000" />
+      <workItem from="1710223244764" duration="35840000" />
+      <workItem from="1710728932700" duration="3401000" />
+      <workItem from="1710742330193" duration="3110000" />
     </task>
     <servers />
   </component>
