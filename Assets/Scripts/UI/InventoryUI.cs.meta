@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/UI/InventoryUI.cs.meta
+guid: d7eaac4a617ea6c4abc860659488145f
+========
+guid: e300da31189f6b2419fd92fba943f0a5
+>>>>>>>> 32a9f6e127f576fdb374f772a4e4bdda65683d55:Assets/Scripts/UI/UIMimicGacha.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

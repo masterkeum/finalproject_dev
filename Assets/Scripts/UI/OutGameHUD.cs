@@ -15,15 +15,33 @@ public class OutGameHUD : MonoBehaviour
     public TextMeshProUGUI gemQuantityText;
     public TextMeshProUGUI goldQuantityText;
 
+    [Header("BottomButton")]
+    public GameObject[] mainMenues;
+    public RectTransform[] buttonRect;
+
     [Header("Battle")]
     public TextMeshProUGUI StageNameText;
     public Image StageImage;
+    public int SelectedStageId;
 
-    [Header("Inventory")]
-    public TextMeshProUGUI userTotalAtkText;
-    public TextMeshProUGUI userTotalDefText;
-    public TextMeshProUGUI userTotalMoveSpeed;
-    public TextMeshProUGUI userTotalAttackSpeed;
+
+    private void Start()
+    {
+        OnClickBottomButton(0);
+    }
+    public void OnClickBottomButton(int index)
+    {
+        for (int i = 0; i < mainMenues.Length; i++)
+        {
+            mainMenues[i].SetActive(false);
+        }
+        mainMenues[index].SetActive(true);
+        for (int j  = 0; j < mainMenues.Length; j++)
+        {
+            buttonRect[j].sizeDelta = new Vector2(index == j ? 450 : 300, buttonRect[j].sizeDelta.y);
+            buttonRect[0].pivot = new Vector2(index ==2? 1.5f : 1, buttonRect[0].pivot.y);
+        }
+    }
 
     public void OnClickStageSelect()
     {
@@ -33,5 +51,12 @@ public class OutGameHUD : MonoBehaviour
     {
         UIManager.Instance.ShowUI<UIPropertiesList>();
     }
-
+    public void OnClickMimic()
+    {
+        UIManager.Instance.ShowUI<UIMimicGacha>();
+    }
+    public void OnStartbutton()
+    {
+        
+    }
 }

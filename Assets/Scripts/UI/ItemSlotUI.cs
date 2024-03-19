@@ -6,12 +6,13 @@ using UnityEngine.UI;
 
 public class ItemSlotUI : MonoBehaviour
 {
-    public Image icon;
+    public GameObject icon;
     private int _itemIndex;
 
     private void Start()
     {
         SetIndex();
+        icon = transform.GetChild(1).gameObject;
 
     }
 
@@ -20,17 +21,9 @@ public class ItemSlotUI : MonoBehaviour
         _itemIndex = transform.GetSiblingIndex();
     }
 
-    public void Set()
-    {
-        
-    }
     public void Clear()
     {
         Destroy(gameObject);
     }
 
-    public void Onclick()
-    {
-        UIManager.Instance.ShowUI<UIItemDescription>();
-    }
 }

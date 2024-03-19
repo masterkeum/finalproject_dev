@@ -23,20 +23,28 @@ public class SkillSlotUI : MonoBehaviour
         SetIndex();
     }
 
-    private void SetStars()
+    public void SetStars(int level)
     {
-        //for( int i = 0; i<level ; i++ )
-        //{
-        //    if(level == 0)
-        //    {
-        //        starSlot[i].ClearYellowStar();
-        //    }
+        for (int i = 0; i < level; i++)
+        {
+            if (level == 0)
+            {
+                starSlot[i].ClearYellowStar();
+            }
 
-        //    else if (starSlot[i].starSlotIndex > level)
-        //    {
-        //        starSlot[i].SetYellowStar();
-        //    }
-        //}
+            else
+            {
+                starSlot[i].SetYellowStar();
+            }
+        }
+    }
+
+    public void ClearStars()
+    {
+        for(int i = 0; i < starSlot.Count; i++)
+        {
+            starSlot[i].ClearYellowStar();
+        }
     }
 
     private void SetIndex()
