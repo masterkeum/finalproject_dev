@@ -70,9 +70,10 @@ public class TestScene : MonoBehaviour
     {
         player = Instantiate(Resources.Load<Player>("Prefabs/Player/Player"));
         player.transform.position = new Vector3(0, 0.5f, 0);
+        player.GetComponent<Player>().Init(10000001, 1);
 
-        Rigidbody playerRigid = player.GetComponent<Rigidbody>();
-        playerRigid.constraints = RigidbodyConstraints.FreezeRotation;
+        // Rigidbody playerRigid = player.GetComponent<Rigidbody>();
+        // playerRigid.constraints = RigidbodyConstraints.FreezeRotation;
 
         joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
         player.GetComponent<Player>().JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
@@ -83,6 +84,13 @@ public class TestScene : MonoBehaviour
         virtualCamera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
     }
 
+    // todo : 몬스터 , 플레이어 damage 및 health 관리
+    // 어떻게함?? -> 플레이어 의 무기 rigidbody 랑 몬스터 rigidbody 충돌 체크
+    // 플레이어의 rigidbody 랑 몬스터 rigidbody 충돌체크
+    
+    
+    
+    
 
     private void StartStage()
     {

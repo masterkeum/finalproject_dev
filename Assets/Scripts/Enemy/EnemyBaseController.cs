@@ -67,6 +67,12 @@ public class EnemyBaseController : MonoBehaviour
 
     protected float lastAttackTime;// 마지막 공격 시간
 
+    
+    private int hp;
+
+    private int gold;
+    private int exp;
+    
     protected void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -115,12 +121,27 @@ public class EnemyBaseController : MonoBehaviour
         //animator.speed = agent.speed / walkSpeed;
     }
 
-    protected void OnDead()
+    protected void OnDie()
     {
         // 죽으면 풀 반환
+        exp = monsterLevel.exp;
+        gold = monsterLevel.gold;
+        
+        Instantiate(Resources.Load<GameObject>("Prefabs/Coin/RupeeGold"), transform.position + Vector3.up * 2, Quaternion.identity);
+        
         Destroy(gameObject);
 
     }
+    
+    public void TakePhysicalDamage(int damageAmount)
+    {
+        
+        hp -= damageAmount;
+        if (hp <= 0)
+            OnDie();
+    }
+
+    
 
 
     protected float DistanceToTarget()

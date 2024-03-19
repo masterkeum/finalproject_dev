@@ -9,19 +9,27 @@ public class Player : MonoBehaviour
     private Animator anim;
     private Vector3 moveVec;
 
-    [SerializeField] private string characterType;
-    [SerializeField] private string playerName;
-    [SerializeField] private int minLevel;
-    [SerializeField] private int maxLevel;
-    [SerializeField] private int hp;
-    [SerializeField] private int attackPower;
-    [SerializeField] private float sensoryRange;
-    [SerializeField] private float attackRange;
-    [SerializeField] private int attackSpeed;
-    [SerializeField] private int moveSpeed;
-    [SerializeField] private string defaultSkill;
-    [SerializeField] private string prefabFile;
+    private int PlayerID;
+    private int level;
+    private int hp;
+    private CharacterInfo characterInfo;
+    
+    private bool IsInit = false;
 
+    public virtual void Init(int _player, int _level)
+    {
+        if (IsInit) return;
+        PlayerID = _player;
+        level = _level;
+
+        characterInfo = DataManager.Instance.characterInfoDict[PlayerID];
+        
+        hp = characterInfo.hp;
+        
+        IsInit = true;
+    }
+    
+    
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -63,5 +71,18 @@ public class Player : MonoBehaviour
     public void JoyStick(VariableJoystick joy)
     {
         this.joy = joy;
+    }
+    
+    public void TakePhysicalDamage(int damageAmount)
+    {
+        
+        hp -= damageAmount;
+        if (hp <= 0)
+            Die();
+    }
+
+    void Die()
+    {
+        Debug.Log("플레이어사망");
     }
 }
