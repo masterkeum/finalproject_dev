@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4713392402945069239}
   - component: {fileID: 1435478919300818804}
   - component: {fileID: -4528723129042409530}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: OrcGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 3205755646782126425}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-131300667310948903
 MonoBehaviour:
@@ -64,7 +64,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7333527792320906191}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.38
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

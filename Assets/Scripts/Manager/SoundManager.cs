@@ -33,20 +33,20 @@ public class SoundManager : SingletoneBase<SoundManager>
         musicAudioSource.Play();
 
     }
-    public void PlayClip(AudioClip clip, float volume)
-    {
-        curObj = objectPool.GetPoolItem("SoundSource");
-        curObj.SetActive(true);
-        SoundSource soundSource = curObj.GetComponent<SoundSource>();
-        soundSource.Play(clip, volume);
-    }
-    public void PlayClip(AudioClip clip)
-    {
-        curObj = objectPool.GetPoolItem("SoundSource");
-        curObj.SetActive(true);
-        SoundSource soundSource = curObj.GetComponent<SoundSource>();
-        soundSource.Play(clip, soundEffectVolume);
-    }
+    //public void PlayClip(AudioClip clip, float volume)
+    //{
+    //    curObj = objectPool.GetPoolItem("SoundSource");
+    //    curObj.SetActive(true);
+    //    SoundSource soundSource = curObj.GetComponent<SoundSource>();
+    //    soundSource.Play(clip, volume);
+    //}
+    //public void PlayClip(AudioClip clip)
+    //{
+    //    curObj = objectPool.GetPoolItem("SoundSource");
+    //    curObj.SetActive(true);
+    //    SoundSource soundSource = curObj.GetComponent<SoundSource>();
+    //    soundSource.Play(clip, soundEffectVolume);
+    //}
 
     public GameObject CurSoundSource()
     {

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -61,15 +62,23 @@ public class EnemyBaseController : MonoBehaviour
     protected MonsterLevel monsterLevel;
 
     protected NavMeshAgent navMeshAgent;
+    protected Collider capsuleCollider;
     protected Animator animator;
 
     protected float playerDistance;
 
     protected float lastAttackTime;// 마지막 공격 시간
 
+
+    private int hp;
+
+    private int gold;
+    private int exp;
+
     protected void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        capsuleCollider = GetComponent<Collider>();
         animator = GetComponentInChildren<Animator>();
     }
 
@@ -86,6 +95,9 @@ public class EnemyBaseController : MonoBehaviour
         // 몬스터 스탯초기화
         navMeshAgent.speed = characterInfo.moveSpeed;
         navMeshAgent.stoppingDistance = characterInfo.attackRange;
+
+        capsuleCollider.enabled = true;
+        navMeshAgent.isStopped = false;
 
         IsInit = true;
     }
@@ -115,11 +127,26 @@ public class EnemyBaseController : MonoBehaviour
         //animator.speed = agent.speed / walkSpeed;
     }
 
-    protected void OnDead()
+    public void TakePhysicalDamage(int damageAmount)
     {
-        // 죽으면 풀 반환
-        Destroy(gameObject);
 
+        hp -= damageAmount;
+        if (hp <= 0)
+            OnDie();
+    }
+
+    protected void OnDie()
+    {
+        exp = monsterLevel.exp;
+        gold = monsterLevel.gold;
+
+        Instantiate(Resources.Load<GameObject>("Prefabs/Coin/RupeeGold"), transform.position + Vector3.up * 2, Quaternion.identity);
+
+        capsuleCollider.enabled = false;
+        navMeshAgent.isStopped = true;
+
+        animator.SetTrigger(Die);
+        StartCoroutine(Remove());
     }
 
 
@@ -134,4 +161,13 @@ public class EnemyBaseController : MonoBehaviour
         // 방향벡터
         return (targetPlayerTransform.position - transform.position).normalized;
     }
+
+    private IEnumerator Remove()
+    {
+        yield return new WaitForSeconds(2);
+        // TODO : 몬스터 풀로 변경. 죽으면 풀 반환
+        Destroy(gameObject);
+        yield break;
+    }
+
 }

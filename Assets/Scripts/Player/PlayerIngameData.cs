@@ -16,7 +16,11 @@ public class PlayerIngameData : MonoBehaviour
     public List<SkillTable> activeSkillSlot = new List<SkillTable>();
     public List<SkillTable> passiveSkillSlot = new List<SkillTable>();
 
-
+    private void Awake()
+    {
+        activeSkillSlot.Add(DataManager.Instance.GetSkillTable(30000001));
+    }
+    
     private void Start()
     {
         sliderMaxExp = DataManager.Instance.GetPlayerIngameLevel(curLevel).exp;

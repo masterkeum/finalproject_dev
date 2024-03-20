@@ -75,13 +75,18 @@ public class PlayerIngameLevel
 public class SkillTable
 {
     public int skillId;
-    public string skill;
+    public string skillName;
     public string applyType;
     public string skillType;
+    public int nextSkill;
     public int subskill;
     public int level;
     public int maxLevel;
-    public int nextSkill;
+
+    public int projectileCount;
+    public int projectileSpeed;
+    public float coolDownTime;
+
     public int damage;
     public int damagePersec;
     public int damagePerEffect;
@@ -93,13 +98,17 @@ public class SkillTable
     public float paralyzeSec;
     public float duration;
     public float durationIncreasePer;
-    public float coolDownTime;
     public float sizeEnhancementPer;
     public float rangeExpansionPer;
     public float acquisitionIncreasePer;
     public string skillStatsExplanation;
     public string skillExplanation;
+
     public string imageAddress;
+    public string prefabAddress;
+    public string prefabFlashAddress;
+
+    public float lastAttackTime;
 }
 [Serializable]
 public class ItemTable

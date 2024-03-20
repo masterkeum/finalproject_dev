@@ -93,6 +93,7 @@ public class DataManager : SingletoneBase<DataManager>
 
         foreach (SkillTable skillTable in jsonData.SkillTable)
         {
+            //skillTable.lastAttackTime = Time.time;
             SkillTableDict.Add(skillTable.skillId, skillTable);
         }
 
@@ -131,7 +132,7 @@ public class DataManager : SingletoneBase<DataManager>
 
     public SkillTable GetSkillTable(int skillId)
     {
-        if(SkillTableDict.ContainsKey(skillId))
+        if (SkillTableDict.ContainsKey(skillId))
             return SkillTableDict[skillId];
         else return null;
     }
