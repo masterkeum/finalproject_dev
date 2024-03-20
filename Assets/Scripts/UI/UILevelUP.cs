@@ -34,14 +34,6 @@ public class UILevelUP : UIBase
     }
     private void OnEnable()
     {
-        foreach (SkillTable skill in variableSkills)
-        {
-            if (skill.skillId > 30000300 && skill.skillId < 30000501 && playerData.activeSkillSlot.Contains(skill))
-            {
-                variableSkills.Remove(skill);
-            }
-        }
-
         RemoveAtVariableSkills();
         SetSelectableSkills();
         SetCurSkills();
@@ -83,7 +75,6 @@ public class UILevelUP : UIBase
             string path = playerData.activeSkillSlot[i].imageAddress;
             Sprite sprite = Resources.Load<Sprite>(path);
             curAcitveSkillUI[i].skillSprite.sprite = sprite;
-
         }
         for (int i = 0; i < playerData.passiveSkillSlot.Count; i++)
         {
@@ -91,7 +82,11 @@ public class UILevelUP : UIBase
             string path = playerData.passiveSkillSlot[i].imageAddress;
             Sprite sprite = Resources.Load<Sprite>(path);
             curPassiveSkillUI[i].skillSprite.sprite = sprite;
-
+        }
+        for (int j = playerData.CurrentOpenSkillSlotCount(); j < 6; j++)  // 잠긴 슬롯에 자물쇠 세팅
+        {
+            curAcitveSkillUI[j].skilllock.SetActive(true);
+            curPassiveSkillUI[j].skilllock.SetActive(true);
         }
     }
 
@@ -138,7 +133,6 @@ public class UILevelUP : UIBase
                 }
 
             }
-            SkillTransform();
         }
         else
         {
@@ -193,71 +187,61 @@ public class UILevelUP : UIBase
         }
     }
 
-    private void SkillTransform()
+    private void SkillTransform(SkillTable skill)  //초월스킬로 변경
     {
+
+        switch (skill.skillId)
+        {
+            case 30000001:
+                variableSkills.Add(DataManager.Instance.SkillTableDict[30000301]);
+                break;
+            case 30000002:
+                variableSkills.Add(DataManager.Instance.SkillTableDict[30000302]);
+                break;
+            case 30000003:
+                variableSkills.Add(DataManager.Instance.SkillTableDict[30000303]);
+                break;
+            case 30000004:
+                variableSkills.Add(DataManager.Instance.SkillTableDict[30000304]);
+                break;
+            case 30000005:
+                variableSkills.Add(DataManager.Instance.SkillTableDict[30000305]);
+                break;
+            case 30000006:
+                variableSkills.Add(DataManager.Instance.SkillTableDict[30000306]);
+                break;
+        }
+
+    }
+    public void RemoveAtVariableSkills() //스킬레벨이 5가 되거나 허용슬롯이 꽉 찼을 때, 추가할 수 없는 스킬을 variable 목록에서 제외한다.
+    {
+        if (playerData.activeSkillSlot.Count > playerData.CurrentOpenSkillSlotCount() - 1)
+        {
+            variableSkills.RemoveAll(skill => !playerData.activeSkillSlot.Contains(skill) && skill.applyType == "Active");
+        }
+        if (playerData.passiveSkillSlot.Count > playerData.CurrentOpenSkillSlotCount() - 1)
+        {
+            variableSkills.RemoveAll(skill => !playerData.passiveSkillSlot.Contains(skill) && skill.applyType == "Passive");
+        }
         foreach (SkillTable skill in playerData.activeSkillSlot)
         {
-            if (skill.level >= 5)
+            if (skill.level >= skill.maxLevel)
             {
-                switch (skill.skillId)
-                {
-                    case 30000001:
-                        variableSkills.Remove(skill);
-                        variableSkills.Add(DataManager.Instance.SkillTableDict[30000301]);
-                        break;
-                    case 30000002:
-                        variableSkills.Remove(skill);
-                        variableSkills.Add(DataManager.Instance.SkillTableDict[30000302]);
-                        break;
-                    case 30000003:
-                        variableSkills.Remove(skill);
-                        variableSkills.Add(DataManager.Instance.SkillTableDict[30000303]);
-                        break;
-                    case 30000004:
-                        variableSkills.Remove(skill);
-                        variableSkills.Add(DataManager.Instance.SkillTableDict[30000304]);
-                        break;
-                    case 30000005:
-                        variableSkills.Remove(skill);
-                        variableSkills.Add(DataManager.Instance.SkillTableDict[30000305]);
-                        break;
-                    case 30000006:
-                        variableSkills.Remove(skill);
-                        variableSkills.Add(DataManager.Instance.SkillTableDict[30000306]);
-                        break;
-                }
+                variableSkills.Remove(skill);
+                SkillTransform(skill);
             }
+        }
+        foreach (SkillTable skill in playerData.passiveSkillSlot)
+        {
+            if (skill.level >= skill.maxLevel)
+            {
+                variableSkills.Remove(skill);
+            }
+        }
 
-        }
-    }
-    public void RemoveAtVariableSkills()
-    {
-        if (playerData.activeSkillSlot.Count > CurrentOpenSlotCount()-1)
-        {
-            for (int i = 0; i < variableSkills.Count; i++)
-            {
-                if (!playerData.activeSkillSlot.Contains(variableSkills[i]) && variableSkills[i].applyType == "Active")
-                {
-                    variableSkills.Remove(variableSkills[i]);
-                }
-            }
-        }
-        if(playerData.passiveSkillSlot.Count>CurrentOpenSlotCount() - 1)
-        {
-            for (int i = 0; i< variableSkills.Count; i++)
-            {
-                if (!playerData.passiveSkillSlot.Contains(variableSkills[i]) && variableSkills[i].applyType == "Passive")
-                {
-                    variableSkills.Remove(variableSkills[i] );
-                }
-            }
-        }
     }
 
-    private int CurrentOpenSlotCount()
-    {
-        return 3;
-    }
+
     public void OnReRollButton()
     {
         randomSkills.Clear();

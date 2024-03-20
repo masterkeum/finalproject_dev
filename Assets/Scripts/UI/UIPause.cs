@@ -21,13 +21,19 @@ public class UIPause : UIBase
     {
         player = GameObject.Find("Player");
         playerData = player.GetComponent<PlayerIngameData>();
-     
+        for (int j = playerData.CurrentOpenSkillSlotCount(); j < 6; j++)
+        {
+            activeSlotsUI[j].skilllock.SetActive(true);
+            passiveSlotsUI[j].skilllock.SetActive(true);
+        }
+
     }
 
     private void OnEnable()
     {
         SetActiveSlot();
         SetPassiveSlot();
+
     }
 
     public void SetActiveSlot()
@@ -50,6 +56,7 @@ public class UIPause : UIBase
             }
 
         }
+       
     }
     public void SetPassiveSlot()
     {
