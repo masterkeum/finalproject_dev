@@ -97,12 +97,12 @@ public class Player : MonoBehaviour
 
         hp -= damageAmount;
         if (hp <= 0)
-            Die();
+            OnDead();
     }
 
-    void Die()
+    void OnDead()
     {
-        Debug.Log("플레이어사망");
+        Debug.Log("플레이어사망. 게임오버UI");
     }
 
 
