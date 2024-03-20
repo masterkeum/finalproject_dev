@@ -51,6 +51,7 @@ SpriteAtlas:
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
     - 96e56be1d3c0bad489369fee77b97be0: 21300000
+    - 962bb272136807c4db8439cdc4243292: 21300000
     - 80150dc2536a0ae4397677762cf3a97a: 21300000
     - ace647d28ae34a942b618e8a5ee73763: 21300000
     - 92e3f6f3ef2626b4dadf10902bce0097: 21300000
@@ -71,6 +72,7 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 96e56be1d3c0bad489369fee77b97be0, type: 3}
+  - {fileID: 21300000, guid: 962bb272136807c4db8439cdc4243292, type: 3}
   - {fileID: 21300000, guid: 80150dc2536a0ae4397677762cf3a97a, type: 3}
   - {fileID: 21300000, guid: ace647d28ae34a942b618e8a5ee73763, type: 3}
   - {fileID: 21300000, guid: 92e3f6f3ef2626b4dadf10902bce0097, type: 3}
@@ -90,6 +92,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 23026fef0a0375d478fad72d5f6d5ac8, type: 3}
   m_PackedSpriteNamesToIndex:
   - BlackHole
+  - Projectile
   - Stone
   - Santuary
   - Life
