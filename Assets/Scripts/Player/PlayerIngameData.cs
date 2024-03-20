@@ -26,6 +26,10 @@ public class PlayerIngameData : MonoBehaviour
         sliderMaxExp = DataManager.Instance.GetPlayerIngameLevel(curLevel).exp;
     }
 
+    public int CurrentOpenSkillSlotCount() //허용 슬롯의 숫자. 일단 3으로 정해놓았으나 이후 조건에 따른 값을 리턴하게 한다.
+    {
+        return 3;
+    }
     public void LevelUp()
     {
         curLevel++;
