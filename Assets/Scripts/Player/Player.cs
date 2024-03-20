@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Player : MonoBehaviour
 {
@@ -8,13 +10,20 @@ public class Player : MonoBehaviour
     private Rigidbody rigid;
     private Animator anim;
     private Vector3 moveVec;
+    private PlayerIngameData playerIngameData;
 
     private int PlayerID;
     private int level;
     private int hp;
     private CharacterInfo characterInfo;
-    
+
     private bool IsInit = false;
+
+    // 적
+    public LayerMask enemyLayer;
+    public float detectionRange = 10f;
+    private List<Transform> nearEnemy = new List<Transform>();
+    private Pooling objectPool;
 
     public virtual void Init(int _player, int _level)
     {
@@ -23,17 +32,21 @@ public class Player : MonoBehaviour
         level = _level;
 
         characterInfo = DataManager.Instance.characterInfoDict[PlayerID];
-        
+
         hp = characterInfo.hp;
-        
+
         IsInit = true;
     }
-    
-    
+
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
+        playerIngameData = GetComponent<PlayerIngameData>();
+
+        objectPool = GetComponent<Pooling>();
+        objectPool.CreatePool(transform);
     }
 
     private void Update()
@@ -41,8 +54,10 @@ public class Player : MonoBehaviour
         if (transform.position.y < -10)
         {
             // 임시방편. 바닥밑으로 떨어지면 위치이동
-            transform.position = Vector3.zero;
+            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
         }
+
+        SkillRoutine();
     }
 
 
@@ -72,10 +87,10 @@ public class Player : MonoBehaviour
     {
         this.joy = joy;
     }
-    
+
     public void TakePhysicalDamage(int damageAmount)
     {
-        
+
         hp -= damageAmount;
         if (hp <= 0)
             Die();
@@ -85,4 +100,81 @@ public class Player : MonoBehaviour
     {
         Debug.Log("플레이어사망");
     }
+
+
+    private void SkillRoutine()
+    {
+        // 임시
+        foreach (SkillTable skill in playerIngameData.activeSkillSlot)
+        {
+            switch (skill.skillType)
+            {
+                case "Target":
+                    {
+                        // 10f 까지 탐색? = 보스 탐지거리
+                        // 가까운놈 찾아서 그방향으로 발사 일정거리 가면 사라짐
+
+                        // 발사 방향
+                        Vector3 direction = DetectEnemyDirection();
+                        // 발사 작동
+
+
+
+                    }
+                    break;
+
+
+            }
+        }
+    }
+
+    private Vector3 DetectEnemyDirection()
+    {
+        nearEnemy.Clear();
+        // TODO: OverlapSphereNonAlloc로 변환가능하면 변환
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectionRange, enemyLayer);
+        foreach (Collider col in hitColliders)
+        {
+            nearEnemy.Add(col.transform);
+        }
+
+        if (nearEnemy.Count > 0)
+        {
+            Transform nearestEnemy = GetNearestEnemy();
+            return (nearestEnemy.position - transform.position).normalized;
+        }
+        else
+        {
+            // 근거리 없으면 아무방향으로 발사
+            // Unity의 Random 클래스를 사용하여 -1과 1 사이의 랜덤한 값으로 각 축을 설정합니다.
+            float randomX = Random.Range(-1f, 1f);
+            float randomZ = Random.Range(-1f, 1f);
+
+            // Vector3.Normalize 함수를 사용하여 벡터를 정규화합니다.
+            Vector3 randomDirection = new Vector3(randomX, 0f, randomZ).normalized;
+            return randomDirection;
+        }
+    }
+
+    // 가장 가까운 적을 찾는 함수
+    Transform GetNearestEnemy()
+    {
+        Transform nearestEnemy = null;
+        float nearestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+
+        foreach (Transform enemy in nearEnemy)
+        {
+            Vector3 directionToTarget = enemy.position - currentPosition;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if (dSqrToTarget < nearestDistanceSqr)
+            {
+                nearestDistanceSqr = dSqrToTarget;
+                nearestEnemy = enemy;
+            }
+        }
+
+        return nearestEnemy;
+    }
+
 }
