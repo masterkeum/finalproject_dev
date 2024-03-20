@@ -41,6 +41,8 @@ public class UILevelUP : UIBase
                 variableSkills.Remove(skill);
             }
         }
+
+        RemoveAtVariableSkills();
         SetSelectableSkills();
         SetCurSkills();
         SetStar();
@@ -227,6 +229,34 @@ public class UILevelUP : UIBase
             }
 
         }
+    }
+    public void RemoveAtVariableSkills()
+    {
+        if (playerData.activeSkillSlot.Count > CurrentOpenSlotCount()-1)
+        {
+            for (int i = 0; i < variableSkills.Count; i++)
+            {
+                if (!playerData.activeSkillSlot.Contains(variableSkills[i]) && variableSkills[i].applyType == "Active")
+                {
+                    variableSkills.Remove(variableSkills[i]);
+                }
+            }
+        }
+        if(playerData.passiveSkillSlot.Count>CurrentOpenSlotCount() - 1)
+        {
+            for (int i = 0; i< variableSkills.Count; i++)
+            {
+                if (!playerData.passiveSkillSlot.Contains(variableSkills[i]) && variableSkills[i].applyType == "Passive")
+                {
+                    variableSkills.Remove(variableSkills[i] );
+                }
+            }
+        }
+    }
+
+    private int CurrentOpenSlotCount()
+    {
+        return 3;
     }
     public void OnReRollButton()
     {
