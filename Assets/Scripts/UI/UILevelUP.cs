@@ -57,7 +57,7 @@ public class UILevelUP : UIBase
 
         for (int i = 0; i < selectableSkillUI.Count; i++)
         {
-            selectableSkillUI[i].skillNameText.text = randomSkills[i].skill;
+            selectableSkillUI[i].skillNameText.text = randomSkills[i].skillName;
             selectableSkillUI[i].skillDescriptionText.text = randomSkills[i].skillStatsExplanation;
             string path = randomSkills[i].imageAddress;
             Sprite sprite = Resources.Load<Sprite>(path);
@@ -152,14 +152,14 @@ public class UILevelUP : UIBase
             selectableSkillUI[i].ClearStars();
             for (int j = 0; j<playerData.activeSkillSlot.Count; j++)
             {
-                if (selectableSkillUI[i].skillNameText.text == playerData.activeSkillSlot[j].skill)
+                if (selectableSkillUI[i].skillNameText.text == playerData.activeSkillSlot[j].skillName)
                 {
                     selectableSkillUI[i].SetStars(playerData.activeSkillSlot[j].level);
                 }
             }
             for (int j = 0; j < playerData.passiveSkillSlot.Count; j++)
             {
-                if (selectableSkillUI[i].skillNameText.text == playerData.passiveSkillSlot[j].skill)
+                if (selectableSkillUI[i].skillNameText.text == playerData.passiveSkillSlot[j].skillName)
                 {
                     selectableSkillUI[i].SetStars(playerData.passiveSkillSlot[j].level);
                 }
