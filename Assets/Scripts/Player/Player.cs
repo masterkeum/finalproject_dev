@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
@@ -19,15 +20,17 @@ public class Player : MonoBehaviour
 
     private bool IsInit = false;
 
+    [SerializeField] private Transform projectilePoint;
     // 적
     public LayerMask enemyLayer;
-    public float detectionRange = 10f;
+    public float detectionRange = 15f;
     private List<Transform> nearEnemy = new List<Transform>();
-    private Pooling objectPool;
+    private SkillPool skillPool;
 
     public virtual void Init(int _player, int _level)
     {
         if (IsInit) return;
+        Debug.Log("Player.Init");
         PlayerID = _player;
         level = _level;
 
@@ -35,19 +38,20 @@ public class Player : MonoBehaviour
 
         hp = characterInfo.hp;
 
+        skillPool.CreatePool(transform);
         IsInit = true;
     }
 
 
     private void Awake()
     {
+        Debug.Log("Player.Awake");
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
         playerIngameData = GetComponent<PlayerIngameData>();
-
-        objectPool = GetComponent<Pooling>();
-        objectPool.CreatePool(transform);
+        skillPool = GetComponent<SkillPool>();
     }
+
 
     private void Update()
     {
@@ -111,15 +115,17 @@ public class Player : MonoBehaviour
             {
                 case "Target":
                     {
-                        // 10f 까지 탐색? = 보스 탐지거리
-                        // 가까운놈 찾아서 그방향으로 발사 일정거리 가면 사라짐
-
-                        // 발사 방향
-                        Vector3 direction = DetectEnemyDirection();
-                        // 발사 작동
-
-
-
+                        if (Time.time - skill.lastAttackTime > skill.coolDownTime)
+                        {
+                            skill.lastAttackTime = Time.time;
+                            // 10f 까지 탐색? = 보스 탐지거리
+                            // 가까운놈 찾아서 그방향으로 발사 일정거리 가면 사라짐
+                            // 발사 방향
+                            Vector3 direction = DetectEnemyDirection();
+                            // 발사 작동
+                            skillPool.GetPoolSkill(skill.skillId, projectilePoint, direction);
+                            skillPool.GetPoolFlash(skill.skillId, projectilePoint, direction);
+                        }
                     }
                     break;
 
@@ -141,7 +147,9 @@ public class Player : MonoBehaviour
         if (nearEnemy.Count > 0)
         {
             Transform nearestEnemy = GetNearestEnemy();
-            return (nearestEnemy.position - transform.position).normalized;
+            Vector3 direction = (nearestEnemy.position - transform.position).normalized;
+            direction.y = 0;
+            return direction;
         }
         else
         {

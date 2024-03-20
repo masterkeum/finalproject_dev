@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileMover : MonoBehaviour
@@ -21,7 +20,9 @@ public class ProjectileMover : MonoBehaviour
     private RigidbodyConstraints originalConstraints;
     public Transform parentObject;
 
-    void Awake()
+    private LayerMask enemyLayerMask;
+
+    private void Awake()
     {
         if (li != null)
             li.enabled = false;
@@ -30,22 +31,34 @@ public class ProjectileMover : MonoBehaviour
         originalConstraints = rb.constraints;
         oroginalSpeed = speed;
         speed = 0;
-        parentObject = transform.parent;
+
+        enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
+    }
+    private void OnEnable()
+    {
+        if (li != null)
+            li.enabled = true;
+        rb.constraints = originalConstraints;
+        speed = oroginalSpeed;
+        sc.enabled = true;
+        ps.Play();
+        StartCoroutine(LateCall());
     }
 
-    void Start()
-    {
-    }
 
     void OnTransformParentChanged()
     {
+        // 풀에 생성된후 부모 옮길때 발동
         if (parentObject != transform.parent)
         {
+            parentObject = transform.parent;
+
             if (li != null)
                 li.enabled = true;
             sc.enabled = true;
             rb.constraints = originalConstraints;
             speed = oroginalSpeed;
+
             ps.Play();
             if (flash != null && useFlash)
             {
@@ -65,8 +78,8 @@ public class ProjectileMover : MonoBehaviour
                     Destroy(flashInstance, flashPsParts.main.duration);
                 }
             }
-            
-            StartCoroutine(nameof(LateCall));
+
+            StartCoroutine(LateCall());
         }
     }
 
@@ -75,58 +88,65 @@ public class ProjectileMover : MonoBehaviour
         if (speed != 0)
         {
             rb.velocity = transform.forward * speed;
-            //transform.position += transform.forward * (speed * Time.deltaTime);         
+            //transform.position += transform.forward * (speed * Time.deltaTime);
         }
     }
 
-    //https ://docs.unity3d.com/ScriptReference/Rigidbody.OnCollisionEnter.html
-    void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        //Lock all axes movement and rotation
-        rb.constraints = RigidbodyConstraints.FreezeAll;
-        transform.parent = parentObject;
-        speed = 0;
-        sc.enabled = false;
-        if (li != null)
-            li.enabled = false;
-        StopCoroutine(nameof(LateCall));
-        ps.Stop();
-        foreach (var detachedPrefab in Detached)
+        if (enemyLayerMask == (enemyLayerMask | (1 << other.gameObject.layer)))
         {
-            if (detachedPrefab != null)
+            //Debug.Log("충돌");
+            //Lock all axes movement and rotation
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            transform.parent = parentObject;
+            speed = 0;
+            sc.enabled = false;
+            if (li != null)
+                li.enabled = false;
+            StopCoroutine(LateCall());
+            ps.Stop();
+            foreach (var detachedPrefab in Detached)
             {
-                detachedPrefab.transform.parent = null;
-                StartCoroutine(TouchCall(detachedPrefab));
+                if (detachedPrefab != null)
+                {
+                    detachedPrefab.transform.parent = null;
+                    StartCoroutine(TouchCall(detachedPrefab));
+                }
             }
-        }
-        ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 
-        ContactPoint contact = collision.contacts[0];
-        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-        Vector3 pos = contact.point + contact.normal * hitOffset;
+            Vector3 triggerEnterPoint = other.ClosestPointOnBounds(transform.position);
 
-        //Spawn hit effect on collision
-        if (hit != null)
-        {
-            var hitInstance = Instantiate(hit, pos, rot);
-            if (UseFirePointRotation) { hitInstance.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0); }
-            else if (rotationOffset != Vector3.zero) { hitInstance.transform.rotation = Quaternion.Euler(rotationOffset); }
-            else { hitInstance.transform.LookAt(contact.point + contact.normal); }
+            //ContactPoint contact = collision.contacts[0];
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, triggerEnterPoint);
+            Vector3 pos = triggerEnterPoint + new Vector3(0, hitOffset, 0);
 
-            //Destroy hit effects depending on particle Duration time
-            var hitPs = hitInstance.GetComponent<ParticleSystem>();
-            if (hitPs != null)
+            other.GetComponent<EnemyBaseController>().TakePhysicalDamage(50);
+
+            //Spawn hit effect on collision
+            if (hit != null)
             {
-                Destroy(hitInstance, hitPs.main.duration);
-            }
-            else
-            {
-                var hitPsParts = hitInstance.transform.GetChild(0).GetComponent<ParticleSystem>();
-                Destroy(hitInstance, hitPsParts.main.duration);
+                var hitInstance = Instantiate(hit, pos, rot);
+                if (UseFirePointRotation) { hitInstance.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0); }
+                else if (rotationOffset != Vector3.zero) { hitInstance.transform.rotation = Quaternion.Euler(rotationOffset); }
+                else { hitInstance.transform.LookAt(pos); }
+
+                //Destroy hit effects depending on particle Duration time
+                var hitPs = hitInstance.GetComponent<ParticleSystem>();
+                if (hitPs != null)
+                {
+                    Destroy(hitInstance, hitPs.main.duration);
+                }
+                else
+                {
+                    var hitPsParts = hitInstance.transform.GetChild(0).GetComponent<ParticleSystem>();
+                    Destroy(hitInstance, hitPsParts.main.duration);
+                }
             }
         }
     }
-    
+
     private IEnumerator LateCall()
     {
         yield return new WaitForSeconds(dissableAfterTime);

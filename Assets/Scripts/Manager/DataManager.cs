@@ -93,6 +93,7 @@ public class DataManager : SingletoneBase<DataManager>
 
         foreach (SkillTable skillTable in jsonData.SkillTable)
         {
+            //skillTable.lastAttackTime = Time.time;
             SkillTableDict.Add(skillTable.skillId, skillTable);
         }
 
@@ -106,13 +107,13 @@ public class DataManager : SingletoneBase<DataManager>
     }
 
 
-        public CharacterInfo GetCharacterInfo(int uid)
-        {
-            if (characterInfoDict.ContainsKey(uid))
-                return characterInfoDict[uid];
-            else
-                return null;
-        }
+    public CharacterInfo GetCharacterInfo(int uid)
+    {
+        if (characterInfoDict.ContainsKey(uid))
+            return characterInfoDict[uid];
+        else
+            return null;
+    }
 
     public List<StageInfoTable> GetStageInfo(int stageId)
     {
@@ -131,7 +132,7 @@ public class DataManager : SingletoneBase<DataManager>
 
     public SkillTable GetSkillTable(int skillId)
     {
-        if(SkillTableDict.ContainsKey(skillId))
+        if (SkillTableDict.ContainsKey(skillId))
             return SkillTableDict[skillId];
         else return null;
     }
