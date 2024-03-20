@@ -74,6 +74,7 @@ public class EnemyBaseController : MonoBehaviour
 
     private int gold;
     private int exp;
+    private GameObject point;
 
     protected void Awake()
     {
@@ -140,7 +141,8 @@ public class EnemyBaseController : MonoBehaviour
         exp = monsterLevel.exp;
         gold = monsterLevel.gold;
 
-        Instantiate(Resources.Load<GameObject>("Prefabs/Coin/RupeeGold"), transform.position + Vector3.up * 2, Quaternion.identity);
+        point = Instantiate(Resources.Load<GameObject>("Prefabs/Coin/RupeeGold"), transform.position + Vector3.up * 2, Quaternion.identity);
+        point.GetComponent<PlayerCoin>().Init(gold, exp, targetPlayerTransform.gameObject);
 
         capsuleCollider.enabled = false;
         navMeshAgent.isStopped = true;
