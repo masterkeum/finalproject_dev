@@ -1,23 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : SingletoneBase<UIManager>
 {
     //private List<UIBase> popups = new List<UIBase>();
     public Dictionary<string, UIBase> UIDictionary = new Dictionary<string, UIBase>();
-
-    public UIBase ShowUI(string uiName)
-    {
-        var obj = Resources.Load("Prefabs/UI/" + uiName, typeof(GameObject)) as GameObject;
-        if (!obj)
-        {
-            Debug.LogWarning($"Failed to ShowPopup({uiName})");
-            return null;
-        }
-        return ShowPopupWithPrefab(obj, uiName);
-    }
 
     public T ShowUI<T>() where T : UIBase
     {
@@ -31,6 +18,17 @@ public class UIManager : SingletoneBase<UIManager>
         {
             return ShowUI(keyString) as T;
         }
+    }
+
+    public UIBase ShowUI(string uiName)
+    {
+        var obj = Resources.Load("Prefabs/UI/" + uiName, typeof(GameObject)) as GameObject;
+        if (!obj)
+        {
+            Debug.LogWarning($"Failed to ShowPopup({uiName})");
+            return null;
+        }
+        return ShowPopupWithPrefab(obj, uiName);
     }
 
     public UIBase ShowPopupWithPrefab(GameObject prefab, string popupName)
@@ -47,5 +45,10 @@ public class UIManager : SingletoneBase<UIManager>
 
         obj.SetActive(true);
         return popup;
+    }
+
+    public void Clear()
+    {
+        UIDictionary.Clear();
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //public class StageSlot
@@ -20,22 +18,22 @@ public class UIStageSelect : UIBase
         outHUD = GameObject.Find("OutGameHUD").GetComponent<OutGameHUD>();
     }
 
-
-
     public void OnSelectButton()
     {
         outHUD.SelectedStageId = _curStage.index;
+        GameManager.Instance.stageId = _curStage.index;
+        gameObject.SetActive(false);
     }
     public void OnCancelButton()
     {
         gameObject.SetActive(false);
     }
-    
+
 
     public void SelectCurSlot(int index)
     {
         _curStage = _stageSlots[index];
-        for(int i = 0; i < _stageSlots.Length; i++)
+        for (int i = 0; i < _stageSlots.Length; i++)
         {
             if (_curStage == _stageSlots[i])
             {

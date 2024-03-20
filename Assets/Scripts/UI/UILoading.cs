@@ -9,12 +9,14 @@ public class UILoading : UIBase
     [SerializeField] private Slider loadProgress;
     [SerializeField] private TextMeshProUGUI loadMsg;
     private float progressMaxValue = 5f;
+    public bool IsReady { get; private set; }
 
     private void Start()
     {
+        IsReady = false;
         loadProgress.value = 0;
         loadProgress.maxValue = progressMaxValue;
-        loadMsg.text = "[Game Tip!] Test Message";
+        loadMsg.text = "[ 데이터를 로딩중입니다! ]";
         StartCoroutine(Loading());
     }
 
@@ -34,7 +36,8 @@ public class UILoading : UIBase
             loadProgress.value += Time.deltaTime;
             if (loadProgress.value >= progressMaxValue)
             {
-                loadMsg.text = "[Load Complete!] Press the Mouse L-Button";
+                loadMsg.text = "[ 로딩완료. 터치하세요! ]";
+                IsReady = true;
                 yield break;
             }
             yield return null;
@@ -43,6 +46,8 @@ public class UILoading : UIBase
 
     private void LoadNextScene()
     {
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1); // 로딩씬
+        SceneManager.LoadScene(2); // 메인씬
     }
+
 }

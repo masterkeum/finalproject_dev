@@ -21,7 +21,7 @@ public class EnemyMeleeController : EnemyBaseController
         {
             case EnemyState.Trace: TraceUpdate(); break;
             case EnemyState.Attack: AttackUpdate(); break;
-            case EnemyState.Die: OnDie(); break;
+            case EnemyState.Die: OnDead(); break;
             default:
                 SetState(EnemyState.Trace); break;
         }
