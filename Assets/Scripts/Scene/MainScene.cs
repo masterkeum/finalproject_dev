@@ -8,18 +8,18 @@ public class MainScene : MonoBehaviour
 
     private void Awake()
     {
-        _=DataManager.Instance;
-        _=UIManager.Instance;
-        _=GameManager.Instance;
+        _ = DataManager.Instance;
+        _ = GameManager.Instance;
+        UIManager.Instance.Clear();
     }
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
