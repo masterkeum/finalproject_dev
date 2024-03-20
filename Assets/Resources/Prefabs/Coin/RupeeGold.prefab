@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3026924303178730791}
   - component: {fileID: 4664319419051061703}
   - component: {fileID: 4663579796701198937}
+  - component: {fileID: 8863132105248484582}
   m_Layer: 0
   m_Name: RupeeGold
   m_TagString: Untagged
@@ -46,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 938d97a604d314352a0b775b7d5350a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPlayerTransform: {fileID: 0}
 --- !u!198 &4664319419051061703
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4803,7 +4805,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: dea13f7d1401897448bc1fcfe67b5dc0, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4854,3 +4855,24 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!135 &8863132105248484582
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791735237733668523}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07
+  m_Center: {x: 0, y: 0, z: 0}
