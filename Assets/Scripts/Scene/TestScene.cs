@@ -84,14 +84,6 @@ public class TestScene : MonoBehaviour
         virtualCamera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
     }
 
-    // todo : 몬스터 , 플레이어 damage 및 health 관리
-    // 어떻게함?? -> 플레이어 의 무기 rigidbody 랑 몬스터 rigidbody 충돌 체크
-    // 플레이어의 rigidbody 랑 몬스터 rigidbody 충돌체크
-    
-    
-    
-    
-
     private void StartStage()
     {
         foreach (StageInfoTable monsterData in stageMonsterList)
