@@ -15,13 +15,10 @@ public class InGameHUD : MonoBehaviour
     private GameObject player;
     private PlayerIngameData playerData;
 
-    private void Awake()
+    private void Start()
     {
         player = GameObject.Find("Player");
         playerData = player.GetComponent<PlayerIngameData>();
-    }
-    private void Start()
-    {
         SetWhenStart();
         UpdateWhenEnemyDie();
         UpdateWhenGetGold();
