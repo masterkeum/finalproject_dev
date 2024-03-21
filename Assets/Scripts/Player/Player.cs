@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
+
     public VariableJoystick joy;
     public float speed;
 
@@ -19,6 +20,23 @@ public class Player : MonoBehaviour
     private CharacterInfo characterInfo;
 
     private bool IsInit = false;
+
+    public int curLevel;
+    public int maxLevel;
+    public int sliderCurExp;
+    public int sliderMaxExp;
+    public int curExp;
+    public int totalExp;
+    public int maxExp;
+    public int killCount;
+    public int gold;
+
+    public List<SkillTable> activeSkillSlot = new List<SkillTable>();
+    public List<SkillTable> passiveSkillSlot = new List<SkillTable>();
+
+
+
+
 
     [SerializeField] private Transform projectilePoint;
     // 적
@@ -52,7 +70,6 @@ public class Player : MonoBehaviour
         skillPool = GetComponent<SkillPool>();
     }
 
-
     private void Update()
     {
         if (transform.position.y < -10)
@@ -63,7 +80,6 @@ public class Player : MonoBehaviour
 
         SkillRoutine();
     }
-
 
     private void FixedUpdate()
     {
@@ -94,7 +110,6 @@ public class Player : MonoBehaviour
 
     public void TakePhysicalDamage(int damageAmount)
     {
-
         hp -= damageAmount;
         if (hp <= 0)
             OnDead();

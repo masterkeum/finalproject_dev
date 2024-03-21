@@ -5,9 +5,6 @@ public class GameManager : SingletoneBase<GameManager>
     [ReadOnly, SerializeField] private string _pidStr;
     public AccountInfo accountInfo;
 
-    // 필요한가?
-    public Transform playerParent;
-    public Transform parentCanvas;
     private Player player;
 
     // 씬이 넘어가도 유지할 데이터

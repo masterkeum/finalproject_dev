@@ -34,21 +34,9 @@ public class PlayerCoin : MonoBehaviour
         distance =  Vector3.Distance(transform.position, targetPlayerTransform.position);
         if (distance < 2.0f)
         {
+            // 획득값 플레이어에게 던져주기
             Destroy(gameObject);
         }
     }
     
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other == myCollider) return;
-    //     if (alreadyColliderWith.Contains(other)) return;
-    //     
-    //     alreadyColliderWith.Add(other);
-    //
-    //     if (other.TryGetComponent(out Health health))
-    //     {
-    //         health.TakeDamgae(damage);
-    //     }
-    //     
-    // }
 }

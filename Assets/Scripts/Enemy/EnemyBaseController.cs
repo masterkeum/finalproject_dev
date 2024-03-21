@@ -130,7 +130,6 @@ public class EnemyBaseController : MonoBehaviour
 
     public void TakePhysicalDamage(int damageAmount)
     {
-
         hp -= damageAmount;
         if (hp <= 0)
             OnDead();
