@@ -19,7 +19,7 @@ public class InGameHUD : MonoBehaviour
     {
         player = GameObject.Find("Player(Clone)");
         playerData = player.GetComponent<PlayerIngameData>();
-        hpSlider = player.GetComponentInChildren<Slider>();
+        
         SetWhenStart();
         UpdateWhenEnemyDie();
         UpdateWhenGetGold();

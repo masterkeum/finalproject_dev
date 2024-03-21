@@ -9,7 +9,7 @@ public class UINotice : UIBase
     
     public void OnclickNotice(int index)
     {
-
+        Debug.Log("공지를 봅니다.");
     }
     public void ClosePopup()
     {

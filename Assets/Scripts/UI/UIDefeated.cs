@@ -28,7 +28,7 @@ public class UIDefeated : UIBase
 
     public void Resurrection()
     {
-
+        Debug.Log("부활했습니다.");
     }
     public void GiveUP()
     {

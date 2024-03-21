@@ -27,12 +27,12 @@ public class UIGameClear : UIBase
 
     public void GetDoubleReward()
     {
-
+        Debug.Log("두 배 보상");
     }
 
     public void GetCommonReward()
     {
-
+        Debug.Log("일반 보상");
     }
     
     
