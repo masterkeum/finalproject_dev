@@ -77,6 +77,8 @@ public class TestScene : MonoBehaviour
 
         joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
         player.GetComponent<Player>().JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
+        
+        // 메서드 만듦
     }
 
     private void VirtualCameraSettiing()

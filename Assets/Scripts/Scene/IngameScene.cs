@@ -70,13 +70,16 @@ public class IngameScene : MonoBehaviour
     {
         player = Instantiate(Resources.Load<Player>("Prefabs/Player/Player"));
         player.transform.position = new Vector3(0, 0.5f, 0);
-        player.GetComponent<Player>().Init(10000001, 1);
+        player.Init(10000001, 1);
 
         // Rigidbody playerRigid = player.GetComponent<Rigidbody>();
         // playerRigid.constraints = RigidbodyConstraints.FreezeRotation;
 
         joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
-        player.GetComponent<Player>().JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
+        player.JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
+        
+        // 쏴주는 역할
+        GameManager.Instance.TakePlayer(player);
     }
 
     private void VirtualCameraSettiing()
