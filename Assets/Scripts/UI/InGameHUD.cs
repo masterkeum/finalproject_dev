@@ -4,13 +4,16 @@ using UnityEngine.UI;
 
 public class InGameHUD : UIBase
 {
+
+    private Player player;
+
     public TextMeshProUGUI killText;
     public TextMeshProUGUI goldText;
     public Slider expSlider;
+    public Slider hpSlider;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI curLevelText;
 
-    private Player player;
 
     private void Start()
     {

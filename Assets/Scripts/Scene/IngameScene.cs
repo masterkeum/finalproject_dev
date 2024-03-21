@@ -4,6 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public struct playeringameinfo
+{
+    public int curLevel;
+    public int maxLevel;
+    public int sliderCurExp;
+    public int sliderMaxExp;
+    public int curExp;
+    public int totalExp;
+    public int maxExp;
+    public int killCount;
+    public int gold;
+}
+
 public class IngameScene : MonoBehaviour
 {
     /*
@@ -19,6 +32,7 @@ public class IngameScene : MonoBehaviour
 
         일시정지 로직
     */
+
     Pooling objectPool;
 
     private Player player;
@@ -127,7 +141,7 @@ public class IngameScene : MonoBehaviour
                 //if (spawnedCount >= monsterData.genMax) break;
 
                 // X와 Z 좌표상에서의 랜덤한 각도를 결정 (0에서 360도 사이)
-                float randomAngle = Random.Range(0, 360) * Mathf.Deg2Rad;
+                float randomAngle = UnityEngine.Random.Range(0, 360) * Mathf.Deg2Rad;
 
                 // 각도를 바탕으로 X와 Z 좌표 계산
                 float x = Mathf.Cos(randomAngle) * spawnRadius;

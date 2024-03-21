@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
 
         // 플레이어 기본 스탯 초기화
         hp = characterInfo.hp;
+
         moveSpeed = characterInfo.moveSpeed;
         playeringameinfo = new playeringameinfo();
         playeringameinfo.curLevel = 1;
