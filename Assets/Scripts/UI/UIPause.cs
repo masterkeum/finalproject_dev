@@ -81,7 +81,7 @@ public class UIPause : UIBase
 
     public void GoToMainButton()
     {
-
+        UIManager.Instance.ShowUI<UIGoToMainWarning>();
     }
     public void ContinueButton()
     {

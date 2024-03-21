@@ -8,6 +8,7 @@ public class IngameScene : MonoBehaviour
     {
         _ = DataManager.Instance;
         _ = GameManager.Instance;
+        _ = UIManager.Instance;
     }
 
 
