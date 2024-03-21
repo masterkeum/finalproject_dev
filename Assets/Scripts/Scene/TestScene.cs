@@ -77,6 +77,8 @@ public class TestScene : MonoBehaviour
 
         joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
         player.GetComponent<Player>().JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
+        
+        // 메서드 만듦
     }
 
     private void VirtualCameraSettiing()
@@ -84,6 +86,11 @@ public class TestScene : MonoBehaviour
         virtualCamera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
     }
 
+
+    // todo : 몬스터 , 플레이어 damage 및 health 관리
+    // 어떻게함?? -> 플레이어 의 무기 rigidbody 랑 몬스터 rigidbody 충돌 체크
+    // 플레이어의 rigidbody 랑 몬스터 rigidbody 충돌체크
+    
     private void StartStage()
     {
         foreach (StageInfoTable monsterData in stageMonsterList)
@@ -143,7 +150,7 @@ public class TestScene : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogError("몬스터 생성할 위치 못찾음.");
+                    Debug.LogWarning("몬스터 생성할 위치 못찾음.");
                 }
 
                 // TODO : 풀매니저 적용해야됨

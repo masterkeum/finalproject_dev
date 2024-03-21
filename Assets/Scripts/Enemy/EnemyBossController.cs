@@ -41,7 +41,7 @@ public class EnemyBossController : EnemyBaseController
             case EnemyState.Trace: TraceUpdate(); break;
             case EnemyState.Attack: AttackUpdate(); break;
             case EnemyState.Flee: FleeUpdate(); break;
-            case EnemyState.Die: OnDie(); break;
+            case EnemyState.Die: OnDead(); break;
 
             default:
                 SetState(EnemyState.Flee); break;
@@ -141,4 +141,10 @@ public class EnemyBossController : EnemyBaseController
         }
     }
 
+    protected override void OnDead()
+    {
+        base.OnDead();
+
+        Debug.Log("게임 클리어");
+    }
 }

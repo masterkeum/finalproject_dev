@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class OutGameHUD : MonoBehaviour
 {
@@ -24,6 +23,10 @@ public class OutGameHUD : MonoBehaviour
     public Image StageImage;
     public int SelectedStageId;
 
+    private void Awake()
+    {
+        SelectedStageId = GameManager.Instance.stageId;
+    }
 
     private void Start()
     {
@@ -36,10 +39,10 @@ public class OutGameHUD : MonoBehaviour
             mainMenues[i].SetActive(false);
         }
         mainMenues[index].SetActive(true);
-        for (int j  = 0; j < mainMenues.Length; j++)
+        for (int j = 0; j < mainMenues.Length; j++)
         {
             buttonRect[j].sizeDelta = new Vector2(index == j ? 450 : 300, buttonRect[j].sizeDelta.y);
-            buttonRect[0].pivot = new Vector2(index ==2? 1.5f : 1, buttonRect[0].pivot.y);
+            buttonRect[0].pivot = new Vector2(index == 2 ? 1.5f : 1, buttonRect[0].pivot.y);
         }
     }
 
@@ -57,6 +60,9 @@ public class OutGameHUD : MonoBehaviour
     }
     public void OnStartbutton()
     {
-        
+        Debug.Log($"OnStartbutton : {SelectedStageId}");
+        // 인게임으로 넘어가기
+
+        SceneManager.LoadScene(3); // 인게임씬
     }
 }

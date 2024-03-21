@@ -133,10 +133,10 @@ public class EnemyBaseController : MonoBehaviour
 
         hp -= damageAmount;
         if (hp <= 0)
-            OnDie();
+            OnDead();
     }
 
-    protected void OnDie()
+    protected virtual void OnDead()
     {
         exp = monsterLevel.exp;
         gold = monsterLevel.gold;
