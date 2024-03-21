@@ -1,3 +1,4 @@
+using Gley.Jumpy;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -20,9 +21,7 @@ public class EnemyBaseController : MonoBehaviour
     적 베이스 스크립트
         플레이어 타겟팅
 
-
     거리가 너무 멀어지면 풀에 반환
-
 
     적이 할일
         플레이어 추적/이동
@@ -56,6 +55,7 @@ public class EnemyBaseController : MonoBehaviour
     protected static readonly int Taunting = Animator.StringToHash("Taunting");
     protected static readonly int IsWalking = Animator.StringToHash("IsWalking");
 
+    private Player player;
     [SerializeField] protected Transform targetPlayerTransform;
     // 몬스터 정보
     protected CharacterInfo characterInfo;
@@ -81,6 +81,7 @@ public class EnemyBaseController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         capsuleCollider = GetComponent<Collider>();
         animator = GetComponentInChildren<Animator>();
+        player = GameManager.Instance.player;
     }
 
     public virtual void Init(int _monsterID, int _level, Player target)
@@ -94,6 +95,8 @@ public class EnemyBaseController : MonoBehaviour
         monsterLevel = characterInfo.monsterLevelData[level];
 
         // 몬스터 스탯초기화
+        hp = characterInfo.hp;
+
         navMeshAgent.speed = characterInfo.moveSpeed;
         navMeshAgent.stoppingDistance = characterInfo.attackRange;
 
@@ -141,11 +144,13 @@ public class EnemyBaseController : MonoBehaviour
         gold = monsterLevel.gold;
 
         point = Instantiate(Resources.Load<GameObject>("Prefabs/Coin/RupeeGold"), transform.position + Vector3.up * 2, Quaternion.identity);
-        point.GetComponent<PlayerCoin>().Init(gold, exp, targetPlayerTransform.gameObject);
+        point.GetComponent<DropCoin>().Init(gold, exp, targetPlayerTransform.gameObject);
 
         capsuleCollider.enabled = false;
         navMeshAgent.isStopped = true;
 
+
+        player.AddKillCount();
         animator.SetTrigger(Die);
         StartCoroutine(Remove());
     }

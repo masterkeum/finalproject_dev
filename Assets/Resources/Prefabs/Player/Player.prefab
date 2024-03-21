@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1496020128821492958}
   - component: {fileID: 3979245520093714028}
-  - component: {fileID: 5934230273042320641}
   - component: {fileID: 2107198944676368986}
   - component: {fileID: 7273868753156299877}
   - component: {fileID: 4965856122858794532}
@@ -51,34 +50,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joy: {fileID: 0}
-  speed: 4
-  projectilePoint: {fileID: 7389510694482719767}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 32768
-  detectionRange: 15
---- !u!114 &5934230273042320641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2775863032082562551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1c2f472420ca0a4cb18d5d82bb57310, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curLevel: 1
+  moveSpeed: 0
+  curLevel: 0
   maxLevel: 0
   sliderCurExp: 0
   sliderMaxExp: 0
   curExp: 0
+  totalExp: 0
   maxExp: 0
   killCount: 0
   gold: 0
   activeSkillSlot: []
   passiveSkillSlot: []
+  projectilePoint: {fileID: 7389510694482719767}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 32768
+  detectionRange: 15
 --- !u!114 &2107198944676368986
 MonoBehaviour:
   m_ObjectHideFlags: 0

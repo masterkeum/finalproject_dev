@@ -7,30 +7,20 @@ public class Player : MonoBehaviour
 {
 
     public VariableJoystick joy;
-    public float speed;
+    public float moveSpeed;
 
-    private Rigidbody rigid;
-    private Animator anim;
-    private Vector3 moveVec;
-    private PlayerIngameData playerIngameData;
+    protected Rigidbody rigid;
+    protected Animator anim;
+    protected Vector3 moveVec;
 
-    private int PlayerID;
-    private int level;
-    private int hp;
-    private CharacterInfo characterInfo;
+    protected int playerID;
+    protected int level;
+    protected int hp;
+    protected CharacterInfo characterInfo;
 
     private bool IsInit = false;
 
-    public int curLevel;
-    public int maxLevel;
-    public int sliderCurExp;
-    public int sliderMaxExp;
-    public int curExp;
-    public int totalExp;
-    public int maxExp;
-    public int killCount;
-    public int gold;
-
+    private playeringameinfo playeringameinfo;
     public List<SkillTable> activeSkillSlot = new List<SkillTable>();
     public List<SkillTable> passiveSkillSlot = new List<SkillTable>();
 
@@ -38,25 +28,39 @@ public class Player : MonoBehaviour
 
 
 
-    [SerializeField] private Transform projectilePoint;
+    [SerializeField] protected Transform projectilePoint;
     // 적
     public LayerMask enemyLayer;
     public float detectionRange = 15f;
     private List<Transform> nearEnemy = new List<Transform>();
-    private SkillPool skillPool;
+    protected SkillPool skillPool;
 
     public virtual void Init(int _player, int _level)
     {
         if (IsInit) return;
+
         Debug.Log("Player.Init");
-        PlayerID = _player;
+        playerID = _player;
         level = _level;
 
-        characterInfo = DataManager.Instance.characterInfoDict[PlayerID];
-
-        hp = characterInfo.hp;
+        characterInfo = DataManager.Instance.characterInfoDict[playerID];
 
         skillPool.CreatePool(transform);
+
+
+        // 플레이어 기본 스탯 초기화
+        hp = characterInfo.hp;
+        moveSpeed = characterInfo.moveSpeed;
+        playeringameinfo = new playeringameinfo();
+        playeringameinfo.curLevel = 1;
+        playeringameinfo.sliderCurExp = 0;
+        playeringameinfo.curExp = 0;
+        playeringameinfo.totalExp = 0;
+        playeringameinfo.killCount = 0;
+        playeringameinfo.gold = 0;
+
+        activeSkillSlot.Add(DataManager.Instance.GetSkillTable(30000001)); // 기본스킬 지급
+
         IsInit = true;
     }
 
@@ -66,8 +70,12 @@ public class Player : MonoBehaviour
         Debug.Log("Player.Awake");
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
-        playerIngameData = GetComponent<PlayerIngameData>();
         skillPool = GetComponent<SkillPool>();
+    }
+
+    private void Start()
+    {
+        UpdateSlider();
     }
 
     private void Update()
@@ -81,13 +89,42 @@ public class Player : MonoBehaviour
         SkillRoutine();
     }
 
+    #region Controll
+
+    private void SkillRoutine()
+    {
+        // 임시
+        foreach (SkillTable skill in activeSkillSlot)
+        {
+            switch (skill.skillType)
+            {
+                case "Target":
+                    {
+                        if (Time.time - skill.lastAttackTime > skill.coolDownTime)
+                        {
+                            skill.lastAttackTime = Time.time;
+                            // 10f 까지 탐색? = 보스 탐지거리
+                            // 가까운놈 찾아서 그방향으로 발사 일정거리 가면 사라짐
+                            // 발사 방향
+                            Vector3 direction = DetectEnemyDirection();
+                            // 발사 작동
+                            skillPool.GetPoolSkill(skill.skillId, projectilePoint, direction);
+                            skillPool.GetPoolFlash(skill.skillId, projectilePoint, direction);
+                        }
+                    }
+                    break;
+
+            }
+        }
+    }
+
     private void FixedUpdate()
     {
         float x = joy.Horizontal;
         float z = joy.Vertical;
         //Debug.Log($"{x}, {z}");
 
-        moveVec = new Vector3(x, 0, z) * speed * Time.deltaTime;
+        moveVec = new Vector3(x, 0, z) * moveSpeed * Time.deltaTime;
         rigid.MovePosition(rigid.position + moveVec);
 
         if (moveVec.sqrMagnitude == 0)
@@ -97,6 +134,7 @@ public class Player : MonoBehaviour
         Quaternion moveQuat = Quaternion.Slerp(rigid.rotation, dirQuat, 0.3f);
         rigid.MoveRotation(moveQuat);
     }
+
 
     private void LateUpdate()
     {
@@ -121,34 +159,7 @@ public class Player : MonoBehaviour
     }
 
 
-    private void SkillRoutine()
-    {
-        // 임시
-        foreach (SkillTable skill in playerIngameData.activeSkillSlot)
-        {
-            switch (skill.skillType)
-            {
-                case "Target":
-                    {
-                        if (Time.time - skill.lastAttackTime > skill.coolDownTime)
-                        {
-                            skill.lastAttackTime = Time.time;
-                            // 10f 까지 탐색? = 보스 탐지거리
-                            // 가까운놈 찾아서 그방향으로 발사 일정거리 가면 사라짐
-                            // 발사 방향
-                            Vector3 direction = DetectEnemyDirection();
-                            // 발사 작동
-                            skillPool.GetPoolSkill(skill.skillId, projectilePoint, direction);
-                            skillPool.GetPoolFlash(skill.skillId, projectilePoint, direction);
-                        }
-                    }
-                    break;
-
-            }
-        }
-    }
-
-    private Vector3 DetectEnemyDirection()
+    protected Vector3 DetectEnemyDirection()
     {
         nearEnemy.Clear();
         // TODO: OverlapSphereNonAlloc로 변환가능하면 변환
@@ -179,7 +190,7 @@ public class Player : MonoBehaviour
     }
 
     // 가장 가까운 적을 찾는 함수
-    Transform GetNearestEnemy()
+    protected Transform GetNearestEnemy()
     {
         Transform nearestEnemy = null;
         float nearestDistanceSqr = Mathf.Infinity;
@@ -199,4 +210,65 @@ public class Player : MonoBehaviour
         return nearestEnemy;
     }
 
+    #endregion
+
+    #region UI
+
+    private void UpdateSlider()
+    {
+        sliderMaxExp = DataManager.Instance.GetPlayerIngameLevel(curLevel).exp;
+    }
+
+    private void UpdateCurLevel()
+    {
+        for (int i = curLevel; i <= DataManager.Instance.PlayerIngameLevelDict.Count; i++)
+        {
+            PlayerIngameLevel levelData = DataManager.Instance.GetPlayerIngameLevel(i);
+            if (totalExp <= levelData.totalExp)
+            {
+                if (curLevel < levelData.level)
+                {
+                    curLevel = levelData.level;
+                    UIManager.Instance.ShowUI<UILevelUP>();
+                }
+                curExp = levelData.totalExp - totalExp;
+                sliderCurExp = curExp;
+                break;
+            }
+        }
+    }
+
+    public int CurrentOpenSkillSlotCount() //허용 슬롯의 숫자. 일단 3으로 정해놓았으나 이후 조건에 따른 값을 리턴하게 한다.
+    {
+        return 3;
+    }
+
+    public void AddKillCount()
+    {
+        killCount++;
+    }
+
+    public void AddGoldCount(int addGold)
+    {
+        gold += addGold;
+    }
+
+    public void AddExp(int addExp)
+    {
+        totalExp += addExp;
+        UpdateCurLevel();
+    }
+
+
+    // 테스트 코드
+    public void LevelUp()
+    {
+        curLevel++;
+        sliderCurExp = 0;
+        UpdateSlider();
+        UIManager.Instance.ShowUI<UILevelUP>();
+    }
+
+
+    #endregion
 }

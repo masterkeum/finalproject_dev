@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class OutGameHUD : MonoBehaviour
+public class OutGameHUD : UIBase
 {
     [Header("UserData")]
     public Slider expSlider;

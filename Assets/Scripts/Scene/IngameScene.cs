@@ -25,11 +25,12 @@ public class IngameScene : MonoBehaviour
     private GameObject joyStick;
     private GameObject virtualCamera;
 
+    private InGameHUD inGameHUD;
+
     private int stageId;
     List<StageInfoTable> stageMonsterList;
 
-
-    private float spawnRadius = 30f; // 30은 돼야 화면밖인듯
+    private float spawnRadius = 30f; // TODO: 30은 돼야 화면밖인듯. 기본 설정도 나중에 데이터로
 
     private void Awake()
     {
@@ -57,6 +58,10 @@ public class IngameScene : MonoBehaviour
 
         // 플레이 기본 세팅
 
+
+        // HUD 생성
+        inGameHUD = UIManager.Instance.ShowUI<InGameHUD>();
+
         // 몬스터 생성
         StartStage();
     }
@@ -77,20 +82,15 @@ public class IngameScene : MonoBehaviour
 
         joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
         player.JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
-        
+
         // 쏴주는 역할
-        GameManager.Instance.TakePlayer(player);
+        GameManager.Instance.SetPlayer(player);
     }
 
     private void VirtualCameraSettiing()
     {
         virtualCamera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
     }
-
-
-    // todo : 몬스터 , 플레이어 damage 및 health 관리
-    // 어떻게함?? -> 플레이어 의 무기 rigidbody 랑 몬스터 rigidbody 충돌 체크
-    // 플레이어의 rigidbody 랑 몬스터 rigidbody 충돌체크
 
     private void StartStage()
     {

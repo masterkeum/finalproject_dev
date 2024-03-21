@@ -83,6 +83,8 @@ public class SkillPool : MonoBehaviour
 
     public void GetPoolSkill(int id, Transform point, Vector3 direction)
     {
+        // TODO : 가변적으로 추가생성되게 변경
+
         if (poolDictionary.ContainsKey(id))
         {
             GameObject obj = poolDictionary[id].Dequeue();

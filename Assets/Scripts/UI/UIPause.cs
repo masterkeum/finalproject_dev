@@ -14,14 +14,11 @@ public class UIPause : UIBase
     public List<SkillSlotUI> activeSlotsUI = new List<SkillSlotUI>();
     public List<SkillSlotUI> passiveSlotsUI = new List<SkillSlotUI>();
 
-    private PlayerIngameData playerData;
-    private GameObject player;
-
+    private Player player;
     private void Awake()
     {
-        player = GameObject.Find("Player");
-        playerData = player.GetComponent<PlayerIngameData>();
-        for (int j = playerData.CurrentOpenSkillSlotCount(); j < 6; j++)
+        player = GameManager.Instance.player;
+        for (int j = player.CurrentOpenSkillSlotCount(); j < 6; j++)
         {
             activeSlotsUI[j].skilllock.SetActive(true);
             passiveSlotsUI[j].skilllock.SetActive(true);
@@ -38,40 +35,40 @@ public class UIPause : UIBase
 
     public void SetActiveSlot()
     {
-        if (playerData.activeSkillSlot != null)
+        if (player.activeSkillSlot != null)
         {
-            for (int i = 0; i < playerData.activeSkillSlot.Count; i++)
+            for (int i = 0; i < player.activeSkillSlot.Count; i++)
             {
 
                 activeSlotsUI[i].skillIcon.gameObject.SetActive(true);
                 activeSlotsUI[i].starGroup.gameObject.SetActive(true);
-                string path = playerData.activeSkillSlot[i].imageAddress;
+                string path = player.activeSkillSlot[i].imageAddress;
                 Sprite sprite = Resources.Load<Sprite>(path);
                 activeSlotsUI[i].skillSprite.sprite = sprite;
                 activeSlotsUI[i].starGroup.SetActive(true);
 
-                activeSlotsUI[i].SetStars(playerData.activeSkillSlot[i].level);
+                activeSlotsUI[i].SetStars(player.activeSkillSlot[i].level);
 
 
             }
 
         }
-       
+
     }
     public void SetPassiveSlot()
     {
-        if (playerData.passiveSkillSlot != null)
+        if (player.passiveSkillSlot != null)
         {
-            for (int i = 0; i < playerData.passiveSkillSlot.Count; i++)
+            for (int i = 0; i < player.passiveSkillSlot.Count; i++)
             {
                 passiveSlotsUI[i].skillIcon.gameObject.SetActive(true);
                 passiveSlotsUI[i].starGroup.gameObject.SetActive(true);
-                string path = playerData.passiveSkillSlot[i].imageAddress;
+                string path = player.passiveSkillSlot[i].imageAddress;
                 Sprite sprite = Resources.Load<Sprite>(path);
                 passiveSlotsUI[i].skillSprite.sprite = sprite;
                 passiveSlotsUI[i].starGroup.SetActive(true);
 
-                passiveSlotsUI[i].SetStars(playerData.passiveSkillSlot[i].level);
+                passiveSlotsUI[i].SetStars(player.passiveSkillSlot[i].level);
 
             }
         }
