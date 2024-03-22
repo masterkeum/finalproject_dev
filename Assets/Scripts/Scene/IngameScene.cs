@@ -74,6 +74,8 @@ public class IngameScene : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("IngameScene.Start");
+
         GameManager.Instance.SetState(GameState.IngameStart);
 
         // 스테이지에 맞는 필드 생성

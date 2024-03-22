@@ -110,15 +110,14 @@ public class Player : MonoBehaviour
     }
 
 
-    private void LateUpdate()
-    {
-        //anim.SetFloat("Move", moveVec.sqrMagnitude); 
-
-        if (chaseTarget.Count > 0)
-        {
-            // TODO : 적 추적 작동
-        }
-    }
+    //private void LateUpdate()
+    //{
+    //    //anim.SetFloat("Move", moveVec.sqrMagnitude); 
+    //    if (chaseTarget.Count > 0)
+    //    {
+    //        // TODO : 적 추적 작동
+    //    }
+    //}
 
 
     #region Controll

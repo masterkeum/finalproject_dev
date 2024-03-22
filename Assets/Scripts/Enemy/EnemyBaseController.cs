@@ -45,6 +45,7 @@ public class EnemyBaseController : MonoBehaviour
     [SerializeField] private int monsterID;
     [SerializeField] private int level;
 
+    protected float trackingTerm = 1f;
     private bool IsInit = false;
 
     // 애니메이션
@@ -69,7 +70,7 @@ public class EnemyBaseController : MonoBehaviour
 
     protected float lastAttackTime;// 마지막 공격 시간
 
-    private int hp;
+    [SerializeField] private int hp;
     protected int damage;
     private DropCoin point;
 

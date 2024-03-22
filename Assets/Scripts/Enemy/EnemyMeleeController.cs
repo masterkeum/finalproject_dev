@@ -1,4 +1,4 @@
-using Gley.Jumpy;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,22 +12,41 @@ public class EnemyMeleeController : EnemyBaseController
 
         path = new NavMeshPath();
         SetState(EnemyState.Trace);
+
+        StartCoroutine(CheckState());
     }
     // 상태 초기화
-
-    private void Update()
+    private IEnumerator CheckState()
     {
-        playerDistance = DistanceToTarget();
-        switch (enemyState)
+        while (true)
         {
-            case EnemyState.Trace: TraceUpdate(); break;
-            case EnemyState.Attack: AttackUpdate(); break;
-            case EnemyState.Die: break;
-            default:
-                SetState(EnemyState.Trace); break;
-        }
+            yield return new WaitForSeconds(trackingTerm);
 
+            playerDistance = DistanceToTarget();
+            switch (enemyState)
+            {
+                case EnemyState.Trace: TraceUpdate(); break;
+                case EnemyState.Attack: AttackUpdate(); break;
+                case EnemyState.Die: break;
+                default:
+                    SetState(EnemyState.Trace); break;
+            }
+        }
     }
+
+    //private void Update()
+    //{
+    //    playerDistance = DistanceToTarget();
+    //    switch (enemyState)
+    //    {
+    //        case EnemyState.Trace: TraceUpdate(); break;
+    //        case EnemyState.Attack: AttackUpdate(); break;
+    //        case EnemyState.Die: break;
+    //        default:
+    //            SetState(EnemyState.Trace); break;
+    //    }
+
+    //}
 
     private void TraceUpdate()
     {
