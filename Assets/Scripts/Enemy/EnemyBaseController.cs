@@ -1,3 +1,4 @@
+using Gley.Jumpy;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -20,9 +21,7 @@ public class EnemyBaseController : MonoBehaviour
     적 베이스 스크립트
         플레이어 타겟팅
 
-
     거리가 너무 멀어지면 풀에 반환
-
 
     적이 할일
         플레이어 추적/이동
@@ -56,6 +55,7 @@ public class EnemyBaseController : MonoBehaviour
     protected static readonly int Taunting = Animator.StringToHash("Taunting");
     protected static readonly int IsWalking = Animator.StringToHash("IsWalking");
 
+    protected Player player;
     [SerializeField] protected Transform targetPlayerTransform;
     // 몬스터 정보
     protected CharacterInfo characterInfo;
@@ -69,18 +69,16 @@ public class EnemyBaseController : MonoBehaviour
 
     protected float lastAttackTime;// 마지막 공격 시간
 
-
     private int hp;
-
-    private int gold;
-    private int exp;
-    private GameObject point;
+    protected int damage;
+    private DropCoin point;
 
     protected void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         capsuleCollider = GetComponent<Collider>();
         animator = GetComponentInChildren<Animator>();
+        player = GameManager.Instance.player;
     }
 
     public virtual void Init(int _monsterID, int _level, Player target)
@@ -94,6 +92,9 @@ public class EnemyBaseController : MonoBehaviour
         monsterLevel = characterInfo.monsterLevelData[level];
 
         // 몬스터 스탯초기화
+        hp = characterInfo.hp;
+        damage = characterInfo.attackPower;
+
         navMeshAgent.speed = characterInfo.moveSpeed;
         navMeshAgent.stoppingDistance = characterInfo.attackRange;
 
@@ -130,7 +131,6 @@ public class EnemyBaseController : MonoBehaviour
 
     public void TakePhysicalDamage(int damageAmount)
     {
-
         hp -= damageAmount;
         if (hp <= 0)
             OnDead();
@@ -138,17 +138,21 @@ public class EnemyBaseController : MonoBehaviour
 
     protected virtual void OnDead()
     {
-        exp = monsterLevel.exp;
-        gold = monsterLevel.gold;
-
-        point = Instantiate(Resources.Load<GameObject>("Prefabs/Coin/RupeeGold"), transform.position + Vector3.up * 2, Quaternion.identity);
-        point.GetComponent<PlayerCoin>().Init(gold, exp, targetPlayerTransform.gameObject);
-
+        SetState(EnemyState.Die);
+        // 이동 정지
         capsuleCollider.enabled = false;
         navMeshAgent.isStopped = true;
 
         animator.SetTrigger(Die);
         StartCoroutine(Remove());
+
+        // 보상
+        point = Instantiate(Resources.Load<DropCoin>("Prefabs/Coin/RupeeGold"), transform.position + Vector3.up * 2, Quaternion.identity);
+        point.Init(monsterLevel.gold, monsterLevel.exp);
+
+        // UI
+        player.AddKillCount();
+        GameManager.Instance.UpdateUI();
     }
 
 

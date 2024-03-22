@@ -1,3 +1,4 @@
+using Gley.Jumpy;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -21,7 +22,7 @@ public class EnemyMeleeController : EnemyBaseController
         {
             case EnemyState.Trace: TraceUpdate(); break;
             case EnemyState.Attack: AttackUpdate(); break;
-            case EnemyState.Die: OnDead(); break;
+            case EnemyState.Die: break;
             default:
                 SetState(EnemyState.Trace); break;
         }
@@ -52,6 +53,7 @@ public class EnemyMeleeController : EnemyBaseController
         {
             lastAttackTime = Time.time;
             //PlayerController.instance.GetComponent<IDamagable>().TakePhysicalDamage(damage); // 데미지 처리
+            player.TakePhysicalDamage(damage);
             animator.speed = 1;
             animator.SetTrigger(Attack);
         }

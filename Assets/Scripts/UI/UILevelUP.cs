@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UILevelUP : UIBase
@@ -12,25 +13,21 @@ public class UILevelUP : UIBase
     public List<SkillSlotUI> curAcitveSkillUI = new List<SkillSlotUI>();
     public List<SkillSlotUI> curPassiveSkillUI = new List<SkillSlotUI>();
 
+    public TextMeshProUGUI skillPointText;
 
-    private GameObject player;
-    private PlayerIngameData playerData;
-
+    private Player player;
 
     private void Awake()
     {
-        player = GameObject.Find("Player");
-        playerData = player.GetComponent<PlayerIngameData>();
+        player = GameManager.Instance.player;
 
-
-        foreach (SkillTable skill in DataManager.Instance.SkillTableDict.Values)
+        foreach (SkillTable skill in DataManager.Instance.skillTableDict.Values)
         {
             if (skill.skillId > 30000000 && skill.skillId < 30000300)
             {
                 variableSkills.Add(skill);
             }
         }
-
     }
     private void OnEnable()
     {
@@ -38,8 +35,15 @@ public class UILevelUP : UIBase
         SetSelectableSkills();
         SetCurSkills();
         SetStar();
+        UpdateSkillPoint();
+    }
 
-
+    /// <summary>
+    /// 남은 스킬포인트 UI갱신
+    /// </summary>
+    private void UpdateSkillPoint()
+    {
+        skillPointText.text = $"스킬포인트 + {player.playeringameinfo.skillpoint}";
     }
 
     private void SetSelectableSkills()
@@ -69,37 +73,42 @@ public class UILevelUP : UIBase
     {
         //현재 가진 스킬 종류만 표시
 
-        for (int i = 0; i < playerData.activeSkillSlot.Count; i++)
+        for (int i = 0; i < player.activeSkillSlot.Count; i++)
         {
             curAcitveSkillUI[i].skillIcon.SetActive(true);
-            string path = playerData.activeSkillSlot[i].imageAddress;
+            string path = player.activeSkillSlot[i].imageAddress;
             Sprite sprite = Resources.Load<Sprite>(path);
             curAcitveSkillUI[i].skillSprite.sprite = sprite;
         }
-        for (int i = 0; i < playerData.passiveSkillSlot.Count; i++)
+        for (int i = 0; i < player.passiveSkillSlot.Count; i++)
         {
             curPassiveSkillUI[i].skillIcon.SetActive(true);
-            string path = playerData.passiveSkillSlot[i].imageAddress;
+            string path = player.passiveSkillSlot[i].imageAddress;
             Sprite sprite = Resources.Load<Sprite>(path);
             curPassiveSkillUI[i].skillSprite.sprite = sprite;
         }
-        for (int j = playerData.CurrentOpenSkillSlotCount(); j < 6; j++)  // 잠긴 슬롯에 자물쇠 세팅
+        for (int j = player.CurrentOpenSkillSlotCount(); j < 6; j++)  // 잠긴 슬롯에 자물쇠 세팅
         {
             curAcitveSkillUI[j].skilllock.SetActive(true);
             curPassiveSkillUI[j].skilllock.SetActive(true);
         }
     }
 
+    /// <summary>
+    /// 스킬 선택
+    /// FIXME : 깊은복사로 변경
+    /// </summary>
+    /// <param name="index">스킬 index</param>
     public void OnButtonSelect(int index)
     {
         if (randomSkills[index].skillId == 30000301)  // 초월스킬 변경
         {
-            for (int i = 0; i < playerData.activeSkillSlot.Count; i++)
+            for (int i = 0; i < player.activeSkillSlot.Count; i++)
             {
-                if (playerData.activeSkillSlot[i].skillId == 30000001)
+                if (player.activeSkillSlot[i].skillId == 30000001)
                 {
-                    playerData.activeSkillSlot.Remove(playerData.activeSkillSlot[i]);
-                    playerData.activeSkillSlot.Add(randomSkills[index]);
+                    player.activeSkillSlot.Remove(player.activeSkillSlot[i]);
+                    player.activeSkillSlot.Add(randomSkills[index]);
 
                 }
             }
@@ -108,19 +117,19 @@ public class UILevelUP : UIBase
 
         else if (randomSkills[index].applyType == "Active")
         {
-            if (playerData.activeSkillSlot.Count == 0)
+            if (player.activeSkillSlot.Count == 0)
             {
-                playerData.activeSkillSlot.Add(randomSkills[index]);
+                player.activeSkillSlot.Add(randomSkills[index]);
 
             }
             else
             {
                 bool skillFound = false;
-                for (int i = 0; i < playerData.activeSkillSlot.Count; i++)
+                for (int i = 0; i < player.activeSkillSlot.Count; i++)
                 {
-                    if (randomSkills[index] == playerData.activeSkillSlot[i])
+                    if (randomSkills[index] == player.activeSkillSlot[i])
                     {
-                        playerData.activeSkillSlot[i].level++;
+                        player.activeSkillSlot[i].level++;
                         skillFound = true;
 
                         break;
@@ -128,7 +137,7 @@ public class UILevelUP : UIBase
                 }
                 if (!skillFound)
                 {
-                    playerData.activeSkillSlot.Add(randomSkills[index]);
+                    player.activeSkillSlot.Add(randomSkills[index]);
 
                 }
 
@@ -137,93 +146,117 @@ public class UILevelUP : UIBase
         else
         {
 
-            if (playerData.passiveSkillSlot.Count == 0)
+            if (player.passiveSkillSlot.Count == 0)
             {
-                playerData.passiveSkillSlot.Add(randomSkills[index]);
+                player.passiveSkillSlot.Add(randomSkills[index]);
             }
             else
             {
                 bool skillFound = false;
-                for (int i = 0; i < playerData.passiveSkillSlot.Count; i++)
+                for (int i = 0; i < player.passiveSkillSlot.Count; i++)
                 {
-                    if (randomSkills[index] == playerData.passiveSkillSlot[i])
+                    if (randomSkills[index] == player.passiveSkillSlot[i])
                     {
 
-                        playerData.passiveSkillSlot[i].level++;
+                        player.passiveSkillSlot[i].level++;
                         skillFound = true;
                         break;
                     }
                 }
                 if (!skillFound)
                 {
-                    playerData.passiveSkillSlot.Add(randomSkills[index]);
+                    player.passiveSkillSlot.Add(randomSkills[index]);
                 }
             }
         }
 
-        gameObject.SetActive(false);
-        randomSkills.Clear();
+
+        --player.playeringameinfo.skillpoint;
+
+        if (player.playeringameinfo.skillpoint > 0)
+        {
+            RemoveAtVariableSkills();
+            OnReRollButton();
+            UpdateSkillPoint();
+            SetCurSkills();
+        }
+        else
+        {
+            gameObject.SetActive(false);
+            randomSkills.Clear();
+            --UIManager.Instance.popupUICount;
+        }
     }
+
 
     private void SetStar()
     {
         for (int i = 0; i < selectableSkillUI.Count; i++)
         {
             selectableSkillUI[i].ClearStars();
-            for (int j = 0; j < playerData.activeSkillSlot.Count; j++)
+            for (int j = 0; j < player.activeSkillSlot.Count; j++)
             {
-                if (selectableSkillUI[i].skillNameText.text == playerData.activeSkillSlot[j].skillName)
+                if (selectableSkillUI[i].skillNameText.text == player.activeSkillSlot[j].skillName)
                 {
-                    selectableSkillUI[i].SetStars(playerData.activeSkillSlot[j].level);
+                    selectableSkillUI[i].SetStars(player.activeSkillSlot[j].level);
                 }
             }
-            for (int j = 0; j < playerData.passiveSkillSlot.Count; j++)
+            for (int j = 0; j < player.passiveSkillSlot.Count; j++)
             {
-                if (selectableSkillUI[i].skillNameText.text == playerData.passiveSkillSlot[j].skillName)
+                if (selectableSkillUI[i].skillNameText.text == player.passiveSkillSlot[j].skillName)
                 {
-                    selectableSkillUI[i].SetStars(playerData.passiveSkillSlot[j].level);
+                    selectableSkillUI[i].SetStars(player.passiveSkillSlot[j].level);
                 }
             }
         }
     }
 
-    private void SkillTransform(SkillTable skill)  //초월스킬로 변경
+    /// <summary>
+    /// 초월스킬로 변경
+    /// </summary>
+    /// <param name="skill"></param>
+    private void SkillTransform(SkillTable skill)
     {
 
         switch (skill.skillId)
         {
             case 30000001:
-                variableSkills.Add(DataManager.Instance.SkillTableDict[30000301]);
+                variableSkills.Add(DataManager.Instance.skillTableDict[30000301]);
                 break;
             case 30000002:
-                variableSkills.Add(DataManager.Instance.SkillTableDict[30000302]);
+                variableSkills.Add(DataManager.Instance.skillTableDict[30000302]);
                 break;
             case 30000003:
-                variableSkills.Add(DataManager.Instance.SkillTableDict[30000303]);
+                variableSkills.Add(DataManager.Instance.skillTableDict[30000303]);
                 break;
             case 30000004:
-                variableSkills.Add(DataManager.Instance.SkillTableDict[30000304]);
+                variableSkills.Add(DataManager.Instance.skillTableDict[30000304]);
                 break;
             case 30000005:
-                variableSkills.Add(DataManager.Instance.SkillTableDict[30000305]);
+                variableSkills.Add(DataManager.Instance.skillTableDict[30000305]);
                 break;
             case 30000006:
-                variableSkills.Add(DataManager.Instance.SkillTableDict[30000306]);
+                variableSkills.Add(DataManager.Instance.skillTableDict[30000306]);
                 break;
         }
 
     }
-    public void RemoveAtVariableSkills() //스킬레벨이 5가 되거나 허용슬롯이 꽉 찼을 때, 추가할 수 없는 스킬을 variable 목록에서 제외한다.
+
+
+    /// <summary>
+    /// 스킬레벨이 5가 되거나 허용슬롯이 꽉 찼을 때, 추가할 수 없는 스킬을 variable 목록에서 제외한다.
+    /// </summary>
+    public void RemoveAtVariableSkills()
     {
-        if (playerData.activeSkillSlot.Count > playerData.CurrentOpenSkillSlotCount() - 1)
+        if (player.activeSkillSlot.Count > player.CurrentOpenSkillSlotCount() - 1)
         {
-            variableSkills.RemoveAll(skill => !playerData.activeSkillSlot.Contains(skill) && skill.applyType == "Active");
+            variableSkills.RemoveAll(skill => !player.activeSkillSlot.Contains(skill) && skill.applyType == "Active");
         }
-        if (playerData.passiveSkillSlot.Count > playerData.CurrentOpenSkillSlotCount() - 1)
+        if (player.passiveSkillSlot.Count > player.CurrentOpenSkillSlotCount() - 1)
         {
-            variableSkills.RemoveAll(skill => !playerData.passiveSkillSlot.Contains(skill) && skill.applyType == "Passive");
+            variableSkills.RemoveAll(skill => !player.passiveSkillSlot.Contains(skill) && skill.applyType == "Passive");
         }
-        foreach (SkillTable skill in playerData.activeSkillSlot)
+        foreach (SkillTable skill in player.activeSkillSlot)
         {
             if (skill.level >= skill.maxLevel)
             {
@@ -231,7 +264,7 @@ public class UILevelUP : UIBase
                 SkillTransform(skill);
             }
         }
-        foreach (SkillTable skill in playerData.passiveSkillSlot)
+        foreach (SkillTable skill in player.passiveSkillSlot)
         {
             if (skill.level >= skill.maxLevel)
             {
@@ -241,7 +274,9 @@ public class UILevelUP : UIBase
 
     }
 
-
+    /// <summary>
+    /// 스킬 선택목록 리롤
+    /// </summary>
     public void OnReRollButton()
     {
         randomSkills.Clear();

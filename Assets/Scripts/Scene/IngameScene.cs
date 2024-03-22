@@ -4,6 +4,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public struct playeringameinfo
+{
+    // 임시구조. 중간발표 이후 개선
+
+    public int attackPower;
+    public int addAttackPower;
+
+    public float sensoryRange;
+    public float attackRange;
+    public float attackSpeed;
+    public float moveSpeed;
+
+    //
+    public int curLevel;
+    public int maxLevel;
+    public int sliderCurExp;
+    public int sliderMaxExp;
+    public int curExp;
+    public int totalExp;
+    public int maxExp;
+
+    public int killCount;
+    public int gold;
+    public int skillpoint;
+}
+
 public class IngameScene : MonoBehaviour
 {
     /*
@@ -19,26 +45,28 @@ public class IngameScene : MonoBehaviour
 
         일시정지 로직
     */
+
     Pooling objectPool;
 
     private Player player;
     private GameObject joyStick;
     private GameObject virtualCamera;
 
+    private InGameHUD inGameHUD;
+
     private int stageId;
     List<StageInfoTable> stageMonsterList;
 
-
-    private float spawnRadius = 30f; // 30은 돼야 화면밖인듯
+    private float spawnRadius = 30f; // TODO: 30은 돼야 화면밖인듯. 기본 설정도 나중에 데이터로
 
     private void Awake()
     {
+        Debug.Log("IngameScene.Awake");
+        Time.timeScale = 1.0f;
         _ = DataManager.Instance;
-        _ = GameManager.Instance;
         //_ = AccountInfo.Instance;// 사용자 계정 데이터 접근
-
+        GameManager.Instance.Clear();
         virtualCamera = GameObject.Find("Virtual Camera");
-
         objectPool = GetComponent<Pooling>();
         stageId = GameManager.Instance.stageId;
         stageMonsterList = DataManager.Instance.GetStageInfo(stageId);
@@ -46,6 +74,8 @@ public class IngameScene : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.SetState(GameState.IngameStart);
+
         // 스테이지에 맞는 필드 생성
         GenerateLevel();
 
@@ -56,6 +86,10 @@ public class IngameScene : MonoBehaviour
         VirtualCameraSettiing();
 
         // 플레이 기본 세팅
+
+
+        // HUD 생성
+        inGameHUD = UIManager.Instance.ShowUI<InGameHUD>();
 
         // 몬스터 생성
         StartStage();
@@ -77,20 +111,15 @@ public class IngameScene : MonoBehaviour
 
         joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
         player.JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
-        
+
         // 쏴주는 역할
-        GameManager.Instance.TakePlayer(player);
+        GameManager.Instance.SetPlayer(player);
     }
 
     private void VirtualCameraSettiing()
     {
         virtualCamera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
     }
-
-
-    // todo : 몬스터 , 플레이어 damage 및 health 관리
-    // 어떻게함?? -> 플레이어 의 무기 rigidbody 랑 몬스터 rigidbody 충돌 체크
-    // 플레이어의 rigidbody 랑 몬스터 rigidbody 충돌체크
 
     private void StartStage()
     {
@@ -106,12 +135,18 @@ public class IngameScene : MonoBehaviour
         CharacterInfo monsterInfo = DataManager.Instance.GetCharacterInfo(monsterData.monsterId);
         GameObject monster = Resources.Load<GameObject>(monsterInfo.prefabFile);
 
+
         if (monsterData.genPosVecter3.Length > 0)
         {
             // 좌표있으면 다른것 무시하고 단발성 생성
             GameObject go = Instantiate(monster, new Vector3(monsterData.genPosVecter3[0], monsterData.genPosVecter3[1], monsterData.genPosVecter3[2]), Quaternion.identity);
             go.GetComponent<EnemyBaseController>().Init(monsterData.monsterId, monsterData.level, player);
 
+            if (monsterInfo.characterType == CharacterType.BossMonster)
+            {
+                // 보스만 타겟팅
+                player.AddTarget(go);
+            }
             yield break;
         }
 
@@ -127,7 +162,7 @@ public class IngameScene : MonoBehaviour
                 //if (spawnedCount >= monsterData.genMax) break;
 
                 // X와 Z 좌표상에서의 랜덤한 각도를 결정 (0에서 360도 사이)
-                float randomAngle = Random.Range(0, 360) * Mathf.Deg2Rad;
+                float randomAngle = UnityEngine.Random.Range(0, 360) * Mathf.Deg2Rad;
 
                 // 각도를 바탕으로 X와 Z 좌표 계산
                 float x = Mathf.Cos(randomAngle) * spawnRadius;

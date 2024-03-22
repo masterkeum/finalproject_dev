@@ -7,6 +7,7 @@ public class DataTable
 {
     public List<CharacterInfo> CharacterInfo;
     public List<MonsterLevel> MonsterLevel;
+    public List<StageList> StageList;
     public List<StageInfoTable> StageInfoTable;
     public List<PlayerIngameLevel> PlayerIngameLevel;
     public List<SkillTable> SkillTable;
@@ -18,7 +19,7 @@ public class DataTable
 public class CharacterInfo
 {
     public int uid;
-    public string characterType;
+    public CharacterType characterType;
     public string name;
     public int minLevel;
     public int maxLevel;
@@ -49,12 +50,19 @@ public class MonsterLevel
 }
 
 [Serializable]
+public class StageList
+{
+    public int stageId;
+    public string BGSprite; // 스프라이트의 경로
+}
+
+[Serializable]
 public class StageInfoTable
 {
     public int stageId;
     public int monsterId;
     public int level;
-    public string characterType;
+    public CharacterType characterType;
     public int genTimeStart;
     public int genTimeEnd;
     public int genAmount;

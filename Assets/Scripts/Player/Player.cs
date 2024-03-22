@@ -1,57 +1,85 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
-using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
     public VariableJoystick joy;
-    public float speed;
 
-    private Rigidbody rigid;
-    private Animator anim;
-    private Vector3 moveVec;
-    private PlayerIngameData playerIngameData;
+    protected Rigidbody rigid;
+    protected Animator anim;
+    protected Vector3 moveVec;
 
-    private int PlayerID;
-    private int level;
-    private int hp;
-    private CharacterInfo characterInfo;
+    protected int playerID;
+    protected int level;
+    protected int hp;
+    protected CharacterInfo characterInfo;
 
     private bool IsInit = false;
 
-    [SerializeField] private Transform projectilePoint;
+    public playeringameinfo playeringameinfo;
+    public List<SkillTable> activeSkillSlot = new List<SkillTable>();
+    public List<SkillTable> passiveSkillSlot = new List<SkillTable>();
+
+
+    [SerializeField] protected Transform projectilePoint;
     // 적
     public LayerMask enemyLayer;
     public float detectionRange = 15f;
     private List<Transform> nearEnemy = new List<Transform>();
-    private SkillPool skillPool;
+    protected SkillPool skillPool;
+
+    private List<GameObject> chaseTarget = new List<GameObject>();
 
     public virtual void Init(int _player, int _level)
     {
         if (IsInit) return;
+
         Debug.Log("Player.Init");
-        PlayerID = _player;
+        playerID = _player;
         level = _level;
 
-        characterInfo = DataManager.Instance.characterInfoDict[PlayerID];
-
-        hp = characterInfo.hp;
+        characterInfo = DataManager.Instance.characterInfoDict[playerID];
 
         skillPool.CreatePool(transform);
+
+
+        // 플레이어 기본 스탯 초기화
+        hp = characterInfo.hp;
+
+        playeringameinfo = new playeringameinfo();
+        playeringameinfo.attackPower = characterInfo.attackPower;
+        playeringameinfo.addAttackPower = 0;
+        playeringameinfo.sensoryRange = characterInfo.sensoryRange;
+        playeringameinfo.attackRange = characterInfo.attackRange;
+        playeringameinfo.attackSpeed = characterInfo.attackSpeed;
+        playeringameinfo.moveSpeed = characterInfo.moveSpeed;
+
+        playeringameinfo.curLevel = 1;
+        playeringameinfo.sliderCurExp = 0;
+        playeringameinfo.sliderMaxExp = DataManager.Instance.GetPlayerIngameLevel(2).exp;
+        playeringameinfo.curExp = 0;
+        playeringameinfo.totalExp = 0;
+        playeringameinfo.killCount = 0;
+        playeringameinfo.gold = 0;
+        playeringameinfo.skillpoint = 0;
+
+        activeSkillSlot.Add(DataManager.Instance.GetSkillTable(30000001)); // 기본스킬 지급
+
         IsInit = true;
     }
-
 
     private void Awake()
     {
         Debug.Log("Player.Awake");
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
-        playerIngameData = GetComponent<PlayerIngameData>();
         skillPool = GetComponent<SkillPool>();
     }
 
+    //private void Start()
+    //{
+    //    UpdateSlider();
+    //}
 
     private void Update()
     {
@@ -71,7 +99,7 @@ public class Player : MonoBehaviour
         float z = joy.Vertical;
         //Debug.Log($"{x}, {z}");
 
-        moveVec = new Vector3(x, 0, z) * speed * Time.deltaTime;
+        moveVec = new Vector3(x, 0, z) * playeringameinfo.moveSpeed * Time.deltaTime;
         rigid.MovePosition(rigid.position + moveVec);
 
         if (moveVec.sqrMagnitude == 0)
@@ -82,34 +110,24 @@ public class Player : MonoBehaviour
         rigid.MoveRotation(moveQuat);
     }
 
+
     private void LateUpdate()
     {
         //anim.SetFloat("Move", moveVec.sqrMagnitude); 
+
+        if (chaseTarget.Count > 0)
+        {
+            // TODO : 적 추적 작동
+        }
     }
 
-    public void JoyStick(VariableJoystick joy)
-    {
-        this.joy = joy;
-    }
 
-    public void TakePhysicalDamage(int damageAmount)
-    {
-
-        hp -= damageAmount;
-        if (hp <= 0)
-            OnDead();
-    }
-
-    void OnDead()
-    {
-        Debug.Log("플레이어사망. 게임오버UI");
-    }
-
+    #region Controll
 
     private void SkillRoutine()
     {
         // 임시
-        foreach (SkillTable skill in playerIngameData.activeSkillSlot)
+        foreach (SkillTable skill in activeSkillSlot)
         {
             switch (skill.skillType)
             {
@@ -123,7 +141,7 @@ public class Player : MonoBehaviour
                             // 발사 방향
                             Vector3 direction = DetectEnemyDirection();
                             // 발사 작동
-                            skillPool.GetPoolSkill(skill.skillId, projectilePoint, direction);
+                            skillPool.GetPoolSkill(skill.skillId, skill.level, projectilePoint, direction);
                             skillPool.GetPoolFlash(skill.skillId, projectilePoint, direction);
                         }
                     }
@@ -133,7 +151,27 @@ public class Player : MonoBehaviour
         }
     }
 
-    private Vector3 DetectEnemyDirection()
+    public void JoyStick(VariableJoystick joy)
+    {
+        this.joy = joy;
+    }
+
+    public void TakePhysicalDamage(int damageAmount)
+    {
+        hp -= damageAmount;
+        if (hp <= 0)
+            OnDead();
+    }
+
+    void OnDead()
+    {
+        Debug.Log("플레이어사망. 게임오버UI");
+        UIManager.Instance.ShowUI<UIDefeated>();
+        ++UIManager.Instance.popupUICount;
+    }
+
+
+    protected Vector3 DetectEnemyDirection()
     {
         nearEnemy.Clear();
         // TODO: OverlapSphereNonAlloc로 변환가능하면 변환
@@ -164,7 +202,7 @@ public class Player : MonoBehaviour
     }
 
     // 가장 가까운 적을 찾는 함수
-    Transform GetNearestEnemy()
+    protected Transform GetNearestEnemy()
     {
         Transform nearestEnemy = null;
         float nearestDistanceSqr = Mathf.Infinity;
@@ -184,4 +222,88 @@ public class Player : MonoBehaviour
         return nearestEnemy;
     }
 
+    #endregion
+
+    #region UI
+    public void AddTarget(GameObject go)
+    {
+        chaseTarget.Add(go);
+    }
+
+    private void UpdateSlider()
+    {
+        playeringameinfo.sliderMaxExp = DataManager.Instance.GetPlayerIngameLevel(playeringameinfo.curLevel + 1).exp;
+    }
+
+    public int CurrentOpenSkillSlotCount() //허용 슬롯의 숫자. 일단 3으로 정해놓았으나 이후 조건에 따른 값을 리턴하게 한다.
+    {
+        return 3;
+    }
+
+    public void AddKillCount()
+    {
+        playeringameinfo.killCount++;
+    }
+
+    public void AddGold(int addGold)
+    {
+        playeringameinfo.gold += addGold;
+    }
+
+    public void AddExp(int addExp)
+    {
+
+        while (addExp > 0)
+        {
+            PlayerIngameLevel levelData = DataManager.Instance.GetPlayerIngameLevel(playeringameinfo.curLevel + 1);
+            if (levelData == null)
+            {
+                playeringameinfo.sliderMaxExp = 1;
+                Debug.Log("만랩");
+                break; // 만랩
+            }
+
+            playeringameinfo.sliderMaxExp = levelData.exp;
+            if (playeringameinfo.totalExp + addExp >= levelData.totalExp)
+            {
+                //Debug.Log($"랩업 토탈경치 {playeringameinfo.totalExp + addExp}/{levelData.totalExp}");
+                // 랩업
+                addExp -= (levelData.totalExp - playeringameinfo.totalExp);
+                playeringameinfo.totalExp = levelData.totalExp;
+                playeringameinfo.curExp = 0;
+                playeringameinfo.sliderCurExp = playeringameinfo.curExp;
+                ++playeringameinfo.curLevel;
+                ++playeringameinfo.skillpoint;
+            }
+            else
+            {
+                playeringameinfo.totalExp += addExp;
+                playeringameinfo.curExp += addExp;
+                playeringameinfo.sliderCurExp = playeringameinfo.curExp;
+                addExp = 0;
+            }
+        }
+        GameManager.Instance.UpdateUI();
+        if (playeringameinfo.skillpoint > 0)
+        {
+            if (GameManager.Instance.gameState == GameState.IngameStart)
+            {
+                UIManager.Instance.ShowUI<UILevelUP>();
+                ++UIManager.Instance.popupUICount;
+            }
+        }
+    }
+
+
+    // 테스트 코드
+    public void LevelUp()
+    {
+        playeringameinfo.curLevel++;
+        playeringameinfo.sliderCurExp = 0;
+        UpdateSlider();
+        UIManager.Instance.ShowUI<UILevelUP>();
+    }
+
+
+    #endregion
 }
