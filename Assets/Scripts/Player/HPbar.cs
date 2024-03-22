@@ -1,16 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class HPbar : MonoBehaviour
+public class UIhpbar : UIBase
 {
     private Camera mainCamera;
 
-    void Start()
+    private void Awake()
     {
         mainCamera = Camera.main;
-        
-        
     }
 
     // Update is called once per frame

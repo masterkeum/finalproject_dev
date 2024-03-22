@@ -38,7 +38,7 @@ public class DropCoin : MonoBehaviour
         distance = Vector3.Distance(transform.position, player.transform.position);
         if (distance < 2.0f)
         {
-            Debug.Log($"경험치 획득 : {exp}, {gold}");
+            //Debug.Log($"경험치 획득 : {exp}, {gold}");
             // 획득값 플레이어에게 던져주기
             player.AddExp(exp);
             player.AddGold(gold);

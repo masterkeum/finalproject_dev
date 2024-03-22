@@ -1,9 +1,20 @@
 using System;
 using UnityEngine;
 
+public enum GameState
+{
+    None,
+    Intro,
+    Loading,
+    Main,
+    IngameStart,
+    IngameEnd,
+}
+
 public class GameManager : SingletoneBase<GameManager>
 {
     [ReadOnly, SerializeField] private string _pidStr;
+    public GameState gameState { get; private set; }
 
     public AccountInfo accountInfo;
     public event Action updateUIAction; // UI 업데이트 콜
@@ -23,6 +34,18 @@ public class GameManager : SingletoneBase<GameManager>
         stageId = 101; // !NOTE : Test코드
     }
 
+    private void Update()
+    {
+        if (UIManager.Instance.popupUICount > 0)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+    }
+
     public void Clear()
     {
         updateUIAction = null;
@@ -39,4 +62,8 @@ public class GameManager : SingletoneBase<GameManager>
         this.player = player;
     }
 
+    public void SetState(GameState state)
+    {
+        gameState = state;
+    }
 }

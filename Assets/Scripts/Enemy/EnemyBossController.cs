@@ -1,3 +1,4 @@
+using Gley.Jumpy;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -41,7 +42,7 @@ public class EnemyBossController : EnemyBaseController
             case EnemyState.Trace: TraceUpdate(); break;
             case EnemyState.Attack: AttackUpdate(); break;
             case EnemyState.Flee: FleeUpdate(); break;
-            case EnemyState.Die: OnDead(); break;
+            case EnemyState.Die: break;
 
             default:
                 SetState(EnemyState.Flee); break;
@@ -126,6 +127,7 @@ public class EnemyBossController : EnemyBaseController
         {
             lastAttackTime = Time.time;
             //PlayerController.instance.GetComponent<IDamagable>().TakePhysicalDamage(damage); // 데미지 처리
+            player.TakePhysicalDamage(damage);
             animator.SetTrigger(Attack);
         }
     }
@@ -144,9 +146,9 @@ public class EnemyBossController : EnemyBaseController
     protected override void OnDead()
     {
         base.OnDead();
-
         Debug.Log("게임 클리어");
+        GameManager.Instance.SetState(GameState.IngameEnd);
         UIManager.Instance.ShowUI<UIGameClear>();
-        Time.timeScale = 0f;
+        ++UIManager.Instance.popupUICount;
     }
 }
