@@ -26,6 +26,8 @@ public class InGameHUD : UIBase
 
         player = GameManager.Instance.player;
         //hpSlider = player.GetComponentInChildren<Slider>();
+
+        SetWhenStart();
         UpdateWhenEnemyDie();
         UpdateWhenGetGold();
         UpdateWhenGetGem();
