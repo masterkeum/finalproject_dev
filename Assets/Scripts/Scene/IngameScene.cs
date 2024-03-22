@@ -6,6 +6,15 @@ using UnityEngine.AI;
 
 public struct playeringameinfo
 {
+    public int attackPower;
+    public int addAttackPower;
+
+    public float sensoryRange;
+    public float attackRange;
+    public float attackSpeed;
+    public float moveSpeed;
+
+    //
     public int curLevel;
     public int maxLevel;
     public int sliderCurExp;
@@ -13,8 +22,10 @@ public struct playeringameinfo
     public int curExp;
     public int totalExp;
     public int maxExp;
+
     public int killCount;
     public int gold;
+    public int skillpoint;
 }
 
 public class IngameScene : MonoBehaviour
@@ -49,7 +60,7 @@ public class IngameScene : MonoBehaviour
     private void Awake()
     {
         _ = DataManager.Instance;
-        _ = GameManager.Instance;
+        GameManager.Instance.Clear();
         //_ = AccountInfo.Instance;// 사용자 계정 데이터 접근
 
         virtualCamera = GameObject.Find("Virtual Camera");

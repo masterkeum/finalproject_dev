@@ -1,13 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
-using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
-
     public VariableJoystick joy;
-    public float moveSpeed;
 
     protected Rigidbody rigid;
     protected Animator anim;
@@ -20,12 +16,9 @@ public class Player : MonoBehaviour
 
     private bool IsInit = false;
 
-    private playeringameinfo playeringameinfo;
+    public playeringameinfo playeringameinfo;
     public List<SkillTable> activeSkillSlot = new List<SkillTable>();
     public List<SkillTable> passiveSkillSlot = new List<SkillTable>();
-
-
-
 
 
     [SerializeField] protected Transform projectilePoint;
@@ -51,14 +44,22 @@ public class Player : MonoBehaviour
         // 플레이어 기본 스탯 초기화
         hp = characterInfo.hp;
 
-        moveSpeed = characterInfo.moveSpeed;
         playeringameinfo = new playeringameinfo();
+        playeringameinfo.attackPower = characterInfo.attackPower;
+        playeringameinfo.addAttackPower = 0;
+        playeringameinfo.sensoryRange = characterInfo.sensoryRange;
+        playeringameinfo.attackRange = characterInfo.attackRange;
+        playeringameinfo.attackSpeed = characterInfo.attackSpeed;
+        playeringameinfo.moveSpeed = characterInfo.moveSpeed;
+
         playeringameinfo.curLevel = 1;
         playeringameinfo.sliderCurExp = 0;
+        playeringameinfo.sliderMaxExp = DataManager.Instance.GetPlayerIngameLevel(2).exp;
         playeringameinfo.curExp = 0;
         playeringameinfo.totalExp = 0;
         playeringameinfo.killCount = 0;
         playeringameinfo.gold = 0;
+        playeringameinfo.skillpoint = 0;
 
         activeSkillSlot.Add(DataManager.Instance.GetSkillTable(30000001)); // 기본스킬 지급
 
@@ -74,10 +75,10 @@ public class Player : MonoBehaviour
         skillPool = GetComponent<SkillPool>();
     }
 
-    private void Start()
-    {
-        UpdateSlider();
-    }
+    //private void Start()
+    //{
+    //    UpdateSlider();
+    //}
 
     private void Update()
     {
@@ -109,7 +110,7 @@ public class Player : MonoBehaviour
                             // 발사 방향
                             Vector3 direction = DetectEnemyDirection();
                             // 발사 작동
-                            skillPool.GetPoolSkill(skill.skillId, projectilePoint, direction);
+                            skillPool.GetPoolSkill(skill.skillId, skill.level, projectilePoint, direction);
                             skillPool.GetPoolFlash(skill.skillId, projectilePoint, direction);
                         }
                     }
@@ -125,7 +126,7 @@ public class Player : MonoBehaviour
         float z = joy.Vertical;
         //Debug.Log($"{x}, {z}");
 
-        moveVec = new Vector3(x, 0, z) * moveSpeed * Time.deltaTime;
+        moveVec = new Vector3(x, 0, z) * playeringameinfo.moveSpeed * Time.deltaTime;
         rigid.MovePosition(rigid.position + moveVec);
 
         if (moveVec.sqrMagnitude == 0)
@@ -157,6 +158,8 @@ public class Player : MonoBehaviour
     void OnDead()
     {
         Debug.Log("플레이어사망. 게임오버UI");
+        UIManager.Instance.ShowUI<UIDefeated>();
+        Time.timeScale = 0f;
     }
 
 
@@ -217,26 +220,7 @@ public class Player : MonoBehaviour
 
     private void UpdateSlider()
     {
-        sliderMaxExp = DataManager.Instance.GetPlayerIngameLevel(curLevel).exp;
-    }
-
-    private void UpdateCurLevel()
-    {
-        for (int i = curLevel; i <= DataManager.Instance.PlayerIngameLevelDict.Count; i++)
-        {
-            PlayerIngameLevel levelData = DataManager.Instance.GetPlayerIngameLevel(i);
-            if (totalExp <= levelData.totalExp)
-            {
-                if (curLevel < levelData.level)
-                {
-                    curLevel = levelData.level;
-                    UIManager.Instance.ShowUI<UILevelUP>();
-                }
-                curExp = levelData.totalExp - totalExp;
-                sliderCurExp = curExp;
-                break;
-            }
-        }
+        playeringameinfo.sliderMaxExp = DataManager.Instance.GetPlayerIngameLevel(playeringameinfo.curLevel + 1).exp;
     }
 
     public int CurrentOpenSkillSlotCount() //허용 슬롯의 숫자. 일단 3으로 정해놓았으나 이후 조건에 따른 값을 리턴하게 한다.
@@ -246,26 +230,61 @@ public class Player : MonoBehaviour
 
     public void AddKillCount()
     {
-        killCount++;
+        playeringameinfo.killCount++;
     }
 
-    public void AddGoldCount(int addGold)
+    public void AddGold(int addGold)
     {
-        gold += addGold;
+        playeringameinfo.gold += addGold;
     }
 
     public void AddExp(int addExp)
     {
-        totalExp += addExp;
-        UpdateCurLevel();
+
+        while (addExp > 0)
+        {
+            PlayerIngameLevel levelData = DataManager.Instance.GetPlayerIngameLevel(playeringameinfo.curLevel + 1);
+            if (levelData == null)
+            {
+                playeringameinfo.sliderMaxExp = 1;
+                Debug.Log("만랩");
+                break; // 만랩
+            }
+
+            playeringameinfo.sliderMaxExp = levelData.exp;
+            if (playeringameinfo.totalExp + addExp >= levelData.totalExp)
+            {
+                Debug.Log($"랩업 토탈경치 {playeringameinfo.totalExp + addExp}/{levelData.totalExp}");
+                // 랩업
+                addExp -= (levelData.totalExp - playeringameinfo.totalExp);
+                playeringameinfo.totalExp = levelData.totalExp;
+                playeringameinfo.curExp = 0;
+                playeringameinfo.sliderCurExp = playeringameinfo.curExp;
+                ++playeringameinfo.curLevel;
+                ++playeringameinfo.skillpoint;
+            }
+            else
+            {
+                playeringameinfo.totalExp += addExp;
+                playeringameinfo.curExp += addExp;
+                playeringameinfo.sliderCurExp = playeringameinfo.curExp;
+                addExp = 0;
+            }
+        }
+        GameManager.Instance.UpdateUI();
+        if (playeringameinfo.skillpoint > 0)
+        {
+            UIManager.Instance.ShowUI<UILevelUP>();
+            Time.timeScale = 0f;
+        }
     }
 
 
     // 테스트 코드
     public void LevelUp()
     {
-        curLevel++;
-        sliderCurExp = 0;
+        playeringameinfo.curLevel++;
+        playeringameinfo.sliderCurExp = 0;
         UpdateSlider();
         UIManager.Instance.ShowUI<UILevelUP>();
     }

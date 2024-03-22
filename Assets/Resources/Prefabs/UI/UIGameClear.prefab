@@ -11670,9 +11670,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620b1f28dd22c4243a22052885a614c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  killCountText: {fileID: 0}
-  getGoldText: {fileID: 0}
-  getGemText: {fileID: 0}
+  killCountText: {fileID: 1310874431875438922}
+  getGoldText: {fileID: 2063858381887284422}
+  getGemText: {fileID: 5947413402275250073}
 --- !u!1 &4703352380892658954
 GameObject:
   m_ObjectHideFlags: 0

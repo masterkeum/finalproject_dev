@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UILevelUP : UIBase
@@ -12,13 +13,15 @@ public class UILevelUP : UIBase
     public List<SkillSlotUI> curAcitveSkillUI = new List<SkillSlotUI>();
     public List<SkillSlotUI> curPassiveSkillUI = new List<SkillSlotUI>();
 
+    public TextMeshProUGUI skillPointText;
+
     private Player player;
 
     private void Awake()
     {
         player = GameManager.Instance.player;
 
-        foreach (SkillTable skill in DataManager.Instance.SkillTableDict.Values)
+        foreach (SkillTable skill in DataManager.Instance.skillTableDict.Values)
         {
             if (skill.skillId > 30000000 && skill.skillId < 30000300)
             {
@@ -32,6 +35,12 @@ public class UILevelUP : UIBase
         SetSelectableSkills();
         SetCurSkills();
         SetStar();
+        UpdateSkillPoint();
+    }
+
+    private void UpdateSkillPoint()
+    {
+        skillPointText.text = $"스킬포인트 + {player.playeringameinfo.skillpoint}";
     }
 
     private void SetSelectableSkills()
@@ -153,8 +162,21 @@ public class UILevelUP : UIBase
             }
         }
 
-        gameObject.SetActive(false);
-        randomSkills.Clear();
+
+        --player.playeringameinfo.skillpoint;
+
+        if (player.playeringameinfo.skillpoint > 0)
+        {
+            OnReRollButton();
+            UpdateSkillPoint();
+            SetCurSkills();
+        }
+        else
+        {
+            gameObject.SetActive(false);
+            randomSkills.Clear();
+            Time.timeScale = 1f;
+        }
     }
 
     private void SetStar()
@@ -185,22 +207,22 @@ public class UILevelUP : UIBase
         switch (skill.skillId)
         {
             case 30000001:
-                variableSkills.Add(DataManager.Instance.SkillTableDict[30000301]);
+                variableSkills.Add(DataManager.Instance.skillTableDict[30000301]);
                 break;
             case 30000002:
-                variableSkills.Add(DataManager.Instance.SkillTableDict[30000302]);
+                variableSkills.Add(DataManager.Instance.skillTableDict[30000302]);
                 break;
             case 30000003:
-                variableSkills.Add(DataManager.Instance.SkillTableDict[30000303]);
+                variableSkills.Add(DataManager.Instance.skillTableDict[30000303]);
                 break;
             case 30000004:
-                variableSkills.Add(DataManager.Instance.SkillTableDict[30000304]);
+                variableSkills.Add(DataManager.Instance.skillTableDict[30000304]);
                 break;
             case 30000005:
-                variableSkills.Add(DataManager.Instance.SkillTableDict[30000305]);
+                variableSkills.Add(DataManager.Instance.skillTableDict[30000305]);
                 break;
             case 30000006:
-                variableSkills.Add(DataManager.Instance.SkillTableDict[30000306]);
+                variableSkills.Add(DataManager.Instance.skillTableDict[30000306]);
                 break;
         }
 

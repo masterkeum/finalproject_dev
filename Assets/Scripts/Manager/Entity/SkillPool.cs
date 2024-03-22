@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.ProBuilder.MeshOperations;
 
@@ -33,6 +34,7 @@ public class SkillPool : MonoBehaviour
                 GameObject skillgo = Instantiate(pool.prefab, transform.position, Quaternion.identity);
                 skillgo.transform.SetParent(transform);
                 skillgo.SetActive(false);
+                skillgo.GetComponent<ProjectileMover>().Init(pool.id, 1);
                 skillQueue.Enqueue(skillgo);
 
                 if (pool.flash != null)
@@ -52,36 +54,7 @@ public class SkillPool : MonoBehaviour
         }
     }
 
-    //public void GetPoolItem(int id, Transform transform)
-    //{
-    //    if (poolDictionary.ContainsKey(id))
-    //    {
-    //        GameObject obj = poolDictionary[id].Dequeue();
-    //        poolDictionary[id].Enqueue(obj);
-    //        obj.transform.position = transform.position;
-    //        obj.SetActive(true);
-
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("Can't find Obj");
-    //    }
-    //}
-
-
-    //public GameObject GetPoolItem(int id)
-    //{
-    //    if (poolDictionary.ContainsKey(id))
-    //    {
-    //        GameObject obj = poolDictionary[id].Dequeue();
-    //        poolDictionary[id].Enqueue(obj);
-    //        obj.transform.position = transform.position;
-    //        return obj;
-    //    }
-    //    return null;
-    //}
-
-    public void GetPoolSkill(int id, Transform point, Vector3 direction)
+    public void GetPoolSkill(int id, int level, Transform point, Vector3 direction)
     {
         // TODO : 가변적으로 추가생성되게 변경
 
@@ -90,6 +63,7 @@ public class SkillPool : MonoBehaviour
             GameObject obj = poolDictionary[id].Dequeue();
             obj.transform.position = point.position;
             obj.transform.rotation = Quaternion.LookRotation(direction);
+            obj.GetComponent<ProjectileMover>().Init(id, 1);
             obj.SetActive(true);
 
             poolDictionary[id].Enqueue(obj);
@@ -99,7 +73,7 @@ public class SkillPool : MonoBehaviour
         }
         else
         {
-            Debug.Log("Can't find Obj");
+            Debug.Log($"Can't find Obj : {id}");
         }
     }
 
@@ -117,7 +91,7 @@ public class SkillPool : MonoBehaviour
         }
         else
         {
-            Debug.Log("Can't find Obj");
+            Debug.Log($"Can't find Obj : {id}");
         }
     }
 

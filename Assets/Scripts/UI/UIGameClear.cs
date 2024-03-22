@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIGameClear : UIBase
 {
-    private GameObject player;
-    private PlayerIngameData playerData;
+    private Player player;
 
     public TextMeshProUGUI killCountText;
     public TextMeshProUGUI getGoldText;
@@ -14,27 +14,28 @@ public class UIGameClear : UIBase
 
     private void Start()
     {
-        playerData = player.GetComponent<PlayerIngameData>();
-        
+        player = GameManager.Instance.player;
     }
 
     private void Update()
     {
-        killCountText.text = playerData.killCount.ToString();
-        getGoldText.text = playerData.gold.ToString();
+        killCountText.text = player.playeringameinfo.killCount.ToString();
+        getGoldText.text = player.playeringameinfo.gold.ToString();
         //getGemText.text 플레이 시간에 비례해서 제공?
     }
 
     public void GetDoubleReward()
     {
-
+        Debug.Log("GetDoubleReward");
     }
 
     public void GetCommonReward()
     {
-
+        Debug.Log("GetCommonReward");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(2);
     }
-    
-    
+
+
 
 }

@@ -69,12 +69,8 @@ public class EnemyBaseController : MonoBehaviour
 
     protected float lastAttackTime;// 마지막 공격 시간
 
-
     private int hp;
-
-    private int gold;
-    private int exp;
-    private GameObject point;
+    private DropCoin point;
 
     protected void Awake()
     {
@@ -140,19 +136,19 @@ public class EnemyBaseController : MonoBehaviour
 
     protected virtual void OnDead()
     {
-        exp = monsterLevel.exp;
-        gold = monsterLevel.gold;
-
-        point = Instantiate(Resources.Load<GameObject>("Prefabs/Coin/RupeeGold"), transform.position + Vector3.up * 2, Quaternion.identity);
-        point.GetComponent<DropCoin>().Init(gold, exp, targetPlayerTransform.gameObject);
-
+        // 이동 정지
         capsuleCollider.enabled = false;
         navMeshAgent.isStopped = true;
-
-
-        player.AddKillCount();
         animator.SetTrigger(Die);
         StartCoroutine(Remove());
+
+        // 보상
+        point = Instantiate(Resources.Load<DropCoin>("Prefabs/Coin/RupeeGold"), transform.position + Vector3.up * 2, Quaternion.identity);
+        point.Init(monsterLevel.gold, monsterLevel.exp);
+
+        // UI
+        player.AddKillCount();
+        GameManager.Instance.UpdateUI();
     }
 
 

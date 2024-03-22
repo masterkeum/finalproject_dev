@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class GameManager : SingletoneBase<GameManager>
 {
-    public event Action updateUIAction;
-
     [ReadOnly, SerializeField] private string _pidStr;
-    public AccountInfo accountInfo;
 
+    public AccountInfo accountInfo;
+    public event Action updateUIAction; // UI 업데이트 콜
     public Player player { get; private set; }
 
     // 씬이 넘어가도 유지할 데이터

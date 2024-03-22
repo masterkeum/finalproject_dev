@@ -83,5 +83,6 @@ public class UIPause : UIBase
     public void ContinueButton()
     {
         gameObject.SetActive(false);
+        Time.timeScale = 1f;
     }
 }

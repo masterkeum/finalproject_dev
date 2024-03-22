@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -22,6 +23,15 @@ public class ProjectileMover : MonoBehaviour
 
     private LayerMask enemyLayerMask;
 
+    SkillTable skillInfo;
+    private int damage;
+
+    public void Init(int id, int level)
+    {
+        SkillTable skillInfo = DataManager.Instance.GetSkillTable(id);
+        damage = skillInfo.damage + level * 20;
+    }
+
     private void Awake()
     {
         if (li != null)
@@ -36,6 +46,8 @@ public class ProjectileMover : MonoBehaviour
     }
     private void OnEnable()
     {
+
+
         if (li != null)
             li.enabled = true;
         rb.constraints = originalConstraints;
@@ -122,7 +134,7 @@ public class ProjectileMover : MonoBehaviour
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, triggerEnterPoint);
             Vector3 pos = triggerEnterPoint + new Vector3(0, hitOffset, 0);
 
-            other.GetComponent<EnemyBaseController>().TakePhysicalDamage(50);
+            other.GetComponent<EnemyBaseController>().TakePhysicalDamage(damage);
 
             //Spawn hit effect on collision
             if (hit != null)
@@ -168,4 +180,6 @@ public class ProjectileMover : MonoBehaviour
         detachedPrefab.transform.rotation = gameObject.transform.rotation;
         yield break;
     }
+
+
 }

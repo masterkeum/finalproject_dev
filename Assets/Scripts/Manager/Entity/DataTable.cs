@@ -7,6 +7,7 @@ public class DataTable
 {
     public List<CharacterInfo> CharacterInfo;
     public List<MonsterLevel> MonsterLevel;
+    public List<StageList> StageList;
     public List<StageInfoTable> StageInfoTable;
     public List<PlayerIngameLevel> PlayerIngameLevel;
     public List<SkillTable> SkillTable;
@@ -46,6 +47,13 @@ public class MonsterLevel
     public int exp;
     public string rewardType;
     public int? rewardID;
+}
+
+[Serializable]
+public class StageList
+{
+    public int stageId;
+    public string BGSprite; // 스프라이트의 경로
 }
 
 [Serializable]

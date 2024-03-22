@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 
+/// <summary>
+/// 계정정보 : 저장과 불러오기를 위한 클래스
+/// </summary>
 public class AccountInfo : MonoBehaviour
 {
-    // 복사해둘것. 나중에 지우고 컨플릭트 없이 합칠 예정
     /*
-    계정정보
     데이터를 받거나 읽어와서 초기화
     계정 데이터 저장
         계정 레벨
@@ -21,9 +22,9 @@ public class AccountInfo : MonoBehaviour
     [ReadOnly, SerializeField] private string aId;
 
     [Header("Inventory")] //인벤토리 아이템들
-    public Dictionary<string,ItemTable> equipItems = new Dictionary<string,ItemTable>();
+    public Dictionary<string, ItemTable> equipItems = new Dictionary<string, ItemTable>();
 
-    
+
     private string _name;
     private string _level;
     private string _totalExp;
@@ -36,8 +37,6 @@ public class AccountInfo : MonoBehaviour
 
     public ItemTable newItem = new ItemTable();
 
-   
-
 
     private void AddEquipDict()
     {
@@ -45,7 +44,7 @@ public class AccountInfo : MonoBehaviour
         {
             case "Weapon":
                 {
-                    if (equipItems["Weapon"]!= null)
+                    if (equipItems["Weapon"] != null)
                     {
                         equipItems.Remove("Weapon");
                     }
