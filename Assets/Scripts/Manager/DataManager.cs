@@ -9,10 +9,11 @@ public class DataManager : SingletoneBase<DataManager>
     private string DataFilePath = "DataTables/DataTable";
 
     public Dictionary<int, CharacterInfo> characterInfoDict;
-    public Dictionary<int, List<StageInfoTable>> StageInfoDict;
-    public Dictionary<int, PlayerIngameLevel> PlayerIngameLevelDict;
-    public Dictionary<int, SkillTable> SkillTableDict;
-    public Dictionary<string, ItemTable> ItemTableDict;
+    public Dictionary<int, StageList> stageListDict;
+    public Dictionary<int, List<StageInfoTable>> stageInfoDict;
+    public Dictionary<int, PlayerIngameLevel> playerIngameLevelDict;
+    public Dictionary<int, SkillTable> skillTableDict;
+    public Dictionary<int, ItemTable> itemTableDict;
 
     protected override void Init()
     {
@@ -39,13 +40,8 @@ public class DataManager : SingletoneBase<DataManager>
     {
         DataTable jsonData = JsonUtility.FromJson<DataTable>(json);
 
-        characterInfoDict = new Dictionary<int, CharacterInfo>();
-        StageInfoDict = new Dictionary<int, List<StageInfoTable>>();
-        PlayerIngameLevelDict = new Dictionary<int, PlayerIngameLevel>();
-        SkillTableDict = new Dictionary<int, SkillTable>();
-        ItemTableDict = new Dictionary<string, ItemTable>();
-
         // 캐릭터 정보
+        characterInfoDict = new Dictionary<int, CharacterInfo>();
         foreach (CharacterInfo characterInfo in jsonData.CharacterInfo)
         {
             characterInfoDict.Add(characterInfo.uid, characterInfo);
@@ -65,41 +61,51 @@ public class DataManager : SingletoneBase<DataManager>
         Debug.Log("케릭터 정보 로드 완료");
 
         // 스테이지 정보
+        stageListDict = new Dictionary<int, StageList>();
+        foreach (StageList stageList in jsonData.StageList)
+        {
+            stageListDict.Add(stageList.stageId, stageList);
+        }
+        Debug.Log("스테이지 리스트 정보 로드 완료");
+
+        // 스테이지 세부 정보
+        stageInfoDict = new Dictionary<int, List<StageInfoTable>>();
         foreach (StageInfoTable stageInfoTable in jsonData.StageInfoTable)
         {
             int stageId = stageInfoTable.stageId;
-            if (StageInfoDict.ContainsKey(stageId))
+            if (stageInfoDict.ContainsKey(stageId))
             {
-                StageInfoDict[stageId].Add(stageInfoTable);
+                stageInfoDict[stageId].Add(stageInfoTable);
             }
             else
             {
                 // 새로 생성
-                StageInfoDict.Add(stageId, new List<StageInfoTable>());
-                StageInfoDict[stageId].Add(stageInfoTable);
+                stageInfoDict.Add(stageId, new List<StageInfoTable>());
+                stageInfoDict[stageId].Add(stageInfoTable);
             }
         }
         Debug.Log("스테이지 정보 로드 완료");
 
         // 인게임 유저 레벨 정보
-
+        playerIngameLevelDict = new Dictionary<int, PlayerIngameLevel>();
         foreach (PlayerIngameLevel playerIngameLevel in jsonData.PlayerIngameLevel)
         {
-            PlayerIngameLevelDict.Add(playerIngameLevel.level, playerIngameLevel);
+            playerIngameLevelDict.Add(playerIngameLevel.level, playerIngameLevel);
         }
         Debug.Log("유저 인게임 레벨 정보 로드 완료");
 
         // 스킬 정보
-
+        skillTableDict = new Dictionary<int, SkillTable>();
         foreach (SkillTable skillTable in jsonData.SkillTable)
         {
             //skillTable.lastAttackTime = Time.time;
-            SkillTableDict.Add(skillTable.skillId, skillTable);
+            skillTableDict.Add(skillTable.skillId, skillTable);
         }
 
+        itemTableDict = new Dictionary<int, ItemTable>();
         foreach (ItemTable itemTable in jsonData.ItemTable)
         {
-            ItemTableDict.Add(itemTable.itemType, itemTable);
+            itemTableDict.Add(itemTable.itemId, itemTable);
         }
 
         // GC에서 언제 가져갈지 모르니 jsonData를 명시적으로 null 로 만들거나 destroy 하고싶다.
@@ -117,30 +123,30 @@ public class DataManager : SingletoneBase<DataManager>
 
     public List<StageInfoTable> GetStageInfo(int stageId)
     {
-        if (StageInfoDict.ContainsKey(stageId))
-            return StageInfoDict[stageId];
+        if (stageInfoDict.ContainsKey(stageId))
+            return stageInfoDict[stageId];
         else
             return null;
     }
 
     public PlayerIngameLevel GetPlayerIngameLevel(int level)
     {
-        if (PlayerIngameLevelDict.ContainsKey(level))
-            return PlayerIngameLevelDict[level];
+        if (playerIngameLevelDict.ContainsKey(level))
+            return playerIngameLevelDict[level];
         else return null;
     }
 
     public SkillTable GetSkillTable(int skillId)
     {
-        if (SkillTableDict.ContainsKey(skillId))
-            return SkillTableDict[skillId];
+        if (skillTableDict.ContainsKey(skillId))
+            return skillTableDict[skillId];
         else return null;
     }
 
-    public ItemTable GetItemTable(string itemType)
+    public ItemTable GetItemTable(int itemId)
     {
-        if (ItemTableDict.ContainsKey(itemType))
-            return ItemTableDict[itemType];
+        if (itemTableDict.ContainsKey(itemId))
+            return itemTableDict[itemId];
         else return null;
     }
 

@@ -4,6 +4,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public struct playeringameinfo
+{
+    public int attackPower;
+    public int addAttackPower;
+
+    public float sensoryRange;
+    public float attackRange;
+    public float attackSpeed;
+    public float moveSpeed;
+
+    //
+    public int curLevel;
+    public int maxLevel;
+    public int sliderCurExp;
+    public int sliderMaxExp;
+    public int curExp;
+    public int totalExp;
+    public int maxExp;
+
+    public int killCount;
+    public int gold;
+    public int skillpoint;
+}
+
 public class IngameScene : MonoBehaviour
 {
     /*
@@ -19,22 +43,24 @@ public class IngameScene : MonoBehaviour
 
         일시정지 로직
     */
+
     Pooling objectPool;
 
     private Player player;
     private GameObject joyStick;
     private GameObject virtualCamera;
 
+    private InGameHUD inGameHUD;
+
     private int stageId;
     List<StageInfoTable> stageMonsterList;
 
-
-    private float spawnRadius = 30f; // 30은 돼야 화면밖인듯
+    private float spawnRadius = 30f; // TODO: 30은 돼야 화면밖인듯. 기본 설정도 나중에 데이터로
 
     private void Awake()
     {
         _ = DataManager.Instance;
-        _ = GameManager.Instance;
+        GameManager.Instance.Clear();
         //_ = AccountInfo.Instance;// 사용자 계정 데이터 접근
 
         virtualCamera = GameObject.Find("Virtual Camera");
@@ -57,6 +83,10 @@ public class IngameScene : MonoBehaviour
 
         // 플레이 기본 세팅
 
+
+        // HUD 생성
+        inGameHUD = UIManager.Instance.ShowUI<InGameHUD>();
+
         // 몬스터 생성
         StartStage();
     }
@@ -77,20 +107,15 @@ public class IngameScene : MonoBehaviour
 
         joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
         player.JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
-        
+
         // 쏴주는 역할
-        GameManager.Instance.TakePlayer(player);
+        GameManager.Instance.SetPlayer(player);
     }
 
     private void VirtualCameraSettiing()
     {
         virtualCamera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
     }
-
-
-    // todo : 몬스터 , 플레이어 damage 및 health 관리
-    // 어떻게함?? -> 플레이어 의 무기 rigidbody 랑 몬스터 rigidbody 충돌 체크
-    // 플레이어의 rigidbody 랑 몬스터 rigidbody 충돌체크
 
     private void StartStage()
     {
@@ -127,7 +152,7 @@ public class IngameScene : MonoBehaviour
                 //if (spawnedCount >= monsterData.genMax) break;
 
                 // X와 Z 좌표상에서의 랜덤한 각도를 결정 (0에서 360도 사이)
-                float randomAngle = Random.Range(0, 360) * Mathf.Deg2Rad;
+                float randomAngle = UnityEngine.Random.Range(0, 360) * Mathf.Deg2Rad;
 
                 // 각도를 바탕으로 X와 Z 좌표 계산
                 float x = Mathf.Cos(randomAngle) * spawnRadius;

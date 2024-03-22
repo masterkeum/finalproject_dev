@@ -146,5 +146,7 @@ public class EnemyBossController : EnemyBaseController
         base.OnDead();
 
         Debug.Log("게임 클리어");
+        UIManager.Instance.ShowUI<UIGameClear>();
+        Time.timeScale = 0f;
     }
 }
