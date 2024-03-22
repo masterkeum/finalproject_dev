@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public struct playeringameinfo
 {
+    // 임시구조. 중간발표 이후 개선
+
     public int attackPower;
     public int addAttackPower;
 
@@ -59,12 +61,12 @@ public class IngameScene : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("IngameScene.Awake");
+        Time.timeScale = 1.0f;
         _ = DataManager.Instance;
-        GameManager.Instance.Clear();
         //_ = AccountInfo.Instance;// 사용자 계정 데이터 접근
-
+        GameManager.Instance.Clear();
         virtualCamera = GameObject.Find("Virtual Camera");
-
         objectPool = GetComponent<Pooling>();
         stageId = GameManager.Instance.stageId;
         stageMonsterList = DataManager.Instance.GetStageInfo(stageId);
@@ -72,6 +74,8 @@ public class IngameScene : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.SetState(GameState.IngameStart);
+
         // 스테이지에 맞는 필드 생성
         GenerateLevel();
 
@@ -131,12 +135,18 @@ public class IngameScene : MonoBehaviour
         CharacterInfo monsterInfo = DataManager.Instance.GetCharacterInfo(monsterData.monsterId);
         GameObject monster = Resources.Load<GameObject>(monsterInfo.prefabFile);
 
+
         if (monsterData.genPosVecter3.Length > 0)
         {
             // 좌표있으면 다른것 무시하고 단발성 생성
             GameObject go = Instantiate(monster, new Vector3(monsterData.genPosVecter3[0], monsterData.genPosVecter3[1], monsterData.genPosVecter3[2]), Quaternion.identity);
             go.GetComponent<EnemyBaseController>().Init(monsterData.monsterId, monsterData.level, player);
 
+            if (monsterInfo.characterType == CharacterType.BossMonster)
+            {
+                // 보스만 타겟팅
+                player.AddTarget(go);
+            }
             yield break;
         }
 

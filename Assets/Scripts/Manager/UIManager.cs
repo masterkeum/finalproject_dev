@@ -5,6 +5,7 @@ public class UIManager : SingletoneBase<UIManager>
 {
     //private List<UIBase> popups = new List<UIBase>();
     public Dictionary<string, UIBase> UIDictionary = new Dictionary<string, UIBase>();
+    public int popupUICount;
 
     public T ShowUI<T>() where T : UIBase
     {
@@ -49,6 +50,7 @@ public class UIManager : SingletoneBase<UIManager>
 
     public void Clear()
     {
+        popupUICount = 0;
         UIDictionary.Clear();
     }
 }

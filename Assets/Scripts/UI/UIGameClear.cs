@@ -32,7 +32,6 @@ public class UIGameClear : UIBase
     public void GetCommonReward()
     {
         Debug.Log("GetCommonReward");
-        Time.timeScale = 1f;
         SceneManager.LoadScene(2);
     }
 

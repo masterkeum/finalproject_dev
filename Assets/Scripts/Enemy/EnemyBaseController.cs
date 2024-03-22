@@ -55,7 +55,7 @@ public class EnemyBaseController : MonoBehaviour
     protected static readonly int Taunting = Animator.StringToHash("Taunting");
     protected static readonly int IsWalking = Animator.StringToHash("IsWalking");
 
-    private Player player;
+    protected Player player;
     [SerializeField] protected Transform targetPlayerTransform;
     // 몬스터 정보
     protected CharacterInfo characterInfo;
@@ -70,6 +70,7 @@ public class EnemyBaseController : MonoBehaviour
     protected float lastAttackTime;// 마지막 공격 시간
 
     private int hp;
+    protected int damage;
     private DropCoin point;
 
     protected void Awake()
@@ -92,6 +93,7 @@ public class EnemyBaseController : MonoBehaviour
 
         // 몬스터 스탯초기화
         hp = characterInfo.hp;
+        damage = characterInfo.attackPower;
 
         navMeshAgent.speed = characterInfo.moveSpeed;
         navMeshAgent.stoppingDistance = characterInfo.attackRange;
@@ -136,9 +138,11 @@ public class EnemyBaseController : MonoBehaviour
 
     protected virtual void OnDead()
     {
+        SetState(EnemyState.Die);
         // 이동 정지
         capsuleCollider.enabled = false;
         navMeshAgent.isStopped = true;
+
         animator.SetTrigger(Die);
         StartCoroutine(Remove());
 

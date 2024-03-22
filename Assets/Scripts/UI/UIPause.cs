@@ -82,7 +82,7 @@ public class UIPause : UIBase
     }
     public void ContinueButton()
     {
+        --UIManager.Instance.popupUICount;
         gameObject.SetActive(false);
-        Time.timeScale = 1f;
     }
 }

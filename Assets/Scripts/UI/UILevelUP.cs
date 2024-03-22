@@ -38,6 +38,9 @@ public class UILevelUP : UIBase
         UpdateSkillPoint();
     }
 
+    /// <summary>
+    /// 남은 스킬포인트 UI갱신
+    /// </summary>
     private void UpdateSkillPoint()
     {
         skillPointText.text = $"스킬포인트 + {player.playeringameinfo.skillpoint}";
@@ -91,6 +94,11 @@ public class UILevelUP : UIBase
         }
     }
 
+    /// <summary>
+    /// 스킬 선택
+    /// FIXME : 깊은복사로 변경
+    /// </summary>
+    /// <param name="index">스킬 index</param>
     public void OnButtonSelect(int index)
     {
         if (randomSkills[index].skillId == 30000301)  // 초월스킬 변경
@@ -167,6 +175,7 @@ public class UILevelUP : UIBase
 
         if (player.playeringameinfo.skillpoint > 0)
         {
+            RemoveAtVariableSkills();
             OnReRollButton();
             UpdateSkillPoint();
             SetCurSkills();
@@ -175,9 +184,10 @@ public class UILevelUP : UIBase
         {
             gameObject.SetActive(false);
             randomSkills.Clear();
-            Time.timeScale = 1f;
+            --UIManager.Instance.popupUICount;
         }
     }
+
 
     private void SetStar()
     {
@@ -201,7 +211,11 @@ public class UILevelUP : UIBase
         }
     }
 
-    private void SkillTransform(SkillTable skill)  //초월스킬로 변경
+    /// <summary>
+    /// 초월스킬로 변경
+    /// </summary>
+    /// <param name="skill"></param>
+    private void SkillTransform(SkillTable skill)
     {
 
         switch (skill.skillId)
@@ -227,7 +241,12 @@ public class UILevelUP : UIBase
         }
 
     }
-    public void RemoveAtVariableSkills() //스킬레벨이 5가 되거나 허용슬롯이 꽉 찼을 때, 추가할 수 없는 스킬을 variable 목록에서 제외한다.
+
+
+    /// <summary>
+    /// 스킬레벨이 5가 되거나 허용슬롯이 꽉 찼을 때, 추가할 수 없는 스킬을 variable 목록에서 제외한다.
+    /// </summary>
+    public void RemoveAtVariableSkills()
     {
         if (player.activeSkillSlot.Count > player.CurrentOpenSkillSlotCount() - 1)
         {
@@ -255,7 +274,9 @@ public class UILevelUP : UIBase
 
     }
 
-
+    /// <summary>
+    /// 스킬 선택목록 리롤
+    /// </summary>
     public void OnReRollButton()
     {
         randomSkills.Clear();

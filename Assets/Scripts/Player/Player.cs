@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     private List<Transform> nearEnemy = new List<Transform>();
     protected SkillPool skillPool;
 
+    private List<GameObject> chaseTarget = new List<GameObject>();
+
     public virtual void Init(int _player, int _level)
     {
         if (IsInit) return;
@@ -66,7 +68,6 @@ public class Player : MonoBehaviour
         IsInit = true;
     }
 
-
     private void Awake()
     {
         Debug.Log("Player.Awake");
@@ -90,6 +91,36 @@ public class Player : MonoBehaviour
 
         SkillRoutine();
     }
+
+
+    private void FixedUpdate()
+    {
+        float x = joy.Horizontal;
+        float z = joy.Vertical;
+        //Debug.Log($"{x}, {z}");
+
+        moveVec = new Vector3(x, 0, z) * playeringameinfo.moveSpeed * Time.deltaTime;
+        rigid.MovePosition(rigid.position + moveVec);
+
+        if (moveVec.sqrMagnitude == 0)
+            return;
+
+        Quaternion dirQuat = Quaternion.LookRotation(moveVec);
+        Quaternion moveQuat = Quaternion.Slerp(rigid.rotation, dirQuat, 0.3f);
+        rigid.MoveRotation(moveQuat);
+    }
+
+
+    private void LateUpdate()
+    {
+        //anim.SetFloat("Move", moveVec.sqrMagnitude); 
+
+        if (chaseTarget.Count > 0)
+        {
+            // TODO : 적 추적 작동
+        }
+    }
+
 
     #region Controll
 
@@ -120,29 +151,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        float x = joy.Horizontal;
-        float z = joy.Vertical;
-        //Debug.Log($"{x}, {z}");
-
-        moveVec = new Vector3(x, 0, z) * playeringameinfo.moveSpeed * Time.deltaTime;
-        rigid.MovePosition(rigid.position + moveVec);
-
-        if (moveVec.sqrMagnitude == 0)
-            return;
-
-        Quaternion dirQuat = Quaternion.LookRotation(moveVec);
-        Quaternion moveQuat = Quaternion.Slerp(rigid.rotation, dirQuat, 0.3f);
-        rigid.MoveRotation(moveQuat);
-    }
-
-
-    private void LateUpdate()
-    {
-        //anim.SetFloat("Move", moveVec.sqrMagnitude); 
-    }
-
     public void JoyStick(VariableJoystick joy)
     {
         this.joy = joy;
@@ -159,7 +167,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log("플레이어사망. 게임오버UI");
         UIManager.Instance.ShowUI<UIDefeated>();
-        Time.timeScale = 0f;
+        ++UIManager.Instance.popupUICount;
     }
 
 
@@ -217,6 +225,10 @@ public class Player : MonoBehaviour
     #endregion
 
     #region UI
+    public void AddTarget(GameObject go)
+    {
+        chaseTarget.Add(go);
+    }
 
     private void UpdateSlider()
     {
@@ -254,7 +266,7 @@ public class Player : MonoBehaviour
             playeringameinfo.sliderMaxExp = levelData.exp;
             if (playeringameinfo.totalExp + addExp >= levelData.totalExp)
             {
-                Debug.Log($"랩업 토탈경치 {playeringameinfo.totalExp + addExp}/{levelData.totalExp}");
+                //Debug.Log($"랩업 토탈경치 {playeringameinfo.totalExp + addExp}/{levelData.totalExp}");
                 // 랩업
                 addExp -= (levelData.totalExp - playeringameinfo.totalExp);
                 playeringameinfo.totalExp = levelData.totalExp;
@@ -274,8 +286,11 @@ public class Player : MonoBehaviour
         GameManager.Instance.UpdateUI();
         if (playeringameinfo.skillpoint > 0)
         {
-            UIManager.Instance.ShowUI<UILevelUP>();
-            Time.timeScale = 0f;
+            if (GameManager.Instance.gameState == GameState.IngameStart)
+            {
+                UIManager.Instance.ShowUI<UILevelUP>();
+                ++UIManager.Instance.popupUICount;
+            }
         }
     }
 

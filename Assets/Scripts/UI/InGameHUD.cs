@@ -51,7 +51,7 @@ public class InGameHUD : UIBase
     public void UpdateWhenGetGem()
     {
         // 인게임 경험치슬라이더,인게임 레벨 표시 업데이트
-        Debug.Log($"경험치 슬라이더 {player.playeringameinfo.sliderCurExp} / {player.playeringameinfo.sliderMaxExp}");
+        //Debug.Log($"경험치 슬라이더 {player.playeringameinfo.sliderCurExp} / {player.playeringameinfo.sliderMaxExp}");
         if (player.playeringameinfo.sliderMaxExp > 0)
         {
             expSlider.value = (float)player.playeringameinfo.sliderCurExp / player.playeringameinfo.sliderMaxExp;
@@ -63,7 +63,7 @@ public class InGameHUD : UIBase
     public void OnPauseButton()
     {
         UIManager.Instance.ShowUI<UIPause>();
-        Time.timeScale = 0f;
+        ++UIManager.Instance.popupUICount;
     }
     public void OnTestLevelUpButton()
     {

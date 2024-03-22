@@ -19,7 +19,7 @@ public class DataTable
 public class CharacterInfo
 {
     public int uid;
-    public string characterType;
+    public CharacterType characterType;
     public string name;
     public int minLevel;
     public int maxLevel;
@@ -62,7 +62,7 @@ public class StageInfoTable
     public int stageId;
     public int monsterId;
     public int level;
-    public string characterType;
+    public CharacterType characterType;
     public int genTimeStart;
     public int genTimeEnd;
     public int genAmount;
