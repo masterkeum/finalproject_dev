@@ -17,6 +17,7 @@ public class OutGameHUD : MonoBehaviour
     [Header("BottomButton")]
     public GameObject[] mainMenues;
     public RectTransform[] buttonRect;
+    public GameObject[] selectEmphasis;
 
     [Header("Battle")]
     public TextMeshProUGUI StageNameText;
@@ -43,6 +44,8 @@ public class OutGameHUD : MonoBehaviour
         {
             buttonRect[j].sizeDelta = new Vector2(index == j ? 450 : 300, buttonRect[j].sizeDelta.y);
             buttonRect[0].pivot = new Vector2(index == 2 ? 1.5f : 1, buttonRect[0].pivot.y);
+
+            selectEmphasis[j].SetActive(index == j?  true : false);
         }
     }
 
