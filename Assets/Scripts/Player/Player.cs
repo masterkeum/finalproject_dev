@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
     public List<SkillTable> activeSkillSlot = new List<SkillTable>();
     public List<SkillTable> passiveSkillSlot = new List<SkillTable>();
 
-
     [SerializeField] protected Transform projectilePoint;
     // 적
     public LayerMask enemyLayer;
@@ -170,7 +169,10 @@ public class Player : MonoBehaviour
         ++UIManager.Instance.popupUICount;
     }
 
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     protected Vector3 DetectEnemyDirection()
     {
         nearEnemy.Clear();
@@ -235,21 +237,37 @@ public class Player : MonoBehaviour
         playeringameinfo.sliderMaxExp = DataManager.Instance.GetPlayerIngameLevel(playeringameinfo.curLevel + 1).exp;
     }
 
+    /// <summary>
+    /// 스킬 슬롯
+    /// TODO : 데이터 기본값 + 업적에 따른 오픈 개수
+    /// </summary>
+    /// <returns>스킬 슬롯 오픈개수</returns>
     public int CurrentOpenSkillSlotCount() //허용 슬롯의 숫자. 일단 3으로 정해놓았으나 이후 조건에 따른 값을 리턴하게 한다.
     {
         return 3;
     }
 
+    /// <summary>
+    /// 킬카운트
+    /// </summary>
     public void AddKillCount()
     {
         playeringameinfo.killCount++;
     }
 
+    /// <summary>
+    /// 골드 추가
+    /// </summary>
+    /// <param name="addGold"></param>
     public void AddGold(int addGold)
     {
         playeringameinfo.gold += addGold;
     }
 
+    /// <summary>
+    /// 경험치 추가 및 레벨업
+    /// </summary>
+    /// <param name="addExp">추가 경험치</param>
     public void AddExp(int addExp)
     {
 

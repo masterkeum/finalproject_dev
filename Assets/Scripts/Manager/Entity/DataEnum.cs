@@ -5,6 +5,3 @@ public enum CharacterType
     Monster,
     BossMonster
 }
-
-
-
