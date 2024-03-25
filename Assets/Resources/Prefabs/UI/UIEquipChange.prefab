@@ -1020,6 +1020,7 @@ GameObject:
   - component: {fileID: 6196999391929089222}
   - component: {fileID: 6857051574320177000}
   - component: {fileID: 3811651089229341162}
+  - component: {fileID: 4228579578939299863}
   m_Layer: 5
   m_Name: UIEquipChange
   m_TagString: Untagged
@@ -1112,6 +1113,26 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4228579578939299863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626873820498112043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f242e5b565577734a9873367671d9920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newIcon: {fileID: 5091106359860415017}
+  curIcon: {fileID: 5650723711300218248}
+  newItemNameText: {fileID: 4401054574712689618}
+  newItemDescriptionText: {fileID: 4502123921444313720}
+  curItemNameText: {fileID: 382155866097781912}
+  curItemDescriptionText: {fileID: 8928018533502505478}
+  equipButton: {fileID: 5360019743090596488}
+  sellButton: {fileID: 4780071387052427097}
 --- !u!1 &6086074608858375534
 GameObject:
   m_ObjectHideFlags: 0

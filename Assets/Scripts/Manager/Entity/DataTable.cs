@@ -126,6 +126,7 @@ public class ItemTable
     public string itemType;
     public string nameAlias;
     public string descAlias;
+    public string grade;
     public int maxStack;
     public string ImageFile;
     public int categoryTextId;
