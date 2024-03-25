@@ -1,4 +1,4 @@
-using Gley.Jumpy;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -30,24 +30,50 @@ public class EnemyBossController : EnemyBaseController
 
         path = new NavMeshPath();
         SetState(EnemyState.Wander);
+
+        StartCoroutine(CheckState());
     }
 
-    private void Update()
-    {
-        playerDistance = DistanceToTarget();
-        switch (enemyState)
-        {
-            case EnemyState.Idle: WanderUpdate(); break;
-            case EnemyState.Wander: WanderUpdate(); break;
-            case EnemyState.Trace: TraceUpdate(); break;
-            case EnemyState.Attack: AttackUpdate(); break;
-            case EnemyState.Flee: FleeUpdate(); break;
-            case EnemyState.Die: break;
+    //private void Update()
+    //{
+    //    playerDistance = DistanceToTarget();
+    //    switch (enemyState)
+    //    {
+    //        case EnemyState.Idle: WanderUpdate(); break;
+    //        case EnemyState.Wander: WanderUpdate(); break;
+    //        case EnemyState.Trace: TraceUpdate(); break;
+    //        case EnemyState.Attack: AttackUpdate(); break;
+    //        case EnemyState.Flee: FleeUpdate(); break;
+    //        case EnemyState.Die: break;
 
-            default:
-                SetState(EnemyState.Flee); break;
+    //        default:
+    //            SetState(EnemyState.Flee); break;
+    //    }
+    //}
+
+    private IEnumerator CheckState()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(trackingTerm);
+
+            playerDistance = DistanceToTarget();
+            switch (enemyState)
+            {
+                case EnemyState.Idle: WanderUpdate(); break;
+                case EnemyState.Wander: WanderUpdate(); break;
+                case EnemyState.Trace: TraceUpdate(); break;
+                case EnemyState.Attack: AttackUpdate(); break;
+                case EnemyState.Flee: FleeUpdate(); break;
+                case EnemyState.Die: break;
+
+                default:
+                    SetState(EnemyState.Flee); break;
+            }
         }
     }
+
+
 
     private void WanderUpdate()
     {
