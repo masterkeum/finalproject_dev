@@ -58,56 +58,56 @@ public class InventoryUI : MonoBehaviour
 
             }
         }
-       
+
     }
 
     public void StartMimicGacha()
     {
         int gachaNum = Random.Range(0, gachaTable.Count);
-        GameManager.Instance.accountInfo.newItem = gachaTable[gachaNum];
+        //GameManager.Instance.accountInfo.newItem = gachaTable[gachaNum];
     }
 
     public void GetANewItem()
     {
-        switch (GameManager.Instance.accountInfo.newItem.itemType)
-        {
-            case "Weapon":
-                    if (GameManager.Instance.accountInfo.equipItems["Weapon"] != null)
-                        UIManager.Instance.ShowUI<UIEquipChange>();
-                    else
-                        UIManager.Instance.ShowUI<UINewEquip>();
-                break;
-            case "Armor":
-                if (GameManager.Instance.accountInfo.equipItems["Armor"] != null)
-                    UIManager.Instance.ShowUI<UIEquipChange>();
-                else
-                    UIManager.Instance.ShowUI<UINewEquip>();
-                break;
-            case "Helmet":
-                if (GameManager.Instance.accountInfo.equipItems["Helmet"] != null)
-                    UIManager.Instance.ShowUI<UIEquipChange>();
-                else
-                    UIManager.Instance.ShowUI<UINewEquip>();
-                break;
-            case "Gloves":
-                if (GameManager.Instance.accountInfo.equipItems["Gloves"] != null)
-                    UIManager.Instance.ShowUI<UIEquipChange>();
-                else
-                    UIManager.Instance.ShowUI<UINewEquip>();
-                break;
-            case "Boots":
-                if (GameManager.Instance.accountInfo.equipItems["Boots"] != null)
-                    UIManager.Instance.ShowUI<UIEquipChange>();
-                else
-                    UIManager.Instance.ShowUI<UINewEquip>();
-                break;
-            case "Accessarries":
-                if (GameManager.Instance.accountInfo.equipItems["Accessarries"] != null)
-                    UIManager.Instance.ShowUI<UIEquipChange>();
-                else
-                    UIManager.Instance.ShowUI<UINewEquip>();
-                break;
-        }
+        //switch (GameManager.Instance.accountInfo.newItem.itemType)
+        //{
+        //    case "Weapon":
+        //            if (GameManager.Instance.accountInfo.equipItems["Weapon"] != null)
+        //                UIManager.Instance.ShowUI<UIEquipChange>();
+        //            else
+        //                UIManager.Instance.ShowUI<UINewEquip>();
+        //        break;
+        //    case "Armor":
+        //        if (GameManager.Instance.accountInfo.equipItems["Armor"] != null)
+        //            UIManager.Instance.ShowUI<UIEquipChange>();
+        //        else
+        //            UIManager.Instance.ShowUI<UINewEquip>();
+        //        break;
+        //    case "Helmet":
+        //        if (GameManager.Instance.accountInfo.equipItems["Helmet"] != null)
+        //            UIManager.Instance.ShowUI<UIEquipChange>();
+        //        else
+        //            UIManager.Instance.ShowUI<UINewEquip>();
+        //        break;
+        //    case "Gloves":
+        //        if (GameManager.Instance.accountInfo.equipItems["Gloves"] != null)
+        //            UIManager.Instance.ShowUI<UIEquipChange>();
+        //        else
+        //            UIManager.Instance.ShowUI<UINewEquip>();
+        //        break;
+        //    case "Boots":
+        //        if (GameManager.Instance.accountInfo.equipItems["Boots"] != null)
+        //            UIManager.Instance.ShowUI<UIEquipChange>();
+        //        else
+        //            UIManager.Instance.ShowUI<UINewEquip>();
+        //        break;
+        //    case "Accessarries":
+        //        if (GameManager.Instance.accountInfo.equipItems["Accessarries"] != null)
+        //            UIManager.Instance.ShowUI<UIEquipChange>();
+        //        else
+        //            UIManager.Instance.ShowUI<UINewEquip>();
+        //        break;
+        //}
     }
 
 

@@ -18,7 +18,7 @@ public class GameManager : SingletoneBase<GameManager>
 {
     [ReadOnly, SerializeField] private string _pidStr;
     public GameState gameState { get; private set; }
-    string filePath = Application.persistentDataPath + "/";
+    string saveFilePath;
 
     public AccountInfo accountInfo;
     public event Action updateUIAction; // UI 업데이트 콜
@@ -51,6 +51,9 @@ public class GameManager : SingletoneBase<GameManager>
             Guid guid = Guid.NewGuid();
             PlayerPrefs.SetString("AID", guid.ToString());
         }
+
+        saveFilePath = Application.persistentDataPath + "/" + PlayerPrefs.GetString("AID") + ".json";
+        Debug.Log(saveFilePath);
         LoadGame(PlayerPrefs.GetString("AID"));
     }
 
@@ -106,23 +109,23 @@ public class GameManager : SingletoneBase<GameManager>
 
     private void SaveGame()
     {
-        //string jsonData = accountInfo.Serialize();
-        //File.WriteAllText("save.json", jsonData);
+        string jsonData = JsonUtility.ToJson(accountInfo);
+        File.WriteAllText(saveFilePath, jsonData);
     }
 
     private AccountInfo LoadGame(string aid)
     {
         // 불러오기
         //파일이 있으면 로드
-        if (File.Exists(filePath + aid + ".json"))
+        if (File.Exists(saveFilePath))
         {
-            string FromJsonData = File.ReadAllText(filePath);
+            string FromJsonData = File.ReadAllText(saveFilePath);
             accountInfo = JsonUtility.FromJson<AccountInfo>(FromJsonData);
         }
         else
         {
             // 없으면 신규 유저
-            accountInfo = new AccountInfo(aid, aid.Substring(0, 6));
+            accountInfo = new AccountInfo(aid, aid.Substring(0, 8));
         }
         return accountInfo;
     }

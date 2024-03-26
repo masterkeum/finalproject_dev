@@ -2,9 +2,6 @@ using System;
 using UnityEngine;
 
 
-
-
-
 /// <summary>
 /// 계정정보 : 저장과 불러오기를 위한 클래스
 /// </summary>
@@ -23,7 +20,7 @@ public class AccountInfo
         
         -- 아이템 능력치 적용 : 인게임으로 이동
     */
-    private string aid;
+    public string aid;
 
     public class EquipItems
     {
@@ -39,16 +36,16 @@ public class AccountInfo
     //public Dictionary<string, ItemTable> equipItems = new Dictionary<string, ItemTable>();
     EquipItems equipItems = new EquipItems();
 
-    [SerializeField] private string name;
-    [SerializeField] private int level;
-    [SerializeField] private int totalExp;
+    public string name;
+    public int level;
+    public int totalExp;
 
-    [SerializeField] private int actionPoint; // 행동력
-    [SerializeField] private int gem;
-    [SerializeField] private int gold;
-    [SerializeField] private int core;
+    public int actionPoint; // 행동력
+    public int gem;
+    public int gold;
+    public int core;
 
-    [SerializeField] private float lastUpdateTime;
+    public float lastUpdateTime;
 
     //생성자
     public AccountInfo(string _aid, string _name)
