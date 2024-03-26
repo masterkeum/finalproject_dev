@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -18,8 +19,15 @@ public class AccountInfo
         퀘스트 상태
         인벤토리 상태
         
+
+        골드/코인/ : gold
+        젬/보석/ : gem
+        행동력 : actionPoint
+        계정 : aid (account Identification)
+
         -- 아이템 능력치 적용 : 인게임으로 이동
     */
+
     public string aid;
 
     public class EquipItems
@@ -44,6 +52,7 @@ public class AccountInfo
     public int gem;
     public int gold;
     public int core;
+    public int selectedStageId;
 
     public float lastUpdateTime;
 
@@ -55,16 +64,13 @@ public class AccountInfo
         level = 1;
         totalExp = 0;
 
-        actionPoint = 30; // 데이터로 빼야함
+        actionPoint = DataManager.Instance._InitParam["ActionPoint"]; // 데이터로 빼야함
         gem = 0;
-        gold = 0;
+        gold = DataManager.Instance._InitParam["Gold"];
         core = 0;
-
+        selectedStageId = DataManager.Instance._InitParam["StartStageId"];
         lastUpdateTime = UtilityKit.GetCurrentTime();
     }
-
-
-
 
 
     //private void AddEquipDict()

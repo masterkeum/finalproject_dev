@@ -1,37 +1,39 @@
 using System;
 using System.IO;
-using System.Xml;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public enum GameState
-{
-    None,
-    Intro,
-    Loading,
-    Main,
-    IngameStart,
-    IngameEnd,
-}
+
 
 public class GameManager : SingletoneBase<GameManager>
 {
+    // global
     [ReadOnly, SerializeField] private string _pidStr;
     public GameState gameState { get; private set; }
     string saveFilePath;
 
+    private int _maxActionPoint;
+    private float _regenActionPointTime;
+    public int stageId { get; set; } // 진입한 스테이지ID 가지고있게
+
+    // 사용자
     public AccountInfo accountInfo;
+
+
+    // 게임
     public event Action updateUIAction; // UI 업데이트 콜
+
     public Player player { get; private set; }
 
-    // 씬이 넘어가도 유지할 데이터
-    public int stageId { get; set; } // 진입한 스테이지ID 가지고있게
 
     protected override void Init()
     {
         _pidStr = _pid.ToString();
         base.Init();
+        // 게임 세팅
+        InitParam();
+
         // TODO : 버전 체크. 에셋번들이나 어드레서블 들어가면
+
 
         // 계정 정보 세팅
         CheckAccount();
@@ -41,21 +43,45 @@ public class GameManager : SingletoneBase<GameManager>
         // 행동력 회복
         CalcActionPoint();
 
+    }
 
-        // 계정 세팅
-        stageId = 101; // !NOTE : Test코드
+    private void InitParam()
+    {
+        // DataManager 살아있는지, 구동 됐는지 체크 어떻게 하지?
+        while (true)
+        {
+            if (DataManager.Instance.IsReady)
+            {
+                _maxActionPoint = DataManager.Instance._InitParam["MaxActionPoint"];
+                _regenActionPointTime = DataManager.Instance._InitParam["RegenActionPointTime"];
+                break;
+            }
+        }
     }
 
     private void CalcActionPoint()
     {
+        /*
+        실행 타이밍
+            게임 시작
+            인게임 종료 후 아웃게임 나오는 경우
+        */
         float timeElapsed = UtilityKit.GetCurrentTime() - accountInfo.lastUpdateTime; // 시간차이
-        if (timeElapsed >= 480f)
+        if (timeElapsed >= _regenActionPointTime)
         {
-            int plusActionPoint = Mathf.FloorToInt(timeElapsed / 480f); // 8분당 1씩 회복
+            int plusActionPoint = Mathf.FloorToInt(timeElapsed / _regenActionPointTime); // 8분당 1씩 회복
             // 행동력 회복
-            accountInfo.actionPoint += plusActionPoint;
-            // 마지막 업데이트 시간 갱신
-            accountInfo.lastUpdateTime += plusActionPoint * 480f;
+            if (accountInfo.actionPoint < _maxActionPoint)
+            {
+                accountInfo.actionPoint += plusActionPoint;
+                if (accountInfo.actionPoint < _maxActionPoint)
+                {
+                    // 마지막 업데이트 시간 갱신
+                    accountInfo.lastUpdateTime += plusActionPoint * _regenActionPointTime;
+                    return;
+                }
+            }
+            accountInfo.lastUpdateTime = UtilityKit.GetCurrentTime(); // 현재시간으로 덮어씌우기
         }
     }
 
@@ -72,7 +98,8 @@ public class GameManager : SingletoneBase<GameManager>
 
         saveFilePath = Application.persistentDataPath + "/" + PlayerPrefs.GetString("AID") + ".json";
         Debug.Log(saveFilePath);
-        LoadGame(PlayerPrefs.GetString("AID"));
+        accountInfo = LoadGame(PlayerPrefs.GetString("AID"));
+        stageId = accountInfo.selectedStageId;
     }
 
 
@@ -138,13 +165,12 @@ public class GameManager : SingletoneBase<GameManager>
         if (File.Exists(saveFilePath))
         {
             string FromJsonData = File.ReadAllText(saveFilePath);
-            accountInfo = JsonUtility.FromJson<AccountInfo>(FromJsonData);
+            return JsonUtility.FromJson<AccountInfo>(FromJsonData);
         }
         else
         {
             // 없으면 신규 유저
-            accountInfo = new AccountInfo(aid, aid[..8]);
+            return accountInfo = new AccountInfo(aid, aid[..8]);
         }
-        return accountInfo;
     }
 }
