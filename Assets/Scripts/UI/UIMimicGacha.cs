@@ -11,8 +11,7 @@ public class UIMimicGacha : UIBase
 
     private void Awake()
     {
-        inventory = outGameHUD.GetComponentInChildren<InventoryUI>();
-        //랜덤아이템 리스트에 아이템 집어넣기(혹은 위쪽 장비UI로 뺄 수도 있음)
+       
     }
 
     private void OnEnable()
