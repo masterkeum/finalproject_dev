@@ -38,7 +38,7 @@ public class AccountInfo : MonoBehaviour
     public ItemTable newItem = new ItemTable();
 
 
-    private void AddEquipDict()
+    public void AddEquipDict()
     {
         switch (newItem.itemType)
         {
