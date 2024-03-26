@@ -1,12 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Rendering;
+using System;
 using UnityEngine;
+
+
+
+
 
 /// <summary>
 /// 계정정보 : 저장과 불러오기를 위한 클래스
 /// </summary>
-public class AccountInfo : MonoBehaviour
+[Serializable]
+public class AccountInfo
 {
     /*
     데이터를 받거나 읽어와서 초기화
@@ -18,85 +21,111 @@ public class AccountInfo : MonoBehaviour
         퀘스트 상태
         인벤토리 상태
         
+        -- 아이템 능력치 적용 : 인게임으로 이동
     */
-    [ReadOnly, SerializeField] private string aId;
+    private string aid;
 
-    [Header("Inventory")] //인벤토리 아이템들
-    public Dictionary<string, ItemTable> equipItems = new Dictionary<string, ItemTable>();
-
-
-    private string _name;
-    private string _level;
-    private string _totalExp;
-
-    private int actionPoint; // 행동력
-    private int gem;
-    private int gold;
-
-    private Time lastUpdateTime;
-
-    public ItemTable newItem = new ItemTable();
-
-
-    private void AddEquipDict()
+    public class EquipItems
     {
-        switch (newItem.itemType)
-        {
-            case "Weapon":
-                {
-                    if (equipItems["Weapon"] != null)
-                    {
-                        equipItems.Remove("Weapon");
-                    }
-                    equipItems.Add(newItem.itemType, newItem);
-                }
-                break;
-            case "Armor":
-                {
-                    if (equipItems["Armor"] != null)
-                    {
-                        equipItems.Remove("Armor");
-                    }
-                    equipItems.Add(newItem.itemType, newItem);
-                }
-                break;
-            case "Helmet":
-                {
-                    if (equipItems["Helmet"] != null)
-                    {
-                        equipItems.Remove("Helmet");
-                    }
-                    equipItems.Add(newItem.itemType, newItem);
-                }
-                break;
-            case "Gloves":
-                {
-                    if (equipItems["Gloves"] != null)
-                    {
-                        equipItems.Remove("Gloves");
-                    }
-                    equipItems.Add(newItem.itemType, newItem);
-                }
-                break;
-            case "Boots":
-                {
-                    if (equipItems["Boots"] != null)
-                    {
-                        equipItems.Remove("Boots");
-                    }
-                    equipItems.Add(newItem.itemType, newItem);
-                }
-                break;
-            case "Accessorries":
-                {
-                    if (equipItems["Accessorries"] != null)
-                    {
-                        equipItems.Remove("Accessorries");
-                    }
-                    equipItems.Add(newItem.itemType, newItem);
-                }
-                break;
-        }
+        public ItemTable Weapon;
+        public ItemTable Armor;
+        public ItemTable Helmet;
+        public ItemTable Gloves;
+        public ItemTable Boots;
+        public ItemTable Accessories;
+        public ItemTable newItem; // 분해되면 null 로 초기화
     }
+    //인벤토리 아이템들 => 딕셔너리는 저장 안됨
+    //public Dictionary<string, ItemTable> equipItems = new Dictionary<string, ItemTable>();
+    EquipItems equipItems = new EquipItems();
+
+    [SerializeField] private string name;
+    [SerializeField] private int level;
+    [SerializeField] private int totalExp;
+
+    [SerializeField] private int actionPoint; // 행동력
+    [SerializeField] private int gem;
+    [SerializeField] private int gold;
+    [SerializeField] private int core;
+
+    [SerializeField] private float lastUpdateTime;
+
+    //생성자
+    public AccountInfo(string _aid, string _name)
+    {
+        aid = _aid;
+        name = _name;
+        level = 1;
+        totalExp = 0;
+
+        actionPoint = 30; // 데이터로 빼야함
+        gem = 0;
+        gold = 0;
+        core = 0;
+
+        lastUpdateTime = Time.time;
+    }
+
+
+    //private void AddEquipDict()
+    //{
+    //    switch (newItem.itemType)
+    //    {
+    //        case "Weapon":
+    //            {
+    //                if (equipItems["Weapon"] != null)
+    //                {
+    //                    equipItems.Remove("Weapon");
+    //                }
+    //                equipItems.Add(newItem.itemType, newItem);
+    //            }
+    //            break;
+    //        case "Armor":
+    //            {
+    //                if (equipItems["Armor"] != null)
+    //                {
+    //                    equipItems.Remove("Armor");
+    //                }
+    //                equipItems.Add(newItem.itemType, newItem);
+    //            }
+    //            break;
+    //        case "Helmet":
+    //            {
+    //                if (equipItems["Helmet"] != null)
+    //                {
+    //                    equipItems.Remove("Helmet");
+    //                }
+    //                equipItems.Add(newItem.itemType, newItem);
+    //            }
+    //            break;
+    //        case "Gloves":
+    //            {
+    //                if (equipItems["Gloves"] != null)
+    //                {
+    //                    equipItems.Remove("Gloves");
+    //                }
+    //                equipItems.Add(newItem.itemType, newItem);
+    //            }
+    //            break;
+    //        case "Boots":
+    //            {
+    //                if (equipItems["Boots"] != null)
+    //                {
+    //                    equipItems.Remove("Boots");
+    //                }
+    //                equipItems.Add(newItem.itemType, newItem);
+    //            }
+    //            break;
+    //        case "Accessorries":
+    //            {
+    //                if (equipItems["Accessorries"] != null)
+    //                {
+    //                    equipItems.Remove("Accessorries");
+    //                }
+    //                equipItems.Add(newItem.itemType, newItem);
+    //            }
+    //            break;
+    //    }
+    //}
 
 }

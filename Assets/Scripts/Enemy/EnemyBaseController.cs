@@ -34,7 +34,6 @@ public class EnemyBaseController : MonoBehaviour
         페이즈
         사망
         보상
-
     */
 
     // 몬스터 상태관리
