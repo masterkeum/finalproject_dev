@@ -17,14 +17,14 @@ public class UINewEquip : UIBase
     private void SetNewItem()
     {
         // TODO 이미지
-        ItemTable newItem = GameManager.Instance.accountInfo.newItem;
-        itemName.text = newItem.nameAlias;
-        itemStats.text = ($"HP : {newItem.hp} \t 방어 : {newItem.dp} \n 공격 : {newItem.ap} \t 이동속도 : {newItem.speed}");
+        //ItemTable newItem = GameManager.Instance.accountInfo.euqipitems
+        //itemName.text = newItem.nameAlias;
+        //itemStats.text = ($"HP : {newItem.hp} \t 방어 : {newItem.dp} \n 공격 : {newItem.ap} \t 이동속도 : {newItem.speed}");
     }
 
     public void OnEquipButton()
     {
-        GameManager.Instance.accountInfo.AddEquipDict();
+        //    GameManager.Instance.accountInfo.AddEquipDict();
         gameObject.SetActive(false);
     }
 
