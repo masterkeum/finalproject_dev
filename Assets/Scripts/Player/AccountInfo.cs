@@ -60,8 +60,11 @@ public class AccountInfo
         gold = 0;
         core = 0;
 
-        lastUpdateTime = Time.time;
+        lastUpdateTime = UtilityKit.GetCurrentTime();
     }
+
+
+
 
 
     //private void AddEquipDict()

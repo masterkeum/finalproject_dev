@@ -31,14 +31,32 @@ public class GameManager : SingletoneBase<GameManager>
     {
         _pidStr = _pid.ToString();
         base.Init();
+        // TODO : 버전 체크. 에셋번들이나 어드레서블 들어가면
 
-        // 버전 체크
-
-        // 초기화
+        // 계정 정보 세팅
         CheckAccount();
+
+        // 출석체크
+
+        // 행동력 회복
+        CalcActionPoint();
+
 
         // 계정 세팅
         stageId = 101; // !NOTE : Test코드
+    }
+
+    private void CalcActionPoint()
+    {
+        float timeElapsed = UtilityKit.GetCurrentTime() - accountInfo.lastUpdateTime; // 시간차이
+        if (timeElapsed >= 480f)
+        {
+            int plusActionPoint = Mathf.FloorToInt(timeElapsed / 480f); // 8분당 1씩 회복
+            // 행동력 회복
+            accountInfo.actionPoint += plusActionPoint;
+            // 마지막 업데이트 시간 갱신
+            accountInfo.lastUpdateTime += plusActionPoint * 480f;
+        }
     }
 
     private void CheckAccount()
@@ -125,7 +143,7 @@ public class GameManager : SingletoneBase<GameManager>
         else
         {
             // 없으면 신규 유저
-            accountInfo = new AccountInfo(aid, aid.Substring(0, 8));
+            accountInfo = new AccountInfo(aid, aid[..8]);
         }
         return accountInfo;
     }

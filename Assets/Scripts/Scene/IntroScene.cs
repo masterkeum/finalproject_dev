@@ -21,6 +21,7 @@ public class IntroScene : MonoBehaviour
     {
         GenObject();
 
+        // TODO : 받아온것으로 프로그래스바 조절하게 수정해야함
         loadingUI = UIManager.Instance.ShowUI<UILoading>();
     }
 
