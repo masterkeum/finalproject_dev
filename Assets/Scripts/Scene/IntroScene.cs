@@ -20,6 +20,7 @@ public class IntroScene : MonoBehaviour
     private void Start()
     {
         GenObject();
+
         loadingUI = UIManager.Instance.ShowUI<UILoading>();
     }
 
