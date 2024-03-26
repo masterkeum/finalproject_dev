@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private Scrollbar shopScroll;
+
+    private void OnEnable()
+    {
+        shopScroll.value = 1;
+    }
     void Start()
     {
         
