@@ -10,4 +10,10 @@ public class MainScene : MonoBehaviour
         UIManager.Instance.Clear();
     }
 
+
+
+    private void Start()
+    {
+
+    }
 }
