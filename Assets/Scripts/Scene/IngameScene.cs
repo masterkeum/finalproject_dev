@@ -75,8 +75,7 @@ public class IngameScene : MonoBehaviour
     private void Start()
     {
         Debug.Log("IngameScene.Start");
-
-        GameManager.Instance.SetState(GameState.IngameStart);
+        GameManager.Instance.InGameSceneProcess();
 
         // 스테이지에 맞는 필드 생성
         GenerateLevel();
@@ -85,7 +84,7 @@ public class IngameScene : MonoBehaviour
         MakePlayer();
 
         // 버츄얼 카메라 세팅
-        VirtualCameraSettiing();
+        VirtualCameraSetting();
 
         // 플레이 기본 세팅
 
@@ -118,7 +117,7 @@ public class IngameScene : MonoBehaviour
         GameManager.Instance.SetPlayer(player);
     }
 
-    private void VirtualCameraSettiing()
+    private void VirtualCameraSetting()
     {
         virtualCamera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
     }

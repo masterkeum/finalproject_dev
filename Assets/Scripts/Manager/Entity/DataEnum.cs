@@ -1,3 +1,13 @@
+public enum GameState
+{
+    None,
+    Intro,
+    Loading,
+    Main,
+    IngameStart,
+    IngameEnd,
+}
+
 public enum CharacterType
 {
     None,
@@ -5,3 +15,4 @@ public enum CharacterType
     Monster,
     BossMonster
 }
+

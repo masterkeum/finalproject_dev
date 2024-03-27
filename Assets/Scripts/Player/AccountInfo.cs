@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using static AccountInfo;
 
 
 /// <summary>
@@ -18,9 +20,16 @@ public class AccountInfo
         퀘스트 상태
         인벤토리 상태
         
+
+        골드/코인/ : gold
+        젬/보석/ : gem
+        행동력 : actionPoint
+        계정 : aid (account Identification)
+
         -- 아이템 능력치 적용 : 인게임으로 이동
     */
-    public string aid;
+
+    [SerializeField] public string aid { get; private set; }
 
     public class EquipItems
     {
@@ -37,19 +46,20 @@ public class AccountInfo
     public EquipItems equipItems;
 
 
-    public string name;
-    public int level;
-    public int totalExp;
+    [SerializeField] private string name;
+    [SerializeField] private int level;
+    [SerializeField] private int totalExp;
 
-    public int actionPoint; // 행동력
-    public int gem;
-    public int gold;
-    public int core;
 
     public ItemTable newItem; // 분해되면 null 로 초기화
     public ItemTable changedSlot; // 아이템 교체 시 한쪽 데이터를 임시저장하는 곳
 
-    public float lastUpdateTime;
+    [SerializeField] public int actionPoint { get; private set; } // 행동력
+    [SerializeField] public int gem { get; private set; }
+    [SerializeField] public int gold { get; private set; }
+    [SerializeField] public int core { get; private set; }
+    [SerializeField] public int selectedStageId { get; private set; }
+    [SerializeField] public float lastUpdateTime { get; private set; }
 
     //생성자
     public AccountInfo(string _aid, string _name)
@@ -59,17 +69,28 @@ public class AccountInfo
         level = 1;
         totalExp = 0;
 
-        actionPoint = 30; // 데이터로 빼야함
+        actionPoint = DataManager.Instance._InitParam["ActionPoint"]; // 데이터로 빼야함
         gem = 0;
-        gold = 0;
+        gold = DataManager.Instance._InitParam["Gold"];
         core = 0;
-
+        selectedStageId = DataManager.Instance._InitParam["StartStageId"];
         lastUpdateTime = UtilityKit.GetCurrentTime();
         equipItems = new EquipItems();
     }
 
+    public void AddActionPoint(int addActionPoint)
+    {
+        actionPoint += addActionPoint;
+    }
 
-
+    public void AddUpdateTime(float time = 0)
+    {
+        if (time == 0)
+        {
+            lastUpdateTime = UtilityKit.GetCurrentTime();
+        }
+        lastUpdateTime = time;
+    }
 
 
     public void Equip()

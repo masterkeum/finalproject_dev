@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class DataTable
 {
+    public List<InitializeParam> InitializeParam;
     public List<CharacterInfo> CharacterInfo;
     public List<MonsterLevel> MonsterLevel;
     public List<StageList> StageList;
@@ -14,6 +15,13 @@ public class DataTable
     public List<ItemTable> ItemTable;
 }
 
+[Serializable]
+public class InitializeParam
+{
+    public string initType;
+    public string code;
+    public int param1;
+}
 
 [Serializable]
 public class CharacterInfo
