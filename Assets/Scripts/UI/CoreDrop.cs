@@ -10,14 +10,16 @@ public class CoreDrop : MonoBehaviour, IDropHandler
         GameObject droppedObject = eventData.pointerDrag;
         if (droppedObject.GetComponent<CoreDragDrop>() != null)
         {
-            if (droppedObject.GetComponent<CoreDragDrop>().coreType == "Common")
-            {
-                //일반 뽑기
-            }
-            else
-            {
-                //영웅 뽑기
-            }
+
+
+            //if (droppedObject.GetComponent<CoreDragDrop>().coreType == "Common")
+            //{
+            //    //일반 뽑기
+            //}
+            //else
+            //{
+            //    //영웅 뽑기
+            //}
         }
     }
 }

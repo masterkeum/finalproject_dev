@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class UIMimicGacha : UIBase
 {
     public Image itemImage;
-    public GameObject outGameHUD;
-    private InventoryUI inventory;
+    
 
     private void Awake()
     {
@@ -20,9 +19,9 @@ public class UIMimicGacha : UIBase
 
     public void ClosePopup()
     {
+        GameManager.Instance.accountInfo.GetANewItem();
         gameObject.SetActive(false);
-
-        UIManager.Instance.ShowUI<UIEquipChange>();
+        
     }
 
 }

@@ -6684,9 +6684,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5360180799612668077}
-        m_TargetAssemblyTypeName: OutGameHUD, Assembly-CSharp
-        m_MethodName: OnClickMimic
+      - m_Target: {fileID: 3615728165527637079}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: StartMimicGacha
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
