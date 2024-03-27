@@ -66,6 +66,7 @@ public class InventoryUI : MonoBehaviour
         int gachaNum = Random.Range(0, gachaTable.Count);
         GameManager.Instance.accountInfo.newItem = gachaTable[gachaNum];
         UIManager.Instance.ShowUI<UIMimicGacha>();
+        GameManager.Instance.SaveGame();
     }
 
 

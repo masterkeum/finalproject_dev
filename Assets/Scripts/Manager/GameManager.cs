@@ -152,7 +152,7 @@ public class GameManager : SingletoneBase<GameManager>
     }
 
 
-    private void SaveGame()
+    public void SaveGame()
     {
         string jsonData = JsonUtility.ToJson(accountInfo);
         File.WriteAllText(saveFilePath, jsonData);
