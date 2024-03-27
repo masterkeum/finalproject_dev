@@ -1,8 +1,8 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-
-
 
 public class GameManager : SingletoneBase<GameManager>
 {
@@ -13,11 +13,11 @@ public class GameManager : SingletoneBase<GameManager>
 
     private int _maxActionPoint;
     private float _regenActionPointTime;
+    private int _combatActionPoint;
     public int stageId { get; set; } // 진입한 스테이지ID 가지고있게
 
     // 사용자
     public AccountInfo accountInfo;
-
 
     // 게임
     public event Action updateUIAction; // UI 업데이트 콜
@@ -29,34 +29,33 @@ public class GameManager : SingletoneBase<GameManager>
     {
         _pidStr = _pid.ToString();
         base.Init();
+
+        // 계정 세팅
+        CheckAccount();
+
+        // 데이터 로드 이후 루틴
+        StartCoroutine(WaitForData());
+    }
+
+    IEnumerator WaitForData()
+    {
+        // A 인스턴스의 데이터가 준비될 때까지 대기
+        while (!DataManager.Instance.IsReady)
+        {
+            yield return null; // 다음 프레임까지 대기
+        }
+
         // 게임 세팅
         InitParam();
 
         // TODO : 버전 체크. 에셋번들이나 어드레서블 들어가면
-
-
-        // 계정 정보 세팅
-        CheckAccount();
-
-        // 출석체크
-
-        // 행동력 회복
-        CalcActionPoint();
-
     }
 
     private void InitParam()
     {
-        // DataManager 살아있는지, 구동 됐는지 체크 어떻게 하지?
-        while (true)
-        {
-            if (DataManager.Instance.IsReady)
-            {
-                _maxActionPoint = DataManager.Instance._InitParam["MaxActionPoint"];
-                _regenActionPointTime = DataManager.Instance._InitParam["RegenActionPointTime"];
-                break;
-            }
-        }
+        _maxActionPoint = DataManager.Instance._InitParam["MaxActionPoint"];
+        _regenActionPointTime = DataManager.Instance._InitParam["RegenActionPointTime"];
+        _combatActionPoint = DataManager.Instance._InitParam["CombatActionPoint"];
     }
 
     private void CalcActionPoint()
@@ -73,15 +72,15 @@ public class GameManager : SingletoneBase<GameManager>
             // 행동력 회복
             if (accountInfo.actionPoint < _maxActionPoint)
             {
-                accountInfo.actionPoint += plusActionPoint;
+                accountInfo.AddActionPoint(plusActionPoint);
                 if (accountInfo.actionPoint < _maxActionPoint)
                 {
                     // 마지막 업데이트 시간 갱신
-                    accountInfo.lastUpdateTime += plusActionPoint * _regenActionPointTime;
+                    accountInfo.AddUpdateTime(plusActionPoint * _regenActionPointTime);
                     return;
                 }
             }
-            accountInfo.lastUpdateTime = UtilityKit.GetCurrentTime(); // 현재시간으로 덮어씌우기
+            accountInfo.AddUpdateTime(); // 현재시간으로 덮어씌우기
         }
     }
 
@@ -96,6 +95,7 @@ public class GameManager : SingletoneBase<GameManager>
             PlayerPrefs.SetString("AID", guid.ToString());
         }
 
+        // TODO : 안드로이드도 저장이 잘 되는지 확인 필요
         saveFilePath = Application.persistentDataPath + "/" + PlayerPrefs.GetString("AID") + ".json";
         Debug.Log(saveFilePath);
         accountInfo = LoadGame(PlayerPrefs.GetString("AID"));
@@ -170,7 +170,36 @@ public class GameManager : SingletoneBase<GameManager>
         else
         {
             // 없으면 신규 유저
-            return accountInfo = new AccountInfo(aid, aid[..8]);
+            return new AccountInfo(aid, aid[..8]);
         }
     }
+
+
+    #region InGameScene
+
+    public void InGameSceneProcess()
+    {
+        SetState(GameState.IngameStart);
+        accountInfo.AddActionPoint(_combatActionPoint);
+
+        SaveGame();
+    }
+
+    #endregion
+
+    #region MainScene
+    internal void MainSceneProcess()
+    {
+        SetState(GameState.Main);
+        // 행동력 회복
+        CalcActionPoint();
+
+        // 출석체크
+
+
+
+        SaveGame();
+    }
+
+    #endregion
 }

@@ -10,7 +10,6 @@ public class DataManager : SingletoneBase<DataManager>
     // 데이터 파일 경로 Assets/Resources/DataTables/DataTable.json
     private string DataFilePath = "DataTables/DataTable";
 
-
     public Dictionary<string, int> _InitParam;
 
     public Dictionary<int, CharacterInfo> characterInfoDict;
