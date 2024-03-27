@@ -1,61 +1,86 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
-using System.Xml;
-using Unity.VisualScripting;
 using UnityEngine;
-
-public enum GameState
-{
-    None,
-    Intro,
-    Loading,
-    Main,
-    IngameStart,
-    IngameEnd,
-}
 
 public class GameManager : SingletoneBase<GameManager>
 {
+    // global
     [ReadOnly, SerializeField] private string _pidStr;
     public GameState gameState { get; private set; }
     string saveFilePath;
 
+    private int _maxActionPoint;
+    private float _regenActionPointTime;
+    private int _combatActionPoint;
+    public int stageId { get; set; } // 진입한 스테이지ID 가지고있게
+
+    // 사용자
     public AccountInfo accountInfo;
+
+    // 게임
     public event Action updateUIAction; // UI 업데이트 콜
+
     public Player player { get; private set; }
 
-    // 씬이 넘어가도 유지할 데이터
-    public int stageId { get; set; } // 진입한 스테이지ID 가지고있게
 
     protected override void Init()
     {
         _pidStr = _pid.ToString();
         base.Init();
-        // TODO : 버전 체크. 에셋번들이나 어드레서블 들어가면
-
-        // 계정 정보 세팅
-        CheckAccount();
-
-        // 출석체크
-
-        // 행동력 회복
-        CalcActionPoint();
-
 
         // 계정 세팅
-        stageId = 101; // !NOTE : Test코드
+        CheckAccount();
+
+        // 데이터 로드 이후 루틴
+        StartCoroutine(WaitForData());
+    }
+
+    IEnumerator WaitForData()
+    {
+        // A 인스턴스의 데이터가 준비될 때까지 대기
+        while (!DataManager.Instance.IsReady)
+        {
+            yield return null; // 다음 프레임까지 대기
+        }
+
+        // 게임 세팅
+        InitParam();
+
+        // TODO : 버전 체크. 에셋번들이나 어드레서블 들어가면
+    }
+
+    private void InitParam()
+    {
+        _maxActionPoint = DataManager.Instance._InitParam["MaxActionPoint"];
+        _regenActionPointTime = DataManager.Instance._InitParam["RegenActionPointTime"];
+        _combatActionPoint = DataManager.Instance._InitParam["CombatActionPoint"];
     }
 
     private void CalcActionPoint()
     {
+        /*
+        실행 타이밍
+            게임 시작
+            인게임 종료 후 아웃게임 나오는 경우
+        */
         float timeElapsed = UtilityKit.GetCurrentTime() - accountInfo.lastUpdateTime; // 시간차이
-        if (timeElapsed >= 480f)
+        if (timeElapsed >= _regenActionPointTime)
         {
-            int plusActionPoint = Mathf.FloorToInt(timeElapsed / 480f); // 8분당 1씩 회복
+            int plusActionPoint = Mathf.FloorToInt(timeElapsed / _regenActionPointTime); // 8분당 1씩 회복
             // 행동력 회복
-            accountInfo.actionPoint += plusActionPoint;
-            // 마지막 업데이트 시간 갱신
-            accountInfo.lastUpdateTime += plusActionPoint * 480f;
+            if (accountInfo.actionPoint < _maxActionPoint)
+            {
+                accountInfo.AddActionPoint(plusActionPoint);
+                if (accountInfo.actionPoint < _maxActionPoint)
+                {
+                    // 마지막 업데이트 시간 갱신
+                    accountInfo.AddUpdateTime(plusActionPoint * _regenActionPointTime);
+                    return;
+                }
+            }
+            accountInfo.AddUpdateTime(); // 현재시간으로 덮어씌우기
         }
     }
 
@@ -70,9 +95,11 @@ public class GameManager : SingletoneBase<GameManager>
             PlayerPrefs.SetString("AID", guid.ToString());
         }
 
+        // TODO : 안드로이드도 저장이 잘 되는지 확인 필요
         saveFilePath = Application.persistentDataPath + "/" + PlayerPrefs.GetString("AID") + ".json";
         Debug.Log(saveFilePath);
-        LoadGame(PlayerPrefs.GetString("AID"));
+        accountInfo = LoadGame(PlayerPrefs.GetString("AID"));
+        stageId = accountInfo.selectedStageId;
     }
 
 
@@ -138,13 +165,41 @@ public class GameManager : SingletoneBase<GameManager>
         if (File.Exists(saveFilePath))
         {
             string FromJsonData = File.ReadAllText(saveFilePath);
-            accountInfo = JsonUtility.FromJson<AccountInfo>(FromJsonData);
+            return JsonUtility.FromJson<AccountInfo>(FromJsonData);
         }
         else
         {
             // 없으면 신규 유저
-            accountInfo = new AccountInfo(aid, aid[..8]);
+            return new AccountInfo(aid, aid[..8]);
         }
-        return accountInfo;
     }
+
+
+    #region InGameScene
+
+    public void InGameSceneProcess()
+    {
+        SetState(GameState.IngameStart);
+        accountInfo.AddActionPoint(_combatActionPoint);
+
+        SaveGame();
+    }
+
+    #endregion
+
+    #region MainScene
+    internal void MainSceneProcess()
+    {
+        SetState(GameState.Main);
+        // 행동력 회복
+        CalcActionPoint();
+
+        // 출석체크
+
+
+
+        SaveGame();
+    }
+
+    #endregion
 }

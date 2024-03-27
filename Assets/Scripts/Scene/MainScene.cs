@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MainScene : MonoBehaviour
 {
+    private OutGameHUD outGameHUD;
+    
     private void Awake()
     {
         Time.timeScale = 1.0f;
@@ -10,10 +12,11 @@ public class MainScene : MonoBehaviour
         UIManager.Instance.Clear();
     }
 
-
-
     private void Start()
     {
+        Debug.Log("MainScene.Start");
+        GameManager.Instance.MainSceneProcess();
 
+        outGameHUD = UIManager.Instance.ShowUI<OutGameHUD>();
     }
 }

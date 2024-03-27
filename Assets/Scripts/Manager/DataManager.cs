@@ -5,8 +5,12 @@ public class DataManager : SingletoneBase<DataManager>
 {
     [ReadOnly, SerializeField] private string _pidStr;
 
+    public bool IsReady { get; private set; } = false;
+
     // 데이터 파일 경로 Assets/Resources/DataTables/DataTable.json
     private string DataFilePath = "DataTables/DataTable";
+
+    public Dictionary<string, int> _InitParam;
 
     public Dictionary<int, CharacterInfo> characterInfoDict;
     public Dictionary<int, StageList> stageListDict;
@@ -39,6 +43,13 @@ public class DataManager : SingletoneBase<DataManager>
     public void ConvertJsonToDictionary(string json)
     {
         DataTable jsonData = JsonUtility.FromJson<DataTable>(json);
+
+        // init 데이터
+        _InitParam = new Dictionary<string, int>();
+        foreach (InitializeParam initparam in jsonData.InitializeParam)
+        {
+            _InitParam.Add(initparam.code, initparam.param1);
+        }
 
         // 캐릭터 정보
         characterInfoDict = new Dictionary<int, CharacterInfo>();
@@ -110,6 +121,7 @@ public class DataManager : SingletoneBase<DataManager>
 
         // GC에서 언제 가져갈지 모르니 jsonData를 명시적으로 null 로 만들거나 destroy 하고싶다.
         jsonData = null;
+        IsReady = true;
     }
 
 
