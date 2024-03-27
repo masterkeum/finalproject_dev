@@ -19,7 +19,6 @@ public class UINewEquip : UIBase
         // TODO 이미지
         ItemTable newItem = GameManager.Instance.accountInfo.newItem;
         itemName.text = newItem.nameAlias;
-        itemStats.text = ($"HP : {newItem.hp} \t 방어 : {newItem.dp} \n 공격 : {newItem.ap} \t 이동속도 : {newItem.speed}");
     }
 
     public void OnEquipButton()
