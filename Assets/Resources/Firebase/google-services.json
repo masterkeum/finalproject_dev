@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "998153302689",
+    "project_id": "finalproject-33316",
+    "storage_bucket": "finalproject-33316.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998153302689:android:3e79be536f7c972fff36e0",
+        "android_client_info": {
+          "package_name": "com.sparta.finalproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQgWD-XBKqvcWh-USpS_r4V_jpS8l8aBo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
