@@ -35339,7 +35339,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemImage: {fileID: 8701606717210184309}
-  isMimiced: 0
 --- !u!1 &3679734552554080977
 GameObject:
   m_ObjectHideFlags: 0

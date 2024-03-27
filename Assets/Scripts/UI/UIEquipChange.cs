@@ -34,7 +34,8 @@ public class UIEquipChange : UIBase
 
     public void OnDigestion()
     {
-        
+        //경험치와 골드 얻기
+        gameObject.SetActive(false);
     }
 
 }

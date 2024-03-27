@@ -77,6 +77,13 @@ public class AccountInfo
         selectedStageId = DataManager.Instance._InitParam["StartStageId"];
         lastUpdateTime = UtilityKit.GetCurrentTime();
         equipItems = new EquipItems();
+        equipItems.Weapon = new ItemTable();
+        equipItems.Armor = new ItemTable();
+        equipItems.Helmet = new ItemTable();
+        equipItems.Gloves = new ItemTable();
+        equipItems.Boots = new ItemTable();
+        equipItems.Accessories = new ItemTable();
+
     }
 
     public void AddActionPoint(int addActionPoint)
@@ -100,7 +107,7 @@ public class AccountInfo
         {
             case "Weapon":
                 {
-                    if (equipItems.Weapon != null)
+                    if (equipItems.Weapon.itemId != 0)
                     {
                         ChangeEquip(equipItems.Weapon);
                     }
@@ -110,7 +117,7 @@ public class AccountInfo
                 break;
             case "Armor":
                 {
-                    if (equipItems.Armor != null)
+                    if (equipItems.Armor.itemId != 0)
                     {
                         ChangeEquip(equipItems.Armor);
                     }
@@ -120,7 +127,7 @@ public class AccountInfo
                 break;
             case "Gloves":
                 {
-                    if (equipItems.Gloves != null)
+                    if (equipItems.Gloves.itemId != 0)
                     {
                         ChangeEquip(equipItems.Gloves);
                     }
@@ -130,7 +137,7 @@ public class AccountInfo
                 break;
             case "Boots":
                 {
-                    if (equipItems.Boots != null)
+                    if (equipItems.Boots.itemId != 0 )
                     {
                         ChangeEquip(equipItems.Boots);
                     }
@@ -140,7 +147,7 @@ public class AccountInfo
                 break;
             case "Helmet":
                 {
-                    if (equipItems.Helmet != null)
+                    if (equipItems.Helmet.itemId != 0)
                     {
                         ChangeEquip(equipItems.Helmet);
                     }
@@ -150,7 +157,7 @@ public class AccountInfo
                 break;
             case "Accessorries":
                 {
-                    if (equipItems.Accessories != null)
+                    if (equipItems.Accessories.itemId != 0)
                     {
                         ChangeEquip(equipItems.Accessories);
                     }
@@ -179,49 +186,49 @@ public class AccountInfo
         {
             case "Weapon":
                 {
-                    if (equipItems.Weapon != null)
+                    if (equipItems.Weapon.itemId != 0)
                         UIManager.Instance.ShowUI<UIEquipChange>();
-                    else if (equipItems.Weapon == null)
+                    else
                         UIManager.Instance.ShowUI<UINewEquip>();
                 }
                 break;
             case "Armor":
                 {
-                    if (equipItems.Armor != null)
+                    if (equipItems.Armor.itemId != 0)
                         UIManager.Instance.ShowUI<UIEquipChange>();
-                    else if (equipItems.Armor == null)
+                    else
                         UIManager.Instance.ShowUI<UINewEquip>();
                 }
                 break;
             case "Gloves":
                 {
-                    if (equipItems.Gloves != null)
+                    if (equipItems.Gloves.itemId != 0)
                         UIManager.Instance.ShowUI<UIEquipChange>();
-                    else if (equipItems.Gloves == null)
+                    else
                         UIManager.Instance.ShowUI<UINewEquip>();
                 }
                 break;
             case "Boots":
                 {
-                    if (equipItems.Boots != null)
+                    if (equipItems.Boots.itemId != 0)
                         UIManager.Instance.ShowUI<UIEquipChange>();
-                    else if (equipItems.Boots == null)
+                    else
                         UIManager.Instance.ShowUI<UINewEquip>();
                 }
                 break;
             case "Helmet":
                 {
-                    if (equipItems.Helmet != null)
+                    if (equipItems.Helmet.itemId != 0)
                         UIManager.Instance.ShowUI<UIEquipChange>();
-                    else if (equipItems.Helmet == null)
+                    else
                         UIManager.Instance.ShowUI<UINewEquip>();
                 }
                 break;
             case "Accessorries":
                 {
-                    if (equipItems.Accessories != null)
+                    if (equipItems.Accessories.itemId != 0)
                         UIManager.Instance.ShowUI<UIEquipChange>();
-                    else if (equipItems.Accessories == null)
+                    else
                         UIManager.Instance.ShowUI<UINewEquip>();
                 }
                 break;
