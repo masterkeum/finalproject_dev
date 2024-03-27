@@ -27,13 +27,14 @@ public class UIEquipChange : UIBase
 
     public void OnEquip()
     {
-
+        GameManager.Instance.accountInfo.Equip();
+        Set();
     }
 
 
-    public void ClosePopup()
+    public void OnDigestion()
     {
-        gameObject.SetActive(false);
+        
     }
 
 }

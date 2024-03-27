@@ -39,15 +39,20 @@ public class AccountInfo
         public ItemTable Gloves;
         public ItemTable Boots;
         public ItemTable Accessories;
-        public ItemTable newItem; // 분해되면 null 로 초기화
+
     }
     //인벤토리 아이템들 => 딕셔너리는 저장 안됨
     //public Dictionary<string, ItemTable> equipItems = new Dictionary<string, ItemTable>();
-    EquipItems equipItems = new EquipItems();
+    public EquipItems equipItems;
+
 
     [SerializeField] private string name;
     [SerializeField] private int level;
     [SerializeField] private int totalExp;
+
+
+    public ItemTable newItem; // 분해되면 null 로 초기화
+    public ItemTable changedSlot; // 아이템 교체 시 한쪽 데이터를 임시저장하는 곳
 
     [SerializeField] public int actionPoint { get; private set; } // 행동력
     [SerializeField] public int gem { get; private set; }
@@ -70,6 +75,7 @@ public class AccountInfo
         core = 0;
         selectedStageId = DataManager.Instance._InitParam["StartStageId"];
         lastUpdateTime = UtilityKit.GetCurrentTime();
+        equipItems = new EquipItems();
     }
 
     public void AddActionPoint(int addActionPoint)
@@ -87,65 +93,138 @@ public class AccountInfo
     }
 
 
-    //private void AddEquipDict()
-    //{
-    //    switch (newItem.itemType)
-    //    {
-    //        case "Weapon":
-    //            {
-    //                if (equipItems["Weapon"] != null)
-    //                {
-    //                    equipItems.Remove("Weapon");
-    //                }
-    //                equipItems.Add(newItem.itemType, newItem);
-    //            }
-    //            break;
-    //        case "Armor":
-    //            {
-    //                if (equipItems["Armor"] != null)
-    //                {
-    //                    equipItems.Remove("Armor");
-    //                }
-    //                equipItems.Add(newItem.itemType, newItem);
-    //            }
-    //            break;
-    //        case "Helmet":
-    //            {
-    //                if (equipItems["Helmet"] != null)
-    //                {
-    //                    equipItems.Remove("Helmet");
-    //                }
-    //                equipItems.Add(newItem.itemType, newItem);
-    //            }
-    //            break;
-    //        case "Gloves":
-    //            {
-    //                if (equipItems["Gloves"] != null)
-    //                {
-    //                    equipItems.Remove("Gloves");
-    //                }
-    //                equipItems.Add(newItem.itemType, newItem);
-    //            }
-    //            break;
-    //        case "Boots":
-    //            {
-    //                if (equipItems["Boots"] != null)
-    //                {
-    //                    equipItems.Remove("Boots");
-    //                }
-    //                equipItems.Add(newItem.itemType, newItem);
-    //            }
-    //            break;
-    //        case "Accessorries":
-    //            {
-    //                if (equipItems["Accessorries"] != null)
-    //                {
-    //                    equipItems.Remove("Accessorries");
-    //                }
-    //                equipItems.Add(newItem.itemType, newItem);
-    //            }
-    //            break;
-    //    }
-    //}
+    public void Equip()
+    {
+        switch (newItem.itemType)
+        {
+            case "Weapon":
+                {
+                    if (equipItems.Weapon != null)
+                    {
+                        ChangeEquip(equipItems.Weapon);
+                    }
+                    else
+                        equipItems.Weapon = newItem;
+                }
+                break;
+            case "Armor":
+                {
+                    if (equipItems.Armor != null)
+                    {
+                        ChangeEquip(equipItems.Armor);
+                    }
+                    else
+                        equipItems.Armor = newItem;
+                }
+                break;
+            case "Gloves":
+                {
+                    if (equipItems.Gloves != null)
+                    {
+                        ChangeEquip(equipItems.Gloves);
+                    }
+                    else
+                        equipItems.Gloves = newItem;
+                }
+                break;
+            case "Boots":
+                {
+                    if (equipItems.Boots != null)
+                    {
+                        ChangeEquip(equipItems.Boots);
+                    }
+                    else
+                        equipItems.Boots = newItem;
+                }
+                break;
+            case "Helmet":
+                {
+                    if (equipItems.Helmet != null)
+                    {
+                        ChangeEquip(equipItems.Helmet);
+                    }
+                    else
+                        equipItems.Helmet = newItem;
+                }
+                break;
+            case "Accessorries":
+                {
+                    if (equipItems.Accessories != null)
+                    {
+                        ChangeEquip(equipItems.Accessories);
+                    }
+                    else
+                        equipItems.Accessories = newItem;
+                }
+                break;
+        }
+
+
+    }
+
+    private void ChangeEquip(ItemTable item)
+    {
+        changedSlot = item;
+        item = newItem;
+        newItem = changedSlot;
+        changedSlot = null;
+    }
+
+    public void GetANewItem()
+    {
+        Debug.Log(newItem.itemType);
+
+        switch (newItem.itemType)
+        {
+            case "Weapon":
+                {
+                    if (equipItems.Weapon != null)
+                        UIManager.Instance.ShowUI<UIEquipChange>();
+                    else if (equipItems.Weapon == null)
+                        UIManager.Instance.ShowUI<UINewEquip>();
+                }
+                break;
+            case "Armor":
+                {
+                    if (equipItems.Armor != null)
+                        UIManager.Instance.ShowUI<UIEquipChange>();
+                    else if (equipItems.Armor == null)
+                        UIManager.Instance.ShowUI<UINewEquip>();
+                }
+                break;
+            case "Gloves":
+                {
+                    if (equipItems.Gloves != null)
+                        UIManager.Instance.ShowUI<UIEquipChange>();
+                    else if (equipItems.Gloves == null)
+                        UIManager.Instance.ShowUI<UINewEquip>();
+                }
+                break;
+            case "Boots":
+                {
+                    if (equipItems.Boots != null)
+                        UIManager.Instance.ShowUI<UIEquipChange>();
+                    else if (equipItems.Boots == null)
+                        UIManager.Instance.ShowUI<UINewEquip>();
+                }
+                break;
+            case "Helmet":
+                {
+                    if (equipItems.Helmet != null)
+                        UIManager.Instance.ShowUI<UIEquipChange>();
+                    else if (equipItems.Helmet == null)
+                        UIManager.Instance.ShowUI<UINewEquip>();
+                }
+                break;
+            case "Accessorries":
+                {
+                    if (equipItems.Accessories != null)
+                        UIManager.Instance.ShowUI<UIEquipChange>();
+                    else if (equipItems.Accessories == null)
+                        UIManager.Instance.ShowUI<UINewEquip>();
+                }
+                break;
+        }
+    }
 
 }
