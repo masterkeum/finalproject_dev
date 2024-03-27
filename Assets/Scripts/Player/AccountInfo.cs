@@ -31,16 +31,17 @@ public class AccountInfo
 
     [SerializeField] public string aid { get; private set; }
 
+    [Serializable]
     public class EquipItems
     {
-        public ItemTable Weapon;
-        public ItemTable Armor;
-        public ItemTable Helmet;
-        public ItemTable Gloves;
-        public ItemTable Boots;
-        public ItemTable Accessories;
-
+        [SerializeField] public ItemTable Weapon;
+        [SerializeField] public ItemTable Armor;
+        [SerializeField] public ItemTable Helmet;
+        [SerializeField] public ItemTable Gloves;
+        [SerializeField] public ItemTable Boots;
+        [SerializeField] public ItemTable Accessories;
     }
+
     //인벤토리 아이템들 => 딕셔너리는 저장 안됨
     //public Dictionary<string, ItemTable> equipItems = new Dictionary<string, ItemTable>();
     public EquipItems equipItems;
