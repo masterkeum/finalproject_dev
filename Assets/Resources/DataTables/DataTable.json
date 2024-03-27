@@ -189,6 +189,787 @@
       "prefabFile": "Prefabs/Enemy/FylingDemon"
     }
   ],
+  "StageList": [
+    {
+      "stageId": 101,
+      "levelPrefab": "필드 주소",
+      "levelLight": "조명 주소",
+      "BGSprite": "Textures/SnapShot/stage1_1",
+      "stageDesc": "들판"
+    },
+    {
+      "stageId": 102,
+      "levelPrefab": null,
+      "levelLight": null,
+      "BGSprite": "Textures/SnapShot/stage1_2",
+      "stageDesc": "들판"
+    },
+    {
+      "stageId": 103,
+      "levelPrefab": null,
+      "levelLight": null,
+      "BGSprite": "Textures/SnapShot/stage1_3",
+      "stageDesc": "들판"
+    },
+    {
+      "stageId": 104,
+      "levelPrefab": null,
+      "levelLight": null,
+      "BGSprite": "Textures/SnapShot/stage1_4",
+      "stageDesc": "들판"
+    },
+    {
+      "stageId": 105,
+      "levelPrefab": null,
+      "levelLight": null,
+      "BGSprite": "Textures/SnapShot/stage1_5",
+      "stageDesc": "들판"
+    },
+    {
+      "stageId": 201,
+      "levelPrefab": null,
+      "levelLight": null,
+      "BGSprite": "Textures/SnapShot/stage2_1",
+      "stageDesc": "중세"
+    },
+    {
+      "stageId": 202,
+      "levelPrefab": null,
+      "levelLight": null,
+      "BGSprite": "Textures/SnapShot/stage2_2",
+      "stageDesc": "중세"
+    },
+    {
+      "stageId": 203,
+      "levelPrefab": null,
+      "levelLight": null,
+      "BGSprite": "Textures/SnapShot/stage2_3",
+      "stageDesc": "중세"
+    },
+    {
+      "stageId": 204,
+      "levelPrefab": null,
+      "levelLight": null,
+      "BGSprite": "Textures/SnapShot/stage2_4",
+      "stageDesc": "중세"
+    },
+    {
+      "stageId": 205,
+      "levelPrefab": null,
+      "levelLight": null,
+      "BGSprite": "Textures/SnapShot/stage2_5",
+      "stageDesc": "중세"
+    }
+  ],
+  "StageInfoTable": [
+    {
+      "stageId": 101,
+      "monsterId": 20000001,
+      "level": 1,
+      "genTimeStart": 0,
+      "genTimeEnd": 15,
+      "genAmount": 3,
+      "genTime": 3,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 101,
+      "monsterId": 20000001,
+      "level": 2,
+      "genTimeStart": 10,
+      "genTimeEnd": 60,
+      "genAmount": 5,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 101,
+      "monsterId": 20000001,
+      "level": 3,
+      "genTimeStart": 40,
+      "genTimeEnd": 70,
+      "genAmount": 8,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 101,
+      "monsterId": 20000001,
+      "level": 4,
+      "genTimeStart": 70,
+      "genTimeEnd": 100,
+      "genAmount": 3,
+      "genTime": 10,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 101,
+      "monsterId": 20000002,
+      "level": 1,
+      "genTimeStart": 15,
+      "genTimeEnd": 45,
+      "genAmount": 1,
+      "genTime": 1,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 101,
+      "monsterId": 20000002,
+      "level": 2,
+      "genTimeStart": 30,
+      "genTimeEnd": 150,
+      "genAmount": 1,
+      "genTime": 4,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 101,
+      "monsterId": 20000002,
+      "level": 3,
+      "genTimeStart": 150,
+      "genTimeEnd": 210,
+      "genAmount": 5,
+      "genTime": 10,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 101,
+      "monsterId": 20000002,
+      "level": 4,
+      "genTimeStart": 200,
+      "genTimeEnd": 275,
+      "genAmount": 2,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 101,
+      "monsterId": 20100001,
+      "level": 1,
+      "genTimeStart": 0,
+      "genTimeEnd": 0,
+      "genAmount": 1,
+      "genTime": 0,
+      "genMax": 1,
+      "genPosVecter3": [
+        -70,
+        0,
+        -70
+      ]
+    },
+    {
+      "stageId": 102,
+      "monsterId": 20000001,
+      "level": 3,
+      "genTimeStart": 0,
+      "genTimeEnd": 15,
+      "genAmount": 3,
+      "genTime": 3,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 102,
+      "monsterId": 20000001,
+      "level": 3,
+      "genTimeStart": 10,
+      "genTimeEnd": 60,
+      "genAmount": 5,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 102,
+      "monsterId": 20000001,
+      "level": 4,
+      "genTimeStart": 40,
+      "genTimeEnd": 70,
+      "genAmount": 8,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 102,
+      "monsterId": 20000001,
+      "level": 5,
+      "genTimeStart": 70,
+      "genTimeEnd": 100,
+      "genAmount": 3,
+      "genTime": 10,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 102,
+      "monsterId": 20000002,
+      "level": 3,
+      "genTimeStart": 15,
+      "genTimeEnd": 45,
+      "genAmount": 1,
+      "genTime": 1,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 102,
+      "monsterId": 20000002,
+      "level": 4,
+      "genTimeStart": 30,
+      "genTimeEnd": 150,
+      "genAmount": 1,
+      "genTime": 4,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 102,
+      "monsterId": 20000003,
+      "level": 1,
+      "genTimeStart": 150,
+      "genTimeEnd": 210,
+      "genAmount": 5,
+      "genTime": 10,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 102,
+      "monsterId": 20000003,
+      "level": 2,
+      "genTimeStart": 200,
+      "genTimeEnd": 275,
+      "genAmount": 2,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 102,
+      "monsterId": 20000003,
+      "level": 3,
+      "genTimeStart": 70,
+      "genTimeEnd": 100,
+      "genAmount": 3,
+      "genTime": 4,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 102,
+      "monsterId": 20000003,
+      "level": 4,
+      "genTimeStart": 15,
+      "genTimeEnd": 45,
+      "genAmount": 3,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 102,
+      "monsterId": 20000003,
+      "level": 4,
+      "genTimeStart": 17,
+      "genTimeEnd": 150,
+      "genAmount": 3,
+      "genTime": 6,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 102,
+      "monsterId": 20100002,
+      "level": 1,
+      "genTimeStart": 0,
+      "genTimeEnd": 0,
+      "genAmount": 1,
+      "genTime": 0,
+      "genMax": 1,
+      "genPosVecter3": [
+        -70,
+        0,
+        -80
+      ]
+    },
+    {
+      "stageId": 103,
+      "monsterId": 20000001,
+      "level": 4,
+      "genTimeStart": 0,
+      "genTimeEnd": 15,
+      "genAmount": 3,
+      "genTime": 3,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 103,
+      "monsterId": 20000001,
+      "level": 5,
+      "genTimeStart": 10,
+      "genTimeEnd": 60,
+      "genAmount": 5,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 103,
+      "monsterId": 20000001,
+      "level": 6,
+      "genTimeStart": 40,
+      "genTimeEnd": 70,
+      "genAmount": 8,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 103,
+      "monsterId": 20000001,
+      "level": 7,
+      "genTimeStart": 70,
+      "genTimeEnd": 100,
+      "genAmount": 3,
+      "genTime": 10,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 103,
+      "monsterId": 20000002,
+      "level": 4,
+      "genTimeStart": 15,
+      "genTimeEnd": 45,
+      "genAmount": 1,
+      "genTime": 1,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 103,
+      "monsterId": 20000002,
+      "level": 5,
+      "genTimeStart": 30,
+      "genTimeEnd": 150,
+      "genAmount": 1,
+      "genTime": 4,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 103,
+      "monsterId": 20000003,
+      "level": 2,
+      "genTimeStart": 150,
+      "genTimeEnd": 210,
+      "genAmount": 5,
+      "genTime": 10,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 103,
+      "monsterId": 20000003,
+      "level": 3,
+      "genTimeStart": 200,
+      "genTimeEnd": 275,
+      "genAmount": 2,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 103,
+      "monsterId": 20000003,
+      "level": 4,
+      "genTimeStart": 70,
+      "genTimeEnd": 100,
+      "genAmount": 3,
+      "genTime": 4,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 103,
+      "monsterId": 20000003,
+      "level": 5,
+      "genTimeStart": 15,
+      "genTimeEnd": 45,
+      "genAmount": 3,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 103,
+      "monsterId": 20000003,
+      "level": 6,
+      "genTimeStart": 17,
+      "genTimeEnd": 150,
+      "genAmount": 3,
+      "genTime": 6,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 103,
+      "monsterId": 20100001,
+      "level": 1,
+      "genTimeStart": 0,
+      "genTimeEnd": 0,
+      "genAmount": 1,
+      "genTime": 0,
+      "genMax": 1,
+      "genPosVecter3": [
+        -70,
+        0,
+        -70
+      ]
+    },
+    {
+      "stageId": 103,
+      "monsterId": 20100002,
+      "level": 2,
+      "genTimeStart": 0,
+      "genTimeEnd": 0,
+      "genAmount": 1,
+      "genTime": 0,
+      "genMax": 1,
+      "genPosVecter3": [
+        -70,
+        0,
+        -80
+      ]
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000001,
+      "level": 4,
+      "genTimeStart": 0,
+      "genTimeEnd": 15,
+      "genAmount": 3,
+      "genTime": 3,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000001,
+      "level": 5,
+      "genTimeStart": 10,
+      "genTimeEnd": 60,
+      "genAmount": 5,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000001,
+      "level": 6,
+      "genTimeStart": 40,
+      "genTimeEnd": 70,
+      "genAmount": 8,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000001,
+      "level": 7,
+      "genTimeStart": 70,
+      "genTimeEnd": 100,
+      "genAmount": 3,
+      "genTime": 10,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000002,
+      "level": 4,
+      "genTimeStart": 15,
+      "genTimeEnd": 45,
+      "genAmount": 1,
+      "genTime": 1,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000002,
+      "level": 5,
+      "genTimeStart": 30,
+      "genTimeEnd": 150,
+      "genAmount": 1,
+      "genTime": 4,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000003,
+      "level": 2,
+      "genTimeStart": 150,
+      "genTimeEnd": 210,
+      "genAmount": 5,
+      "genTime": 10,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000003,
+      "level": 3,
+      "genTimeStart": 200,
+      "genTimeEnd": 275,
+      "genAmount": 2,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000003,
+      "level": 4,
+      "genTimeStart": 70,
+      "genTimeEnd": 100,
+      "genAmount": 3,
+      "genTime": 4,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000003,
+      "level": 5,
+      "genTimeStart": 15,
+      "genTimeEnd": 45,
+      "genAmount": 3,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000003,
+      "level": 6,
+      "genTimeStart": 17,
+      "genTimeEnd": 150,
+      "genAmount": 3,
+      "genTime": 6,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20100001,
+      "level": 1,
+      "genTimeStart": 0,
+      "genTimeEnd": 0,
+      "genAmount": 1,
+      "genTime": 0,
+      "genMax": 1,
+      "genPosVecter3": [
+        -70,
+        0,
+        -70
+      ]
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20100002,
+      "level": 2,
+      "genTimeStart": 0,
+      "genTimeEnd": 0,
+      "genAmount": 1,
+      "genTime": 0,
+      "genMax": 1,
+      "genPosVecter3": [
+        -70,
+        0,
+        -80
+      ]
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000004,
+      "level": 1,
+      "genTimeStart": 0,
+      "genTimeEnd": 15,
+      "genAmount": 3,
+      "genTime": 3,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000004,
+      "level": 2,
+      "genTimeStart": 10,
+      "genTimeEnd": 60,
+      "genAmount": 5,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000004,
+      "level": 3,
+      "genTimeStart": 40,
+      "genTimeEnd": 70,
+      "genAmount": 8,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000001,
+      "level": 5,
+      "genTimeStart": 70,
+      "genTimeEnd": 100,
+      "genAmount": 3,
+      "genTime": 10,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000001,
+      "level": 6,
+      "genTimeStart": 15,
+      "genTimeEnd": 45,
+      "genAmount": 1,
+      "genTime": 1,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000002,
+      "level": 4,
+      "genTimeStart": 30,
+      "genTimeEnd": 150,
+      "genAmount": 1,
+      "genTime": 4,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000002,
+      "level": 5,
+      "genTimeStart": 150,
+      "genTimeEnd": 210,
+      "genAmount": 5,
+      "genTime": 10,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000002,
+      "level": 6,
+      "genTimeStart": 200,
+      "genTimeEnd": 275,
+      "genAmount": 2,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000005,
+      "level": 1,
+      "genTimeStart": 70,
+      "genTimeEnd": 100,
+      "genAmount": 3,
+      "genTime": 4,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000005,
+      "level": 2,
+      "genTimeStart": 15,
+      "genTimeEnd": 45,
+      "genAmount": 3,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000005,
+      "level": 3,
+      "genTimeStart": 17,
+      "genTimeEnd": 150,
+      "genAmount": 3,
+      "genTime": 6,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20100001,
+      "level": 2,
+      "genTimeStart": 0,
+      "genTimeEnd": 0,
+      "genAmount": 1,
+      "genTime": 0,
+      "genMax": 2,
+      "genPosVecter3": [
+        -70,
+        0,
+        -70
+      ]
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20100002,
+      "level": 2,
+      "genTimeStart": 0,
+      "genTimeEnd": 0,
+      "genAmount": 1,
+      "genTime": 0,
+      "genMax": 1,
+      "genPosVecter3": [
+        -40,
+        0,
+        -30
+      ]
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20100003,
+      "level": 1,
+      "genTimeStart": 0,
+      "genTimeEnd": 0,
+      "genAmount": 1,
+      "genTime": 0,
+      "genMax": 1,
+      "genPosVecter3": [
+        10,
+        0,
+        -50
+      ]
+    }
+  ],
   "MonsterLevel": [
     {
       "uid": 20000001,
@@ -840,715 +1621,6 @@
       "rewardAmount": 10
     }
   ],
-  "StageInfoTable": [
-    {
-      "stageId": 101,
-      "monsterId": 20000001,
-      "level": 1,
-      "genTimeStart": 0,
-      "genTimeEnd": 15,
-      "genAmount": 3,
-      "genTime": 3,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 101,
-      "monsterId": 20000001,
-      "level": 2,
-      "genTimeStart": 10,
-      "genTimeEnd": 60,
-      "genAmount": 5,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 101,
-      "monsterId": 20000001,
-      "level": 3,
-      "genTimeStart": 40,
-      "genTimeEnd": 70,
-      "genAmount": 8,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 101,
-      "monsterId": 20000001,
-      "level": 4,
-      "genTimeStart": 70,
-      "genTimeEnd": 100,
-      "genAmount": 3,
-      "genTime": 10,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 101,
-      "monsterId": 20000002,
-      "level": 1,
-      "genTimeStart": 15,
-      "genTimeEnd": 45,
-      "genAmount": 1,
-      "genTime": 1,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 101,
-      "monsterId": 20000002,
-      "level": 2,
-      "genTimeStart": 30,
-      "genTimeEnd": 150,
-      "genAmount": 1,
-      "genTime": 4,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 101,
-      "monsterId": 20000002,
-      "level": 3,
-      "genTimeStart": 150,
-      "genTimeEnd": 210,
-      "genAmount": 5,
-      "genTime": 10,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 101,
-      "monsterId": 20000002,
-      "level": 4,
-      "genTimeStart": 200,
-      "genTimeEnd": 275,
-      "genAmount": 2,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 101,
-      "monsterId": 20100001,
-      "level": 1,
-      "genTimeStart": 0,
-      "genTimeEnd": 0,
-      "genAmount": 1,
-      "genTime": 0,
-      "genMax": 1,
-      "genPosVecter3": [
-        -70,
-        0,
-        -70
-      ]
-    },
-    {
-      "stageId": 102,
-      "monsterId": 20000001,
-      "level": 3,
-      "genTimeStart": 0,
-      "genTimeEnd": 15,
-      "genAmount": 3,
-      "genTime": 3,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 102,
-      "monsterId": 20000001,
-      "level": 3,
-      "genTimeStart": 10,
-      "genTimeEnd": 60,
-      "genAmount": 5,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 102,
-      "monsterId": 20000001,
-      "level": 4,
-      "genTimeStart": 40,
-      "genTimeEnd": 70,
-      "genAmount": 8,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 102,
-      "monsterId": 20000001,
-      "level": 5,
-      "genTimeStart": 70,
-      "genTimeEnd": 100,
-      "genAmount": 3,
-      "genTime": 10,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 102,
-      "monsterId": 20000002,
-      "level": 3,
-      "genTimeStart": 15,
-      "genTimeEnd": 45,
-      "genAmount": 1,
-      "genTime": 1,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 102,
-      "monsterId": 20000002,
-      "level": 4,
-      "genTimeStart": 30,
-      "genTimeEnd": 150,
-      "genAmount": 1,
-      "genTime": 4,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 102,
-      "monsterId": 20000003,
-      "level": 1,
-      "genTimeStart": 150,
-      "genTimeEnd": 210,
-      "genAmount": 5,
-      "genTime": 10,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 102,
-      "monsterId": 20000003,
-      "level": 2,
-      "genTimeStart": 200,
-      "genTimeEnd": 275,
-      "genAmount": 2,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 102,
-      "monsterId": 20000003,
-      "level": 3,
-      "genTimeStart": 70,
-      "genTimeEnd": 100,
-      "genAmount": 3,
-      "genTime": 4,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 102,
-      "monsterId": 20000003,
-      "level": 4,
-      "genTimeStart": 15,
-      "genTimeEnd": 45,
-      "genAmount": 3,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 102,
-      "monsterId": 20000003,
-      "level": 4,
-      "genTimeStart": 17,
-      "genTimeEnd": 150,
-      "genAmount": 3,
-      "genTime": 6,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 102,
-      "monsterId": 20100002,
-      "level": 1,
-      "genTimeStart": 0,
-      "genTimeEnd": 0,
-      "genAmount": 1,
-      "genTime": 0,
-      "genMax": 1,
-      "genPosVecter3": [
-        -70,
-        0,
-        -80
-      ]
-    },
-    {
-      "stageId": 103,
-      "monsterId": 20000001,
-      "level": 4,
-      "genTimeStart": 0,
-      "genTimeEnd": 15,
-      "genAmount": 3,
-      "genTime": 3,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 103,
-      "monsterId": 20000001,
-      "level": 5,
-      "genTimeStart": 10,
-      "genTimeEnd": 60,
-      "genAmount": 5,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 103,
-      "monsterId": 20000001,
-      "level": 6,
-      "genTimeStart": 40,
-      "genTimeEnd": 70,
-      "genAmount": 8,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 103,
-      "monsterId": 20000001,
-      "level": 7,
-      "genTimeStart": 70,
-      "genTimeEnd": 100,
-      "genAmount": 3,
-      "genTime": 10,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 103,
-      "monsterId": 20000002,
-      "level": 4,
-      "genTimeStart": 15,
-      "genTimeEnd": 45,
-      "genAmount": 1,
-      "genTime": 1,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 103,
-      "monsterId": 20000002,
-      "level": 5,
-      "genTimeStart": 30,
-      "genTimeEnd": 150,
-      "genAmount": 1,
-      "genTime": 4,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 103,
-      "monsterId": 20000003,
-      "level": 2,
-      "genTimeStart": 150,
-      "genTimeEnd": 210,
-      "genAmount": 5,
-      "genTime": 10,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 103,
-      "monsterId": 20000003,
-      "level": 3,
-      "genTimeStart": 200,
-      "genTimeEnd": 275,
-      "genAmount": 2,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 103,
-      "monsterId": 20000003,
-      "level": 4,
-      "genTimeStart": 70,
-      "genTimeEnd": 100,
-      "genAmount": 3,
-      "genTime": 4,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 103,
-      "monsterId": 20000003,
-      "level": 5,
-      "genTimeStart": 15,
-      "genTimeEnd": 45,
-      "genAmount": 3,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 103,
-      "monsterId": 20000003,
-      "level": 6,
-      "genTimeStart": 17,
-      "genTimeEnd": 150,
-      "genAmount": 3,
-      "genTime": 6,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 103,
-      "monsterId": 20100001,
-      "level": 1,
-      "genTimeStart": 0,
-      "genTimeEnd": 0,
-      "genAmount": 1,
-      "genTime": 0,
-      "genMax": 1,
-      "genPosVecter3": [
-        -70,
-        0,
-        -70
-      ]
-    },
-    {
-      "stageId": 103,
-      "monsterId": 20100002,
-      "level": 2,
-      "genTimeStart": 0,
-      "genTimeEnd": 0,
-      "genAmount": 1,
-      "genTime": 0,
-      "genMax": 1,
-      "genPosVecter3": [
-        -70,
-        0,
-        -80
-      ]
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000001,
-      "level": 4,
-      "genTimeStart": 0,
-      "genTimeEnd": 15,
-      "genAmount": 3,
-      "genTime": 3,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000001,
-      "level": 5,
-      "genTimeStart": 10,
-      "genTimeEnd": 60,
-      "genAmount": 5,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000001,
-      "level": 6,
-      "genTimeStart": 40,
-      "genTimeEnd": 70,
-      "genAmount": 8,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000001,
-      "level": 7,
-      "genTimeStart": 70,
-      "genTimeEnd": 100,
-      "genAmount": 3,
-      "genTime": 10,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000002,
-      "level": 4,
-      "genTimeStart": 15,
-      "genTimeEnd": 45,
-      "genAmount": 1,
-      "genTime": 1,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000002,
-      "level": 5,
-      "genTimeStart": 30,
-      "genTimeEnd": 150,
-      "genAmount": 1,
-      "genTime": 4,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000003,
-      "level": 2,
-      "genTimeStart": 150,
-      "genTimeEnd": 210,
-      "genAmount": 5,
-      "genTime": 10,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000003,
-      "level": 3,
-      "genTimeStart": 200,
-      "genTimeEnd": 275,
-      "genAmount": 2,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000003,
-      "level": 4,
-      "genTimeStart": 70,
-      "genTimeEnd": 100,
-      "genAmount": 3,
-      "genTime": 4,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000003,
-      "level": 5,
-      "genTimeStart": 15,
-      "genTimeEnd": 45,
-      "genAmount": 3,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000003,
-      "level": 6,
-      "genTimeStart": 17,
-      "genTimeEnd": 150,
-      "genAmount": 3,
-      "genTime": 6,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20100001,
-      "level": 1,
-      "genTimeStart": 0,
-      "genTimeEnd": 0,
-      "genAmount": 1,
-      "genTime": 0,
-      "genMax": 1,
-      "genPosVecter3": [
-        -70,
-        0,
-        -70
-      ]
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20100002,
-      "level": 2,
-      "genTimeStart": 0,
-      "genTimeEnd": 0,
-      "genAmount": 1,
-      "genTime": 0,
-      "genMax": 1,
-      "genPosVecter3": [
-        -70,
-        0,
-        -80
-      ]
-    },
-    {
-      "stageId": 105,
-      "monsterId": 20000004,
-      "level": 1,
-      "genTimeStart": 0,
-      "genTimeEnd": 15,
-      "genAmount": 3,
-      "genTime": 3,
-      "genMax": null,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 105,
-      "monsterId": 20000004,
-      "level": 2,
-      "genTimeStart": 10,
-      "genTimeEnd": 60,
-      "genAmount": 5,
-      "genTime": 5,
-      "genMax": null,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 105,
-      "monsterId": 20000004,
-      "level": 3,
-      "genTimeStart": 40,
-      "genTimeEnd": 70,
-      "genAmount": 8,
-      "genTime": 5,
-      "genMax": null,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 105,
-      "monsterId": null,
-      "level": null,
-      "genTimeStart": 70,
-      "genTimeEnd": 100,
-      "genAmount": 3,
-      "genTime": 10,
-      "genMax": null,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 105,
-      "monsterId": null,
-      "level": null,
-      "genTimeStart": 15,
-      "genTimeEnd": 45,
-      "genAmount": 1,
-      "genTime": 1,
-      "genMax": null,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 105,
-      "monsterId": null,
-      "level": null,
-      "genTimeStart": 30,
-      "genTimeEnd": 150,
-      "genAmount": 1,
-      "genTime": 4,
-      "genMax": null,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 105,
-      "monsterId": null,
-      "level": null,
-      "genTimeStart": 150,
-      "genTimeEnd": 210,
-      "genAmount": 5,
-      "genTime": 10,
-      "genMax": null,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 105,
-      "monsterId": null,
-      "level": null,
-      "genTimeStart": 200,
-      "genTimeEnd": 275,
-      "genAmount": 2,
-      "genTime": 5,
-      "genMax": null,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 105,
-      "monsterId": null,
-      "level": null,
-      "genTimeStart": 70,
-      "genTimeEnd": 100,
-      "genAmount": 3,
-      "genTime": 4,
-      "genMax": null,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 105,
-      "monsterId": null,
-      "level": null,
-      "genTimeStart": 15,
-      "genTimeEnd": 45,
-      "genAmount": 3,
-      "genTime": 5,
-      "genMax": null,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 105,
-      "monsterId": null,
-      "level": null,
-      "genTimeStart": 17,
-      "genTimeEnd": 150,
-      "genAmount": 3,
-      "genTime": 6,
-      "genMax": null,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 105,
-      "monsterId": null,
-      "level": null,
-      "genTimeStart": 0,
-      "genTimeEnd": 0,
-      "genAmount": 1,
-      "genTime": 0,
-      "genMax": 2,
-      "genPosVecter3": [
-        -70,
-        0,
-        -70
-      ]
-    },
-    {
-      "stageId": 105,
-      "monsterId": null,
-      "level": null,
-      "genTimeStart": 0,
-      "genTimeEnd": 0,
-      "genAmount": 1,
-      "genTime": 0,
-      "genMax": 1,
-      "genPosVecter3": [
-        -40,
-        0,
-        -30
-      ]
-    },
-    {
-      "stageId": 105,
-      "monsterId": null,
-      "level": null,
-      "genTimeStart": null,
-      "genTimeEnd": null,
-      "genAmount": null,
-      "genTime": null,
-      "genMax": null,
-      "genPosVecter3": [
-        10,
-        0,
-        -50
-      ]
-    }
-  ],
   "PlayerLevel": [
     {
       "level": 1,
@@ -2049,78 +2121,6 @@
       "level": 100,
       "exp": 1025706,
       "totalExp": 29527833
-    }
-  ],
-  "StageList": [
-    {
-      "stageId": 101,
-      "levelPrefab": "필드 주소",
-      "levelLight": "조명 주소",
-      "BGSprite": "Textures/SnapShot/stage1_1",
-      "stageDesc": "들판"
-    },
-    {
-      "stageId": 102,
-      "levelPrefab": null,
-      "levelLight": null,
-      "BGSprite": "Textures/SnapShot/stage1_2",
-      "stageDesc": "들판"
-    },
-    {
-      "stageId": 103,
-      "levelPrefab": null,
-      "levelLight": null,
-      "BGSprite": "Textures/SnapShot/stage1_3",
-      "stageDesc": "들판"
-    },
-    {
-      "stageId": 104,
-      "levelPrefab": null,
-      "levelLight": null,
-      "BGSprite": "Textures/SnapShot/stage1_4",
-      "stageDesc": "들판"
-    },
-    {
-      "stageId": 105,
-      "levelPrefab": null,
-      "levelLight": null,
-      "BGSprite": "Textures/SnapShot/stage1_5",
-      "stageDesc": "들판"
-    },
-    {
-      "stageId": 201,
-      "levelPrefab": null,
-      "levelLight": null,
-      "BGSprite": "Textures/SnapShot/stage2_1",
-      "stageDesc": "중세"
-    },
-    {
-      "stageId": 202,
-      "levelPrefab": null,
-      "levelLight": null,
-      "BGSprite": "Textures/SnapShot/stage2_2",
-      "stageDesc": "중세"
-    },
-    {
-      "stageId": 203,
-      "levelPrefab": null,
-      "levelLight": null,
-      "BGSprite": "Textures/SnapShot/stage2_3",
-      "stageDesc": "중세"
-    },
-    {
-      "stageId": 204,
-      "levelPrefab": null,
-      "levelLight": null,
-      "BGSprite": "Textures/SnapShot/stage2_4",
-      "stageDesc": "중세"
-    },
-    {
-      "stageId": 205,
-      "levelPrefab": null,
-      "levelLight": null,
-      "BGSprite": "Textures/SnapShot/stage2_5",
-      "stageDesc": "중세"
     }
   ],
   "PlayerIngameLevel": [
