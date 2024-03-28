@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class InGameHUD : UIBase
@@ -65,10 +64,4 @@ public class InGameHUD : UIBase
         UIManager.Instance.ShowUI<UIPause>();
         ++UIManager.Instance.popupUICount;
     }
-    public void OnTestLevelUpButton()
-    {
-        player.LevelUp();
-    }
-
-
 }

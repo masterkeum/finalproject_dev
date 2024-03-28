@@ -3,12 +3,13 @@ using UnityEngine;
 public class MainScene : MonoBehaviour
 {
     private OutGameHUD outGameHUD;
-    
+
     private void Awake()
     {
+        Debug.Log("MainScene.Awake");
         Time.timeScale = 1.0f;
         _ = DataManager.Instance;
-        _ = GameManager.Instance;
+        GameManager.Instance.Clear();
         UIManager.Instance.Clear();
     }
 

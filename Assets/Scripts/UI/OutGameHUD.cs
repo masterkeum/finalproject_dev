@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,8 @@ public class OutGameHUD : UIBase
     public Image StageImage;
     public int SelectedStageId;
 
+    private AccountInfo accountInfo;
+
     private void Awake()
     {
         SelectedStageId = GameManager.Instance.stageId;
@@ -31,8 +34,31 @@ public class OutGameHUD : UIBase
 
     private void Start()
     {
+        GameManager.Instance.updateUIAction += UpdateHUD;
+        accountInfo = GameManager.Instance.accountInfo;
+
+        userNameText.text = accountInfo.name;
+
+        UpdateHUD();
         OnClickBottomButton(0);
     }
+
+    private void UpdateHUD()
+    {
+        // TODO : 나중에 UI별 나누기
+        SelectedStageId = GameManager.Instance.stageId;
+
+        energyQuantityText.text = accountInfo.actionPoint.ToString();
+        gemQuantityText.text = accountInfo.gem.ToString();
+        goldQuantityText.text = accountInfo.gold.ToString();
+        levelText.text = accountInfo.level.ToString();
+
+        if (accountInfo.sliderMaxExp > 0)
+        {
+            expSlider.value = (float)accountInfo.sliderCurExp / accountInfo.sliderMaxExp;
+        }
+    }
+
     public void OnClickBottomButton(int index)
     {
         for (int i = 0; i < mainMenues.Length; i++)
@@ -45,7 +71,7 @@ public class OutGameHUD : UIBase
             buttonRect[j].sizeDelta = new Vector2(index == j ? 450 : 300, buttonRect[j].sizeDelta.y);
             buttonRect[0].pivot = new Vector2(index == 2 ? 1.5f : 1, buttonRect[0].pivot.y);
 
-            selectEmphasis[j].SetActive(index == j?  true : false);
+            selectEmphasis[j].SetActive(index == j ? true : false);
         }
     }
 
@@ -68,4 +94,5 @@ public class OutGameHUD : UIBase
 
         SceneManager.LoadScene(3); // 인게임씬
     }
+
 }

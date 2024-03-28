@@ -11,17 +11,15 @@ public class UIStageSelect : UIBase
     [Header("SelectedStage")]
     private StageSlotUI _curStage;
 
-    public OutGameHUD outHUD;
 
     private void Start()
     {
-        outHUD = GameObject.Find("OutGameHUD").GetComponent<OutGameHUD>();
     }
 
     public void OnSelectButton()
     {
-        outHUD.SelectedStageId = _curStage.index;
         GameManager.Instance.stageId = _curStage.index;
+        GameManager.Instance.UpdateUI();
         gameObject.SetActive(false);
     }
     public void OnCancelButton()
