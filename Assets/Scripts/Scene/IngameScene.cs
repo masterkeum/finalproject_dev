@@ -64,8 +64,9 @@ public class IngameScene : MonoBehaviour
         Debug.Log("IngameScene.Awake");
         Time.timeScale = 1.0f;
         _ = DataManager.Instance;
-        //_ = AccountInfo.Instance;// 사용자 계정 데이터 접근
         GameManager.Instance.Clear();
+        UIManager.Instance.Clear();
+
         virtualCamera = GameObject.Find("Virtual Camera");
         objectPool = GetComponent<Pooling>();
         stageId = GameManager.Instance.stageId;

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DataManager : SingletoneBase<DataManager>
 {
@@ -15,6 +16,7 @@ public class DataManager : SingletoneBase<DataManager>
     public Dictionary<int, CharacterInfo> characterInfoDict;
     public Dictionary<int, StageList> stageListDict;
     public Dictionary<int, List<StageInfoTable>> stageInfoDict;
+    public Dictionary<int, PlayerLevel> playerLevelDict;
     public Dictionary<int, PlayerIngameLevel> playerIngameLevelDict;
     public Dictionary<int, SkillTable> skillTableDict;
     public Dictionary<int, ItemTable> itemTableDict;
@@ -96,6 +98,12 @@ public class DataManager : SingletoneBase<DataManager>
             }
         }
         Debug.Log("스테이지 정보 로드 완료");
+        // 계정레벨
+        playerLevelDict = new Dictionary<int, PlayerLevel>();
+        foreach (PlayerLevel playerLevel in jsonData.PlayerLevel)
+        {
+            playerLevelDict.Add(playerLevel.level, playerLevel);
+        }
 
         // 인게임 유저 레벨 정보
         playerIngameLevelDict = new Dictionary<int, PlayerIngameLevel>();
@@ -103,7 +111,7 @@ public class DataManager : SingletoneBase<DataManager>
         {
             playerIngameLevelDict.Add(playerIngameLevel.level, playerIngameLevel);
         }
-        Debug.Log("유저 인게임 레벨 정보 로드 완료");
+        Debug.Log("유저 레벨 정보 로드 완료");
 
         // 스킬 정보
         skillTableDict = new Dictionary<int, SkillTable>();
@@ -140,6 +148,13 @@ public class DataManager : SingletoneBase<DataManager>
             return stageInfoDict[stageId];
         else
             return null;
+    }
+
+    public PlayerLevel GetPlayerLevel(int level)
+    {
+        if (playerLevelDict.ContainsKey(level))
+            return playerLevelDict[level];
+        else return null;
     }
 
     public PlayerIngameLevel GetPlayerIngameLevel(int level)

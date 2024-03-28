@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -11,9 +10,9 @@ public class GameManager : SingletoneBase<GameManager>
     public GameState gameState { get; private set; }
     string saveFilePath;
 
-    private int _maxActionPoint;
-    private float _regenActionPointTime;
-    private int _combatActionPoint;
+    public int _maxActionPoint { get; private set; }
+    public float _regenActionPointTime { get; private set; }
+    public int _combatActionPoint { get; private set; }
     public int stageId { get; set; } // 진입한 스테이지ID 가지고있게
 
     // 사용자
@@ -35,6 +34,24 @@ public class GameManager : SingletoneBase<GameManager>
 
         // 데이터 로드 이후 루틴
         StartCoroutine(WaitForData());
+    }
+
+    private void CheckAccount()
+    {
+        // 계정 있는지 확인 임시로 PlayerPrefs 사용
+        // 나중에 구글 붙이면 구글쪽으로 로직 변경해야함
+        if (!PlayerPrefs.HasKey("AID"))
+        {
+            // 새 계정 생성
+            Guid guid = Guid.NewGuid();
+            PlayerPrefs.SetString("AID", guid.ToString());
+        }
+
+        // TODO : 안드로이드도 저장이 잘 되는지 확인 필요
+        saveFilePath = Application.persistentDataPath + "/" + PlayerPrefs.GetString("AID") + ".json";
+        Debug.Log(saveFilePath);
+        accountInfo = LoadGame(PlayerPrefs.GetString("AID"));
+        stageId = accountInfo.selectedStageId;
     }
 
     IEnumerator WaitForData()
@@ -82,24 +99,6 @@ public class GameManager : SingletoneBase<GameManager>
             }
             accountInfo.AddUpdateTime(); // 현재시간으로 덮어씌우기
         }
-    }
-
-    private void CheckAccount()
-    {
-        // 계정 있는지 확인 임시로 PlayerPrefs 사용
-        // 나중에 구글 붙이면 구글쪽으로 로직 변경해야함
-        if (!PlayerPrefs.HasKey("AID"))
-        {
-            // 새 계정 생성
-            Guid guid = Guid.NewGuid();
-            PlayerPrefs.SetString("AID", guid.ToString());
-        }
-
-        // TODO : 안드로이드도 저장이 잘 되는지 확인 필요
-        saveFilePath = Application.persistentDataPath + "/" + PlayerPrefs.GetString("AID") + ".json";
-        Debug.Log(saveFilePath);
-        accountInfo = LoadGame(PlayerPrefs.GetString("AID"));
-        stageId = accountInfo.selectedStageId;
     }
 
 
@@ -151,11 +150,11 @@ public class GameManager : SingletoneBase<GameManager>
         gameState = state;
     }
 
-
-    private void SaveGame()
+    public void SaveGame()
     {
-        string jsonData = JsonUtility.ToJson(accountInfo);
+        string jsonData = JsonUtility.ToJson(accountInfo, true);
         File.WriteAllText(saveFilePath, jsonData);
+        //Debug.Log("Save : " + jsonData);
     }
 
     private AccountInfo LoadGame(string aid)
@@ -180,26 +179,27 @@ public class GameManager : SingletoneBase<GameManager>
     public void InGameSceneProcess()
     {
         SetState(GameState.IngameStart);
-        accountInfo.AddActionPoint(_combatActionPoint);
+        accountInfo.AddActionPoint(-_combatActionPoint);
 
         SaveGame();
+        UpdateUI();
     }
 
     #endregion
 
     #region MainScene
-    internal void MainSceneProcess()
+    public void MainSceneProcess()
     {
         SetState(GameState.Main);
         // 행동력 회복
         CalcActionPoint();
 
         // 출석체크
-
-
-
         SaveGame();
+        UpdateUI();
     }
+
+
 
     #endregion
 }

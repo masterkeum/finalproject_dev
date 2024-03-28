@@ -11,17 +11,16 @@ public class UIStageSelect : UIBase
     [Header("SelectedStage")]
     private StageSlotUI _curStage;
 
-    public OutGameHUD outHUD;
 
     private void Start()
     {
-        outHUD = GameObject.Find("OutGameHUD").GetComponent<OutGameHUD>();
+        // TODO : 현재 선택된 스테이지 셀렉트 상태
     }
 
     public void OnSelectButton()
     {
-        outHUD.SelectedStageId = _curStage.index;
         GameManager.Instance.stageId = _curStage.index;
+        GameManager.Instance.UpdateUI();
         gameObject.SetActive(false);
     }
     public void OnCancelButton()
