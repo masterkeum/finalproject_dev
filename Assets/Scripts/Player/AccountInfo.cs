@@ -85,8 +85,9 @@ public class AccountInfo
             Accessories = new ItemTable()
         };
 
+        PlayerLevel levelData = DataManager.Instance.GetPlayerLevel(level + 1);
         sliderCurExp = 0;
-        sliderMaxExp = 0;
+        sliderMaxExp = levelData.exp;
         curExp = 0;
     }
 

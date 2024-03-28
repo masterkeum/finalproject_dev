@@ -14,6 +14,7 @@ public class UIStageSelect : UIBase
 
     private void Start()
     {
+        // TODO : 현재 선택된 스테이지 셀렉트 상태
     }
 
     public void OnSelectButton()
