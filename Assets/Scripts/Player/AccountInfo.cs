@@ -95,17 +95,20 @@ public class AccountInfo
     public void AddActionPoint(int addActionPoint)
     {
         actionPoint += addActionPoint;
+        GameManager.Instance.SaveGame();
         GameManager.Instance.UpdateUI();
     }
 
     public void AddGem(int addGem)
     {
         gem += addGem;
+        GameManager.Instance.SaveGame();
         GameManager.Instance.UpdateUI();
     }
     public void AddGold(int addGold)
     {
         gold += addGold;
+        GameManager.Instance.SaveGame();
         GameManager.Instance.UpdateUI();
     }
 
@@ -116,7 +119,7 @@ public class AccountInfo
         {
             lastUpdateTime = UtilityKit.GetCurrentTime();
         }
-        lastUpdateTime = time;
+        lastUpdateTime += time;
     }
 
     public void AddExp(int addExp)
@@ -150,6 +153,7 @@ public class AccountInfo
                 addExp = 0;
             }
         }
+        GameManager.Instance.SaveGame();
         GameManager.Instance.UpdateUI();
     }
 

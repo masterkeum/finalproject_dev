@@ -150,8 +150,7 @@ public class GameManager : SingletoneBase<GameManager>
         gameState = state;
     }
 
-
-    private void SaveGame()
+    public void SaveGame()
     {
         string jsonData = JsonUtility.ToJson(accountInfo, true);
         File.WriteAllText(saveFilePath, jsonData);
