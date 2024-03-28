@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,6 +37,9 @@ public class InventoryUI : MonoBehaviour
 
     public void SetMimicGacha()
     {
+
+
+
         Dictionary<string, float> gradeWeights = new Dictionary<string, float>()
         {
             {"Normal", 40f},
@@ -63,9 +67,10 @@ public class InventoryUI : MonoBehaviour
 
     public void StartMimicGacha()
     {
-        int gachaNum = Random.Range(0, gachaTable.Count);
+        int gachaNum = UnityEngine.Random.Range(0, gachaTable.Count);
         GameManager.Instance.accountInfo.newItem = gachaTable[gachaNum];
         UIManager.Instance.ShowUI<UIMimicGacha>();
+        GameManager.Instance.SaveGame();
     }
 
 
