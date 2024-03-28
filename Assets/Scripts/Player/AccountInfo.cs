@@ -94,7 +94,8 @@ public class AccountInfo
     // TODO : AP, gem, gold 마이너스, 현재값, 최대값 검증과정 추가
     public void AddActionPoint(int addActionPoint)
     {
-        actionPoint += addActionPoint;
+        actionPoint = Math.Min(actionPoint + addActionPoint, GameManager.Instance._maxActionPoint);
+
         GameManager.Instance.SaveGame();
         GameManager.Instance.UpdateUI();
     }

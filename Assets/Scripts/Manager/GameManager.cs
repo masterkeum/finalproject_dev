@@ -10,9 +10,9 @@ public class GameManager : SingletoneBase<GameManager>
     public GameState gameState { get; private set; }
     string saveFilePath;
 
-    private int _maxActionPoint;
-    private float _regenActionPointTime;
-    private int _combatActionPoint;
+    public int _maxActionPoint { get; private set; }
+    public float _regenActionPointTime { get; private set; }
+    public int _combatActionPoint { get; private set; }
     public int stageId { get; set; } // 진입한 스테이지ID 가지고있게
 
     // 사용자
@@ -179,7 +179,7 @@ public class GameManager : SingletoneBase<GameManager>
     public void InGameSceneProcess()
     {
         SetState(GameState.IngameStart);
-        accountInfo.AddActionPoint(_combatActionPoint);
+        accountInfo.AddActionPoint(-_combatActionPoint);
 
         SaveGame();
         UpdateUI();

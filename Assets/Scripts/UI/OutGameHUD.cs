@@ -91,8 +91,14 @@ public class OutGameHUD : UIBase
     {
         Debug.Log($"OnStartbutton : {SelectedStageId}");
         // 인게임으로 넘어가기
-
-        SceneManager.LoadScene(3); // 인게임씬
+        if (accountInfo.actionPoint >= GameManager.Instance._combatActionPoint)
+        {
+            SceneManager.LoadScene(3); // 인게임씬
+        }
+        else
+        {
+            Debug.LogError("행동력 부족 팝업? 메세지");
+        }
     }
 
 }
