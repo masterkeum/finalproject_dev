@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
-using static AccountInfo;
 
 
 /// <summary>
@@ -29,32 +27,38 @@ public class AccountInfo
         -- 아이템 능력치 적용 : 인게임으로 이동
     */
 
-    [SerializeField] public string aid { get; private set; }
+    [SerializeField] private string aid;
 
+    [Serializable]
     public class EquipItems
     {
-        public ItemTable Weapon;
-        public ItemTable Armor;
-        public ItemTable Helmet;
-        public ItemTable Gloves;
-        public ItemTable Boots;
-        public ItemTable Accessories;
-        public ItemTable newItem; // 분해되면 null 로 초기화
+        [SerializeField] public ItemTable Weapon;
+        [SerializeField] public ItemTable Armor;
+        [SerializeField] public ItemTable Helmet;
+        [SerializeField] public ItemTable Gloves;
+        [SerializeField] public ItemTable Boots;
+        [SerializeField] public ItemTable Accessories;
+        [SerializeField] public ItemTable newItem; // 분해되면 null 로 초기화
     }
-    //인벤토리 아이템들 => 딕셔너리는 저장 안됨
-    //public Dictionary<string, ItemTable> equipItems = new Dictionary<string, ItemTable>();
-    EquipItems equipItems = new EquipItems();
 
-    [SerializeField] private string name;
-    [SerializeField] private int level;
-    [SerializeField] private int totalExp;
+    public EquipItems equipItems;
 
-    [SerializeField] public int actionPoint { get; private set; } // 행동력
-    [SerializeField] public int gem { get; private set; }
-    [SerializeField] public int gold { get; private set; }
-    [SerializeField] public int core { get; private set; }
-    [SerializeField] public int selectedStageId { get; private set; }
-    [SerializeField] public float lastUpdateTime { get; private set; }
+    [SerializeField] public string name;
+    [SerializeField] public int level;
+    [SerializeField] public int totalExp;
+
+    [SerializeField] public int actionPoint; // 행동력
+    [SerializeField] public int gem;
+    [SerializeField] public int gold;
+    [SerializeField] public int core;
+    [SerializeField] public int selectedStageId;
+    [SerializeField] public float lastUpdateTime;
+
+
+    // UI용 데이터
+    public int sliderCurExp;
+    public int sliderMaxExp;
+    public int curExp;
 
     //생성자
     public AccountInfo(string _aid, string _name)
@@ -70,12 +74,41 @@ public class AccountInfo
         core = 0;
         selectedStageId = DataManager.Instance._InitParam["StartStageId"];
         lastUpdateTime = UtilityKit.GetCurrentTime();
+
+        equipItems = new EquipItems()
+        {
+            Weapon = new ItemTable(),
+            Armor = new ItemTable(),
+            Helmet = new ItemTable(),
+            Gloves = new ItemTable(),
+            Boots = new ItemTable(),
+            Accessories = new ItemTable()
+        };
+
+        sliderCurExp = 0;
+        sliderMaxExp = 0;
+        curExp = 0;
     }
 
+
+    // TODO : AP, gem, gold 마이너스, 현재값, 최대값 검증과정 추가
     public void AddActionPoint(int addActionPoint)
     {
         actionPoint += addActionPoint;
+        GameManager.Instance.UpdateUI();
     }
+
+    public void AddGem(int addGem)
+    {
+        gem += addGem;
+        GameManager.Instance.UpdateUI();
+    }
+    public void AddGold(int addGold)
+    {
+        gold += addGold;
+        GameManager.Instance.UpdateUI();
+    }
+
 
     public void AddUpdateTime(float time = 0)
     {
@@ -85,6 +118,41 @@ public class AccountInfo
         }
         lastUpdateTime = time;
     }
+
+    public void AddExp(int addExp)
+    {
+
+        while (addExp > 0)
+        {
+            PlayerLevel levelData = DataManager.Instance.GetPlayerLevel(level + 1);
+            if (levelData == null)
+            {
+                sliderMaxExp = 0;
+                Debug.Log("만랩");
+                break; // 만랩
+            }
+
+            sliderMaxExp = levelData.exp;
+            if (totalExp + addExp >= levelData.totalExp)
+            {
+                // 랩업
+                addExp -= (levelData.totalExp - totalExp);
+                totalExp = levelData.totalExp;
+                curExp = 0;
+                sliderCurExp = curExp;
+                ++level;
+            }
+            else
+            {
+                totalExp += addExp;
+                curExp += addExp;
+                sliderCurExp = curExp;
+                addExp = 0;
+            }
+        }
+        GameManager.Instance.UpdateUI();
+    }
+
 
 
     //private void AddEquipDict()

@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -35,6 +34,24 @@ public class GameManager : SingletoneBase<GameManager>
 
         // 데이터 로드 이후 루틴
         StartCoroutine(WaitForData());
+    }
+
+    private void CheckAccount()
+    {
+        // 계정 있는지 확인 임시로 PlayerPrefs 사용
+        // 나중에 구글 붙이면 구글쪽으로 로직 변경해야함
+        if (!PlayerPrefs.HasKey("AID"))
+        {
+            // 새 계정 생성
+            Guid guid = Guid.NewGuid();
+            PlayerPrefs.SetString("AID", guid.ToString());
+        }
+
+        // TODO : 안드로이드도 저장이 잘 되는지 확인 필요
+        saveFilePath = Application.persistentDataPath + "/" + PlayerPrefs.GetString("AID") + ".json";
+        Debug.Log(saveFilePath);
+        accountInfo = LoadGame(PlayerPrefs.GetString("AID"));
+        stageId = accountInfo.selectedStageId;
     }
 
     IEnumerator WaitForData()
@@ -82,24 +99,6 @@ public class GameManager : SingletoneBase<GameManager>
             }
             accountInfo.AddUpdateTime(); // 현재시간으로 덮어씌우기
         }
-    }
-
-    private void CheckAccount()
-    {
-        // 계정 있는지 확인 임시로 PlayerPrefs 사용
-        // 나중에 구글 붙이면 구글쪽으로 로직 변경해야함
-        if (!PlayerPrefs.HasKey("AID"))
-        {
-            // 새 계정 생성
-            Guid guid = Guid.NewGuid();
-            PlayerPrefs.SetString("AID", guid.ToString());
-        }
-
-        // TODO : 안드로이드도 저장이 잘 되는지 확인 필요
-        saveFilePath = Application.persistentDataPath + "/" + PlayerPrefs.GetString("AID") + ".json";
-        Debug.Log(saveFilePath);
-        accountInfo = LoadGame(PlayerPrefs.GetString("AID"));
-        stageId = accountInfo.selectedStageId;
     }
 
 
@@ -154,8 +153,9 @@ public class GameManager : SingletoneBase<GameManager>
 
     private void SaveGame()
     {
-        string jsonData = JsonUtility.ToJson(accountInfo);
+        string jsonData = JsonUtility.ToJson(accountInfo, true);
         File.WriteAllText(saveFilePath, jsonData);
+        //Debug.Log("Save : " + jsonData);
     }
 
     private AccountInfo LoadGame(string aid)
@@ -183,23 +183,24 @@ public class GameManager : SingletoneBase<GameManager>
         accountInfo.AddActionPoint(_combatActionPoint);
 
         SaveGame();
+        UpdateUI();
     }
 
     #endregion
 
     #region MainScene
-    internal void MainSceneProcess()
+    public void MainSceneProcess()
     {
         SetState(GameState.Main);
         // 행동력 회복
         CalcActionPoint();
 
         // 출석체크
-
-
-
         SaveGame();
+        UpdateUI();
     }
+
+
 
     #endregion
 }
