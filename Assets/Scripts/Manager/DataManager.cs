@@ -120,12 +120,13 @@ public class DataManager : SingletoneBase<DataManager>
             //skillTable.lastAttackTime = Time.time;
             skillTableDict.Add(skillTable.skillId, skillTable);
         }
-
+        
         itemTableDict = new Dictionary<int, ItemTable>();
         foreach (ItemTable itemTable in jsonData.ItemTable)
         {
             itemTableDict.Add(itemTable.itemId, itemTable);
         }
+        Debug.Log("아이템데이터 로드 완료");
 
         // GC에서 언제 가져갈지 모르니 jsonData를 명시적으로 null 로 만들거나 destroy 하고싶다.
         jsonData = null;

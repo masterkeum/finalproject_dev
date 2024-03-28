@@ -147,8 +147,16 @@ public class ItemTable
     public int maxStack;
     public string ImageFile;
     public int categoryTextId;
-    public int hp;
-    public int dp;
-    public int ap;
-    public int speed;
+    public int minHp;
+    public int maxHp;
+    public int minDp;
+    public int maxDp;
+    public int maxAp;
+    public int minAp;
+    public float minMovespeed;
+    public float maxMovespeed;
+    public float minCriticalHit;
+    public float maxCriticalHit;
+    public float minHpGen;
+    public float maxHpGen;
 }

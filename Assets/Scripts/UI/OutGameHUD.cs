@@ -83,10 +83,6 @@ public class OutGameHUD : UIBase
     {
         UIManager.Instance.ShowUI<UIPropertiesList>();
     }
-    public void OnClickMimic()
-    {
-        UIManager.Instance.ShowUI<UIMimicGacha>();
-    }
     public void OnStartbutton()
     {
         Debug.Log($"OnStartbutton : {SelectedStageId}");
