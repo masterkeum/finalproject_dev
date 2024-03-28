@@ -13,6 +13,7 @@ public class DataTable
     public List<PlayerIngameLevel> PlayerIngameLevel;
     public List<SkillTable> SkillTable;
     public List<ItemTable> ItemTable;
+    public List<LevelGacha> LevelGacha;
 }
 
 [Serializable]
@@ -150,4 +151,16 @@ public class ItemTable
     public float maxCriticalHit;
     public float minHpGen;
     public float maxHpGen;
+}
+
+[Serializable]
+public class LevelGacha
+{
+    public int level;
+    public float normal;
+    public float magic;
+    public float elite;
+    public float rare;
+    public float Epic;
+    public float Legendary;
 }

@@ -109,7 +109,7 @@ public class AccountInfo
                 {
                     if (equipItems.Weapon.itemId != 0)
                     {
-                        ChangeEquip(equipItems.Weapon);
+                        ChangeEquip(ref equipItems.Weapon,ref newItem,ref changedSlot);
                     }
                     else
                         equipItems.Weapon = newItem;
@@ -119,7 +119,7 @@ public class AccountInfo
                 {
                     if (equipItems.Armor.itemId != 0)
                     {
-                        ChangeEquip(equipItems.Armor);
+                        ChangeEquip(ref equipItems.Armor, ref newItem, ref changedSlot);
                     }
                     else
                         equipItems.Armor = newItem;
@@ -129,7 +129,7 @@ public class AccountInfo
                 {
                     if (equipItems.Gloves.itemId != 0)
                     {
-                        ChangeEquip(equipItems.Gloves);
+                        ChangeEquip(ref equipItems.Gloves, ref newItem, ref changedSlot);
                     }
                     else
                         equipItems.Gloves = newItem;
@@ -139,7 +139,7 @@ public class AccountInfo
                 {
                     if (equipItems.Boots.itemId != 0 )
                     {
-                        ChangeEquip(equipItems.Boots);
+                        ChangeEquip(ref equipItems.Boots, ref newItem, ref changedSlot);
                     }
                     else
                         equipItems.Boots = newItem;
@@ -149,7 +149,7 @@ public class AccountInfo
                 {
                     if (equipItems.Helmet.itemId != 0)
                     {
-                        ChangeEquip(equipItems.Helmet);
+                        ChangeEquip(ref equipItems.Helmet, ref newItem, ref changedSlot);
                     }
                     else
                         equipItems.Helmet = newItem;
@@ -159,7 +159,7 @@ public class AccountInfo
                 {
                     if (equipItems.Accessories.itemId != 0)
                     {
-                        ChangeEquip(equipItems.Accessories);
+                        ChangeEquip(ref equipItems.Accessories, ref newItem, ref changedSlot);
                     }
                     else
                         equipItems.Accessories = newItem;
@@ -170,7 +170,7 @@ public class AccountInfo
 
     }
 
-    private void ChangeEquip(ItemTable item)
+    private void ChangeEquip(ref ItemTable item, ref ItemTable newItem, ref ItemTable changedSlot)
     {
         changedSlot = item;
         item = newItem;

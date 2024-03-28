@@ -256,6 +256,7 @@ MonoBehaviour:
   itemIcon: {fileID: 6981468198567474909}
   itemName: {fileID: 8606766469811380482}
   itemStats: {fileID: 576890625879601972}
+  itemBG: {fileID: 7041523222493698333}
 --- !u!1 &1682442428831507982
 GameObject:
   m_ObjectHideFlags: 0
