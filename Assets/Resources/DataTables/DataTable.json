@@ -21,7 +21,7 @@
     {
       "initType": "Default",
       "code": "CombatActionPoint",
-      "param1": -5,
+      "param1": 5,
       "codeDesc": "전투 소모 행동력"
     },
     {

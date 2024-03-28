@@ -275,7 +275,7 @@ public class Player : MonoBehaviour
             PlayerIngameLevel levelData = DataManager.Instance.GetPlayerIngameLevel(playeringameinfo.curLevel + 1);
             if (levelData == null)
             {
-                playeringameinfo.sliderMaxExp = 1;
+                playeringameinfo.sliderMaxExp = 0;
                 Debug.Log("만랩");
                 break; // 만랩
             }
@@ -310,17 +310,6 @@ public class Player : MonoBehaviour
             }
         }
     }
-
-
-    // 테스트 코드
-    public void LevelUp()
-    {
-        playeringameinfo.curLevel++;
-        playeringameinfo.sliderCurExp = 0;
-        UpdateSlider();
-        UIManager.Instance.ShowUI<UILevelUP>();
-    }
-
 
     #endregion
 }

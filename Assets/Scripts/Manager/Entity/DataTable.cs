@@ -10,6 +10,7 @@ public class DataTable
     public List<MonsterLevel> MonsterLevel;
     public List<StageList> StageList;
     public List<StageInfoTable> StageInfoTable;
+    public List<PlayerLevel> PlayerLevel;
     public List<PlayerIngameLevel> PlayerIngameLevel;
     public List<SkillTable> SkillTable;
     public List<ItemTable> ItemTable;
@@ -78,6 +79,14 @@ public class StageInfoTable
     public int genTime;
     public int genMax;
     public float[] genPosVecter3;
+}
+
+[Serializable]
+public class PlayerLevel
+{
+    public int level;
+    public int exp;
+    public int totalExp;
 }
 
 [Serializable]
