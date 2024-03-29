@@ -136,6 +136,7 @@ public class DataManager : SingletoneBase<DataManager>
         {
             levelGachaDict.Add(levelGacha.level, levelGacha);
         }
+        Debug.Log("가챠확률 정보 로드 완료");
 
 
         // GC에서 언제 가져갈지 모르니 jsonData를 명시적으로 null 로 만들거나 destroy 하고싶다.

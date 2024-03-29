@@ -28,26 +28,26 @@ public class UIMimicGacha : UIBase
 
     }
 
-    private void GlowColorChange(ItemTable item)
+    private void GlowColorChange(Item item)
     {
         switch (item.grade)
         {
-            case "Normal":
+            case ItemGrade.Normal:
                 glowEffect.color = new Color(1f, 1f, 1f);
                 break;
-            case "Magic":
+            case ItemGrade.Magic:
                 glowEffect.color = new Color(40/255f, 1f, 35/255f);
                 break;
-            case "Elite":
+            case ItemGrade.Elite:
                 glowEffect.color = new Color(0f,67/255f,1f);
                 break;
-            case "Rare":
+            case ItemGrade.Rare:
                 glowEffect.color = new Color(1f, 115/255f, 0f);
                 break;
-            case "Epic":
+            case ItemGrade.Epic:
                 glowEffect.color = new Color(1f, 1f, 0f);
                 break;
-            case "Legendary":
+            case ItemGrade.Legendary:
                 glowEffect.color = new Color(1f, 0f, 0f);
                 break;
 
