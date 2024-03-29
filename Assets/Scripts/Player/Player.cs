@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class Player : MonoBehaviour
 
     protected int playerID;
     protected int level;
-    protected int hp;
+    protected int currentHp;
+    protected int maxHp;
+    private int damage;
     protected CharacterInfo characterInfo;
 
     private bool IsInit = false;
@@ -29,6 +32,9 @@ public class Player : MonoBehaviour
 
     private List<GameObject> chaseTarget = new List<GameObject>();
 
+    private Slider hpGuageSlider;
+    private EnemyBaseController monster; 
+    
     public virtual void Init(int _player, int _level)
     {
         if (IsInit) return;
@@ -43,7 +49,9 @@ public class Player : MonoBehaviour
 
 
         // 플레이어 기본 스탯 초기화
-        hp = characterInfo.hp;
+        currentHp = characterInfo.hp;
+        maxHp = characterInfo.hp;
+        damage = characterInfo.attackPower;
 
         playeringameinfo = new playeringameinfo();
         playeringameinfo.attackPower = characterInfo.attackPower;
@@ -73,6 +81,8 @@ public class Player : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
         skillPool = GetComponent<SkillPool>();
+        hpGuageSlider = GetComponentInChildren<Slider>();
+        // monster = GameManager.Instance. // 프리팹된 몬스터 연결
     }
 
     //private void Start()
@@ -89,6 +99,10 @@ public class Player : MonoBehaviour
         }
 
         SkillRoutine();
+        
+        // 피격당한거 체크
+        // if() 
+        // 거리체크 
     }
 
 
@@ -156,8 +170,11 @@ public class Player : MonoBehaviour
 
     public void TakePhysicalDamage(int damageAmount)
     {
-        hp -= damageAmount;
-        if (hp <= 0)
+        currentHp -= damageAmount;
+        float per = (float)currentHp  /   maxHp;  
+        hpGuageSlider.value = per;
+        Debug.Log("플레이어 현재 HP" + per);
+        if (currentHp <= 0)
             OnDead();
     }
 
