@@ -9825,7 +9825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6813178919176097344
 Transform:
   m_ObjectHideFlags: 0
@@ -9842,7 +9842,7 @@ Transform:
   - {fileID: 3496085217660535960}
   - {fileID: 262055082724628190}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &2535179717846046699
 ParticleSystem:
