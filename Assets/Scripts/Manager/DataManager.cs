@@ -45,6 +45,7 @@ public class DataManager : SingletoneBase<DataManager>
 
     public void ConvertJsonToDictionary(string json)
     {
+        Debug.Log(json);
         DataTable jsonData = JsonUtility.FromJson<DataTable>(json);
 
         // init 데이터

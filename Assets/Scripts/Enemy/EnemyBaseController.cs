@@ -2,6 +2,7 @@ using Gley.Jumpy;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 
 public enum EnemyState
@@ -68,9 +69,12 @@ public class EnemyBaseController : MonoBehaviour
     protected float playerDistance;
 
     protected float lastAttackTime;// 마지막 공격 시간
+    private Slider hpGuageSlider;
 
-    [SerializeField] private int hp;
+    // [SerializeField] private int hp;
     protected int damage;
+    protected int currentHp;
+    protected int maxHp;
     private DropCoin point;
 
     protected void Awake()
@@ -78,6 +82,7 @@ public class EnemyBaseController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         capsuleCollider = GetComponent<Collider>();
         animator = GetComponentInChildren<Animator>();
+        hpGuageSlider = GetComponentInChildren<Slider>();
         player = GameManager.Instance.player;
     }
 
@@ -92,7 +97,8 @@ public class EnemyBaseController : MonoBehaviour
         monsterLevel = characterInfo.monsterLevelData[level];
 
         // 몬스터 스탯초기화
-        hp = characterInfo.hp;
+        currentHp = characterInfo.hp;
+        maxHp = characterInfo.hp;
         damage = characterInfo.attackPower;
 
         navMeshAgent.speed = characterInfo.moveSpeed;
@@ -131,8 +137,11 @@ public class EnemyBaseController : MonoBehaviour
 
     public void TakePhysicalDamage(int damageAmount)
     {
-        hp -= damageAmount;
-        if (hp <= 0)
+        currentHp -= damageAmount;
+        float per = (float)currentHp  /   maxHp;  
+        hpGuageSlider.value = per;
+        Debug.Log("몬스터 현재 HP" + per);
+        if (currentHp <= 0)
             OnDead();
     }
 
