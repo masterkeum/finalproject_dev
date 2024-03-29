@@ -1,7 +1,7 @@
-
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
-
 
 public class DataTable
 {
@@ -29,6 +29,7 @@ public class InitializeParam
 public class CharacterInfo
 {
     public int uid;
+    [JsonConverter(typeof(StringEnumConverter))]
     public CharacterType characterType;
     public string name;
     public int minLevel;
@@ -136,6 +137,7 @@ public class SkillTable
 
     public float lastAttackTime;
 }
+
 [Serializable]
 public class ItemTable
 {
@@ -146,20 +148,49 @@ public class ItemTable
     public string descAlias;
     public ItemGrade grade;
     public int maxStack;
-    public string ImageFile;
+    public string imageFile;
     public int categoryTextId;
     public int minHp;
     public int maxHp;
     public int minDp;
     public int maxDp;
-    public int maxAp;
     public int minAp;
+    public int maxAp;
     public float minMovespeed;
     public float maxMovespeed;
     public float minCriticalHit;
     public float maxCriticalHit;
     public int minHpGen;
     public int maxHpGen;
+
+    // 생성자
+    public ItemTable(int _itemId, string _itemCategory, string _itemType, string _nameAlias, string _descAlias,
+                     string _grade, int _maxStack, string _imageFile, int _categoryTextId, int _minHp, int _maxHp,
+                     int _minDp, int _maxDp, int _minAp, int _maxAp, float _minMovespeed, float _maxMovespeed,
+                     float _minCriticalHit, float _maxCriticalHit, int _minHpGen, int _maxHpGen)
+    {
+        itemId = _itemId;
+        itemCategory = _itemCategory;
+        itemType = (ItemType)Enum.Parse(typeof(ItemType), _itemType);
+        nameAlias = _nameAlias;
+        descAlias = _descAlias;
+        grade = (ItemGrade)Enum.Parse(typeof(ItemGrade), _grade);
+        maxStack = _maxStack;
+        imageFile = _imageFile;
+        categoryTextId = _categoryTextId;
+        minHp = _minHp;
+        maxHp = _maxHp;
+        minDp = _minDp;
+        maxDp = _maxDp;
+        minAp = _minAp;
+        maxAp = _maxAp;
+        minMovespeed = _minMovespeed;
+        maxMovespeed = _maxMovespeed;
+        minCriticalHit = _minCriticalHit;
+        maxCriticalHit = _maxCriticalHit;
+        minHpGen = _minHpGen;
+        maxHpGen = _maxHpGen;
+    }
 }
 
 [Serializable]

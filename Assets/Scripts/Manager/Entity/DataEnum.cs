@@ -11,7 +11,7 @@ public enum GameState
 public enum CharacterType
 {
     None,
-    Character,
+    Player,
     Monster,
     BossMonster
 }
@@ -41,7 +41,8 @@ public enum ItemOptions
 
 public enum ItemGrade
 {
-    Normal = 1,
+    None,
+    Normal,
     Magic,
     Elite,
     Rare,
