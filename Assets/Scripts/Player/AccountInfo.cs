@@ -2,6 +2,24 @@ using System;
 using UnityEngine;
 
 
+[Serializable]
+public class Item
+{
+    public int itemId;
+    public string itemCategory;
+    public ItemType itemType;
+    public string nameAlias;
+    public string grade;
+    public string ImageFile;
+    public int Hp;
+    public int Dp;
+    public int Ap;
+    public float MoveSpeed;
+    public float CriticalHit;
+    public int HpGen;
+
+
+}
 /// <summary>
 /// 계정정보 : 저장과 불러오기를 위한 클래스
 /// </summary>
@@ -32,17 +50,17 @@ public class AccountInfo
     [Serializable]
     public class EquipItems
     {
-        [SerializeField] public ItemTable Weapon;
-        [SerializeField] public ItemTable Armor;
-        [SerializeField] public ItemTable Helmet;
-        [SerializeField] public ItemTable Gloves;
-        [SerializeField] public ItemTable Boots;
-        [SerializeField] public ItemTable Accessories;
+        [SerializeField] public Item Weapon;
+        [SerializeField] public Item Armor;
+        [SerializeField] public Item Helmet;
+        [SerializeField] public Item Gloves;
+        [SerializeField] public Item Boots;
+        [SerializeField] public Item Accessories;
     }
 
     public EquipItems equipItems;
-    public ItemTable newItem; // 분해되면 null 로 초기화
-    public ItemTable changedSlot; // 아이템 교체 시 한쪽 데이터를 임시저장하는 곳
+    public Item newItem; // 분해되면 null 로 초기화
+    public Item changedSlot; // 아이템 교체 시 한쪽 데이터를 임시저장하는 곳
 
     [SerializeField] public string name;
     [SerializeField] public int level;
@@ -79,12 +97,12 @@ public class AccountInfo
 
         equipItems = new EquipItems()
         {
-            Weapon = new ItemTable(),
-            Armor = new ItemTable(),
-            Helmet = new ItemTable(),
-            Gloves = new ItemTable(),
-            Boots = new ItemTable(),
-            Accessories = new ItemTable()
+            Weapon = new Item(),
+            Armor = new Item(),
+            Helmet = new Item(),
+            Gloves = new Item(),
+            Boots = new Item(),
+            Accessories = new Item()
         };
 
         PlayerLevel levelData = DataManager.Instance.GetPlayerLevel(level + 1);
@@ -168,7 +186,7 @@ public class AccountInfo
     {
         switch (newItem.itemType)
         {
-            case "Weapon":
+            case ItemType.Weapon:
                 {
                     if (equipItems.Weapon.itemId != 0)
                     {
@@ -178,7 +196,7 @@ public class AccountInfo
                         equipItems.Weapon = newItem;
                 }
                 break;
-            case "Armor":
+            case ItemType.Armor:
                 {
                     if (equipItems.Armor.itemId != 0)
                     {
@@ -188,7 +206,7 @@ public class AccountInfo
                         equipItems.Armor = newItem;
                 }
                 break;
-            case "Gloves":
+            case ItemType.Gloves:
                 {
                     if (equipItems.Gloves.itemId != 0)
                     {
@@ -198,7 +216,7 @@ public class AccountInfo
                         equipItems.Gloves = newItem;
                 }
                 break;
-            case "Boots":
+            case ItemType.Boots:
                 {
                     if (equipItems.Boots.itemId != 0 )
                     {
@@ -208,7 +226,7 @@ public class AccountInfo
                         equipItems.Boots = newItem;
                 }
                 break;
-            case "Helmet":
+            case ItemType.Helmet:
                 {
                     if (equipItems.Helmet.itemId != 0)
                     {
@@ -218,7 +236,7 @@ public class AccountInfo
                         equipItems.Helmet = newItem;
                 }
                 break;
-            case "Accessorries":
+            case ItemType.Accessorries:
                 {
                     if (equipItems.Accessories.itemId != 0)
                     {
@@ -233,7 +251,7 @@ public class AccountInfo
 
     }
 
-    private void ChangeEquip(ref ItemTable item, ref ItemTable newItem, ref ItemTable changedSlot)
+    private void ChangeEquip(ref Item item, ref Item newItem, ref Item changedSlot)
     {
         changedSlot = item;
         item = newItem;
@@ -247,7 +265,7 @@ public class AccountInfo
 
         switch (newItem.itemType)
         {
-            case "Weapon":
+            case ItemType.Weapon:
                 {
                     if (equipItems.Weapon.itemId != 0)
                         UIManager.Instance.ShowUI<UIEquipChange>();
@@ -255,7 +273,7 @@ public class AccountInfo
                         UIManager.Instance.ShowUI<UINewEquip>();
                 }
                 break;
-            case "Armor":
+            case ItemType.Armor:
                 {
                     if (equipItems.Armor.itemId != 0)
                         UIManager.Instance.ShowUI<UIEquipChange>();
@@ -263,7 +281,7 @@ public class AccountInfo
                         UIManager.Instance.ShowUI<UINewEquip>();
                 }
                 break;
-            case "Gloves":
+            case ItemType.Gloves:
                 {
                     if (equipItems.Gloves.itemId != 0)
                         UIManager.Instance.ShowUI<UIEquipChange>();
@@ -271,7 +289,7 @@ public class AccountInfo
                         UIManager.Instance.ShowUI<UINewEquip>();
                 }
                 break;
-            case "Boots":
+            case ItemType.Boots:
                 {
                     if (equipItems.Boots.itemId != 0)
                         UIManager.Instance.ShowUI<UIEquipChange>();
@@ -279,7 +297,7 @@ public class AccountInfo
                         UIManager.Instance.ShowUI<UINewEquip>();
                 }
                 break;
-            case "Helmet":
+            case ItemType.Helmet:
                 {
                     if (equipItems.Helmet.itemId != 0)
                         UIManager.Instance.ShowUI<UIEquipChange>();
@@ -287,7 +305,7 @@ public class AccountInfo
                         UIManager.Instance.ShowUI<UINewEquip>();
                 }
                 break;
-            case "Accessorries":
+            case ItemType.Accessorries:
                 {
                     if (equipItems.Accessories.itemId != 0)
                         UIManager.Instance.ShowUI<UIEquipChange>();

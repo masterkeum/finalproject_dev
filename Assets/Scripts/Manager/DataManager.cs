@@ -19,7 +19,7 @@ public class DataManager : SingletoneBase<DataManager>
     public Dictionary<int, PlayerLevel> playerLevelDict;
     public Dictionary<int, PlayerIngameLevel> playerIngameLevelDict;
     public Dictionary<int, SkillTable> skillTableDict;
-    public Dictionary<int, ItemTable> itemTableDict;
+    public Dictionary<ItemType, ItemTable> itemTableDict;
     public Dictionary<int, LevelGacha> levelGachaDict;
 
     protected override void Init()
@@ -123,10 +123,10 @@ public class DataManager : SingletoneBase<DataManager>
         }
         
         //아이템정보
-        itemTableDict = new Dictionary<int, ItemTable>();
+        itemTableDict = new Dictionary<ItemType, ItemTable>();
         foreach (ItemTable itemTable in jsonData.ItemTable)
         {
-            itemTableDict.Add(itemTable.itemId, itemTable);
+            itemTableDict.Add(itemTable.itemType, itemTable);
         }
         Debug.Log("아이템데이터 로드 완료");
 
@@ -181,10 +181,10 @@ public class DataManager : SingletoneBase<DataManager>
         else return null;
     }
 
-    public ItemTable GetItemTable(int itemId)
+    public ItemTable GetItemTable(ItemType itemType)
     {
-        if (itemTableDict.ContainsKey(itemId))
-            return itemTableDict[itemId];
+        if (itemTableDict.ContainsKey(itemType))
+            return itemTableDict[itemType];
         else return null;
     }
 

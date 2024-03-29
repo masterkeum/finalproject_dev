@@ -141,7 +141,7 @@ public class ItemTable
 {
     public int itemId;
     public string itemCategory;
-    public string itemType;
+    public ItemType itemType;
     public string nameAlias;
     public string descAlias;
     public string grade;
@@ -158,8 +158,8 @@ public class ItemTable
     public float maxMovespeed;
     public float minCriticalHit;
     public float maxCriticalHit;
-    public float minHpGen;
-    public float maxHpGen;
+    public int minHpGen;
+    public int maxHpGen;
 }
 
 [Serializable]

@@ -16,3 +16,22 @@ public enum CharacterType
     BossMonster
 }
 
+public enum ItemType
+{
+    Weapon,
+    Armor,
+    Gloves,
+    Boots,
+    Helmet,
+    Accessorries
+}
+
+public enum ItemOptions
+{
+    Hp,
+    Dp,
+    Ap,
+    MoveSpeed,
+    CriticalHit,
+    HpGen
+}
