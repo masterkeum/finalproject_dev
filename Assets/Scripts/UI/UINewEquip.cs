@@ -18,7 +18,7 @@ public class UINewEquip : UIBase
 
     private void SetNewItem()
     {
-        ItemTable newItem = GameManager.Instance.accountInfo.newItem;
+        Item newItem = GameManager.Instance.accountInfo.newItem;
         string psth = newItem.ImageFile;
         itemIcon.sprite = Resources.Load<Sprite>(psth);
         itemName.text = newItem.nameAlias;
@@ -32,26 +32,26 @@ public class UINewEquip : UIBase
         gameObject.SetActive(false);
     }
 
-    public void GlowColorChange(ItemTable item)
+    public void GlowColorChange(Item item)
     {
         switch(item.grade)
         {
-            case "Normal":
+            case ItemGrade.Normal:
                 itemBG.color = new Color(1f, 1f, 1f);
                 break;
-            case "Magic":
+            case ItemGrade.Magic:
                 itemBG.color = new Color(40 / 255f, 1f, 35 / 255f);
                 break;
-            case "Elite":
+            case ItemGrade.Elite:
                 itemBG.color = new Color(0f, 67 / 255f, 1f);
                 break;
-            case "Rare":
+            case ItemGrade.Rare:
                 itemBG.color = new Color(1f, 115 / 255f, 0f);
                 break;
-            case "Epic":
+            case ItemGrade.Epic:
                 itemBG.color = new Color(1f, 1f, 0f);
                 break;
-            case "Legendary":
+            case ItemGrade.Legendary:
                 itemBG.color = new Color(1f, 0f, 0f);
                 break;
         }

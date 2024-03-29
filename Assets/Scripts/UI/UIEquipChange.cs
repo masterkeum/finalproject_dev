@@ -37,47 +37,47 @@ public class UIEquipChange : UIBase
 
     }
 
-    private ItemTable CurChangeableItme()
+    private Item CurChangeableItme()
     {
         AccountInfo accountInfo = GameManager.Instance.accountInfo;
         switch(accountInfo.newItem.itemType)
         {
-            case "Weapon":
+            case ItemType.Weapon:
                 return accountInfo.equipItems.Weapon;
-            case "Armor":
+            case ItemType.Armor:
                 return accountInfo.equipItems.Armor;
-            case "Gloves":
+            case ItemType.Gloves:
                 return accountInfo.equipItems.Gloves;
-            case "Boots":
+            case ItemType.Boots:
                 return accountInfo.equipItems.Boots;
-            case "Helmet":
+            case ItemType.Helmet:
                 return accountInfo.equipItems.Helmet;
-            case "Accessorries":
+            case ItemType.Accessorries:
                 return accountInfo.equipItems.Accessories;
         }
         return null;
     }
 
-    private void GlowColorChange(Image glow, ItemTable item)
+    private void GlowColorChange(Image glow, Item item)
     {
         switch(item.grade)
         {
-            case "Normal":
+            case ItemGrade.Normal:
                 glow.color = new Color(1f, 1f, 1f);
                 break;
-            case "Magic":
+            case ItemGrade.Magic:
                 glow.color = new Color(40 / 255f, 1f, 35 / 255f);
                 break;
-            case "Elite":
+            case ItemGrade.Elite:
                 glow.color = new Color(0f, 67 / 255f, 1f);
                 break;
-            case "Rare":
+            case ItemGrade.Rare:
                 glow.color = new Color(1f, 115 / 255f, 0f);
                 break;
-            case "Epic":
+            case ItemGrade.Epic:
                 glow.color = new Color(1f, 1f, 0f);
                 break;
-            case "Legendary":
+            case ItemGrade.Legendary:
                 glow.color = new Color(1f, 0f, 0f);
                 break;
         }

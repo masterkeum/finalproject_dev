@@ -11,12 +11,6 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-    [Serializable]
-    public class ItemOptions
-    {
-
-    }
-
     [Header("UISlots")]
     public ItemSlotUI weaponSlot; // = new ItemSlotUI();
     public ItemSlotUI helmetSlot; // = new ItemSlotUI();
@@ -25,7 +19,7 @@ public class InventoryUI : MonoBehaviour
     public ItemSlotUI armorSlot; // = new ItemSlotUI();
     public ItemSlotUI shieldSlot; // = new ItemSlotUI();
 
-    private ItemTable selectedItem = new ItemTable();
+    private Item selectedItem = new Item();
 
     private float normal;
     private float magic;
@@ -69,7 +63,7 @@ public class InventoryUI : MonoBehaviour
 
         int num = random.Next(0, 101);
         float[] probs = { legendary, epic, rare, elite, magic, normal };
-        string grade=null;
+        ItemGrade grade=ItemGrade.Normal;
 
         float cumulative = 0f;
         int target = -1;
@@ -82,26 +76,25 @@ public class InventoryUI : MonoBehaviour
                 break;
             }
         }
-
         switch (target)
         {
             case 0:
-                grade = "Normal";
+                grade = ItemGrade.Normal;
                 break;
             case 1:
-                grade = "Magic";
+                grade = ItemGrade.Magic;
                 break;
             case 2:
-                grade = "Elite";
+                grade = ItemGrade.Elite;
                 break;
             case 3:
-                grade = "Rare";
+                grade = ItemGrade.Rare;
                 break;
             case 4:
-                grade = "Epic";
+                grade = ItemGrade.Epic;
                 break;
             case 5:
-                grade = "Legendary";
+                grade = ItemGrade.Legendary;
                 break;
         }
 
@@ -110,69 +103,80 @@ public class InventoryUI : MonoBehaviour
 
         ItemType randomtype = (ItemType)enumValues.GetValue(type);
 
-
         List<ItemTable> items = DataManager.Instance.itemTableDict.Values.ToList();
-        List<ItemTable> selectedGrade = items.FindAll((item) => { return item.grade == grade; });
-        ItemTable selectedType = selectedGrade.Find((Item) => { return Item.itemType == randomtype; });
+        List<ItemTable> selectedGrade = items.FindAll((item) => {return item.grade == grade; });
+        ItemTable selectedGradeNType = selectedGrade.Find((Item) => {return Item.itemType == randomtype; });
 
+        selectedItem.itemId = selectedGradeNType.itemId;
+        selectedItem.itemCategory = selectedGradeNType.itemCategory;
+        selectedItem.itemType = selectedGradeNType.itemType;
+        selectedItem.nameAlias = selectedGradeNType.nameAlias;
+        selectedItem.grade = selectedGradeNType.grade;
+        selectedItem.ImageFile = selectedGradeNType.ImageFile;
 
+        List<ItemOptions> options = new List<ItemOptions>();
+        int maxRange = 4;
+        switch(selectedItem.grade)
+        {
+            case ItemGrade.Normal:
+            case ItemGrade.Magic:
+            case ItemGrade.Elite:
+                maxRange = 4;
+                break;
+            case ItemGrade.Rare:
+            case ItemGrade.Epic:
+                maxRange = 5;
+                break;
+            case ItemGrade.Legendary:
+                maxRange = 6;
+                break;
+        }
 
+        while(options.Count <= (int)selectedItem.grade)
+        {
+            ItemOptions randomOption = (ItemOptions)UnityEngine.Random.Range(0, maxRange);
+            if (!options.Contains(randomOption))
+            {
+                options.Add(randomOption);
+            }
+        }
 
-
-
-
-
-
-
-
-        //Dictionary<string, float> gradeWeights = new Dictionary<string, float>()
-        //{
-        //    {"Normal", normal},
-        //    {"Magic", magic},
-        //    {"Elite", elite},
-        //    {"Rare", rare},
-        //    {"Epic", epic},
-        //    {"Legendary", legendary}
-        //};
-
-        //foreach (ItemTable newItem in DataManager.Instance.itemTableDict.Values)
-        //{
-        //    if (newItem.itemCategory == "Equipment")
-        //    {
-        //        float weight = gradeWeights[newItem.grade];
-        //        for (int i = 0; i < weight; i++)
-        //        {
-        //            gachaTable.Add(newItem);
-        //        }
-
-        //    }
-        //}
+        foreach(ItemOptions randomOption in options)
+        {
+            switch (randomOption)
+            {
+                case ItemOptions.Hp:
+                    selectedItem.Hp = (UnityEngine.Random.Range(selectedGradeNType.minHp, selectedGradeNType.maxHp + 1));
+                    break;
+                case ItemOptions.Dp:
+                    selectedItem.Dp = (UnityEngine.Random.Range(selectedGradeNType.minDp, selectedGradeNType.maxDp + 1));
+                    break;
+                case ItemOptions.Ap:
+                    selectedItem.Ap = (UnityEngine.Random.Range(selectedGradeNType.minAp, selectedGradeNType.maxAp + 1));
+                    break;
+                case ItemOptions.MoveSpeed:
+                    selectedItem.MoveSpeed = (UnityEngine.Random.Range(selectedGradeNType.minMovespeed, selectedGradeNType.maxMovespeed));
+                    break;
+                case ItemOptions.CriticalHit:
+                    selectedItem.CriticalHit = (UnityEngine.Random.Range(selectedGradeNType.minCriticalHit, selectedGradeNType.maxCriticalHit));
+                    break;
+                case ItemOptions.HpGen:
+                    selectedItem.HpGen = (UnityEngine.Random.Range(selectedGradeNType.minHpGen, selectedGradeNType.maxHpGen + 1));
+                    break;
+            }
+        }
 
     }
 
-    private void SetSelectedItemStats()
-    {
-
-        //switch(GameManager.Instance.accountInfo.newItem.grade)
-        //{
-        //    case "Normal":
-        //        {
-
-        //        }
-        //}
-    }
 
     public void StartMimicGacha()
     {
         SetMimicGacha();
-
-        //int gachaNum = UnityEngine.Random.Range(0, gachaTable.Count);
-        //GameManager.Instance.accountInfo.newItem = gachaTable[gachaNum];
-
-        SetSelectedItemStats();
+        GameManager.Instance.accountInfo.newItem = selectedItem;
 
         UIManager.Instance.ShowUI<UIMimicGacha>();
         GameManager.Instance.SaveGame();
+        
     }
 
 

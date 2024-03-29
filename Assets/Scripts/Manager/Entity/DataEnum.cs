@@ -18,6 +18,9 @@ public enum CharacterType
 
 public enum ItemType
 {
+    Gold,
+    Gem,
+    Core,
     Weapon,
     Armor,
     Gloves,
@@ -34,4 +37,14 @@ public enum ItemOptions
     MoveSpeed,
     CriticalHit,
     HpGen
+}
+
+public enum ItemGrade
+{
+    Normal = 1,
+    Magic,
+    Elite,
+    Rare,
+    Epic,
+    Legendary
 }

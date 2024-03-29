@@ -19,7 +19,7 @@ public class DataManager : SingletoneBase<DataManager>
     public Dictionary<int, PlayerLevel> playerLevelDict;
     public Dictionary<int, PlayerIngameLevel> playerIngameLevelDict;
     public Dictionary<int, SkillTable> skillTableDict;
-    public Dictionary<ItemType, ItemTable> itemTableDict;
+    public Dictionary<int, ItemTable> itemTableDict;
     public Dictionary<int, LevelGacha> levelGachaDict;
 
     protected override void Init()
@@ -123,10 +123,10 @@ public class DataManager : SingletoneBase<DataManager>
         }
         
         //아이템정보
-        itemTableDict = new Dictionary<ItemType, ItemTable>();
+        itemTableDict = new Dictionary<int, ItemTable>();
         foreach (ItemTable itemTable in jsonData.ItemTable)
         {
-            itemTableDict.Add(itemTable.itemType, itemTable);
+            itemTableDict.Add(itemTable.itemId, itemTable);
         }
         Debug.Log("아이템데이터 로드 완료");
 
@@ -136,6 +136,7 @@ public class DataManager : SingletoneBase<DataManager>
         {
             levelGachaDict.Add(levelGacha.level, levelGacha);
         }
+        Debug.Log("가챠확률 정보 로드 완료");
 
 
         // GC에서 언제 가져갈지 모르니 jsonData를 명시적으로 null 로 만들거나 destroy 하고싶다.
@@ -181,10 +182,10 @@ public class DataManager : SingletoneBase<DataManager>
         else return null;
     }
 
-    public ItemTable GetItemTable(ItemType itemType)
+    public ItemTable GetItemTable(int itemId)
     {
-        if (itemTableDict.ContainsKey(itemType))
-            return itemTableDict[itemType];
+        if (itemTableDict.ContainsKey(itemId))
+            return itemTableDict[itemId];
         else return null;
     }
 

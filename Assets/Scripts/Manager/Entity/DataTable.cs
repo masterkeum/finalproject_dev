@@ -144,7 +144,7 @@ public class ItemTable
     public ItemType itemType;
     public string nameAlias;
     public string descAlias;
-    public string grade;
+    public ItemGrade grade;
     public int maxStack;
     public string ImageFile;
     public int categoryTextId;

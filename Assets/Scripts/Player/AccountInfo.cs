@@ -9,7 +9,7 @@ public class Item
     public string itemCategory;
     public ItemType itemType;
     public string nameAlias;
-    public string grade;
+    public ItemGrade grade;
     public string ImageFile;
     public int Hp;
     public int Dp;
