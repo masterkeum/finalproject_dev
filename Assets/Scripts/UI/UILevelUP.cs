@@ -63,7 +63,7 @@ public class UILevelUP : UIBase
         for (int i = 0; i < selectableSkillUI.Count; i++)
         {
             selectableSkillUI[i].skillNameText.text = randomSkills[i].skillName;
-            selectableSkillUI[i].skillDescriptionText.text = randomSkills[i].skillStatsExplanation;
+            selectableSkillUI[i].skillDescriptionText.text = randomSkills[i].skillDesc;
             string path = randomSkills[i].imageAddress;
             Sprite sprite = Resources.Load<Sprite>(path);
             selectableSkillUI[i].skillSprite.sprite = sprite;

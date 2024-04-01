@@ -28,8 +28,8 @@ public class ProjectileMover : MonoBehaviour
 
     public void Init(int id, int level)
     {
-        SkillTable skillInfo = DataManager.Instance.GetSkillTable(id);
-        damage = skillInfo.damage + level * 20;
+        skillInfo = DataManager.Instance.GetSkillTable(id);
+        damage = skillInfo.attackDamage;
     }
 
     private void Awake()

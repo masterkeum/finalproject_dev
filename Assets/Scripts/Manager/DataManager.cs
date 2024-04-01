@@ -125,8 +125,8 @@ public class DataManager : SingletoneBase<DataManager>
         skillTableDict = new Dictionary<int, SkillTable>();
         foreach (SkillTable skillTable in jsonData.SkillTable)
         {
-            //skillTable.lastAttackTime = Time.time;
-            skillTableDict.Add(skillTable.skillId, skillTable);
+            if (skillTable.isEnable == true)
+                skillTableDict.Add(skillTable.skillId, skillTable);
         }
 
         //아이템정보
