@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 
@@ -29,7 +27,6 @@ public class InitializeParam
 public class CharacterInfo
 {
     public int uid;
-    [JsonConverter(typeof(StringEnumConverter))]
     public CharacterType characterType;
     public string name;
     public int minLevel;
@@ -58,6 +55,7 @@ public class MonsterLevel
     public int exp;
     public string rewardType;
     public int? rewardID;
+    public int? rewardAmount;
 }
 
 [Serializable]
@@ -73,7 +71,6 @@ public class StageInfoTable
     public int stageId;
     public int monsterId;
     public int level;
-    public CharacterType characterType;
     public int genTimeStart;
     public int genTimeEnd;
     public int genAmount;
@@ -105,29 +102,29 @@ public class SkillTable
     public string skillName;
     public string applyType;
     public string skillType;
-    public int nextSkill;
-    public int subskill;
+    public int? nextSkill;
+    public int? subskill;
     public int level;
     public int maxLevel;
 
-    public int projectileCount;
-    public int projectileSpeed;
-    public float coolDownTime;
+    public int? projectileCount;
+    public int? projectileSpeed;
+    public float? coolDownTime;
 
     public int damage;
-    public int damagePersec;
-    public int damagePerEffect;
-    public int perDamage;
-    public int probabilityPerDamage;
-    public int genNumPerSec;
-    public int levelAdjustmentNum;
-    public int levelAdjustmentper;
-    public float paralyzeSec;
-    public float duration;
-    public float durationIncreasePer;
-    public float sizeEnhancementPer;
-    public float rangeExpansionPer;
-    public float acquisitionIncreasePer;
+    public int? damagePersec;
+    public int? damagePerEffect;
+    public int? perDamage;
+    public int? probabilityPerDamage;
+    public int? genNumPerSec;
+    public int? levelAdjustmentNum;
+    public int? levelAdjustmentper;
+    public float? paralyzeSec;
+    public float? duration;
+    public float? durationIncreasePer;
+    public float? sizeEnhancementPer;
+    public float? rangeExpansionPer;
+    public float? acquisitionIncreasePer;
     public string skillStatsExplanation;
     public string skillExplanation;
 
@@ -142,14 +139,13 @@ public class SkillTable
 public class ItemTable
 {
     public int itemId;
-    public string itemCategory;
+    public ItemCategory itemCategory;
     public ItemType itemType;
     public string nameAlias;
     public string descAlias;
     public ItemGrade grade;
     public int maxStack;
     public string imageFile;
-    public int categoryTextId;
     public int minHp;
     public int maxHp;
     public int minDp;
@@ -162,35 +158,6 @@ public class ItemTable
     public float maxCriticalHit;
     public int minHpGen;
     public int maxHpGen;
-
-    // 생성자
-    public ItemTable(int _itemId, string _itemCategory, string _itemType, string _nameAlias, string _descAlias,
-                     string _grade, int _maxStack, string _imageFile, int _categoryTextId, int _minHp, int _maxHp,
-                     int _minDp, int _maxDp, int _minAp, int _maxAp, float _minMovespeed, float _maxMovespeed,
-                     float _minCriticalHit, float _maxCriticalHit, int _minHpGen, int _maxHpGen)
-    {
-        itemId = _itemId;
-        itemCategory = _itemCategory;
-        itemType = (ItemType)Enum.Parse(typeof(ItemType), _itemType);
-        nameAlias = _nameAlias;
-        descAlias = _descAlias;
-        grade = (ItemGrade)Enum.Parse(typeof(ItemGrade), _grade);
-        maxStack = _maxStack;
-        imageFile = _imageFile;
-        categoryTextId = _categoryTextId;
-        minHp = _minHp;
-        maxHp = _maxHp;
-        minDp = _minDp;
-        maxDp = _maxDp;
-        minAp = _minAp;
-        maxAp = _maxAp;
-        minMovespeed = _minMovespeed;
-        maxMovespeed = _maxMovespeed;
-        minCriticalHit = _minCriticalHit;
-        maxCriticalHit = _maxCriticalHit;
-        minHpGen = _minHpGen;
-        maxHpGen = _maxHpGen;
-    }
 }
 
 [Serializable]

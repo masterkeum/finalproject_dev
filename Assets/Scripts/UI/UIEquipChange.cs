@@ -52,7 +52,7 @@ public class UIEquipChange : UIBase
                 return accountInfo.equipItems.Boots;
             case ItemType.Helmet:
                 return accountInfo.equipItems.Helmet;
-            case ItemType.Accessorries:
+            case ItemType.Accessories:
                 return accountInfo.equipItems.Accessories;
         }
         return null;

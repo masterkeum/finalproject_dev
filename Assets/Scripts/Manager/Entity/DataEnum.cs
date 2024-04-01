@@ -1,3 +1,5 @@
+using System;
+
 public enum GameState
 {
     None,
@@ -16,8 +18,16 @@ public enum CharacterType
     BossMonster
 }
 
+public enum ItemCategory
+{
+    None,
+    Resource,
+    Equipment
+}
+
 public enum ItemType
 {
+    None,
     Gold,
     Gem,
     Core,
@@ -26,7 +36,7 @@ public enum ItemType
     Gloves,
     Boots,
     Helmet,
-    Accessorries
+    Accessories
 }
 
 public enum ItemOptions
