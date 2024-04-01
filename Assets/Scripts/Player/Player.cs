@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +26,12 @@ public class Player : MonoBehaviour
     public List<SkillTable> passiveSkillSlot = new List<SkillTable>();
 
     [SerializeField] protected Transform projectilePoint;
+    
+
+    private Vector3 screenPos;
+
+    public TMP_Text takeDamagePoint;
+    
     // 적
     public LayerMask enemyLayer;
     public float detectionRange = 15f;
@@ -82,13 +90,17 @@ public class Player : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         skillPool = GetComponent<SkillPool>();
         hpGuageSlider = GetComponentInChildren<Slider>();
+        takeDamagePoint = GetComponentInChildren<TMP_Text>();
+        
+        
         // monster = GameManager.Instance. // 프리팹된 몬스터 연결
     }
 
-    //private void Start()
-    //{
-    //    UpdateSlider();
-    //}
+    private void Start()
+    {
+        // UpdateSlider();
+        takeDamagePoint.gameObject.SetActive(false);
+    }
 
     private void Update()
     {
@@ -100,9 +112,6 @@ public class Player : MonoBehaviour
 
         SkillRoutine();
         
-        // 피격당한거 체크
-        // if() 
-        // 거리체크 
     }
 
 
@@ -168,16 +177,41 @@ public class Player : MonoBehaviour
         this.joy = joy;
     }
 
+    // public void TakeDamageNumber(Vector3 position)
+    // {
+    //     // todo 
+    //     // 몬스터와 충돌하면 피격값을 text로 띄워준다.
+    //     // 1. update 로 실시간 충돌 감지
+    //     // 2. 충돌하면 text 활성화 해서 띄워준다.
+    //     
+    //     screenPos = Camera.main.WorldToScreenPoint(moveVec);
+    //     Debug.Log("스크린투 월드 좌표: "+screenPos);
+    // }
+
     public void TakePhysicalDamage(int damageAmount)
     {
         currentHp -= damageAmount;
         float per = (float)currentHp  /   maxHp;  
         hpGuageSlider.value = per;
+        
+        takeDamagePoint.gameObject.SetActive(true);
+        takeDamagePoint.text = damageAmount.ToString();
+        // 코루틴 사용
+        StartCoroutine(SetActiveFalse());
+        
+        
         Debug.Log("플레이어 현재 HP" + per);
         if (currentHp <= 0)
             OnDead();
     }
 
+    IEnumerator SetActiveFalse()
+    {
+        yield return new WaitForSeconds(1.0f); 
+        takeDamagePoint.gameObject.SetActive(false);
+        // 지금 실행하는 쓰레드를 기다릴거냐 말거냐, 턴을 넘김 null 을 넘김
+    }
+    
     void OnDead()
     {
         Debug.Log("플레이어사망. 게임오버UI");
