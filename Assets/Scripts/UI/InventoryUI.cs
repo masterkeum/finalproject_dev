@@ -112,7 +112,7 @@ public class InventoryUI : MonoBehaviour
         selectedItem.itemType = selectedGradeNType.itemType;
         selectedItem.nameAlias = selectedGradeNType.nameAlias;
         selectedItem.grade = selectedGradeNType.grade;
-        selectedItem.ImageFile = selectedGradeNType.ImageFile;
+        selectedItem.ImageFile = selectedGradeNType.imageFile;
 
         List<ItemOptions> options = new List<ItemOptions>();
         int maxRange = 4;

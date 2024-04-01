@@ -1,12 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 public class DataManager : SingletoneBase<DataManager>
 {
     [ReadOnly, SerializeField] private string _pidStr;
 
     public bool IsReady { get; private set; } = false;
+    JsonSerializerSettings settings = new()
+    {
+        FloatFormatHandling = FloatFormatHandling.String,
+        Converters = { new StringEnumConverter() }
+    };
 
     // 데이터 파일 경로 Assets/Resources/DataTables/DataTable.json
     private string DataFilePath = "DataTables/DataTable";
@@ -45,8 +51,8 @@ public class DataManager : SingletoneBase<DataManager>
 
     public void ConvertJsonToDictionary(string json)
     {
-        Debug.Log(json);
-        DataTable jsonData = JsonUtility.FromJson<DataTable>(json);
+        //DataTable jsonData = JsonUtility.FromJson<DataTable>(json);
+        DataTable jsonData = JsonConvert.DeserializeObject<DataTable>(json, settings);
 
         // init 데이터
         _InitParam = new Dictionary<string, int>();
@@ -122,7 +128,7 @@ public class DataManager : SingletoneBase<DataManager>
             //skillTable.lastAttackTime = Time.time;
             skillTableDict.Add(skillTable.skillId, skillTable);
         }
-        
+
         //아이템정보
         itemTableDict = new Dictionary<int, ItemTable>();
         foreach (ItemTable itemTable in jsonData.ItemTable)
@@ -133,7 +139,7 @@ public class DataManager : SingletoneBase<DataManager>
 
         //아이템가챠 정보
         levelGachaDict = new Dictionary<int, LevelGacha>();
-        foreach(LevelGacha levelGacha in jsonData.LevelGacha)
+        foreach (LevelGacha levelGacha in jsonData.LevelGacha)
         {
             levelGachaDict.Add(levelGacha.level, levelGacha);
         }
@@ -192,7 +198,7 @@ public class DataManager : SingletoneBase<DataManager>
 
     public LevelGacha GetLevelGacha(int level)
     {
-        if(levelGachaDict.ContainsKey(level))
+        if (levelGachaDict.ContainsKey(level))
             return levelGachaDict[level];
         else return null;
     }
