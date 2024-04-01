@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UINewEquip : UIBase
 {
+    private InventoryUI inventoryUI;
+
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private TextMeshProUGUI itemStats;
@@ -14,6 +18,8 @@ public class UINewEquip : UIBase
     private void OnEnable()
     {
         SetNewItem();
+        inventoryUI = FindObjectOfType<InventoryUI>();
+
     }
 
     private void SetNewItem()
@@ -21,6 +27,10 @@ public class UINewEquip : UIBase
         Item newItem = GameManager.Instance.accountInfo.newItem;
         string psth = newItem.ImageFile;
         itemIcon.sprite = Resources.Load<Sprite>(psth);
+        if(newItem.nameAlias.Length > 10)
+        {
+            itemName.fontSize = 60;
+        }
         itemName.text = newItem.nameAlias;
 
         GlowColorChange(newItem);
@@ -30,6 +40,7 @@ public class UINewEquip : UIBase
     {
         GameManager.Instance.accountInfo.Equip();
         gameObject.SetActive(false);
+        inventoryUI.UpdateUI();
     }
 
     public void GlowColorChange(Item item)

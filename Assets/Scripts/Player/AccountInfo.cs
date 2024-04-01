@@ -250,8 +250,6 @@ public class AccountInfo
                 }
                 break;
         }
-
-
     }
 
     private void ChangeEquip(ref Item item, ref Item newItem, ref Item changedSlot)

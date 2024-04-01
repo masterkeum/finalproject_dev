@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UIEquipChange : UIBase
 {
+    private InventoryUI inventoryUI;
+
     public Image newIcon;
     public Image curIcon;
     public Image newGlow;
@@ -17,9 +19,11 @@ public class UIEquipChange : UIBase
     public GameObject equipButton;
     public GameObject sellButton;
 
+
     private void OnEnable()
     {
         Set();
+        inventoryUI = FindObjectOfType<InventoryUI>();
     }
 
     public void Set()
@@ -86,6 +90,7 @@ public class UIEquipChange : UIBase
     public void OnEquip()
     {
         GameManager.Instance.accountInfo.Equip();
+        inventoryUI.UpdateUI();
         Set();
     }
 
@@ -93,6 +98,7 @@ public class UIEquipChange : UIBase
     public void OnDigestion()
     {
         //경험치와 골드 얻기
+        GameManager.Instance.accountInfo.newItem = null;
         gameObject.SetActive(false);
     }
 
