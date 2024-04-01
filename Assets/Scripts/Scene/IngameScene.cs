@@ -137,7 +137,7 @@ public class IngameScene : MonoBehaviour
         CharacterInfo monsterInfo = DataManager.Instance.GetCharacterInfo(monsterData.monsterId);
         GameObject monster = Resources.Load<GameObject>(monsterInfo.prefabFile);
 
-        Debug.Log("vector3: "+monsterData.genPosVecter3);
+        // Debug.Log("vector3: "+monsterData.genPosVecter3);
         if (monsterData.genPosVecter3 != null)
         {
             if (monsterData.genPosVecter3.Length > 0)

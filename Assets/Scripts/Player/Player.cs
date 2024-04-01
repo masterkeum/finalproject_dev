@@ -195,6 +195,7 @@ public class Player : MonoBehaviour
         hpGuageSlider.value = per;
         
         takeDamagePoint.gameObject.SetActive(true);
+        damageAmount = -damageAmount;
         takeDamagePoint.text = damageAmount.ToString();
         // 코루틴 사용
         StartCoroutine(SetActiveFalse());
