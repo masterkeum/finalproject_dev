@@ -41,7 +41,8 @@ public enum ItemOptions
 
 public enum ItemGrade
 {
-    Normal = 1,
+    None,
+    Normal,
     Magic,
     Elite,
     Rare,

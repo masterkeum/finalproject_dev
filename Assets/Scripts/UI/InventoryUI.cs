@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
@@ -12,12 +13,12 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour
 {
     [Header("UISlots")]
-    public ItemSlotUI weaponSlot; // = new ItemSlotUI();
-    public ItemSlotUI helmetSlot; // = new ItemSlotUI();
-    public ItemSlotUI gloveSlot; // = new ItemSlotUI();
-    public ItemSlotUI bootsSlot; // = new ItemSlotUI();
-    public ItemSlotUI armorSlot; // = new ItemSlotUI();
-    public ItemSlotUI shieldSlot; // = new ItemSlotUI();
+    public ItemSlotUI weaponSlot;
+    public ItemSlotUI helmetSlot;
+    public ItemSlotUI glovesSlot;
+    public ItemSlotUI bootsSlot;
+    public ItemSlotUI armorSlot;
+    public ItemSlotUI accessorriesSlot;
 
     private Item selectedItem = new Item();
 
@@ -32,22 +33,191 @@ public class InventoryUI : MonoBehaviour
     private void Start()
     {
         UpdateUI();
-
-
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
-        //if (weaponSlot != null)
-        //{
-        //    string imagePath = GameManager.Instance.accountInfo.equipItems["Weapon"].ImageFile;
-        //    Resources.Load(imagePath);
-
-        //    weaponSlot.transform.GetChild(1).gameObject.SetActive(true);
-        //    //weaponSlot.transform.GetChild(1).GetComponent<Image>().sprite = 
-
-        //}
+        UpdateWeaponSlot();
+        UpdateHelmetSlot();
+        UpdateGlovesSlot();
+        UpdateBootsSlot();
+        UpdateArmorSlot();
+        UpdateAccessorriesSlot();
     }
+    
+    public void UpdateWeaponSlot()
+    {
+        string path = GameManager.Instance.accountInfo.equipItems.Weapon.ImageFile;
+        if(GameManager.Instance.accountInfo.equipItems.Weapon != null )
+        {
+            weaponSlot.icon.sprite = Resources.Load<Sprite>(path);
+            weaponSlot.glow.enabled = true;
+        }
+        else
+        {
+            weaponSlot.glow.enabled=false;
+        }
+        switch(GameManager.Instance.accountInfo.equipItems.Weapon.grade)
+        {
+            case ItemGrade.Normal:
+                weaponSlot.glow.color = new Color(1f,1f,1f); break;
+            case ItemGrade.Magic:
+                weaponSlot.glow.color = new Color(40/255f,1f,35/255f); break;
+            case ItemGrade.Elite:
+                weaponSlot.glow.color = new Color(0f,67/255f,1f); break;
+            case ItemGrade.Rare:
+                weaponSlot.glow.color = new Color(1f, 115 / 255f, 0f); break;
+            case ItemGrade.Epic:
+                weaponSlot.glow.color = new Color(1f,1f,0f); break;
+            case ItemGrade.Legendary:
+                weaponSlot.glow.color = new Color(1f, 0f, 0f);  break;
+        }
+    }
+    public void UpdateHelmetSlot()
+    {
+        string path = GameManager.Instance.accountInfo.equipItems.Helmet.ImageFile;
+        if (GameManager.Instance.accountInfo.equipItems.Helmet != null)
+        {
+            helmetSlot.icon.sprite = Resources.Load<Sprite>(path);
+            helmetSlot.glow.enabled = true;
+        }
+        else
+        {
+            helmetSlot.glow.enabled = false;
+        }
+        switch (GameManager.Instance.accountInfo.equipItems.Helmet.grade)
+        {
+            case ItemGrade.Normal:
+                helmetSlot.glow.color = new Color(1f, 1f, 1f); break;
+            case ItemGrade.Magic:
+                helmetSlot.glow.color = new Color(40 / 255f, 1f, 35 / 255f); break;
+            case ItemGrade.Elite:
+                helmetSlot.glow.color = new Color(0f, 67 / 255f, 1f); break;
+            case ItemGrade.Rare:
+                helmetSlot.glow.color = new Color(1f, 115 / 255f, 0f); break;
+            case ItemGrade.Epic:
+                helmetSlot.glow.color = new Color(1f, 1f, 0f); break;
+            case ItemGrade.Legendary:
+                helmetSlot.glow.color = new Color(1f, 0f, 0f); break;
+        }
+    }
+
+    public void UpdateGlovesSlot()
+    {
+        string path = GameManager.Instance.accountInfo.equipItems.Gloves.ImageFile;
+        if (GameManager.Instance.accountInfo.equipItems.Gloves != null)
+        {
+            glovesSlot.icon.sprite = Resources.Load<Sprite>(path);
+            glovesSlot.glow.enabled = true;
+        }
+        else
+        {
+            glovesSlot.glow.enabled = false;
+        }
+        switch (GameManager.Instance.accountInfo.equipItems.Gloves.grade)
+        {
+            case ItemGrade.Normal:
+                glovesSlot.glow.color = new Color(1f, 1f, 1f); break;
+            case ItemGrade.Magic:
+                glovesSlot.glow.color = new Color(40 / 255f, 1f, 35 / 255f); break;
+            case ItemGrade.Elite:
+                glovesSlot.glow.color = new Color(0f, 67 / 255f, 1f); break;
+            case ItemGrade.Rare:
+                glovesSlot.glow.color = new Color(1f, 115 / 255f, 0f); break;
+            case ItemGrade.Epic:
+                glovesSlot.glow.color = new Color(1f, 1f, 0f); break;
+            case ItemGrade.Legendary:
+                glovesSlot.glow.color = new Color(1f, 0f, 0f); break;
+        }
+    }
+
+    public void UpdateBootsSlot()
+    {
+        string path = GameManager.Instance.accountInfo.equipItems.Boots.ImageFile;
+        if (GameManager.Instance.accountInfo.equipItems.Boots != null)
+        {
+            bootsSlot.icon.sprite = Resources.Load<Sprite>(path);
+            bootsSlot.glow.enabled = true;
+        }
+        else
+        {
+            bootsSlot.glow.enabled = false;
+        }
+        switch (GameManager.Instance.accountInfo.equipItems.Boots.grade)
+        {
+            case ItemGrade.Normal:
+                bootsSlot.glow.color = new Color(1f, 1f, 1f); break;
+            case ItemGrade.Magic:
+                bootsSlot.glow.color = new Color(40 / 255f, 1f, 35 / 255f); break;
+            case ItemGrade.Elite:
+                bootsSlot.glow.color = new Color(0f, 67 / 255f, 1f); break;
+            case ItemGrade.Rare:
+                bootsSlot.glow.color = new Color(1f, 115 / 255f, 0f); break;
+            case ItemGrade.Epic:
+                bootsSlot.glow.color = new Color(1f, 1f, 0f); break;
+            case ItemGrade.Legendary:
+                bootsSlot.glow.color = new Color(1f, 0f, 0f); break;
+        }
+    }
+
+    public void UpdateArmorSlot()
+    {
+        string path = GameManager.Instance.accountInfo.equipItems.Armor.ImageFile;
+        if (GameManager.Instance.accountInfo.equipItems.Armor != null)
+        {
+            armorSlot.icon.sprite = Resources.Load<Sprite>(path);
+            armorSlot.glow.enabled = true;
+        }
+        else
+        {
+            armorSlot.glow.enabled = false;
+        }
+        switch (GameManager.Instance.accountInfo.equipItems.Armor.grade)
+        {
+            case ItemGrade.Normal:
+                armorSlot.glow.color = new Color(1f, 1f, 1f); break;
+            case ItemGrade.Magic:
+                armorSlot.glow.color = new Color(40 / 255f, 1f, 35 / 255f); break;
+            case ItemGrade.Elite:
+                armorSlot.glow.color = new Color(0f, 67 / 255f, 1f); break;
+            case ItemGrade.Rare:
+                armorSlot.glow.color = new Color(1f, 115 / 255f, 0f); break;
+            case ItemGrade.Epic:
+                armorSlot.glow.color = new Color(1f, 1f, 0f); break;
+            case ItemGrade.Legendary:
+                armorSlot.glow.color = new Color(1f, 0f, 0f); break;
+        }
+    }
+
+    public void UpdateAccessorriesSlot()
+    {
+        string path = GameManager.Instance.accountInfo.equipItems.Accessories.ImageFile;
+        if (GameManager.Instance.accountInfo.equipItems.Accessories != null)
+        {
+            accessorriesSlot.icon.sprite = Resources.Load<Sprite>(path);
+            accessorriesSlot.glow.enabled = true;
+        }
+        else
+        {
+            accessorriesSlot.glow.enabled = false;
+        }
+        switch (GameManager.Instance.accountInfo.equipItems.Accessories.grade)
+        {
+            case ItemGrade.Normal:
+                accessorriesSlot.glow.color = new Color(1f, 1f, 1f); break;
+            case ItemGrade.Magic:
+                accessorriesSlot.glow.color = new Color(40 / 255f, 1f, 35 / 255f); break;
+            case ItemGrade.Elite:
+                accessorriesSlot.glow.color = new Color(0f, 67 / 255f, 1f); break;
+            case ItemGrade.Rare:
+                accessorriesSlot.glow.color = new Color(1f, 115 / 255f, 0f); break;
+            case ItemGrade.Epic:
+                accessorriesSlot.glow.color = new Color(1f, 1f, 0f); break;
+            case ItemGrade.Legendary:
+                accessorriesSlot.glow.color = new Color(1f, 0f, 0f); break;
+        }
+    }
+
 
     public void SetMimicGacha()
     {
@@ -104,8 +274,8 @@ public class InventoryUI : MonoBehaviour
         ItemType randomtype = (ItemType)enumValues.GetValue(type);
 
         List<ItemTable> items = DataManager.Instance.itemTableDict.Values.ToList();
-        List<ItemTable> selectedGrade = items.FindAll((item) => {return item.grade == grade; });
-        ItemTable selectedGradeNType = selectedGrade.Find((Item) => {return Item.itemType == randomtype; });
+        List<ItemTable> selectedGrade = items.FindAll((item) => item.grade == grade );
+        ItemTable selectedGradeNType = selectedGrade.Find((Item) => Item.itemType == randomtype);
 
         selectedItem.itemId = selectedGradeNType.itemId;
         selectedItem.itemCategory = selectedGradeNType.itemCategory;
@@ -171,11 +341,20 @@ public class InventoryUI : MonoBehaviour
 
     public void StartMimicGacha()
     {
-        SetMimicGacha();
-        GameManager.Instance.accountInfo.newItem = selectedItem;
+        if(GameManager.Instance.accountInfo.core >= 1)
+        {
+            SetMimicGacha();
+            GameManager.Instance.accountInfo.newItem = selectedItem;
 
-        UIManager.Instance.ShowUI<UIMimicGacha>();
-        GameManager.Instance.SaveGame();
+            UIManager.Instance.ShowUI<UIMimicGacha>();
+            GameManager.Instance.SaveGame();
+        }
+        else
+        {
+            UINoCurrency uINoCurrency = UIManager.Instance.ShowUI<UINoCurrency>();
+            uINoCurrency.NoCore();
+        }
+       
         
     }
 
