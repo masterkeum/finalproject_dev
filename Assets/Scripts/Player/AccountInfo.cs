@@ -6,7 +6,7 @@ using UnityEngine;
 public class Item
 {
     public int itemId;
-    public string itemCategory;
+    public ItemCategory itemCategory;
     public ItemType itemType;
     public string nameAlias;
     public ItemGrade grade;
@@ -79,6 +79,8 @@ public class AccountInfo
     public int sliderMaxExp;
     public int curExp;
 
+    public CharacterType characterType;
+
     //생성자
     public AccountInfo(string _aid, string _name)
     {
@@ -110,6 +112,7 @@ public class AccountInfo
         sliderMaxExp = levelData.exp;
         curExp = 0;
 
+        characterType = CharacterType.Player;
     }
 
 
@@ -190,7 +193,7 @@ public class AccountInfo
                 {
                     if (equipItems.Weapon.itemId != 0)
                     {
-                        ChangeEquip(ref equipItems.Weapon,ref newItem,ref changedSlot);
+                        ChangeEquip(ref equipItems.Weapon, ref newItem, ref changedSlot);
                     }
                     else
                         equipItems.Weapon = newItem;
@@ -218,7 +221,7 @@ public class AccountInfo
                 break;
             case ItemType.Boots:
                 {
-                    if (equipItems.Boots.itemId != 0 )
+                    if (equipItems.Boots.itemId != 0)
                     {
                         ChangeEquip(ref equipItems.Boots, ref newItem, ref changedSlot);
                     }
@@ -236,7 +239,7 @@ public class AccountInfo
                         equipItems.Helmet = newItem;
                 }
                 break;
-            case ItemType.Accessorries:
+            case ItemType.Accessories:
                 {
                     if (equipItems.Accessories.itemId != 0)
                     {
@@ -305,7 +308,7 @@ public class AccountInfo
                         UIManager.Instance.ShowUI<UINewEquip>();
                 }
                 break;
-            case ItemType.Accessorries:
+            case ItemType.Accessories:
                 {
                     if (equipItems.Accessories.itemId != 0)
                         UIManager.Instance.ShowUI<UIEquipChange>();

@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyMeleeController : EnemyBaseController
 {
     private NavMeshPath path;
-
+    
+    
     public override void Init(int _monsterID, int _level, Player target)
     {
         base.Init(_monsterID, _level, target);
@@ -14,6 +16,7 @@ public class EnemyMeleeController : EnemyBaseController
         SetState(EnemyState.Trace);
 
         StartCoroutine(CheckState());
+        
     }
     // 상태 초기화
     private IEnumerator CheckState()
@@ -65,6 +68,7 @@ public class EnemyMeleeController : EnemyBaseController
         if (playerDistance > characterInfo.attackRange)
         {
             SetState(EnemyState.Trace);
+            
         }
 
         // 공격
@@ -76,6 +80,7 @@ public class EnemyMeleeController : EnemyBaseController
             animator.speed = 1;
             animator.SetTrigger(Attack);
         }
-
+        
     }
+    
 }

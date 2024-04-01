@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections;
 using System.IO;
@@ -7,6 +9,7 @@ public class GameManager : SingletoneBase<GameManager>
 {
     // global
     [ReadOnly, SerializeField] private string _pidStr;
+
     public GameState gameState { get; private set; }
     string saveFilePath;
 
@@ -23,6 +26,12 @@ public class GameManager : SingletoneBase<GameManager>
 
     public Player player { get; private set; }
 
+
+    JsonSerializerSettings settings = new()
+    {
+        FloatFormatHandling = FloatFormatHandling.String,
+        Converters = { new StringEnumConverter() }
+    };
 
     protected override void Init()
     {
@@ -152,7 +161,7 @@ public class GameManager : SingletoneBase<GameManager>
 
     public void SaveGame()
     {
-        string jsonData = JsonUtility.ToJson(accountInfo, true);
+        string jsonData = JsonConvert.SerializeObject(accountInfo, Formatting.Indented, settings);
         File.WriteAllText(saveFilePath, jsonData);
         //Debug.Log("Save : " + jsonData);
     }
@@ -164,7 +173,11 @@ public class GameManager : SingletoneBase<GameManager>
         if (File.Exists(saveFilePath))
         {
             string FromJsonData = File.ReadAllText(saveFilePath);
-            return JsonUtility.FromJson<AccountInfo>(FromJsonData);
+            if (FromJsonData == "null")
+            {
+                return new AccountInfo(aid, aid[..8]);
+            }
+            return JsonConvert.DeserializeObject<AccountInfo>(FromJsonData, settings);
         }
         else
         {
