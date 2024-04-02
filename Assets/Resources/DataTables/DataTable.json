@@ -38,6 +38,12 @@
     },
     {
       "initType": "Default",
+      "code": "StartCharacterId",
+      "param1": 10000001,
+      "codeDesc": "기본 케릭터"
+    },
+    {
+      "initType": "Default",
       "code": "StartSkillId",
       "param1": 30000011,
       "codeDesc": "기본 스킬"
@@ -198,70 +204,70 @@
   "StageList": [
     {
       "stageId": 101,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage1_1",
       "stageDesc": "들판"
     },
     {
       "stageId": 102,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage1_2",
       "stageDesc": "들판"
     },
     {
       "stageId": 103,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage1_3",
       "stageDesc": "들판"
     },
     {
       "stageId": 104,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage1_4",
       "stageDesc": "들판"
     },
     {
       "stageId": 105,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage1_5",
       "stageDesc": "들판"
     },
     {
       "stageId": 201,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage2_1",
       "stageDesc": "중세"
     },
     {
       "stageId": 202,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage2_2",
       "stageDesc": "중세"
     },
     {
       "stageId": 203,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage2_3",
       "stageDesc": "중세"
     },
     {
       "stageId": 204,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage2_4",
       "stageDesc": "중세"
     },
     {
       "stageId": 205,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage2_5",
       "stageDesc": "중세"
@@ -2606,6 +2612,52 @@
       "itemType": "Core",
       "nameAlias": "코어",
       "descAlias": "아이템정수 아이템을 뽑을 수 있는 재화",
+      "grade": "None",
+      "maxStack": 100000000,
+      "ImageFile": null,
+      "categoryTextId": null,
+      "minHp": 0,
+      "maxHp": 0,
+      "minDp": 0,
+      "maxDp": 0,
+      "minAp": 0,
+      "maxAp": 0,
+      "minMovespeed": 0,
+      "maxMovespeed": 0,
+      "minCriticalHit": 0,
+      "maxCriticalHit": 0,
+      "minHpGen": 0,
+      "maxHpGen": 0
+    },
+    {
+      "itemId": 50000004,
+      "itemCategory": "Resource",
+      "itemType": "Energy",
+      "nameAlias": "행동력",
+      "descAlias": "플레이시 소모되는 재화",
+      "grade": "None",
+      "maxStack": 100000000,
+      "ImageFile": null,
+      "categoryTextId": null,
+      "minHp": 0,
+      "maxHp": 0,
+      "minDp": 0,
+      "maxDp": 0,
+      "minAp": 0,
+      "maxAp": 0,
+      "minMovespeed": 0,
+      "maxMovespeed": 0,
+      "minCriticalHit": 0,
+      "maxCriticalHit": 0,
+      "minHpGen": 0,
+      "maxHpGen": 0
+    },
+    {
+      "itemId": 50000005,
+      "itemCategory": "Resource",
+      "itemType": "Timeticket",
+      "nameAlias": "시간감소 티켓",
+      "descAlias": "레벨업 시간을 줄여주는 아이템",
       "grade": "None",
       "maxStack": 100000000,
       "ImageFile": null,

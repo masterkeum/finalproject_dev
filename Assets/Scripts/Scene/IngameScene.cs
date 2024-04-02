@@ -54,15 +54,10 @@ public class IngameScene : MonoBehaviour
 
         // 스테이지에 맞는 필드 생성
         GenerateLevel(stageId);
-
         // 플레이어 생성
-        MakePlayer();
-
+        MakePlayer(DataManager.Instance._InitParam["StartCharacterId"]);
         // 버츄얼 카메라 세팅
         VirtualCameraSetting();
-
-        // 플레이 기본 세팅
-
 
         // HUD 생성
         inGameHUD = UIManager.Instance.ShowUI<InGameHUD>();
@@ -73,18 +68,17 @@ public class IngameScene : MonoBehaviour
 
     private void GenerateLevel(int stageId)
     {
-        Instantiate(Resources.Load<GameObject>("Prefabs/Level/Level1"));
+        Instantiate(Resources.Load<GameObject>(DataManager.Instance.stageListDict[stageId].levelPrefab));
     }
 
-    private void MakePlayer()
+    private void MakePlayer(int playerId)
     {
-        player = Instantiate(Resources.Load<Player>("Prefabs/Player/Player"));
+        player = Instantiate(Resources.Load<Player>(DataManager.Instance.characterInfoDict[playerId].prefabFile));
         player.transform.position = new Vector3(0, 0.5f, 0);
-        player.Init(DataManager.Instance._InitParam["StartCharacterId"], 1);
+        player.Init(playerId, 1);
 
         // Rigidbody playerRigid = player.GetComponent<Rigidbody>();
         // playerRigid.constraints = RigidbodyConstraints.FreezeRotation;
-
         joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
         player.JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
 

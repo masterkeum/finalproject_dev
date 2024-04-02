@@ -62,6 +62,8 @@ public class MonsterLevel
 public class StageList
 {
     public int stageId;
+    public string levelPrefab;
+    public string levelLight;
     public string BGSprite; // 스프라이트의 경로
 }
 

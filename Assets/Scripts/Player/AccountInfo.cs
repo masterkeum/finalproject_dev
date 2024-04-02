@@ -120,16 +120,16 @@ public class AccountInfo
     public Item newItem; // 분해되면 null 로 초기화
     public Item changedSlot; // 아이템 교체 시 한쪽 데이터를 임시저장하는 곳
 
-    [SerializeField] public string name;
-    [SerializeField] public int level;
-    [SerializeField] public int totalExp;
+    public string name;
+    public int level;
+    public int totalExp;
 
-    [SerializeField] public int actionPoint; // 행동력
-    [SerializeField] public int gem;
-    [SerializeField] public int gold;
-    [SerializeField] public int core;
-    [SerializeField] public int selectedStageId;
-    [SerializeField] public float lastUpdateTime;
+    public int actionPoint; // 행동력
+    public int gem;
+    public int gold;
+    public int core;
+    public int selectedStageId;
+    public float lastUpdateTime;
 
     public PlayerStatInfo playerStatInfo;
 
@@ -137,8 +137,6 @@ public class AccountInfo
     public int sliderCurExp;
     public int sliderMaxExp;
     public int curExp;
-
-    public CharacterType characterType;
 
     //생성자
     public AccountInfo(string _aid, string _name)
@@ -170,7 +168,6 @@ public class AccountInfo
         sliderMaxExp = levelData.exp;
         curExp = 0;
 
-        characterType = CharacterType.Player;
         // 플레이어 스탯
         playerStatInfo = new PlayerStatInfo(DataManager.Instance.GetCharacterInfo(DataManager.Instance._InitParam["StartCharacterId"]), equipItems);
     }

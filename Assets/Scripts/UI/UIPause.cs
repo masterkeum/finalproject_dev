@@ -30,7 +30,6 @@ public class UIPause : UIBase
     {
         SetActiveSlot();
         SetPassiveSlot();
-
     }
 
     public void SetActiveSlot()
@@ -48,13 +47,10 @@ public class UIPause : UIBase
                 activeSlotsUI[i].starGroup.SetActive(true);
 
                 activeSlotsUI[i].SetStars(player.activeSkillSlot[i].level);
-
-
             }
-
         }
-
     }
+
     public void SetPassiveSlot()
     {
         if (player.passiveSkillSlot != null)

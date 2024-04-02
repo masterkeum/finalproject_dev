@@ -76,7 +76,7 @@ public class EnemyMeleeController : EnemyBaseController
         {
             lastAttackTime = Time.time;
             //PlayerController.instance.GetComponent<IDamagable>().TakePhysicalDamage(damage); // 데미지 처리
-            player.TakePhysicalDamage(damage);
+            player.TakeDamage(damage);
             animator.speed = 1;
             animator.SetTrigger(Attack);
         }

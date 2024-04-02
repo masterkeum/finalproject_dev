@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -59,11 +60,9 @@ public class Player : MonoBehaviour
     private int playerId;
     private int level;
 
-
-
-    public List<SkillTable> activeSkillSlot = new List<SkillTable>();
-    public List<SkillTable> passiveSkillSlot = new List<SkillTable>();
-    //
+    public SkillTable[] activeSkillSlot = new SkillTable[6];
+    public SkillTable[] passiveSkillSlot = new SkillTable[6];
+    // 
 
     public virtual void Init(int _player, int _level)
     {
@@ -97,7 +96,7 @@ public class Player : MonoBehaviour
         playeringameinfo.gold = 0;
         playeringameinfo.skillpoint = 0;
 
-        activeSkillSlot.Add(DataManager.Instance.GetSkillTable(DataManager.Instance._InitParam["StartSkillId"])); // 기본스킬 지급
+        activeSkillSlot[0] = DataManager.Instance.GetSkillTable(DataManager.Instance._InitParam["StartSkillId"]); // 기본스킬 지급
 
         IsInit = true;
     }
@@ -119,12 +118,7 @@ public class Player : MonoBehaviour
             // 임시방편. 바닥밑으로 떨어지면 위치이동
             transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
         }
-
-        SkillRoutine();
-
-        // 피격당한거 체크
-        // if() 
-        // 거리체크 
+        //SkillRoutine();
     }
 
 
@@ -148,39 +142,38 @@ public class Player : MonoBehaviour
 
     #region Controll
 
-    private void SkillRoutine()
-    {
-        // 임시
-        foreach (SkillTable skill in activeSkillSlot)
-        {
-            switch (skill.targetType)
-            {
-                case SkillTargetType.Single:
-                    {
-                        if (Time.time - skill.lastAttackTime > skill.coolDownTime)
-                        {
-                            skill.lastAttackTime = Time.time;
-                            // 10f 까지 탐색? = 보스 탐지거리
-                            // 가까운놈 찾아서 그방향으로 발사 일정거리 가면 사라짐
-                            // 발사 방향
-                            Vector3 direction = DetectEnemyDirection();
-                            // 발사 작동
-                            skillPool.GetPoolSkill(skill.skillId, skill.level, projectilePoint, direction);
-                            skillPool.GetPoolFlash(skill.skillId, projectilePoint, direction);
-                        }
-                    }
-                    break;
-
-            }
-        }
-    }
+    //private void SkillRoutine()
+    //{
+    //    // 임시
+    //    foreach (SkillTable skill in activeSkillSlot)
+    //    {
+    //        switch (skill.targetType)
+    //        {
+    //            case SkillTargetType.Single:
+    //                {
+    //                    if (Time.time - skill.lastAttackTime > skill.coolDownTime)
+    //                    {
+    //                        // 10f 까지 탐색? = 보스 탐지거리
+    //                        // 가까운놈 찾아서 그방향으로 발사 일정거리 가면 사라짐
+    //                        // 발사 방향
+    //                        Vector3 direction = DetectEnemyDirection();
+    //                        // 발사 작동
+    //                        skillPool.GetPoolSkill(skill.skillId, skill.level, projectilePoint, direction);
+    //                        skillPool.GetPoolFlash(skill.skillId, projectilePoint, direction);
+    //                        skill.lastAttackTime = Time.time;
+    //                    }
+    //                }
+    //                break;
+    //        }
+    //    }
+    //}
 
     public void JoyStick(VariableJoystick joy)
     {
         this.joy = joy;
     }
 
-    public void TakePhysicalDamage(int damageAmount)
+    public void TakeDamage(int damageAmount)
     {
         playeringameinfo.curHp -= damageAmount;
         float per = (float)playeringameinfo.curHp / playeringameinfo.maxHp;

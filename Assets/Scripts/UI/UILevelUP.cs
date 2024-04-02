@@ -27,6 +27,7 @@ public class UILevelUP : UIBase
             }
         }
     }
+
     private void OnEnable()
     {
         RemoveAtVariableSkills();

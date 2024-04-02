@@ -135,7 +135,7 @@ public class EnemyBaseController : MonoBehaviour
         //animator.speed = agent.speed / walkSpeed;
     }
 
-    public void TakePhysicalDamage(int damageAmount)
+    public void TakeDamage(int damageAmount)
     {
         currentHp -= damageAmount;
         float per = (float)currentHp  /   maxHp;  

@@ -134,7 +134,7 @@ public class ProjectileMover : MonoBehaviour
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, triggerEnterPoint);
             Vector3 pos = triggerEnterPoint + new Vector3(0, hitOffset, 0);
 
-            other.GetComponent<EnemyBaseController>().TakePhysicalDamage(damage);
+            other.GetComponent<EnemyBaseController>().TakeDamage(damage);
 
             //Spawn hit effect on collision
             if (hit != null)
