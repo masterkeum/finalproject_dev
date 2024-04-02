@@ -85,7 +85,6 @@ public class Player : MonoBehaviour
     private List<GameObject> chaseTarget = new List<GameObject>();
 
     private Slider hpGuageSlider;
-    private EnemyBaseController monster;
 
     // 인게임 스탯
     public PlayerStatInfo playerStatInfo;
@@ -142,7 +141,6 @@ public class Player : MonoBehaviour
         }
         //SkillRoutine();
     }
-
 
     private void FixedUpdate()
     {

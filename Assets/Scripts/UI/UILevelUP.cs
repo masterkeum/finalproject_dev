@@ -53,6 +53,14 @@ public class UILevelUP : UIBase
     {
         randomSkills.Clear();
 
+        foreach (SkillTable skill in variableSkills)
+        {
+            if (skill == null)
+            {
+                Debug.LogWarning(skill);
+            }
+        }
+
         //랜덤스킬 생성, 현재레벨표시
         System.Random random = new System.Random();
         while (randomSkills.Count < selectableSkillUI.Count)
@@ -178,6 +186,11 @@ public class UILevelUP : UIBase
             // 다음 스킬 조건 확인 후 삽입
             if (skill.nextSkillId != 0 && (skill.reqSkillId == 0 || player.passiveSkill.ContainsKey(skill.reqSkillId)))
             {
+                if (DataManager.Instance.GetSkillTable(skill.nextSkillId) == null)
+                {
+                    Debug.LogWarning($"NotFound Skill : {skill.nextSkillId}");
+                    continue;
+                }
                 if (!variableSkills.Contains(DataManager.Instance.GetSkillTable(skill.nextSkillId)))
                     variableSkills.Add(DataManager.Instance.GetSkillTable(skill.nextSkillId));
             }
@@ -189,8 +202,13 @@ public class UILevelUP : UIBase
                 variableSkills.Remove(skill);
             }
 
-            if (skill.nextSkillId != 0 && (skill.reqSkillId == 0 || player.passiveSkill.ContainsKey(skill.reqSkillId)))
+            if (skill.nextSkillId != 0)
             {
+                if (DataManager.Instance.GetSkillTable(skill.nextSkillId) == null)
+                {
+                    Debug.LogWarning($"NotFound Skill : {skill.nextSkillId}");
+                    continue;
+                }
                 if (!variableSkills.Contains(DataManager.Instance.GetSkillTable(skill.nextSkillId)))
                     variableSkills.Add(DataManager.Instance.GetSkillTable(skill.nextSkillId));
             }
