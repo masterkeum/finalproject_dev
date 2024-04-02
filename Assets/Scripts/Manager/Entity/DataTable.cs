@@ -107,8 +107,8 @@ public class SkillTable
     public int maxLevel;
     public int nextSkillId;
     public int reqSkillId;
-    public string applyType;
-    public string target;
+    public SkillApplyType applyType;
+    public SkillTargetType targetType;
     public string rangeType;
     public float? coolDownTime;
     public int attackDamage;

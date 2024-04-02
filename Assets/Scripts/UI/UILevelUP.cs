@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -115,7 +113,7 @@ public class UILevelUP : UIBase
 
         }
 
-        else if (randomSkills[index].applyType == "Active")
+        else if (randomSkills[index].applyType == SkillApplyType.Active)
         {
             if (player.activeSkillSlot.Count == 0)
             {
@@ -250,11 +248,11 @@ public class UILevelUP : UIBase
     {
         if (player.activeSkillSlot.Count > player.CurrentOpenSkillSlotCount() - 1)
         {
-            variableSkills.RemoveAll(skill => !player.activeSkillSlot.Contains(skill) && skill.applyType == "Active");
+            variableSkills.RemoveAll(skill => !player.activeSkillSlot.Contains(skill) && skill.applyType == SkillApplyType.Active);
         }
         if (player.passiveSkillSlot.Count > player.CurrentOpenSkillSlotCount() - 1)
         {
-            variableSkills.RemoveAll(skill => !player.passiveSkillSlot.Contains(skill) && skill.applyType == "Passive");
+            variableSkills.RemoveAll(skill => !player.passiveSkillSlot.Contains(skill) && skill.applyType == SkillApplyType.Passive);
         }
         foreach (SkillTable skill in player.activeSkillSlot)
         {

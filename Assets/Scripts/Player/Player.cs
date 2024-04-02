@@ -2,6 +2,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+public struct Playeringameinfo
+{
+    public int curHp;
+    public int maxHp;
+
+    public int attackPower;
+    public int defense;
+    public float moveSpeed;
+    public float critical;
+    public float hpGen;
+
+
+    public int curLevel;
+    public int maxLevel;
+    public int sliderCurExp;
+    public int sliderMaxExp;
+    public int curExp;
+    public int totalExp;
+    public int maxExp;
+
+    public int killCount;
+    public int gold;
+    public int skillpoint;
+}
+
 public class Player : MonoBehaviour
 {
     public VariableJoystick joy;
@@ -10,20 +36,11 @@ public class Player : MonoBehaviour
     protected Animator anim;
     protected Vector3 moveVec;
 
-    protected int playerID;
-    protected int level;
-    protected int currentHp;
-    protected int maxHp;
-    private int damage;
-    protected CharacterInfo characterInfo;
-
     private bool IsInit = false;
 
-    public playeringameinfo playeringameinfo;
-    public List<SkillTable> activeSkillSlot = new List<SkillTable>();
-    public List<SkillTable> passiveSkillSlot = new List<SkillTable>();
 
     [SerializeField] protected Transform projectilePoint;
+
     // 적
     public LayerMask enemyLayer;
     public float detectionRange = 15f;
@@ -33,35 +50,45 @@ public class Player : MonoBehaviour
     private List<GameObject> chaseTarget = new List<GameObject>();
 
     private Slider hpGuageSlider;
-    private EnemyBaseController monster; 
-    
+    private EnemyBaseController monster;
+
+    // 인게임 스탯
+    public PlayerStatInfo playerStatInfo;
+    public Playeringameinfo playeringameinfo;
+
+    private int playerId;
+    private int level;
+
+
+
+    public List<SkillTable> activeSkillSlot = new List<SkillTable>();
+    public List<SkillTable> passiveSkillSlot = new List<SkillTable>();
+    //
+
     public virtual void Init(int _player, int _level)
     {
         if (IsInit) return;
 
         Debug.Log("Player.Init");
-        playerID = _player;
+        playerId = _player;
         level = _level;
-
-        characterInfo = DataManager.Instance.characterInfoDict[playerID];
 
         skillPool.CreatePool(transform);
 
+        playerStatInfo = GameManager.Instance.accountInfo.playerStatInfo;
+        playeringameinfo = new Playeringameinfo();
 
-        // 플레이어 기본 스탯 초기화
-        currentHp = characterInfo.hp;
-        maxHp = characterInfo.hp;
-        damage = characterInfo.attackPower;
+        //// 플레이어 기본 스탯 초기화
+        playeringameinfo.maxHp = playerStatInfo.hp + playerStatInfo.addHp;
+        playeringameinfo.curHp = playeringameinfo.maxHp;
 
-        playeringameinfo = new playeringameinfo();
-        playeringameinfo.attackPower = characterInfo.attackPower;
-        playeringameinfo.addAttackPower = 0;
-        playeringameinfo.sensoryRange = characterInfo.sensoryRange;
-        playeringameinfo.attackRange = characterInfo.attackRange;
-        playeringameinfo.attackSpeed = characterInfo.attackSpeed;
-        playeringameinfo.moveSpeed = characterInfo.moveSpeed;
+        playeringameinfo.attackPower = playerStatInfo.attackPower + playerStatInfo.addAttackPower;
+        playeringameinfo.defense = playerStatInfo.defense + playerStatInfo.addDefense;
+        playeringameinfo.moveSpeed = playerStatInfo.moveSpeed + playerStatInfo.addMoveSpeed;
+        playeringameinfo.critical = playerStatInfo.critical + playerStatInfo.addCritical;
+        playeringameinfo.hpGen = playerStatInfo.hpGen + playerStatInfo.addHpGen;
 
-        playeringameinfo.curLevel = 1;
+        playeringameinfo.curLevel = level;
         playeringameinfo.sliderCurExp = 0;
         playeringameinfo.sliderMaxExp = DataManager.Instance.GetPlayerIngameLevel(2).exp;
         playeringameinfo.curExp = 0;
@@ -70,7 +97,7 @@ public class Player : MonoBehaviour
         playeringameinfo.gold = 0;
         playeringameinfo.skillpoint = 0;
 
-        activeSkillSlot.Add(DataManager.Instance.GetSkillTable(30000001)); // 기본스킬 지급
+        activeSkillSlot.Add(DataManager.Instance.GetSkillTable(DataManager.Instance._InitParam["StartSkillId"])); // 기본스킬 지급
 
         IsInit = true;
     }
@@ -85,11 +112,6 @@ public class Player : MonoBehaviour
         // monster = GameManager.Instance. // 프리팹된 몬스터 연결
     }
 
-    //private void Start()
-    //{
-    //    UpdateSlider();
-    //}
-
     private void Update()
     {
         if (transform.position.y < -10)
@@ -99,7 +121,7 @@ public class Player : MonoBehaviour
         }
 
         SkillRoutine();
-        
+
         // 피격당한거 체크
         // if() 
         // 거리체크 
@@ -124,16 +146,6 @@ public class Player : MonoBehaviour
     }
 
 
-    //private void LateUpdate()
-    //{
-    //    //anim.SetFloat("Move", moveVec.sqrMagnitude); 
-    //    if (chaseTarget.Count > 0)
-    //    {
-    //        // TODO : 적 추적 작동
-    //    }
-    //}
-
-
     #region Controll
 
     private void SkillRoutine()
@@ -141,9 +153,9 @@ public class Player : MonoBehaviour
         // 임시
         foreach (SkillTable skill in activeSkillSlot)
         {
-            switch (skill.skillType)
+            switch (skill.targetType)
             {
-                case "Target":
+                case SkillTargetType.Single:
                     {
                         if (Time.time - skill.lastAttackTime > skill.coolDownTime)
                         {
@@ -170,11 +182,11 @@ public class Player : MonoBehaviour
 
     public void TakePhysicalDamage(int damageAmount)
     {
-        currentHp -= damageAmount;
-        float per = (float)currentHp  /   maxHp;  
+        playeringameinfo.curHp -= damageAmount;
+        float per = (float)playeringameinfo.curHp / playeringameinfo.maxHp;
         hpGuageSlider.value = per;
         Debug.Log("플레이어 현재 HP" + per);
-        if (currentHp <= 0)
+        if (playeringameinfo.curHp <= 0)
             OnDead();
     }
 
@@ -300,7 +312,7 @@ public class Player : MonoBehaviour
             playeringameinfo.sliderMaxExp = levelData.exp;
             if (playeringameinfo.totalExp + addExp >= levelData.totalExp)
             {
-                //Debug.Log($"랩업 토탈경치 {playeringameinfo.totalExp + addExp}/{levelData.totalExp}");
+                //Debug.Log($"랩업 토탈경치 {totalExp + addExp}/{levelData.totalExp}");
                 // 랩업
                 addExp -= (levelData.totalExp - playeringameinfo.totalExp);
                 playeringameinfo.totalExp = levelData.totalExp;

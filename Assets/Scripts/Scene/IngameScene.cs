@@ -4,32 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public struct playeringameinfo
-{
-    // 임시구조. 중간발표 이후 개선
-
-    public int attackPower;
-    public int addAttackPower;
-
-    public float sensoryRange;
-    public float attackRange;
-    public float attackSpeed;
-    public float moveSpeed;
-
-    //
-    public int curLevel;
-    public int maxLevel;
-    public int sliderCurExp;
-    public int sliderMaxExp;
-    public int curExp;
-    public int totalExp;
-    public int maxExp;
-
-    public int killCount;
-    public int gold;
-    public int skillpoint;
-}
-
 public class IngameScene : MonoBehaviour
 {
     /*
@@ -79,7 +53,7 @@ public class IngameScene : MonoBehaviour
         GameManager.Instance.InGameSceneProcess();
 
         // 스테이지에 맞는 필드 생성
-        GenerateLevel();
+        GenerateLevel(stageId);
 
         // 플레이어 생성
         MakePlayer();
@@ -97,7 +71,7 @@ public class IngameScene : MonoBehaviour
         StartStage();
     }
 
-    private void GenerateLevel()
+    private void GenerateLevel(int stageId)
     {
         Instantiate(Resources.Load<GameObject>("Prefabs/Level/Level1"));
     }
@@ -106,7 +80,7 @@ public class IngameScene : MonoBehaviour
     {
         player = Instantiate(Resources.Load<Player>("Prefabs/Player/Player"));
         player.transform.position = new Vector3(0, 0.5f, 0);
-        player.Init(10000001, 1);
+        player.Init(DataManager.Instance._InitParam["StartCharacterId"], 1);
 
         // Rigidbody playerRigid = player.GetComponent<Rigidbody>();
         // playerRigid.constraints = RigidbodyConstraints.FreezeRotation;
