@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public struct Playeringameinfo
+public struct PlayerInGameInfo
 {
     public int curHp;
     public int maxHp;
@@ -16,17 +15,52 @@ public struct Playeringameinfo
     public float hpGen;
 
 
+    public int addProjectileCount;
+    public int addprojectilePenetration;
+    public int addDefense;
+    public int addHp;
+    public int addRegenHp;
+
+
     public int curLevel;
-    public int maxLevel;
+    //public int maxLevel;
     public int sliderCurExp;
     public int sliderMaxExp;
     public int curExp;
     public int totalExp;
-    public int maxExp;
+    //public int maxExp;
 
     public int killCount;
     public int gold;
     public int skillpoint;
+
+    public PlayerInGameInfo(int _maxHp, int _attackPower, int _defense, float _moveSpeed,
+                            float _critical, float _hpGen, int _level, int _sliderMaxExp)
+    {
+        maxHp = _maxHp;
+        curHp = maxHp;
+
+        attackPower = _attackPower;
+        defense = _defense;
+        moveSpeed = _moveSpeed;
+        critical = _critical;
+        hpGen = _hpGen;
+
+        addProjectileCount = 0;
+        addprojectilePenetration = 0;
+        addDefense = 0;
+        addHp = 0;
+        addRegenHp = 0;
+
+        curLevel = _level;
+        sliderCurExp = 0;
+        sliderMaxExp = _sliderMaxExp;
+        curExp = 0;
+        totalExp = 0;
+        killCount = 0;
+        gold = 0;
+        skillpoint = 0;
+    }
 }
 
 public class Player : MonoBehaviour
@@ -55,15 +89,15 @@ public class Player : MonoBehaviour
 
     // 인게임 스탯
     public PlayerStatInfo playerStatInfo;
-    public Playeringameinfo playeringameinfo;
+    public PlayerInGameInfo playeringameinfo;
 
     private int playerId;
     private int level;
 
     // 그룹ID / 스킬내용
-    public List<SkillTable> activeSkillSlot = new List<SkillTable>();
+    public List<SkillTable> activeSkillSlot = new List<SkillTable>(); // skillId 기준
     public List<SkillTable> passiveSkillSlot = new List<SkillTable>();
-    public Dictionary<int, SkillTable> activeSkill = new Dictionary<int, SkillTable>();
+    public Dictionary<int, SkillTable> activeSkill = new Dictionary<int, SkillTable>(); // skillGroupId 기준
     private Dictionary<int, Coroutine> skillCoroutines = new Dictionary<int, Coroutine>();
     public Dictionary<int, SkillTable> passiveSkill = new Dictionary<int, SkillTable>();
 
@@ -78,30 +112,16 @@ public class Player : MonoBehaviour
         skillPool.CreatePool(transform);
 
         playerStatInfo = GameManager.Instance.accountInfo.playerStatInfo;
-        playeringameinfo = new Playeringameinfo();
-
-        //// 플레이어 기본 스탯 초기화
-        playeringameinfo.maxHp = playerStatInfo.hp + playerStatInfo.addHp;
-        playeringameinfo.curHp = playeringameinfo.maxHp;
-
-        playeringameinfo.attackPower = playerStatInfo.attackPower + playerStatInfo.addAttackPower;
-        playeringameinfo.defense = playerStatInfo.defense + playerStatInfo.addDefense;
-        playeringameinfo.moveSpeed = playerStatInfo.moveSpeed + playerStatInfo.addMoveSpeed;
-        playeringameinfo.critical = playerStatInfo.critical + playerStatInfo.addCritical;
-        playeringameinfo.hpGen = playerStatInfo.hpGen + playerStatInfo.addHpGen;
-
-        playeringameinfo.curLevel = level;
-        playeringameinfo.sliderCurExp = 0;
-        playeringameinfo.sliderMaxExp = DataManager.Instance.GetPlayerIngameLevel(2).exp;
-        playeringameinfo.curExp = 0;
-        playeringameinfo.totalExp = 0;
-        playeringameinfo.killCount = 0;
-        playeringameinfo.gold = 0;
-        playeringameinfo.skillpoint = 0;
+        playeringameinfo = new PlayerInGameInfo(playerStatInfo.hp + playerStatInfo.addHp
+            , playerStatInfo.attackPower + playerStatInfo.addAttackPower
+            , playerStatInfo.defense + playerStatInfo.addDefense
+            , playerStatInfo.moveSpeed + playerStatInfo.addMoveSpeed
+            , playerStatInfo.critical + playerStatInfo.addCritical
+            , playerStatInfo.hpGen + playerStatInfo.addHpGen
+            , level, DataManager.Instance.GetPlayerIngameLevel(level + 1).exp);
 
         SkillTable defaultSkill = DataManager.Instance.GetSkillTable(DataManager.Instance._InitParam["StartSkillId"]);
-        activeSkill.Add(defaultSkill.skillGroup, defaultSkill);
-        skillCoroutines.Add(defaultSkill.skillGroup, StartSkillCoroutine(defaultSkill.skillGroup));
+        SkillUpdate(defaultSkill);
         IsInit = true;
     }
 
@@ -172,20 +192,85 @@ public class Player : MonoBehaviour
     //    }
     //}
 
-    public Coroutine StartSkillCoroutine(int skillGroupId)
+    public void SkillUpdate(SkillTable skilldata)
     {
-        if (skillCoroutines.ContainsKey(skillGroupId))
+        // 그룹 중복값 삭제
+        bool skillFound = false;
+        if (skilldata.applyType == SkillApplyType.Active)
         {
-            StopCoroutine(skillCoroutines[skillGroupId]);
+            // UI 용
+            for (int i = 0; i < activeSkillSlot.Count; i++)
+            {
+                if (skilldata.skillGroup == activeSkillSlot[i].skillGroup)
+                {
+                    activeSkillSlot[i] = skilldata; // 참조 변경
+                    skillFound = true;
+                    break;
+                }
+            }
+            if (!skillFound)
+            {
+                activeSkillSlot.Add(skilldata);
+            }
+
+            // 스킬 새로운 로직
+            if (activeSkill.ContainsKey(skilldata.skillGroup))
+            {
+                activeSkill[skilldata.skillGroup] = skilldata;
+                skillCoroutines[skilldata.skillGroup] = StartSkillCoroutine(skilldata);
+            }
+            else
+            {
+                activeSkill.Add(skilldata.skillGroup, skilldata);
+                skillCoroutines.Add(skilldata.skillGroup, StartSkillCoroutine(skilldata));
+            }
         }
-        return StartCoroutine(SkillRoutine(skillGroupId));
+        else
+        {
+            // UI 용
+            for (int i = 0; i < passiveSkillSlot.Count; i++)
+            {
+                if (skilldata.skillGroup == passiveSkillSlot[i].skillGroup)
+                {
+                    passiveSkillSlot[i] = skilldata;
+                    skillFound = true;
+                    break;
+                }
+            }
+            if (!skillFound)
+            {
+                passiveSkillSlot.Add(skilldata);
+            }
+
+            // 스킬 새로운 로직
+            if (passiveSkill.ContainsKey(skilldata.skillGroup))
+            {
+                passiveSkill[skilldata.skillGroup] = skilldata;
+                skillCoroutines[skilldata.skillGroup] = StartSkillCoroutine(skilldata);
+            }
+            else
+            {
+                passiveSkill.Add(skilldata.skillGroup, skilldata);
+                skillCoroutines.Add(skilldata.skillGroup, StartSkillCoroutine(skilldata));
+            }
+
+        }
     }
 
-    IEnumerator SkillRoutine(int skillGroupId)
+    public Coroutine StartSkillCoroutine(SkillTable skilldata)
     {
-        Debug.Log($"Coroutine started with parameter: {skillGroupId}");
+        if (skillCoroutines.ContainsKey(skilldata.skillGroup))
+        {
+            StopCoroutine(skillCoroutines[skilldata.skillGroup]);
+        }
+        return StartCoroutine(SkillRoutine(skilldata));
+    }
+
+    IEnumerator SkillRoutine(SkillTable skilldata)
+    {
+        Debug.Log($"Coroutine started with parameter: {skilldata.skillId}");
         yield return new WaitForSeconds(3);
-        Debug.Log($"Coroutine finished with parameter: {skillGroupId}");
+        Debug.Log($"Coroutine finished with parameter: {skilldata.skillId}");
     }
 
 
@@ -236,8 +321,8 @@ public class Player : MonoBehaviour
         {
             // 근거리 없으면 아무방향으로 발사
             // Unity의 Random 클래스를 사용하여 -1과 1 사이의 랜덤한 값으로 각 축을 설정합니다.
-            float randomX = Random.Range(-1f, 1f);
-            float randomZ = Random.Range(-1f, 1f);
+            float randomX = UnityEngine.Random.Range(-1f, 1f);
+            float randomZ = UnityEngine.Random.Range(-1f, 1f);
 
             // Vector3.Normalize 함수를 사용하여 벡터를 정규화합니다.
             Vector3 randomDirection = new Vector3(randomX, 0f, randomZ).normalized;

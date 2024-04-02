@@ -1211,7 +1211,7 @@
       "gold": 300,
       "exp": 35,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 3
     },
     {
@@ -1222,7 +1222,7 @@
       "gold": 700,
       "exp": 60,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 5
     },
     {
@@ -1233,7 +1233,7 @@
       "gold": 1000,
       "exp": 80,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 7
     },
     {
@@ -1354,7 +1354,7 @@
       "gold": 800,
       "exp": 45,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 5
     },
     {
@@ -1365,7 +1365,7 @@
       "gold": 950,
       "exp": 65,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 7
     },
     {
@@ -1376,7 +1376,7 @@
       "gold": 800,
       "exp": 85,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 8
     },
     {
@@ -1607,7 +1607,7 @@
       "gold": 800,
       "exp": 45,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 8
     },
     {
@@ -1618,7 +1618,7 @@
       "gold": 950,
       "exp": 65,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 9
     },
     {
@@ -1629,7 +1629,7 @@
       "gold": 800,
       "exp": 85,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 10
     }
   ],
@@ -2581,7 +2581,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 0,
+      "getExp": 0
     },
     {
       "itemId": 50000002,
@@ -2604,7 +2606,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 0,
+      "getExp": 0
     },
     {
       "itemId": 50000003,
@@ -2627,7 +2631,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 0,
+      "getExp": 0
     },
     {
       "itemId": 50000004,
@@ -2650,7 +2656,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 0,
+      "getExp": 0
     },
     {
       "itemId": 50000005,
@@ -2673,7 +2681,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 0,
+      "getExp": 0
     },
     {
       "itemId": 60000001,
@@ -2696,7 +2706,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60000002,
@@ -2719,7 +2731,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60000003,
@@ -2742,7 +2756,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60000004,
@@ -2765,7 +2781,9 @@
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60000005,
@@ -2788,7 +2806,9 @@
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60000006,
@@ -2811,7 +2831,9 @@
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
-      "maxHpGen": 30
+      "maxHpGen": 30,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60001001,
@@ -2834,7 +2856,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60001002,
@@ -2857,7 +2881,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60001003,
@@ -2880,7 +2906,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60001004,
@@ -2903,7 +2931,9 @@
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60001005,
@@ -2926,7 +2956,9 @@
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60001006,
@@ -2949,7 +2981,9 @@
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
-      "maxHpGen": 30
+      "maxHpGen": 30,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60002001,
@@ -2972,7 +3006,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60002002,
@@ -2995,7 +3031,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60002003,
@@ -3018,7 +3056,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60002004,
@@ -3041,7 +3081,9 @@
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60002005,
@@ -3064,7 +3106,9 @@
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60002006,
@@ -3087,7 +3131,9 @@
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
-      "maxHpGen": 30
+      "maxHpGen": 30,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60030001,
@@ -3110,7 +3156,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60030002,
@@ -3133,7 +3181,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60030003,
@@ -3156,7 +3206,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60030004,
@@ -3179,7 +3231,9 @@
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60030005,
@@ -3202,7 +3256,9 @@
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60030006,
@@ -3225,7 +3281,9 @@
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
-      "maxHpGen": 30
+      "maxHpGen": 30,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60040001,
@@ -3248,7 +3306,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60040002,
@@ -3271,7 +3331,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60040003,
@@ -3294,7 +3356,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60040004,
@@ -3317,7 +3381,9 @@
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60040005,
@@ -3340,7 +3406,9 @@
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60040006,
@@ -3363,7 +3431,9 @@
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
-      "maxHpGen": 30
+      "maxHpGen": 30,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60050001,
@@ -3386,7 +3456,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60050002,
@@ -3409,7 +3481,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60050003,
@@ -3432,7 +3506,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60050004,
@@ -3455,7 +3531,9 @@
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60050005,
@@ -3478,7 +3556,9 @@
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60050006,
@@ -3501,12 +3581,15 @@
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
-      "maxHpGen": 30
+      "maxHpGen": 30,
+      "getGold": 100,
+      "getExp": 50
     }
   ],
   "SkillTable": [
     {
       "skillId": 30000011,
+      "skillGroup": 30000010,
       "skillName": "화염구",
       "skillDesc": null,
       "taskDesc": null,
@@ -3533,6 +3616,7 @@
     },
     {
       "skillId": 30000012,
+      "skillGroup": 30000010,
       "skillName": "화염구",
       "skillDesc": null,
       "taskDesc": null,
@@ -3559,6 +3643,7 @@
     },
     {
       "skillId": 30000013,
+      "skillGroup": 30000010,
       "skillName": "화염구",
       "skillDesc": null,
       "taskDesc": null,
@@ -3585,6 +3670,7 @@
     },
     {
       "skillId": 30000014,
+      "skillGroup": 30000010,
       "skillName": "화염구",
       "skillDesc": null,
       "taskDesc": null,
@@ -3611,6 +3697,7 @@
     },
     {
       "skillId": 30000015,
+      "skillGroup": 30000010,
       "skillName": "화염구",
       "skillDesc": null,
       "taskDesc": null,
@@ -3637,6 +3724,7 @@
     },
     {
       "skillId": 30000021,
+      "skillGroup": 30000020,
       "skillName": "아이스 스피어",
       "skillDesc": null,
       "taskDesc": null,
@@ -3663,6 +3751,7 @@
     },
     {
       "skillId": 30000022,
+      "skillGroup": 30000020,
       "skillName": "아이스 스피어",
       "skillDesc": null,
       "taskDesc": null,
@@ -3689,6 +3778,7 @@
     },
     {
       "skillId": 30000023,
+      "skillGroup": 30000020,
       "skillName": "아이스 스피어",
       "skillDesc": null,
       "taskDesc": null,
@@ -3715,6 +3805,7 @@
     },
     {
       "skillId": 30000024,
+      "skillGroup": 30000020,
       "skillName": "아이스 스피어",
       "skillDesc": null,
       "taskDesc": null,
@@ -3741,6 +3832,7 @@
     },
     {
       "skillId": 30000025,
+      "skillGroup": 30000020,
       "skillName": "아이스 스피어",
       "skillDesc": null,
       "taskDesc": null,
@@ -3767,6 +3859,7 @@
     },
     {
       "skillId": 30000031,
+      "skillGroup": 30000030,
       "skillName": "번개의 일격",
       "skillDesc": null,
       "taskDesc": "랜덤타겟 다연발",
@@ -3793,6 +3886,7 @@
     },
     {
       "skillId": 30000032,
+      "skillGroup": 30000030,
       "skillName": "번개의 일격",
       "skillDesc": null,
       "taskDesc": null,
@@ -3819,6 +3913,7 @@
     },
     {
       "skillId": 30000033,
+      "skillGroup": 30000030,
       "skillName": "번개의 일격",
       "skillDesc": null,
       "taskDesc": null,
@@ -3845,6 +3940,7 @@
     },
     {
       "skillId": 30000034,
+      "skillGroup": 30000030,
       "skillName": "번개의 일격",
       "skillDesc": null,
       "taskDesc": null,
@@ -3871,6 +3967,7 @@
     },
     {
       "skillId": 30000035,
+      "skillGroup": 30000030,
       "skillName": "번개의 일격",
       "skillDesc": null,
       "taskDesc": null,
@@ -3897,6 +3994,7 @@
     },
     {
       "skillId": 30000041,
+      "skillGroup": 30000040,
       "skillName": "유성 낙하",
       "skillDesc": null,
       "taskDesc": "랜덤 포지션에 범위공격",
@@ -3923,6 +4021,7 @@
     },
     {
       "skillId": 30000042,
+      "skillGroup": 30000040,
       "skillName": "유성 낙하",
       "skillDesc": null,
       "taskDesc": null,
@@ -3949,6 +4048,7 @@
     },
     {
       "skillId": 30000043,
+      "skillGroup": 30000040,
       "skillName": "유성 낙하",
       "skillDesc": null,
       "taskDesc": null,
@@ -3975,6 +4075,7 @@
     },
     {
       "skillId": 30000044,
+      "skillGroup": 30000040,
       "skillName": "유성 낙하",
       "skillDesc": null,
       "taskDesc": null,
@@ -4001,6 +4102,7 @@
     },
     {
       "skillId": 30000045,
+      "skillGroup": 30000040,
       "skillName": "유성 낙하",
       "skillDesc": null,
       "taskDesc": null,
@@ -4027,6 +4129,7 @@
     },
     {
       "skillId": 30000051,
+      "skillGroup": 30000050,
       "skillName": "생츄어리",
       "skillDesc": null,
       "taskDesc": "마늘",
@@ -4053,6 +4156,7 @@
     },
     {
       "skillId": 30000052,
+      "skillGroup": 30000050,
       "skillName": "생츄어리",
       "skillDesc": null,
       "taskDesc": null,
@@ -4079,6 +4183,7 @@
     },
     {
       "skillId": 30000053,
+      "skillGroup": 30000050,
       "skillName": "생츄어리",
       "skillDesc": null,
       "taskDesc": null,
@@ -4105,6 +4210,7 @@
     },
     {
       "skillId": 30000054,
+      "skillGroup": 30000050,
       "skillName": "생츄어리",
       "skillDesc": null,
       "taskDesc": null,
@@ -4131,6 +4237,7 @@
     },
     {
       "skillId": 30000055,
+      "skillGroup": 30000050,
       "skillName": "생츄어리",
       "skillDesc": null,
       "taskDesc": null,
@@ -4157,6 +4264,7 @@
     },
     {
       "skillId": 30000061,
+      "skillGroup": 30000060,
       "skillName": "신성한 오로라",
       "skillDesc": null,
       "taskDesc": "뱀서 성서",
@@ -4183,6 +4291,7 @@
     },
     {
       "skillId": 30000062,
+      "skillGroup": 30000060,
       "skillName": "신성한 오로라",
       "skillDesc": null,
       "taskDesc": null,
@@ -4209,6 +4318,7 @@
     },
     {
       "skillId": 30000063,
+      "skillGroup": 30000060,
       "skillName": "신성한 오로라",
       "skillDesc": null,
       "taskDesc": null,
@@ -4235,6 +4345,7 @@
     },
     {
       "skillId": 30000064,
+      "skillGroup": 30000060,
       "skillName": "신성한 오로라",
       "skillDesc": null,
       "taskDesc": null,
@@ -4261,6 +4372,7 @@
     },
     {
       "skillId": 30000065,
+      "skillGroup": 30000060,
       "skillName": "신성한 오로라",
       "skillDesc": null,
       "taskDesc": null,
@@ -4287,6 +4399,7 @@
     },
     {
       "skillId": 30000501,
+      "skillGroup": 30000010,
       "skillName": "[초월]심연의 화염",
       "skillDesc": null,
       "taskDesc": "디버프 하드코딩",
@@ -4313,6 +4426,7 @@
     },
     {
       "skillId": 30000511,
+      "skillGroup": 30000020,
       "skillName": "[초월]빙결의 지배자",
       "skillDesc": null,
       "taskDesc": "디버프 하드코딩",
@@ -4339,6 +4453,7 @@
     },
     {
       "skillId": 30000521,
+      "skillGroup": 30000030,
       "skillName": "[초월]천둥의 격노",
       "skillDesc": null,
       "taskDesc": null,
@@ -4348,11 +4463,11 @@
       "nextSkillId": 0,
       "reqSkillId": 0,
       "applyType": "Awaken",
-      "targetType": null,
-      "rangeType": null,
-      "coolDownTime": null,
+      "targetType": "Single",
+      "rangeType": "Range",
+      "coolDownTime": 0,
       "attackDamage": 0,
-      "projectileType": null,
+      "projectileType": "Projectile",
       "projectileSpeed": 0,
       "projectileCount": 0,
       "projectilePenetration": 0,
@@ -4365,6 +4480,7 @@
     },
     {
       "skillId": 30000531,
+      "skillGroup": 30000040,
       "skillName": "[초월]미사일 스웜",
       "skillDesc": null,
       "taskDesc": null,
@@ -4374,11 +4490,11 @@
       "nextSkillId": 0,
       "reqSkillId": 0,
       "applyType": "Awaken",
-      "targetType": null,
-      "rangeType": null,
-      "coolDownTime": null,
+      "targetType": "Single",
+      "rangeType": "Range",
+      "coolDownTime": 0,
       "attackDamage": 0,
-      "projectileType": null,
+      "projectileType": "Projectile",
       "projectileSpeed": 0,
       "projectileCount": 0,
       "projectilePenetration": 0,
@@ -4391,6 +4507,7 @@
     },
     {
       "skillId": 30000541,
+      "skillGroup": 30000050,
       "skillName": "[초월]생츄어리 군주",
       "skillDesc": null,
       "taskDesc": null,
@@ -4400,11 +4517,11 @@
       "nextSkillId": 0,
       "reqSkillId": 0,
       "applyType": "Awaken",
-      "targetType": null,
-      "rangeType": null,
-      "coolDownTime": null,
+      "targetType": "Single",
+      "rangeType": "Range",
+      "coolDownTime": 0,
       "attackDamage": 0,
-      "projectileType": null,
+      "projectileType": "Projectile",
       "projectileSpeed": 0,
       "projectileCount": 0,
       "projectilePenetration": 0,
@@ -4417,6 +4534,7 @@
     },
     {
       "skillId": 30000551,
+      "skillGroup": 30000060,
       "skillName": "[초월]파멸의 화염",
       "skillDesc": null,
       "taskDesc": null,
@@ -4426,11 +4544,11 @@
       "nextSkillId": 0,
       "reqSkillId": 0,
       "applyType": "Awaken",
-      "targetType": null,
-      "rangeType": null,
-      "coolDownTime": null,
+      "targetType": "Single",
+      "rangeType": "Range",
+      "coolDownTime": 0,
       "attackDamage": 0,
-      "projectileType": null,
+      "projectileType": "Projectile",
       "projectileSpeed": 0,
       "projectileCount": 0,
       "projectilePenetration": 0,
@@ -4443,6 +4561,7 @@
     },
     {
       "skillId": 30001011,
+      "skillGroup": 30001010,
       "skillName": "화염의 힘",
       "skillDesc": "화염구 +{projectileCount}",
       "taskDesc": null,
@@ -4469,6 +4588,7 @@
     },
     {
       "skillId": 30001012,
+      "skillGroup": 30001010,
       "skillName": "화염의 힘",
       "skillDesc": "화염구 +{projectileCount}",
       "taskDesc": null,
@@ -4495,6 +4615,7 @@
     },
     {
       "skillId": 30001013,
+      "skillGroup": 30001010,
       "skillName": "화염의 힘",
       "skillDesc": "화염구 +{projectileCount}",
       "taskDesc": null,
@@ -4521,6 +4642,7 @@
     },
     {
       "skillId": 30001014,
+      "skillGroup": 30001010,
       "skillName": "화염의 힘",
       "skillDesc": "화염구 +{projectileCount}",
       "taskDesc": null,
@@ -4547,6 +4669,7 @@
     },
     {
       "skillId": 30001015,
+      "skillGroup": 30001010,
       "skillName": "화염의 힘",
       "skillDesc": "화염구 +{projectileCount}",
       "taskDesc": null,
@@ -4573,6 +4696,7 @@
     },
     {
       "skillId": 30001021,
+      "skillGroup": 30001020,
       "skillName": "회복의 빛",
       "skillDesc": null,
       "taskDesc": null,
@@ -4599,6 +4723,7 @@
     },
     {
       "skillId": 30001022,
+      "skillGroup": 30001020,
       "skillName": "회복의 빛",
       "skillDesc": null,
       "taskDesc": null,
@@ -4625,6 +4750,7 @@
     },
     {
       "skillId": 30001023,
+      "skillGroup": 30001020,
       "skillName": "회복의 빛",
       "skillDesc": null,
       "taskDesc": null,
@@ -4651,6 +4777,7 @@
     },
     {
       "skillId": 30001024,
+      "skillGroup": 30001020,
       "skillName": "회복의 빛",
       "skillDesc": null,
       "taskDesc": null,
@@ -4677,6 +4804,7 @@
     },
     {
       "skillId": 30001025,
+      "skillGroup": 30001020,
       "skillName": "회복의 빛",
       "skillDesc": null,
       "taskDesc": null,
@@ -4703,6 +4831,7 @@
     },
     {
       "skillId": 30001031,
+      "skillGroup": 30001030,
       "skillName": "생명의 힘",
       "skillDesc": null,
       "taskDesc": null,
@@ -4729,6 +4858,7 @@
     },
     {
       "skillId": 30001032,
+      "skillGroup": 30001030,
       "skillName": "생명의 힘",
       "skillDesc": null,
       "taskDesc": null,
@@ -4755,6 +4885,7 @@
     },
     {
       "skillId": 30001033,
+      "skillGroup": 30001030,
       "skillName": "생명의 힘",
       "skillDesc": null,
       "taskDesc": null,
@@ -4781,6 +4912,7 @@
     },
     {
       "skillId": 30001034,
+      "skillGroup": 30001030,
       "skillName": "생명의 힘",
       "skillDesc": null,
       "taskDesc": null,
@@ -4807,6 +4939,7 @@
     },
     {
       "skillId": 30001035,
+      "skillGroup": 30001030,
       "skillName": "생명의 힘",
       "skillDesc": null,
       "taskDesc": null,
@@ -4833,6 +4966,7 @@
     },
     {
       "skillId": 30001041,
+      "skillGroup": 30001040,
       "skillName": "강화된 공격",
       "skillDesc": null,
       "taskDesc": null,
@@ -4859,6 +4993,7 @@
     },
     {
       "skillId": 30001042,
+      "skillGroup": 30001040,
       "skillName": "강화된 공격",
       "skillDesc": null,
       "taskDesc": null,
@@ -4885,6 +5020,7 @@
     },
     {
       "skillId": 30001043,
+      "skillGroup": 30001040,
       "skillName": "강화된 공격",
       "skillDesc": null,
       "taskDesc": null,
@@ -4911,6 +5047,7 @@
     },
     {
       "skillId": 30001044,
+      "skillGroup": 30001040,
       "skillName": "강화된 공격",
       "skillDesc": null,
       "taskDesc": null,
@@ -4937,6 +5074,7 @@
     },
     {
       "skillId": 30001045,
+      "skillGroup": 30001040,
       "skillName": "강화된 공격",
       "skillDesc": null,
       "taskDesc": null,
@@ -4963,6 +5101,7 @@
     },
     {
       "skillId": 30001051,
+      "skillGroup": 30001050,
       "skillName": "블랙홀",
       "skillDesc": null,
       "taskDesc": null,
@@ -4989,6 +5128,7 @@
     },
     {
       "skillId": 30001052,
+      "skillGroup": 30001050,
       "skillName": "블랙홀",
       "skillDesc": null,
       "taskDesc": null,
@@ -5015,6 +5155,7 @@
     },
     {
       "skillId": 30001053,
+      "skillGroup": 30001050,
       "skillName": "블랙홀",
       "skillDesc": null,
       "taskDesc": null,
@@ -5041,6 +5182,7 @@
     },
     {
       "skillId": 30001054,
+      "skillGroup": 30001050,
       "skillName": "블랙홀",
       "skillDesc": null,
       "taskDesc": null,
@@ -5067,6 +5209,7 @@
     },
     {
       "skillId": 30001055,
+      "skillGroup": 30001050,
       "skillName": "블랙홀",
       "skillDesc": null,
       "taskDesc": null,
@@ -5093,6 +5236,7 @@
     },
     {
       "skillId": 30001061,
+      "skillGroup": 30001060,
       "skillName": "보호막",
       "skillDesc": null,
       "taskDesc": null,
@@ -5119,6 +5263,7 @@
     },
     {
       "skillId": 30001062,
+      "skillGroup": 30001060,
       "skillName": "보호막",
       "skillDesc": null,
       "taskDesc": null,
@@ -5145,6 +5290,7 @@
     },
     {
       "skillId": 30001063,
+      "skillGroup": 30001060,
       "skillName": "보호막",
       "skillDesc": null,
       "taskDesc": null,
@@ -5171,6 +5317,7 @@
     },
     {
       "skillId": 30001064,
+      "skillGroup": 30001060,
       "skillName": "보호막",
       "skillDesc": null,
       "taskDesc": null,
@@ -5197,6 +5344,7 @@
     },
     {
       "skillId": 30001065,
+      "skillGroup": 30001060,
       "skillName": "보호막",
       "skillDesc": null,
       "taskDesc": null,

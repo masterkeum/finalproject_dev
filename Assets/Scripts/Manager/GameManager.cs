@@ -212,7 +212,5 @@ public class GameManager : SingletoneBase<GameManager>
         UpdateUI();
     }
 
-
-
     #endregion
 }
