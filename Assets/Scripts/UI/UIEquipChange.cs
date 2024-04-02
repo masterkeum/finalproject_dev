@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,21 +31,56 @@ public class UIEquipChange : UIBase
     {
         string newPath = GameManager.Instance.accountInfo.newItem.ImageFile;
         newIcon.sprite = Resources.Load<Sprite>(newPath);
+        Item newItem = GameManager.Instance.accountInfo.newItem;
+        if (newItem.nameAlias.Length > 10)
+        {
+            newItemNameText.fontSize = 50;
+        }
         newItemNameText.text = GameManager.Instance.accountInfo.newItem.nameAlias;
-        GlowColorChange(newGlow,GameManager.Instance.accountInfo.newItem);
-        
-        
+        GlowColorChange(newGlow, GameManager.Instance.accountInfo.newItem);
+
+        string statList = "";
+        if (newItem.Hp > 0)
+            statList += "체력 : " + newItem.Hp + "\n";
+        if (newItem.Dp > 0)
+            statList += "방어력 : " + newItem.Dp + "\n";
+        if (newItem.Ap > 0)
+            statList += "공격력 : " + newItem.Ap + "\n";
+        if (newItem.MoveSpeed > 0)
+            statList += "이동속도 : " + newItem.MoveSpeed + "\n";
+        if (newItem.CriticalHit > 0)
+            statList += "치명타 : " + newItem.CriticalHit + "\n";
+        if (newItem.HpGen > 0)
+            statList += "재생 : " + newItem.HpGen + "\n";
+        newItemDescriptionText.text = statList;
+
+
         string curPath = CurChangeableItme().ImageFile;
         curIcon.sprite = Resources.Load<Sprite>(curPath);
         curItemNameText.text = CurChangeableItme().nameAlias;
         GlowColorChange(curGlow, CurChangeableItme());
+        
+        string curStatList = "";
+        if (CurChangeableItme().Hp > 0)
+            curStatList += "체력 : " + CurChangeableItme().Hp + "\n";
+        if (CurChangeableItme().Dp > 0)
+            curStatList += "방어력 : " + CurChangeableItme().Dp + "\n";
+        if (CurChangeableItme().Ap > 0)
+            curStatList += "공격력 : " + CurChangeableItme().Ap + "\n";
+        if (CurChangeableItme().MoveSpeed > 0)
+            curStatList += "이동속도 : " + CurChangeableItme().MoveSpeed + "\n";
+        if (CurChangeableItme().CriticalHit > 0)
+            curStatList += "치명타 : " + CurChangeableItme().CriticalHit + "\n";
+        if (CurChangeableItme().HpGen > 0)
+            curStatList += "재생 : " + CurChangeableItme().HpGen + "\n";
+        curItemDescriptionText.text = curStatList;
 
     }
 
     private Item CurChangeableItme()
     {
         AccountInfo accountInfo = GameManager.Instance.accountInfo;
-        switch(accountInfo.newItem.itemType)
+        switch (accountInfo.newItem.itemType)
         {
             case ItemType.Weapon:
                 return accountInfo.equipItems.Weapon;
@@ -64,7 +100,7 @@ public class UIEquipChange : UIBase
 
     private void GlowColorChange(Image glow, Item item)
     {
-        switch(item.grade)
+        switch (item.grade)
         {
             case ItemGrade.Normal:
                 glow.color = new Color(1f, 1f, 1f);

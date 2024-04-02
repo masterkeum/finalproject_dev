@@ -29,9 +29,25 @@ public class UINewEquip : UIBase
         itemIcon.sprite = Resources.Load<Sprite>(psth);
         if(newItem.nameAlias.Length > 10)
         {
-            itemName.fontSize = 60;
+            itemName.fontSize = 50;
         }
         itemName.text = newItem.nameAlias;
+
+        string statList = "";
+        if (newItem.Hp > 0)
+            statList += "체력 : " + newItem.Hp + "\n";
+        if (newItem.Dp > 0)
+            statList += "방어력 : " + newItem.Dp + "\n";
+        if (newItem.Ap > 0)
+            statList += "공격력 : " + newItem.Ap + "\n";
+        if (newItem.MoveSpeed > 0)
+            statList += "이동속도 : " + newItem.MoveSpeed + "\n";
+        if (newItem.CriticalHit > 0)
+            statList += "치명타 : " + newItem.CriticalHit + "\n";
+        if (newItem.HpGen > 0)
+            statList += "재생 : " + newItem.HpGen + "\n";
+        itemStats.text = statList;
+            
 
         GlowColorChange(newItem);
     }

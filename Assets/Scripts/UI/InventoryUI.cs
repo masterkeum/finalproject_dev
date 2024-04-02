@@ -24,8 +24,8 @@ public class InventoryUI : MonoBehaviour
     public ItemSlotUI bootsSlot;
     public ItemSlotUI armorSlot;
     public ItemSlotUI accessorriesSlot;
-   
-    
+
+
 
     private Item selectedItem;
 
@@ -40,7 +40,7 @@ public class InventoryUI : MonoBehaviour
     private void Start()
     {
         UpdateUI();
-       
+
     }
 
     public void UpdateUI()
@@ -182,9 +182,9 @@ public class InventoryUI : MonoBehaviour
                 break;
         }
 
-        while (options.Count <= (int)selectedItem.grade)
+        while (options.Count < (int)selectedItem.grade)
         {
-            if (options.Count > (int)selectedItem.grade)
+            if (options.Count >= (int)selectedItem.grade)
                 break;
 
             ItemOptions randomOption = (ItemOptions)UnityEngine.Random.Range(0, maxRange);
@@ -237,8 +237,27 @@ public class InventoryUI : MonoBehaviour
             UINoCurrency uINoCurrency = UIManager.Instance.ShowUI<UINoCurrency>();
             uINoCurrency.NoCore();
         }
+    }
 
-
+    public void OnEquipClick(int itemIndex)
+    {
+        AccountInfo accountInfo = GameManager.Instance.accountInfo;
+        switch (itemIndex)
+        {
+            case 0:
+                accountInfo.checkCurItem = accountInfo.equipItems.Weapon; break;
+            case 1:
+                accountInfo.checkCurItem = accountInfo.equipItems.Helmet; break;
+            case 2:
+                accountInfo.checkCurItem = accountInfo.equipItems.Gloves; break;
+            case 3:
+                accountInfo.checkCurItem = accountInfo.equipItems.Boots; break;
+            case 4:
+                accountInfo.checkCurItem = accountInfo.equipItems.Armor; break;
+            case 5:
+                accountInfo.checkCurItem = accountInfo.equipItems.Accessories; break;
+        }
+        UIManager.Instance.ShowUI<UICheckEquip>();
     }
 
 
