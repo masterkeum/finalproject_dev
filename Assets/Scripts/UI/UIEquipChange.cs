@@ -133,8 +133,12 @@ public class UIEquipChange : UIBase
 
     public void OnDigestion()
     {
+        AccountInfo accountInfo = GameManager.Instance.accountInfo;
         //경험치와 골드 얻기
-        GameManager.Instance.accountInfo.newItem = null;
+        accountInfo.AddGold(accountInfo.newItem.getGold);
+        accountInfo.AddExp(accountInfo.newItem.getExp);
+
+        accountInfo.newItem = null;
         gameObject.SetActive(false);
     }
 

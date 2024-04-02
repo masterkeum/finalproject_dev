@@ -31,6 +31,8 @@ public enum ItemType
     Gold,
     Gem,
     Core,
+    Energy,
+    TimeTicket,
     Weapon,
     Armor,
     Gloves,

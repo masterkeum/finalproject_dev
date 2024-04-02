@@ -144,7 +144,7 @@ public class InventoryUI : MonoBehaviour
         List<ItemType> equipList = new List<ItemType>();
         foreach (ItemType item in Enum.GetValues(typeof(ItemType)))
         {
-            if (item != ItemType.None && item != ItemType.Gold && item != ItemType.Gem && item != ItemType.Core)
+            if (item == ItemType.Weapon || item == ItemType.Armor || item == ItemType.Helmet || item == ItemType.Gloves || item == ItemType.Boots || item == ItemType.Accessories)
             {
                 equipList.Add(item);
             }
@@ -163,6 +163,8 @@ public class InventoryUI : MonoBehaviour
         selectedItem.nameAlias = selectedGradeNType.nameAlias;
         selectedItem.grade = selectedGradeNType.grade;
         selectedItem.ImageFile = selectedGradeNType.imageFile;
+        selectedItem.getGold = selectedGradeNType.getGold;
+        selectedItem.getExp = selectedGradeNType.getExp;
 
         List<ItemOptions> options = new List<ItemOptions>();
         int maxRange = 4;

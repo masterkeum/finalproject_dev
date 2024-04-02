@@ -35,6 +35,18 @@
       "code": "StartStageId",
       "param1": 101,
       "codeDesc": "첫 스테이지 번호"
+    },
+    {
+      "initType": "Default",
+      "code": "StartCharacterId",
+      "param1": 10000001,
+      "codeDesc": "기본 케릭터"
+    },
+    {
+      "initType": "Default",
+      "code": "StartSkillId",
+      "param1": 30000011,
+      "codeDesc": "기본 스킬"
     }
   ],
   "CharacterInfo": [
@@ -192,70 +204,70 @@
   "StageList": [
     {
       "stageId": 101,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage1_1",
       "stageDesc": "들판"
     },
     {
       "stageId": 102,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage1_2",
       "stageDesc": "들판"
     },
     {
       "stageId": 103,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage1_3",
       "stageDesc": "들판"
     },
     {
       "stageId": 104,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage1_4",
       "stageDesc": "들판"
     },
     {
       "stageId": 105,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage1_5",
       "stageDesc": "들판"
     },
     {
       "stageId": 201,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage2_1",
       "stageDesc": "중세"
     },
     {
       "stageId": 202,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage2_2",
       "stageDesc": "중세"
     },
     {
       "stageId": 203,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage2_3",
       "stageDesc": "중세"
     },
     {
       "stageId": 204,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage2_4",
       "stageDesc": "중세"
     },
     {
       "stageId": 205,
-      "levelPrefab": "필드 주소",
+      "levelPrefab": "Prefabs/Level/Level1",
       "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage2_5",
       "stageDesc": "중세"
@@ -1199,7 +1211,7 @@
       "gold": 300,
       "exp": 35,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 3
     },
     {
@@ -1210,7 +1222,7 @@
       "gold": 700,
       "exp": 60,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 5
     },
     {
@@ -1221,7 +1233,7 @@
       "gold": 1000,
       "exp": 80,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 7
     },
     {
@@ -1342,7 +1354,7 @@
       "gold": 800,
       "exp": 45,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 5
     },
     {
@@ -1353,7 +1365,7 @@
       "gold": 950,
       "exp": 65,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 7
     },
     {
@@ -1364,7 +1376,7 @@
       "gold": 800,
       "exp": 85,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 8
     },
     {
@@ -1595,7 +1607,7 @@
       "gold": 800,
       "exp": 45,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 8
     },
     {
@@ -1606,7 +1618,7 @@
       "gold": 950,
       "exp": 65,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 9
     },
     {
@@ -1617,7 +1629,7 @@
       "gold": 800,
       "exp": 85,
       "rewardType": "Resource",
-      "rewardID": 70000001,
+      "rewardID": 50000003,
       "rewardAmount": 10
     }
   ],
@@ -2569,7 +2581,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 0,
+      "getExp": 0
     },
     {
       "itemId": 50000002,
@@ -2592,7 +2606,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 0,
+      "getExp": 0
     },
     {
       "itemId": 50000003,
@@ -2615,7 +2631,59 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 0,
+      "getExp": 0
+    },
+    {
+      "itemId": 50000004,
+      "itemCategory": "Resource",
+      "itemType": "Energy",
+      "nameAlias": "행동력",
+      "descAlias": "플레이시 소모되는 재화",
+      "grade": "None",
+      "maxStack": 100000000,
+      "ImageFile": null,
+      "categoryTextId": null,
+      "minHp": 0,
+      "maxHp": 0,
+      "minDp": 0,
+      "maxDp": 0,
+      "minAp": 0,
+      "maxAp": 0,
+      "minMovespeed": 0,
+      "maxMovespeed": 0,
+      "minCriticalHit": 0,
+      "maxCriticalHit": 0,
+      "minHpGen": 0,
+      "maxHpGen": 0,
+      "getGold": 0,
+      "getExp": 0
+    },
+    {
+      "itemId": 50000005,
+      "itemCategory": "Resource",
+      "itemType": "Timeticket",
+      "nameAlias": "시간감소 티켓",
+      "descAlias": "레벨업 시간을 줄여주는 아이템",
+      "grade": "None",
+      "maxStack": 100000000,
+      "ImageFile": null,
+      "categoryTextId": null,
+      "minHp": 0,
+      "maxHp": 0,
+      "minDp": 0,
+      "maxDp": 0,
+      "minAp": 0,
+      "maxAp": 0,
+      "minMovespeed": 0,
+      "maxMovespeed": 0,
+      "minCriticalHit": 0,
+      "maxCriticalHit": 0,
+      "minHpGen": 0,
+      "maxHpGen": 0,
+      "getGold": 0,
+      "getExp": 0
     },
     {
       "itemId": 60000001,
@@ -2638,7 +2706,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60000002,
@@ -2661,7 +2731,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60000003,
@@ -2684,7 +2756,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60000004,
@@ -2707,7 +2781,9 @@
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60000005,
@@ -2730,7 +2806,9 @@
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60000006,
@@ -2753,7 +2831,9 @@
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
-      "maxHpGen": 30
+      "maxHpGen": 30,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60001001,
@@ -2776,7 +2856,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60001002,
@@ -2799,7 +2881,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60001003,
@@ -2822,7 +2906,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60001004,
@@ -2845,7 +2931,9 @@
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60001005,
@@ -2868,7 +2956,9 @@
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60001006,
@@ -2891,7 +2981,9 @@
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
-      "maxHpGen": 30
+      "maxHpGen": 30,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60002001,
@@ -2914,7 +3006,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60002002,
@@ -2937,7 +3031,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60002003,
@@ -2960,7 +3056,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60002004,
@@ -2983,7 +3081,9 @@
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60002005,
@@ -3006,7 +3106,9 @@
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60002006,
@@ -3029,7 +3131,9 @@
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
-      "maxHpGen": 30
+      "maxHpGen": 30,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60030001,
@@ -3052,7 +3156,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60030002,
@@ -3075,7 +3181,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60030003,
@@ -3098,7 +3206,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60030004,
@@ -3121,7 +3231,9 @@
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60030005,
@@ -3144,7 +3256,9 @@
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60030006,
@@ -3167,7 +3281,9 @@
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
-      "maxHpGen": 30
+      "maxHpGen": 30,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60040001,
@@ -3190,7 +3306,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60040002,
@@ -3213,7 +3331,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60040003,
@@ -3236,7 +3356,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60040004,
@@ -3259,7 +3381,9 @@
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60040005,
@@ -3282,7 +3406,9 @@
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60040006,
@@ -3305,7 +3431,9 @@
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
-      "maxHpGen": 30
+      "maxHpGen": 30,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60050001,
@@ -3328,7 +3456,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60050002,
@@ -3351,7 +3481,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60050003,
@@ -3374,7 +3506,9 @@
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60050004,
@@ -3397,7 +3531,9 @@
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60050005,
@@ -3420,7 +3556,9 @@
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
-      "maxHpGen": 0
+      "maxHpGen": 0,
+      "getGold": 100,
+      "getExp": 50
     },
     {
       "itemId": 60050006,
@@ -3443,7 +3581,9 @@
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
-      "maxHpGen": 30
+      "maxHpGen": 30,
+      "getGold": 100,
+      "getExp": 50
     }
   ],
   "SkillTable": [

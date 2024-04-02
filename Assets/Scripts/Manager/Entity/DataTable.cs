@@ -158,6 +158,8 @@ public class ItemTable
     public float maxCriticalHit;
     public int minHpGen;
     public int maxHpGen;
+    public int getGold;
+    public int getExp;
 }
 
 [Serializable]
