@@ -142,7 +142,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 'New Text
+
+    t
+
+    t
+
+    t
+
+    t
+
+    t'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9dca5736728843b4c8f1d2568890cb39, type: 2}
   m_sharedMaterial: {fileID: 8170138667926860177, guid: 9dca5736728843b4c8f1d2568890cb39,
@@ -182,7 +192,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -30
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -327,7 +337,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: -100, y: 400}
+  m_SizeDelta: {x: -100, y: 500}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &4290470672589912316
 CanvasRenderer:
@@ -693,7 +703,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 'New Text
+
+    New Text
+
+    New Text
+
+    t
+
+    t
+
+    t'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9dca5736728843b4c8f1d2568890cb39, type: 2}
   m_sharedMaterial: {fileID: 8170138667926860177, guid: 9dca5736728843b4c8f1d2568890cb39,
@@ -733,7 +753,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -30
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -935,8 +955,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -480}
-  m_SizeDelta: {x: -100, y: 220}
+  m_AnchoredPosition: {x: 0, y: -580}
+  m_SizeDelta: {x: -100, y: 330}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1068591996789354413
 CanvasRenderer:
@@ -1249,7 +1269,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &6857051574320177000
 MonoBehaviour:
@@ -1491,7 +1511,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 900}
+  m_SizeDelta: {x: 800, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7853400141702677523
 CanvasRenderer:
@@ -1888,7 +1908,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 108.734375}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

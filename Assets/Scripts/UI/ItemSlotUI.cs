@@ -1,25 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemSlotUI : MonoBehaviour
 {
-    public GameObject icon;
+    public Image icon;
+    public Image glow;
     private int _itemIndex;
 
     private void Start()
     {
         SetIndex();
-        icon = transform.GetChild(1).gameObject;
-
     }
 
     public void SetIndex()
     {
         _itemIndex = transform.GetSiblingIndex();
-    }
-
-    public void Clear()
-    {
-        Destroy(gameObject);
     }
 
 }

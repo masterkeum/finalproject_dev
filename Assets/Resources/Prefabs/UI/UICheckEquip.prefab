@@ -148,9 +148,9 @@ GameObject:
   - component: {fileID: 2710680878962989171}
   - component: {fileID: 659538847934990294}
   - component: {fileID: 3048162043019019096}
-  - component: {fileID: 58840782896507130}
+  - component: {fileID: 6007982598578259283}
   m_Layer: 5
-  m_Name: UINewEquip
+  m_Name: UICheckEquip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &58840782896507130
+--- !u!114 &6007982598578259283
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1096075838745557354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91605fe099916c74b929a95c2857f2e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 630d81045d911a54e8933dcfae23ff9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 6981468198567474909}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 4961632145854505682}
   - component: {fileID: 1883970212513057203}
   m_Layer: 5
-  m_Name: EquipButton
+  m_Name: ConfirmButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -607,9 +607,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 58840782896507130}
-        m_TargetAssemblyTypeName: UINewEquip, Assembly-CSharp
-        m_MethodName: OnEquipButton
+      - m_Target: {fileID: 6007982598578259283}
+        m_TargetAssemblyTypeName: UICheckEquip, Assembly-CSharp
+        m_MethodName: OnConfirmButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1070,7 +1070,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC7A5\uBE44"
+  m_text: "\uD655\uC778"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9dca5736728843b4c8f1d2568890cb39, type: 2}
   m_sharedMaterial: {fileID: 8170138667926860177, guid: 9dca5736728843b4c8f1d2568890cb39,

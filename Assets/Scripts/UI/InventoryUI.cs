@@ -3,23 +3,31 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 
 
 
 public class InventoryUI : MonoBehaviour
 {
-    [Header("UISlots")]
-    public ItemSlotUI weaponSlot; // = new ItemSlotUI();
-    public ItemSlotUI helmetSlot; // = new ItemSlotUI();
-    public ItemSlotUI gloveSlot; // = new ItemSlotUI();
-    public ItemSlotUI bootsSlot; // = new ItemSlotUI();
-    public ItemSlotUI armorSlot; // = new ItemSlotUI();
-    public ItemSlotUI shieldSlot; // = new ItemSlotUI();
+    public TextMeshProUGUI coreQuantity;
 
-    private Item selectedItem = new Item();
+
+    [Header("UISlots")]
+    public ItemSlotUI weaponSlot;
+    public ItemSlotUI helmetSlot;
+    public ItemSlotUI glovesSlot;
+    public ItemSlotUI bootsSlot;
+    public ItemSlotUI armorSlot;
+    public ItemSlotUI accessorriesSlot;
+
+
+
+    private Item selectedItem;
 
     private float normal;
     private float magic;
@@ -33,21 +41,53 @@ public class InventoryUI : MonoBehaviour
     {
         UpdateUI();
 
-
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
-        //if (weaponSlot != null)
-        //{
-        //    string imagePath = GameManager.Instance.accountInfo.equipItems["Weapon"].ImageFile;
-        //    Resources.Load(imagePath);
+        AccountInfo.EquipItems equipItems = GameManager.Instance.accountInfo.equipItems;
 
-        //    weaponSlot.transform.GetChild(1).gameObject.SetActive(true);
-        //    //weaponSlot.transform.GetChild(1).GetComponent<Image>().sprite = 
+        UpdateUISlot(weaponSlot, equipItems.Weapon);
+        UpdateUISlot(armorSlot, equipItems.Armor);
+        UpdateUISlot(helmetSlot, equipItems.Helmet);
+        UpdateUISlot(glovesSlot, equipItems.Gloves);
+        UpdateUISlot(bootsSlot, equipItems.Boots);
+        UpdateUISlot(accessorriesSlot, equipItems.Accessories);
 
-        //}
+        coreQuantity.text = GameManager.Instance.accountInfo.core.ToString();
     }
+
+    public void UpdateUISlot(ItemSlotUI slot, Item item)
+    {
+        string path = item.ImageFile;
+        if (item.itemId != 0)
+        {
+            slot.icon.sprite = Resources.Load<Sprite>(path);
+            slot.glow.enabled = true;
+        }
+        else
+        {
+            slot.glow.enabled = false;
+        }
+        switch (item.grade)
+        {
+
+            case ItemGrade.Normal:
+                slot.glow.color = new Color(1f, 1f, 1f); break;
+            case ItemGrade.Magic:
+                slot.glow.color = new Color(40 / 255f, 1f, 35 / 255f); break;
+            case ItemGrade.Elite:
+                slot.glow.color = new Color(0f, 67 / 255f, 1f); break;
+            case ItemGrade.Rare:
+                slot.glow.color = new Color(1f, 115 / 255f, 0f); break;
+            case ItemGrade.Epic:
+                slot.glow.color = new Color(1f, 1f, 0f); break;
+            case ItemGrade.Legendary:
+                slot.glow.color = new Color(1f, 0f, 0f); break;
+        }
+    }
+
+
 
     public void SetMimicGacha()
     {
@@ -58,12 +98,13 @@ public class InventoryUI : MonoBehaviour
         rare = DataManager.Instance.GetLevelGacha(playerLevel).rare;
         epic = DataManager.Instance.GetLevelGacha(playerLevel).Epic;
         legendary = DataManager.Instance.GetLevelGacha(playerLevel).Legendary;
+        selectedItem = new Item();
 
         System.Random random = new System.Random();
 
         int num = random.Next(0, 101);
         float[] probs = { legendary, epic, rare, elite, magic, normal };
-        ItemGrade grade=ItemGrade.Normal;
+        ItemGrade grade = ItemGrade.Normal;
 
         float cumulative = 0f;
         int target = -1;
@@ -98,14 +139,23 @@ public class InventoryUI : MonoBehaviour
                 break;
         }
 
-        Array enumValues = Enum.GetValues(typeof(ItemType));
-        int type = random.Next(enumValues.Length);
 
-        ItemType randomtype = (ItemType)enumValues.GetValue(type);
+
+        List<ItemType> equipList = new List<ItemType>();
+        foreach (ItemType item in Enum.GetValues(typeof(ItemType)))
+        {
+            if (item != ItemType.None && item != ItemType.Gold && item != ItemType.Gem && item != ItemType.Core)
+            {
+                equipList.Add(item);
+            }
+        }
+
+        ItemType randomtype = equipList[UnityEngine.Random.Range(0, equipList.Count)];
 
         List<ItemTable> items = DataManager.Instance.itemTableDict.Values.ToList();
-        List<ItemTable> selectedGrade = items.FindAll((item) => {return item.grade == grade; });
-        ItemTable selectedGradeNType = selectedGrade.Find((Item) => {return Item.itemType == randomtype; });
+
+        List<ItemTable> selectedGrade = items.FindAll((item) => item.grade == grade);
+        ItemTable selectedGradeNType = selectedGrade.Find((Item) => Item.itemType == randomtype);
 
         selectedItem.itemId = selectedGradeNType.itemId;
         selectedItem.itemCategory = selectedGradeNType.itemCategory;
@@ -116,7 +166,7 @@ public class InventoryUI : MonoBehaviour
 
         List<ItemOptions> options = new List<ItemOptions>();
         int maxRange = 4;
-        switch(selectedItem.grade)
+        switch (selectedItem.grade)
         {
             case ItemGrade.Normal:
             case ItemGrade.Magic:
@@ -132,8 +182,11 @@ public class InventoryUI : MonoBehaviour
                 break;
         }
 
-        while(options.Count <= (int)selectedItem.grade)
+        while (options.Count < (int)selectedItem.grade)
         {
+            if (options.Count >= (int)selectedItem.grade)
+                break;
+
             ItemOptions randomOption = (ItemOptions)UnityEngine.Random.Range(0, maxRange);
             if (!options.Contains(randomOption))
             {
@@ -141,7 +194,7 @@ public class InventoryUI : MonoBehaviour
             }
         }
 
-        foreach(ItemOptions randomOption in options)
+        foreach (ItemOptions randomOption in options)
         {
             switch (randomOption)
             {
@@ -171,12 +224,40 @@ public class InventoryUI : MonoBehaviour
 
     public void StartMimicGacha()
     {
-        SetMimicGacha();
-        GameManager.Instance.accountInfo.newItem = selectedItem;
+        if (GameManager.Instance.accountInfo.core >= 0) //필요정수 조절
+        {
+            SetMimicGacha();
+            GameManager.Instance.accountInfo.newItem = selectedItem;
 
-        UIManager.Instance.ShowUI<UIMimicGacha>();
-        GameManager.Instance.SaveGame();
-        
+            UIManager.Instance.ShowUI<UIMimicGacha>();
+            GameManager.Instance.SaveGame();
+        }
+        else
+        {
+            UINoCurrency uINoCurrency = UIManager.Instance.ShowUI<UINoCurrency>();
+            uINoCurrency.NoCore();
+        }
+    }
+
+    public void OnEquipClick(int itemIndex)
+    {
+        AccountInfo accountInfo = GameManager.Instance.accountInfo;
+        switch (itemIndex)
+        {
+            case 0:
+                accountInfo.checkCurItem = accountInfo.equipItems.Weapon; break;
+            case 1:
+                accountInfo.checkCurItem = accountInfo.equipItems.Helmet; break;
+            case 2:
+                accountInfo.checkCurItem = accountInfo.equipItems.Gloves; break;
+            case 3:
+                accountInfo.checkCurItem = accountInfo.equipItems.Boots; break;
+            case 4:
+                accountInfo.checkCurItem = accountInfo.equipItems.Armor; break;
+            case 5:
+                accountInfo.checkCurItem = accountInfo.equipItems.Accessories; break;
+        }
+        UIManager.Instance.ShowUI<UICheckEquip>();
     }
 
 

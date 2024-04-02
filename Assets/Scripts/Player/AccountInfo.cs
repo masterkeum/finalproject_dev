@@ -60,6 +60,7 @@ public class AccountInfo
 
     public EquipItems equipItems;
     public Item newItem; // 분해되면 null 로 초기화
+    public Item checkCurItem = new Item(); //장착 아이템 확인팝업 띄울 때 사용
     public Item changedSlot; // 아이템 교체 시 한쪽 데이터를 임시저장하는 곳
 
     [SerializeField] public string name;
@@ -250,8 +251,6 @@ public class AccountInfo
                 }
                 break;
         }
-
-
     }
 
     private void ChangeEquip(ref Item item, ref Item newItem, ref Item changedSlot)
