@@ -18,7 +18,7 @@ public class SkillSlotUI : MonoBehaviour
     public TextMeshProUGUI skillDescriptionText;
     public Image skillType;
 
-    public int skillId;
+    public int skillGroupId;
 
     private void Start()
     {

@@ -101,6 +101,16 @@ public class Player : MonoBehaviour
     private Dictionary<int, Coroutine> skillCoroutines = new Dictionary<int, Coroutine>();
     public Dictionary<int, SkillTable> passiveSkill = new Dictionary<int, SkillTable>();
 
+    private void Awake()
+    {
+        Debug.Log("Player.Awake");
+        rigid = GetComponent<Rigidbody>();
+        anim = GetComponentInChildren<Animator>();
+        skillPool = GetComponent<SkillPool>();
+        hpGuageSlider = GetComponentInChildren<Slider>();
+        // monster = GameManager.Instance. // 프리팹된 몬스터 연결
+    }
+
     public virtual void Init(int _player, int _level)
     {
         if (IsInit) return;
@@ -108,8 +118,6 @@ public class Player : MonoBehaviour
         Debug.Log("Player.Init");
         playerId = _player;
         level = _level;
-
-        skillPool.CreatePool(transform);
 
         playerStatInfo = GameManager.Instance.accountInfo.playerStatInfo;
         playeringameinfo = new PlayerInGameInfo(playerStatInfo.hp + playerStatInfo.addHp
@@ -123,16 +131,6 @@ public class Player : MonoBehaviour
         SkillTable defaultSkill = DataManager.Instance.GetSkillTable(DataManager.Instance._InitParam["StartSkillId"]);
         SkillUpdate(defaultSkill);
         IsInit = true;
-    }
-
-    private void Awake()
-    {
-        Debug.Log("Player.Awake");
-        rigid = GetComponent<Rigidbody>();
-        anim = GetComponentInChildren<Animator>();
-        skillPool = GetComponent<SkillPool>();
-        hpGuageSlider = GetComponentInChildren<Slider>();
-        // monster = GameManager.Instance. // 프리팹된 몬스터 연결
     }
 
     private void Update()

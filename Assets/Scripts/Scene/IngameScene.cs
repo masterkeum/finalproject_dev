@@ -105,19 +105,21 @@ public class IngameScene : MonoBehaviour
         CharacterInfo monsterInfo = DataManager.Instance.GetCharacterInfo(monsterData.monsterId);
         GameObject monster = Resources.Load<GameObject>(monsterInfo.prefabFile);
 
-
-        if (monsterData.genPosVecter3.Length > 0)
+        if (monsterData.genPosVecter3 != null)
         {
-            // 좌표있으면 다른것 무시하고 단발성 생성
-            GameObject go = Instantiate(monster, new Vector3(monsterData.genPosVecter3[0], monsterData.genPosVecter3[1], monsterData.genPosVecter3[2]), Quaternion.identity);
-            go.GetComponent<EnemyBaseController>().Init(monsterData.monsterId, monsterData.level, player);
-
-            if (monsterInfo.characterType == CharacterType.BossMonster)
+            if (monsterData.genPosVecter3.Length > 0)
             {
-                // 보스만 타겟팅
-                player.AddTarget(go);
+                // 좌표있으면 다른것 무시하고 단발성 생성
+                GameObject go = Instantiate(monster, new Vector3(monsterData.genPosVecter3[0], monsterData.genPosVecter3[1], monsterData.genPosVecter3[2]), Quaternion.identity);
+                go.GetComponent<EnemyBaseController>().Init(monsterData.monsterId, monsterData.level, player);
+
+                if (monsterInfo.characterType == CharacterType.BossMonster)
+                {
+                    // 보스만 타겟팅
+                    player.AddTarget(go);
+                }
+                yield break;
             }
-            yield break;
         }
 
         yield return new WaitForSeconds(monsterData.genTimeStart);

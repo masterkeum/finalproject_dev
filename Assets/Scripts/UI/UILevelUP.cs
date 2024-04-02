@@ -21,8 +21,8 @@ public class UILevelUP : UIBase
 
         foreach (SkillTable skill in DataManager.Instance.skillTableDict.Values)
         {
-            if ((skill.applyType == SkillApplyType.Active && skill.isEnable == true)
-                || (skill.applyType == SkillApplyType.Passive && skill.isEnable == true))
+            if ((skill.applyType == SkillApplyType.Active && skill.isEnable == true && skill.level == 1)
+                || (skill.applyType == SkillApplyType.Passive && skill.isEnable == true && skill.level == 1))
             {
                 variableSkills.Add(skill);
             }
@@ -51,21 +51,26 @@ public class UILevelUP : UIBase
     /// </summary>
     private void SetSelectableSkills()
     {
+        randomSkills.Clear();
+
         //랜덤스킬 생성, 현재레벨표시
         System.Random random = new System.Random();
         while (randomSkills.Count < selectableSkillUI.Count)
         {
             int randomIndex = random.Next(0, variableSkills.Count);
-
-            if (randomSkills.Count >= selectableSkillUI.Count)
-            { break; }
             if (!randomSkills.Contains(variableSkills[randomIndex]))
+            {
                 randomSkills.Add(variableSkills[randomIndex]);
+                if (randomSkills.Count >= selectableSkillUI.Count)
+                {
+                    break;
+                }
+            }
         }
 
         for (int i = 0; i < selectableSkillUI.Count; i++)
         {
-            selectableSkillUI[i].skillId = randomSkills[i].skillId;
+            selectableSkillUI[i].skillGroupId = randomSkills[i].skillGroup;
             selectableSkillUI[i].skillNameText.text = randomSkills[i].skillName;
             selectableSkillUI[i].skillDescriptionText.text = randomSkills[i].skillDesc;
             string path = randomSkills[i].imageAddress;
@@ -107,14 +112,14 @@ public class UILevelUP : UIBase
             selectableSkillUI[i].ClearStars();
             for (int j = 0; j < player.activeSkillSlot.Count; j++)
             {
-                if (selectableSkillUI[i].skillId == player.activeSkillSlot[j].skillId)
+                if (selectableSkillUI[i].skillGroupId == player.activeSkillSlot[j].skillGroup)
                 {
                     selectableSkillUI[i].SetStars(player.activeSkillSlot[j].level);
                 }
             }
             for (int j = 0; j < player.passiveSkillSlot.Count; j++)
             {
-                if (selectableSkillUI[i].skillId == player.passiveSkillSlot[j].skillId)
+                if (selectableSkillUI[i].skillGroupId == player.passiveSkillSlot[j].skillGroup)
                 {
                     selectableSkillUI[i].SetStars(player.passiveSkillSlot[j].level);
                 }
@@ -197,7 +202,6 @@ public class UILevelUP : UIBase
     /// </summary>
     public void OnReRollButton()
     {
-        randomSkills.Clear();
         SetSelectableSkills();
         SetStar();
     }

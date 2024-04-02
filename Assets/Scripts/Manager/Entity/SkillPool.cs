@@ -52,6 +52,8 @@ public class SkillPool : MonoBehaviour
             poolDictionary.Add(pool.id, skillQueue);
             flashPoolDictionary.Add(pool.id, flashQueue);
         }
+
+        projectileList.Clear();
     }
 
     public void GetPoolSkill(int id, int level, Transform point, Vector3 direction)
@@ -92,6 +94,31 @@ public class SkillPool : MonoBehaviour
         else
         {
             Debug.Log($"Can't find Obj : {id}");
+        }
+    }
+
+    public void DestroyObject(int key)
+    {
+        if (poolDictionary.ContainsKey(key))
+        {
+            Queue<GameObject> queue = poolDictionary[key];
+            while (queue.Count > 0)
+            {
+                GameObject obj = queue.Dequeue();
+                Destroy(obj);
+            }
+            poolDictionary.Remove(key);
+        }
+
+        if (flashPoolDictionary.ContainsKey(key))
+        {
+            Queue<GameObject> queue = flashPoolDictionary[key];
+            while (queue.Count > 0)
+            {
+                GameObject obj = queue.Dequeue();
+                Destroy(obj);
+            }
+            flashPoolDictionary.Remove(key);
         }
     }
 
