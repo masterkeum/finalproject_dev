@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
 
     private Slider hpGuageSlider;
     private EnemyBaseController monster; 
+    public GameObject hudDamageText;
+    public Transform hudPos;
     
     public virtual void Init(int _player, int _level)
     {
@@ -100,6 +102,8 @@ public class Player : MonoBehaviour
     {
         // UpdateSlider();
         takeDamagePoint.gameObject.SetActive(false);
+        
+        
     }
 
     private void Update()
@@ -194,11 +198,17 @@ public class Player : MonoBehaviour
         float per = (float)currentHp  /   maxHp;  
         hpGuageSlider.value = per;
         
-        takeDamagePoint.gameObject.SetActive(true);
+        // takeDamagePoint.gameObject.SetActive(true);
         damageAmount = -damageAmount;
-        takeDamagePoint.text = damageAmount.ToString();
-        // 코루틴 사용
-        StartCoroutine(SetActiveFalse());
+        // takeDamagePoint.text = damageAmount.ToString();
+        // // 코루틴 사용
+        // StartCoroutine(SetActiveFalse());
+        
+        GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
+        Debug.Log("데미지텍스트 프리팹 " + hudText);
+        hudText.transform.position = hudPos.position; // 표시될 위치
+        hudText.GetComponentInChildren<DamageText>().damage = damageAmount; // 데미지 전달
+        // player.TakePhysicalDamage(damageAmount);
         
         
         Debug.Log("플레이어 현재 HP" + per);
@@ -206,12 +216,12 @@ public class Player : MonoBehaviour
             OnDead();
     }
 
-    IEnumerator SetActiveFalse()
-    {
-        yield return new WaitForSeconds(1.0f); 
-        takeDamagePoint.gameObject.SetActive(false);
-        // 지금 실행하는 쓰레드를 기다릴거냐 말거냐, 턴을 넘김 null 을 넘김
-    }
+    // IEnumerator SetActiveFalse()
+    // {
+    //     yield return new WaitForSeconds(1.0f); 
+    //     takeDamagePoint.gameObject.SetActive(false);
+    //     // 지금 실행하는 쓰레드를 기다릴거냐 말거냐, 턴을 넘김 null 을 넘김
+    // }
     
     void OnDead()
     {
