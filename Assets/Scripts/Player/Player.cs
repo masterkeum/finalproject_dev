@@ -1,5 +1,5 @@
+using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -60,9 +60,12 @@ public class Player : MonoBehaviour
     private int playerId;
     private int level;
 
-    public SkillTable[] activeSkillSlot = new SkillTable[6];
-    public SkillTable[] passiveSkillSlot = new SkillTable[6];
-    // 
+    // 그룹ID / 스킬내용
+    public List<SkillTable> activeSkillSlot = new List<SkillTable>();
+    public List<SkillTable> passiveSkillSlot = new List<SkillTable>();
+    public Dictionary<int, SkillTable> activeSkill = new Dictionary<int, SkillTable>();
+    private Dictionary<int, Coroutine> skillCoroutines = new Dictionary<int, Coroutine>();
+    public Dictionary<int, SkillTable> passiveSkill = new Dictionary<int, SkillTable>();
 
     public virtual void Init(int _player, int _level)
     {
@@ -96,8 +99,9 @@ public class Player : MonoBehaviour
         playeringameinfo.gold = 0;
         playeringameinfo.skillpoint = 0;
 
-        activeSkillSlot[0] = DataManager.Instance.GetSkillTable(DataManager.Instance._InitParam["StartSkillId"]); // 기본스킬 지급
-
+        SkillTable defaultSkill = DataManager.Instance.GetSkillTable(DataManager.Instance._InitParam["StartSkillId"]);
+        activeSkill.Add(defaultSkill.skillGroup, defaultSkill);
+        skillCoroutines.Add(defaultSkill.skillGroup, StartSkillCoroutine(defaultSkill.skillGroup));
         IsInit = true;
     }
 
@@ -167,6 +171,23 @@ public class Player : MonoBehaviour
     //        }
     //    }
     //}
+
+    public Coroutine StartSkillCoroutine(int skillGroupId)
+    {
+        if (skillCoroutines.ContainsKey(skillGroupId))
+        {
+            StopCoroutine(skillCoroutines[skillGroupId]);
+        }
+        return StartCoroutine(SkillRoutine(skillGroupId));
+    }
+
+    IEnumerator SkillRoutine(int skillGroupId)
+    {
+        Debug.Log($"Coroutine started with parameter: {skillGroupId}");
+        yield return new WaitForSeconds(3);
+        Debug.Log($"Coroutine finished with parameter: {skillGroupId}");
+    }
+
 
     public void JoyStick(VariableJoystick joy)
     {
@@ -251,11 +272,6 @@ public class Player : MonoBehaviour
     public void AddTarget(GameObject go)
     {
         chaseTarget.Add(go);
-    }
-
-    private void UpdateSlider()
-    {
-        playeringameinfo.sliderMaxExp = DataManager.Instance.GetPlayerIngameLevel(playeringameinfo.curLevel + 1).exp;
     }
 
     /// <summary>

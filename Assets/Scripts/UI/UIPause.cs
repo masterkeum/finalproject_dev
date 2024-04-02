@@ -23,7 +23,6 @@ public class UIPause : UIBase
             activeSlotsUI[j].skilllock.SetActive(true);
             passiveSlotsUI[j].skilllock.SetActive(true);
         }
-
     }
 
     private void OnEnable()
@@ -36,9 +35,9 @@ public class UIPause : UIBase
     {
         if (player.activeSkillSlot != null)
         {
+
             for (int i = 0; i < player.activeSkillSlot.Count; i++)
             {
-
                 activeSlotsUI[i].skillIcon.gameObject.SetActive(true);
                 activeSlotsUI[i].starGroup.gameObject.SetActive(true);
                 string path = player.activeSkillSlot[i].imageAddress;

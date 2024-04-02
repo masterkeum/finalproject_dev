@@ -101,6 +101,7 @@ public class PlayerIngameLevel
 public class SkillTable
 {
     public int skillId;
+    public int skillGroup;
     public string skillName;
     public string skillDesc;
     public string taskDesc;
@@ -111,8 +112,8 @@ public class SkillTable
     public int reqSkillId;
     public SkillApplyType applyType;
     public SkillTargetType targetType;
-    public string rangeType;
-    public float? coolDownTime;
+    public SkillRangeType rangeType;
+    public float coolDownTime;
     public int attackDamage;
     public string projectileType;
     public float? projectileSpeed;
