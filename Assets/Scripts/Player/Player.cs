@@ -76,12 +76,12 @@ public class Player : MonoBehaviour
 
 
     [SerializeField] protected Transform projectilePoint;
-    
+
 
     private Vector3 screenPos;
 
     public TMP_Text takeDamagePoint;
-    
+
     // 적
     public LayerMask enemyLayer;
     public float detectionRange = 15f;
@@ -92,10 +92,10 @@ public class Player : MonoBehaviour
 
     private Slider hpGuageSlider;
 
-    private EnemyBaseController monster; 
+    private EnemyBaseController monster;
     public GameObject hudDamageText;
     public Transform hudPos;
-    
+
     // 인게임 스탯
     public PlayerStatInfo playerStatInfo;
     public PlayerInGameInfo playeringameinfo;
@@ -272,14 +272,13 @@ public class Player : MonoBehaviour
             if (passiveSkill.ContainsKey(skilldata.skillGroup))
             {
                 passiveSkill[skilldata.skillGroup] = skilldata;
-                skillCoroutines[skilldata.skillGroup] = StartSkillCoroutine(skilldata);
+                //skillCoroutines[skilldata.skillGroup] = StartSkillCoroutine(skilldata);
             }
             else
             {
                 passiveSkill.Add(skilldata.skillGroup, skilldata);
-                skillCoroutines.Add(skilldata.skillGroup, StartSkillCoroutine(skilldata));
+                //skillCoroutines.Add(skilldata.skillGroup, StartSkillCoroutine(skilldata));
             }
-
         }
     }
 
@@ -335,20 +334,20 @@ public class Player : MonoBehaviour
         playeringameinfo.curHp -= damageAmount;
         float per = (float)playeringameinfo.curHp / playeringameinfo.maxHp;
         hpGuageSlider.value = per;
-        
+
         // takeDamagePoint.gameObject.SetActive(true);
         damageAmount = -damageAmount;
         // takeDamagePoint.text = damageAmount.ToString();
         // // 코루틴 사용
         // StartCoroutine(SetActiveFalse());
-        
+
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
         Debug.Log("데미지텍스트 프리팹 " + hudText);
         hudText.transform.position = hudPos.position; // 표시될 위치
         hudText.GetComponentInChildren<DamageText>().damage = damageAmount; // 데미지 전달
-        // player.TakePhysicalDamage(damageAmount);
-        
-        
+                                                                            // player.TakePhysicalDamage(damageAmount);
+
+
         Debug.Log("플레이어 현재 HP" + per);
         if (playeringameinfo.curHp <= 0)
             OnDead();
@@ -360,7 +359,7 @@ public class Player : MonoBehaviour
     //     takeDamagePoint.gameObject.SetActive(false);
     //     // 지금 실행하는 쓰레드를 기다릴거냐 말거냐, 턴을 넘김 null 을 넘김
     // }
-    
+
     void OnDead()
     {
         Debug.Log("플레이어사망. 게임오버UI");
