@@ -125,8 +125,6 @@ public class SkillTable
     public string imageAddress;
     public string prefabAddress;
     public string prefabFlashAddress;
-
-    public float lastAttackTime;
 }
 
 [Serializable]

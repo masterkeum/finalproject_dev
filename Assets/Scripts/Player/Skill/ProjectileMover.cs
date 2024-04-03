@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -26,10 +25,10 @@ public class ProjectileMover : MonoBehaviour
     SkillTable skillInfo;
     private int damage;
 
-    public void Init(int id, int level)
+    public void Init(int _id, int _damage)
     {
-        skillInfo = DataManager.Instance.GetSkillTable(id);
-        damage = skillInfo.attackDamage;
+        skillInfo = DataManager.Instance.GetSkillTable(_id);
+        damage = _damage;
     }
 
     private void Awake()
@@ -46,8 +45,6 @@ public class ProjectileMover : MonoBehaviour
     }
     private void OnEnable()
     {
-
-
         if (li != null)
             li.enabled = true;
         rb.constraints = originalConstraints;

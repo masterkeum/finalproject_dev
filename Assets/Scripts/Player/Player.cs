@@ -107,7 +107,6 @@ public class Player : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         skillPool = GetComponent<SkillPool>();
         hpGuageSlider = GetComponentInChildren<Slider>();
-        // monster = GameManager.Instance. // 프리팹된 몬스터 연결
     }
 
     public virtual void Init(int _player, int _level)
@@ -129,6 +128,10 @@ public class Player : MonoBehaviour
 
         SkillTable defaultSkill = DataManager.Instance.GetSkillTable(DataManager.Instance._InitParam["StartSkillId"]);
         SkillUpdate(defaultSkill);
+        skillPool.AddSkillPool(defaultSkill);
+        skillPool.CreatePool(transform);
+
+
         IsInit = true;
     }
 
@@ -212,11 +215,21 @@ public class Player : MonoBehaviour
             // 스킬 새로운 로직
             if (activeSkill.ContainsKey(skilldata.skillGroup))
             {
+                // 스킬풀 삭제 후 새로 생성
+                skillPool.DestroyDicObject(activeSkill[skilldata.skillGroup].skillId);
+                skillPool.AddSkillPool(skilldata);
+                skillPool.CreatePool(transform);
+                // 레벨업
                 activeSkill[skilldata.skillGroup] = skilldata;
                 skillCoroutines[skilldata.skillGroup] = StartSkillCoroutine(skilldata);
             }
             else
             {
+                // 스킬풀 새로 생성
+                skillPool.AddSkillPool(skilldata);
+                skillPool.CreatePool(transform);
+
+                // 새스킬
                 activeSkill.Add(skilldata.skillGroup, skilldata);
                 skillCoroutines.Add(skilldata.skillGroup, StartSkillCoroutine(skilldata));
             }
@@ -264,11 +277,25 @@ public class Player : MonoBehaviour
 
     IEnumerator SkillRoutine(SkillTable skilldata)
     {
+        int damage = 1;
         Debug.Log($"Coroutine started with parameter: {skilldata.skillId}");
-        yield return new WaitForSeconds(3);
-        Debug.Log($"Coroutine finished with parameter: {skilldata.skillId}");
-    }
+        while (true)
+        {
+            switch (skilldata.targetType)
+            {
+                case SkillTargetType.Single:
+                    {
+                        yield return new WaitForSeconds(skilldata.coolDownTime);
 
+                        Vector3 direction = DetectEnemyDirection();
+                        // 발사 작동
+                        skillPool.GetPoolSkill(skilldata.skillId, projectilePoint, direction, damage);
+                        skillPool.GetPoolFlash(skilldata.skillId, projectilePoint, direction);
+                    }
+                    break;
+            }
+        }
+    }
 
     public void JoyStick(VariableJoystick joy)
     {
