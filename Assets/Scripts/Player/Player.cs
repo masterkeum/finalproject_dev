@@ -309,6 +309,8 @@ public class Player : MonoBehaviour
                         skillPool.GetPoolFlash(skilldata.skillId, projectilePoint, direction);
                     }
                     break;
+                default:
+                    yield break;
             }
         }
     }
