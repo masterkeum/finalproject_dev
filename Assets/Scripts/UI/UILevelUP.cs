@@ -69,7 +69,8 @@ public class UILevelUP : UIBase
             if (!randomSkills.Contains(variableSkills[randomIndex]))
             {
                 randomSkills.Add(variableSkills[randomIndex]);
-                if (randomSkills.Count >= selectableSkillUI.Count)
+                if (randomSkills.Count >= variableSkills.Count
+                    || randomSkills.Count >= selectableSkillUI.Count)
                 {
                     break;
                 }
@@ -92,21 +93,27 @@ public class UILevelUP : UIBase
     /// </summary>
     private void SetCurSkills()
     {
+        int activeSlotCount = player.CurrentOpenSkillSlotCount(SkillApplyType.Active);
+        int passiveSlotCount = player.CurrentOpenSkillSlotCount(SkillApplyType.Passive);
+
         //현재 가진 스킬 종류만 표시
         for (int i = 0; i < player.activeSkillSlot.Count; i++)
         {
+            if (activeSlotCount <= i)
+            {
+                curAcitveSkillUI[i].skillLock.SetActive(true);
+            }
             curAcitveSkillUI[i].skillIcon.SetActive(true);
             curAcitveSkillUI[i].skillSprite.sprite = Resources.Load<Sprite>(player.activeSkillSlot[i].imageAddress);
         }
         for (int i = 0; i < player.passiveSkillSlot.Count; i++)
         {
+            if (passiveSlotCount <= i)
+            {
+                curPassiveSkillUI[i].skillLock.SetActive(true);
+            }
             curPassiveSkillUI[i].skillIcon.SetActive(true);
             curPassiveSkillUI[i].skillSprite.sprite = Resources.Load<Sprite>(player.passiveSkillSlot[i].imageAddress);
-        }
-        for (int j = player.CurrentOpenSkillSlotCount(); j < 6; j++)  // 잠긴 슬롯에 자물쇠 세팅
-        {
-            curAcitveSkillUI[j].skillLock.SetActive(true);
-            curPassiveSkillUI[j].skillLock.SetActive(true);
         }
     }
 
@@ -166,11 +173,11 @@ public class UILevelUP : UIBase
     /// </summary>
     public void RemoveAtVariableSkills()
     {
-        if (player.activeSkillSlot.Count > player.CurrentOpenSkillSlotCount() - 1)
+        if (player.activeSkillSlot.Count > player.CurrentOpenSkillSlotCount(SkillApplyType.Active) - 1)
         {
             variableSkills.RemoveAll(skill => !player.activeSkillSlot.Contains(skill) && skill.applyType == SkillApplyType.Active);
         }
-        if (player.passiveSkillSlot.Count > player.CurrentOpenSkillSlotCount() - 1)
+        if (player.passiveSkillSlot.Count > player.CurrentOpenSkillSlotCount(SkillApplyType.Passive) - 1)
         {
             variableSkills.RemoveAll(skill => !player.passiveSkillSlot.Contains(skill) && skill.applyType == SkillApplyType.Passive);
         }

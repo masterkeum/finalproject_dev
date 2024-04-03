@@ -116,15 +116,14 @@ public class SkillTable
     public float coolDownTime;
     public int attackDamage;
     public string projectileType;
-    public float? projectileSpeed;
-    public int? projectileCount;
-    public float? projectilePenetration;
+    public int projectileSpeed;
+    public int projectileCount;
+    public int projectilePenetration;
     public int addDef;
     public int addHP;
     public int regenHP;
     public string imageAddress;
     public string prefabAddress;
-    public string prefabFlashAddress;
 }
 
 [Serializable]

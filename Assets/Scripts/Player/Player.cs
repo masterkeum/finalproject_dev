@@ -140,8 +140,6 @@ public class Player : MonoBehaviour
 
         SkillTable defaultSkill = DataManager.Instance.GetSkillTable(DataManager.Instance._InitParam["StartSkillId"]);
         SkillUpdate(defaultSkill);
-        skillPool.AddSkillPool(defaultSkill);
-        skillPool.CreatePool(transform);
 
         IsInit = true;
     }
@@ -212,7 +210,8 @@ public class Player : MonoBehaviour
     {
         // 그룹 중복값 삭제
         bool skillFound = false;
-        if (skilldata.applyType == SkillApplyType.Active)
+        if (skilldata.applyType == SkillApplyType.Active
+            || skilldata.applyType == SkillApplyType.Awaken)
         {
             // UI 용
             for (int i = 0; i < activeSkillSlot.Count; i++)
@@ -306,7 +305,6 @@ public class Player : MonoBehaviour
                         Vector3 direction = DetectEnemyDirection();
                         // 발사 작동
                         skillPool.GetPoolSkill(skilldata.skillId, projectilePoint, direction, damage);
-                        skillPool.GetPoolFlash(skilldata.skillId, projectilePoint, direction);
                     }
                     break;
                 default:
@@ -344,13 +342,13 @@ public class Player : MonoBehaviour
         // StartCoroutine(SetActiveFalse());
 
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
-        Debug.Log("데미지텍스트 프리팹 " + hudText);
+        //Debug.Log("데미지텍스트 프리팹 " + hudText);
         hudText.transform.position = hudPos.position; // 표시될 위치
         hudText.GetComponentInChildren<DamageText>().damage = damageAmount; // 데미지 전달
                                                                             // player.TakePhysicalDamage(damageAmount);
 
 
-        Debug.Log("플레이어 현재 HP" + per);
+        //Debug.Log("플레이어 현재 HP" + per);
         if (playeringameinfo.curHp <= 0)
             OnDead();
     }
@@ -437,9 +435,18 @@ public class Player : MonoBehaviour
     /// TODO : 데이터 기본값 + 업적에 따른 오픈 개수
     /// </summary>
     /// <returns>스킬 슬롯 오픈개수</returns>
-    public int CurrentOpenSkillSlotCount() //허용 슬롯의 숫자. 일단 3으로 정해놓았으나 이후 조건에 따른 값을 리턴하게 한다.
+    public int CurrentOpenSkillSlotCount(SkillApplyType applyType) //허용 슬롯의 숫자. 일단 3으로 정해놓았으나 이후 조건에 따른 값을 리턴하게 한다.
     {
-        return 3;
+        int slotCount = 3;
+        if (applyType == SkillApplyType.Active)
+        {
+            slotCount += Mathf.Max((playeringameinfo.curLevel + 3) / 6, 3);
+        }
+        else if (applyType == SkillApplyType.Passive)
+        {
+            slotCount += Mathf.Max(playeringameinfo.curLevel / 6, 3);
+        }
+        return slotCount;
     }
 
     /// <summary>

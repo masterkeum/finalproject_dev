@@ -338,16 +338,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joy: {fileID: 0}
-  activeSkillSlot: []
-  passiveSkillSlot: []
   projectilePoint: {fileID: 7389510694482719767}
   takeDamagePoint: {fileID: 0}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 32768
   detectionRange: 15
+  chaseTarget: []
   hudDamageText: {fileID: 0}
   hudPos: {fileID: 6195452119987240592}
+  activeSkillSlot: []
+  passiveSkillSlot: []
 --- !u!114 &2107198944676368986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,11 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85f4a2a34f847c43bb016bbc10a56e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileList:
-  - id: 30000001
-    prefab: {fileID: 1254724754748870, guid: d92d99c7d864f9c4b86d1eea7c761205, type: 3}
-    flash: {fileID: 1344824185198126, guid: 4a7517bcb7bc8284dba9469014c4d2fd, type: 3}
-    amount: 20
+  projectileList: []
 --- !u!54 &7273868753156299877
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -427,7 +424,7 @@ GameObject:
   - component: {fileID: 4847177910396359394}
   - component: {fileID: 1396026548578883257}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: addExpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
