@@ -32,7 +32,7 @@ public enum ItemType
     Gem,
     Core,
     Energy,
-    TimeTicket,
+    Timeticket,
     Weapon,
     Armor,
     Gloves,
@@ -60,4 +60,30 @@ public enum ItemGrade
     Rare,
     Epic,
     Legendary
+}
+
+public enum SkillApplyType
+{
+    Active,
+    Awaken,
+    Passive
+}
+
+public enum SkillTargetType
+{
+    Single,
+    RandomSingle,
+    RandomPos,
+    AOE,
+    FixedDirection,
+    Self,
+}
+
+public enum SkillRangeType
+{
+    None,
+    Range,
+    FixedRange,
+    Rotating,
+    Normal,
 }

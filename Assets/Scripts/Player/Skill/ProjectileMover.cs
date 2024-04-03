@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -26,10 +25,10 @@ public class ProjectileMover : MonoBehaviour
     SkillTable skillInfo;
     private int damage;
 
-    public void Init(int id, int level)
+    public void Init(int _id, int _damage)
     {
-        SkillTable skillInfo = DataManager.Instance.GetSkillTable(id);
-        damage = skillInfo.damage + level * 20;
+        skillInfo = DataManager.Instance.GetSkillTable(_id);
+        damage = _damage;
     }
 
     private void Awake()
@@ -46,8 +45,6 @@ public class ProjectileMover : MonoBehaviour
     }
     private void OnEnable()
     {
-
-
         if (li != null)
             li.enabled = true;
         rb.constraints = originalConstraints;
@@ -134,7 +131,7 @@ public class ProjectileMover : MonoBehaviour
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, triggerEnterPoint);
             Vector3 pos = triggerEnterPoint + new Vector3(0, hitOffset, 0);
 
-            other.GetComponent<EnemyBaseController>().TakePhysicalDamage(damage);
+            other.GetComponent<EnemyBaseController>().TakeDamage(damage);
 
             //Spawn hit effect on collision
             if (hit != null)

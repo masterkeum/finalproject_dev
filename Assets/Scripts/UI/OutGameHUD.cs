@@ -96,7 +96,7 @@ public class OutGameHUD : UIBase
         else
         {
             // TODO : 
-            Debug.LogError("행동력 부족 팝업? 메세지");
+            Debug.LogWarning("행동력 부족 팝업? 메세지");
         }
     }
 
