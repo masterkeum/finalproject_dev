@@ -101,10 +101,11 @@ MonoBehaviour:
   skillIcon: {fileID: 5536766767297791791}
   skillSprite: {fileID: 462441413730731982}
   starGroup: {fileID: 3774193236001685254}
-  skilllock: {fileID: 3570180790806773538}
+  skillLock: {fileID: 3570180790806773538}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
   skillType: {fileID: 0}
+  skillId: 0
 --- !u!1 &3570180790806773538
 GameObject:
   m_ObjectHideFlags: 0

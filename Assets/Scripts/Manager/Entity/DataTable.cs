@@ -62,6 +62,8 @@ public class MonsterLevel
 public class StageList
 {
     public int stageId;
+    public string levelPrefab;
+    public string levelLight;
     public string BGSprite; // 스프라이트의 경로
 }
 
@@ -99,40 +101,30 @@ public class PlayerIngameLevel
 public class SkillTable
 {
     public int skillId;
+    public int skillGroup;
     public string skillName;
-    public string applyType;
-    public string skillType;
-    public int? nextSkill;
-    public int? subskill;
+    public string skillDesc;
+    public string taskDesc;
+    public bool isEnable;
     public int level;
     public int maxLevel;
-
+    public int nextSkillId;
+    public int reqSkillId;
+    public SkillApplyType applyType;
+    public SkillTargetType targetType;
+    public SkillRangeType rangeType;
+    public float coolDownTime;
+    public int attackDamage;
+    public string projectileType;
+    public float? projectileSpeed;
     public int? projectileCount;
-    public int? projectileSpeed;
-    public float? coolDownTime;
-
-    public int damage;
-    public int? damagePersec;
-    public int? damagePerEffect;
-    public int? perDamage;
-    public int? probabilityPerDamage;
-    public int? genNumPerSec;
-    public int? levelAdjustmentNum;
-    public int? levelAdjustmentper;
-    public float? paralyzeSec;
-    public float? duration;
-    public float? durationIncreasePer;
-    public float? sizeEnhancementPer;
-    public float? rangeExpansionPer;
-    public float? acquisitionIncreasePer;
-    public string skillStatsExplanation;
-    public string skillExplanation;
-
+    public float? projectilePenetration;
+    public int addDef;
+    public int addHP;
+    public int regenHP;
     public string imageAddress;
     public string prefabAddress;
     public string prefabFlashAddress;
-
-    public float lastAttackTime;
 }
 
 [Serializable]

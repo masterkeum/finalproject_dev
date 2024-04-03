@@ -4,32 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public struct playeringameinfo
-{
-    // 임시구조. 중간발표 이후 개선
-
-    public int attackPower;
-    public int addAttackPower;
-
-    public float sensoryRange;
-    public float attackRange;
-    public float attackSpeed;
-    public float moveSpeed;
-
-    //
-    public int curLevel;
-    public int maxLevel;
-    public int sliderCurExp;
-    public int sliderMaxExp;
-    public int curExp;
-    public int totalExp;
-    public int maxExp;
-
-    public int killCount;
-    public int gold;
-    public int skillpoint;
-}
-
 public class IngameScene : MonoBehaviour
 {
     /*
@@ -79,16 +53,11 @@ public class IngameScene : MonoBehaviour
         GameManager.Instance.InGameSceneProcess();
 
         // 스테이지에 맞는 필드 생성
-        GenerateLevel();
-
+        GenerateLevel(stageId);
         // 플레이어 생성
-        MakePlayer();
-
+        MakePlayer(DataManager.Instance._InitParam["StartCharacterId"]);
         // 버츄얼 카메라 세팅
         VirtualCameraSetting();
-
-        // 플레이 기본 세팅
-
 
         // HUD 생성
         inGameHUD = UIManager.Instance.ShowUI<InGameHUD>();
@@ -105,20 +74,19 @@ public class IngameScene : MonoBehaviour
         Instantiate(Resources.Load<GameObject>("Prefabs/UI/IconDeath"), player.transform);
     }
 
-    private void GenerateLevel()
+    private void GenerateLevel(int stageId)
     {
-        Instantiate(Resources.Load<GameObject>("Prefabs/Level/Level1"));
+        Instantiate(Resources.Load<GameObject>(DataManager.Instance.stageListDict[stageId].levelPrefab));
     }
 
-    private void MakePlayer()
+    private void MakePlayer(int playerId)
     {
-        player = Instantiate(Resources.Load<Player>("Prefabs/Player/Player"));
+        player = Instantiate(Resources.Load<Player>(DataManager.Instance.characterInfoDict[playerId].prefabFile));
         player.transform.position = new Vector3(0, 0.5f, 0);
-        player.Init(10000001, 1);
+        player.Init(playerId, 1);
 
         // Rigidbody playerRigid = player.GetComponent<Rigidbody>();
         // playerRigid.constraints = RigidbodyConstraints.FreezeRotation;
-
         joyStick = Instantiate(Resources.Load<GameObject>("Prefabs/Joystick/Joystick"));
         player.JoyStick(joyStick.GetComponentInChildren<VariableJoystick>());
 
@@ -150,7 +118,6 @@ public class IngameScene : MonoBehaviour
         {
             if (monsterData.genPosVecter3.Length > 0)
             {
-            
                 // 좌표있으면 다른것 무시하고 단발성 생성
                 GameObject go = Instantiate(monster, new Vector3(monsterData.genPosVecter3[0], monsterData.genPosVecter3[1], monsterData.genPosVecter3[2]), Quaternion.identity);
                 go.GetComponent<EnemyBaseController>().Init(monsterData.monsterId, monsterData.level, player);
@@ -161,7 +128,7 @@ public class IngameScene : MonoBehaviour
                     player.AddTarget(go);
                 }
                 yield break;
-            }    
+            }
         }
         
 

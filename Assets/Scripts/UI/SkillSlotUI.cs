@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,12 +11,13 @@ public class SkillSlotUI : MonoBehaviour
     public Image skillSprite;
     public GameObject starGroup;
     private int _skillIndex;
-    public GameObject skilllock;
+    public GameObject skillLock;
     [Header("LevelUp")]
     public TextMeshProUGUI skillNameText;
     public TextMeshProUGUI skillDescriptionText;
     public Image skillType;
 
+    public int skillGroupId;
 
     private void Start()
     {

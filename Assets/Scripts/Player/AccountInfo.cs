@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-
 [Serializable]
 public class Item
 {
@@ -17,9 +16,67 @@ public class Item
     public float MoveSpeed;
     public float CriticalHit;
     public int HpGen;
-
-
 }
+
+public struct PlayerStatInfo
+{
+    /*
+    공격력
+    +템 공격력
+    *공격력 계수
+
+    방어력 = 0
+    +템 방어력
+    *방어력 계수
+
+    스킬데미지
+
+    크리티컬 확률
+    *크리티컬 계수
+
+    */
+    public int hp;
+    public int addHp;
+
+    public int attackPower;
+    public int addAttackPower;
+
+    public int defense;
+    public int addDefense;
+
+    public float moveSpeed;
+    public float addMoveSpeed;
+
+    public float critical;
+    public float addCritical;
+
+    public float hpGen;
+    public float addHpGen;
+
+
+    public PlayerStatInfo(CharacterInfo characterInfo, AccountInfo.EquipItems equipItems)
+    {
+        // TODO : 아이템과 더불어 개선 필요
+        hp = characterInfo.hp;
+        addHp = equipItems.Weapon.Hp + equipItems.Armor.Hp + equipItems.Helmet.Hp + equipItems.Gloves.Hp + equipItems.Boots.Hp + equipItems.Accessories.Hp;
+
+        attackPower = characterInfo.attackPower;
+        addAttackPower = equipItems.Weapon.Ap + equipItems.Armor.Ap + equipItems.Helmet.Ap + equipItems.Gloves.Ap + equipItems.Boots.Ap + equipItems.Accessories.Ap;
+
+        defense = 0;
+        addDefense = equipItems.Weapon.Dp + equipItems.Armor.Dp + equipItems.Helmet.Dp + equipItems.Gloves.Dp + equipItems.Boots.Dp + equipItems.Accessories.Dp;
+
+        moveSpeed = characterInfo.moveSpeed;
+        addMoveSpeed = equipItems.Weapon.MoveSpeed + equipItems.Armor.MoveSpeed + equipItems.Helmet.MoveSpeed + equipItems.Gloves.MoveSpeed + equipItems.Boots.MoveSpeed + equipItems.Accessories.MoveSpeed;
+
+        critical = 0;
+        addCritical = equipItems.Weapon.CriticalHit + equipItems.Armor.CriticalHit + equipItems.Helmet.CriticalHit + equipItems.Gloves.CriticalHit + equipItems.Boots.CriticalHit + equipItems.Accessories.CriticalHit;
+
+        hpGen = 0;
+        addHpGen = equipItems.Weapon.HpGen + equipItems.Armor.HpGen + equipItems.Helmet.HpGen + equipItems.Gloves.HpGen + equipItems.Boots.HpGen + equipItems.Accessories.HpGen;
+    }
+}
+
 /// <summary>
 /// 계정정보 : 저장과 불러오기를 위한 클래스
 /// </summary>
@@ -50,6 +107,7 @@ public class AccountInfo
     [Serializable]
     public class EquipItems
     {
+        // FIXME : 차후 아이템 구조는 개선을 해야할것.
         [SerializeField] public Item Weapon;
         [SerializeField] public Item Armor;
         [SerializeField] public Item Helmet;
@@ -63,24 +121,23 @@ public class AccountInfo
     public Item checkCurItem = new Item(); //장착 아이템 확인팝업 띄울 때 사용
     public Item changedSlot; // 아이템 교체 시 한쪽 데이터를 임시저장하는 곳
 
-    [SerializeField] public string name;
-    [SerializeField] public int level;
-    [SerializeField] public int totalExp;
+    public string name;
+    public int level;
+    public int totalExp;
 
-    [SerializeField] public int actionPoint; // 행동력
-    [SerializeField] public int gem;
-    [SerializeField] public int gold;
-    [SerializeField] public int core;
-    [SerializeField] public int selectedStageId;
-    [SerializeField] public float lastUpdateTime;
+    public int actionPoint; // 행동력
+    public int gem;
+    public int gold;
+    public int core;
+    public int selectedStageId;
+    public float lastUpdateTime;
 
+    public PlayerStatInfo playerStatInfo;
 
     // UI용 데이터
     public int sliderCurExp;
     public int sliderMaxExp;
     public int curExp;
-
-    public CharacterType characterType;
 
     //생성자
     public AccountInfo(string _aid, string _name)
@@ -97,7 +154,6 @@ public class AccountInfo
         selectedStageId = DataManager.Instance._InitParam["StartStageId"];
         lastUpdateTime = UtilityKit.GetCurrentTime();
 
-
         equipItems = new EquipItems()
         {
             Weapon = new Item(),
@@ -113,9 +169,24 @@ public class AccountInfo
         sliderMaxExp = levelData.exp;
         curExp = 0;
 
-        characterType = CharacterType.Player;
+        // 플레이어 스탯
+        playerStatInfo = new PlayerStatInfo(DataManager.Instance.GetCharacterInfo(DataManager.Instance._InitParam["StartCharacterId"]), equipItems);
     }
 
+    public void CalcPlayerStat()
+    {
+        playerStatInfo.addHp = equipItems.Weapon.Hp + equipItems.Armor.Hp + equipItems.Helmet.Hp + equipItems.Gloves.Hp + equipItems.Boots.Hp + equipItems.Accessories.Hp;
+
+        playerStatInfo.addAttackPower = equipItems.Weapon.Ap + equipItems.Armor.Ap + equipItems.Helmet.Ap + equipItems.Gloves.Ap + equipItems.Boots.Ap + equipItems.Accessories.Ap;
+
+        playerStatInfo.addDefense = equipItems.Weapon.Dp + equipItems.Armor.Dp + equipItems.Helmet.Dp + equipItems.Gloves.Dp + equipItems.Boots.Dp + equipItems.Accessories.Dp;
+
+        playerStatInfo.addMoveSpeed = equipItems.Weapon.MoveSpeed + equipItems.Armor.MoveSpeed + equipItems.Helmet.MoveSpeed + equipItems.Gloves.MoveSpeed + equipItems.Boots.MoveSpeed + equipItems.Accessories.MoveSpeed;
+
+        playerStatInfo.addCritical = equipItems.Weapon.CriticalHit + equipItems.Armor.CriticalHit + equipItems.Helmet.CriticalHit + equipItems.Gloves.CriticalHit + equipItems.Boots.CriticalHit + equipItems.Accessories.CriticalHit;
+
+        playerStatInfo.addHpGen = equipItems.Weapon.HpGen + equipItems.Armor.HpGen + equipItems.Helmet.HpGen + equipItems.Gloves.HpGen + equipItems.Boots.HpGen + equipItems.Accessories.HpGen;
+    }
 
     // TODO : AP, gem, gold 마이너스, 현재값, 최대값 검증과정 추가
     public void AddActionPoint(int addActionPoint)
@@ -151,7 +222,6 @@ public class AccountInfo
 
     public void AddExp(int addExp)
     {
-
         while (addExp > 0)
         {
             PlayerLevel levelData = DataManager.Instance.GetPlayerLevel(level + 1);
@@ -251,6 +321,8 @@ public class AccountInfo
                 }
                 break;
         }
+
+        CalcPlayerStat();
     }
 
     private void ChangeEquip(ref Item item, ref Item newItem, ref Item changedSlot)

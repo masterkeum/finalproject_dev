@@ -95,10 +95,11 @@ MonoBehaviour:
   skillIcon: {fileID: 1410341614130472642}
   skillSprite: {fileID: 2760079758741023511}
   starGroup: {fileID: 0}
-  skilllock: {fileID: 6731496280524147720}
+  skillLock: {fileID: 6731496280524147720}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
   skillType: {fileID: 0}
+  skillId: 0
 --- !u!1 &283066856019094072
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,10 +467,11 @@ MonoBehaviour:
   skillIcon: {fileID: 8640156040147065944}
   skillSprite: {fileID: 2054751844382273397}
   starGroup: {fileID: 0}
-  skilllock: {fileID: 1693138491925781162}
+  skillLock: {fileID: 1693138491925781162}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
   skillType: {fileID: 0}
+  skillId: 0
 --- !u!1 &491666792149790459
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,10 +567,11 @@ MonoBehaviour:
   skillIcon: {fileID: 6266182262022603692}
   skillSprite: {fileID: 3121454937092791954}
   starGroup: {fileID: 0}
-  skilllock: {fileID: 520286108617237727}
+  skillLock: {fileID: 520286108617237727}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
   skillType: {fileID: 0}
+  skillId: 0
 --- !u!1 &520286108617237727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,10 +1231,11 @@ MonoBehaviour:
   skillIcon: {fileID: 2460135550477506118}
   skillSprite: {fileID: 2439363467823577694}
   starGroup: {fileID: 0}
-  skilllock: {fileID: 8513479926655754382}
+  skillLock: {fileID: 8513479926655754382}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
   skillType: {fileID: 0}
+  skillId: 0
 --- !u!1 &1570130784538973252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1990,10 +1994,11 @@ MonoBehaviour:
   skillIcon: {fileID: 6459525683935799565}
   skillSprite: {fileID: 4189948334132596992}
   starGroup: {fileID: 628910242437054024}
-  skilllock: {fileID: 0}
+  skillLock: {fileID: 0}
   skillNameText: {fileID: 1205091447697344909}
   skillDescriptionText: {fileID: 3309663104005985422}
   skillType: {fileID: 467440707074677103}
+  skillId: 0
 --- !u!114 &2376434714442767118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2221,10 +2226,11 @@ MonoBehaviour:
   skillIcon: {fileID: 8069295520887062575}
   skillSprite: {fileID: 5876341477303561165}
   starGroup: {fileID: 0}
-  skilllock: {fileID: 6959620806071209141}
+  skillLock: {fileID: 6959620806071209141}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
   skillType: {fileID: 0}
+  skillId: 0
 --- !u!1 &2970474418036700735
 GameObject:
   m_ObjectHideFlags: 0
@@ -2493,10 +2499,11 @@ MonoBehaviour:
   skillIcon: {fileID: 1042396837070947481}
   skillSprite: {fileID: 600978892545847944}
   starGroup: {fileID: 0}
-  skilllock: {fileID: 9116677663917863511}
+  skillLock: {fileID: 9116677663917863511}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
   skillType: {fileID: 0}
+  skillId: 0
 --- !u!1 &3217025573525488336
 GameObject:
   m_ObjectHideFlags: 0
@@ -2806,10 +2813,11 @@ MonoBehaviour:
   skillIcon: {fileID: 7540796668930118727}
   skillSprite: {fileID: 3126129908306301157}
   starGroup: {fileID: 0}
-  skilllock: {fileID: 6430770475093462629}
+  skillLock: {fileID: 6430770475093462629}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
   skillType: {fileID: 0}
+  skillId: 0
 --- !u!1 &3911919935921563199
 GameObject:
   m_ObjectHideFlags: 0
@@ -2905,10 +2913,11 @@ MonoBehaviour:
   skillIcon: {fileID: 6374772015468836054}
   skillSprite: {fileID: 3484168641995717464}
   starGroup: {fileID: 0}
-  skilllock: {fileID: 8111018197651670956}
+  skillLock: {fileID: 8111018197651670956}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
   skillType: {fileID: 0}
+  skillId: 0
 --- !u!1 &4131620582446865467
 GameObject:
   m_ObjectHideFlags: 0
@@ -3724,10 +3733,11 @@ MonoBehaviour:
   skillIcon: {fileID: 6784343786552729724}
   skillSprite: {fileID: 5763137141423347487}
   starGroup: {fileID: 0}
-  skilllock: {fileID: 5704856649240750263}
+  skillLock: {fileID: 5704856649240750263}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
   skillType: {fileID: 0}
+  skillId: 0
 --- !u!1 &5085373838218030816
 GameObject:
   m_ObjectHideFlags: 0
@@ -3899,10 +3909,11 @@ MonoBehaviour:
   skillIcon: {fileID: 4354818869147277852}
   skillSprite: {fileID: 8649262080319544358}
   starGroup: {fileID: 0}
-  skilllock: {fileID: 5085373838218030816}
+  skillLock: {fileID: 5085373838218030816}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
   skillType: {fileID: 0}
+  skillId: 0
 --- !u!1 &5506714130683041604
 GameObject:
   m_ObjectHideFlags: 0
@@ -3998,10 +4009,11 @@ MonoBehaviour:
   skillIcon: {fileID: 7428209634195640955}
   skillSprite: {fileID: 803355245283220864}
   starGroup: {fileID: 0}
-  skilllock: {fileID: 2843779057093970016}
+  skillLock: {fileID: 2843779057093970016}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
   skillType: {fileID: 0}
+  skillId: 0
 --- !u!1 &5704856649240750263
 GameObject:
   m_ObjectHideFlags: 0
@@ -4182,10 +4194,11 @@ MonoBehaviour:
   skillIcon: {fileID: 1044156679121051948}
   skillSprite: {fileID: 8827203116989007521}
   starGroup: {fileID: 2741390033334996435}
-  skilllock: {fileID: 0}
+  skillLock: {fileID: 0}
   skillNameText: {fileID: 5011072131080466737}
   skillDescriptionText: {fileID: 1561832765742507546}
   skillType: {fileID: 3360960425366733507}
+  skillId: 0
 --- !u!114 &8746208970118236630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5758,10 +5771,11 @@ MonoBehaviour:
   skillIcon: {fileID: 1184146640005089563}
   skillSprite: {fileID: 6815305714360006374}
   starGroup: {fileID: 0}
-  skilllock: {fileID: 8579883719127831015}
+  skillLock: {fileID: 8579883719127831015}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
   skillType: {fileID: 0}
+  skillId: 0
 --- !u!1 &7261348474270140978
 GameObject:
   m_ObjectHideFlags: 0
@@ -6382,10 +6396,11 @@ MonoBehaviour:
   skillIcon: {fileID: 632336816531390964}
   skillSprite: {fileID: 3638919009571268629}
   starGroup: {fileID: 4991455284464234171}
-  skilllock: {fileID: 0}
+  skillLock: {fileID: 0}
   skillNameText: {fileID: 481868799453143346}
   skillDescriptionText: {fileID: 2564212260701535890}
   skillType: {fileID: 8155407247207143239}
+  skillId: 0
 --- !u!114 &2182460012467597611
 MonoBehaviour:
   m_ObjectHideFlags: 0

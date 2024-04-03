@@ -79,12 +79,13 @@ public class EnemyMeleeController : EnemyBaseController
         {
             lastAttackTime = Time.time;
             //PlayerController.instance.GetComponent<IDamagable>().TakePhysicalDamage(damage); // 데미지 처리
+            
             // GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
             // Debug.Log("데미지텍스트 프리팹 " + hudText);
             // hudText.transform.position = hudPos.position; // 표시될 위치
             // hudText.GetComponentInChildren<DamageText>().damage = damage; // 데미지 전달
             // // player.TakePhysicalDamage(damageAmount);
-            player.TakePhysicalDamage(damage);
+            player.TakeDamage(damage);
             animator.speed = 1;
             animator.SetTrigger(Attack);
         }
