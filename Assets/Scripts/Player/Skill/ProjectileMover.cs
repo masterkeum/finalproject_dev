@@ -113,7 +113,7 @@ public class ProjectileMover : MonoBehaviour
             sc.enabled = false;
             if (li != null)
                 li.enabled = false;
-            StopCoroutine(LateCall());
+            StopCoroutine(LateCall());  
             ps.Stop();
             foreach (var detachedPrefab in Detached)
             {

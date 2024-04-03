@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -75,17 +76,26 @@ public class Player : MonoBehaviour
 
 
     [SerializeField] protected Transform projectilePoint;
+    
 
+    private Vector3 screenPos;
+
+    public TMP_Text takeDamagePoint;
+    
     // 적
     public LayerMask enemyLayer;
     public float detectionRange = 15f;
     private List<Transform> nearEnemy = new List<Transform>();
     protected SkillPool skillPool;
 
-    private List<GameObject> chaseTarget = new List<GameObject>();
+    public List<GameObject> chaseTarget = new List<GameObject>();
 
     private Slider hpGuageSlider;
 
+    private EnemyBaseController monster; 
+    public GameObject hudDamageText;
+    public Transform hudPos;
+    
     // 인게임 스탯
     public PlayerStatInfo playerStatInfo;
     public PlayerInGameInfo playeringameinfo;
@@ -107,6 +117,8 @@ public class Player : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         skillPool = GetComponent<SkillPool>();
         hpGuageSlider = GetComponentInChildren<Slider>();
+        takeDamagePoint = GetComponentInChildren<TMP_Text>();
+        // monster = GameManager.Instance. // 프리팹된 몬스터 연결
     }
 
     public virtual void Init(int _player, int _level)
@@ -131,8 +143,13 @@ public class Player : MonoBehaviour
         skillPool.AddSkillPool(defaultSkill);
         skillPool.CreatePool(transform);
 
-
         IsInit = true;
+    }
+
+    private void Start()
+    {
+        // UpdateSlider();
+        takeDamagePoint.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -302,16 +319,48 @@ public class Player : MonoBehaviour
         this.joy = joy;
     }
 
+    // public void TakeDamageNumber(Vector3 position)
+    // {
+    //     // todo 
+    //     // 몬스터와 충돌하면 피격값을 text로 띄워준다.
+    //     // 1. update 로 실시간 충돌 감지
+    //     // 2. 충돌하면 text 활성화 해서 띄워준다.
+    //     
+    //     screenPos = Camera.main.WorldToScreenPoint(moveVec);
+    //     Debug.Log("스크린투 월드 좌표: "+screenPos);
+    // }
+
     public void TakeDamage(int damageAmount)
     {
         playeringameinfo.curHp -= damageAmount;
         float per = (float)playeringameinfo.curHp / playeringameinfo.maxHp;
         hpGuageSlider.value = per;
+        
+        // takeDamagePoint.gameObject.SetActive(true);
+        damageAmount = -damageAmount;
+        // takeDamagePoint.text = damageAmount.ToString();
+        // // 코루틴 사용
+        // StartCoroutine(SetActiveFalse());
+        
+        GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
+        Debug.Log("데미지텍스트 프리팹 " + hudText);
+        hudText.transform.position = hudPos.position; // 표시될 위치
+        hudText.GetComponentInChildren<DamageText>().damage = damageAmount; // 데미지 전달
+        // player.TakePhysicalDamage(damageAmount);
+        
+        
         Debug.Log("플레이어 현재 HP" + per);
         if (playeringameinfo.curHp <= 0)
             OnDead();
     }
 
+    // IEnumerator SetActiveFalse()
+    // {
+    //     yield return new WaitForSeconds(1.0f); 
+    //     takeDamagePoint.gameObject.SetActive(false);
+    //     // 지금 실행하는 쓰레드를 기다릴거냐 말거냐, 턴을 넘김 null 을 넘김
+    // }
+    
     void OnDead()
     {
         Debug.Log("플레이어사망. 게임오버UI");

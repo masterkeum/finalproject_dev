@@ -17,7 +17,8 @@ public class GameManager : SingletoneBase<GameManager>
     public float _regenActionPointTime { get; private set; }
     public int _combatActionPoint { get; private set; }
     public int stageId { get; set; } // 진입한 스테이지ID 가지고있게
-
+    
+    
     // 사용자
     public AccountInfo accountInfo;
 

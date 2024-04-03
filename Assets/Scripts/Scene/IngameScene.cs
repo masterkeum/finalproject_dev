@@ -64,6 +64,14 @@ public class IngameScene : MonoBehaviour
 
         // 몬스터 생성
         StartStage();
+
+        // 보스찾기 화살표 생성
+        FindBossArrow();
+    }
+
+    private void FindBossArrow()
+    {
+        Instantiate(Resources.Load<GameObject>("Prefabs/UI/IconDeath"), player.transform);
     }
 
     private void GenerateLevel(int stageId)
@@ -105,6 +113,7 @@ public class IngameScene : MonoBehaviour
         CharacterInfo monsterInfo = DataManager.Instance.GetCharacterInfo(monsterData.monsterId);
         GameObject monster = Resources.Load<GameObject>(monsterInfo.prefabFile);
 
+        // Debug.Log("vector3: "+monsterData.genPosVecter3);
         if (monsterData.genPosVecter3 != null)
         {
             if (monsterData.genPosVecter3.Length > 0)
@@ -121,6 +130,7 @@ public class IngameScene : MonoBehaviour
                 yield break;
             }
         }
+        
 
         yield return new WaitForSeconds(monsterData.genTimeStart);
         float startTime = Time.time;

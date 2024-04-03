@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 public class EnemyMeleeController : EnemyBaseController
 {
     private NavMeshPath path;
+    // public GameObject hudDamageText;
+    // public Transform hudPos;
     
     
     public override void Init(int _monsterID, int _level, Player target)
@@ -76,6 +79,12 @@ public class EnemyMeleeController : EnemyBaseController
         {
             lastAttackTime = Time.time;
             //PlayerController.instance.GetComponent<IDamagable>().TakePhysicalDamage(damage); // 데미지 처리
+            
+            // GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
+            // Debug.Log("데미지텍스트 프리팹 " + hudText);
+            // hudText.transform.position = hudPos.position; // 표시될 위치
+            // hudText.GetComponentInChildren<DamageText>().damage = damage; // 데미지 전달
+            // // player.TakePhysicalDamage(damageAmount);
             player.TakeDamage(damage);
             animator.speed = 1;
             animator.SetTrigger(Attack);
