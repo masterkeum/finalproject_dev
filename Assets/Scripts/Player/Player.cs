@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     private List<Transform> nearEnemy = new List<Transform>();
     protected SkillPool skillPool;
 
-    private List<GameObject> chaseTarget = new List<GameObject>();
+    public List<GameObject> chaseTarget = new List<GameObject>();
 
     private Slider hpGuageSlider;
     private EnemyBaseController monster; 
@@ -93,7 +93,6 @@ public class Player : MonoBehaviour
         skillPool = GetComponent<SkillPool>();
         hpGuageSlider = GetComponentInChildren<Slider>();
         takeDamagePoint = GetComponentInChildren<TMP_Text>();
-        
         
         // monster = GameManager.Instance. // 프리팹된 몬스터 연결
     }
