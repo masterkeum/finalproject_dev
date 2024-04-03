@@ -118,6 +118,7 @@ public class SkillPool : MonoBehaviour
             while (queue.Count > 0)
             {
                 GameObject obj = queue.Dequeue();
+                obj.SetActive(false);
                 Destroy(obj);
             }
             poolDictionary.Remove(key);
@@ -129,6 +130,7 @@ public class SkillPool : MonoBehaviour
             while (queue.Count > 0)
             {
                 GameObject obj = queue.Dequeue();
+                obj.SetActive(false);
                 Destroy(obj);
             }
             flashPoolDictionary.Remove(key);
@@ -138,14 +140,16 @@ public class SkillPool : MonoBehaviour
     private IEnumerator SkillCall(GameObject skill)
     {
         yield return new WaitForSeconds(3);
-        skill.SetActive(false);
+        if (skill)
+            skill.SetActive(false);
         yield break;
     }
 
     private IEnumerator FlashCall(GameObject flash)
     {
         yield return new WaitForSeconds(1);
-        flash.SetActive(false);
+        if (flash)
+            flash.SetActive(false);
         yield break;
     }
 

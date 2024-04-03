@@ -3611,6 +3611,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Fire",
+      "prefabAsset": "Hovl Studio",
       "prefabAddress": "Prefabs/Weapons/Fireball",
       "prefabFlashAddress": "Prefabs/Weapons/FireballFlash"
     },
@@ -3638,6 +3639,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Fire",
+      "prefabAsset": "Hovl Studio",
       "prefabAddress": "Prefabs/Weapons/Fireball",
       "prefabFlashAddress": "Prefabs/Weapons/FireballFlash"
     },
@@ -3665,6 +3667,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Fire",
+      "prefabAsset": "Hovl Studio",
       "prefabAddress": "Prefabs/Weapons/Fireball",
       "prefabFlashAddress": "Prefabs/Weapons/FireballFlash"
     },
@@ -3692,6 +3695,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Fire",
+      "prefabAsset": "Hovl Studio",
       "prefabAddress": "Prefabs/Weapons/Fireball",
       "prefabFlashAddress": "Prefabs/Weapons/FireballFlash"
     },
@@ -3719,6 +3723,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Fire",
+      "prefabAsset": "Hovl Studio",
       "prefabAddress": "Prefabs/Weapons/Fireball",
       "prefabFlashAddress": "Prefabs/Weapons/FireballFlash"
     },
@@ -3746,7 +3751,8 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Ice",
-      "prefabAddress": null,
+      "prefabAsset": "Polygon Arsenal",
+      "prefabAddress": "Prefabs/Weapons/IceMissile",
       "prefabFlashAddress": null
     },
     {
@@ -3773,7 +3779,8 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Ice",
-      "prefabAddress": null,
+      "prefabAsset": "Polygon Arsenal",
+      "prefabAddress": "Prefabs/Weapons/IceMissile",
       "prefabFlashAddress": null
     },
     {
@@ -3800,7 +3807,8 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Ice",
-      "prefabAddress": null,
+      "prefabAsset": "Polygon Arsenal",
+      "prefabAddress": "Prefabs/Weapons/IceMissile",
       "prefabFlashAddress": null
     },
     {
@@ -3827,7 +3835,8 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Ice",
-      "prefabAddress": null,
+      "prefabAsset": "Polygon Arsenal",
+      "prefabAddress": "Prefabs/Weapons/IceMissile",
       "prefabFlashAddress": null
     },
     {
@@ -3854,7 +3863,8 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Ice",
-      "prefabAddress": null,
+      "prefabAsset": "Polygon Arsenal",
+      "prefabAddress": "Prefabs/Weapons/IceMissile",
       "prefabFlashAddress": null
     },
     {
@@ -3881,6 +3891,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Thunder",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -3908,6 +3919,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Thunder",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -3935,6 +3947,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Thunder",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -3962,6 +3975,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Thunder",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -3989,6 +4003,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Thunder",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4016,6 +4031,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Meteo",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4043,6 +4059,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Meteo",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4070,6 +4087,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Meteo",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4097,6 +4115,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Meteo",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4124,6 +4143,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Meteo",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4151,6 +4171,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Santuary",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4178,6 +4199,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Santuary",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4205,6 +4227,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Santuary",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4232,6 +4255,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Santuary",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4259,6 +4283,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Santuary",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4286,6 +4311,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Flame",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4313,6 +4339,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Flame",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4340,6 +4367,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Flame",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4367,6 +4395,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Flame",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4394,6 +4423,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Flame",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4421,6 +4451,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Fire_S",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4448,6 +4479,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Ice_S",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4475,6 +4507,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Thunder_S",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4502,6 +4535,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Meteo_S",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4529,6 +4563,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Santuary_S",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4556,6 +4591,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Flame_S",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4583,6 +4619,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Projectile",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4610,6 +4647,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Projectile",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4637,6 +4675,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Projectile",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4664,6 +4703,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Projectile",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4691,6 +4731,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Projectile",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4718,6 +4759,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Heal",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4745,6 +4787,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Heal",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4772,6 +4815,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Heal",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4799,6 +4843,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Heal",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4826,6 +4871,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Heal",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4853,6 +4899,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Life",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4880,6 +4927,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Life",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4907,6 +4955,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Life",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4934,6 +4983,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Life",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4961,6 +5011,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Life",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -4988,6 +5039,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Atk",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -5015,6 +5067,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Atk",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -5042,6 +5095,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Atk",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -5069,6 +5123,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Atk",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -5096,6 +5151,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Atk",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -5123,6 +5179,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/BlackHole",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -5150,6 +5207,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/BlackHole",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -5177,6 +5235,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/BlackHole",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -5204,6 +5263,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/BlackHole",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -5231,6 +5291,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/BlackHole",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -5258,6 +5319,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Def",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -5285,6 +5347,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Def",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -5312,6 +5375,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Def",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -5339,6 +5403,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Def",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     },
@@ -5366,6 +5431,7 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Def",
+      "prefabAsset": null,
       "prefabAddress": null,
       "prefabFlashAddress": null
     }
