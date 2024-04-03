@@ -293,7 +293,7 @@ public class Player : MonoBehaviour
 
     IEnumerator SkillRoutine(SkillTable skilldata)
     {
-        int damage = 1;
+        int damage = 50;
         Debug.Log($"Coroutine started with parameter: {skilldata.skillId}");
         while (true)
         {

@@ -87,7 +87,7 @@ Material:
     - _MainTexChannels: {r: 0.2, g: 1, b: 0, a: 0}
     - _RampColorTint: {r: 0.7607843, g: 0.5803922, b: 1, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &3172451981547177910
+--- !u!114 &5765398394663745919
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

@@ -147,7 +147,7 @@ Material:
     - _FinalColor: {r: 1, g: 1, b: 1, a: 1}
     - _RampColorTint: {r: 1, g: 0.70980394, b: 0.39607778, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &546421066504856639
+--- !u!114 &3501254764608415433
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

@@ -180,7 +180,7 @@ Material:
     - _MainMaskChannelsMultiply: {r: 1, g: 1, b: 0, a: 0}
     - _RampColorTint: {r: 1, g: 0.5801887, b: 0.5801887, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &1862850785427185357
+--- !u!114 &5791717786713637707
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
