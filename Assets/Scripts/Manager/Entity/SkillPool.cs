@@ -19,6 +19,9 @@ public class SkillPool : MonoBehaviour
 
     public void AddSkillPool(SkillTable skillData)
     {
+        if (Resources.Load<GameObject>(skillData.prefabAddress) == null)
+            return;
+
         Projectile projectile = new Projectile()
         {
             id = skillData.skillId,
