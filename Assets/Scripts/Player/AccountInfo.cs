@@ -16,6 +16,8 @@ public class Item
     public float MoveSpeed;
     public float CriticalHit;
     public int HpGen;
+    public int getGold;
+    public int getExp;
 }
 
 public struct PlayerStatInfo

@@ -95,8 +95,8 @@ public class InventoryUI : MonoBehaviour
         magic = DataManager.Instance.GetLevelGacha(playerLevel).magic;
         elite = DataManager.Instance.GetLevelGacha(playerLevel).elite;
         rare = DataManager.Instance.GetLevelGacha(playerLevel).rare;
-        epic = DataManager.Instance.GetLevelGacha(playerLevel).Epic;
-        legendary = DataManager.Instance.GetLevelGacha(playerLevel).Legendary;
+        epic = DataManager.Instance.GetLevelGacha(playerLevel).epic;
+        legendary = DataManager.Instance.GetLevelGacha(playerLevel).legendary;
         selectedItem = new Item();
 
         System.Random random = new System.Random();
@@ -143,7 +143,7 @@ public class InventoryUI : MonoBehaviour
         List<ItemType> equipList = new List<ItemType>();
         foreach (ItemType item in Enum.GetValues(typeof(ItemType)))
         {
-            if (item != ItemType.None && item != ItemType.Gold && item != ItemType.Gem && item != ItemType.Core)
+            if (item == ItemType.Weapon || item == ItemType.Armor || item == ItemType.Helmet || item == ItemType.Gloves || item == ItemType.Boots || item == ItemType.Accessories)
             {
                 equipList.Add(item);
             }
@@ -162,6 +162,8 @@ public class InventoryUI : MonoBehaviour
         selectedItem.nameAlias = selectedGradeNType.nameAlias;
         selectedItem.grade = selectedGradeNType.grade;
         selectedItem.ImageFile = selectedGradeNType.imageFile;
+        selectedItem.getGold = selectedGradeNType.getGold;
+        selectedItem.getExp = selectedGradeNType.getExp;
 
         List<ItemOptions> options = new List<ItemOptions>();
         int maxRange = 4;
@@ -229,12 +231,35 @@ public class InventoryUI : MonoBehaviour
             GameManager.Instance.accountInfo.newItem = selectedItem;
 
             UIManager.Instance.ShowUI<UIMimicGacha>();
+            switch (selectedItem.grade)
+            {
+                case ItemGrade.Normal:
+                case ItemGrade.Magic:
+                case ItemGrade.Elite:
+                    {
+                        SoundManager.Instance.PlaySound("GetItemUI_1", 1f);
+                    }
+                    break;
+                case ItemGrade.Rare:
+                case ItemGrade.Epic:
+                    {
+                        SoundManager.Instance.PlaySound("GetItemUI_2", 1f);
+                    }
+                    break;
+                case ItemGrade.Legendary:
+                    {
+                        SoundManager.Instance.PlaySound("GetItemUI_3", 1f);
+                    }
+                    break;
+            }
             GameManager.Instance.SaveGame();
+            
         }
         else
         {
             UINoCurrency uINoCurrency = UIManager.Instance.ShowUI<UINoCurrency>();
             uINoCurrency.NoCore();
+            SoundManager.Instance.PlaySound("ErrorUI_1", 1f);
         }
     }
 
@@ -257,6 +282,7 @@ public class InventoryUI : MonoBehaviour
                 accountInfo.checkCurItem = accountInfo.equipItems.Accessories; break;
         }
         UIManager.Instance.ShowUI<UICheckEquip>();
+        SoundManager.Instance.PlaySound("ButtonClickUI_1", 1f);
     }
 
 

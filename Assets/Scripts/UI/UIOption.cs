@@ -14,7 +14,16 @@ public class UIOption : UIBase
     public Slider BGMSlider;
     public Slider SFXSlider;
 
-   
+    private void Awake()
+    {
+        BGMSlider.value = SoundManager.Instance.musicAudioSource.volume;
+        SFXSlider.value = SoundManager.Instance.soundEffectVolume;
+    }
+    private void Update()
+    {
+        SoundManager.Instance.musicAudioSource.volume = BGMSlider.value;
+        SoundManager.Instance.soundEffectVolume = SFXSlider.value;
+    }
     public void ClosePopup()
     {
         gameObject.SetActive(false);

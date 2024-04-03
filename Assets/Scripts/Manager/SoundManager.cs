@@ -1,61 +1,85 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SoundManager : SingletoneBase<SoundManager>
 {
-    [SerializeField][Range(0f, 1f)] private float soundEffectVolume;
-    [SerializeField][Range(0f, 1f)] private float musicVolume;
+    [Range(0f, 1f)] public float soundEffectVolume = 1f;
+    [Range(0f, 1f)] public float musicVolume = 0.5f;
 
-    Pooling objectPool;
-    AudioSource musicAudioSource;
-    public AudioClip clip;
-
+    public AudioSource musicAudioSource;
+    public AudioSource sfxAudioSource;
+    public AudioSource battleAudioSource;
+    private Dictionary<string, AudioClip> uiSFXDict = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> battleDict = new Dictionary<string, AudioClip>();
 
     [SerializeField] GameObject curObj;
 
     protected override void Init()
     {
-        musicAudioSource = GetComponent<AudioSource>();
-        musicAudioSource.clip = clip;
-        musicAudioSource.volume = musicVolume;
+        musicAudioSource = gameObject.AddComponent<AudioSource>();
         musicAudioSource.loop = true;
-        musicAudioSource.Play();
+        
+        LoadUISoundClip();
+        LoadBattleSoundclip();
+        ChangeBackGroundMusic(Resources.Load<AudioClip>("Audio/Music/wednesday_night"),musicAudioSource.volume);
 
-        objectPool = GetComponent<Pooling>();
-        objectPool.CreatePool(transform);
+        GameObject uiSfxSource = new GameObject("uiSfxSource");
+        sfxAudioSource = uiSfxSource.AddComponent<AudioSource>();
+
     }
 
+    private void LoadUISoundClip()
+    {
+        AudioClip[] uiClips = Resources.LoadAll<AudioClip>("Audio/UI");
+        foreach (AudioClip clip in uiClips)
+        {
+            uiSFXDict.Add(clip.name, clip);
+        }
+    }
 
-    public void ChangeBackGroundMusic(AudioClip clip, float soundVolume)
+    private void LoadBattleSoundclip()
+    {
+        AudioClip[] uiClips = Resources.LoadAll<AudioClip>("Audio/Battle");
+        foreach(AudioClip clip in uiClips)
+        {
+            battleDict.Add(clip.name, clip);
+        }
+    }
+
+    public void ChangeBackGroundMusic(AudioClip clip,float volume)
     {
         musicAudioSource.Stop();
         musicAudioSource.clip = clip;
-        musicAudioSource.volume = soundVolume;
+        musicAudioSource.volume = volume;
         musicAudioSource.Play();
-
     }
-    //public void PlayClip(AudioClip clip, float volume)
-    //{
-    //    curObj = objectPool.GetPoolItem("SoundSource");
-    //    curObj.SetActive(true);
-    //    SoundSource soundSource = curObj.GetComponent<SoundSource>();
-    //    soundSource.Play(clip, volume);
-    //}
-    //public void PlayClip(AudioClip clip)
-    //{
-    //    curObj = objectPool.GetPoolItem("SoundSource");
-    //    curObj.SetActive(true);
-    //    SoundSource soundSource = curObj.GetComponent<SoundSource>();
-    //    soundSource.Play(clip, soundEffectVolume);
-    //}
 
-    public GameObject CurSoundSource()
+    public void StopBackGroundMusic()
     {
-        return curObj;
+        musicAudioSource.Stop();
     }
 
-    public void StopClip()
+    public void PlaySound(string clipName, float volume = 1.0f)
     {
-        curObj.GetComponent<SoundSource>().Disable();
+        if (uiSFXDict.ContainsKey(clipName) == false)
+        {
+            Debug.Log(clipName + "클립이 없습니다.");
+            return;
+        }
+        sfxAudioSource.PlayOneShot(uiSFXDict[clipName],volume * soundEffectVolume);
     }
+
+    public void PlayBattleSound(string clipName, float volume = 1.0f)
+    {
+        if(battleDict.ContainsKey(clipName) == false)
+        {
+            Debug.Log(clipName + "클립이 없습니다.");
+            return;
+        }
+        battleAudioSource.PlayOneShot(battleDict[clipName],volume * soundEffectVolume);
+    }
+   
+
 
 }
