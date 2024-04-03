@@ -25,6 +25,7 @@ public class OutGameHUD : UIBase
     public Image StageImage;
     public int SelectedStageId;
 
+
     private AccountInfo accountInfo;
 
     private void Awake()
@@ -73,6 +74,7 @@ public class OutGameHUD : UIBase
 
             selectEmphasis[j].SetActive(index == j ? true : false);
         }
+        SoundManager.Instance.PlaySound("TabChangeUI_1", 1f);
     }
 
     public void OnClickStageSelect()
