@@ -95,8 +95,8 @@ public class InventoryUI : MonoBehaviour
         magic = DataManager.Instance.GetLevelGacha(playerLevel).magic;
         elite = DataManager.Instance.GetLevelGacha(playerLevel).elite;
         rare = DataManager.Instance.GetLevelGacha(playerLevel).rare;
-        epic = DataManager.Instance.GetLevelGacha(playerLevel).Epic;
-        legendary = DataManager.Instance.GetLevelGacha(playerLevel).Legendary;
+        epic = DataManager.Instance.GetLevelGacha(playerLevel).epic;
+        legendary = DataManager.Instance.GetLevelGacha(playerLevel).legendary;
         selectedItem = new Item();
 
         System.Random random = new System.Random();
@@ -231,12 +231,35 @@ public class InventoryUI : MonoBehaviour
             GameManager.Instance.accountInfo.newItem = selectedItem;
 
             UIManager.Instance.ShowUI<UIMimicGacha>();
+            switch (selectedItem.grade)
+            {
+                case ItemGrade.Normal:
+                case ItemGrade.Magic:
+                case ItemGrade.Elite:
+                    {
+                        SoundManager.Instance.PlaySound("GetItemUI_1", 1f);
+                    }
+                    break;
+                case ItemGrade.Rare:
+                case ItemGrade.Epic:
+                    {
+                        SoundManager.Instance.PlaySound("GetItemUI_2", 1f);
+                    }
+                    break;
+                case ItemGrade.Legendary:
+                    {
+                        SoundManager.Instance.PlaySound("GetItemUI_3", 1f);
+                    }
+                    break;
+            }
             GameManager.Instance.SaveGame();
+            
         }
         else
         {
             UINoCurrency uINoCurrency = UIManager.Instance.ShowUI<UINoCurrency>();
             uINoCurrency.NoCore();
+            SoundManager.Instance.PlaySound("ErrorUI_1", 1f);
         }
     }
 
@@ -259,6 +282,7 @@ public class InventoryUI : MonoBehaviour
                 accountInfo.checkCurItem = accountInfo.equipItems.Accessories; break;
         }
         UIManager.Instance.ShowUI<UICheckEquip>();
+        SoundManager.Instance.PlaySound("ButtonClickUI_1", 1f);
     }
 
 

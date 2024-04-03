@@ -23,6 +23,7 @@ public class MailSlotUI : MonoBehaviour
         UIManager.Instance.ShowUI<UIInsideMail>();
         if(!isOpened) { isOpened = true; }
         UpdateUI();
+        SoundManager.Instance.PlaySound("NextPageUI_1", 1f);
     }
     public void UpdateUI()
     {

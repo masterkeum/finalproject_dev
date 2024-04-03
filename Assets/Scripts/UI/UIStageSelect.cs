@@ -22,10 +22,12 @@ public class UIStageSelect : UIBase
         GameManager.Instance.stageId = _curStage.index;
         GameManager.Instance.UpdateUI();
         gameObject.SetActive(false);
+        SoundManager.Instance.PlaySound("ConfirmUI_1", 1f);
     }
     public void OnCancelButton()
     {
         gameObject.SetActive(false);
+        SoundManager.Instance.PlaySound("ButtonClickUI_1", 1f);
     }
 
 
@@ -44,6 +46,7 @@ public class UIStageSelect : UIBase
             }
             _stageSlots[i].UpdateMark();
         }
+        SoundManager.Instance.PlaySound("NextPageUI_1", 1f);
 
     }
 

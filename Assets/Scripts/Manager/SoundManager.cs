@@ -4,10 +4,10 @@ using UnityEngine.UIElements;
 
 public class SoundManager : SingletoneBase<SoundManager>
 {
-    [SerializeField][Range(0f, 1f)] private float soundEffectVolume=0.5f;
-    [SerializeField][Range(0f, 1f)] private float musicVolume=0.5f;
+    [Range(0f, 1f)] public float soundEffectVolume = 1f;
+    [Range(0f, 1f)] public float musicVolume = 0.5f;
 
-    private AudioSource musicAudioSource;
+    public AudioSource musicAudioSource;
     public AudioSource sfxAudioSource;
     public AudioSource battleAudioSource;
     private Dictionary<string, AudioClip> uiSFXDict = new Dictionary<string, AudioClip>();
@@ -19,9 +19,10 @@ public class SoundManager : SingletoneBase<SoundManager>
     {
         musicAudioSource = gameObject.AddComponent<AudioSource>();
         musicAudioSource.loop = true;
+        
         LoadUISoundClip();
         LoadBattleSoundclip();
-        ChangeBackGroundMusic(Resources.Load<AudioClip>("Audio/Music/wednesday_night"), 1f);
+        ChangeBackGroundMusic(Resources.Load<AudioClip>("Audio/Music/wednesday_night"),musicAudioSource.volume);
 
         GameObject uiSfxSource = new GameObject("uiSfxSource");
         sfxAudioSource = uiSfxSource.AddComponent<AudioSource>();
@@ -46,11 +47,11 @@ public class SoundManager : SingletoneBase<SoundManager>
         }
     }
 
-    public void ChangeBackGroundMusic(AudioClip clip, float soundVolume)
+    public void ChangeBackGroundMusic(AudioClip clip,float volume)
     {
         musicAudioSource.Stop();
         musicAudioSource.clip = clip;
-        musicAudioSource.volume = soundVolume;
+        musicAudioSource.volume = volume;
         musicAudioSource.Play();
     }
 

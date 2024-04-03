@@ -57,5 +57,6 @@ public class UINoCurrency : UIBase
     public void OnConfirmButton()
     {
         gameObject.SetActive(false);
+        SoundManager.Instance.PlaySound("ButtonClickUI_1",1f);
     }
 }

@@ -162,6 +162,6 @@ public class LevelGacha
     public float magic;
     public float elite;
     public float rare;
-    public float Epic;
-    public float Legendary;
+    public float epic;
+    public float legendary;
 }

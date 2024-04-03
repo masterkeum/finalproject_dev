@@ -80,22 +80,29 @@ public class OutGameHUD : UIBase
     public void OnClickStageSelect()
     {
         UIManager.Instance.ShowUI<UIStageSelect>();
+        SoundManager.Instance.PlaySound("ButtonClickUI_1", 1f);
     }
     public void OnClickListButton()
     {
         UIManager.Instance.ShowUI<UIPropertiesList>();
+        SoundManager.Instance.PlaySound("ButtonClickUI_1", 1f);
     }
     public void OnStartbutton()
     {
+        SoundManager.Instance.PlaySound("ButtonClickUI_1", 1f);
         Debug.Log($"OnStartbutton : {SelectedStageId}");
         // 인게임으로 넘어가기
         if (accountInfo.actionPoint >= GameManager.Instance._combatActionPoint)
         {
+            SoundManager.Instance.PlaySound("ConfirmUI_1", 1f);
             SceneManager.LoadScene(3); // 인게임씬
         }
         else
         {
             // TODO : 
+            SoundManager.Instance.PlaySound("ErrorUI_1", 1f);
+            UINoCurrency noActionPoint = UIManager.Instance.ShowUI<UINoCurrency>();
+            noActionPoint.NoActionPoint();
             Debug.LogWarning("행동력 부족 팝업? 메세지");
         }
     }
