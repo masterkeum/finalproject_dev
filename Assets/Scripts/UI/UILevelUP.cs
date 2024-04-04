@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -79,12 +80,20 @@ public class UILevelUP : UIBase
 
         for (int i = 0; i < selectableSkillUI.Count; i++)
         {
-            selectableSkillUI[i].skillGroupId = randomSkills[i].skillGroup;
-            selectableSkillUI[i].skillNameText.text = randomSkills[i].skillName;
-            selectableSkillUI[i].skillDescriptionText.text = randomSkills[i].skillDesc;
-            string path = randomSkills[i].imageAddress;
-            Sprite sprite = Resources.Load<Sprite>(path);
-            selectableSkillUI[i].skillSprite.sprite = sprite;
+            if (i < randomSkills.Count)
+            {
+                selectableSkillUI[i].gameObject.SetActive(true);
+                selectableSkillUI[i].skillGroupId = randomSkills[i].skillGroup;
+                selectableSkillUI[i].skillNameText.text = randomSkills[i].skillName;
+                selectableSkillUI[i].skillDescriptionText.text = randomSkills[i].skillDesc;
+                string path = randomSkills[i].imageAddress;
+                Sprite sprite = Resources.Load<Sprite>(path);
+                selectableSkillUI[i].skillSprite.sprite = sprite;
+            }
+            else
+            {
+                selectableSkillUI[i].gameObject.SetActive(false);
+            }
         }
     }
 

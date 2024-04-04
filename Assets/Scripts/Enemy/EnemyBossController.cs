@@ -26,7 +26,7 @@ public class EnemyBossController : EnemyBaseController
         minWanderDistance = 8f;
         maxWanderDistance = 10f;
         minWanderWaitTime = 1f;
-        maxWanderWaitTime = 3f;
+        maxWanderWaitTime = 2f;
 
         path = new NavMeshPath();
         SetState(EnemyState.Wander);

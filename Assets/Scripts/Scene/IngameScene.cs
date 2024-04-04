@@ -38,6 +38,7 @@ public class IngameScene : MonoBehaviour
         Debug.Log("IngameScene.Awake");
         Time.timeScale = 1.0f;
         _ = DataManager.Instance;
+        _ = SoundManager.Instance;
         GameManager.Instance.Clear();
         UIManager.Instance.Clear();
 
@@ -130,7 +131,7 @@ public class IngameScene : MonoBehaviour
                 yield break;
             }
         }
-        
+
 
         yield return new WaitForSeconds(monsterData.genTimeStart);
         float startTime = Time.time;
