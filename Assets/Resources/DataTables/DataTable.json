@@ -2632,8 +2632,8 @@
       "maxCriticalHit": 0,
       "minHpGen": 0,
       "maxHpGen": 0,
-      "getGold": 0,
-      "getExp": 0
+      "getGold": 300,
+      "getExp": 500
     },
     {
       "itemId": 50000004,

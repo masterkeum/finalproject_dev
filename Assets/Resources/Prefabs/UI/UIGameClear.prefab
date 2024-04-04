@@ -11673,6 +11673,31 @@ MonoBehaviour:
   killCountText: {fileID: 1310874431875438922}
   getGoldText: {fileID: 2063858381887284422}
   getGemText: {fileID: 5947413402275250073}
+  getNormalJS: {fileID: 2223615235961620635}
+  getHeroJS: {fileID: 5854462128015444334}
+  itemInfos:
+    itemId: 0
+    itemCategory: 0
+    itemType: 0
+    nameAlias: 
+    descAlias: 
+    grade: 0
+    maxStack: 0
+    imageFile: 
+    minHp: 0
+    maxHp: 0
+    minDp: 0
+    maxDp: 0
+    minAp: 0
+    maxAp: 0
+    minMovespeed: 0
+    maxMovespeed: 0
+    minCriticalHit: 0
+    maxCriticalHit: 0
+    minHpGen: 0
+    maxHpGen: 0
+    getGold: 0
+    getExp: 0
 --- !u!1 &4703352380892658954
 GameObject:
   m_ObjectHideFlags: 0
