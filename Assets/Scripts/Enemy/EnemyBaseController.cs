@@ -1,6 +1,4 @@
-using Gley.Jumpy;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -100,9 +98,9 @@ public class EnemyBaseController : MonoBehaviour
         monsterLevel = characterInfo.monsterLevelData[level];
 
         // 몬스터 스탯초기화
-        currentHp = characterInfo.hp;
-        maxHp = characterInfo.hp;
-        damage = characterInfo.attackPower;
+        maxHp = characterInfo.hp + monsterLevel.addHP;
+        damage = characterInfo.attackPower + monsterLevel.addAP;
+        currentHp = maxHp;
 
         navMeshAgent.speed = characterInfo.moveSpeed;
         navMeshAgent.stoppingDistance = characterInfo.attackRange;
