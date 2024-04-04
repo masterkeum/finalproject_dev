@@ -10,5 +10,7 @@ public class ShopSlotUI : MonoBehaviour
     public TextMeshProUGUI amount;
     public TextMeshProUGUI price;
 
-    public bool isForSale = true;
+    public bool isForSale = true; //솔드아웃용
+
+ 
 }

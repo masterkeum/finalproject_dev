@@ -27,6 +27,7 @@ public class DataManager : SingletoneBase<DataManager>
     public Dictionary<int, SkillTable> skillTableDict;
     public Dictionary<int, ItemTable> itemTableDict;
     public Dictionary<int, LevelGacha> levelGachaDict;
+    public Dictionary<int, Shop> shopDict;
 
     protected override void Init()
     {
@@ -145,6 +146,13 @@ public class DataManager : SingletoneBase<DataManager>
         }
         Debug.Log("가챠확률 정보 로드 완료");
 
+        // 상점 상품 정보
+        shopDict = new Dictionary<int, Shop>();
+        foreach (Shop shop in jsonData.Shop)
+        {
+            shopDict.Add(shop.packageId, shop);
+        }
+
 
         // GC에서 언제 가져갈지 모르니 jsonData를 명시적으로 null 로 만들거나 destroy 하고싶다.
         jsonData = null;
@@ -203,5 +211,11 @@ public class DataManager : SingletoneBase<DataManager>
         else return null;
     }
 
+    public Shop GetShop(int packageId)
+    {
+        if(shopDict.ContainsKey(packageId))
+            return shopDict[packageId];
+        else return null;
+    }
 }
 
