@@ -52,8 +52,18 @@ MonoBehaviour:
     type: 3}
   muzzleParticle: {fileID: 1977975570158332, guid: 443566c1d553c524ba2b591f0c9c3ce8,
     type: 3}
+  impactPS: {fileID: 0}
+  muzzlePS: {fileID: 0}
+  disableAfterTime: 5
+  hitOffset: 0
   rb: {fileID: 0}
-  speed: 15
+  sc: {fileID: 0}
+  parentObject: {fileID: 0}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  projectileSpeed: 15
+  projectilePenetration: 0
 --- !u!54 &54969070811294218
 Rigidbody:
   m_ObjectHideFlags: 0

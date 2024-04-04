@@ -39,7 +39,7 @@ public class SkillPool : MonoBehaviour
             {
                 GameObject skillgo = Instantiate(pool.prefab, transform.position, Quaternion.identity);
                 skillgo.transform.SetParent(transform);
-                //skillgo.GetComponent<ProjectileScript>().Init(pool.id, 1);
+                skillgo.GetComponent<ProjectileScript>().Init(pool.id, 1);
                 skillgo.SetActive(false);
                 skillQueue.Enqueue(skillgo);
             }
@@ -79,7 +79,7 @@ public class SkillPool : MonoBehaviour
             while (poolDictionary[key].Count > 0)
             {
                 GameObject obj = poolDictionary[key].Dequeue();
-                Destroy(obj);
+                obj.GetComponent<ProjectileScript>().dispose();
             }
             poolDictionary.Remove(key);
         }

@@ -27,6 +27,8 @@ public class ProjectileScript : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("ProjectileScript.Awake");
+
         rb = transform.GetComponent<Rigidbody>();
         sc = transform.GetComponent<SphereCollider>();
         sc.isTrigger = true;
@@ -34,12 +36,22 @@ public class ProjectileScript : MonoBehaviour
 
         originalConstraints = rb.constraints;
 
-
         enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
+
+        projectileParticle = Instantiate(projectileParticle, transform.position, transform.rotation);
+        projectileParticle.transform.parent = transform;
+
+        muzzleParticle = Instantiate(muzzleParticle, transform.position, transform.rotation);
+        impactParticle = Instantiate(impactParticle);
+
+        projectileParticle.SetActive(false);
+        muzzleParticle.SetActive(false);
+        impactParticle.SetActive(false);
     }
 
     public void Init(int _skillId, int _damage)
     {
+        Debug.Log("ProjectileScript.Init");
         skillInfo = DataManager.Instance.GetSkillTable(_skillId);
         damage = _damage;
 
@@ -47,34 +59,35 @@ public class ProjectileScript : MonoBehaviour
         projectileSpeed = 0;
         projectilePenetration = skillInfo.projectilePenetration;
 
-    }
-
-    private void OnEnable()
-    {
-        rb.constraints = originalConstraints;
-        projectileSpeed = originalSpeed;
-        sc.enabled = true;
-        StartCoroutine(LateCall());
-    }
-
-    private void Start()
-    {
-        // TODO 수정필요한듯
-        projectileParticle = Instantiate(projectileParticle, transform.position, transform.rotation);
-        projectileParticle.transform.parent = transform;
+        gameObject.SetActive(true);
+        projectileParticle.SetActive(true);
+        projectileParticle.transform.position = transform.position;
+        projectileParticle.transform.rotation = transform.rotation;
 
         if (skillInfo.level == 5)
         {
             transform.localScale = new Vector3(2, 2, 2);
         }
+    }
 
+    private void OnEnable()
+    {
+        Debug.Log("ProjectileScript.OnEnable");
+        rb.constraints = originalConstraints;
+        projectileSpeed = originalSpeed;
+        sc.enabled = true;
+
+        muzzleParticle.SetActive(true);
+        muzzleParticle.transform.position = transform.position;
+        muzzleParticle.transform.rotation = transform.rotation;
         if (muzzleParticle)
         {
-            muzzleParticle = Instantiate(muzzleParticle, transform.position, transform.rotation);
-            //Destroy(muzzleParticle, 1.5f); // Lifetime of muzzle effect.
             StartCoroutine(ActiveFalse(muzzleParticle, 1.5f));
         }
+
+        StartCoroutine(LateCall());
     }
+
     void OnTransformParentChanged()
     {
         parentObject = transform.parent;
@@ -98,10 +111,12 @@ public class ProjectileScript : MonoBehaviour
                 Quaternion rot = Quaternion.FromToRotation(Vector3.up, triggerEnterPoint);
                 Vector3 pos = triggerEnterPoint + new Vector3(0, hitOffset, 0);
 
-                other.GetComponent<EnemyBaseController>().TakeDamage(damage);
-
-                impactParticle = Instantiate(impactParticle, pos, rot);
+                impactParticle.SetActive(true);
+                impactParticle.transform.position = pos;
+                impactParticle.transform.rotation = rot;
                 impactParticle.transform.LookAt(pos);
+
+                other.GetComponent<EnemyBaseController>().TakeDamage(damage);
 
                 StartCoroutine(ActiveFalse(projectileParticle, 3f));
                 StartCoroutine(ActiveFalse(impactParticle, 5f));
@@ -112,6 +127,7 @@ public class ProjectileScript : MonoBehaviour
                     rb.constraints = RigidbodyConstraints.FreezeAll;
                     projectileSpeed = 0;
                     sc.enabled = false;
+
                     StopCoroutine(LateCall());
                     gameObject.SetActive(false);
                 }
@@ -134,5 +150,14 @@ public class ProjectileScript : MonoBehaviour
         yield return new WaitForSeconds(delay);
         go.SetActive(false);
         yield break;
+    }
+
+    public void dispose()
+    {
+        Destroy(impactParticle);
+        Destroy(projectileParticle);
+        Destroy(muzzleParticle);
+
+        Destroy(gameObject);
     }
 }

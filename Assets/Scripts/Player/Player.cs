@@ -80,8 +80,6 @@ public class Player : MonoBehaviour
 
     private Vector3 screenPos;
 
-    public TMP_Text takeDamagePoint;
-
     // 적
     public LayerMask enemyLayer;
     public float detectionRange = 15f;
@@ -117,8 +115,6 @@ public class Player : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         skillPool = GetComponent<SkillPool>();
         hpGuageSlider = GetComponentInChildren<Slider>();
-        takeDamagePoint = GetComponentInChildren<TMP_Text>();
-        // monster = GameManager.Instance. // 프리팹된 몬스터 연결
     }
 
     public virtual void Init(int _player, int _level)
@@ -142,12 +138,6 @@ public class Player : MonoBehaviour
         SkillUpdate(defaultSkill);
 
         IsInit = true;
-    }
-
-    private void Start()
-    {
-        // UpdateSlider();
-        takeDamagePoint.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -179,32 +169,6 @@ public class Player : MonoBehaviour
 
 
     #region Controll
-
-    //private void SkillRoutine()
-    //{
-    //    // 임시
-    //    foreach (SkillTable skill in activeSkillSlot)
-    //    {
-    //        switch (skill.targetType)
-    //        {
-    //            case SkillTargetType.Single:
-    //                {
-    //                    if (Time.time - skill.lastAttackTime > skill.coolDownTime)
-    //                    {
-    //                        // 10f 까지 탐색? = 보스 탐지거리
-    //                        // 가까운놈 찾아서 그방향으로 발사 일정거리 가면 사라짐
-    //                        // 발사 방향
-    //                        Vector3 direction = DetectEnemyDirection();
-    //                        // 발사 작동
-    //                        skillPool.GetPoolSkill(skill.skillId, skill.level, projectilePoint, direction);
-    //                        skillPool.GetPoolFlash(skill.skillId, projectilePoint, direction);
-    //                        skill.lastAttackTime = Time.time;
-    //                    }
-    //                }
-    //                break;
-    //        }
-    //    }
-    //}
 
     public void SkillUpdate(SkillTable skilldata)
     {
@@ -335,11 +299,7 @@ public class Player : MonoBehaviour
         float per = (float)playeringameinfo.curHp / playeringameinfo.maxHp;
         hpGuageSlider.value = per;
 
-        // takeDamagePoint.gameObject.SetActive(true);
         damageAmount = -damageAmount;
-        // takeDamagePoint.text = damageAmount.ToString();
-        // // 코루틴 사용
-        // StartCoroutine(SetActiveFalse());
 
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
         //Debug.Log("데미지텍스트 프리팹 " + hudText);
@@ -352,13 +312,6 @@ public class Player : MonoBehaviour
         if (playeringameinfo.curHp <= 0)
             OnDead();
     }
-
-    // IEnumerator SetActiveFalse()
-    // {
-    //     yield return new WaitForSeconds(1.0f); 
-    //     takeDamagePoint.gameObject.SetActive(false);
-    //     // 지금 실행하는 쓰레드를 기다릴거냐 말거냐, 턴을 넘김 null 을 넘김
-    // }
 
     void OnDead()
     {
