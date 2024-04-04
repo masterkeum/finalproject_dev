@@ -235,19 +235,19 @@ public class Player : MonoBehaviour
             if (passiveSkill.ContainsKey(skilldata.skillGroup))
             {
                 passiveSkill[skilldata.skillGroup] = skilldata;
-                //skillCoroutines[skilldata.skillGroup] = StartSkillCoroutine(skilldata);
+                skillCoroutines[skilldata.skillGroup] = StartSkillCoroutine(skilldata);
             }
             else
             {
                 passiveSkill.Add(skilldata.skillGroup, skilldata);
-                //skillCoroutines.Add(skilldata.skillGroup, StartSkillCoroutine(skilldata));
+                skillCoroutines.Add(skilldata.skillGroup, StartSkillCoroutine(skilldata));
             }
         }
     }
 
     public Coroutine StartSkillCoroutine(SkillTable skilldata)
     {
-        if (skillCoroutines.ContainsKey(skilldata.skillGroup))
+        if (skillCoroutines.ContainsKey(skilldata.skillGroup) && skillCoroutines[skilldata.skillGroup] != null)
         {
             StopCoroutine(skillCoroutines[skilldata.skillGroup]);
         }
@@ -257,7 +257,7 @@ public class Player : MonoBehaviour
     IEnumerator SkillRoutine(SkillTable skilldata)
     {
         //최종 데미지 = (기본 공격력 + 아이템 공격력 보정치) x (공격력 배율) - (방어력*방어력배율) + 스킬 추가 데미지 + (크리티컬 데미지 보정치 * 크리티컬 여부)
-        int damage = Mathf.RoundToInt((playeringameinfo.attackPower + skilldata.attackDamage) * 0.8f);
+        int damage = Mathf.RoundToInt((playeringameinfo.attackPower + skilldata.attackDamage) * 0.5f);
         Debug.Log($"Coroutine started with parameter: {skilldata.skillId}");
         while (true)
         {
@@ -267,9 +267,24 @@ public class Player : MonoBehaviour
                     {
                         yield return new WaitForSeconds(skilldata.coolDownTime);
 
-                        Vector3 direction = DetectEnemyDirection();
+                        int projectileTotalCount = skilldata.projectileCount;
+                        if (skilldata.skillGroup == 30000010)
+                        {
+                            // FIXME : 하드코딩
+                            // 화염구인 경우
+                            if (passiveSkill.ContainsKey(30001010))
+                            {
+                                projectileTotalCount += passiveSkill[30001010].projectileCount;
+                            }
+                        }
+
                         // 발사 작동
-                        skillPool.GetPoolSkill(skilldata.skillId, projectilePoint, direction, damage);
+                        for (int i = 0; i < projectileTotalCount; i++)
+                        {
+                            Vector3 direction = DetectEnemyDirection();
+                            skillPool.GetPoolSkill(skilldata.skillId, projectilePoint, direction, damage);
+                            yield return new WaitForSeconds(0.2f);
+                        }
                     }
                     break;
                 case SkillTargetType.FixedDirection:
@@ -284,6 +299,12 @@ public class Player : MonoBehaviour
                             Vector3 direction = new Vector3(Mathf.Cos(radAngle), 0f, Mathf.Sin(radAngle));
                             skillPool.GetPoolSkill(skilldata.skillId, projectilePoint, direction, damage);
                         }
+                    }
+                    break;
+                case SkillTargetType.DotHeal:
+                    {
+                        yield return new WaitForSeconds(skilldata.coolDownTime);
+                        TakeDamage(-skilldata.regenHP);
                     }
                     break;
                 default:
@@ -319,6 +340,15 @@ public class Player : MonoBehaviour
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
         //Debug.Log("데미지텍스트 프리팹 " + hudText);
         hudText.transform.position = hudPos.position; // 표시될 위치
+        DamageText damageText = hudText.GetComponent<DamageText>();
+        if (damageAmount < 0)
+        {
+            damageText.color = new Color(1f, 0f, 0f, 1f);
+        }
+        else
+        {
+            damageText.color = new Color(0f, 1f, 0f, 1f);
+        }
         hudText.GetComponentInChildren<DamageText>().damage = damageAmount; // 데미지 전달
                                                                             // player.TakePhysicalDamage(damageAmount);
 
@@ -406,13 +436,14 @@ public class Player : MonoBehaviour
     public int CurrentOpenSkillSlotCount(SkillApplyType applyType) //허용 슬롯의 숫자. 일단 3으로 정해놓았으나 이후 조건에 따른 값을 리턴하게 한다.
     {
         int slotCount = 3;
+        int accountLevel = GameManager.Instance.accountInfo.level;
         if (applyType == SkillApplyType.Active)
         {
-            slotCount += Mathf.Max((playeringameinfo.curLevel + 3) / 6, 3);
+            slotCount += Mathf.Min((accountLevel + 3) / 6, 3);
         }
         else if (applyType == SkillApplyType.Passive)
         {
-            slotCount += Mathf.Max(playeringameinfo.curLevel / 6, 3);
+            slotCount += Mathf.Min(accountLevel / 6, 3);
         }
         return slotCount;
     }

@@ -149,7 +149,7 @@ public class AccountInfo
         level = 1;
         totalExp = 0;
 
-        actionPoint = DataManager.Instance._InitParam["ActionPoint"]; // 데이터로 빼야함
+        actionPoint = DataManager.Instance._InitParam["ActionPoint"];
         gem = 0;
         gold = DataManager.Instance._InitParam["Gold"];
         core = 0;

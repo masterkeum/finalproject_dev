@@ -93,6 +93,7 @@ public class EnemyBaseController : MonoBehaviour
         monsterID = _monsterID;
         level = _level;
         targetPlayerTransform = target.transform;
+        lastAttackTime = Time.time;
 
         characterInfo = DataManager.Instance.characterInfoDict[monsterID];
         monsterLevel = characterInfo.monsterLevelData[level];
