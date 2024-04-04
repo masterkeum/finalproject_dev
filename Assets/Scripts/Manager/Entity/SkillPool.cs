@@ -24,7 +24,7 @@ public class SkillPool : MonoBehaviour
         {
             id = skillData.skillId,
             prefab = Resources.Load<GameObject>(skillData.prefabAddress),
-            amount = 10
+            amount = 20
         };
         projectileList.Add(projectile);
     }

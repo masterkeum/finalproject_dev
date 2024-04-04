@@ -8,7 +8,7 @@ public class ProjectileScript : MonoBehaviour
     public GameObject muzzleParticle;
 
     public float disableAfterTime = 5f;
-    public float hitOffset = 0f;
+    public float hitOffset = 1f;
 
     public Rigidbody rb; // 리지드바디
     public SphereCollider sc;
@@ -40,13 +40,7 @@ public class ProjectileScript : MonoBehaviour
 
         projectileParticle = Instantiate(projectileParticle, transform.position, transform.rotation);
         projectileParticle.transform.parent = transform;
-
-        muzzleParticle = Instantiate(muzzleParticle, transform.position, transform.rotation);
-        impactParticle = Instantiate(impactParticle);
-
         projectileParticle.SetActive(false);
-        muzzleParticle.SetActive(false);
-        impactParticle.SetActive(false);
     }
 
     public void Init(int _skillId, int _damage)
@@ -60,13 +54,20 @@ public class ProjectileScript : MonoBehaviour
         projectilePenetration = skillInfo.projectilePenetration;
 
         gameObject.SetActive(true);
-        projectileParticle.SetActive(true);
+
         projectileParticle.transform.position = transform.position;
         projectileParticle.transform.rotation = transform.rotation;
+        projectileParticle.SetActive(true);
 
-        if (skillInfo.level == 5)
+        switch (skillInfo.skillId)
         {
-            transform.localScale = new Vector3(2, 2, 2);
+            case 30000015: // 화염구 lv5
+            case 30000501: // 화염구 초월
+                transform.localScale = new Vector3(2, 2, 2);
+                break;
+            default:
+                transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                break;
         }
     }
 
@@ -77,12 +78,10 @@ public class ProjectileScript : MonoBehaviour
         projectileSpeed = originalSpeed;
         sc.enabled = true;
 
-        muzzleParticle.SetActive(true);
-        muzzleParticle.transform.position = transform.position;
-        muzzleParticle.transform.rotation = transform.rotation;
         if (muzzleParticle)
         {
-            StartCoroutine(ActiveFalse(muzzleParticle, 1.5f));
+            GameObject mp = Instantiate(muzzleParticle, transform.position, transform.rotation);
+            Destroy(mp, 1.5f); // Lifetime of muzzle effect.
         }
 
         StartCoroutine(LateCall());
@@ -111,15 +110,13 @@ public class ProjectileScript : MonoBehaviour
                 Quaternion rot = Quaternion.FromToRotation(Vector3.up, triggerEnterPoint);
                 Vector3 pos = triggerEnterPoint + new Vector3(0, hitOffset, 0);
 
-                impactParticle.SetActive(true);
-                impactParticle.transform.position = pos;
-                impactParticle.transform.rotation = rot;
-                impactParticle.transform.LookAt(pos);
+
+                GameObject ip = Instantiate(impactParticle, pos, rot);
 
                 other.GetComponent<EnemyBaseController>().TakeDamage(damage);
 
                 StartCoroutine(ActiveFalse(projectileParticle, 3f));
-                StartCoroutine(ActiveFalse(impactParticle, 5f));
+                Destroy(ip, 5.0f);
 
                 --projectilePenetration;
                 if (projectilePenetration <= 0)
@@ -154,10 +151,9 @@ public class ProjectileScript : MonoBehaviour
 
     public void dispose()
     {
-        Destroy(impactParticle);
-        Destroy(projectileParticle);
-        Destroy(muzzleParticle);
-
+        //Destroy(impactParticle);
+        //Destroy(projectileParticle);
+        //Destroy(muzzleParticle);
         Destroy(gameObject);
     }
 }
