@@ -141,14 +141,14 @@ public class EnemyBaseController : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHp -= damageAmount;
-        float per = (float)currentHp  /   maxHp;  
+        float per = (float)currentHp / maxHp;
         hpGuageSlider.value = per;
-        Debug.Log("몬스터 현재 HP" + per);
+        //Debug.Log("몬스터 현재 HP" + per);
         if (currentHp <= 0)
             OnDead();
-        
+
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
-        Debug.Log("데미지텍스트 프리팹 " + hudText);
+        //Debug.Log("데미지텍스트 프리팹 " + hudText);
         hudText.transform.position = hudPos.position; // 표시될 위치
         hudText.GetComponentInChildren<DamageText>().damage = damageAmount; // 데미지 전달
         // player.TakePhysicalDamage(damageAmount);

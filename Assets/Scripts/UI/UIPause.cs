@@ -18,9 +18,12 @@ public class UIPause : UIBase
     private void Awake()
     {
         player = GameManager.Instance.player;
-        for (int j = player.CurrentOpenSkillSlotCount(); j < 6; j++)
+        for (int i = player.CurrentOpenSkillSlotCount(SkillApplyType.Active); i < 6; i++)
         {
-            activeSlotsUI[j].skillLock.SetActive(true);
+            activeSlotsUI[i].skillLock.SetActive(true);
+        }
+        for (int j = player.CurrentOpenSkillSlotCount(SkillApplyType.Passive); j < 6; j++)
+        {
             passiveSlotsUI[j].skillLock.SetActive(true);
         }
     }

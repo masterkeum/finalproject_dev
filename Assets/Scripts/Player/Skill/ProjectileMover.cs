@@ -5,7 +5,7 @@ public class ProjectileMover : MonoBehaviour
 {
     public float dissableAfterTime = 5f;
     public float speed = 15f;
-    private float oroginalSpeed;
+    private float originalSpeed;
     public float hitOffset = 0f;
     public bool UseFirePointRotation;
     public Vector3 rotationOffset = new Vector3(0, 0, 0);
@@ -38,7 +38,7 @@ public class ProjectileMover : MonoBehaviour
         sc.enabled = false;
         ps.Stop();
         originalConstraints = rb.constraints;
-        oroginalSpeed = speed;
+        originalSpeed = speed;
         speed = 0;
 
         enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
@@ -48,7 +48,7 @@ public class ProjectileMover : MonoBehaviour
         if (li != null)
             li.enabled = true;
         rb.constraints = originalConstraints;
-        speed = oroginalSpeed;
+        speed = originalSpeed;
         sc.enabled = true;
         ps.Play();
         StartCoroutine(LateCall());
@@ -66,7 +66,7 @@ public class ProjectileMover : MonoBehaviour
                 li.enabled = true;
             sc.enabled = true;
             rb.constraints = originalConstraints;
-            speed = oroginalSpeed;
+            speed = originalSpeed;
 
             ps.Play();
             if (flash != null && useFlash)

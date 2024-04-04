@@ -80,8 +80,6 @@ public class Player : MonoBehaviour
 
     private Vector3 screenPos;
 
-    public TMP_Text takeDamagePoint;
-
     // 적
     public LayerMask enemyLayer;
     public float detectionRange = 15f;
@@ -117,8 +115,6 @@ public class Player : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         skillPool = GetComponent<SkillPool>();
         hpGuageSlider = GetComponentInChildren<Slider>();
-        takeDamagePoint = GetComponentInChildren<TMP_Text>();
-        // monster = GameManager.Instance. // 프리팹된 몬스터 연결
     }
 
     public virtual void Init(int _player, int _level)
@@ -140,16 +136,8 @@ public class Player : MonoBehaviour
 
         SkillTable defaultSkill = DataManager.Instance.GetSkillTable(DataManager.Instance._InitParam["StartSkillId"]);
         SkillUpdate(defaultSkill);
-        skillPool.AddSkillPool(defaultSkill);
-        skillPool.CreatePool(transform);
 
         IsInit = true;
-    }
-
-    private void Start()
-    {
-        // UpdateSlider();
-        takeDamagePoint.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -182,37 +170,12 @@ public class Player : MonoBehaviour
 
     #region Controll
 
-    //private void SkillRoutine()
-    //{
-    //    // 임시
-    //    foreach (SkillTable skill in activeSkillSlot)
-    //    {
-    //        switch (skill.targetType)
-    //        {
-    //            case SkillTargetType.Single:
-    //                {
-    //                    if (Time.time - skill.lastAttackTime > skill.coolDownTime)
-    //                    {
-    //                        // 10f 까지 탐색? = 보스 탐지거리
-    //                        // 가까운놈 찾아서 그방향으로 발사 일정거리 가면 사라짐
-    //                        // 발사 방향
-    //                        Vector3 direction = DetectEnemyDirection();
-    //                        // 발사 작동
-    //                        skillPool.GetPoolSkill(skill.skillId, skill.level, projectilePoint, direction);
-    //                        skillPool.GetPoolFlash(skill.skillId, projectilePoint, direction);
-    //                        skill.lastAttackTime = Time.time;
-    //                    }
-    //                }
-    //                break;
-    //        }
-    //    }
-    //}
-
     public void SkillUpdate(SkillTable skilldata)
     {
         // 그룹 중복값 삭제
         bool skillFound = false;
-        if (skilldata.applyType == SkillApplyType.Active)
+        if (skilldata.applyType == SkillApplyType.Active
+            || skilldata.applyType == SkillApplyType.Awaken)
         {
             // UI 용
             for (int i = 0; i < activeSkillSlot.Count; i++)
@@ -306,7 +269,20 @@ public class Player : MonoBehaviour
                         Vector3 direction = DetectEnemyDirection();
                         // 발사 작동
                         skillPool.GetPoolSkill(skilldata.skillId, projectilePoint, direction, damage);
-                        skillPool.GetPoolFlash(skilldata.skillId, projectilePoint, direction);
+                    }
+                    break;
+                case SkillTargetType.FixedDirection:
+                    {
+                        yield return new WaitForSeconds(skilldata.coolDownTime);
+                        float projectileAngle = 360f / skilldata.projectileCount;
+                        float startAngle = Random.Range(0f, projectileAngle);
+
+                        for (int i = 0; i < skilldata.projectileCount; i++)
+                        {
+                            float radAngle = (startAngle + i * projectileAngle) * Mathf.Deg2Rad;
+                            Vector3 direction = new Vector3(Mathf.Cos(radAngle), 0f, Mathf.Sin(radAngle));
+                            skillPool.GetPoolSkill(skilldata.skillId, projectilePoint, direction, damage);
+                        }
                     }
                     break;
                 default:
@@ -337,30 +313,19 @@ public class Player : MonoBehaviour
         float per = (float)playeringameinfo.curHp / playeringameinfo.maxHp;
         hpGuageSlider.value = per;
 
-        // takeDamagePoint.gameObject.SetActive(true);
         damageAmount = -damageAmount;
-        // takeDamagePoint.text = damageAmount.ToString();
-        // // 코루틴 사용
-        // StartCoroutine(SetActiveFalse());
 
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
-        Debug.Log("데미지텍스트 프리팹 " + hudText);
+        //Debug.Log("데미지텍스트 프리팹 " + hudText);
         hudText.transform.position = hudPos.position; // 표시될 위치
         hudText.GetComponentInChildren<DamageText>().damage = damageAmount; // 데미지 전달
                                                                             // player.TakePhysicalDamage(damageAmount);
 
 
-        Debug.Log("플레이어 현재 HP" + per);
+        //Debug.Log("플레이어 현재 HP" + per);
         if (playeringameinfo.curHp <= 0)
             OnDead();
     }
-
-    // IEnumerator SetActiveFalse()
-    // {
-    //     yield return new WaitForSeconds(1.0f); 
-    //     takeDamagePoint.gameObject.SetActive(false);
-    //     // 지금 실행하는 쓰레드를 기다릴거냐 말거냐, 턴을 넘김 null 을 넘김
-    // }
 
     void OnDead()
     {
@@ -437,9 +402,18 @@ public class Player : MonoBehaviour
     /// TODO : 데이터 기본값 + 업적에 따른 오픈 개수
     /// </summary>
     /// <returns>스킬 슬롯 오픈개수</returns>
-    public int CurrentOpenSkillSlotCount() //허용 슬롯의 숫자. 일단 3으로 정해놓았으나 이후 조건에 따른 값을 리턴하게 한다.
+    public int CurrentOpenSkillSlotCount(SkillApplyType applyType) //허용 슬롯의 숫자. 일단 3으로 정해놓았으나 이후 조건에 따른 값을 리턴하게 한다.
     {
-        return 3;
+        int slotCount = 3;
+        if (applyType == SkillApplyType.Active)
+        {
+            slotCount += Mathf.Max((playeringameinfo.curLevel + 3) / 6, 3);
+        }
+        else if (applyType == SkillApplyType.Passive)
+        {
+            slotCount += Mathf.Max(playeringameinfo.curLevel / 6, 3);
+        }
+        return slotCount;
     }
 
     /// <summary>
