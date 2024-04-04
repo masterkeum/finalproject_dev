@@ -13,6 +13,7 @@ public class DataTable
     public List<SkillTable> SkillTable;
     public List<ItemTable> ItemTable;
     public List<LevelGacha> LevelGacha;
+    public List<Shop> Shop;
 }
 
 [Serializable]
@@ -164,4 +165,22 @@ public class LevelGacha
     public float rare;
     public float epic;
     public float legendary;
+}
+
+[Serializable]
+public class Shop
+{
+    public int packageId;
+    public string packageDesc;
+    public int currencyID;
+    public int price;
+    public ItemType itemType1;
+    public int itemId1;
+    public int amount1;
+    public ItemType itemType2;
+    public int? itemId2;
+    public int? amount2;
+    public ItemType itemType3;
+    public int? itemId3;
+    public int? amount3;
 }

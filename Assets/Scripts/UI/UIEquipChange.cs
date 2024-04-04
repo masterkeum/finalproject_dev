@@ -13,9 +13,7 @@ public class UIEquipChange : UIBase
     public Image curIcon;
     public Image newGlow;
     public Image curGlow;
-    public TextMeshProUGUI newItemNameText;
     public TextMeshProUGUI newItemDescriptionText;
-    public TextMeshProUGUI curItemNameText;
     public TextMeshProUGUI curItemDescriptionText;
     public GameObject equipButton;
     public GameObject sellButton;
@@ -32,32 +30,27 @@ public class UIEquipChange : UIBase
         string newPath = GameManager.Instance.accountInfo.newItem.ImageFile;
         newIcon.sprite = Resources.Load<Sprite>(newPath);
         Item newItem = GameManager.Instance.accountInfo.newItem;
-        if (newItem.nameAlias.Length > 10)
-        {
-            newItemNameText.fontSize = 50;
-        }
-        newItemNameText.text = GameManager.Instance.accountInfo.newItem.nameAlias;
         GlowColorChange(newGlow, GameManager.Instance.accountInfo.newItem);
 
         string statList = "";
-        if (newItem.Hp > 0)
-            statList += "체력 : " + newItem.Hp + "\n";
-        if (newItem.Dp > 0)
-            statList += "방어력 : " + newItem.Dp + "\n";
-        if (newItem.Ap > 0)
-            statList += "공격력 : " + newItem.Ap + "\n";
-        if (newItem.MoveSpeed > 0)
-            statList += "이동속도 : " + newItem.MoveSpeed + "\n";
-        if (newItem.CriticalHit > 0)
-            statList += "치명타 : " + newItem.CriticalHit + "\n";
-        if (newItem.HpGen > 0)
-            statList += "재생 : " + newItem.HpGen + "\n";
+        Item curItem = CurChangeableItme();
+        if (newItem.Hp > 0 ||curItem.Hp>0)
+            statList += "체력 : " + newItem.Hp + GetArrow(newItem.Hp,curItem.Hp) + "\n";
+        if (newItem.Dp > 0 || curItem.Dp>0)
+            statList += "방어력 : " + newItem.Dp + GetArrow(newItem.Dp,curItem.Dp) + "\n";
+        if (newItem.Ap > 0 || curItem.Ap > 0)
+            statList += "공격력 : " + newItem.Ap + GetArrow(newItem.Ap, curItem.Ap) + "\n";
+        if (newItem.MoveSpeed > 0 || curItem.MoveSpeed > 0)
+            statList += "이동속도 : " + newItem.MoveSpeed + GetArrow(newItem.MoveSpeed, curItem.MoveSpeed) + "\n";
+        if (newItem.CriticalHit > 0 || curItem.CriticalHit > 0)
+            statList += "치명타 : " + newItem.CriticalHit + GetArrow(newItem.CriticalHit, curItem.CriticalHit) + "\n";
+        if (newItem.HpGen > 0 || curItem.HpGen > 0)
+            statList += "재생 : " + newItem.HpGen + GetArrow(newItem.HpGen, curItem.HpGen) + "\n";
         newItemDescriptionText.text = statList;
 
 
         string curPath = CurChangeableItme().ImageFile;
         curIcon.sprite = Resources.Load<Sprite>(curPath);
-        curItemNameText.text = CurChangeableItme().nameAlias;
         GlowColorChange(curGlow, CurChangeableItme());
         
         string curStatList = "";
@@ -121,6 +114,18 @@ public class UIEquipChange : UIBase
                 glow.color = new Color(1f, 0f, 0f);
                 break;
         }
+    }
+    
+    private string GetArrow(float newValue, float curValue)
+    {
+        string arrow = "";
+        if (newValue > curValue)
+        {
+            arrow = "<color=green>▲</color>";
+        }
+        else
+            arrow = "<color=red>▼</color>";
+        return arrow;
     }
 
     public void OnEquip()
