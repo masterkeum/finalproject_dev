@@ -36,6 +36,6 @@ public class DamageText : MonoBehaviour
 
     private void DestroyObject()
     {
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }
