@@ -78,6 +78,8 @@ public enum SkillTargetType
     Self,
     DotHeal,
     AddHP,
+    AddDamage,
+    AddDef,
 }
 
 public enum SkillRangeType

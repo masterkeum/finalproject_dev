@@ -340,18 +340,13 @@ public class Player : MonoBehaviour
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
         //Debug.Log("데미지텍스트 프리팹 " + hudText);
         hudText.transform.position = hudPos.position; // 표시될 위치
-        DamageText damageText = hudText.GetComponent<DamageText>();
+        Color color = Color.white;
         if (damageAmount < 0)
-        {
-            damageText.color = new Color(1f, 0f, 0f, 1f);
-        }
+            color = new Color(1f, 0f, 0f);
         else
-        {
-            damageText.color = new Color(0f, 1f, 0f, 1f);
-        }
-        hudText.GetComponentInChildren<DamageText>().damage = damageAmount; // 데미지 전달
-                                                                            // player.TakePhysicalDamage(damageAmount);
+            color = new Color(0f, 1f, 0f);
 
+        hudText.GetComponentInChildren<DamageText>().Init(damageAmount, color);
 
         //Debug.Log("플레이어 현재 HP" + per);
         if (playeringameinfo.curHp <= 0)
