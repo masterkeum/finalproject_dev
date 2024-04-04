@@ -26,7 +26,7 @@ public class EnemyBossController : EnemyBaseController
         minWanderDistance = 8f;
         maxWanderDistance = 10f;
         minWanderWaitTime = 1f;
-        maxWanderWaitTime = 3f;
+        maxWanderWaitTime = 2f;
 
         path = new NavMeshPath();
         SetState(EnemyState.Wander);
@@ -152,7 +152,6 @@ public class EnemyBossController : EnemyBaseController
         if (Time.time - lastAttackTime > characterInfo.attackSpeed)
         {
             lastAttackTime = Time.time;
-            //PlayerController.instance.GetComponent<IDamagable>().TakePhysicalDamage(damage); // 데미지 처리
             player.TakeDamage(damage);
             animator.SetTrigger(Attack);
         }

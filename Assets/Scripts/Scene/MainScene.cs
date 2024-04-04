@@ -9,7 +9,7 @@ public class MainScene : MonoBehaviour
         Debug.Log("MainScene.Awake");
         Time.timeScale = 1.0f;
         _ = DataManager.Instance;
-        _ = SoundManager.Instance;
+        SoundManager.Instance.CreateSFXAudioSource();
         GameManager.Instance.Clear();
         UIManager.Instance.Clear();
     }

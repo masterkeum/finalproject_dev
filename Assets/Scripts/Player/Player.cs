@@ -256,7 +256,8 @@ public class Player : MonoBehaviour
 
     IEnumerator SkillRoutine(SkillTable skilldata)
     {
-        int damage = 50;
+        //최종 데미지 = (기본 공격력 + 아이템 공격력 보정치) x (공격력 배율) - (방어력*방어력배율) + 스킬 추가 데미지 + (크리티컬 데미지 보정치 * 크리티컬 여부)
+        int damage = Mathf.RoundToInt((playeringameinfo.attackPower + skilldata.attackDamage) * 0.8f);
         Debug.Log($"Coroutine started with parameter: {skilldata.skillId}");
         while (true)
         {

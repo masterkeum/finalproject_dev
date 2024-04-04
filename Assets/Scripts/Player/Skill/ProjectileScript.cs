@@ -27,7 +27,7 @@ public class ProjectileScript : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("ProjectileScript.Awake");
+        //Debug.Log("ProjectileScript.Awake");
 
         rb = transform.GetComponent<Rigidbody>();
         sc = transform.GetComponent<SphereCollider>();
@@ -45,7 +45,7 @@ public class ProjectileScript : MonoBehaviour
 
     public void Init(int _skillId, int _damage)
     {
-        Debug.Log("ProjectileScript.Init");
+        //Debug.Log("ProjectileScript.Init");
         skillInfo = DataManager.Instance.GetSkillTable(_skillId);
         damage = _damage;
 
@@ -73,7 +73,7 @@ public class ProjectileScript : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("ProjectileScript.OnEnable");
+        //Debug.Log("ProjectileScript.OnEnable");
         rb.constraints = originalConstraints;
         projectileSpeed = originalSpeed;
         sc.enabled = true;

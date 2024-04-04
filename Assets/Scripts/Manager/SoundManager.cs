@@ -19,14 +19,16 @@ public class SoundManager : SingletoneBase<SoundManager>
     {
         musicAudioSource = gameObject.AddComponent<AudioSource>();
         musicAudioSource.loop = true;
-        
+
         LoadUISoundClip();
         LoadBattleSoundclip();
-        ChangeBackGroundMusic(Resources.Load<AudioClip>("Audio/Music/wednesday_night"),musicAudioSource.volume);
+        ChangeBackGroundMusic(Resources.Load<AudioClip>("Audio/Music/wednesday_night"), musicAudioSource.volume);
+    }
 
+    public void CreateSFXAudioSource()
+    {
         GameObject uiSfxSource = new GameObject("uiSfxSource");
         sfxAudioSource = uiSfxSource.AddComponent<AudioSource>();
-
     }
 
     private void LoadUISoundClip()
@@ -41,13 +43,13 @@ public class SoundManager : SingletoneBase<SoundManager>
     private void LoadBattleSoundclip()
     {
         AudioClip[] uiClips = Resources.LoadAll<AudioClip>("Audio/Battle");
-        foreach(AudioClip clip in uiClips)
+        foreach (AudioClip clip in uiClips)
         {
             battleDict.Add(clip.name, clip);
         }
     }
 
-    public void ChangeBackGroundMusic(AudioClip clip,float volume)
+    public void ChangeBackGroundMusic(AudioClip clip, float volume)
     {
         musicAudioSource.Stop();
         musicAudioSource.clip = clip;
@@ -67,19 +69,19 @@ public class SoundManager : SingletoneBase<SoundManager>
             Debug.Log(clipName + "클립이 없습니다.");
             return;
         }
-        sfxAudioSource.PlayOneShot(uiSFXDict[clipName],volume * soundEffectVolume);
+        sfxAudioSource.PlayOneShot(uiSFXDict[clipName], volume * soundEffectVolume);
     }
 
     public void PlayBattleSound(string clipName, float volume = 1.0f)
     {
-        if(battleDict.ContainsKey(clipName) == false)
+        if (battleDict.ContainsKey(clipName) == false)
         {
             Debug.Log(clipName + "클립이 없습니다.");
             return;
         }
-        battleAudioSource.PlayOneShot(battleDict[clipName],volume * soundEffectVolume);
+        battleAudioSource.PlayOneShot(battleDict[clipName], volume * soundEffectVolume);
     }
-   
+
 
 
 }
