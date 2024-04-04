@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4615003313031166}
-  - component: {fileID: 114228458808666186}
+  - component: {fileID: 2773605587822668972}
   - component: {fileID: 54969070811294218}
   - component: {fileID: 135507269612158032}
   m_Layer: 0
@@ -34,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114228458808666186
+--- !u!114 &2773605587822668972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1587250918974726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c736e84d8f869d245b3d1dba36061db9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6de97705cf4d3004eb83e59785cea262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   impactParticle: {fileID: 1944020486928733632, guid: 8552d32b513b77347afa9c6a68fcc6ec,
@@ -52,9 +52,15 @@ MonoBehaviour:
     type: 3}
   muzzleParticle: {fileID: 1785068816427774, guid: 1ab21f1ce561cfe46bb8e0c9aa39284c,
     type: 3}
-  trailParticles: []
-  colliderRadius: 1
-  collideOffset: 0.15
+  disableAfterTime: 5
+  rb: {fileID: 0}
+  sc: {fileID: 0}
+  parentObject: {fileID: 0}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  projectileSpeed: 15
+  projectilePenetration: 0
 --- !u!54 &54969070811294218
 Rigidbody:
   m_ObjectHideFlags: 0

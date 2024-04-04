@@ -24,7 +24,7 @@ public class SkillPool : MonoBehaviour
         {
             id = skillData.skillId,
             prefab = Resources.Load<GameObject>(skillData.prefabAddress),
-            amount = 20
+            amount = 40
         };
         projectileList.Add(projectile);
     }
@@ -39,7 +39,7 @@ public class SkillPool : MonoBehaviour
             {
                 GameObject skillgo = Instantiate(pool.prefab, transform.position, Quaternion.identity);
                 skillgo.transform.SetParent(transform);
-                skillgo.GetComponent<ProjectileScript>().Init(pool.id, 1);
+                //skillgo.GetComponent<ProjectileScript>().Init(pool.id, 1);
                 skillgo.SetActive(false);
                 skillQueue.Enqueue(skillgo);
             }

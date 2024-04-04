@@ -271,6 +271,20 @@ public class Player : MonoBehaviour
                         skillPool.GetPoolSkill(skilldata.skillId, projectilePoint, direction, damage);
                     }
                     break;
+                case SkillTargetType.FixedDirection:
+                    {
+                        yield return new WaitForSeconds(skilldata.coolDownTime);
+                        float projectileAngle = 360f / skilldata.projectileCount;
+                        float startAngle = Random.Range(0f, projectileAngle);
+
+                        for (int i = 0; i < skilldata.projectileCount; i++)
+                        {
+                            float radAngle = (startAngle + i * projectileAngle) * Mathf.Deg2Rad;
+                            Vector3 direction = new Vector3(Mathf.Cos(radAngle), 0f, Mathf.Sin(radAngle));
+                            skillPool.GetPoolSkill(skilldata.skillId, projectilePoint, direction, damage);
+                        }
+                    }
+                    break;
                 default:
                     yield break;
             }
