@@ -8,7 +8,7 @@ public class ProjectileScript : MonoBehaviour
     public GameObject muzzleParticle;
 
     public float disableAfterTime = 5f;
-    public float hitOffset = 1f;
+    private float hitOffset = 1f;
 
     public Rigidbody rb; // 리지드바디
     public SphereCollider sc;
