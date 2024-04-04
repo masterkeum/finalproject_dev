@@ -74,7 +74,12 @@ public enum SkillTargetType
     RandomPos,
     AOE,
     FixedDirection,
+    // passive
     Self,
+    DotHeal,
+    AddHP,
+    AddDamage,
+    AddDef,
 }
 
 public enum SkillRangeType

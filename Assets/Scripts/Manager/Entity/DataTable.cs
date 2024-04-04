@@ -123,6 +123,7 @@ public class SkillTable
     public int addHP;
     public int regenHP;
     public string imageAddress;
+    public string prefabAsset;
     public string prefabAddress;
 }
 

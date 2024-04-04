@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
+[Serializable]
 public struct PlayerInGameInfo
 {
     public int curHp;
@@ -19,7 +21,7 @@ public struct PlayerInGameInfo
     public int addProjectileCount;
     public int addprojectilePenetration;
     public int addDefense;
-    public int addHp;
+    public int addSkillHp;
     public int addRegenHp;
 
 
@@ -50,7 +52,7 @@ public struct PlayerInGameInfo
         addProjectileCount = 0;
         addprojectilePenetration = 0;
         addDefense = 0;
-        addHp = 0;
+        addSkillHp = 0;
         addRegenHp = 0;
 
         curLevel = _level;
@@ -83,6 +85,8 @@ public class Player : MonoBehaviour
     // 적
     public LayerMask enemyLayer;
     public float detectionRange = 15f;
+    public float detectRandomRange = 10f;
+
     private List<Transform> nearEnemy = new List<Transform>();
     protected SkillPool skillPool;
 
@@ -235,57 +239,130 @@ public class Player : MonoBehaviour
             if (passiveSkill.ContainsKey(skilldata.skillGroup))
             {
                 passiveSkill[skilldata.skillGroup] = skilldata;
-                //skillCoroutines[skilldata.skillGroup] = StartSkillCoroutine(skilldata);
+                skillCoroutines[skilldata.skillGroup] = StartSkillCoroutine(skilldata);
             }
             else
             {
                 passiveSkill.Add(skilldata.skillGroup, skilldata);
-                //skillCoroutines.Add(skilldata.skillGroup, StartSkillCoroutine(skilldata));
+                skillCoroutines.Add(skilldata.skillGroup, StartSkillCoroutine(skilldata));
             }
         }
     }
 
     public Coroutine StartSkillCoroutine(SkillTable skilldata)
     {
-        if (skillCoroutines.ContainsKey(skilldata.skillGroup))
+        if (skillCoroutines.ContainsKey(skilldata.skillGroup) && skillCoroutines[skilldata.skillGroup] != null)
         {
             StopCoroutine(skillCoroutines[skilldata.skillGroup]);
         }
         return StartCoroutine(SkillRoutine(skilldata));
     }
 
-    IEnumerator SkillRoutine(SkillTable skilldata)
+    IEnumerator SkillRoutine(SkillTable skillData)
     {
         //최종 데미지 = (기본 공격력 + 아이템 공격력 보정치) x (공격력 배율) - (방어력*방어력배율) + 스킬 추가 데미지 + (크리티컬 데미지 보정치 * 크리티컬 여부)
-        int damage = Mathf.RoundToInt((playeringameinfo.attackPower + skilldata.attackDamage) * 0.8f);
-        Debug.Log($"Coroutine started with parameter: {skilldata.skillId}");
+        int damage = Mathf.RoundToInt((playeringameinfo.attackPower + skillData.attackDamage) * 0.5f);
+        int projectileTotalCount = skillData.projectileCount;
+        Debug.Log($"Coroutine started with parameter: {skillData.skillId}");
         while (true)
         {
-            switch (skilldata.targetType)
+            yield return new WaitForSeconds(skillData.coolDownTime);
+
+            switch (skillData.targetType)
             {
+                // Active
                 case SkillTargetType.Single:
                     {
-                        yield return new WaitForSeconds(skilldata.coolDownTime);
 
-                        Vector3 direction = DetectEnemyDirection();
+                        if (skillData.skillGroup == 30000010)
+                        {
+                            // FIXME : 하드코딩
+                            // 화염구인 경우
+                            if (passiveSkill.ContainsKey(30001010))
+                            {
+                                projectileTotalCount += passiveSkill[30001010].projectileCount;
+                            }
+                        }
+
                         // 발사 작동
-                        skillPool.GetPoolSkill(skilldata.skillId, projectilePoint, direction, damage);
+                        for (int i = 0; i < projectileTotalCount; i++)
+                        {
+                            Vector3 direction = DetectEnemyDirection();
+                            skillPool.GetPoolProjectileSkill(skillData.skillId, projectilePoint, direction, damage);
+                            yield return new WaitForSeconds(0.2f);
+                        }
                     }
                     break;
                 case SkillTargetType.FixedDirection:
                     {
-                        yield return new WaitForSeconds(skilldata.coolDownTime);
-                        float projectileAngle = 360f / skilldata.projectileCount;
-                        float startAngle = Random.Range(0f, projectileAngle);
+                        float projectileAngle = 360f / skillData.projectileCount;
+                        float startAngle = UnityEngine.Random.Range(0f, projectileAngle);
 
-                        for (int i = 0; i < skilldata.projectileCount; i++)
+                        for (int i = 0; i < skillData.projectileCount; i++)
                         {
                             float radAngle = (startAngle + i * projectileAngle) * Mathf.Deg2Rad;
                             Vector3 direction = new Vector3(Mathf.Cos(radAngle), 0f, Mathf.Sin(radAngle));
-                            skillPool.GetPoolSkill(skilldata.skillId, projectilePoint, direction, damage);
+                            skillPool.GetPoolProjectileSkill(skillData.skillId, projectilePoint, direction, damage);
                         }
                     }
                     break;
+
+                case SkillTargetType.RandomSingle:
+                    {
+                        // 발사 작동
+                        for (int i = 0; i < projectileTotalCount; i++)
+                        {
+                            // 랜덤 단일 타겟
+                            Vector3 enemyPos = DetectRandomEnemyPos();
+                            skillPool.GetPoolSkyFallSkill(skillData.skillId, enemyPos, damage);
+                            yield return new WaitForSeconds(0.2f);
+                        }
+                    }
+                    break;
+                case SkillTargetType.RandomPos:
+                    {
+                        if (skillData.prefabAsset == "SineVFX")
+                        {
+                            Vector3 randomPos = DetectRandomPos();
+                            Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), randomPos, Quaternion.identity);
+                            // 생성만
+                        }
+                        else
+                        {
+                            // 발사 작동
+                            for (int i = 0; i < projectileTotalCount; i++)
+                            {
+                                // 랜덤 포지션
+                                Vector3 randomPos = DetectRandomPos();
+                                skillPool.GetPoolSkyFallSkill(skillData.skillId, randomPos, damage);
+                                yield return new WaitForSeconds(0.2f);
+                            }
+                        }
+                    }
+                    break;
+
+                // Passive
+                case SkillTargetType.DotHeal:
+                    {
+                        if (playeringameinfo.curHp < playeringameinfo.maxHp)
+                        {
+                            int regenAmount = Mathf.Min(skillData.regenHP, playeringameinfo.maxHp - playeringameinfo.curHp);
+                            TakeDamage(-regenAmount);
+                        }
+                    }
+                    break;
+                case SkillTargetType.AddHP:
+                    {
+                        playeringameinfo.addSkillHp = 0;
+                        foreach (SkillTable skillTable in passiveSkillSlot)
+                        {
+                            playeringameinfo.addSkillHp += skillTable.addHP;
+                        }
+                        playeringameinfo.maxHp = playerStatInfo.hp + playerStatInfo.addHp + playeringameinfo.addSkillHp;
+
+                        UpdateHPBar();
+                    }
+                    yield break;
                 default:
                     yield break;
             }
@@ -307,21 +384,28 @@ public class Player : MonoBehaviour
     //     screenPos = Camera.main.WorldToScreenPoint(moveVec);
     //     Debug.Log("스크린투 월드 좌표: "+screenPos);
     // }
+    public void UpdateHPBar()
+    {
+        float per = (float)playeringameinfo.curHp / playeringameinfo.maxHp;
+        hpGuageSlider.value = per;
+    }
 
     public void TakeDamage(int damageAmount)
     {
         playeringameinfo.curHp -= damageAmount;
-        float per = (float)playeringameinfo.curHp / playeringameinfo.maxHp;
-        hpGuageSlider.value = per;
+        UpdateHPBar();
 
         damageAmount = -damageAmount;
-
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
         //Debug.Log("데미지텍스트 프리팹 " + hudText);
         hudText.transform.position = hudPos.position; // 표시될 위치
-        hudText.GetComponentInChildren<DamageText>().damage = damageAmount; // 데미지 전달
-                                                                            // player.TakePhysicalDamage(damageAmount);
+        Color color = Color.white;
+        if (damageAmount < 0)
+            color = new Color(1f, 0f, 0f);
+        else
+            color = new Color(0f, 1f, 0f);
 
+        hudText.GetComponentInChildren<DamageText>().Init(damageAmount, color);
 
         //Debug.Log("플레이어 현재 HP" + per);
         if (playeringameinfo.curHp <= 0)
@@ -335,6 +419,45 @@ public class Player : MonoBehaviour
         ++UIManager.Instance.popupUICount;
     }
 
+    protected Vector3 DetectRandomEnemyPos()
+    {
+        nearEnemy.Clear();
+        // TODO: OverlapSphereNonAlloc로 변환가능하면 변환
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectRandomRange, enemyLayer);
+        foreach (Collider col in hitColliders)
+        {
+            nearEnemy.Add(col.transform);
+        }
+
+        if (nearEnemy.Count > 0)
+        {
+            // nearEnemy 에서 랜덤으로 하나만 선택
+            int randomIndex = UnityEngine.Random.Range(0, nearEnemy.Count);
+            return nearEnemy[randomIndex].position;
+        }
+        else
+        {
+            return DetectRandomPos();
+        }
+    }
+
+    protected Vector3 DetectRandomPos()
+    {
+        // 적 아무 곳이나
+        Vector3 randomPosition = UnityEngine.Random.onUnitSphere * detectRandomRange + transform.position;
+        randomPosition.y = 100f;
+        RaycastHit hit;
+        NavMeshHit navhit;
+        if (Physics.Raycast(new Ray(randomPosition, Vector3.down), out hit, Mathf.Infinity))
+        {
+            if (NavMesh.SamplePosition(hit.point, out navhit, detectRandomRange, NavMesh.AllAreas))
+            {
+                randomPosition = navhit.position;
+            }
+        }
+
+        return randomPosition;
+    }
     /// <summary>
     /// 
     /// </summary>
@@ -406,13 +529,14 @@ public class Player : MonoBehaviour
     public int CurrentOpenSkillSlotCount(SkillApplyType applyType) //허용 슬롯의 숫자. 일단 3으로 정해놓았으나 이후 조건에 따른 값을 리턴하게 한다.
     {
         int slotCount = 3;
+        int accountLevel = GameManager.Instance.accountInfo.level;
         if (applyType == SkillApplyType.Active)
         {
-            slotCount += Mathf.Max((playeringameinfo.curLevel + 3) / 6, 3);
+            slotCount += Mathf.Min((accountLevel + 3) / 6, 3);
         }
         else if (applyType == SkillApplyType.Passive)
         {
-            slotCount += Mathf.Max(playeringameinfo.curLevel / 6, 3);
+            slotCount += Mathf.Min(accountLevel / 6, 3);
         }
         return slotCount;
     }

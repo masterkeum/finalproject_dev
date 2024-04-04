@@ -1,37 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class DamageText : MonoBehaviour
 {
-    private float moveSpeed;
-    private float alphaSpeed;
-    private float destroyTime;
+    private float moveSpeed = 2.0f;
+    private float alphaSpeed = 2.0f;
+    private float destroyTime = 2.0f;
     TMP_Text text;
-    Color alpha;
+    public Color color;
     public int damage;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         moveSpeed = 2.0f;
         alphaSpeed = 2.0f;
         destroyTime = 2.0f;
-
         text = GetComponent<TMP_Text>();
-        alpha = text.color;
-        text.text = damage.ToString();
+
         Invoke("DestroyObject", destroyTime);
     }
 
-    // Update is called once per frame
+    public void Init(int _damage, Color _color)
+    {
+        damage = _damage;
+        color = _color;
+        text.text = damage.ToString();
+    }
+
     void Update()
     {
         transform.Translate(new Vector3(0, moveSpeed * Time.deltaTime, 0)); // 텍스트 위치
-        
-        alpha.a = Mathf.Lerp(alpha.a, 0, Time.deltaTime * alphaSpeed); // 텍스트 알파값
-        text.color = alpha;
+
+        color.a = Mathf.Lerp(color.a, 0, Time.deltaTime * alphaSpeed); // 텍스트 알파값
+        text.color = color;
     }
 
     private void DestroyObject()

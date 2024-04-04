@@ -1,6 +1,4 @@
-using Gley.Jumpy;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -95,14 +93,15 @@ public class EnemyBaseController : MonoBehaviour
         monsterID = _monsterID;
         level = _level;
         targetPlayerTransform = target.transform;
+        lastAttackTime = Time.time;
 
         characterInfo = DataManager.Instance.characterInfoDict[monsterID];
         monsterLevel = characterInfo.monsterLevelData[level];
 
         // 몬스터 스탯초기화
-        currentHp = characterInfo.hp;
-        maxHp = characterInfo.hp;
-        damage = characterInfo.attackPower;
+        maxHp = characterInfo.hp + monsterLevel.addHP;
+        damage = characterInfo.attackPower + monsterLevel.addAP;
+        currentHp = maxHp;
 
         navMeshAgent.speed = characterInfo.moveSpeed;
         navMeshAgent.stoppingDistance = characterInfo.attackRange;
@@ -150,8 +149,7 @@ public class EnemyBaseController : MonoBehaviour
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
         //Debug.Log("데미지텍스트 프리팹 " + hudText);
         hudText.transform.position = hudPos.position; // 표시될 위치
-        hudText.GetComponentInChildren<DamageText>().damage = damageAmount; // 데미지 전달
-        // player.TakePhysicalDamage(damageAmount);
+        hudText.GetComponentInChildren<DamageText>().Init(damageAmount, new Color(1f, 1f, 1f));
     }
 
     protected virtual void OnDead()
