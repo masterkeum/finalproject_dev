@@ -24,7 +24,7 @@ public class SkillPool : MonoBehaviour
         {
             id = skillData.skillId,
             prefab = Resources.Load<GameObject>(skillData.prefabAddress),
-            amount = 40
+            amount = 25
         };
         projectileList.Add(projectile);
     }
@@ -49,7 +49,7 @@ public class SkillPool : MonoBehaviour
         projectileList.Clear();
     }
 
-    public void GetPoolSkill(int skillId, Transform point, Vector3 direction, int damage)
+    public void GetPoolProjectileSkill(int skillId, Transform point, Vector3 direction, int damage)
     {
         // TODO : 가변적으로 추가생성되게 변경
 
@@ -72,6 +72,30 @@ public class SkillPool : MonoBehaviour
         }
     }
 
+    public void GetPoolSkyFallSkill(int skillId, Vector3 enemyPos, int damage)
+    {
+        // TODO : 가변적으로 추가생성되게 변경
+
+        if (poolDictionary.ContainsKey(skillId))
+        {
+            GameObject obj = poolDictionary[skillId].Dequeue();
+            obj.transform.position = new Vector3(enemyPos.x, 10f, enemyPos.z);
+            obj.transform.rotation = Quaternion.LookRotation(Vector3.down);
+            obj.GetComponent<ProjectileScript>().Init(skillId, damage);
+            obj.SetActive(true);
+
+            poolDictionary[skillId].Enqueue(obj);
+
+            StartCoroutine(SkillCall(obj));
+
+        }
+        else
+        {
+            Debug.Log($"Can't find Obj : {skillId}");
+        }
+    }
+
+
     public void DestroyDicObject(int key)
     {
         if (poolDictionary.ContainsKey(key))
@@ -79,7 +103,7 @@ public class SkillPool : MonoBehaviour
             while (poolDictionary[key].Count > 0)
             {
                 GameObject obj = poolDictionary[key].Dequeue();
-                obj.GetComponent<ProjectileScript>().dispose();
+                Destroy(obj);
             }
             poolDictionary.Remove(key);
         }

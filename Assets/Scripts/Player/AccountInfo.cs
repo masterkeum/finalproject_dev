@@ -20,6 +20,7 @@ public class Item
     public int getExp;
 }
 
+[Serializable]
 public struct PlayerStatInfo
 {
     /*

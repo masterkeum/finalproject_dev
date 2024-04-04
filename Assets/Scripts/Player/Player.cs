@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
+[Serializable]
 public struct PlayerInGameInfo
 {
     public int curHp;
@@ -19,7 +21,7 @@ public struct PlayerInGameInfo
     public int addProjectileCount;
     public int addprojectilePenetration;
     public int addDefense;
-    public int addHp;
+    public int addSkillHp;
     public int addRegenHp;
 
 
@@ -50,7 +52,7 @@ public struct PlayerInGameInfo
         addProjectileCount = 0;
         addprojectilePenetration = 0;
         addDefense = 0;
-        addHp = 0;
+        addSkillHp = 0;
         addRegenHp = 0;
 
         curLevel = _level;
@@ -83,6 +85,8 @@ public class Player : MonoBehaviour
     // 적
     public LayerMask enemyLayer;
     public float detectionRange = 15f;
+    public float detectRandomRange = 10f;
+
     private List<Transform> nearEnemy = new List<Transform>();
     protected SkillPool skillPool;
 
@@ -258,16 +262,18 @@ public class Player : MonoBehaviour
     {
         //최종 데미지 = (기본 공격력 + 아이템 공격력 보정치) x (공격력 배율) - (방어력*방어력배율) + 스킬 추가 데미지 + (크리티컬 데미지 보정치 * 크리티컬 여부)
         int damage = Mathf.RoundToInt((playeringameinfo.attackPower + skilldata.attackDamage) * 0.5f);
+        int projectileTotalCount = skilldata.projectileCount;
         Debug.Log($"Coroutine started with parameter: {skilldata.skillId}");
         while (true)
         {
+            yield return new WaitForSeconds(skilldata.coolDownTime);
+
             switch (skilldata.targetType)
             {
+                // Active
                 case SkillTargetType.Single:
                     {
-                        yield return new WaitForSeconds(skilldata.coolDownTime);
 
-                        int projectileTotalCount = skilldata.projectileCount;
                         if (skilldata.skillGroup == 30000010)
                         {
                             // FIXME : 하드코딩
@@ -282,31 +288,72 @@ public class Player : MonoBehaviour
                         for (int i = 0; i < projectileTotalCount; i++)
                         {
                             Vector3 direction = DetectEnemyDirection();
-                            skillPool.GetPoolSkill(skilldata.skillId, projectilePoint, direction, damage);
+                            skillPool.GetPoolProjectileSkill(skilldata.skillId, projectilePoint, direction, damage);
                             yield return new WaitForSeconds(0.2f);
                         }
                     }
                     break;
                 case SkillTargetType.FixedDirection:
                     {
-                        yield return new WaitForSeconds(skilldata.coolDownTime);
                         float projectileAngle = 360f / skilldata.projectileCount;
-                        float startAngle = Random.Range(0f, projectileAngle);
+                        float startAngle = UnityEngine.Random.Range(0f, projectileAngle);
 
                         for (int i = 0; i < skilldata.projectileCount; i++)
                         {
                             float radAngle = (startAngle + i * projectileAngle) * Mathf.Deg2Rad;
                             Vector3 direction = new Vector3(Mathf.Cos(radAngle), 0f, Mathf.Sin(radAngle));
-                            skillPool.GetPoolSkill(skilldata.skillId, projectilePoint, direction, damage);
+                            skillPool.GetPoolProjectileSkill(skilldata.skillId, projectilePoint, direction, damage);
                         }
                     }
                     break;
-                case SkillTargetType.DotHeal:
+
+                case SkillTargetType.RandomSingle:
                     {
-                        yield return new WaitForSeconds(skilldata.coolDownTime);
-                        TakeDamage(-skilldata.regenHP);
+                        // 발사 작동
+                        for (int i = 0; i < projectileTotalCount; i++)
+                        {
+                            // 랜덤 단일 타겟
+                            Vector3 enemyPos = DetectRandomEnemyPos();
+                            skillPool.GetPoolSkyFallSkill(skilldata.skillId, enemyPos, damage);
+                            yield return new WaitForSeconds(0.2f);
+                        }
                     }
                     break;
+                case SkillTargetType.RandomPos:
+                    {
+                        // 발사 작동
+                        for (int i = 0; i < projectileTotalCount; i++)
+                        {
+                            // 랜덤 포지션
+                            Vector3 enemyPos = DetectRandomPos();
+                            skillPool.GetPoolSkyFallSkill(skilldata.skillId, enemyPos, damage);
+                            yield return new WaitForSeconds(0.2f);
+                        }
+                    }
+                    break;
+
+                // Passive
+                case SkillTargetType.DotHeal:
+                    {
+                        if (playeringameinfo.curHp < playeringameinfo.maxHp)
+                        {
+                            int regenAmount = Mathf.Min(skilldata.regenHP, playeringameinfo.maxHp - playeringameinfo.curHp);
+                            TakeDamage(-regenAmount);
+                        }
+                    }
+                    break;
+                case SkillTargetType.AddHP:
+                    {
+                        playeringameinfo.addSkillHp = 0;
+                        foreach (SkillTable skillTable in passiveSkillSlot)
+                        {
+                            playeringameinfo.addSkillHp += skillTable.addHP;
+                        }
+                        playeringameinfo.maxHp = playerStatInfo.hp + playerStatInfo.addHp + playeringameinfo.addSkillHp;
+
+                        UpdateHPBar();
+                    }
+                    yield break;
                 default:
                     yield break;
             }
@@ -328,15 +375,18 @@ public class Player : MonoBehaviour
     //     screenPos = Camera.main.WorldToScreenPoint(moveVec);
     //     Debug.Log("스크린투 월드 좌표: "+screenPos);
     // }
+    public void UpdateHPBar()
+    {
+        float per = (float)playeringameinfo.curHp / playeringameinfo.maxHp;
+        hpGuageSlider.value = per;
+    }
 
     public void TakeDamage(int damageAmount)
     {
         playeringameinfo.curHp -= damageAmount;
-        float per = (float)playeringameinfo.curHp / playeringameinfo.maxHp;
-        hpGuageSlider.value = per;
+        UpdateHPBar();
 
         damageAmount = -damageAmount;
-
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
         //Debug.Log("데미지텍스트 프리팹 " + hudText);
         hudText.transform.position = hudPos.position; // 표시될 위치
@@ -360,6 +410,45 @@ public class Player : MonoBehaviour
         ++UIManager.Instance.popupUICount;
     }
 
+    protected Vector3 DetectRandomEnemyPos()
+    {
+        nearEnemy.Clear();
+        // TODO: OverlapSphereNonAlloc로 변환가능하면 변환
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectRandomRange, enemyLayer);
+        foreach (Collider col in hitColliders)
+        {
+            nearEnemy.Add(col.transform);
+        }
+
+        if (nearEnemy.Count > 0)
+        {
+            // nearEnemy 에서 랜덤으로 하나만 선택
+            int randomIndex = UnityEngine.Random.Range(0, nearEnemy.Count);
+            return nearEnemy[randomIndex].position;
+        }
+        else
+        {
+            return DetectRandomPos();
+        }
+    }
+
+    protected Vector3 DetectRandomPos()
+    {
+        // 적 아무 곳이나
+        Vector3 randomPosition = UnityEngine.Random.onUnitSphere * detectRandomRange + transform.position;
+        randomPosition.y = 100f;
+        RaycastHit hit;
+        NavMeshHit navhit;
+        if (Physics.Raycast(new Ray(randomPosition, Vector3.down), out hit, Mathf.Infinity))
+        {
+            if (NavMesh.SamplePosition(hit.point, out navhit, detectRandomRange, NavMesh.AllAreas))
+            {
+                randomPosition = navhit.position;
+            }
+        }
+
+        return randomPosition;
+    }
     /// <summary>
     /// 
     /// </summary>

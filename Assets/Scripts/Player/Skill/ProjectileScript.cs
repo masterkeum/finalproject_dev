@@ -19,6 +19,7 @@ public class ProjectileScript : MonoBehaviour
 
 
     public LayerMask enemyLayerMask;
+    public LayerMask groundLayerMask;
     SkillTable skillInfo;
     public float projectileSpeed = 15f; // 오브젝트 속도
     public int projectilePenetration; // 관통력
@@ -37,7 +38,7 @@ public class ProjectileScript : MonoBehaviour
         originalConstraints = rb.constraints;
 
         enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
-
+        groundLayerMask = 1 << LayerMask.NameToLayer("Ground");
         projectileParticle = Instantiate(projectileParticle, transform.position, transform.rotation);
         projectileParticle.transform.parent = transform;
         projectileParticle.SetActive(false);
@@ -131,6 +132,27 @@ public class ProjectileScript : MonoBehaviour
 
             }
         }
+
+        if (groundLayerMask == (groundLayerMask | (1 << other.gameObject.layer)))
+        {
+            // 지면과 충돌
+            Vector3 triggerEnterPoint = other.ClosestPointOnBounds(transform.position);
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, triggerEnterPoint);
+            Vector3 pos = triggerEnterPoint + new Vector3(0, hitOffset, 0);
+
+
+            GameObject ip = Instantiate(impactParticle, pos, rot);
+
+            StartCoroutine(ActiveFalse(projectileParticle, 3f));
+            Destroy(ip, 5.0f);
+
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            projectileSpeed = 0;
+            sc.enabled = false;
+
+            StopCoroutine(LateCall());
+            gameObject.SetActive(false);
+        }
     }
 
     private IEnumerator LateCall()
@@ -149,11 +171,4 @@ public class ProjectileScript : MonoBehaviour
         yield break;
     }
 
-    public void dispose()
-    {
-        //Destroy(impactParticle);
-        //Destroy(projectileParticle);
-        //Destroy(muzzleParticle);
-        Destroy(gameObject);
-    }
 }
