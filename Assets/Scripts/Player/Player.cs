@@ -258,23 +258,23 @@ public class Player : MonoBehaviour
         return StartCoroutine(SkillRoutine(skilldata));
     }
 
-    IEnumerator SkillRoutine(SkillTable skilldata)
+    IEnumerator SkillRoutine(SkillTable skillData)
     {
         //최종 데미지 = (기본 공격력 + 아이템 공격력 보정치) x (공격력 배율) - (방어력*방어력배율) + 스킬 추가 데미지 + (크리티컬 데미지 보정치 * 크리티컬 여부)
-        int damage = Mathf.RoundToInt((playeringameinfo.attackPower + skilldata.attackDamage) * 0.5f);
-        int projectileTotalCount = skilldata.projectileCount;
-        Debug.Log($"Coroutine started with parameter: {skilldata.skillId}");
+        int damage = Mathf.RoundToInt((playeringameinfo.attackPower + skillData.attackDamage) * 0.5f);
+        int projectileTotalCount = skillData.projectileCount;
+        Debug.Log($"Coroutine started with parameter: {skillData.skillId}");
         while (true)
         {
-            yield return new WaitForSeconds(skilldata.coolDownTime);
+            yield return new WaitForSeconds(skillData.coolDownTime);
 
-            switch (skilldata.targetType)
+            switch (skillData.targetType)
             {
                 // Active
                 case SkillTargetType.Single:
                     {
 
-                        if (skilldata.skillGroup == 30000010)
+                        if (skillData.skillGroup == 30000010)
                         {
                             // FIXME : 하드코딩
                             // 화염구인 경우
@@ -288,21 +288,21 @@ public class Player : MonoBehaviour
                         for (int i = 0; i < projectileTotalCount; i++)
                         {
                             Vector3 direction = DetectEnemyDirection();
-                            skillPool.GetPoolProjectileSkill(skilldata.skillId, projectilePoint, direction, damage);
+                            skillPool.GetPoolProjectileSkill(skillData.skillId, projectilePoint, direction, damage);
                             yield return new WaitForSeconds(0.2f);
                         }
                     }
                     break;
                 case SkillTargetType.FixedDirection:
                     {
-                        float projectileAngle = 360f / skilldata.projectileCount;
+                        float projectileAngle = 360f / skillData.projectileCount;
                         float startAngle = UnityEngine.Random.Range(0f, projectileAngle);
 
-                        for (int i = 0; i < skilldata.projectileCount; i++)
+                        for (int i = 0; i < skillData.projectileCount; i++)
                         {
                             float radAngle = (startAngle + i * projectileAngle) * Mathf.Deg2Rad;
                             Vector3 direction = new Vector3(Mathf.Cos(radAngle), 0f, Mathf.Sin(radAngle));
-                            skillPool.GetPoolProjectileSkill(skilldata.skillId, projectilePoint, direction, damage);
+                            skillPool.GetPoolProjectileSkill(skillData.skillId, projectilePoint, direction, damage);
                         }
                     }
                     break;
@@ -314,20 +314,29 @@ public class Player : MonoBehaviour
                         {
                             // 랜덤 단일 타겟
                             Vector3 enemyPos = DetectRandomEnemyPos();
-                            skillPool.GetPoolSkyFallSkill(skilldata.skillId, enemyPos, damage);
+                            skillPool.GetPoolSkyFallSkill(skillData.skillId, enemyPos, damage);
                             yield return new WaitForSeconds(0.2f);
                         }
                     }
                     break;
                 case SkillTargetType.RandomPos:
                     {
-                        // 발사 작동
-                        for (int i = 0; i < projectileTotalCount; i++)
+                        if (skillData.prefabAsset == "SineVFX")
                         {
-                            // 랜덤 포지션
-                            Vector3 enemyPos = DetectRandomPos();
-                            skillPool.GetPoolSkyFallSkill(skilldata.skillId, enemyPos, damage);
-                            yield return new WaitForSeconds(0.2f);
+                            Vector3 randomPos = DetectRandomPos();
+                            Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), randomPos, Quaternion.identity);
+                            // 생성만
+                        }
+                        else
+                        {
+                            // 발사 작동
+                            for (int i = 0; i < projectileTotalCount; i++)
+                            {
+                                // 랜덤 포지션
+                                Vector3 randomPos = DetectRandomPos();
+                                skillPool.GetPoolSkyFallSkill(skillData.skillId, randomPos, damage);
+                                yield return new WaitForSeconds(0.2f);
+                            }
                         }
                     }
                     break;
@@ -337,7 +346,7 @@ public class Player : MonoBehaviour
                     {
                         if (playeringameinfo.curHp < playeringameinfo.maxHp)
                         {
-                            int regenAmount = Mathf.Min(skilldata.regenHP, playeringameinfo.maxHp - playeringameinfo.curHp);
+                            int regenAmount = Mathf.Min(skillData.regenHP, playeringameinfo.maxHp - playeringameinfo.curHp);
                             TakeDamage(-regenAmount);
                         }
                     }
