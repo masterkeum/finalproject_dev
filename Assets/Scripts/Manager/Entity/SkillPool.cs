@@ -63,8 +63,7 @@ public class SkillPool : MonoBehaviour
 
             poolDictionary[skillId].Enqueue(obj);
 
-            StartCoroutine(SkillCall(obj));
-
+            //StartCoroutine(SkillCall(obj));
         }
         else
         {
@@ -79,15 +78,14 @@ public class SkillPool : MonoBehaviour
         if (poolDictionary.ContainsKey(skillId))
         {
             GameObject obj = poolDictionary[skillId].Dequeue();
-            obj.transform.position = new Vector3(enemyPos.x, 10f, enemyPos.z);
-            obj.transform.rotation = Quaternion.LookRotation(Vector3.down);
-            obj.GetComponent<ProjectileScript>().Init(skillId, damage);
+            obj.transform.position = enemyPos;
+            //obj.transform.rotation = Quaternion.LookRotation(Vector3.down);
+            obj.GetComponent<SkyFallScript>().Init(skillId, damage);
             obj.SetActive(true);
 
             poolDictionary[skillId].Enqueue(obj);
 
-            StartCoroutine(SkillCall(obj));
-
+            //StartCoroutine(SkillCall(obj));
         }
         else
         {

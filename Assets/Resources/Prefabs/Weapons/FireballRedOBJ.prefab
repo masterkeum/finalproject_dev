@@ -53,11 +53,13 @@ MonoBehaviour:
   muzzleParticle: {fileID: 1977975570158332, guid: 443566c1d553c524ba2b591f0c9c3ce8,
     type: 3}
   disableAfterTime: 5
-  hitOffset: 1
   rb: {fileID: 0}
   sc: {fileID: 0}
   parentObject: {fileID: 0}
   enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  groundLayerMask:
     serializedVersion: 2
     m_Bits: 0
   projectileSpeed: 15
@@ -84,7 +86,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0

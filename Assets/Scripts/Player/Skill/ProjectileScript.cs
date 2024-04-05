@@ -54,7 +54,7 @@ public class ProjectileScript : MonoBehaviour
         projectileSpeed = 0;
         projectilePenetration = skillInfo.projectilePenetration;
 
-        gameObject.SetActive(true);
+        //gameObject.SetActive(true);
 
         projectileParticle.transform.position = transform.position;
         projectileParticle.transform.rotation = transform.rotation;
@@ -161,6 +161,7 @@ public class ProjectileScript : MonoBehaviour
         sc.enabled = false;
         rb.constraints = RigidbodyConstraints.FreezeAll;
         projectileSpeed = 0;
+        gameObject.SetActive(false);
         yield break;
     }
 

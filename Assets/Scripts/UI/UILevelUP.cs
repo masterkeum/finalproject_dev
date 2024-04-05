@@ -108,21 +108,26 @@ public class UILevelUP : UIBase
         //현재 가진 스킬 종류만 표시
         for (int i = 0; i < player.activeSkillSlot.Count; i++)
         {
-            if (activeSlotCount <= i)
-            {
-                curAcitveSkillUI[i].skillLock.SetActive(true);
-            }
+
             curAcitveSkillUI[i].skillIcon.SetActive(true);
             curAcitveSkillUI[i].skillSprite.sprite = Resources.Load<Sprite>(player.activeSkillSlot[i].imageAddress);
         }
         for (int i = 0; i < player.passiveSkillSlot.Count; i++)
         {
+            curPassiveSkillUI[i].skillIcon.SetActive(true);
+            curPassiveSkillUI[i].skillSprite.sprite = Resources.Load<Sprite>(player.passiveSkillSlot[i].imageAddress);
+        }
+
+        for (int i = 0; i < 6; i++)
+        {
+            if (activeSlotCount <= i)
+            {
+                curAcitveSkillUI[i].skillLock.SetActive(true);
+            }
             if (passiveSlotCount <= i)
             {
                 curPassiveSkillUI[i].skillLock.SetActive(true);
             }
-            curPassiveSkillUI[i].skillIcon.SetActive(true);
-            curPassiveSkillUI[i].skillSprite.sprite = Resources.Load<Sprite>(player.passiveSkillSlot[i].imageAddress);
         }
     }
 
