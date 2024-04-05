@@ -339,16 +339,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joy: {fileID: 0}
   projectilePoint: {fileID: 7389510694482719767}
-  takeDamagePoint: {fileID: 0}
-  enemyLayer:
+  enemyLayerMask:
     serializedVersion: 2
-    m_Bits: 32768
+    m_Bits: 0
+  dropItemLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   detectionRange: 15
+  detectRandomRange: 10
   chaseTarget: []
   hudDamageText: {fileID: 0}
   hudPos: {fileID: 6195452119987240592}
+  playerStatInfo:
+    hp: 0
+    addHp: 0
+    attackPower: 0
+    addAttackPower: 0
+    defense: 0
+    addDefense: 0
+    moveSpeed: 0
+    addMoveSpeed: 0
+    critical: 0
+    addCritical: 0
+    hpGen: 0
+    addHpGen: 0
+  playeringameinfo:
+    curHp: 0
+    maxHp: 0
+    attackPower: 0
+    defense: 0
+    moveSpeed: 0
+    critical: 0
+    hpGen: 0
+    addProjectileCount: 0
+    addprojectilePenetration: 0
+    addSkillDefense: 0
+    addSkillHp: 0
+    addSkillAttackPower: 0
+    curLevel: 0
+    sliderCurExp: 0
+    sliderMaxExp: 0
+    curExp: 0
+    totalExp: 0
+    killCount: 0
+    gold: 0
+    skillpoint: 0
   activeSkillSlot: []
   passiveSkillSlot: []
+  _testUI: {fileID: 355903489752174307}
 --- !u!114 &2107198944676368986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,7 +814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4868055193625047255
 RectTransform:
   m_ObjectHideFlags: 0

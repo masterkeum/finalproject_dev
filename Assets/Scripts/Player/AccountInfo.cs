@@ -146,7 +146,7 @@ public class AccountInfo
     public AccountInfo(string _aid, string _name)
     {
         aid = _aid;
-        name = _name;
+        name = $"Player_{_name}";
         level = 1;
         totalExp = 0;
 

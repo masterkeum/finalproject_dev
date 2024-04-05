@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -5199618365597901827}
   - component: {fileID: 5434832505320766486}
   - component: {fileID: 981475207910923613}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RupeeBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}

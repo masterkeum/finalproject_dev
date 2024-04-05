@@ -17,8 +17,8 @@ public class GameManager : SingletoneBase<GameManager>
     public float _regenActionPointTime { get; private set; }
     public int _combatActionPoint { get; private set; }
     public int stageId { get; set; } // 진입한 스테이지ID 가지고있게
-    
-    
+
+
     // 사용자
     public AccountInfo accountInfo;
 
@@ -176,14 +176,14 @@ public class GameManager : SingletoneBase<GameManager>
             string FromJsonData = File.ReadAllText(saveFilePath);
             if (FromJsonData == "null")
             {
-                return new AccountInfo(aid, aid[..8]);
+                return new AccountInfo(aid, aid.Substring(9, 4));
             }
             return JsonConvert.DeserializeObject<AccountInfo>(FromJsonData, settings);
         }
         else
         {
             // 없으면 신규 유저
-            return new AccountInfo(aid, aid[..8]);
+            return new AccountInfo(aid, aid.Substring(9, 4));
         }
     }
 

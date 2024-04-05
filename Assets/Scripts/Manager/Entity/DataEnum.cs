@@ -79,6 +79,7 @@ public enum SkillTargetType
     DotHeal,
     AddHP,
     AddDamage,
+    CollectableRange,
     AddDef,
 }
 

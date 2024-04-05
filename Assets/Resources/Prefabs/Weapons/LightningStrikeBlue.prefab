@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8222972202366531110}
   - component: {fileID: 7435801147608937960}
   m_Layer: 0
-  m_Name: LightningStrike
+  m_Name: LightningStrikeBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5562088243899729864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 3, z: 1}
+  m_LocalScale: {x: 2, y: 4, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8891776651166185624}
@@ -105,7 +105,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.15
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!1001 &5018444011579717413
 PrefabInstance:
@@ -119,11 +119,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: vfxgraph_LightningStrike09_blue
-      objectReference: {fileID: 0}
-    - target: {fileID: 1602092001746990322, guid: 092fd13f2e74dc44cba9172a88958faa,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4521886694860541885, guid: 092fd13f2e74dc44cba9172a88958faa,
         type: 3}
@@ -179,11 +174,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5271656477100978978, guid: 092fd13f2e74dc44cba9172a88958faa,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
