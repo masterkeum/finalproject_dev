@@ -11,7 +11,7 @@ public class DropCoin : MonoBehaviour
     private bool IsMoving = false;
     private Vector3 targetPosition;
     private float moveSpeed = 10f; // 동전 이동 속도
-    private float timeToReachPlayer = 0.5f; // 플레이어에게 도달하는 데 걸리는 시간
+    private float timeToReachPlayer = 1f; // 플레이어에게 도달하는 데 걸리는 시간
 
     private void Awake()
     {

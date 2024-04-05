@@ -163,7 +163,7 @@ public class EnemyBaseController : MonoBehaviour
         StartCoroutine(Remove());
 
         // 보상
-        point = Instantiate(Resources.Load<DropCoin>("Prefabs/Coin/RupeeGold"), transform.position + Vector3.up * 2, Quaternion.identity);
+        point = Instantiate(Resources.Load<DropCoin>("Prefabs/DropItem/RupeeGold"), transform.position + Vector3.up * 2, Quaternion.identity);
         point.Init(monsterLevel.gold, monsterLevel.exp);
 
         // UI

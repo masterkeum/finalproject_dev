@@ -38,10 +38,6 @@ public class GameManager : SingletoneBase<GameManager>
     {
         _pidStr = _pid.ToString();
         base.Init();
-
-        // 계정 세팅
-        CheckAccount();
-
         // 데이터 로드 이후 루틴
         StartCoroutine(WaitForData());
     }
@@ -69,12 +65,15 @@ public class GameManager : SingletoneBase<GameManager>
         // A 인스턴스의 데이터가 준비될 때까지 대기
         while (!DataManager.Instance.IsReady)
         {
+            Debug.LogWarning("Data Loading...");
             yield return null; // 다음 프레임까지 대기
         }
 
         // 게임 세팅
         InitParam();
 
+        // 계정 세팅
+        CheckAccount();
         // TODO : 버전 체크. 에셋번들이나 어드레서블 들어가면
     }
 
@@ -162,9 +161,12 @@ public class GameManager : SingletoneBase<GameManager>
 
     public void SaveGame()
     {
-        string jsonData = JsonConvert.SerializeObject(accountInfo, Formatting.Indented, settings);
-        File.WriteAllText(saveFilePath, jsonData);
-        //Debug.Log("Save : " + jsonData);
+        if (saveFilePath != null)
+        {
+            string jsonData = JsonConvert.SerializeObject(accountInfo, Formatting.Indented, settings);
+            File.WriteAllText(saveFilePath, jsonData);
+            //Debug.Log("Save : " + jsonData);
+        }
     }
 
     private AccountInfo LoadGame(string aid)

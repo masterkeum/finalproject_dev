@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -55,7 +56,7 @@ public struct PlayerInGameInfo
         addSkillDefense = 0;
         addSkillHp = 0;
         addSkillAttackPower = 0;
-        addSkillCollectableRange = 5f;
+        addSkillCollectableRange = 2f;
 
         curLevel = _level;
         sliderCurExp = 0;
@@ -121,7 +122,7 @@ public class Player : MonoBehaviour
         skillPool = GetComponent<SkillPool>();
         hpGuageSlider = GetComponentInChildren<Slider>();
         enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
-        dropItemLayerMask = 1 << LayerMask.NameToLayer("Enemy");
+        dropItemLayerMask = 1 << LayerMask.NameToLayer("DropItem");
 
         dropItemColliders = new Collider[30];
 #if UNITY_EDITOR
@@ -182,7 +183,7 @@ public class Player : MonoBehaviour
         Quaternion moveQuat = Quaternion.Slerp(rigid.rotation, dirQuat, 0.3f);
         rigid.MoveRotation(moveQuat);
 
-        // 드랍아이템 끌어오기.
+        // 드랍아이템 끌어오기. 이동을 해야 발동함
         // 부하가 어떻지 모르겠음. => OverlapSphereNonAlloc 로 일단 바꿈
         // 범위안에 있는것을 끌어당기면서 거의 동일한 시간에 유닛에게 들어오게 하고
         // 미리 경험치/골드를 한꺼번에 계산해서 플러스 해준다. OnTrigger에서는 그냥 없애기만하기
@@ -199,6 +200,7 @@ public class Player : MonoBehaviour
                 dropCoin.moveToPlayer();
             }
         }
+        StartCoroutine(DropItemRoutine(golds, exps));
     }
 
     private void OnTriggerEnter(Collider other)
@@ -210,6 +212,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    IEnumerator DropItemRoutine(int golds, int exps)
+    {
+        yield return new WaitForSeconds(0.8f); // 코인 이동속도와 맞춰야한다.
+        AddGold(golds);
+        AddExp(exps);
+        yield break;
+    }
     #endregion
 
 
@@ -301,6 +310,8 @@ public class Player : MonoBehaviour
 
     IEnumerator SkillRoutine(SkillTable skillData)
     {
+        // 패시브의 경우 시작할때 한번 이펙트 발현
+
         //최종 데미지 = (기본 공격력 + 아이템 공격력 보정치) x (공격력 배율) - (방어력*방어력배율) + 스킬 추가 데미지 + (크리티컬 데미지 보정치 * 크리티컬 여부)
         int projectileTotalCount = skillData.projectileCount;
         if (skillData.skillGroup == 30000010)
@@ -420,7 +431,7 @@ public class Player : MonoBehaviour
                 case SkillTargetType.CollectableRange:
                     {
                         // 범위 증가는 유니크한 스킬이라는 가정
-                        playeringameinfo.addSkillCollectableRange = (skillData.level + 1) * 5f;
+                        playeringameinfo.addSkillCollectableRange = (skillData.level + 1) * 2f;
                     }
                     yield break;
 
@@ -431,7 +442,7 @@ public class Player : MonoBehaviour
                         {
                             playeringameinfo.addSkillDefense += skillTable.addDef;
                         }
-                        playeringameinfo.addSkillDefense = playerStatInfo.defense + playerStatInfo.addDefense + playeringameinfo.addSkillDefense;
+                        playeringameinfo.defense = playerStatInfo.defense + playerStatInfo.addDefense + playeringameinfo.addSkillDefense;
                     }
                     yield break;
 
@@ -458,20 +469,21 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        playeringameinfo.curHp -= Mathf.Max(0, damageAmount - playeringameinfo.addSkillDefense);
+        int realDamage = Mathf.Max(0, damageAmount - playeringameinfo.defense);
+        playeringameinfo.curHp -= realDamage;
         UpdateHPBar();
 
-        damageAmount = -damageAmount;
-        GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
-        //Debug.Log("데미지텍스트 프리팹 " + hudText);
+        realDamage = -realDamage;
+        GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText"));
+
         hudText.transform.position = hudPos.position; // 표시될 위치
         Color color = Color.white;
-        if (damageAmount < 0)
-            color = new Color(1f, 0f, 0f);
-        else
+        if (realDamage > 0)
             color = new Color(0f, 1f, 0f);
+        else
+            color = new Color(1f, 0f, 0f);
 
-        hudText.GetComponentInChildren<DamageText>().Init(damageAmount, color);
+        hudText.GetComponentInChildren<DamageText>().Init(realDamage, color);
 
         //Debug.Log("플레이어 현재 HP" + per);
         if (playeringameinfo.curHp <= 0)
