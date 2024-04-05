@@ -12,6 +12,12 @@ public class UIManager : SingletoneBase<UIManager>
         string keyString = typeof(T).Name;
         if (UIDictionary.ContainsKey(keyString))
         {
+            if (UIDictionary[keyString].gameObject.activeSelf == true)
+            {
+                --popupUICount;
+                Debug.LogWarning($"이미 켜진 창 : {keyString}");
+            }
+
             UIDictionary[keyString].gameObject.SetActive(true);
             return UIDictionary[keyString] as T;
         }
