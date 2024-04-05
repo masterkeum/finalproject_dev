@@ -4590,7 +4590,7 @@
     {
       "skillId": 30000551,
       "skillGroup": 30000060,
-      "skillName": "[초월]파멸의 화염",
+      "skillName": "[초월]파멸의 오로라",
       "skillDesc": null,
       "taskDesc": null,
       "isEnable": false,
@@ -4627,7 +4627,7 @@
       "nextSkillId": 30001012,
       "reqSkillId": 0,
       "applyType": "Passive",
-      "targetType": "Self",
+      "targetType": "AddProjectile",
       "rangeType": "Normal",
       "coolDownTime": 0,
       "castDelay": 0,
@@ -4640,8 +4640,8 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Projectile",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Weapons/Passive/ChannelRed"
     },
     {
       "skillId": 30001012,
@@ -4655,7 +4655,7 @@
       "nextSkillId": 30001013,
       "reqSkillId": 0,
       "applyType": "Passive",
-      "targetType": "Self",
+      "targetType": "AddProjectile",
       "rangeType": "Normal",
       "coolDownTime": 0,
       "castDelay": 0,
@@ -4668,8 +4668,8 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Projectile",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Weapons/Passive/ChannelRed"
     },
     {
       "skillId": 30001013,
@@ -4683,7 +4683,7 @@
       "nextSkillId": 30001014,
       "reqSkillId": 0,
       "applyType": "Passive",
-      "targetType": "Self",
+      "targetType": "AddProjectile",
       "rangeType": "Normal",
       "coolDownTime": 0,
       "castDelay": 0,
@@ -4696,8 +4696,8 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Projectile",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Weapons/Passive/ChannelRed"
     },
     {
       "skillId": 30001014,
@@ -4711,7 +4711,7 @@
       "nextSkillId": 30001015,
       "reqSkillId": 0,
       "applyType": "Passive",
-      "targetType": "Self",
+      "targetType": "AddProjectile",
       "rangeType": "Normal",
       "coolDownTime": 0,
       "castDelay": 0,
@@ -4724,8 +4724,8 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Projectile",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Weapons/Passive/ChannelRed"
     },
     {
       "skillId": 30001015,
@@ -4739,7 +4739,7 @@
       "nextSkillId": 0,
       "reqSkillId": 0,
       "applyType": "Passive",
-      "targetType": "Self",
+      "targetType": "AddProjectile",
       "rangeType": "Normal",
       "coolDownTime": 0,
       "castDelay": 0,
@@ -4752,8 +4752,8 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Projectile",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Weapons/Passive/ChannelRed"
     },
     {
       "skillId": 30001021,
@@ -5340,8 +5340,8 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Def",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Weapons/Passive/ShieldAuraRed"
     },
     {
       "skillId": 30001062,
@@ -5368,8 +5368,8 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Def",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Weapons/Passive/ShieldAuraRed"
     },
     {
       "skillId": 30001063,
@@ -5396,8 +5396,8 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Def",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Weapons/Passive/ShieldAuraRed"
     },
     {
       "skillId": 30001064,
@@ -5424,8 +5424,8 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Def",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Weapons/Passive/ShieldAuraRed"
     },
     {
       "skillId": 30001065,
@@ -5452,8 +5452,8 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Def",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Weapons/Passive/ShieldAuraRed"
     }
   ],
   "Shop": [

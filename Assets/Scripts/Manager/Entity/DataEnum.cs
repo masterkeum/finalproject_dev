@@ -76,7 +76,7 @@ public enum SkillTargetType
     FixedDirection,
     RandomArea,
     // passive
-    Self,
+    AddProjectile,
     DotHeal,
     AddHP,
     AddDamage,

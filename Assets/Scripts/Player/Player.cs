@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using static Pooling;
 
 [Serializable]
 public struct PlayerInGameInfo
@@ -224,48 +225,48 @@ public class Player : MonoBehaviour
 
     #region Skill
 
-    public void SkillUpdate(SkillTable skilldata)
+    public void SkillUpdate(SkillTable skillData)
     {
         // 그룹 중복값 삭제
         bool skillFound = false;
-        if (skilldata.applyType == SkillApplyType.Active
-            || skilldata.applyType == SkillApplyType.Awaken)
+        if (skillData.applyType == SkillApplyType.Active
+            || skillData.applyType == SkillApplyType.Awaken)
         {
             // UI 용
             for (int i = 0; i < activeSkillSlot.Count; i++)
             {
-                if (skilldata.skillGroup == activeSkillSlot[i].skillGroup)
+                if (skillData.skillGroup == activeSkillSlot[i].skillGroup)
                 {
-                    activeSkillSlot[i] = skilldata; // 참조 변경
+                    activeSkillSlot[i] = skillData; // 참조 변경
                     skillFound = true;
                     break;
                 }
             }
             if (!skillFound)
             {
-                activeSkillSlot.Add(skilldata);
+                activeSkillSlot.Add(skillData);
             }
 
             // 스킬 새로운 로직
-            if (activeSkill.ContainsKey(skilldata.skillGroup))
+            if (activeSkill.ContainsKey(skillData.skillGroup))
             {
                 // 스킬풀 삭제 후 새로 생성
-                skillPool.DestroyDicObject(activeSkill[skilldata.skillGroup].skillId);
-                skillPool.AddSkillPool(skilldata);
+                skillPool.DestroyDicObject(activeSkill[skillData.skillGroup].skillId);
+                skillPool.AddSkillPool(skillData);
                 skillPool.CreatePool(transform);
                 // 레벨업
-                activeSkill[skilldata.skillGroup] = skilldata;
-                skillCoroutines[skilldata.skillGroup] = StartSkillCoroutine(skilldata);
+                activeSkill[skillData.skillGroup] = skillData;
+                skillCoroutines[skillData.skillGroup] = StartSkillCoroutine(skillData);
             }
             else
             {
                 // 스킬풀 새로 생성
-                skillPool.AddSkillPool(skilldata);
+                skillPool.AddSkillPool(skillData);
                 skillPool.CreatePool(transform);
 
                 // 새스킬
-                activeSkill.Add(skilldata.skillGroup, skilldata);
-                skillCoroutines.Add(skilldata.skillGroup, StartSkillCoroutine(skilldata));
+                activeSkill.Add(skillData.skillGroup, skillData);
+                skillCoroutines.Add(skillData.skillGroup, StartSkillCoroutine(skillData));
             }
         }
         else
@@ -273,58 +274,55 @@ public class Player : MonoBehaviour
             // UI 용
             for (int i = 0; i < passiveSkillSlot.Count; i++)
             {
-                if (skilldata.skillGroup == passiveSkillSlot[i].skillGroup)
+                if (skillData.skillGroup == passiveSkillSlot[i].skillGroup)
                 {
-                    passiveSkillSlot[i] = skilldata;
+                    passiveSkillSlot[i] = skillData;
                     skillFound = true;
                     break;
                 }
             }
             if (!skillFound)
             {
-                passiveSkillSlot.Add(skilldata);
+                passiveSkillSlot.Add(skillData);
             }
 
             // 스킬 새로운 로직
-            if (passiveSkill.ContainsKey(skilldata.skillGroup))
+            if (passiveSkill.ContainsKey(skillData.skillGroup))
             {
-                passiveSkill[skilldata.skillGroup] = skilldata;
-                skillCoroutines[skilldata.skillGroup] = StartSkillCoroutine(skilldata);
+                passiveSkill[skillData.skillGroup] = skillData;
+                skillCoroutines[skillData.skillGroup] = StartSkillCoroutine(skillData);
             }
             else
             {
-                passiveSkill.Add(skilldata.skillGroup, skilldata);
-                skillCoroutines.Add(skilldata.skillGroup, StartSkillCoroutine(skilldata));
+                passiveSkill.Add(skillData.skillGroup, skillData);
+                skillCoroutines.Add(skillData.skillGroup, StartSkillCoroutine(skillData));
+
+                if (skillData.prefabAddress != null)
+                {
+                    GameObject passiveEffect = Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), transform.position + Vector3.up, Quaternion.Euler(-90f, 0f, 0f));
+                    passiveEffect.transform.SetParent(transform);
+                }
             }
         }
     }
 
-    public Coroutine StartSkillCoroutine(SkillTable skilldata)
+    public Coroutine StartSkillCoroutine(SkillTable skillData)
     {
-        if (skillCoroutines.ContainsKey(skilldata.skillGroup) && skillCoroutines[skilldata.skillGroup] != null)
+        if (skillCoroutines.ContainsKey(skillData.skillGroup) && skillCoroutines[skillData.skillGroup] != null)
         {
-            StopCoroutine(skillCoroutines[skilldata.skillGroup]);
+            StopCoroutine(skillCoroutines[skillData.skillGroup]);
         }
-        return StartCoroutine(SkillRoutine(skilldata));
+        return StartCoroutine(SkillRoutine(skillData));
     }
 
     IEnumerator SkillRoutine(SkillTable skillData)
     {
         // 패시브의 경우 시작할때 한번 이펙트 발현
-
         //최종 데미지 = (기본 공격력 + 아이템 공격력 보정치) x (공격력 배율) - (방어력*방어력배율) + 스킬 추가 데미지 + (크리티컬 데미지 보정치 * 크리티컬 여부)
         int projectileTotalCount = skillData.projectileCount;
-        if (skillData.skillGroup == 30000010)
-        {
-            // FIXME : 하드코딩
-            // 화염구인 경우
-            if (passiveSkill.ContainsKey(30001010))
-            {
-                projectileTotalCount += passiveSkill[30001010].projectileCount;
-            }
-        }
 
         Debug.Log($"Coroutine started with parameter: {skillData.skillId}");
+        Debug.Log(projectileTotalCount);
         while (true)
         {
             yield return new WaitForSeconds(skillData.coolDownTime);
@@ -336,6 +334,11 @@ public class Player : MonoBehaviour
                 // Active
                 case SkillTargetType.Single:
                     {
+                        if (skillData.skillGroup == 30000010)
+                        {
+                            projectileTotalCount = skillData.projectileCount + playeringameinfo.addprojectilePenetration;
+                        }
+
                         // 발사 작동
                         for (int i = 0; i < projectileTotalCount; i++)
                         {
@@ -395,6 +398,13 @@ public class Player : MonoBehaviour
                     break;
 
                 // Passive
+                case SkillTargetType.AddProjectile:
+                    {
+                        // 범위 증가는 유니크한 스킬이라는 가정
+                        playeringameinfo.addprojectilePenetration = skillData.projectileCount;
+                    }
+                    yield break;
+
                 case SkillTargetType.DotHeal:
                     {
                         if (playeringameinfo.curHp < playeringameinfo.maxHp)
