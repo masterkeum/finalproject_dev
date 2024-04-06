@@ -112,6 +112,8 @@ public class Player : MonoBehaviour
     private Dictionary<int, Coroutine> skillCoroutines = new Dictionary<int, Coroutine>();
     public Dictionary<int, SkillTable> passiveSkill = new Dictionary<int, SkillTable>();
 
+    private Dictionary<int, GameObject> passiveObj = new Dictionary<int, GameObject>();
+
     // 치트 스크립트
     [SerializeField] private Canvas _testUI;
 
@@ -291,6 +293,17 @@ public class Player : MonoBehaviour
             {
                 passiveSkill[skillData.skillGroup] = skillData;
                 skillCoroutines[skillData.skillGroup] = StartSkillCoroutine(skillData);
+
+                switch (skillData.skillGroup)
+                {
+                    case 30001050: // 블랙홀 크기 변경
+                        {
+                            float scale = 1.2f * (skillData.level + 1);
+                            passiveObj[skillData.skillGroup].transform.localScale = new Vector3(scale, scale, 1);
+                        }
+                        break;
+                }
+
             }
             else
             {
@@ -301,6 +314,8 @@ public class Player : MonoBehaviour
                 {
                     GameObject passiveEffect = Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), transform.position + Vector3.up, Quaternion.Euler(-90f, 0f, 0f));
                     passiveEffect.transform.SetParent(transform);
+
+                    passiveObj.Add(skillData.skillGroup, passiveEffect);
                 }
             }
         }

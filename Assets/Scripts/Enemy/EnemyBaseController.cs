@@ -13,6 +13,7 @@ public enum EnemyState
     Attack,
     Flee, // 보스 멀리 풀링되는경우 원위치
     Die,
+    Freeze,// 멈춤
 }
 
 public class EnemyBaseController : MonoBehaviour
@@ -123,11 +124,8 @@ public class EnemyBaseController : MonoBehaviour
                 }
                 break;
             case EnemyState.Attack:
-                {
-                    navMeshAgent.isStopped = true;
-                }
-                break;
             case EnemyState.Die:
+            case EnemyState.Freeze:
                 {
                     navMeshAgent.isStopped = true;
                 }

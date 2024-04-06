@@ -127,6 +127,7 @@ public class SkillTable
     public string imageAddress;
     public string prefabAsset;
     public string prefabAddress;
+    public string prefabAfterEffect;
 }
 
 [Serializable]

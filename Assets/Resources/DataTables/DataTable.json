@@ -3633,7 +3633,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Fire",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/FireballRedOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/FireballRedOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000012,
@@ -3661,7 +3662,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Fire",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/FireballRedOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/FireballRedOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000013,
@@ -3689,7 +3691,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Fire",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/FireballRedOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/FireballRedOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000014,
@@ -3717,7 +3720,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Fire",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/FireballRedOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/FireballRedOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000015,
@@ -3745,7 +3749,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Fire",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/FireballRedOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/FireballRedOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000021,
@@ -3773,7 +3778,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Ice",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/IceMissileOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/IceMissileOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000022,
@@ -3801,7 +3807,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Ice",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/IceMissileOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/IceMissileOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000023,
@@ -3829,7 +3836,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Ice",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/IceMissileOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/IceMissileOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000024,
@@ -3857,7 +3865,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Ice",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/IceMissileOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/IceMissileOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000025,
@@ -3885,7 +3894,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Ice",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/IceMissileOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/IceMissileOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000031,
@@ -3913,7 +3923,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Thunder",
       "prefabAsset": "GAP",
-      "prefabAddress": "Prefabs/Weapons/LightningStrikeYellow"
+      "prefabAddress": "Prefabs/Skill/Active/LightningStrikeYellow",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000032,
@@ -3941,7 +3952,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Thunder",
       "prefabAsset": "GAP",
-      "prefabAddress": "Prefabs/Weapons/LightningStrikeYellow"
+      "prefabAddress": "Prefabs/Skill/Active/LightningStrikeYellow",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000033,
@@ -3969,7 +3981,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Thunder",
       "prefabAsset": "GAP",
-      "prefabAddress": "Prefabs/Weapons/LightningStrikeYellow"
+      "prefabAddress": "Prefabs/Skill/Active/LightningStrikeYellow",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000034,
@@ -3997,7 +4010,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Thunder",
       "prefabAsset": "GAP",
-      "prefabAddress": "Prefabs/Weapons/LightningStrikeYellow"
+      "prefabAddress": "Prefabs/Skill/Active/LightningStrikeYellow",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000035,
@@ -4025,7 +4039,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Thunder",
       "prefabAsset": "GAP",
-      "prefabAddress": "Prefabs/Weapons/LightningStrikeYellow"
+      "prefabAddress": "Prefabs/Skill/Active/LightningStrikeYellow",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000041,
@@ -4044,7 +4059,7 @@
       "coolDownTime": 1.5,
       "castDelay": 0.2,
       "attackDamage": 90,
-      "projectileType": "SkyFall",
+      "projectileType": "Projectile",
       "projectileSpeed": 1,
       "projectileCount": 1,
       "projectilePenetration": 1,
@@ -4053,7 +4068,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Meteo",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/VolcanicMissileOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/VolcanicMissileOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000042,
@@ -4072,7 +4088,7 @@
       "coolDownTime": 1.5,
       "castDelay": 0.2,
       "attackDamage": 125,
-      "projectileType": "SkyFall",
+      "projectileType": "Projectile",
       "projectileSpeed": 1,
       "projectileCount": 1,
       "projectilePenetration": 1,
@@ -4081,7 +4097,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Meteo",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/VolcanicMissileOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/VolcanicMissileOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000043,
@@ -4100,7 +4117,7 @@
       "coolDownTime": 1.5,
       "castDelay": 0.2,
       "attackDamage": 125,
-      "projectileType": "SkyFall",
+      "projectileType": "Projectile",
       "projectileSpeed": 1,
       "projectileCount": 2,
       "projectilePenetration": 1,
@@ -4109,7 +4126,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Meteo",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/VolcanicMissileOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/VolcanicMissileOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000044,
@@ -4128,7 +4146,7 @@
       "coolDownTime": 1.5,
       "castDelay": 0.2,
       "attackDamage": 125,
-      "projectileType": "SkyFall",
+      "projectileType": "Projectile",
       "projectileSpeed": 1,
       "projectileCount": 3,
       "projectilePenetration": 1,
@@ -4137,7 +4155,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Meteo",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/VolcanicMissileOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/VolcanicMissileOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000045,
@@ -4156,7 +4175,7 @@
       "coolDownTime": 1.2,
       "castDelay": 0.2,
       "attackDamage": 160,
-      "projectileType": "SkyFall",
+      "projectileType": "Projectile",
       "projectileSpeed": 1,
       "projectileCount": 3,
       "projectilePenetration": 1,
@@ -4165,15 +4184,16 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Meteo",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/VolcanicMissileOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/VolcanicMissileOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000051,
       "skillGroup": 30000050,
       "skillName": "생츄어리",
-      "skillDesc": null,
+      "skillDesc": "미믹이 플라즈마를 뿜으며 주변의 적에게 피해를 끼칩니다",
       "taskDesc": "마늘",
-      "isEnable": false,
+      "isEnable": true,
       "level": 1,
       "maxLevel": 5,
       "nextSkillId": 30000052,
@@ -4182,7 +4202,7 @@
       "targetType": "AOE",
       "rangeType": "FixedRange",
       "coolDownTime": 2,
-      "castDelay": 0.2,
+      "castDelay": 2.5,
       "attackDamage": 15,
       "projectileType": "Area",
       "projectileSpeed": 0,
@@ -4191,17 +4211,18 @@
       "addDef": 0,
       "addHP": 0,
       "regenHP": 0,
-      "imageAddress": "Textures/SkillIcon/Santuary",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "imageAddress": "Textures/SkillIcon/Sanctuary",
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Active/Sanctuary",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000052,
       "skillGroup": 30000050,
       "skillName": "생츄어리",
-      "skillDesc": null,
+      "skillDesc": "데미지 증가 및 범위 증가",
       "taskDesc": null,
-      "isEnable": false,
+      "isEnable": true,
       "level": 2,
       "maxLevel": 5,
       "nextSkillId": 30000053,
@@ -4210,7 +4231,7 @@
       "targetType": "AOE",
       "rangeType": "FixedRange",
       "coolDownTime": 2,
-      "castDelay": 0.2,
+      "castDelay": 2.5,
       "attackDamage": 25,
       "projectileType": "Area",
       "projectileSpeed": 0,
@@ -4219,17 +4240,18 @@
       "addDef": 0,
       "addHP": 0,
       "regenHP": 0,
-      "imageAddress": "Textures/SkillIcon/Santuary",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "imageAddress": "Textures/SkillIcon/Sanctuary",
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Active/Sanctuary",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000053,
       "skillGroup": 30000050,
       "skillName": "생츄어리",
-      "skillDesc": null,
+      "skillDesc": "데미지 증가 및 범위 증가",
       "taskDesc": null,
-      "isEnable": false,
+      "isEnable": true,
       "level": 3,
       "maxLevel": 5,
       "nextSkillId": 30000054,
@@ -4238,7 +4260,7 @@
       "targetType": "AOE",
       "rangeType": "FixedRange",
       "coolDownTime": 2,
-      "castDelay": 0.2,
+      "castDelay": 2.5,
       "attackDamage": 35,
       "projectileType": "Area",
       "projectileSpeed": 0,
@@ -4247,17 +4269,18 @@
       "addDef": 0,
       "addHP": 0,
       "regenHP": 0,
-      "imageAddress": "Textures/SkillIcon/Santuary",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "imageAddress": "Textures/SkillIcon/Sanctuary",
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Active/Sanctuary",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000054,
       "skillGroup": 30000050,
       "skillName": "생츄어리",
-      "skillDesc": null,
+      "skillDesc": "데미지 증가 및 쿨타임 감소",
       "taskDesc": null,
-      "isEnable": false,
+      "isEnable": true,
       "level": 4,
       "maxLevel": 5,
       "nextSkillId": 30000055,
@@ -4265,8 +4288,8 @@
       "applyType": "Active",
       "targetType": "AOE",
       "rangeType": "FixedRange",
-      "coolDownTime": 2,
-      "castDelay": 0.2,
+      "coolDownTime": 1.5,
+      "castDelay": 2.5,
       "attackDamage": 45,
       "projectileType": "Area",
       "projectileSpeed": 0,
@@ -4275,17 +4298,18 @@
       "addDef": 0,
       "addHP": 0,
       "regenHP": 0,
-      "imageAddress": "Textures/SkillIcon/Santuary",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "imageAddress": "Textures/SkillIcon/Sanctuary",
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Active/Sanctuary",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000055,
       "skillGroup": 30000050,
       "skillName": "생츄어리",
-      "skillDesc": null,
+      "skillDesc": "데미지 증가 및 쿨타임 감소",
       "taskDesc": null,
-      "isEnable": false,
+      "isEnable": true,
       "level": 5,
       "maxLevel": 5,
       "nextSkillId": 30000541,
@@ -4293,8 +4317,8 @@
       "applyType": "Active",
       "targetType": "AOE",
       "rangeType": "FixedRange",
-      "coolDownTime": 2,
-      "castDelay": 0.2,
+      "coolDownTime": 0,
+      "castDelay": 2.5,
       "attackDamage": 55,
       "projectileType": "Area",
       "projectileSpeed": 0,
@@ -4303,9 +4327,10 @@
       "addDef": 0,
       "addHP": 0,
       "regenHP": 0,
-      "imageAddress": "Textures/SkillIcon/Santuary",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "imageAddress": "Textures/SkillIcon/Sanctuary",
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Active/Sanctuary",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000061,
@@ -4332,8 +4357,9 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Flame",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Active/ElementalAuraHoly",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000062,
@@ -4360,8 +4386,9 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Flame",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Active/ElementalAuraHoly",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000063,
@@ -4388,8 +4415,9 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Flame",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Active/ElementalAuraHoly",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000064,
@@ -4416,8 +4444,9 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Flame",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Active/ElementalAuraHoly",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000065,
@@ -4444,8 +4473,9 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Flame",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Active/ElementalAuraHoly",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000501,
@@ -4473,7 +4503,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Fire_S",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/FireballPurpleOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/FireballPurpleOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000511,
@@ -4501,7 +4532,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Ice_S",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/IceBigMissileOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/IceBigMissileOBJ",
+      "prefabAfterEffect": "Prefabs/Weapons/AfterEffect/Freeze"
     },
     {
       "skillId": 30000521,
@@ -4529,7 +4561,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Thunder_S",
       "prefabAsset": "GAP",
-      "prefabAddress": "Prefabs/Weapons/LightningStrikeBlue"
+      "prefabAddress": "Prefabs/Skill/Active/LightningStrikeBlue",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000531,
@@ -4557,7 +4590,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Meteo_S",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/LavaMissileOBJ"
+      "prefabAddress": "Prefabs/Skill/Active/LavaMissileOBJ",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000541,
@@ -4584,8 +4618,9 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Santuary_S",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Active/EnergyNovaPurple",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30000551,
@@ -4612,15 +4647,16 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Flame_S",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Active/ElementalAuraHoly",
+      "prefabAfterEffect": "Prefabs/Weapons/AfterEffect/GodRaysSoft"
     },
     {
       "skillId": 30001011,
       "skillGroup": 30001010,
       "skillName": "화염의 힘",
       "skillDesc": "화염구 발사체 개수 +1",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 1,
       "maxLevel": 5,
@@ -4641,14 +4677,15 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Projectile",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/Passive/ChannelRed"
+      "prefabAddress": "Prefabs/Skill/Passive/ChannelRed",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001012,
       "skillGroup": 30001010,
       "skillName": "화염의 힘",
       "skillDesc": "화염구 발사체 개수 +2",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 2,
       "maxLevel": 5,
@@ -4669,14 +4706,15 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Projectile",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/Passive/ChannelRed"
+      "prefabAddress": "Prefabs/Skill/Passive/ChannelRed",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001013,
       "skillGroup": 30001010,
       "skillName": "화염의 힘",
       "skillDesc": "화염구 발사체 개수 +3",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 3,
       "maxLevel": 5,
@@ -4697,14 +4735,15 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Projectile",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/Passive/ChannelRed"
+      "prefabAddress": "Prefabs/Skill/Passive/ChannelRed",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001014,
       "skillGroup": 30001010,
       "skillName": "화염의 힘",
       "skillDesc": "화염구 발사체 개수 +4",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 4,
       "maxLevel": 5,
@@ -4725,14 +4764,15 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Projectile",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/Passive/ChannelRed"
+      "prefabAddress": "Prefabs/Skill/Passive/ChannelRed",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001015,
       "skillGroup": 30001010,
       "skillName": "화염의 힘",
       "skillDesc": "화염구 발사체 개수 +5",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 5,
       "maxLevel": 5,
@@ -4753,14 +4793,15 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Projectile",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/Passive/ChannelRed"
+      "prefabAddress": "Prefabs/Skill/Passive/ChannelRed",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001021,
       "skillGroup": 30001020,
       "skillName": "회복의 빛",
       "skillDesc": "미믹을 천천히 회복 시킵니다",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 1,
       "maxLevel": 5,
@@ -4780,15 +4821,16 @@
       "addHP": 0,
       "regenHP": 10,
       "imageAddress": "Textures/SkillIcon/Heal",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/HealLoop",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001022,
       "skillGroup": 30001020,
       "skillName": "회복의 빛",
       "skillDesc": "회복력 증가",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 2,
       "maxLevel": 5,
@@ -4808,15 +4850,16 @@
       "addHP": 0,
       "regenHP": 20,
       "imageAddress": "Textures/SkillIcon/Heal",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/HealLoop",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001023,
       "skillGroup": 30001020,
       "skillName": "회복의 빛",
       "skillDesc": "회복력 증가 및 회복 속도 증가",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 3,
       "maxLevel": 5,
@@ -4836,15 +4879,16 @@
       "addHP": 0,
       "regenHP": 30,
       "imageAddress": "Textures/SkillIcon/Heal",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/HealLoop",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001024,
       "skillGroup": 30001020,
       "skillName": "회복의 빛",
       "skillDesc": "회복력 증가",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 4,
       "maxLevel": 5,
@@ -4864,15 +4908,16 @@
       "addHP": 0,
       "regenHP": 40,
       "imageAddress": "Textures/SkillIcon/Heal",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/HealLoop",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001025,
       "skillGroup": 30001020,
       "skillName": "회복의 빛",
       "skillDesc": "회복력증가 및 회복 속도 증가",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 5,
       "maxLevel": 5,
@@ -4892,15 +4937,16 @@
       "addHP": 0,
       "regenHP": 50,
       "imageAddress": "Textures/SkillIcon/Heal",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/HealLoop",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001031,
       "skillGroup": 30001030,
       "skillName": "생명의 힘",
       "skillDesc": "최대 체력 +30",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 1,
       "maxLevel": 5,
@@ -4920,15 +4966,16 @@
       "addHP": 30,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Life",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/RegenerateGreen",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001032,
       "skillGroup": 30001030,
       "skillName": "생명의 힘",
       "skillDesc": "최대 체력 +60",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 2,
       "maxLevel": 5,
@@ -4948,15 +4995,16 @@
       "addHP": 60,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Life",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/RegenerateGreen",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001033,
       "skillGroup": 30001030,
       "skillName": "생명의 힘",
       "skillDesc": "최대 체력 +90",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 3,
       "maxLevel": 5,
@@ -4976,15 +5024,16 @@
       "addHP": 90,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Life",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/RegenerateGreen",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001034,
       "skillGroup": 30001030,
       "skillName": "생명의 힘",
       "skillDesc": "최대 체력 +120",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 4,
       "maxLevel": 5,
@@ -5004,15 +5053,16 @@
       "addHP": 120,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Life",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/RegenerateGreen",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001035,
       "skillGroup": 30001030,
       "skillName": "생명의 힘",
       "skillDesc": "최대 체력 +150",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 5,
       "maxLevel": 5,
@@ -5032,15 +5082,16 @@
       "addHP": 150,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Life",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/RegenerateGreen",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001041,
       "skillGroup": 30001040,
       "skillName": "강화된 공격",
       "skillDesc": "공격력 +15",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 1,
       "maxLevel": 5,
@@ -5060,15 +5111,16 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Atk",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/SlashSpinThinGold",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001042,
       "skillGroup": 30001040,
       "skillName": "강화된 공격",
       "skillDesc": "공격력 +30",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 2,
       "maxLevel": 5,
@@ -5088,15 +5140,16 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Atk",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/SlashSpinThinGold",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001043,
       "skillGroup": 30001040,
       "skillName": "강화된 공격",
       "skillDesc": "공격력 +45",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 3,
       "maxLevel": 5,
@@ -5116,15 +5169,16 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Atk",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/SlashSpinThinGold",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001044,
       "skillGroup": 30001040,
       "skillName": "강화된 공격",
       "skillDesc": "공격력 +60",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 4,
       "maxLevel": 5,
@@ -5144,15 +5198,16 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Atk",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/SlashSpinThinGold",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001045,
       "skillGroup": 30001040,
       "skillName": "강화된 공격",
       "skillDesc": "공격력 +75",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 5,
       "maxLevel": 5,
@@ -5172,8 +5227,9 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Atk",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/SlashSpinThinGold",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001051,
@@ -5200,8 +5256,9 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/BlackHole",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/DamageAuraShadow",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001052,
@@ -5228,8 +5285,9 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/BlackHole",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/DamageAuraShadow",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001053,
@@ -5256,8 +5314,9 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/BlackHole",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/DamageAuraShadow",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001054,
@@ -5284,8 +5343,9 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/BlackHole",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/DamageAuraShadow",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001055,
@@ -5312,15 +5372,16 @@
       "addHP": 0,
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/BlackHole",
-      "prefabAsset": null,
-      "prefabAddress": null
+      "prefabAsset": "Arsenal",
+      "prefabAddress": "Prefabs/Skill/Passive/DamageAuraShadow",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001061,
       "skillGroup": 30001060,
       "skillName": "보호막",
       "skillDesc": "방어력 +10",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 1,
       "maxLevel": 5,
@@ -5341,14 +5402,15 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Def",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/Passive/ShieldAuraRed"
+      "prefabAddress": "Prefabs/Skill/Passive/ShieldAuraRed",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001062,
       "skillGroup": 30001060,
       "skillName": "보호막",
       "skillDesc": "방어력 +15",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 2,
       "maxLevel": 5,
@@ -5369,14 +5431,15 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Def",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/Passive/ShieldAuraRed"
+      "prefabAddress": "Prefabs/Skill/Passive/ShieldAuraRed",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001063,
       "skillGroup": 30001060,
       "skillName": "보호막",
       "skillDesc": "방어력 +25",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 3,
       "maxLevel": 5,
@@ -5397,14 +5460,15 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Def",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/Passive/ShieldAuraRed"
+      "prefabAddress": "Prefabs/Skill/Passive/ShieldAuraRed",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001064,
       "skillGroup": 30001060,
       "skillName": "보호막",
       "skillDesc": "방어력 +30",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 4,
       "maxLevel": 5,
@@ -5425,14 +5489,15 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Def",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/Passive/ShieldAuraRed"
+      "prefabAddress": "Prefabs/Skill/Passive/ShieldAuraRed",
+      "prefabAfterEffect": null
     },
     {
       "skillId": 30001065,
       "skillGroup": 30001060,
       "skillName": "보호막",
       "skillDesc": "방어력 +35",
-      "taskDesc": "이펙트 없는 상태",
+      "taskDesc": null,
       "isEnable": true,
       "level": 5,
       "maxLevel": 5,
@@ -5453,7 +5518,8 @@
       "regenHP": 0,
       "imageAddress": "Textures/SkillIcon/Def",
       "prefabAsset": "Arsenal",
-      "prefabAddress": "Prefabs/Weapons/Passive/ShieldAuraRed"
+      "prefabAddress": "Prefabs/Skill/Passive/ShieldAuraRed",
+      "prefabAfterEffect": null
     }
   ],
   "Shop": [

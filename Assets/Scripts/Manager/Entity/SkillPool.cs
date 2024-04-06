@@ -68,7 +68,7 @@ public class SkillPool : MonoBehaviour
                 obj.transform.SetParent(parentTransform);
                 obj.SetActive(false);
 
-                Debug.LogWarning($"poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
+                Debug.LogWarning($"expanded pool : poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
             }
 
             obj.transform.position = point.position;
@@ -104,7 +104,7 @@ public class SkillPool : MonoBehaviour
                 obj.SetActive(false);
 
 
-                Debug.LogWarning($"poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
+                Debug.LogWarning($"expanded pool : poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
             }
 
             obj.transform.position = enemyPos;
