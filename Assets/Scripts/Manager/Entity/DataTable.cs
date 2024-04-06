@@ -115,6 +115,7 @@ public class SkillTable
     public SkillTargetType targetType;
     public SkillRangeType rangeType;
     public float coolDownTime;
+    public float castDelay;
     public int attackDamage;
     public string projectileType;
     public int projectileSpeed;

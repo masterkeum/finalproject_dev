@@ -320,6 +320,7 @@ public class Player : MonoBehaviour
         // 패시브의 경우 시작할때 한번 이펙트 발현
         //최종 데미지 = (기본 공격력 + 아이템 공격력 보정치) x (공격력 배율) - (방어력*방어력배율) + 스킬 추가 데미지 + (크리티컬 데미지 보정치 * 크리티컬 여부)
         int projectileTotalCount = skillData.projectileCount;
+        float castDelay = skillData.castDelay;
 
         Debug.Log($"Coroutine started with parameter: {skillData.skillId}");
         Debug.Log(projectileTotalCount);
@@ -344,7 +345,7 @@ public class Player : MonoBehaviour
                         {
                             Vector3 direction = DetectEnemyDirection();
                             skillPool.GetPoolProjectileSkill(skillData.skillId, projectilePoint, direction, damage);
-                            yield return new WaitForSeconds(0.2f);
+                            yield return new WaitForSeconds(castDelay);
                         }
                     }
                     break;
@@ -371,7 +372,7 @@ public class Player : MonoBehaviour
                             // 랜덤 단일 타겟
                             Vector3 enemyPos = DetectRandomEnemyPos();
                             skillPool.GetPoolGroundStrikeSkill(skillData.skillId, enemyPos, damage);
-                            yield return new WaitForSeconds(0.2f);
+                            yield return new WaitForSeconds(castDelay);
                         }
                     }
                     break;
@@ -391,7 +392,7 @@ public class Player : MonoBehaviour
                                 // 랜덤 포지션
                                 Vector3 randomPos = DetectRandomPos();
                                 skillPool.GetPoolSkyFallSkill(skillData.skillId, randomPos, damage);
-                                yield return new WaitForSeconds(0.2f);
+                                yield return new WaitForSeconds(castDelay);
                             }
                         }
                     }
