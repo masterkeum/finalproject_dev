@@ -66,5 +66,6 @@ public class UICheckEquip : UIBase
     {
         GameManager.Instance.accountInfo.checkCurItem = null;
         gameObject.SetActive(false);
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
     }
 }

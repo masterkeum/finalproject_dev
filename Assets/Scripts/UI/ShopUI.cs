@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,81 +23,56 @@ public class ShopUI : MonoBehaviour
     {
         for (int i = 0; i < goldSlotUI.Count; i++)
         {
-            goldSlotUI[i].amount.text = DataManager.Instance.shopDict[40001000 + i].amount1 + "골드";
-            goldSlotUI[i].price.text = DataManager.Instance.shopDict[40001000 + i].price + "젬";
+            goldSlotUI[i].amount.text = GoodsName(40001000 + i);
+            goldSlotUI[i].price.text = GoodsPrice(40001000 + i);
         }
 
-        dailySlotUI[0].amount.text = DataManager.Instance.shopDict[40003000].amount1 + "장";
-        dailySlotUI[0].price.text = DataManager.Instance.shopDict[40003000].price + "젬";
-        dailySlotUI[1].amount.text = DataManager.Instance.shopDict[40002000].amount1 + "행동력";
-        dailySlotUI[1].price.text = DataManager.Instance.shopDict[40002000].price + "젬";
+        dailySlotUI[0].amount.text = GoodsName(40003000);
+        dailySlotUI[0].price.text = GoodsPrice(40003000);
+        dailySlotUI[1].amount.text = GoodsName(40002000);
+        dailySlotUI[1].price.text = GoodsPrice(40002000);
 
     }
 
-    public void PurchaseGold(int index)
+    public string GoodsName(int packageId)
     {
-        Dictionary<int,Shop> shopDict = DataManager.Instance.shopDict;
-        Purchase(ItemType.Gem, shopDict[40001000 + index].price,shopDict[40001000 + index].itemType1 , shopDict[40001000+index].amount1);
-        GameManager.Instance.UpdateUI();
-    }
-
-    public void PerchaseTicket()
-    {
-        Dictionary<int, Shop> shopDict = DataManager.Instance.shopDict;
-        Purchase(ItemType.Gem, shopDict[40003000].price, ItemType.Timeticket, shopDict[40003000].amount1);
-        GameManager.Instance.UpdateUI();
-    }
-
-    public void PurchaseEnergy()
-    {
-        Dictionary<int, Shop> shopDict = DataManager.Instance.shopDict;
-        Purchase(ItemType.Gem, shopDict[40002000].price, ItemType.Energy, shopDict[40002000].amount1 );
-        GameManager.Instance.UpdateUI();
-    }
-
-    public void Purchase(ItemType input, int price, ItemType output, int amount)
-    {
-        AccountInfo accountInfo = GameManager.Instance.accountInfo;
-        switch (input)
+        string goods = DataManager.Instance.shopDict[packageId].amount1.ToString();
+        switch (DataManager.Instance.shopDict[packageId].itemId1)
         {
-            case ItemType.Gold:
-                {
-                    if (accountInfo.gold >= price)
-                    {
-
-                    }
-                    else
-                    {
-                        UINoCurrency popup = UIManager.Instance.ShowUI<UINoCurrency>();
-                        popup.NoGold();
-                    }
-                }
+            case 50000001:
+                goods += "골드";
                 break;
-            case ItemType.Gem:
-                {
-                    if (accountInfo.gem >= price)
-                    {
-                        accountInfo.gem -= price;
-                        switch (output)
-                        {
-                            case ItemType.Gold:
-                                accountInfo.gold += amount;
-                                break;
-                            case ItemType.Timeticket:
-                                break;
-                            case ItemType.Energy:
-                                accountInfo.actionPoint += amount;
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        UINoCurrency popup = UIManager.Instance.ShowUI<UINoCurrency>();
-                        popup.NoGem();
-                    }
-                }
+            case 50000005:
+                goods += "장";
+                break;
+            case 50000004:
+                goods += "행동력";
                 break;
         }
+        return goods;
     }
+    public string GoodsPrice(int packageId)
+    {
+        string price = DataManager.Instance.shopDict[packageId].price.ToString();
+        switch (DataManager.Instance.shopDict[packageId].currencyID)
+        {
+            case 50000001:
+                price += "골드";
+                break;
+            case 50000002:
+                price += "젬";
+                break;
+        }
+        return price;
+    }
+
+    public void SelectGoods(int packageId)
+    {
+        UIPurchaseConfirm popup = UIManager.Instance.ShowUI<UIPurchaseConfirm>();
+        popup.SetGoodsName(GoodsName(packageId));
+        popup.selectedPackageId = packageId;
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
+    }
+
 
 }

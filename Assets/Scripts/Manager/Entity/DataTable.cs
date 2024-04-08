@@ -14,6 +14,7 @@ public class DataTable
     public List<ItemTable> ItemTable;
     public List<LevelGacha> LevelGacha;
     public List<Shop> Shop;
+    public List<Mimiclevel> Mimiclevel;
 }
 
 [Serializable]
@@ -183,4 +184,15 @@ public class Shop
     public ItemType itemType3;
     public int? itemId3;
     public int? amount3;
+}
+
+[Serializable]
+public class Mimiclevel
+{
+    public int mimiclevel;
+    public int reqAccountLevel;
+    public int exp;
+    public int totalExp;
+    public float reqsec;
+    public int reqgold;
 }

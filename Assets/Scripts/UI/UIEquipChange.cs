@@ -133,6 +133,7 @@ public class UIEquipChange : UIBase
         GameManager.Instance.accountInfo.Equip();
         inventoryUI.UpdateUI();
         Set();
+        SoundManager.Instance.PlaySound("ChangeEquipUI_1");
     }
 
 
@@ -145,6 +146,7 @@ public class UIEquipChange : UIBase
 
         accountInfo.newItem = null;
         gameObject.SetActive(false);
+        SoundManager.Instance.PlaySound("ConsumeUI_1");
     }
 
 }

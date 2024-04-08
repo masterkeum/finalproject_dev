@@ -10,6 +10,7 @@ public class MainScene : MonoBehaviour
         Time.timeScale = 1.0f;
         _ = DataManager.Instance;
         SoundManager.Instance.CreateSFXAudioSource();
+        SoundManager.Instance.ChangeBackGroundMusic(Resources.Load<AudioClip>("Audio/Music/wednesday_night"), SoundManager.Instance.musicAudioSource.volume);
         GameManager.Instance.Clear();
         UIManager.Instance.Clear();
     }
