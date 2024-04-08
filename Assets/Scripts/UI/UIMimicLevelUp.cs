@@ -176,6 +176,11 @@ public class UIMimicLevelUp : UIBase
         completeButton.SetActive(false);
     }
 
+    public void TimeAccelerationButton()
+    {
+        UIManager.Instance.ShowUI<UITimeAcceleration>();
+    }
+
     public void ClosePopup()
     {
         gameObject.SetActive(false);
