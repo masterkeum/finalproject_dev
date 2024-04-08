@@ -127,11 +127,14 @@ public class AccountInfo
     public string name;
     public int level;
     public int totalExp;
+    public int mimicLevel;
+    public int mimicTotalExp;
 
     public int actionPoint; // 행동력
     public int gem;
     public int gold;
     public int core;
+    public int timeTicket;
     public int selectedStageId;
     public float lastUpdateTime;
 
@@ -141,6 +144,12 @@ public class AccountInfo
     public int sliderCurExp;
     public int sliderMaxExp;
     public int curExp;
+    // 미믹용 데이터
+    public int mimicSliderCurExp;
+    public int mimicSliderMaxExp;
+    public int mimicCurExp;
+    public bool isLevelUpProcessing = false;
+    public DateTime completeTime;
 
     //생성자
     public AccountInfo(string _aid, string _name)
@@ -149,6 +158,8 @@ public class AccountInfo
         name = _name;
         level = 1;
         totalExp = 0;
+        mimicLevel = 1;
+        mimicTotalExp = 0;
 
         actionPoint = DataManager.Instance._InitParam["ActionPoint"];
         gem = 0;
@@ -170,6 +181,11 @@ public class AccountInfo
         PlayerLevel levelData = DataManager.Instance.GetPlayerLevel(level + 1);
         sliderCurExp = 0;
         sliderMaxExp = levelData.exp;
+        curExp = 0;
+
+        Mimiclevel mimicLvData = DataManager.Instance.GetMimicLevel(level + 1);
+        mimicSliderCurExp = 0;
+        mimicSliderMaxExp = mimicLvData.exp;
         curExp = 0;
 
         // 플레이어 스탯
@@ -209,6 +225,19 @@ public class AccountInfo
     public void AddGold(int addGold)
     {
         gold += addGold;
+        GameManager.Instance.SaveGame();
+        GameManager.Instance.UpdateUI();
+    }
+
+    public void AddCore(int addCore)
+    {
+        core += addCore;
+        GameManager.Instance.SaveGame();
+        GameManager.Instance.UpdateUI();
+    }
+    public void AddTimeTicket(int addTimeTicket)
+    {
+        timeTicket += addTimeTicket;
         GameManager.Instance.SaveGame();
         GameManager.Instance.UpdateUI();
     }
@@ -253,6 +282,26 @@ public class AccountInfo
                 addExp = 0;
             }
         }
+        GameManager.Instance.SaveGame();
+        GameManager.Instance.UpdateUI();
+    }
+    public void AddMimicExp(int addExp)
+    {
+        Mimiclevel levelData = DataManager.Instance.GetMimicLevel(level + 1);
+        if (levelData == null)
+        {
+            mimicSliderMaxExp = 0;
+            Debug.Log("만랩");
+            return;
+        }
+
+        mimicSliderMaxExp = levelData.exp;
+
+        mimicTotalExp += addExp;
+        mimicCurExp += addExp;
+        mimicSliderCurExp = mimicCurExp;
+        addExp = 0;
+
         GameManager.Instance.SaveGame();
         GameManager.Instance.UpdateUI();
     }

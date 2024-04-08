@@ -2559,6 +2559,248 @@
       "legendary": 0.03
     }
   ],
+  "Mimiclevel": [
+    {
+      "mimiclevel": 1,
+      "reqAccountLevel": 0,
+      "exp": 0,
+      "totalExp": 0,
+      "reqsec": 0,
+      "reqgold": 0
+    },
+    {
+      "mimiclevel": 2,
+      "reqAccountLevel": 0,
+      "exp": 1,
+      "totalExp": 1,
+      "reqsec": 300,
+      "reqgold": 2000
+    },
+    {
+      "mimiclevel": 3,
+      "reqAccountLevel": 2,
+      "exp": 1,
+      "totalExp": 2,
+      "reqsec": 600,
+      "reqgold": 8000
+    },
+    {
+      "mimiclevel": 4,
+      "reqAccountLevel": 2,
+      "exp": 1,
+      "totalExp": 3,
+      "reqsec": 20,
+      "reqgold": 14000
+    },
+    {
+      "mimiclevel": 5,
+      "reqAccountLevel": 2,
+      "exp": 2,
+      "totalExp": 5,
+      "reqsec": 35,
+      "reqgold": 20000
+    },
+    {
+      "mimiclevel": 6,
+      "reqAccountLevel": 3,
+      "exp": 2,
+      "totalExp": 7,
+      "reqsec": 55,
+      "reqgold": 26000
+    },
+    {
+      "mimiclevel": 7,
+      "reqAccountLevel": 3,
+      "exp": 2,
+      "totalExp": 9,
+      "reqsec": 80,
+      "reqgold": 32000
+    },
+    {
+      "mimiclevel": 8,
+      "reqAccountLevel": 3,
+      "exp": 3,
+      "totalExp": 12,
+      "reqsec": 110,
+      "reqgold": 38000
+    },
+    {
+      "mimiclevel": 9,
+      "reqAccountLevel": 4,
+      "exp": 3,
+      "totalExp": 15,
+      "reqsec": 145,
+      "reqgold": 44000
+    },
+    {
+      "mimiclevel": 10,
+      "reqAccountLevel": 4,
+      "exp": 3,
+      "totalExp": 18,
+      "reqsec": 185,
+      "reqgold": 50000
+    },
+    {
+      "mimiclevel": 11,
+      "reqAccountLevel": 4,
+      "exp": 3,
+      "totalExp": 21,
+      "reqsec": 235,
+      "reqgold": 56000
+    },
+    {
+      "mimiclevel": 12,
+      "reqAccountLevel": 5,
+      "exp": 4,
+      "totalExp": 25,
+      "reqsec": 295,
+      "reqgold": 62000
+    },
+    {
+      "mimiclevel": 13,
+      "reqAccountLevel": 5,
+      "exp": 4,
+      "totalExp": 29,
+      "reqsec": 370,
+      "reqgold": 68000
+    },
+    {
+      "mimiclevel": 14,
+      "reqAccountLevel": 6,
+      "exp": 4,
+      "totalExp": 33,
+      "reqsec": 450,
+      "reqgold": 74000
+    },
+    {
+      "mimiclevel": 15,
+      "reqAccountLevel": 6,
+      "exp": 5,
+      "totalExp": 38,
+      "reqsec": 535,
+      "reqgold": 80000
+    },
+    {
+      "mimiclevel": 16,
+      "reqAccountLevel": 7,
+      "exp": 5,
+      "totalExp": 43,
+      "reqsec": 625,
+      "reqgold": 86000
+    },
+    {
+      "mimiclevel": 17,
+      "reqAccountLevel": 7,
+      "exp": 5,
+      "totalExp": 48,
+      "reqsec": 720,
+      "reqgold": 92000
+    },
+    {
+      "mimiclevel": 18,
+      "reqAccountLevel": 8,
+      "exp": 5,
+      "totalExp": 53,
+      "reqsec": 820,
+      "reqgold": 98000
+    },
+    {
+      "mimiclevel": 19,
+      "reqAccountLevel": 8,
+      "exp": 5,
+      "totalExp": 58,
+      "reqsec": 925,
+      "reqgold": 104000
+    },
+    {
+      "mimiclevel": 20,
+      "reqAccountLevel": 8,
+      "exp": 5,
+      "totalExp": 63,
+      "reqsec": 1035,
+      "reqgold": 110000
+    },
+    {
+      "mimiclevel": 21,
+      "reqAccountLevel": 9,
+      "exp": 5,
+      "totalExp": 68,
+      "reqsec": 1150,
+      "reqgold": 116000
+    },
+    {
+      "mimiclevel": 22,
+      "reqAccountLevel": 9,
+      "exp": 5,
+      "totalExp": 73,
+      "reqsec": 1270,
+      "reqgold": 122000
+    },
+    {
+      "mimiclevel": 23,
+      "reqAccountLevel": 9,
+      "exp": 5,
+      "totalExp": 78,
+      "reqsec": 1395,
+      "reqgold": 128000
+    },
+    {
+      "mimiclevel": 24,
+      "reqAccountLevel": 10,
+      "exp": 5,
+      "totalExp": 83,
+      "reqsec": 1525,
+      "reqgold": 134000
+    },
+    {
+      "mimiclevel": 25,
+      "reqAccountLevel": 11,
+      "exp": 5,
+      "totalExp": 88,
+      "reqsec": 1660,
+      "reqgold": 140000
+    },
+    {
+      "mimiclevel": 26,
+      "reqAccountLevel": 12,
+      "exp": 5,
+      "totalExp": 93,
+      "reqsec": 1800,
+      "reqgold": 146000
+    },
+    {
+      "mimiclevel": 27,
+      "reqAccountLevel": 13,
+      "exp": 5,
+      "totalExp": 98,
+      "reqsec": 1945,
+      "reqgold": 152000
+    },
+    {
+      "mimiclevel": 28,
+      "reqAccountLevel": 14,
+      "exp": 5,
+      "totalExp": 103,
+      "reqsec": 2095,
+      "reqgold": 158000
+    },
+    {
+      "mimiclevel": 29,
+      "reqAccountLevel": 15,
+      "exp": 5,
+      "totalExp": 108,
+      "reqsec": 2250,
+      "reqgold": 164000
+    },
+    {
+      "mimiclevel": 30,
+      "reqAccountLevel": 16,
+      "exp": 5,
+      "totalExp": 113,
+      "reqsec": 2410,
+      "reqgold": 170000
+    }
+  ],
   "ItemTable": [
     {
       "itemId": 50000001,

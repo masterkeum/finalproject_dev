@@ -15,4 +15,8 @@ public class UtilityKit // : MonoBehaviour
         return (float)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
     }
 
+    public static DateTime GetCurrentDateTime()
+    {
+        return DateTime.UtcNow;
+    }
 }

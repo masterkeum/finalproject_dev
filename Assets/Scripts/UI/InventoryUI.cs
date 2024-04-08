@@ -237,29 +237,29 @@ public class InventoryUI : MonoBehaviour
                 case ItemGrade.Magic:
                 case ItemGrade.Elite:
                     {
-                        SoundManager.Instance.PlaySound("GetItemUI_1", 1f);
+                        SoundManager.Instance.PlaySound("GetItemUI_1");
                     }
                     break;
                 case ItemGrade.Rare:
                 case ItemGrade.Epic:
                     {
-                        SoundManager.Instance.PlaySound("GetItemUI_2", 1f);
+                        SoundManager.Instance.PlaySound("GetItemUI_2");
                     }
                     break;
                 case ItemGrade.Legendary:
                     {
-                        SoundManager.Instance.PlaySound("GetItemUI_3", 1f);
+                        SoundManager.Instance.PlaySound("GetItemUI_3");
                     }
                     break;
             }
             GameManager.Instance.SaveGame();
-            
+
         }
         else
         {
             UINoCurrency uINoCurrency = UIManager.Instance.ShowUI<UINoCurrency>();
             uINoCurrency.NoCore();
-            SoundManager.Instance.PlaySound("ErrorUI_1", 1f);
+            SoundManager.Instance.PlaySound("ErrorUI_1");
         }
     }
 
@@ -269,20 +269,38 @@ public class InventoryUI : MonoBehaviour
         switch (itemIndex)
         {
             case 0:
+                if (accountInfo.equipItems.Weapon.itemId == 0)
+                    return;
                 accountInfo.checkCurItem = accountInfo.equipItems.Weapon; break;
             case 1:
+                if (accountInfo.equipItems.Helmet.itemId == 0)
+                    return;
                 accountInfo.checkCurItem = accountInfo.equipItems.Helmet; break;
             case 2:
+                if (accountInfo.equipItems.Gloves.itemId == 0)
+                    return;
                 accountInfo.checkCurItem = accountInfo.equipItems.Gloves; break;
             case 3:
+                if (accountInfo.equipItems.Boots.itemId == 0)
+                    return;
                 accountInfo.checkCurItem = accountInfo.equipItems.Boots; break;
             case 4:
+                if (accountInfo.equipItems.Armor.itemId == 0)
+                    return;
                 accountInfo.checkCurItem = accountInfo.equipItems.Armor; break;
             case 5:
+                if (accountInfo.equipItems.Accessories.itemId == 0)
+                    return;
                 accountInfo.checkCurItem = accountInfo.equipItems.Accessories; break;
         }
         UIManager.Instance.ShowUI<UICheckEquip>();
-        SoundManager.Instance.PlaySound("ButtonClickUI_1", 1f);
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
+    }
+
+    public void PopupMimicLevelInfo()
+    {
+        UIManager.Instance.ShowUI<UIMimicLevelUp>();
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
     }
 
 

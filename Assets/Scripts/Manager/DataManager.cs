@@ -28,6 +28,7 @@ public class DataManager : SingletoneBase<DataManager>
     public Dictionary<int, ItemTable> itemTableDict;
     public Dictionary<int, LevelGacha> levelGachaDict;
     public Dictionary<int, Shop> shopDict;
+    public Dictionary<int, Mimiclevel> mimiclevelDict;
 
     protected override void Init()
     {
@@ -122,6 +123,13 @@ public class DataManager : SingletoneBase<DataManager>
         }
         Debug.Log("유저 레벨 정보 로드 완료");
 
+        //미믹레벨
+        mimiclevelDict = new Dictionary<int, Mimiclevel>();
+        foreach(Mimiclevel mimiclevel in jsonData.Mimiclevel)
+        {
+            mimiclevelDict.Add(mimiclevel.mimiclevel, mimiclevel);
+        }
+
         // 스킬 정보
         skillTableDict = new Dictionary<int, SkillTable>();
         foreach (SkillTable skillTable in jsonData.SkillTable)
@@ -215,6 +223,13 @@ public class DataManager : SingletoneBase<DataManager>
     {
         if(shopDict.ContainsKey(packageId))
             return shopDict[packageId];
+        else return null;
+    }
+
+    public Mimiclevel GetMimicLevel(int level)
+    {
+        if(mimiclevelDict.ContainsKey(level))
+            return mimiclevelDict[level];
         else return null;
     }
 }

@@ -22,7 +22,7 @@ public class SoundManager : SingletoneBase<SoundManager>
 
         LoadUISoundClip();
         LoadBattleSoundclip();
-        ChangeBackGroundMusic(Resources.Load<AudioClip>("Audio/Music/wednesday_night"), musicAudioSource.volume);
+        
     }
 
     public void CreateSFXAudioSource()
