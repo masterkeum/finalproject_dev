@@ -7,10 +7,7 @@ public class GroundStrikeScript : MonoBehaviour
     public float disableAfterTime = 5f;
 
     public VisualEffect vfx;
-
-    public Rigidbody rb; // 리지드바디
     public SphereCollider sc;
-    private RigidbodyConstraints originalConstraints;
 
     public Transform parentObject;
 
@@ -25,13 +22,10 @@ public class GroundStrikeScript : MonoBehaviour
     private void Awake()
     {
         //Debug.Log("SkyFallScript.Awake");
-        rb = transform.GetComponent<Rigidbody>();
         sc = transform.GetComponent<SphereCollider>();
         sc.isTrigger = true;
         sc.enabled = false;
         vfx.enabled = false;
-
-        originalConstraints = rb.constraints;
 
         enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
         groundLayerMask = 1 << LayerMask.NameToLayer("Ground");

@@ -154,6 +154,12 @@ public class Player : MonoBehaviour
         SkillTable defaultSkill = DataManager.Instance.GetSkillTable(DataManager.Instance._InitParam["StartSkillId"]);
         SkillUpdate(defaultSkill);
 
+
+
+        // Test
+        SkillUpdate(DataManager.Instance.GetSkillTable(30000541));
+        SkillUpdate(DataManager.Instance.GetSkillTable(30001055));
+
         IsInit = true;
     }
 
@@ -293,17 +299,6 @@ public class Player : MonoBehaviour
             {
                 passiveSkill[skillData.skillGroup] = skillData;
                 skillCoroutines[skillData.skillGroup] = StartSkillCoroutine(skillData);
-
-                switch (skillData.skillGroup)
-                {
-                    case 30001050: // 블랙홀 크기 변경
-                        {
-                            float scale = 1.2f * (skillData.level + 1);
-                            passiveObj[skillData.skillGroup].transform.localScale = new Vector3(scale, scale, 1);
-                        }
-                        break;
-                }
-
             }
             else
             {
@@ -317,6 +312,16 @@ public class Player : MonoBehaviour
 
                     passiveObj.Add(skillData.skillGroup, passiveEffect);
                 }
+            }
+
+            switch (skillData.skillGroup)
+            {
+                case 30001050: // 블랙홀 크기 변경
+                    {
+                        float scale = 1.2f * (skillData.level + 1);
+                        passiveObj[skillData.skillGroup].transform.localScale = new Vector3(scale, scale, 1);
+                    }
+                    break;
             }
         }
     }
@@ -393,26 +398,32 @@ public class Player : MonoBehaviour
                     break;
                 case SkillTargetType.RandomPos:
                     {
-                        if (skillData.prefabAsset == "SineVFX")
-                        {
-                            Vector3 randomPos = DetectRandomPos();
-                            Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), randomPos, Quaternion.identity);
-                            // 생성만
-                        }
-                        else
-                        {
-                            // 발사 작동
-                            for (int i = 0; i < projectileTotalCount; i++)
-                            {
-                                // 랜덤 포지션
-                                Vector3 randomPos = DetectRandomPos();
-                                skillPool.GetPoolSkyFallSkill(skillData.skillId, randomPos, damage);
-                                yield return new WaitForSeconds(castDelay);
-                            }
-                        }
+                        // TODO : 유성낙하 
+                        //if (skillData.prefabAsset == "SineVFX")
+                        //{
+                        //    Vector3 randomPos = DetectRandomPos();
+                        //    Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), randomPos, Quaternion.identity);
+                        //    // 생성만
+                        //}
+                        //else
+                        //{
+                        //    // 발사 작동
+                        //    for (int i = 0; i < projectileTotalCount; i++)
+                        //    {
+                        //        // 랜덤 포지션
+                        //        Vector3 randomPos = DetectRandomPos();
+                        //        skillPool.GetPoolSkyFallSkill(skillData.skillId, randomPos, damage);
+                        //        yield return new WaitForSeconds(castDelay);
+                        //    }
+                        //}
                     }
                     break;
-
+                case SkillTargetType.AOE:
+                    {
+                        skillPool.GetPoolAreaSkill(skillData.skillId, transform.position, damage);
+                        yield return new WaitForSeconds(castDelay);
+                    }
+                    break;
                 // Passive
                 case SkillTargetType.AddProjectile:
                     {

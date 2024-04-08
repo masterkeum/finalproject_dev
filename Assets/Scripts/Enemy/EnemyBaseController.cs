@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -63,6 +64,7 @@ public class EnemyBaseController : MonoBehaviour
     protected MonsterLevel monsterLevel;
 
     protected NavMeshAgent navMeshAgent;
+    protected Rigidbody rigidBody; // 리지드바디
     protected Collider capsuleCollider;
     protected Animator animator;
 
@@ -79,9 +81,12 @@ public class EnemyBaseController : MonoBehaviour
     protected int maxHp;
     private DropCoin point;
 
+    float knockBackTime;
+
     protected void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        rigidBody = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<Collider>();
         animator = GetComponentInChildren<Animator>();
         hpGuageSlider = GetComponentInChildren<Slider>();
@@ -148,6 +153,27 @@ public class EnemyBaseController : MonoBehaviour
         //Debug.Log("데미지텍스트 프리팹 " + hudText);
         hudText.transform.position = hudPos.position; // 표시될 위치
         hudText.GetComponentInChildren<DamageText>().Init(damageAmount, new Color(1f, 1f, 1f));
+    }
+
+    public void Knockback(float knockBackTerm, float startDelay, Vector3 knockbackDirection, float knockBackForce)
+    {
+        if (Time.time - knockBackTime > knockBackTerm && currentHp > 0)
+        {
+            knockBackTime = Time.time;
+            StartCoroutine(KnockbackRountine(startDelay, knockbackDirection, knockBackForce));
+        }
+    }
+
+    private IEnumerator KnockbackRountine(float startDelay, Vector3 knockbackDirection, float knockBackForce)
+    {
+        //yield return new WaitForSeconds(startDelay);
+        navMeshAgent.isStopped = true;
+        rigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+        rigidBody.AddForce(knockbackDirection * knockBackForce, ForceMode.Impulse);
+        yield return new WaitForSeconds(startDelay);
+        //rigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+        if (gameObject.activeSelf)
+            navMeshAgent.isStopped = false;
     }
 
     protected virtual void OnDead()

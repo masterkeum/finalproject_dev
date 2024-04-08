@@ -85,6 +85,40 @@ public class SkillPool : MonoBehaviour
             Debug.Log($"Can't find Obj : {skillId}");
         }
     }
+    public void GetPoolAreaSkill(int skillId, Vector3 Pos, int damage)
+    {
+        // TODO : 가변적으로 추가생성되게 변경
+
+        if (poolDictionary.ContainsKey(skillId))
+        {
+            GameObject obj = poolDictionary[skillId].Dequeue();
+            if (obj.activeSelf)
+            {
+                Transform parentTransform = obj.transform.parent.transform;
+                poolDictionary[skillId].Enqueue(obj);
+
+                SkillTable skillData = DataManager.Instance.GetSkillTable(skillId);
+                obj = Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), parentTransform.position, Quaternion.identity);
+                obj.transform.SetParent(parentTransform);
+                obj.SetActive(false);
+
+
+                Debug.LogWarning($"expanded pool : poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
+            }
+
+            obj.transform.position = Pos;
+            obj.GetComponent<AreaDotDamageScript>().Init(skillId, damage);
+            obj.SetActive(true);
+
+            poolDictionary[skillId].Enqueue(obj);
+
+            //StartCoroutine(SkillCall(obj));
+        }
+        else
+        {
+            Debug.Log($"Can't find Obj : {skillId}");
+        }
+    }
 
     public void GetPoolGroundStrikeSkill(int skillId, Vector3 enemyPos, int damage)
     {
