@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using static Gley.MobileAds.Events;
 
 public class AreaDotDamageScript : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class AreaDotDamageScript : MonoBehaviour
 
     // 범위 도트 딜
     private SphereCollider sc;
+    private float initialSize = 0f;
+    private float timeElapsed = 0f;
+    public float targetSize = 1.5f;
 
     private Transform parentObject;
 
@@ -19,8 +23,8 @@ public class AreaDotDamageScript : MonoBehaviour
     private float skillRad = 1.5f;
     private float damageInterval = 0.2f;
     private float skillRange = 1.2f;
+    private float knockBackForce = 5f;
 
-    public float knockBackForce = 20f;
 
     private void Awake()
     {
@@ -37,6 +41,9 @@ public class AreaDotDamageScript : MonoBehaviour
         //Debug.Log("AreaDotDamageScript.Init");
         skillInfo = DataManager.Instance.GetSkillTable(_skillId);
         damage = _damage;
+
+        sc.radius = 0f;
+        timeElapsed = 0f;
         switch (skillInfo.skillGroup)
         {
             case 30000050: // 생츄어리 크기 변경
@@ -60,6 +67,7 @@ public class AreaDotDamageScript : MonoBehaviour
         //Debug.Log("ProjectileScript.OnEnable");
         sc.enabled = true;
 
+        StartCoroutine(SCSize());
         StartCoroutine(LateCall());
         StartCoroutine(DotDeal());
     }
@@ -67,6 +75,37 @@ public class AreaDotDamageScript : MonoBehaviour
     private void OnTransformParentChanged()
     {
         parentObject = transform.parent;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (enemyLayerMask == (enemyLayerMask | (1 << other.gameObject.layer)))
+        {
+            Debug.Log($"OnTriggerEnter : {other.name}");
+            EnemyBaseController EBC = other.GetComponent<EnemyBaseController>();
+            Collider collider = other.GetComponent<Collider>();
+
+            if (EBC != null && collider != null)
+            {
+                Vector3 knockBackDirection = (collider.transform.position - GameManager.Instance.player.transform.position + Vector3.up).normalized;
+                EBC.Knockback(2f, 0.2f, knockBackDirection, knockBackForce);
+            }
+        }
+    }
+
+    private IEnumerator SCSize()
+    {
+        while (timeElapsed < disableAfterTime)
+        {
+            //float newSize = Mathf.Lerp(initialSize, targetSize, timeElapsed / disableAfterTime);
+            float t = timeElapsed / disableAfterTime;
+            float curveT = 1 - Mathf.Pow(1 - t, 3); // easeOutCubic 커브
+            float newSize = Mathf.Lerp(initialSize, targetSize, curveT);
+
+            sc.radius = newSize;
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
     }
 
     private IEnumerator DotDeal()
@@ -79,8 +118,6 @@ public class AreaDotDamageScript : MonoBehaviour
                 // 적에게 데미지 입히기
                 EnemyBaseController EBC = collider.GetComponent<EnemyBaseController>();
                 EBC.TakeDamage(damage);
-                //Vector3 knockBackDirection = (collider.transform.position - transform.position + Vector3.up*2).normalized;
-                //EBC.Knockback(disableAfterTime, damageInterval, knockBackDirection, knockBackForce);
             }
             yield return new WaitForSeconds(damageInterval);
         }
@@ -93,6 +130,5 @@ public class AreaDotDamageScript : MonoBehaviour
         gameObject.SetActive(false);
         yield break;
     }
-
 
 }

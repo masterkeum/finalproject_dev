@@ -7,7 +7,6 @@ public class KnockBack : MonoBehaviour
     ParticleSystem ps;
     List<ParticleSystem.Particle> enter = new List<ParticleSystem.Particle>();
 
-    private float knockBackForce = 20f;
 
     private void Awake()
     {
@@ -22,21 +21,15 @@ public class KnockBack : MonoBehaviour
         foreach (ParticleSystem.Particle p in enter)
         {
             Debug.Log("Effect Trigger2");
-
-
         }
     }
 
-    private void OnParticleCollision(GameObject other)
+    private void Update()
     {
-        Debug.Log($"Effect Collision : {other.name}");
-        EnemyBaseController EBC = other.GetComponent<EnemyBaseController>();
-        Collider collider = other.GetComponent<Collider>();
-
-        if (EBC != null && collider != null)
+        if (ps != null)
         {
-            Vector3 knockBackDirection = (collider.transform.position - GameManager.Instance.player.transform.position + Vector3.up).normalized;
-            EBC.Knockback(2f, 0.2f, knockBackDirection, knockBackForce);
+            ParticleSystem.CollisionModule collisionModule = ps.collision;
+            //collisionModule.radiusScale = ps.sizeOverLifetime.size.curve.;
         }
     }
 }

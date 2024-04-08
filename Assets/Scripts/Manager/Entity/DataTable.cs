@@ -107,6 +107,7 @@ public class SkillTable
     public string skillDesc;
     public string taskDesc;
     public bool isEnable;
+    public int poolAmount;
     public int level;
     public int maxLevel;
     public int nextSkillId;
