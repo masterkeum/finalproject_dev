@@ -22,7 +22,7 @@ public class UIMimicLevelUp : UIBase
     public TextMeshProUGUI reqExpText;
 
 
-    AccountInfo accountInfo = GameManager.Instance.accountInfo;
+    
     Coroutine timerRoutine;
 
 
@@ -44,6 +44,7 @@ public class UIMimicLevelUp : UIBase
 
     private void OnEnable()
     {
+        AccountInfo accountInfo = GameManager.Instance.accountInfo;
         UpdateUI();
         if (accountInfo.isLevelUpProcessing && accountInfo.completeTime > UtilityKit.GetCurrentDateTime())
         {
@@ -55,6 +56,7 @@ public class UIMimicLevelUp : UIBase
 
     public void UpdateUI()
     {
+        AccountInfo accountInfo = GameManager.Instance.accountInfo;
         playerLevelText.text = accountInfo.mimicLevel.ToString();
         playerGoldText.text = accountInfo.gold.ToString();
         playerTicketText.text = accountInfo.timeTicket.ToString();
@@ -124,6 +126,7 @@ public class UIMimicLevelUp : UIBase
 
     public void SetTimer() //레벨업 시작 버튼
     {
+        AccountInfo accountInfo = GameManager.Instance.accountInfo;
         accountInfo.isLevelUpProcessing = true;
         accountInfo.completeTime = UtilityKit.GetCurrentDateTime().AddSeconds(DataManager.Instance.mimiclevelDict[accountInfo.mimicLevel + 1].reqsec);
         if (timerRoutine != null)
@@ -149,6 +152,7 @@ public class UIMimicLevelUp : UIBase
     }
     public TimeSpan UpdateTimer()
     {
+        AccountInfo accountInfo = GameManager.Instance.accountInfo;
         DateTime now = UtilityKit.GetCurrentDateTime();
         TimeSpan waitTime = accountInfo.completeTime - now;
         if (accountInfo.isLevelUpProcessing == true)
@@ -163,6 +167,7 @@ public class UIMimicLevelUp : UIBase
 
     public void CompleteMimicLevelUp() //레벨업 완료 버튼
     {
+        AccountInfo accountInfo = GameManager.Instance.accountInfo;
         if (timerRoutine != null)
         {
             StopCoroutine(timerRoutine);
