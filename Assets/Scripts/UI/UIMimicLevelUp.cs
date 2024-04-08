@@ -45,9 +45,11 @@ public class UIMimicLevelUp : UIBase
     private void OnEnable()
     {
         UpdateUI();
+        if (accountInfo.isLevelUpProcessing && accountInfo.completeTime > UtilityKit.GetCurrentDateTime())
+        {
+            timerRoutine = StartCoroutine(UpdateTimerRoutine());
+        }
 
-
-        Debug.Log(UtilityKit.GetCurrentTime());
 
     }
 
@@ -123,7 +125,7 @@ public class UIMimicLevelUp : UIBase
     public void SetTimer() //레벨업 시작 버튼
     {
         accountInfo.isLevelUpProcessing = true;
-        accountInfo.completeTime = UtilityKit.GetCurrentDateTime().AddSeconds( DataManager.Instance.mimiclevelDict[accountInfo.mimicLevel + 1].reqsec);
+        accountInfo.completeTime = UtilityKit.GetCurrentDateTime().AddSeconds(DataManager.Instance.mimiclevelDict[accountInfo.mimicLevel + 1].reqsec);
         if (timerRoutine != null)
         {
             StopCoroutine(timerRoutine);
@@ -137,18 +139,18 @@ public class UIMimicLevelUp : UIBase
         {
             yield return new WaitForSeconds(1f);
             TimeSpan remainingTime = UpdateTimer();
-            if (remainingTime.TotalSeconds < 0 )
+            if (remainingTime.TotalSeconds < 0)
             {
                 yield break;
             }
-            
+
         }
 
     }
     public TimeSpan UpdateTimer()
     {
         DateTime now = UtilityKit.GetCurrentDateTime();
-        TimeSpan waitTime = accountInfo.completeTime - now ;
+        TimeSpan waitTime = accountInfo.completeTime - now;
         if (accountInfo.isLevelUpProcessing == true)
         {
             string time = waitTime.ToString(@"hh\:mm\:ss");
@@ -161,15 +163,15 @@ public class UIMimicLevelUp : UIBase
 
     public void CompleteMimicLevelUp() //레벨업 완료 버튼
     {
-        if(timerRoutine != null)
+        if (timerRoutine != null)
         {
-            StopCoroutine (timerRoutine);
+            StopCoroutine(timerRoutine);
         }
         accountInfo.isLevelUpProcessing = false;
         accountInfo.mimicLevel++;
         accountInfo.mimicTotalExp = DataManager.Instance.mimiclevelDict[accountInfo.mimicLevel + 1].totalExp;
         accountInfo.mimicCurExp = 0;
-        
+
         UpdateUI();
         completeButton.SetActive(false);
     }
