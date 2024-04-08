@@ -154,8 +154,8 @@ public class Player : MonoBehaviour
 
 
         // Test
-        SkillUpdate(DataManager.Instance.GetSkillTable(30000541));
-        SkillUpdate(DataManager.Instance.GetSkillTable(30001055));
+        //SkillUpdate(DataManager.Instance.GetSkillTable(30000541));
+        //SkillUpdate(DataManager.Instance.GetSkillTable(30001055));
 
         IsInit = true;
     }
