@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83524d6bfe27347b3bf0c375e8e808c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  color: {r: 0, g: 0, b: 0, a: 0}
   damage: 0
 --- !u!222 &1343352079517600924
 CanvasRenderer:

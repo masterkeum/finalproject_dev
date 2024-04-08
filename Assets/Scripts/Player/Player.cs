@@ -17,13 +17,12 @@ public struct PlayerInGameInfo
     public float critical;
     public float hpGen;
 
-
     public int addProjectileCount;
     public int addprojectilePenetration;
-    public int addDefense;
+    public int addSkillDefense;
     public int addSkillHp;
-    public int addRegenHp;
-
+    public int addSkillAttackPower;
+    public float addSkillCollectableRange;
 
     public int curLevel;
     //public int maxLevel;
@@ -51,9 +50,11 @@ public struct PlayerInGameInfo
 
         addProjectileCount = 0;
         addprojectilePenetration = 0;
-        addDefense = 0;
+
+        addSkillDefense = 0;
         addSkillHp = 0;
-        addRegenHp = 0;
+        addSkillAttackPower = 0;
+        addSkillCollectableRange = 2f;
 
         curLevel = _level;
         sliderCurExp = 0;
@@ -76,14 +77,13 @@ public class Player : MonoBehaviour
 
     private bool IsInit = false;
 
-
     [SerializeField] protected Transform projectilePoint;
 
-
-    private Vector3 screenPos;
-
+    public LayerMask enemyLayerMask;
+    public LayerMask dropItemLayerMask;
+    private Collider[] dropItemColliders;
     // 적
-    public LayerMask enemyLayer;
+
     public float detectionRange = 15f;
     public float detectRandomRange = 10f;
 
@@ -91,10 +91,7 @@ public class Player : MonoBehaviour
     protected SkillPool skillPool;
 
     public List<GameObject> chaseTarget = new List<GameObject>();
-
     private Slider hpGuageSlider;
-
-    private EnemyBaseController monster;
     public GameObject hudDamageText;
     public Transform hudPos;
 
@@ -112,6 +109,11 @@ public class Player : MonoBehaviour
     private Dictionary<int, Coroutine> skillCoroutines = new Dictionary<int, Coroutine>();
     public Dictionary<int, SkillTable> passiveSkill = new Dictionary<int, SkillTable>();
 
+    private Dictionary<int, GameObject> passiveObj = new Dictionary<int, GameObject>();
+
+    // 치트 스크립트
+    [SerializeField] private Canvas _testUI;
+
     private void Awake()
     {
         Debug.Log("Player.Awake");
@@ -119,6 +121,14 @@ public class Player : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         skillPool = GetComponent<SkillPool>();
         hpGuageSlider = GetComponentInChildren<Slider>();
+        enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
+        dropItemLayerMask = 1 << LayerMask.NameToLayer("DropItem");
+
+        dropItemColliders = new Collider[30];
+#if UNITY_EDITOR
+        _testUI.gameObject.SetActive(true);
+#endif
+
     }
 
     public virtual void Init(int _player, int _level)
@@ -141,6 +151,12 @@ public class Player : MonoBehaviour
         SkillTable defaultSkill = DataManager.Instance.GetSkillTable(DataManager.Instance._InitParam["StartSkillId"]);
         SkillUpdate(defaultSkill);
 
+
+
+        // Test
+        SkillUpdate(DataManager.Instance.GetSkillTable(30000541));
+        SkillUpdate(DataManager.Instance.GetSkillTable(30001055));
+
         IsInit = true;
     }
 
@@ -153,6 +169,9 @@ public class Player : MonoBehaviour
         }
         //SkillRoutine();
     }
+
+
+    #region Physics
 
     private void FixedUpdate()
     {
@@ -169,53 +188,90 @@ public class Player : MonoBehaviour
         Quaternion dirQuat = Quaternion.LookRotation(moveVec);
         Quaternion moveQuat = Quaternion.Slerp(rigid.rotation, dirQuat, 0.3f);
         rigid.MoveRotation(moveQuat);
+
+        // 드랍아이템 끌어오기. 이동을 해야 발동함
+        // 부하가 어떻지 모르겠음. => OverlapSphereNonAlloc 로 일단 바꿈
+        // 범위안에 있는것을 끌어당기면서 거의 동일한 시간에 유닛에게 들어오게 하고
+        // 미리 경험치/골드를 한꺼번에 계산해서 플러스 해준다. OnTrigger에서는 그냥 없애기만하기
+        int dropItemCount = Physics.OverlapSphereNonAlloc(transform.position, playeringameinfo.addSkillCollectableRange, dropItemColliders, dropItemLayerMask);
+        int golds = 0;
+        int exps = 0;
+        for (int i = 0; i < dropItemCount; i++)
+        {
+            DropCoin dropCoin = dropItemColliders[i].GetComponent<DropCoin>();
+            if (dropCoin != null)
+            {
+                golds += dropCoin.gold;
+                exps += dropCoin.exp;
+                dropCoin.moveToPlayer();
+            }
+        }
+        StartCoroutine(DropItemRoutine(golds, exps));
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (dropItemLayerMask == (dropItemLayerMask | (1 << other.gameObject.layer)))
+        {
+            // dropitem 끌어당긴것 디스트로이
+            Destroy(other.gameObject);
+        }
+    }
 
-    #region Controll
+    IEnumerator DropItemRoutine(int golds, int exps)
+    {
+        yield return new WaitForSeconds(0.8f); // 코인 이동속도와 맞춰야한다.
+        AddGold(golds);
+        AddExp(exps);
+        yield break;
+    }
+    #endregion
 
-    public void SkillUpdate(SkillTable skilldata)
+
+    #region Skill
+
+    public void SkillUpdate(SkillTable skillData)
     {
         // 그룹 중복값 삭제
         bool skillFound = false;
-        if (skilldata.applyType == SkillApplyType.Active
-            || skilldata.applyType == SkillApplyType.Awaken)
+        if (skillData.applyType == SkillApplyType.Active
+            || skillData.applyType == SkillApplyType.Awaken)
         {
             // UI 용
             for (int i = 0; i < activeSkillSlot.Count; i++)
             {
-                if (skilldata.skillGroup == activeSkillSlot[i].skillGroup)
+                if (skillData.skillGroup == activeSkillSlot[i].skillGroup)
                 {
-                    activeSkillSlot[i] = skilldata; // 참조 변경
+                    activeSkillSlot[i] = skillData; // 참조 변경
                     skillFound = true;
                     break;
                 }
             }
             if (!skillFound)
             {
-                activeSkillSlot.Add(skilldata);
+                activeSkillSlot.Add(skillData);
             }
 
             // 스킬 새로운 로직
-            if (activeSkill.ContainsKey(skilldata.skillGroup))
+            if (activeSkill.ContainsKey(skillData.skillGroup))
             {
                 // 스킬풀 삭제 후 새로 생성
-                skillPool.DestroyDicObject(activeSkill[skilldata.skillGroup].skillId);
-                skillPool.AddSkillPool(skilldata);
+                skillPool.DestroyDicObject(activeSkill[skillData.skillGroup].skillId);
+                skillPool.AddSkillPool(skillData);
                 skillPool.CreatePool(transform);
                 // 레벨업
-                activeSkill[skilldata.skillGroup] = skilldata;
-                skillCoroutines[skilldata.skillGroup] = StartSkillCoroutine(skilldata);
+                activeSkill[skillData.skillGroup] = skillData;
+                skillCoroutines[skillData.skillGroup] = StartSkillCoroutine(skillData);
             }
             else
             {
                 // 스킬풀 새로 생성
-                skillPool.AddSkillPool(skilldata);
+                skillPool.AddSkillPool(skillData);
                 skillPool.CreatePool(transform);
 
                 // 새스킬
-                activeSkill.Add(skilldata.skillGroup, skilldata);
-                skillCoroutines.Add(skilldata.skillGroup, StartSkillCoroutine(skilldata));
+                activeSkill.Add(skillData.skillGroup, skillData);
+                skillCoroutines.Add(skillData.skillGroup, StartSkillCoroutine(skillData));
             }
         }
         else
@@ -223,72 +279,90 @@ public class Player : MonoBehaviour
             // UI 용
             for (int i = 0; i < passiveSkillSlot.Count; i++)
             {
-                if (skilldata.skillGroup == passiveSkillSlot[i].skillGroup)
+                if (skillData.skillGroup == passiveSkillSlot[i].skillGroup)
                 {
-                    passiveSkillSlot[i] = skilldata;
+                    passiveSkillSlot[i] = skillData;
                     skillFound = true;
                     break;
                 }
             }
             if (!skillFound)
             {
-                passiveSkillSlot.Add(skilldata);
+                passiveSkillSlot.Add(skillData);
             }
 
             // 스킬 새로운 로직
-            if (passiveSkill.ContainsKey(skilldata.skillGroup))
+            if (passiveSkill.ContainsKey(skillData.skillGroup))
             {
-                passiveSkill[skilldata.skillGroup] = skilldata;
-                skillCoroutines[skilldata.skillGroup] = StartSkillCoroutine(skilldata);
+                passiveSkill[skillData.skillGroup] = skillData;
+                skillCoroutines[skillData.skillGroup] = StartSkillCoroutine(skillData);
             }
             else
             {
-                passiveSkill.Add(skilldata.skillGroup, skilldata);
-                skillCoroutines.Add(skilldata.skillGroup, StartSkillCoroutine(skilldata));
+                passiveSkill.Add(skillData.skillGroup, skillData);
+                skillCoroutines.Add(skillData.skillGroup, StartSkillCoroutine(skillData));
+
+                if (skillData.prefabAddress != null)
+                {
+                    GameObject passiveEffect = Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), transform.position + Vector3.up, Quaternion.Euler(-90f, 0f, 0f));
+                    passiveEffect.transform.SetParent(transform);
+
+                    passiveObj.Add(skillData.skillGroup, passiveEffect);
+                }
+            }
+
+            switch (skillData.skillGroup)
+            {
+                case 30001050: // 블랙홀 크기 변경
+                    {
+                        float scale = 1.2f * (skillData.level + 1);
+                        passiveObj[skillData.skillGroup].transform.localScale = new Vector3(scale, scale, 1);
+                    }
+                    break;
             }
         }
     }
 
-    public Coroutine StartSkillCoroutine(SkillTable skilldata)
+    public Coroutine StartSkillCoroutine(SkillTable skillData)
     {
-        if (skillCoroutines.ContainsKey(skilldata.skillGroup) && skillCoroutines[skilldata.skillGroup] != null)
+        if (skillCoroutines.ContainsKey(skillData.skillGroup) && skillCoroutines[skillData.skillGroup] != null)
         {
-            StopCoroutine(skillCoroutines[skilldata.skillGroup]);
+            StopCoroutine(skillCoroutines[skillData.skillGroup]);
         }
-        return StartCoroutine(SkillRoutine(skilldata));
+        return StartCoroutine(SkillRoutine(skillData));
     }
 
     IEnumerator SkillRoutine(SkillTable skillData)
     {
+        // 패시브의 경우 시작할때 한번 이펙트 발현
         //최종 데미지 = (기본 공격력 + 아이템 공격력 보정치) x (공격력 배율) - (방어력*방어력배율) + 스킬 추가 데미지 + (크리티컬 데미지 보정치 * 크리티컬 여부)
-        int damage = Mathf.RoundToInt((playeringameinfo.attackPower + skillData.attackDamage) * 0.5f);
         int projectileTotalCount = skillData.projectileCount;
-        if (skillData.skillGroup == 30000010)
-        {
-            // FIXME : 하드코딩
-            // 화염구인 경우
-            if (passiveSkill.ContainsKey(30001010))
-            {
-                projectileTotalCount += passiveSkill[30001010].projectileCount;
-            }
-        }
+        float castDelay = skillData.castDelay;
 
         Debug.Log($"Coroutine started with parameter: {skillData.skillId}");
+        Debug.Log(projectileTotalCount);
         while (true)
         {
             yield return new WaitForSeconds(skillData.coolDownTime);
+
+            int damage = Mathf.RoundToInt((playeringameinfo.attackPower + skillData.attackDamage) * 0.5f);
 
             switch (skillData.targetType)
             {
                 // Active
                 case SkillTargetType.Single:
                     {
+                        if (skillData.skillGroup == 30000010)
+                        {
+                            projectileTotalCount = skillData.projectileCount + playeringameinfo.addprojectilePenetration;
+                        }
+
                         // 발사 작동
                         for (int i = 0; i < projectileTotalCount; i++)
                         {
                             Vector3 direction = DetectEnemyDirection();
                             skillPool.GetPoolProjectileSkill(skillData.skillId, projectilePoint, direction, damage);
-                            yield return new WaitForSeconds(0.2f);
+                            yield return new WaitForSeconds(castDelay);
                         }
                     }
                     break;
@@ -307,41 +381,54 @@ public class Player : MonoBehaviour
                     break;
                 case SkillTargetType.RandomSingle:
                     {
+                        // 번개의 일격 GroundStrike
+
                         // 발사 작동
                         for (int i = 0; i < projectileTotalCount; i++)
                         {
                             // 랜덤 단일 타겟
                             Vector3 enemyPos = DetectRandomEnemyPos();
-                            //Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), enemyPos, Quaternion.identity);
-
-                            skillPool.GetPoolSkyFallSkill(skillData.skillId, enemyPos, damage);
-                            yield return new WaitForSeconds(0.2f);
+                            skillPool.GetPoolGroundStrikeSkill(skillData.skillId, enemyPos, damage);
+                            yield return new WaitForSeconds(castDelay);
                         }
                     }
                     break;
                 case SkillTargetType.RandomPos:
                     {
-                        if (skillData.prefabAsset == "SineVFX")
-                        {
-                            Vector3 randomPos = DetectRandomPos();
-                            Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), randomPos, Quaternion.identity);
-                            // 생성만
-                        }
-                        else
-                        {
-                            // 발사 작동
-                            for (int i = 0; i < projectileTotalCount; i++)
-                            {
-                                // 랜덤 포지션
-                                Vector3 randomPos = DetectRandomPos();
-                                skillPool.GetPoolSkyFallSkill(skillData.skillId, randomPos, damage);
-                                yield return new WaitForSeconds(0.2f);
-                            }
-                        }
+                        // TODO : 유성낙하 
+                        //if (skillData.prefabAsset == "SineVFX")
+                        //{
+                        //    Vector3 randomPos = DetectRandomPos();
+                        //    Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), randomPos, Quaternion.identity);
+                        //    // 생성만
+                        //}
+                        //else
+                        //{
+                        //    // 발사 작동
+                        //    for (int i = 0; i < projectileTotalCount; i++)
+                        //    {
+                        //        // 랜덤 포지션
+                        //        Vector3 randomPos = DetectRandomPos();
+                        //        skillPool.GetPoolSkyFallSkill(skillData.skillId, randomPos, damage);
+                        //        yield return new WaitForSeconds(castDelay);
+                        //    }
+                        //}
                     }
                     break;
-
+                case SkillTargetType.AOE:
+                    {
+                        skillPool.GetPoolAreaSkill(skillData.skillId, transform.position, damage);
+                        yield return new WaitForSeconds(castDelay);
+                    }
+                    break;
                 // Passive
+                case SkillTargetType.AddProjectile:
+                    {
+                        // 범위 증가는 유니크한 스킬이라는 가정
+                        playeringameinfo.addprojectilePenetration = skillData.projectileCount;
+                    }
+                    yield break;
+
                 case SkillTargetType.DotHeal:
                     {
                         if (playeringameinfo.curHp < playeringameinfo.maxHp)
@@ -363,27 +450,51 @@ public class Player : MonoBehaviour
                         UpdateHPBar();
                     }
                     yield break;
+
+                case SkillTargetType.AddDamage:
+                    {
+                        playeringameinfo.addSkillAttackPower = 0;
+                        foreach (SkillTable skillTable in passiveSkillSlot)
+                        {
+                            playeringameinfo.addSkillAttackPower += skillTable.attackDamage;
+                        }
+                        playeringameinfo.attackPower = playerStatInfo.attackPower + playerStatInfo.addAttackPower + playeringameinfo.addSkillAttackPower;
+                    }
+                    yield break;
+
+                case SkillTargetType.CollectableRange:
+                    {
+                        // 범위 증가는 유니크한 스킬이라는 가정
+                        playeringameinfo.addSkillCollectableRange = (skillData.level + 1) * 2f;
+                    }
+                    yield break;
+
+                case SkillTargetType.AddDef:
+                    {
+                        playeringameinfo.addSkillDefense = 0;
+                        foreach (SkillTable skillTable in passiveSkillSlot)
+                        {
+                            playeringameinfo.addSkillDefense += skillTable.addDef;
+                        }
+                        playeringameinfo.defense = playerStatInfo.defense + playerStatInfo.addDefense + playeringameinfo.addSkillDefense;
+                    }
+                    yield break;
+
                 default:
                     yield break;
             }
         }
     }
 
+    #endregion
+
+    #region Control
+
     public void JoyStick(VariableJoystick joy)
     {
         this.joy = joy;
     }
 
-    // public void TakeDamageNumber(Vector3 position)
-    // {
-    //     // todo 
-    //     // 몬스터와 충돌하면 피격값을 text로 띄워준다.
-    //     // 1. update 로 실시간 충돌 감지
-    //     // 2. 충돌하면 text 활성화 해서 띄워준다.
-    //     
-    //     screenPos = Camera.main.WorldToScreenPoint(moveVec);
-    //     Debug.Log("스크린투 월드 좌표: "+screenPos);
-    // }
     public void UpdateHPBar()
     {
         float per = (float)playeringameinfo.curHp / playeringameinfo.maxHp;
@@ -392,20 +503,21 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        playeringameinfo.curHp -= damageAmount;
+        int realDamage = Mathf.Max(0, damageAmount - playeringameinfo.defense);
+        playeringameinfo.curHp -= realDamage;
         UpdateHPBar();
 
-        damageAmount = -damageAmount;
-        GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
-        //Debug.Log("데미지텍스트 프리팹 " + hudText);
+        realDamage = -realDamage;
+        GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText"));
+
         hudText.transform.position = hudPos.position; // 표시될 위치
         Color color = Color.white;
-        if (damageAmount < 0)
-            color = new Color(1f, 0f, 0f);
-        else
+        if (realDamage > 0)
             color = new Color(0f, 1f, 0f);
+        else
+            color = new Color(1f, 0f, 0f);
 
-        hudText.GetComponentInChildren<DamageText>().Init(damageAmount, color);
+        hudText.GetComponentInChildren<DamageText>().Init(realDamage, color);
 
         //Debug.Log("플레이어 현재 HP" + per);
         if (playeringameinfo.curHp <= 0)
@@ -423,7 +535,7 @@ public class Player : MonoBehaviour
     {
         nearEnemy.Clear();
         // TODO: OverlapSphereNonAlloc로 변환가능하면 변환
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectRandomRange, enemyLayer);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectRandomRange, enemyLayerMask);
         foreach (Collider col in hitColliders)
         {
             nearEnemy.Add(col.transform);
@@ -466,7 +578,7 @@ public class Player : MonoBehaviour
     {
         nearEnemy.Clear();
         // TODO: OverlapSphereNonAlloc로 변환가능하면 변환
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectionRange, enemyLayer);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectionRange, enemyLayerMask);
         foreach (Collider col in hitColliders)
         {
             nearEnemy.Add(col.transform);
@@ -481,6 +593,8 @@ public class Player : MonoBehaviour
         }
         else
         {
+            //return UnityEngine.Random.insideUnitSphere.normalized; // 땅으로 쏨
+
             // 근거리 없으면 아무방향으로 발사
             // Unity의 Random 클래스를 사용하여 -1과 1 사이의 랜덤한 값으로 각 축을 설정합니다.
             float randomX = UnityEngine.Random.Range(-1f, 1f);
@@ -564,7 +678,6 @@ public class Player : MonoBehaviour
     /// <param name="addExp">추가 경험치</param>
     public void AddExp(int addExp)
     {
-
         while (addExp > 0)
         {
             PlayerIngameLevel levelData = DataManager.Instance.GetPlayerIngameLevel(playeringameinfo.curLevel + 1);

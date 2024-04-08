@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,6 +14,7 @@ public enum EnemyState
     Attack,
     Flee, // 보스 멀리 풀링되는경우 원위치
     Die,
+    Freeze,// 멈춤
 }
 
 public class EnemyBaseController : MonoBehaviour
@@ -62,6 +64,7 @@ public class EnemyBaseController : MonoBehaviour
     protected MonsterLevel monsterLevel;
 
     protected NavMeshAgent navMeshAgent;
+    protected Rigidbody rigidBody; // 리지드바디
     protected Collider capsuleCollider;
     protected Animator animator;
 
@@ -78,9 +81,12 @@ public class EnemyBaseController : MonoBehaviour
     protected int maxHp;
     private DropCoin point;
 
+    float knockBackTime;
+
     protected void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        rigidBody = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<Collider>();
         animator = GetComponentInChildren<Animator>();
         hpGuageSlider = GetComponentInChildren<Slider>();
@@ -123,11 +129,8 @@ public class EnemyBaseController : MonoBehaviour
                 }
                 break;
             case EnemyState.Attack:
-                {
-                    navMeshAgent.isStopped = true;
-                }
-                break;
             case EnemyState.Die:
+            case EnemyState.Freeze:
                 {
                     navMeshAgent.isStopped = true;
                 }
@@ -152,6 +155,27 @@ public class EnemyBaseController : MonoBehaviour
         hudText.GetComponentInChildren<DamageText>().Init(damageAmount, new Color(1f, 1f, 1f));
     }
 
+    public void Knockback(float knockBackTerm, float startDelay, Vector3 knockbackDirection, float knockBackForce)
+    {
+        if (Time.time - knockBackTime > knockBackTerm && currentHp > 0)
+        {
+            knockBackTime = Time.time;
+            StartCoroutine(KnockbackRountine(startDelay, knockbackDirection, knockBackForce));
+        }
+    }
+
+    private IEnumerator KnockbackRountine(float startDelay, Vector3 knockbackDirection, float knockBackForce)
+    {
+        //yield return new WaitForSeconds(startDelay);
+        navMeshAgent.isStopped = true;
+        rigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+        rigidBody.AddForce(knockbackDirection * knockBackForce, ForceMode.Impulse);
+        yield return new WaitForSeconds(startDelay);
+        //rigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+        if (gameObject.activeSelf)
+            navMeshAgent.isStopped = false;
+    }
+
     protected virtual void OnDead()
     {
         SetState(EnemyState.Die);
@@ -163,7 +187,7 @@ public class EnemyBaseController : MonoBehaviour
         StartCoroutine(Remove());
 
         // 보상
-        point = Instantiate(Resources.Load<DropCoin>("Prefabs/Coin/RupeeGold"), transform.position + Vector3.up * 2, Quaternion.identity);
+        point = Instantiate(Resources.Load<DropCoin>("Prefabs/DropItem/RupeeGold"), transform.position + Vector3.up * 2, Quaternion.identity);
         point.Init(monsterLevel.gold, monsterLevel.exp);
 
         // UI

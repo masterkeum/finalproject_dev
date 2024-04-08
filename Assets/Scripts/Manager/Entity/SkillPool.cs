@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Pooling;
+using static UnityEditor.Progress;
 
 public class SkillPool : MonoBehaviour
 {
@@ -24,12 +26,12 @@ public class SkillPool : MonoBehaviour
         {
             id = skillData.skillId,
             prefab = Resources.Load<GameObject>(skillData.prefabAddress),
-            amount = 25
+            amount = skillData.poolAmount,
         };
         projectileList.Add(projectile);
     }
 
-    public void CreatePool(Transform transform)
+    public void CreatePool(Transform parentTransform)
     {
         foreach (Projectile pool in projectileList)
         {
@@ -37,8 +39,8 @@ public class SkillPool : MonoBehaviour
 
             for (int i = 0; i < pool.amount; i++)
             {
-                GameObject skillgo = Instantiate(pool.prefab, transform.position, Quaternion.identity);
-                skillgo.transform.SetParent(transform);
+                GameObject skillgo = Instantiate(pool.prefab, parentTransform.position, Quaternion.identity);
+                skillgo.transform.SetParent(parentTransform);
                 //skillgo.GetComponent<ProjectileScript>().Init(pool.id, 1);
                 skillgo.SetActive(false);
                 skillQueue.Enqueue(skillgo);
@@ -56,9 +58,92 @@ public class SkillPool : MonoBehaviour
         if (poolDictionary.ContainsKey(skillId))
         {
             GameObject obj = poolDictionary[skillId].Dequeue();
+            if (obj.activeSelf)
+            {
+                Transform parentTransform = obj.transform.parent.transform;
+                poolDictionary[skillId].Enqueue(obj);
+
+                SkillTable skillData = DataManager.Instance.GetSkillTable(skillId);
+                obj = Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), parentTransform.position, Quaternion.identity);
+                obj.transform.SetParent(parentTransform);
+                obj.SetActive(false);
+
+                Debug.LogWarning($"expanded pool : poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
+            }
+
             obj.transform.position = point.position;
             obj.transform.rotation = Quaternion.LookRotation(direction);
             obj.GetComponent<ProjectileScript>().Init(skillId, damage);
+            obj.SetActive(true);
+
+            poolDictionary[skillId].Enqueue(obj);
+
+            //StartCoroutine(SkillCall(obj));
+        }
+        else
+        {
+            Debug.Log($"Can't find Obj : {skillId}");
+        }
+    }
+    public void GetPoolAreaSkill(int skillId, Vector3 Pos, int damage)
+    {
+        // TODO : 가변적으로 추가생성되게 변경
+
+        if (poolDictionary.ContainsKey(skillId))
+        {
+            GameObject obj = poolDictionary[skillId].Dequeue();
+            if (obj.activeSelf)
+            {
+                Transform parentTransform = obj.transform.parent.transform;
+                poolDictionary[skillId].Enqueue(obj);
+
+                SkillTable skillData = DataManager.Instance.GetSkillTable(skillId);
+                obj = Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), parentTransform.position, Quaternion.identity);
+                obj.transform.SetParent(parentTransform);
+                obj.SetActive(false);
+
+
+                Debug.LogWarning($"expanded pool : poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
+            }
+
+            obj.transform.position = Pos;
+            obj.GetComponent<AreaDotDamageScript>().Init(skillId, damage);
+            obj.SetActive(true);
+
+            poolDictionary[skillId].Enqueue(obj);
+
+            //StartCoroutine(SkillCall(obj));
+        }
+        else
+        {
+            Debug.Log($"Can't find Obj : {skillId}");
+        }
+    }
+
+    public void GetPoolGroundStrikeSkill(int skillId, Vector3 enemyPos, int damage)
+    {
+        // TODO : 가변적으로 추가생성되게 변경
+
+        if (poolDictionary.ContainsKey(skillId))
+        {
+            GameObject obj = poolDictionary[skillId].Dequeue();
+            if (obj.activeSelf)
+            {
+                Transform parentTransform = obj.transform.parent.transform;
+                poolDictionary[skillId].Enqueue(obj);
+
+                SkillTable skillData = DataManager.Instance.GetSkillTable(skillId);
+                obj = Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), parentTransform.position, Quaternion.identity);
+                obj.transform.SetParent(parentTransform);
+                obj.SetActive(false);
+
+
+                Debug.LogWarning($"expanded pool : poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
+            }
+
+            obj.transform.position = enemyPos;
+            //obj.transform.rotation = Quaternion.LookRotation(Vector3.down);
+            obj.GetComponent<GroundStrikeScript>().Init(skillId, damage);
             obj.SetActive(true);
 
             poolDictionary[skillId].Enqueue(obj);
@@ -78,9 +163,23 @@ public class SkillPool : MonoBehaviour
         if (poolDictionary.ContainsKey(skillId))
         {
             GameObject obj = poolDictionary[skillId].Dequeue();
+            if (obj.activeSelf)
+            {
+                Transform parentTransform = obj.transform.parent.transform;
+                poolDictionary[skillId].Enqueue(obj);
+
+                SkillTable skillData = DataManager.Instance.GetSkillTable(skillId);
+                obj = Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), parentTransform.position, Quaternion.identity);
+                obj.transform.SetParent(parentTransform);
+                obj.SetActive(false);
+
+
+                Debug.LogWarning($"poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
+            }
+
             obj.transform.position = enemyPos;
             //obj.transform.rotation = Quaternion.LookRotation(Vector3.down);
-            obj.GetComponent<SkyFallScript>().Init(skillId, damage);
+            obj.GetComponent<ProjectileScript>().Init(skillId, damage);
             obj.SetActive(true);
 
             poolDictionary[skillId].Enqueue(obj);
@@ -92,7 +191,6 @@ public class SkillPool : MonoBehaviour
             Debug.Log($"Can't find Obj : {skillId}");
         }
     }
-
 
     public void DestroyDicObject(int key)
     {

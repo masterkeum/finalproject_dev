@@ -94,7 +94,7 @@ SpriteAtlas:
   - BlackHole
   - Projectile
   - Stone
-  - Santuary
+  - Sanctuary
   - Life
   - Def
   - Fire
@@ -103,7 +103,7 @@ SpriteAtlas:
   - Flame_S
   - Thunder
   - Heal
-  - Santuary_S
+  - Sanctuary_S
   - Ice
   - Fire_S
   - Flame

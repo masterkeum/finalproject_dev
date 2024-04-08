@@ -108,6 +108,7 @@ public class SkillTable
     public string skillDesc;
     public string taskDesc;
     public bool isEnable;
+    public int poolAmount;
     public int level;
     public int maxLevel;
     public int nextSkillId;
@@ -116,6 +117,7 @@ public class SkillTable
     public SkillTargetType targetType;
     public SkillRangeType rangeType;
     public float coolDownTime;
+    public float castDelay;
     public int attackDamage;
     public string projectileType;
     public int projectileSpeed;
@@ -127,6 +129,7 @@ public class SkillTable
     public string imageAddress;
     public string prefabAsset;
     public string prefabAddress;
+    public string prefabAfterEffect;
 }
 
 [Serializable]

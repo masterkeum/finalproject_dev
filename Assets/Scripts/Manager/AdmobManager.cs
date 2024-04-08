@@ -1,8 +1,6 @@
+using GoogleMobileAds.Api;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using GoogleMobileAds.Api;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AdmobManager : SingletoneBase<AdmobManager>
@@ -125,6 +123,7 @@ public class AdmobManager : SingletoneBase<AdmobManager>
         // Raised when a click is recorded for an ad.
         ad.OnAdClicked += () =>
         {
+            // 여기 들어옴
             Debug.Log("Rewarded ad was clicked.");
         };
         // Raised when an ad opened full screen content.

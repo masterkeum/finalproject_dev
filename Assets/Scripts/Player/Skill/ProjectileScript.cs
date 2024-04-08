@@ -111,10 +111,16 @@ public class ProjectileScript : MonoBehaviour
                 Quaternion rot = Quaternion.FromToRotation(Vector3.up, triggerEnterPoint);
                 Vector3 pos = triggerEnterPoint + new Vector3(0, hitOffset, 0);
 
-
                 GameObject ip = Instantiate(impactParticle, pos, rot);
 
                 other.GetComponent<EnemyBaseController>().TakeDamage(damage);
+
+                // 특정 스킬의 경우 애프터이펙트 발생
+                if (skillInfo.prefabAfterEffect != null)
+                {
+                    GameObject AE = Instantiate(Resources.Load<GameObject>(skillInfo.prefabAfterEffect), pos, Quaternion.Euler(-90f, 0f, 0f));
+                    Destroy(AE, AE.GetComponent<ParticleSystem>().main.duration);
+                }
 
                 StartCoroutine(ActiveFalse(projectileParticle, 3f));
                 Destroy(ip, 5.0f);

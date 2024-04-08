@@ -143,17 +143,18 @@ public class EnemyBossController : EnemyBaseController
 
     private void AttackUpdate()
     {
-        // 공격 범위 벗어나면
-        if (playerDistance > characterInfo.attackRange)
-        {
-            SetState(EnemyState.Trace);
-        }
         transform.Rotate(DirectionToTarget());
         if (Time.time - lastAttackTime > characterInfo.attackSpeed)
         {
             lastAttackTime = Time.time;
             player.TakeDamage(damage);
             animator.SetTrigger(Attack);
+        }
+
+        // 공격 범위 벗어나면
+        if (playerDistance > characterInfo.attackRange)
+        {
+            SetState(EnemyState.Trace);
         }
     }
 
@@ -171,7 +172,7 @@ public class EnemyBossController : EnemyBaseController
     protected override void OnDead()
     {
         base.OnDead();
-        Debug.Log("게임 클리어");
+        Debug.Log("보스 하나 죽음");
         GameManager.Instance.SetState(GameState.IngameEnd);
         UIManager.Instance.ShowUI<UIGameClear>();
         ++UIManager.Instance.popupUICount;
