@@ -81,6 +81,9 @@ public class AreaDotDamageScript : MonoBehaviour
     {
         if (enemyLayerMask == (enemyLayerMask | (1 << other.gameObject.layer)))
         {
+            // TODO: 넉백 랜덤으로 추가하기
+
+
             Debug.Log($"OnTriggerEnter : {other.name}");
             EnemyBaseController EBC = other.GetComponent<EnemyBaseController>();
             Collider collider = other.GetComponent<Collider>();
