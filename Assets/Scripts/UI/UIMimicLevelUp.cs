@@ -77,8 +77,7 @@ public class UIMimicLevelUp : UIBase
         probabilityLegendaryNext.text = DataManager.Instance.levelGachaDict[accountInfo.mimicLevel + 1].legendary.ToString("F4");
 
         float sliderCurValue = accountInfo.mimicCurExp;
-        float sliderMaxValue = DataManager.Instance.mimiclevelDict[accountInfo.mimicLevel].totalExp - DataManager.Instance.mimiclevelDict[accountInfo.mimicLevel].totalExp;
-
+        float sliderMaxValue = DataManager.Instance.mimiclevelDict[accountInfo.mimicLevel + 1].exp;
         expSlider.value = sliderCurValue == 0 ? 0 : sliderCurValue / sliderMaxValue;
 
         if (expSlider.value < 1 && accountInfo.isLevelUpProcessing == false)
@@ -121,6 +120,7 @@ public class UIMimicLevelUp : UIBase
         }
         UpdateUI();
         GameManager.Instance.UpdateUI();
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
 
     }
 
@@ -134,6 +134,7 @@ public class UIMimicLevelUp : UIBase
             StopCoroutine(timerRoutine);
         }
         timerRoutine = StartCoroutine(UpdateTimerRoutine());
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
     }
 
     public IEnumerator UpdateTimerRoutine()
@@ -174,20 +175,22 @@ public class UIMimicLevelUp : UIBase
         }
         accountInfo.isLevelUpProcessing = false;
         accountInfo.mimicLevel++;
-        accountInfo.mimicTotalExp = DataManager.Instance.mimiclevelDict[accountInfo.mimicLevel + 1].totalExp;
         accountInfo.mimicCurExp = 0;
 
         UpdateUI();
         completeButton.SetActive(false);
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
     }
 
     public void TimeAccelerationButton()
     {
         UIManager.Instance.ShowUI<UITimeAcceleration>();
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
     }
 
     public void ClosePopup()
     {
         gameObject.SetActive(false);
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
     }
 }

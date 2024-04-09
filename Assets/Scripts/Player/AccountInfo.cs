@@ -294,13 +294,12 @@ public class AccountInfo
             Debug.Log("만랩");
             return;
         }
-
-        mimicSliderMaxExp = levelData.exp;
-
-        mimicTotalExp += addExp;
-        mimicCurExp += addExp;
-        mimicSliderCurExp = mimicCurExp;
-        addExp = 0;
+        else
+        {
+            mimicTotalExp += addExp;
+            mimicCurExp += addExp;
+            addExp = 0;
+        }
 
         GameManager.Instance.SaveGame();
         GameManager.Instance.UpdateUI();

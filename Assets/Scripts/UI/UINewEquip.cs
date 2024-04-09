@@ -57,6 +57,7 @@ public class UINewEquip : UIBase
         GameManager.Instance.accountInfo.Equip();
         gameObject.SetActive(false);
         inventoryUI.UpdateUI();
+        SoundManager.Instance.PlaySound("ChangeEquipUI_1");
     }
 
     public void GlowColorChange(Item item)
