@@ -83,6 +83,12 @@ public class AreaDotDamageScript : MonoBehaviour
         {
             // TODO: 넉백 랜덤으로 추가하기
 
+            System.Random random = new System.Random();
+            int num = random.Next(0, 101);
+            if (num <= 90)
+            {
+                return;
+            }
 
             Debug.Log($"OnTriggerEnter : {other.name}");
             EnemyBaseController EBC = other.GetComponent<EnemyBaseController>();

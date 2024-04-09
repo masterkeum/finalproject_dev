@@ -73,6 +73,7 @@ public enum SkillTargetType
     RandomSingle,
     RandomPos,
     AOE,
+    Around,
     FixedDirection,
     RandomArea,
     // passive
