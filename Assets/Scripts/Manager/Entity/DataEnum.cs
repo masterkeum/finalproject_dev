@@ -69,12 +69,15 @@ public enum SkillApplyType
 
 public enum SkillTargetType
 {
+    // active
     Single,
     RandomSingle,
     RandomPos,
     AOE,
+    Around,
     FixedDirection,
     RandomArea,
+
     // passive
     AddProjectile,
     DotHeal,
