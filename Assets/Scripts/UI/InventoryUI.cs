@@ -14,6 +14,7 @@ using static UnityEditor.Progress;
 public class InventoryUI : MonoBehaviour
 {
     public TextMeshProUGUI coreQuantity;
+    public TextMeshProUGUI mimicLevel;
 
 
     [Header("UISlots")]
@@ -54,6 +55,7 @@ public class InventoryUI : MonoBehaviour
         UpdateUISlot(accessorriesSlot, equipItems.Accessories);
 
         coreQuantity.text = GameManager.Instance.accountInfo.core.ToString();
+        mimicLevel.text = "Lv."+GameManager.Instance.accountInfo.mimicLevel;
     }
 
     public void UpdateUISlot(ItemSlotUI slot, Item item)
