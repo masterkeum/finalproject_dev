@@ -24,12 +24,18 @@ public class FindBossArrow : MonoBehaviour
         //Debug.Log("==플레이어=="+playerPos);
         bossPos = GameManager.Instance.player.chaseTarget[0].transform;
         //Debug.Log("==보스=="+bossPos);
-        Vector3 direction = (bossPos.position - playerPos.position).normalized;
+        
+        // Vector3 direction = (bossPos.position - playerPos.position).normalized;
+        
         //Debug.Log("==direction=="+direction);
         // float angle = Vector3.Angle(playerPos.forward, direction);
         // Quaternion lookRotation = Quaternion.LookRotation(direction);
 
-        aimPivot.position = playerPos.position + direction;
+        // aimPivot.position = playerPos.position + direction;
+
+        aimPivot.LookAt(bossPos);
+        
+        
         // aimPivot.rotation = lookRotation;
     }
     
