@@ -72,7 +72,7 @@ public class IngameScene : MonoBehaviour
 
     private void FindBossArrow()
     {
-        Instantiate(Resources.Load<GameObject>("Prefabs/UI/IconDeath"), player.transform);
+        Instantiate(Resources.Load<GameObject>("Prefabs/UI/GameObject"), player.transform);
     }
 
     private void GenerateLevel(int stageId)
