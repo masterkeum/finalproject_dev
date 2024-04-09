@@ -434,7 +434,7 @@ public class Player : MonoBehaviour
                         if (playeringameinfo.curHp < playeringameinfo.maxHp)
                         {
                             int regenAmount = Mathf.Min(skillData.regenHP, playeringameinfo.maxHp - playeringameinfo.curHp);
-                            TakeDamage(-regenAmount);
+                            Heal(regenAmount);
                         }
                     }
                     break;
@@ -501,6 +501,19 @@ public class Player : MonoBehaviour
         hpGuageSlider.value = per;
     }
 
+    public void Heal(int healamount)
+    {
+        if (playeringameinfo.curHp + healamount > playeringameinfo.maxHp)
+        {
+            healamount = playeringameinfo.curHp + healamount - playeringameinfo.maxHp;
+        }
+        playeringameinfo.curHp += healamount;
+        UpdateHPBar();
+
+        GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText"));
+        hudText.GetComponentInChildren<DamageText>().Init(healamount, new Color(0f, 1f, 0f)); // 초록색
+    }
+
     public void TakeDamage(int damageAmount)
     {
         int realDamage = Mathf.Max(0, damageAmount - playeringameinfo.defense);
@@ -511,11 +524,7 @@ public class Player : MonoBehaviour
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText"));
 
         hudText.transform.position = hudPos.position; // 표시될 위치
-        Color color = Color.white;
-        if (realDamage > 0)
-            color = new Color(0f, 1f, 0f);
-        else
-            color = new Color(1f, 0f, 0f);
+        Color color = new Color(1f, 0f, 0f);
 
         hudText.GetComponentInChildren<DamageText>().Init(realDamage, color);
 
