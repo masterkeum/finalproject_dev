@@ -102,7 +102,7 @@ public class InventoryUI : MonoBehaviour
         System.Random random = new System.Random();
 
         int num = random.Next(0, 101);
-        float[] probs = { legendary, epic, rare, elite, magic, normal };
+        float[] probs = { normal, magic, elite, rare, epic, legendary };
         ItemGrade grade = ItemGrade.Normal;
 
         float cumulative = 0f;
@@ -112,7 +112,7 @@ public class InventoryUI : MonoBehaviour
             cumulative += probs[i];
             if (num <= cumulative)
             {
-                target = 5 - i;
+                target = i;
                 break;
             }
         }
