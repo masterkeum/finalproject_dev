@@ -106,5 +106,10 @@ public class OutGameHUD : UIBase
             Debug.LogWarning("행동력 부족 팝업? 메세지");
         }
     }
+    public void OnProfileImage()
+    {
+        UIChangeProfile popup =  UIManager.Instance.ShowUI<UIChangeProfile>();
+        popup.Init();
+    }
 
 }
