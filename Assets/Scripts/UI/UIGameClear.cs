@@ -23,6 +23,7 @@ public class UIGameClear : UIBase
         player = GameManager.Instance.player;
         itemInfos = DataManager.Instance.itemTableDict[50000003];
         
+        // todo core 데이터 부분이 정해지지 않아 임의 데이터 삽입. 추후 수정.
         Debug.Log("코어값 로드 "+itemInfos);
         Debug.Log("코어값 getExp "+itemInfos.getExp);
         Debug.Log("코어값 getGold "+itemInfos.getGold);
