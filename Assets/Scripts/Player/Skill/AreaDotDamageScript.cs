@@ -14,7 +14,6 @@ public class AreaDotDamageScript : MonoBehaviour
     public float targetSize = 1.5f;
 
     private Transform parentObject;
-
     private LayerMask enemyLayerMask;
 
     SkillTable skillInfo;
@@ -82,7 +81,6 @@ public class AreaDotDamageScript : MonoBehaviour
         if (enemyLayerMask == (enemyLayerMask | (1 << other.gameObject.layer)))
         {
             // TODO: 넉백 랜덤으로 추가하기
-
             System.Random random = new System.Random();
             int num = random.Next(0, 100);
             if (num < 90)

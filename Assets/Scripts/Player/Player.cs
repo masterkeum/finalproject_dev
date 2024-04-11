@@ -154,8 +154,8 @@ public class Player : MonoBehaviour
 
 
         // Test
-        SkillUpdate(DataManager.Instance.GetSkillTable(30000541));
-        SkillUpdate(DataManager.Instance.GetSkillTable(30001055));
+        //SkillUpdate(DataManager.Instance.GetSkillTable(30000541));
+        //SkillUpdate(DataManager.Instance.GetSkillTable(30001055));
 
         IsInit = true;
     }
@@ -421,6 +421,15 @@ public class Player : MonoBehaviour
                         yield return new WaitForSeconds(castDelay);
                     }
                     break;
+                case SkillTargetType.Around:
+                    {
+                        // 발동시키고 종료
+                        skillPool.GetPoolAroundSkill(skillData.skillId, transform.position, damage);
+
+
+                    }
+                    yield break;
+
                 // Passive
                 case SkillTargetType.AddProjectile:
                     {
@@ -510,6 +519,7 @@ public class Player : MonoBehaviour
         playeringameinfo.curHp += healamount;
         UpdateHPBar();
 
+        Debug.Log($"Heal : {healamount}");
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText"));
         hudText.GetComponentInChildren<DamageText>().Init(healamount, new Color(0f, 1f, 0f)); // 초록색
     }
