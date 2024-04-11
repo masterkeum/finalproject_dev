@@ -14,7 +14,6 @@ public class AreaDotDamageScript : MonoBehaviour
     public float targetSize = 1.5f;
 
     private Transform parentObject;
-
     private LayerMask enemyLayerMask;
 
     SkillTable skillInfo;
@@ -23,7 +22,7 @@ public class AreaDotDamageScript : MonoBehaviour
     private float skillRad = 1.5f;
     private float damageInterval = 0.2f;
     private float skillRange = 1.2f;
-    private float knockBackForce = 5f;
+    private float knockBackForce = 10f;
 
 
     private void Awake()
@@ -82,7 +81,12 @@ public class AreaDotDamageScript : MonoBehaviour
         if (enemyLayerMask == (enemyLayerMask | (1 << other.gameObject.layer)))
         {
             // TODO: 넉백 랜덤으로 추가하기
-
+            //System.Random random = new System.Random();
+            //int num = random.Next(0, 100);
+            //if (num < 90)
+            //{
+            //    return;
+            //}
 
             Debug.Log($"OnTriggerEnter : {other.name}");
             EnemyBaseController EBC = other.GetComponent<EnemyBaseController>();
