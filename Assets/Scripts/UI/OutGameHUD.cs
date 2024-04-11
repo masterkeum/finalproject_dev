@@ -56,6 +56,7 @@ public class OutGameHUD : UIBase
     {
         // TODO : 나중에 UI별 나누기
         SelectedStageId = GameManager.Instance.stageId;
+        SetStageName();
 
         energyQuantityText.text = accountInfo.actionPoint.ToString();
         gemQuantityText.text = accountInfo.gem.ToString();
@@ -67,6 +68,12 @@ public class OutGameHUD : UIBase
             expSlider.value = (float)accountInfo.sliderCurExp / accountInfo.sliderMaxExp;
         }
     }
+
+    private void SetStageName()
+    {
+        StageNameText.text = DataManager.Instance.stageListDict[SelectedStageId].stageName;
+    }
+
 
     public void OnClickBottomButton(int index)
     {
@@ -116,7 +123,7 @@ public class OutGameHUD : UIBase
     }
     public void OnProfileImage()
     {
-        UIChangeProfile popup =  UIManager.Instance.ShowUI<UIChangeProfile>();
+        UIChangeProfile popup = UIManager.Instance.ShowUI<UIChangeProfile>();
         popup.Init();
     }
 

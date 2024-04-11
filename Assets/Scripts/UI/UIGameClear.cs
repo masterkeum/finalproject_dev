@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +25,7 @@ public class UIGameClear : UIBase
     {
         player = GameManager.Instance.player;
         itemInfos = DataManager.Instance.itemTableDict[50000003];
+
         // todo 공부하기!!
         List<MonsterLevel> monaterlevel = DataManager.Instance.characterInfoDict[20100001].monsterLevelData.Values.ToList();
         
@@ -52,8 +52,6 @@ public class UIGameClear : UIBase
             accountInfo.AddCore(monsterlevel3.rewardAmount);
         }
         
-            
-        
     }
 
     private void Update()
@@ -73,7 +71,5 @@ public class UIGameClear : UIBase
         Debug.Log("GetCommonReward");
         SceneManager.LoadScene(2);
     }
-
-
 
 }

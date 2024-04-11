@@ -199,6 +199,7 @@ public class InventoryUI : MonoBehaviour
 
         foreach (ItemOptions randomOption in options)
         {
+            // TODO : 스탯 소수점 보정
             switch (randomOption)
             {
                 case ItemOptions.Hp:

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleScene : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class TitleScene : MonoBehaviour
     {
         loginButtons.SetActive(false);
         SoundManager.Instance.CreateSFXAudioSource();
-        SoundManager.Instance.ChangeBackGroundMusic(Resources.Load<AudioClip>("Audio/Music/a_small_fire_will_do"),SoundManager.Instance.musicAudioSource.volume);
+        SoundManager.Instance.ChangeBackGroundMusic(Resources.Load<AudioClip>("Audio/Music/a_small_fire_will_do"), SoundManager.Instance.musicAudioSource.volume);
     }
 
     public void TapToStart()
@@ -19,4 +20,11 @@ public class TitleScene : MonoBehaviour
         loginButtons.SetActive(true);
         SoundManager.Instance.PlaySound("SelectUI_2");
     }
+
+    public void GuestLogin()
+    {
+        Debug.Log("GetCommonReward");
+        SceneManager.LoadScene("MainScene");
+    }
+
 }
