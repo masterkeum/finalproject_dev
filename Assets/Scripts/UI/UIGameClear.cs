@@ -26,6 +26,7 @@ public class UIGameClear : UIBase
     {
         player = GameManager.Instance.player;
         itemInfos = DataManager.Instance.itemTableDict[50000003];
+        // todo 공부하기!!
         List<MonsterLevel> monaterlevel = DataManager.Instance.characterInfoDict[20100001].monsterLevelData.Values.ToList();
         
         monsterlevel1 = DataManager.Instance.characterInfoDict[20100001].monsterLevelData[1];
