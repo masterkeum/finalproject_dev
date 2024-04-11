@@ -33,32 +33,22 @@ public class UIGameClear : UIBase
         monsterlevel2 = DataManager.Instance.characterInfoDict[20100001].monsterLevelData[2];
         monsterlevel3 = DataManager.Instance.characterInfoDict[20100001].monsterLevelData[3];
         
+        getGemText.text = itemInfos.getExp.ToString();
+        getHeroJS.text = itemInfos.getExp.ToString();
+        getNormalJS.text = itemInfos.getGold.ToString();
+        accountInfo.AddGold(player.playeringameinfo.gold);
+        accountInfo.AddGem(itemInfos.getExp);
+        
         if (monsterlevel1.level == 1)
         {
-            getGemText.text = itemInfos.getExp.ToString();
-            getHeroJS.text = itemInfos.getExp.ToString();
-            getNormalJS.text = itemInfos.getGold.ToString();
-            accountInfo.AddGold(player.playeringameinfo.gold);
-            accountInfo.AddGem(itemInfos.getExp);
             accountInfo.AddCore(monsterlevel1.rewardAmount);
-            
         }
         if (monsterlevel2.level == 2)
         {
-            getGemText.text = itemInfos.getExp.ToString();
-            getHeroJS.text = itemInfos.getExp.ToString();
-            getNormalJS.text = itemInfos.getGold.ToString();
-            accountInfo.AddGold(player.playeringameinfo.gold);
-            accountInfo.AddGem(itemInfos.getExp);
             accountInfo.AddCore(monsterlevel2.rewardAmount);
         }
         if (monsterlevel3.level == 3)
         {
-            getGemText.text = itemInfos.getExp.ToString();
-            getHeroJS.text = itemInfos.getExp.ToString();
-            getNormalJS.text = itemInfos.getGold.ToString();
-            accountInfo.AddGold(player.playeringameinfo.gold);
-            accountInfo.AddGem(itemInfos.getExp);
             accountInfo.AddCore(monsterlevel3.rewardAmount);
         }
         
