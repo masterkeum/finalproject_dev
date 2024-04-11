@@ -62,10 +62,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireFloorTrail
       objectReference: {fileID: 0}
-    - target: {fileID: 1712771390826228, guid: 9f11585b084af554a92293de1e75b9c6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4226480588468040, guid: 9f11585b084af554a92293de1e75b9c6, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -109,56 +105,6 @@ PrefabInstance:
     - target: {fileID: 4226480588468040, guid: 9f11585b084af554a92293de1e75b9c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198834492479222464, guid: 9f11585b084af554a92293de1e75b9c6,
-        type: 3}
-      propertyPath: CollisionModule.type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198834492479222464, guid: 9f11585b084af554a92293de1e75b9c6,
-        type: 3}
-      propertyPath: TriggerModule.inside
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198834492479222464, guid: 9f11585b084af554a92293de1e75b9c6,
-        type: 3}
-      propertyPath: TriggerModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198834492479222464, guid: 9f11585b084af554a92293de1e75b9c6,
-        type: 3}
-      propertyPath: CollisionModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198834492479222464, guid: 9f11585b084af554a92293de1e75b9c6,
-        type: 3}
-      propertyPath: CollisionModule.collisionMessages
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198834492479222464, guid: 9f11585b084af554a92293de1e75b9c6,
-        type: 3}
-      propertyPath: CollisionModule.collidesWith.m_Bits
-      value: 32768
-      objectReference: {fileID: 0}
-    - target: {fileID: 199339886055443654, guid: 9f11585b084af554a92293de1e75b9c6,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 199698572010572310, guid: 9f11585b084af554a92293de1e75b9c6,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 199834066444188790, guid: 9f11585b084af554a92293de1e75b9c6,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 199901236426101428, guid: 9f11585b084af554a92293de1e75b9c6,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

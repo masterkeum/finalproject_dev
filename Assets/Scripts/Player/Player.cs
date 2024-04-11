@@ -425,8 +425,6 @@ public class Player : MonoBehaviour
                     {
                         // 발동시키고 종료
                         skillPool.GetPoolAroundSkill(skillData.skillId, transform.position, damage);
-
-
                     }
                     yield break;
 

@@ -110,6 +110,7 @@ public class EnemyBossController : EnemyBaseController
         gizmoDestination = hit.position;
         return hit.position;
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
