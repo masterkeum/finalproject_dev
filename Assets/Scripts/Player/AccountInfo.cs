@@ -139,7 +139,7 @@ public class AccountInfo
     public int actionPoint; // 행동력
     public int gem;
     public int gold;
-    public int core;
+    public int? core;
     public int timeTicket;
     public int selectedStageId;
     public float lastUpdateTime;
@@ -237,7 +237,7 @@ public class AccountInfo
         GameManager.Instance.UpdateUI();
     }
 
-    public void AddCore(int addCore)
+    public void AddCore(int? addCore)
     {
         core += addCore;
         GameManager.Instance.SaveGame();
