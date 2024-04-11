@@ -71,7 +71,7 @@
       "name": "슬라임",
       "minLevel": 1,
       "maxLevel": 10,
-      "hp": 300,
+      "hp": 250,
       "attackPower": 25,
       "sensoryRange": 0,
       "attackRange": 2,
@@ -86,7 +86,7 @@
       "name": "머쉬룸",
       "minLevel": 1,
       "maxLevel": 10,
-      "hp": 400,
+      "hp": 250,
       "attackPower": 22,
       "sensoryRange": 0,
       "attackRange": 2.4,
@@ -104,7 +104,7 @@
       "hp": 1000,
       "attackPower": 30,
       "sensoryRange": 10,
-      "attackRange": 6,
+      "attackRange": 3,
       "attackSpeed": 1.3,
       "moveSpeed": 3.5,
       "defaultSkill": 30100003,
@@ -149,7 +149,7 @@
       "hp": 1800,
       "attackPower": 55,
       "sensoryRange": 20,
-      "attackRange": 16,
+      "attackRange": 10,
       "attackSpeed": 1.3,
       "moveSpeed": 3,
       "defaultSkill": 30100003,
@@ -856,8 +856,8 @@
     {
       "stageId": 101,
       "levelPrefab": "Prefabs/Level/Level1",
-      "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage1_1",
+      "stageName": "1. 불청객",
       "stageDesc": "들판",
       "clearGold": 500,
       "clearGem": 50
@@ -865,8 +865,8 @@
     {
       "stageId": 102,
       "levelPrefab": "Prefabs/Level/Level1",
-      "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage1_2",
+      "stageName": "2. 야간 습격",
       "stageDesc": "들판",
       "clearGold": 1000,
       "clearGem": 100
@@ -874,8 +874,8 @@
     {
       "stageId": 103,
       "levelPrefab": "Prefabs/Level/Level1",
-      "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage1_3",
+      "stageName": "3. 새벽공습",
       "stageDesc": "들판",
       "clearGold": 1500,
       "clearGem": 150
@@ -883,8 +883,8 @@
     {
       "stageId": 104,
       "levelPrefab": "Prefabs/Level/Level1",
-      "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage1_4",
+      "stageName": "4. 계속되는 공격",
       "stageDesc": "들판",
       "clearGold": 2000,
       "clearGem": 200
@@ -892,8 +892,8 @@
     {
       "stageId": 105,
       "levelPrefab": "Prefabs/Level/Level1",
-      "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage1_5",
+      "stageName": "5. 종결",
       "stageDesc": "들판",
       "clearGold": 2500,
       "clearGem": 250
@@ -901,8 +901,8 @@
     {
       "stageId": 201,
       "levelPrefab": "Prefabs/Level/Level1",
-      "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage2_1",
+      "stageName": null,
       "stageDesc": "중세",
       "clearGold": 3000,
       "clearGem": 300
@@ -910,8 +910,8 @@
     {
       "stageId": 202,
       "levelPrefab": "Prefabs/Level/Level1",
-      "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage2_2",
+      "stageName": null,
       "stageDesc": "중세",
       "clearGold": 3500,
       "clearGem": 350
@@ -919,8 +919,8 @@
     {
       "stageId": 203,
       "levelPrefab": "Prefabs/Level/Level1",
-      "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage2_3",
+      "stageName": null,
       "stageDesc": "중세",
       "clearGold": 4000,
       "clearGem": 400
@@ -928,8 +928,8 @@
     {
       "stageId": 204,
       "levelPrefab": "Prefabs/Level/Level1",
-      "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage2_4",
+      "stageName": null,
       "stageDesc": "중세",
       "clearGold": 4500,
       "clearGem": 450
@@ -937,8 +937,8 @@
     {
       "stageId": 205,
       "levelPrefab": "Prefabs/Level/Level1",
-      "levelLight": "조명 주소",
       "BGSprite": "Textures/SnapShot/stage2_5",
+      "stageName": null,
       "stageDesc": "중세",
       "clearGold": 5000,
       "clearGem": 500
@@ -951,7 +951,7 @@
       "level": 1,
       "genTimeStart": 0,
       "genTimeEnd": 15,
-      "genAmount": 5,
+      "genAmount": 3,
       "genTime": 3,
       "genMax": 30,
       "genPosVecter3": null

@@ -12,9 +12,12 @@ public class UIStageSelect : UIBase
     private StageSlotUI _curStage;
 
 
-    private void Start()
+    private void OnEnable()
     {
         // TODO : 현재 선택된 스테이지 셀렉트 상태
+
+        int tmpSelect = GameManager.Instance.stageId % 100 - 1;
+        SelectCurSlot(tmpSelect);
     }
 
     public void OnSelectButton()
@@ -24,12 +27,12 @@ public class UIStageSelect : UIBase
         gameObject.SetActive(false);
         SoundManager.Instance.PlaySound("ConfirmUI_1", 1f);
     }
+
     public void OnCancelButton()
     {
         gameObject.SetActive(false);
         SoundManager.Instance.PlaySound("ButtonClickUI_1", 1f);
     }
-
 
     public void SelectCurSlot(int index)
     {
@@ -47,7 +50,6 @@ public class UIStageSelect : UIBase
             _stageSlots[i].UpdateMark();
         }
         SoundManager.Instance.PlaySound("NextPageUI_1", 1f);
-
     }
 
 }

@@ -4,6 +4,13 @@ public class Cheat : MonoBehaviour
 {
     private AccountInfo accountInfo;
 
+    private void Awake()
+    {
+#if !UNITY_EDITOR
+        gameObject.SetActive(false);
+#endif
+    }
+
     private void Start()
     {
         accountInfo = GameManager.Instance.accountInfo;
