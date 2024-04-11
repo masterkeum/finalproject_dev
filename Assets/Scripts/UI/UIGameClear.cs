@@ -30,9 +30,11 @@ public class UIGameClear : UIBase
         getGemText.text = itemInfos.getExp.ToString();
         getHeroJS.text = itemInfos.getExp.ToString();
         getNormalJS.text = itemInfos.getGold.ToString();
-        // itemInfos.itemId
-        accountInfo.InGameClear(itemInfos.getExp, player.playeringameinfo.gold, itemInfos.getExp); // 팝업이 뜨면서 accountinfo 에 게임데이터 저장
         
+        // 팝업이 뜨면서 accountinfo 에 게임데이터 저장
+        accountInfo.AddGold(player.playeringameinfo.gold);
+        accountInfo.AddGem(itemInfos.getExp);
+        accountInfo.AddCore(itemInfos.getExp);
     }
 
     private void Update()
