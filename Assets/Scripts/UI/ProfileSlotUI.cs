@@ -10,11 +10,6 @@ public class ProfileSlotUI : MonoBehaviour
     public GameObject selectedMark;
     public GameObject lockMark;
 
-
-
-    public void Init()
-    {
-
-    }
+   
 
 }
