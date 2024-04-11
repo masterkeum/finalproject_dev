@@ -46,14 +46,21 @@ public class UITimeAcceleration : UIBase
         }
     }
 
+    public void WatchADButton()
+    {
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
+    }
+
     public void UseTicketbutton()
     {
         UIManager.Instance.ShowUI<UITicketUse>();
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
     }
 
     public void ClosePopup()
     {
-        gameObject.SetActive(false); 
+        gameObject.SetActive(false);
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
     }
 
 

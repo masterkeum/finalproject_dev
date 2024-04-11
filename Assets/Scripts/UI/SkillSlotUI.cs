@@ -12,11 +12,13 @@ public class SkillSlotUI : MonoBehaviour
     public GameObject starGroup;
     private int _skillIndex;
     public GameObject skillLock;
+
     [Header("LevelUp")]
     public TextMeshProUGUI skillNameText;
     public TextMeshProUGUI skillDescriptionText;
     public Image skillType;
-
+    public GameObject activeIcon;
+    public GameObject passiveIcon;
     public int skillGroupId;
 
     private void Start()
