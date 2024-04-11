@@ -15,9 +15,6 @@ public class OutGameHUD : UIBase
     public TextMeshProUGUI gemQuantityText;
     public TextMeshProUGUI goldQuantityText;
     public TextMeshProUGUI coreQuentityText;
-    private UIGameClear gameResult;
-    public ItemTable itemInfos;
-    public Player player;
     
 
     [Header("BottomButton")]
@@ -40,8 +37,6 @@ public class OutGameHUD : UIBase
 
     private void Start()
     {
-        player = GameManager.Instance.player;
-        itemInfos = DataManager.Instance.itemTableDict[50000003];
         
         GameManager.Instance.updateUIAction += UpdateHUD;
         accountInfo = GameManager.Instance.accountInfo;
@@ -50,27 +45,11 @@ public class OutGameHUD : UIBase
 
         UpdateHUD();
         OnClickBottomButton(0);
-
-
-        if (gameResult == null)
-        {
-            goldQuantityText.text = itemInfos.getGold.ToString();
-            gemQuantityText.text = itemInfos.getExp.ToString();
-            coreQuentityText.text = itemInfos.getExp.ToString();
-        }
-        if (gameResult != null)
-        {
-            Debug.Log("플레이어 Exp: "+gameResult.itemInfos.getExp);
-            Debug.Log("플레이어 Gold: "+gameResult.itemInfos.getGold);
-            Debug.Log("인게임 Killcount: "+gameResult.player.playeringameinfo.killCount);
-            Debug.Log("인게임 Gold"+gameResult.player.playeringameinfo.gold);
-            
-            goldQuantityText.text = gameResult.itemInfos.getGold.ToString();
-            gemQuantityText.text = gameResult.player.playeringameinfo.gold.ToString();
-            coreQuentityText.text = gameResult.itemInfos.getExp.ToString();
-    
-        }
         
+        goldQuantityText.text = accountInfo.gold.ToString();
+        gemQuantityText.text = accountInfo.gem.ToString();
+        coreQuentityText.text = accountInfo.core.ToString();
+                
     }
 
     private void UpdateHUD()

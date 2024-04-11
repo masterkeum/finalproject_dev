@@ -58,6 +58,8 @@ public struct PlayerStatInfo
 
     public float hpGen;
     public float addHpGen;
+    
+    
 
 
     public PlayerStatInfo(CharacterInfo characterInfo, AccountInfo.EquipItems equipItems)
@@ -213,13 +215,23 @@ public class AccountInfo
     }
 
     // TODO : AP, gem, gold 마이너스, 현재값, 최대값 검증과정 추가
+    public void InGameClear(int gem, int gold, int core)
+    {
+        this.gem += gem;
+        this.gold += gold;
+        this.core += core;
+        
+        GameManager.Instance.SaveGame();
+        GameManager.Instance.UpdateUI();
+    }
+    
     public void AddActionPoint(int addActionPoint)
     {
         actionPoint = Math.Min(actionPoint + addActionPoint, GameManager.Instance._maxActionPoint);
 
         GameManager.Instance.SaveGame();
         GameManager.Instance.UpdateUI();
-    }
+    } 
 
     public void AddGem(int addGem)
     {
