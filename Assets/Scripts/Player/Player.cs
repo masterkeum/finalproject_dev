@@ -345,6 +345,7 @@ public class Player : MonoBehaviour
         {
             yield return new WaitForSeconds(skillData.coolDownTime);
 
+            // TODO : 계수 연산할수 있게 함수 따로 빼기
             int damage = Mathf.RoundToInt((playeringameinfo.attackPower + skillData.attackDamage) * 0.5f);
 
             switch (skillData.targetType)
@@ -524,7 +525,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        int realDamage = Mathf.Max(0, damageAmount - playeringameinfo.defense);
+        int realDamage = Mathf.Max(0, damageAmount - playeringameinfo.defense); // 계수 계산해서 데미지계산 -70% 정도는 까야
         playeringameinfo.curHp -= realDamage;
         UpdateHPBar();
 
