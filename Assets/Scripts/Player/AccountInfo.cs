@@ -1,5 +1,8 @@
+using JetBrains.Annotations;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 [Serializable]
 public class Item
@@ -129,6 +132,7 @@ public class AccountInfo
     public int totalExp;
     public int mimicLevel;
     public int mimicTotalExp;
+    public int selectedProfileIndex=0;
 
     public int actionPoint; // 행동력
     public int gem;
@@ -177,6 +181,7 @@ public class AccountInfo
             Boots = new Item(),
             Accessories = new Item()
         };
+
 
         PlayerLevel levelData = DataManager.Instance.GetPlayerLevel(level + 1);
         sliderCurExp = 0;
@@ -294,13 +299,12 @@ public class AccountInfo
             Debug.Log("만랩");
             return;
         }
-
-        mimicSliderMaxExp = levelData.exp;
-
-        mimicTotalExp += addExp;
-        mimicCurExp += addExp;
-        mimicSliderCurExp = mimicCurExp;
-        addExp = 0;
+        else
+        {
+            mimicTotalExp += addExp;
+            mimicCurExp += addExp;
+            addExp = 0;
+        }
 
         GameManager.Instance.SaveGame();
         GameManager.Instance.UpdateUI();

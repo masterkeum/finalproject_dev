@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UILevelUP : UIBase
@@ -82,6 +84,7 @@ public class UILevelUP : UIBase
         {
             if (i < randomSkills.Count)
             {
+                selectableSkillUI[i].skillSprite.color = Color.white;
                 selectableSkillUI[i].gameObject.SetActive(true);
                 selectableSkillUI[i].skillGroupId = randomSkills[i].skillGroup;
                 selectableSkillUI[i].skillNameText.text = randomSkills[i].skillName;
@@ -89,6 +92,22 @@ public class UILevelUP : UIBase
                 string path = randomSkills[i].imageAddress;
                 Sprite sprite = Resources.Load<Sprite>(path);
                 selectableSkillUI[i].skillSprite.sprite = sprite;
+                switch (randomSkills[i].applyType)
+                {
+                    case SkillApplyType.Active:
+                        selectableSkillUI[i].activeIcon.SetActive(true);
+                        selectableSkillUI[i].passiveIcon.SetActive(false);
+                        break;
+                    case SkillApplyType.Passive:
+                        selectableSkillUI[i].activeIcon.SetActive(false);
+                        selectableSkillUI[i].passiveIcon.SetActive(true);
+                        break;
+                    case SkillApplyType.Awaken:
+                        selectableSkillUI[i].activeIcon.SetActive(false);
+                        selectableSkillUI[i].passiveIcon.SetActive(false);
+                        selectableSkillUI[i].skillSprite.color = new Color(0, 1, 1, 1);
+                        break;
+                }
             }
             else
             {
@@ -111,6 +130,10 @@ public class UILevelUP : UIBase
 
             curAcitveSkillUI[i].skillIcon.SetActive(true);
             curAcitveSkillUI[i].skillSprite.sprite = Resources.Load<Sprite>(player.activeSkillSlot[i].imageAddress);
+            if (player.activeSkillSlot[i].applyType == SkillApplyType.Awaken)
+            {
+                curAcitveSkillUI[i].skillSprite.color = new Color(0,1,1,1); 
+            }
         }
         for (int i = 0; i < player.passiveSkillSlot.Count; i++)
         {
@@ -153,6 +176,15 @@ public class UILevelUP : UIBase
                     selectableSkillUI[i].SetStars(player.passiveSkillSlot[j].level);
                 }
             }
+        }
+
+        for (int i = 0; i <player.activeSkillSlot.Count; i++)
+        {
+            curAcitveSkillUI[i].SetStars(player.activeSkillSlot[i].level);
+        }
+        for (int i = 0; i <player.passiveSkillSlot.Count;i++)
+        {
+            curPassiveSkillUI[i].SetStars(player.passiveSkillSlot[i].level);
         }
     }
 

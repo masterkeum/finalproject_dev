@@ -29,21 +29,28 @@ public class UITicketUse : UIBase
     {
         ticketCountToUse -= 1;
         UpdateUI();
+        SoundManager.Instance.PlaySound("OpenUI_1");
+
     }
     public void MinusTenButton()
     {
         ticketCountToUse -= 10;
         UpdateUI();
+        SoundManager.Instance.PlaySound("OpenUI_1");
+
     }
     public void PlusButton()
     {
         ticketCountToUse += 1;
         UpdateUI();
+        SoundManager.Instance.PlaySound("OpenUI_1");
+
     }
     public void PlusTenButton()
     {
         ticketCountToUse += 10;
         UpdateUI();
+        SoundManager.Instance.PlaySound("OpenUI_1");
     }
 
     public void UseButton()
@@ -54,6 +61,7 @@ public class UITicketUse : UIBase
             GameManager.Instance.accountInfo.completeTime = GameManager.Instance.accountInfo.completeTime.AddSeconds(-300 * ticketCountToUse);
             gameObject.SetActive(false);
         }
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
 
     }
 
@@ -71,11 +79,13 @@ public class UITicketUse : UIBase
             ticketCountToUse = ((int)remainTime.TotalSeconds / 300)+1;
             UpdateUI();
         }
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
     }
 
     public void ClosePopup()
     {
         gameObject.SetActive(false);
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
     }
 
 
