@@ -14,6 +14,8 @@ public class OutGameHUD : UIBase
     public TextMeshProUGUI energyQuantityText;
     public TextMeshProUGUI gemQuantityText;
     public TextMeshProUGUI goldQuantityText;
+    public TextMeshProUGUI coreQuentityText;
+    
 
     [Header("BottomButton")]
     public GameObject[] mainMenues;
@@ -25,16 +27,17 @@ public class OutGameHUD : UIBase
     public Image StageImage;
     public int SelectedStageId;
 
-
     private AccountInfo accountInfo;
 
     private void Awake()
     {
+        
         SelectedStageId = GameManager.Instance.stageId;
     }
 
     private void Start()
     {
+        
         GameManager.Instance.updateUIAction += UpdateHUD;
         accountInfo = GameManager.Instance.accountInfo;
 
@@ -42,6 +45,11 @@ public class OutGameHUD : UIBase
 
         UpdateHUD();
         OnClickBottomButton(0);
+        
+        goldQuantityText.text = accountInfo.gold.ToString();
+        gemQuantityText.text = accountInfo.gem.ToString();
+        coreQuentityText.text = accountInfo.core.ToString();
+                
     }
 
     private void UpdateHUD()

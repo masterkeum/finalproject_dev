@@ -434,7 +434,7 @@
       "rewardAmount": 3
     },
     {
-      "uid": 20100001,
+      "uid": 20100002,
       "level": 2,
       "addHP": 100,
       "addAP": 60,
@@ -445,7 +445,7 @@
       "rewardAmount": 5
     },
     {
-      "uid": 20100001,
+      "uid": 20100003,
       "level": 3,
       "addHP": 300,
       "addAP": 120,

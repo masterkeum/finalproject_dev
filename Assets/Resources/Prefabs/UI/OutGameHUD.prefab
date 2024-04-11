@@ -2078,6 +2078,7 @@ MonoBehaviour:
   energyQuantityText: {fileID: 1023967977923228519}
   gemQuantityText: {fileID: 7343225468013069373}
   goldQuantityText: {fileID: 1141930275534160303}
+  coreQuentityText: {fileID: 7060655426611691382}
   mainMenues:
   - {fileID: 5007697582964415518}
   - {fileID: 6404565707523232727}
