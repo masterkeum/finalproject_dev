@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class UIGameClear : UIBase
 {
-    private Player player;
+    public Player player;
 
     public TextMeshProUGUI killCountText;
     public TextMeshProUGUI getGoldText;

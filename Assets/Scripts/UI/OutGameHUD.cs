@@ -14,6 +14,9 @@ public class OutGameHUD : UIBase
     public TextMeshProUGUI energyQuantityText;
     public TextMeshProUGUI gemQuantityText;
     public TextMeshProUGUI goldQuantityText;
+    public TextMeshProUGUI coreQuentityText;
+    private UIGameClear gameResult;
+    
 
     [Header("BottomButton")]
     public GameObject[] mainMenues;
@@ -24,7 +27,6 @@ public class OutGameHUD : UIBase
     public TextMeshProUGUI StageNameText;
     public Image StageImage;
     public int SelectedStageId;
-
 
     private AccountInfo accountInfo;
 
@@ -42,6 +44,20 @@ public class OutGameHUD : UIBase
 
         UpdateHUD();
         OnClickBottomButton(0);
+
+        Debug.Log("플레이어 Exp: "+gameResult.itemInfos.getExp);
+        Debug.Log("플레이어 Gold: "+gameResult.itemInfos.getGold);
+        Debug.Log("인게임 Killcount: "+gameResult.player.playeringameinfo.killCount);
+        Debug.Log("인게임 Gold"+gameResult.player.playeringameinfo.gold);
+        
+        if (gameResult != null)
+        {
+            goldQuantityText.text = gameResult.itemInfos.getGold.ToString();
+            gemQuantityText.text = gameResult.player.playeringameinfo.gold.ToString();
+            coreQuentityText.text = gameResult.itemInfos.getExp.ToString();
+    
+        }
+        
     }
 
     private void UpdateHUD()
