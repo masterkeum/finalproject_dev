@@ -542,11 +542,10 @@ public class Player : MonoBehaviour
         UpdateHPBar();
 
         realDamage = -realDamage;
-        GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText"));
 
-        hudText.transform.position = hudPos.position; // 표시될 위치
         Color color = new Color(1f, 0f, 0f);
-
+        GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText"));
+        hudText.transform.position = hudPos.position; // 표시될 위치
         hudText.GetComponentInChildren<DamageText>().Init(realDamage, color);
 
         //Debug.Log("플레이어 현재 HP" + per);
