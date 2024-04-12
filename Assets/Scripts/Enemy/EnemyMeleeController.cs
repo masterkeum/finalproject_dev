@@ -38,19 +38,13 @@ public class EnemyMeleeController : EnemyBaseController
         }
     }
 
-    //private void Update()
-    //{
-    //    playerDistance = DistanceToTarget();
-    //    switch (enemyState)
-    //    {
-    //        case EnemyState.Trace: TraceUpdate(); break;
-    //        case EnemyState.Attack: AttackUpdate(); break;
-    //        case EnemyState.Die: break;
-    //        default:
-    //            SetState(EnemyState.Trace); break;
-    //    }
-
-    //}
+    private void Update()
+    {
+        if (enemyState == EnemyState.Attack)
+        {
+            AttackUpdate();
+        }
+    }
 
     private void TraceUpdate()
     {
@@ -66,6 +60,11 @@ public class EnemyMeleeController : EnemyBaseController
 
     private void AttackUpdate()
     {
+        if (playerDistance > characterInfo.attackRange)
+        {
+            SetState(EnemyState.Trace);
+        }
+
         // 공격
         if (Time.time - lastAttackTime > characterInfo.attackSpeed)
         {
@@ -73,11 +72,6 @@ public class EnemyMeleeController : EnemyBaseController
             player.TakeDamage(damage);
             animator.speed = 1;
             animator.SetTrigger(Attack);
-        }
-
-        if (playerDistance > characterInfo.attackRange)
-        {
-            SetState(EnemyState.Trace);
         }
     }
 
