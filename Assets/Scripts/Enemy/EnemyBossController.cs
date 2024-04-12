@@ -30,8 +30,16 @@ public class EnemyBossController : EnemyBaseController
         SetState(EnemyState.Wander);
 
         StartCoroutine(CheckState());
+        FindBossArrow();
     }
-
+    
+    private void FindBossArrow()
+    {
+        var arrowPrefab = Instantiate(Resources.Load<GameObject>("Prefabs/UI/GameObject"), player.transform);
+        arrowPrefab.GetComponent<FindBossArrow>().bossPos = transform;
+    }
+        
+    
     private IEnumerator CheckState()
     {
         while (true)

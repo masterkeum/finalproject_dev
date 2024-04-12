@@ -10,9 +10,8 @@ public class FindBossArrow : MonoBehaviour
     private List<GameObject> chaseTarget = new List<GameObject>();
     // 2d -> 3d
     // 마우스 입력 -> 보스 방향값만 보내주기
-    private Transform bossPos;
-    private Transform playerPos;
-
+    public Transform bossPos;
+    
     private void Start()
     {
         
@@ -20,15 +19,15 @@ public class FindBossArrow : MonoBehaviour
 
     private void Update()
     {
-        playerPos = GameManager.Instance.player.transform;
+        
         //Debug.Log("==플레이어=="+playerPos);
 
-        for (int i = 0; i < chaseTarget.Count; i++)
+        if (bossPos == null)
         {
-            bossPos = GameManager.Instance.player.chaseTarget[i].transform;
-            aimPivot.LookAt(bossPos);
+            return;   
         }
         
+        aimPivot.LookAt(bossPos);
         
         
         //Debug.Log("==보스=="+bossPos);
