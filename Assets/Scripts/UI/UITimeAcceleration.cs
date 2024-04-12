@@ -43,6 +43,7 @@ public class UITimeAcceleration : UIBase
         if (accountInfo.completeTime < UtilityKit.GetCurrentDateTime())
         {
             StopCoroutine(GetTimeUI());
+            gameObject.SetActive(false);
         }
     }
 
