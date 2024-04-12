@@ -55,9 +55,7 @@ public class MonsterLevel
     public int addAP;
     public int gold;
     public int exp;
-    public string rewardType;
-    public int? rewardID;
-    public int? rewardAmount;
+    public int core;
 }
 
 [Serializable]

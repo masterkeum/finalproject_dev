@@ -13,9 +13,7 @@ public class EnemyBossController : EnemyBaseController
     public float minWanderWaitTime;
     public float maxWanderWaitTime;
 
-
     private Vector3 gizmoDestination;
-
 
     public override void Init(int _monsterID, int _level, Player target)
     {
@@ -33,23 +31,6 @@ public class EnemyBossController : EnemyBaseController
 
         StartCoroutine(CheckState());
     }
-
-    //private void Update()
-    //{
-    //    playerDistance = DistanceToTarget();
-    //    switch (enemyState)
-    //    {
-    //        case EnemyState.Idle: WanderUpdate(); break;
-    //        case EnemyState.Wander: WanderUpdate(); break;
-    //        case EnemyState.Trace: TraceUpdate(); break;
-    //        case EnemyState.Attack: AttackUpdate(); break;
-    //        case EnemyState.Flee: FleeUpdate(); break;
-    //        case EnemyState.Die: break;
-
-    //        default:
-    //            SetState(EnemyState.Flee); break;
-    //    }
-    //}
 
     private IEnumerator CheckState()
     {
@@ -72,8 +53,6 @@ public class EnemyBossController : EnemyBaseController
             }
         }
     }
-
-
 
     private void WanderUpdate()
     {
@@ -174,8 +153,7 @@ public class EnemyBossController : EnemyBaseController
     {
         base.OnDead();
         Debug.Log("보스 하나 죽음");
-        GameManager.Instance.SetState(GameState.IngameEnd);
-        UIManager.Instance.ShowUI<UIGameClear>();
-        ++UIManager.Instance.popupUICount;
+        player.AddCore(monsterLevel.core);
+        player.RemoveChaseTarget(gameObject);
     }
 }
