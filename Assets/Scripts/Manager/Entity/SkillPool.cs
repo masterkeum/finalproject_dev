@@ -10,6 +10,7 @@ public class SkillPool : MonoBehaviour
         public int id;
         public GameObject prefab;
         public int amount;
+        public int skillGroup;
     }
 
     public Dictionary<int, Queue<GameObject>> poolDictionary = new Dictionary<int, Queue<GameObject>>();
@@ -25,6 +26,7 @@ public class SkillPool : MonoBehaviour
             id = skillData.skillId,
             prefab = Resources.Load<GameObject>(skillData.prefabAddress),
             amount = skillData.poolAmount,
+            skillGroup = skillData.skillGroup,
         };
         projectileList.Add(projectile);
     }
@@ -38,7 +40,10 @@ public class SkillPool : MonoBehaviour
             for (int i = 0; i < pool.amount; i++)
             {
                 GameObject skillgo = Instantiate(pool.prefab, parentTransform.position, Quaternion.identity);
-                skillgo.transform.SetParent(parentTransform);
+                if (pool.skillGroup != 30000030)
+                {
+                    skillgo.transform.SetParent(parentTransform);
+                }
                 //skillgo.GetComponent<ProjectileScript>().Init(pool.id, 1);
                 skillgo.SetActive(false);
                 skillQueue.Enqueue(skillgo);
@@ -163,9 +168,7 @@ public class SkillPool : MonoBehaviour
 
                 SkillTable skillData = DataManager.Instance.GetSkillTable(skillId);
                 obj = Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), parentTransform.position, Quaternion.identity);
-                obj.transform.SetParent(parentTransform);
                 obj.SetActive(false);
-
 
                 Debug.LogWarning($"expanded pool : poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
             }
@@ -201,7 +204,6 @@ public class SkillPool : MonoBehaviour
                 obj = Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), parentTransform.position, Quaternion.identity);
                 obj.transform.SetParent(parentTransform);
                 obj.SetActive(false);
-
 
                 Debug.LogWarning($"poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
             }
