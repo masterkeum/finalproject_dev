@@ -17,7 +17,6 @@ public class FireDamage : MonoBehaviour
     {
         if (enemyLayerMask == (enemyLayerMask | (1 << other.gameObject.layer)))
         {
-            Debug.Log("hellfire 활성화");
             other.GetComponent<EnemyBaseController>().TakeDamage(damage);
         }
     }

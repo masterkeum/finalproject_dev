@@ -155,8 +155,6 @@ public class Player : MonoBehaviour
         SkillTable defaultSkill = DataManager.Instance.GetSkillTable(DataManager.Instance._InitParam["StartSkillId"]);
         SkillUpdate(defaultSkill);
 
-
-
         // Test
         //SkillUpdate(DataManager.Instance.GetSkillTable(30000541));
         //SkillUpdate(DataManager.Instance.GetSkillTable(30001055));
