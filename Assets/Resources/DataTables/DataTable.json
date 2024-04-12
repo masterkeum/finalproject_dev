@@ -71,7 +71,7 @@
       "name": "슬라임",
       "minLevel": 1,
       "maxLevel": 10,
-      "hp": 150,
+      "hp": 90,
       "attackPower": 35,
       "sensoryRange": 0,
       "attackRange": 2,
@@ -86,7 +86,7 @@
       "name": "머쉬룸",
       "minLevel": 1,
       "maxLevel": 10,
-      "hp": 200,
+      "hp": 120,
       "attackPower": 40,
       "sensoryRange": 0,
       "attackRange": 2.4,
@@ -101,7 +101,7 @@
       "name": "오크",
       "minLevel": 1,
       "maxLevel": 3,
-      "hp": 1000,
+      "hp": 800,
       "attackPower": 70,
       "sensoryRange": 10,
       "attackRange": 3,
@@ -116,7 +116,7 @@
       "name": "살라맨더",
       "minLevel": 1,
       "maxLevel": 10,
-      "hp": 700,
+      "hp": 150,
       "attackPower": 30,
       "sensoryRange": 0,
       "attackRange": 3,
@@ -131,7 +131,7 @@
       "name": "비홀더",
       "minLevel": 1,
       "maxLevel": 10,
-      "hp": 800,
+      "hp": 170,
       "attackPower": 33,
       "sensoryRange": 0,
       "attackRange": 2.6,
@@ -146,7 +146,7 @@
       "name": "이블메이지",
       "minLevel": 1,
       "maxLevel": 3,
-      "hp": 1800,
+      "hp": 1500,
       "attackPower": 65,
       "sensoryRange": 20,
       "attackRange": 10,
@@ -161,7 +161,7 @@
       "name": "몬스터플랜트",
       "minLevel": 1,
       "maxLevel": 10,
-      "hp": 900,
+      "hp": 200,
       "attackPower": 45,
       "sensoryRange": 0,
       "attackRange": 2.6,
@@ -176,7 +176,7 @@
       "name": "선인장",
       "minLevel": 1,
       "maxLevel": 10,
-      "hp": 800,
+      "hp": 250,
       "attackPower": 60,
       "sensoryRange": 0,
       "attackRange": 2.6,
@@ -191,7 +191,7 @@
       "name": "플라잉데몬",
       "minLevel": 1,
       "maxLevel": 3,
-      "hp": 1500,
+      "hp": 2500,
       "attackPower": 75,
       "sensoryRange": 25,
       "attackRange": 3.4,
@@ -214,7 +214,7 @@
     {
       "uid": 20000001,
       "level": 2,
-      "addHP": 5,
+      "addHP": 20,
       "addAP": 30,
       "gold": 24,
       "exp": 1,
@@ -223,7 +223,7 @@
     {
       "uid": 20000001,
       "level": 3,
-      "addHP": 10,
+      "addHP": 30,
       "addAP": 35,
       "gold": 28,
       "exp": 2,
@@ -232,7 +232,7 @@
     {
       "uid": 20000001,
       "level": 4,
-      "addHP": 15,
+      "addHP": 40,
       "addAP": 40,
       "gold": 32,
       "exp": 2,
@@ -241,7 +241,7 @@
     {
       "uid": 20000001,
       "level": 5,
-      "addHP": 20,
+      "addHP": 50,
       "addAP": 45,
       "gold": 36,
       "exp": 3,
@@ -250,7 +250,7 @@
     {
       "uid": 20000001,
       "level": 6,
-      "addHP": 25,
+      "addHP": 60,
       "addAP": 50,
       "gold": 40,
       "exp": 3,
@@ -259,7 +259,7 @@
     {
       "uid": 20000001,
       "level": 7,
-      "addHP": 30,
+      "addHP": 70,
       "addAP": 55,
       "gold": 44,
       "exp": 4,
@@ -268,7 +268,7 @@
     {
       "uid": 20000001,
       "level": 8,
-      "addHP": 35,
+      "addHP": 80,
       "addAP": 60,
       "gold": 48,
       "exp": 4,
@@ -277,7 +277,7 @@
     {
       "uid": 20000001,
       "level": 9,
-      "addHP": 40,
+      "addHP": 90,
       "addAP": 65,
       "gold": 52,
       "exp": 5,
@@ -286,7 +286,7 @@
     {
       "uid": 20000001,
       "level": 10,
-      "addHP": 45,
+      "addHP": 100,
       "addAP": 70,
       "gold": 56,
       "exp": 5,
@@ -304,7 +304,7 @@
     {
       "uid": 20000002,
       "level": 2,
-      "addHP": 5,
+      "addHP": 20,
       "addAP": 40,
       "gold": 32,
       "exp": 2,
@@ -313,7 +313,7 @@
     {
       "uid": 20000002,
       "level": 3,
-      "addHP": 10,
+      "addHP": 30,
       "addAP": 45,
       "gold": 37,
       "exp": 3,
@@ -322,7 +322,7 @@
     {
       "uid": 20000002,
       "level": 4,
-      "addHP": 15,
+      "addHP": 40,
       "addAP": 50,
       "gold": 42,
       "exp": 3,
@@ -331,7 +331,7 @@
     {
       "uid": 20000002,
       "level": 5,
-      "addHP": 20,
+      "addHP": 50,
       "addAP": 55,
       "gold": 47,
       "exp": 4,
@@ -340,7 +340,7 @@
     {
       "uid": 20000002,
       "level": 6,
-      "addHP": 25,
+      "addHP": 60,
       "addAP": 60,
       "gold": 52,
       "exp": 4,
@@ -349,7 +349,7 @@
     {
       "uid": 20000002,
       "level": 7,
-      "addHP": 30,
+      "addHP": 70,
       "addAP": 65,
       "gold": 57,
       "exp": 5,
@@ -358,7 +358,7 @@
     {
       "uid": 20000002,
       "level": 8,
-      "addHP": 35,
+      "addHP": 80,
       "addAP": 70,
       "gold": 62,
       "exp": 5,
@@ -367,7 +367,7 @@
     {
       "uid": 20000002,
       "level": 9,
-      "addHP": 40,
+      "addHP": 90,
       "addAP": 75,
       "gold": 67,
       "exp": 6,
@@ -376,7 +376,7 @@
     {
       "uid": 20000002,
       "level": 10,
-      "addHP": 45,
+      "addHP": 100,
       "addAP": 80,
       "gold": 72,
       "exp": 6,
@@ -394,7 +394,7 @@
     {
       "uid": 20100001,
       "level": 2,
-      "addHP": 100,
+      "addHP": 2000,
       "addAP": 60,
       "gold": 700,
       "exp": 60,
@@ -403,7 +403,7 @@
     {
       "uid": 20100001,
       "level": 3,
-      "addHP": 300,
+      "addHP": 3000,
       "addAP": 120,
       "gold": 1000,
       "exp": 80,
@@ -421,7 +421,7 @@
     {
       "uid": 20000003,
       "level": 2,
-      "addHP": 2,
+      "addHP": 20,
       "addAP": 35,
       "gold": 30,
       "exp": 3,
@@ -430,7 +430,7 @@
     {
       "uid": 20000003,
       "level": 3,
-      "addHP": 4,
+      "addHP": 30,
       "addAP": 40,
       "gold": 32,
       "exp": 4,
@@ -439,7 +439,7 @@
     {
       "uid": 20000003,
       "level": 4,
-      "addHP": 6,
+      "addHP": 40,
       "addAP": 45,
       "gold": 34,
       "exp": 5,
@@ -448,7 +448,7 @@
     {
       "uid": 20000003,
       "level": 5,
-      "addHP": 8,
+      "addHP": 50,
       "addAP": 50,
       "gold": 36,
       "exp": 6,
@@ -457,7 +457,7 @@
     {
       "uid": 20000003,
       "level": 6,
-      "addHP": 10,
+      "addHP": 60,
       "addAP": 55,
       "gold": 38,
       "exp": 7,
@@ -466,7 +466,7 @@
     {
       "uid": 20000003,
       "level": 7,
-      "addHP": 12,
+      "addHP": 70,
       "addAP": 60,
       "gold": 40,
       "exp": 8,
@@ -475,7 +475,7 @@
     {
       "uid": 20000003,
       "level": 8,
-      "addHP": 14,
+      "addHP": 80,
       "addAP": 65,
       "gold": 42,
       "exp": 9,
@@ -484,7 +484,7 @@
     {
       "uid": 20000003,
       "level": 9,
-      "addHP": 16,
+      "addHP": 90,
       "addAP": 70,
       "gold": 44,
       "exp": 10,
@@ -493,7 +493,7 @@
     {
       "uid": 20000003,
       "level": 10,
-      "addHP": 18,
+      "addHP": 100,
       "addAP": 75,
       "gold": 46,
       "exp": 11,
@@ -511,7 +511,7 @@
     {
       "uid": 20100002,
       "level": 2,
-      "addHP": 150,
+      "addHP": 2000,
       "addAP": 70,
       "gold": 950,
       "exp": 65,
@@ -520,7 +520,7 @@
     {
       "uid": 20100002,
       "level": 3,
-      "addHP": 350,
+      "addHP": 3500,
       "addAP": 180,
       "gold": 800,
       "exp": 85,
@@ -538,7 +538,7 @@
     {
       "uid": 20000004,
       "level": 2,
-      "addHP": 4,
+      "addHP": 20,
       "addAP": 45,
       "gold": 34,
       "exp": 4,
@@ -547,7 +547,7 @@
     {
       "uid": 20000004,
       "level": 3,
-      "addHP": 6,
+      "addHP": 30,
       "addAP": 50,
       "gold": 35,
       "exp": 5,
@@ -556,7 +556,7 @@
     {
       "uid": 20000004,
       "level": 4,
-      "addHP": 8,
+      "addHP": 40,
       "addAP": 55,
       "gold": 36,
       "exp": 6,
@@ -565,7 +565,7 @@
     {
       "uid": 20000004,
       "level": 5,
-      "addHP": 10,
+      "addHP": 50,
       "addAP": 60,
       "gold": 37,
       "exp": 7,
@@ -574,7 +574,7 @@
     {
       "uid": 20000004,
       "level": 6,
-      "addHP": 12,
+      "addHP": 60,
       "addAP": 65,
       "gold": 38,
       "exp": 8,
@@ -583,7 +583,7 @@
     {
       "uid": 20000004,
       "level": 7,
-      "addHP": 14,
+      "addHP": 70,
       "addAP": 70,
       "gold": 39,
       "exp": 9,
@@ -592,7 +592,7 @@
     {
       "uid": 20000004,
       "level": 8,
-      "addHP": 16,
+      "addHP": 80,
       "addAP": 75,
       "gold": 40,
       "exp": 10,
@@ -601,7 +601,7 @@
     {
       "uid": 20000004,
       "level": 9,
-      "addHP": 18,
+      "addHP": 90,
       "addAP": 80,
       "gold": 41,
       "exp": 11,
@@ -610,7 +610,7 @@
     {
       "uid": 20000004,
       "level": 10,
-      "addHP": 20,
+      "addHP": 100,
       "addAP": 85,
       "gold": 42,
       "exp": 12,
@@ -628,7 +628,7 @@
     {
       "uid": 20000005,
       "level": 2,
-      "addHP": 8,
+      "addHP": 20,
       "addAP": 50,
       "gold": 34,
       "exp": 7,
@@ -637,7 +637,7 @@
     {
       "uid": 20000005,
       "level": 3,
-      "addHP": 10,
+      "addHP": 30,
       "addAP": 55,
       "gold": 35,
       "exp": 8,
@@ -646,7 +646,7 @@
     {
       "uid": 20000005,
       "level": 4,
-      "addHP": 12,
+      "addHP": 40,
       "addAP": 60,
       "gold": 36,
       "exp": 9,
@@ -655,7 +655,7 @@
     {
       "uid": 20000005,
       "level": 5,
-      "addHP": 14,
+      "addHP": 50,
       "addAP": 65,
       "gold": 37,
       "exp": 10,
@@ -664,7 +664,7 @@
     {
       "uid": 20000005,
       "level": 6,
-      "addHP": 16,
+      "addHP": 60,
       "addAP": 70,
       "gold": 38,
       "exp": 11,
@@ -673,7 +673,7 @@
     {
       "uid": 20000005,
       "level": 7,
-      "addHP": 18,
+      "addHP": 70,
       "addAP": 75,
       "gold": 39,
       "exp": 12,
@@ -682,7 +682,7 @@
     {
       "uid": 20000005,
       "level": 8,
-      "addHP": 20,
+      "addHP": 80,
       "addAP": 80,
       "gold": 40,
       "exp": 13,
@@ -691,7 +691,7 @@
     {
       "uid": 20000005,
       "level": 9,
-      "addHP": 22,
+      "addHP": 90,
       "addAP": 85,
       "gold": 41,
       "exp": 14,
@@ -700,7 +700,7 @@
     {
       "uid": 20000005,
       "level": 10,
-      "addHP": 24,
+      "addHP": 100,
       "addAP": 90,
       "gold": 42,
       "exp": 15,
@@ -718,7 +718,7 @@
     {
       "uid": 20100003,
       "level": 2,
-      "addHP": 150,
+      "addHP": 2800,
       "addAP": 90,
       "gold": 950,
       "exp": 65,
@@ -727,7 +727,7 @@
     {
       "uid": 20100003,
       "level": 3,
-      "addHP": 350,
+      "addHP": 3800,
       "addAP": 200,
       "gold": 800,
       "exp": 85,
@@ -833,7 +833,7 @@
       "level": 1,
       "genTimeStart": 0,
       "genTimeEnd": 15,
-      "genAmount": 3,
+      "genAmount": 1,
       "genTime": 3,
       "genMax": 30,
       "genPosVecter3": null
@@ -844,8 +844,8 @@
       "level": 2,
       "genTimeStart": 10,
       "genTimeEnd": 60,
-      "genAmount": 5,
-      "genTime": 5,
+      "genAmount": 2,
+      "genTime": 7,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -855,19 +855,19 @@
       "level": 3,
       "genTimeStart": 40,
       "genTimeEnd": 70,
-      "genAmount": 8,
-      "genTime": 5,
+      "genAmount": 2,
+      "genTime": 10,
       "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 101,
       "monsterId": 20000001,
-      "level": 4,
+      "level": 3,
       "genTimeStart": 70,
       "genTimeEnd": 100,
-      "genAmount": 3,
-      "genTime": 10,
+      "genAmount": 2,
+      "genTime": 15,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -878,7 +878,7 @@
       "genTimeStart": 15,
       "genTimeEnd": 45,
       "genAmount": 1,
-      "genTime": 1,
+      "genTime": 20,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -889,7 +889,7 @@
       "genTimeStart": 30,
       "genTimeEnd": 150,
       "genAmount": 1,
-      "genTime": 4,
+      "genTime": 40,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -899,19 +899,19 @@
       "level": 3,
       "genTimeStart": 150,
       "genTimeEnd": 210,
-      "genAmount": 5,
-      "genTime": 10,
+      "genAmount": 2,
+      "genTime": 50,
       "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 101,
       "monsterId": 20000002,
-      "level": 4,
+      "level": 3,
       "genTimeStart": 200,
       "genTimeEnd": 275,
       "genAmount": 2,
-      "genTime": 5,
+      "genTime": 70,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -936,7 +936,7 @@
       "level": 3,
       "genTimeStart": 0,
       "genTimeEnd": 15,
-      "genAmount": 3,
+      "genAmount": 2,
       "genTime": 3,
       "genMax": 30,
       "genPosVecter3": null
@@ -947,7 +947,7 @@
       "level": 3,
       "genTimeStart": 10,
       "genTimeEnd": 60,
-      "genAmount": 5,
+      "genAmount": 2,
       "genTime": 5,
       "genMax": 30,
       "genPosVecter3": null
@@ -958,7 +958,7 @@
       "level": 4,
       "genTimeStart": 40,
       "genTimeEnd": 70,
-      "genAmount": 8,
+      "genAmount": 1,
       "genTime": 5,
       "genMax": 30,
       "genPosVecter3": null
@@ -1002,7 +1002,7 @@
       "level": 1,
       "genTimeStart": 150,
       "genTimeEnd": 210,
-      "genAmount": 5,
+      "genAmount": 2,
       "genTime": 10,
       "genMax": 30,
       "genPosVecter3": null
@@ -1072,7 +1072,7 @@
       "level": 4,
       "genTimeStart": 0,
       "genTimeEnd": 15,
-      "genAmount": 3,
+      "genAmount": 1,
       "genTime": 3,
       "genMax": 30,
       "genPosVecter3": null
@@ -1083,7 +1083,7 @@
       "level": 5,
       "genTimeStart": 10,
       "genTimeEnd": 60,
-      "genAmount": 5,
+      "genAmount": 1,
       "genTime": 5,
       "genMax": 30,
       "genPosVecter3": null
@@ -1094,7 +1094,7 @@
       "level": 6,
       "genTimeStart": 40,
       "genTimeEnd": 70,
-      "genAmount": 8,
+      "genAmount": 2,
       "genTime": 5,
       "genMax": 30,
       "genPosVecter3": null
@@ -1105,7 +1105,7 @@
       "level": 7,
       "genTimeStart": 70,
       "genTimeEnd": 100,
-      "genAmount": 3,
+      "genAmount": 1,
       "genTime": 10,
       "genMax": 30,
       "genPosVecter3": null
@@ -1138,7 +1138,7 @@
       "level": 2,
       "genTimeStart": 150,
       "genTimeEnd": 210,
-      "genAmount": 5,
+      "genAmount": 3,
       "genTime": 10,
       "genMax": 30,
       "genPosVecter3": null
@@ -1171,7 +1171,7 @@
       "level": 5,
       "genTimeStart": 15,
       "genTimeEnd": 45,
-      "genAmount": 3,
+      "genAmount": 2,
       "genTime": 5,
       "genMax": 30,
       "genPosVecter3": null
@@ -1234,7 +1234,7 @@
       "level": 5,
       "genTimeStart": 10,
       "genTimeEnd": 60,
-      "genAmount": 5,
+      "genAmount": 2,
       "genTime": 5,
       "genMax": 30,
       "genPosVecter3": null
@@ -1245,177 +1245,177 @@
       "level": 6,
       "genTimeStart": 40,
       "genTimeEnd": 70,
-      "genAmount": 8,
+      "genAmount": 2,
       "genTime": 5,
       "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 104,
+      "monsterId": 20000001,
+      "level": 8,
+      "genTimeStart": 70,
+      "genTimeEnd": 100,
+      "genAmount": 3,
+      "genTime": 10,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000002,
+      "level": 4,
+      "genTimeStart": 15,
+      "genTimeEnd": 45,
+      "genAmount": 1,
+      "genTime": 1,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000002,
+      "level": 5,
+      "genTimeStart": 30,
+      "genTimeEnd": 150,
+      "genAmount": 1,
+      "genTime": 4,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000003,
+      "level": 4,
+      "genTimeStart": 150,
+      "genTimeEnd": 210,
+      "genAmount": 3,
+      "genTime": 10,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000003,
+      "level": 5,
+      "genTimeStart": 200,
+      "genTimeEnd": 275,
+      "genAmount": 2,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000003,
+      "level": 6,
+      "genTimeStart": 70,
+      "genTimeEnd": 100,
+      "genAmount": 1,
+      "genTime": 4,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000003,
+      "level": 5,
+      "genTimeStart": 15,
+      "genTimeEnd": 45,
+      "genAmount": 1,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20000003,
+      "level": 7,
+      "genTimeStart": 17,
+      "genTimeEnd": 150,
+      "genAmount": 2,
+      "genTime": 6,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20100001,
+      "level": 1,
+      "genTimeStart": 0,
+      "genTimeEnd": 0,
+      "genAmount": 1,
+      "genTime": 0,
+      "genMax": 1,
+      "genPosVecter3": [
+        -70,
+        0,
+        -70
+      ]
+    },
+    {
+      "stageId": 104,
+      "monsterId": 20100002,
+      "level": 2,
+      "genTimeStart": 0,
+      "genTimeEnd": 0,
+      "genAmount": 1,
+      "genTime": 0,
+      "genMax": 1,
+      "genPosVecter3": [
+        -70,
+        0,
+        -80
+      ]
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000004,
+      "level": 3,
+      "genTimeStart": 0,
+      "genTimeEnd": 15,
+      "genAmount": 3,
+      "genTime": 3,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000004,
+      "level": 4,
+      "genTimeStart": 10,
+      "genTimeEnd": 60,
+      "genAmount": 2,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000004,
+      "level": 5,
+      "genTimeStart": 40,
+      "genTimeEnd": 70,
+      "genAmount": 2,
+      "genTime": 5,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000001,
+      "level": 6,
+      "genTimeStart": 70,
+      "genTimeEnd": 100,
+      "genAmount": 3,
+      "genTime": 10,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
       "monsterId": 20000001,
       "level": 7,
-      "genTimeStart": 70,
-      "genTimeEnd": 100,
-      "genAmount": 3,
-      "genTime": 10,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000002,
-      "level": 4,
-      "genTimeStart": 15,
-      "genTimeEnd": 45,
-      "genAmount": 1,
-      "genTime": 1,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000002,
-      "level": 5,
-      "genTimeStart": 30,
-      "genTimeEnd": 150,
-      "genAmount": 1,
-      "genTime": 4,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000003,
-      "level": 2,
-      "genTimeStart": 150,
-      "genTimeEnd": 210,
-      "genAmount": 5,
-      "genTime": 10,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000003,
-      "level": 3,
-      "genTimeStart": 200,
-      "genTimeEnd": 275,
-      "genAmount": 2,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000003,
-      "level": 4,
-      "genTimeStart": 70,
-      "genTimeEnd": 100,
-      "genAmount": 3,
-      "genTime": 4,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000003,
-      "level": 5,
-      "genTimeStart": 15,
-      "genTimeEnd": 45,
-      "genAmount": 3,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20000003,
-      "level": 6,
-      "genTimeStart": 17,
-      "genTimeEnd": 150,
-      "genAmount": 3,
-      "genTime": 6,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20100001,
-      "level": 1,
-      "genTimeStart": 0,
-      "genTimeEnd": 0,
-      "genAmount": 1,
-      "genTime": 0,
-      "genMax": 1,
-      "genPosVecter3": [
-        -70,
-        0,
-        -70
-      ]
-    },
-    {
-      "stageId": 104,
-      "monsterId": 20100002,
-      "level": 2,
-      "genTimeStart": 0,
-      "genTimeEnd": 0,
-      "genAmount": 1,
-      "genTime": 0,
-      "genMax": 1,
-      "genPosVecter3": [
-        -70,
-        0,
-        -80
-      ]
-    },
-    {
-      "stageId": 105,
-      "monsterId": 20000004,
-      "level": 1,
-      "genTimeStart": 0,
-      "genTimeEnd": 15,
-      "genAmount": 3,
-      "genTime": 3,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 105,
-      "monsterId": 20000004,
-      "level": 2,
-      "genTimeStart": 10,
-      "genTimeEnd": 60,
-      "genAmount": 5,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 105,
-      "monsterId": 20000004,
-      "level": 3,
-      "genTimeStart": 40,
-      "genTimeEnd": 70,
-      "genAmount": 8,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 105,
-      "monsterId": 20000001,
-      "level": 5,
-      "genTimeStart": 70,
-      "genTimeEnd": 100,
-      "genAmount": 3,
-      "genTime": 10,
-      "genMax": 30,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 105,
-      "monsterId": 20000001,
-      "level": 6,
       "genTimeStart": 15,
       "genTimeEnd": 45,
       "genAmount": 1,
@@ -1426,7 +1426,7 @@
     {
       "stageId": 105,
       "monsterId": 20000002,
-      "level": 4,
+      "level": 5,
       "genTimeStart": 30,
       "genTimeEnd": 150,
       "genAmount": 1,
@@ -1437,10 +1437,10 @@
     {
       "stageId": 105,
       "monsterId": 20000002,
-      "level": 5,
+      "level": 7,
       "genTimeStart": 150,
       "genTimeEnd": 210,
-      "genAmount": 5,
+      "genAmount": 3,
       "genTime": 10,
       "genMax": 30,
       "genPosVecter3": null
@@ -1448,10 +1448,10 @@
     {
       "stageId": 105,
       "monsterId": 20000002,
-      "level": 6,
+      "level": 8,
       "genTimeStart": 200,
       "genTimeEnd": 275,
-      "genAmount": 2,
+      "genAmount": 1,
       "genTime": 5,
       "genMax": 30,
       "genPosVecter3": null
@@ -1459,10 +1459,10 @@
     {
       "stageId": 105,
       "monsterId": 20000005,
-      "level": 1,
+      "level": 2,
       "genTimeStart": 70,
       "genTimeEnd": 100,
-      "genAmount": 3,
+      "genAmount": 2,
       "genTime": 4,
       "genMax": 30,
       "genPosVecter3": null
@@ -1470,7 +1470,7 @@
     {
       "stageId": 105,
       "monsterId": 20000005,
-      "level": 2,
+      "level": 3,
       "genTimeStart": 15,
       "genTimeEnd": 45,
       "genAmount": 3,
@@ -1522,7 +1522,7 @@
     {
       "stageId": 105,
       "monsterId": 20100003,
-      "level": 1,
+      "level": 3,
       "genTimeStart": 0,
       "genTimeEnd": 0,
       "genAmount": 1,
@@ -2677,7 +2677,7 @@
       "reqAccountLevel": 2,
       "exp": 1,
       "totalExp": 3,
-      "reqsec": 20,
+      "reqsec": 1200,
       "reqgold": 14000
     },
     {
@@ -2685,7 +2685,7 @@
       "reqAccountLevel": 2,
       "exp": 2,
       "totalExp": 5,
-      "reqsec": 35,
+      "reqsec": 2100,
       "reqgold": 20000
     },
     {
@@ -2693,7 +2693,7 @@
       "reqAccountLevel": 3,
       "exp": 2,
       "totalExp": 7,
-      "reqsec": 55,
+      "reqsec": 3300,
       "reqgold": 26000
     },
     {
@@ -2701,7 +2701,7 @@
       "reqAccountLevel": 3,
       "exp": 2,
       "totalExp": 9,
-      "reqsec": 80,
+      "reqsec": 4800,
       "reqgold": 32000
     },
     {
@@ -2709,7 +2709,7 @@
       "reqAccountLevel": 3,
       "exp": 3,
       "totalExp": 12,
-      "reqsec": 110,
+      "reqsec": 6600,
       "reqgold": 38000
     },
     {
@@ -2717,7 +2717,7 @@
       "reqAccountLevel": 4,
       "exp": 3,
       "totalExp": 15,
-      "reqsec": 145,
+      "reqsec": 8700,
       "reqgold": 44000
     },
     {
@@ -2725,7 +2725,7 @@
       "reqAccountLevel": 4,
       "exp": 3,
       "totalExp": 18,
-      "reqsec": 185,
+      "reqsec": 11100,
       "reqgold": 50000
     },
     {
@@ -2733,7 +2733,7 @@
       "reqAccountLevel": 4,
       "exp": 3,
       "totalExp": 21,
-      "reqsec": 235,
+      "reqsec": 14100,
       "reqgold": 56000
     },
     {
@@ -2741,7 +2741,7 @@
       "reqAccountLevel": 5,
       "exp": 4,
       "totalExp": 25,
-      "reqsec": 295,
+      "reqsec": 17700,
       "reqgold": 62000
     },
     {
@@ -2749,7 +2749,7 @@
       "reqAccountLevel": 5,
       "exp": 4,
       "totalExp": 29,
-      "reqsec": 370,
+      "reqsec": 22200,
       "reqgold": 68000
     },
     {
@@ -2757,7 +2757,7 @@
       "reqAccountLevel": 6,
       "exp": 4,
       "totalExp": 33,
-      "reqsec": 450,
+      "reqsec": 27000,
       "reqgold": 74000
     },
     {
@@ -2765,7 +2765,7 @@
       "reqAccountLevel": 6,
       "exp": 5,
       "totalExp": 38,
-      "reqsec": 535,
+      "reqsec": 32100,
       "reqgold": 80000
     },
     {
@@ -2773,7 +2773,7 @@
       "reqAccountLevel": 7,
       "exp": 5,
       "totalExp": 43,
-      "reqsec": 625,
+      "reqsec": 37500,
       "reqgold": 86000
     },
     {
@@ -2781,7 +2781,7 @@
       "reqAccountLevel": 7,
       "exp": 5,
       "totalExp": 48,
-      "reqsec": 720,
+      "reqsec": 43200,
       "reqgold": 92000
     },
     {
@@ -2789,7 +2789,7 @@
       "reqAccountLevel": 8,
       "exp": 5,
       "totalExp": 53,
-      "reqsec": 820,
+      "reqsec": 49200,
       "reqgold": 98000
     },
     {
@@ -2797,7 +2797,7 @@
       "reqAccountLevel": 8,
       "exp": 5,
       "totalExp": 58,
-      "reqsec": 925,
+      "reqsec": 55500,
       "reqgold": 104000
     },
     {
@@ -2805,7 +2805,7 @@
       "reqAccountLevel": 8,
       "exp": 5,
       "totalExp": 63,
-      "reqsec": 1035,
+      "reqsec": 62100,
       "reqgold": 110000
     },
     {
@@ -2813,7 +2813,7 @@
       "reqAccountLevel": 9,
       "exp": 5,
       "totalExp": 68,
-      "reqsec": 1150,
+      "reqsec": 69000,
       "reqgold": 116000
     },
     {
@@ -2821,7 +2821,7 @@
       "reqAccountLevel": 9,
       "exp": 5,
       "totalExp": 73,
-      "reqsec": 1270,
+      "reqsec": 76200,
       "reqgold": 122000
     },
     {
@@ -2829,7 +2829,7 @@
       "reqAccountLevel": 9,
       "exp": 5,
       "totalExp": 78,
-      "reqsec": 1395,
+      "reqsec": 83700,
       "reqgold": 128000
     },
     {
@@ -2837,7 +2837,7 @@
       "reqAccountLevel": 10,
       "exp": 5,
       "totalExp": 83,
-      "reqsec": 1525,
+      "reqsec": 91500,
       "reqgold": 134000
     },
     {
@@ -2845,7 +2845,7 @@
       "reqAccountLevel": 11,
       "exp": 5,
       "totalExp": 88,
-      "reqsec": 1660,
+      "reqsec": 99600,
       "reqgold": 140000
     },
     {
@@ -2853,7 +2853,7 @@
       "reqAccountLevel": 12,
       "exp": 5,
       "totalExp": 93,
-      "reqsec": 1800,
+      "reqsec": 108000,
       "reqgold": 146000
     },
     {
@@ -2861,7 +2861,7 @@
       "reqAccountLevel": 13,
       "exp": 5,
       "totalExp": 98,
-      "reqsec": 1945,
+      "reqsec": 116700,
       "reqgold": 152000
     },
     {
@@ -2869,7 +2869,7 @@
       "reqAccountLevel": 14,
       "exp": 5,
       "totalExp": 103,
-      "reqsec": 2095,
+      "reqsec": 125700,
       "reqgold": 158000
     },
     {
@@ -2877,7 +2877,7 @@
       "reqAccountLevel": 15,
       "exp": 5,
       "totalExp": 108,
-      "reqsec": 2250,
+      "reqsec": 135000,
       "reqgold": 164000
     },
     {
@@ -2885,7 +2885,7 @@
       "reqAccountLevel": 16,
       "exp": 5,
       "totalExp": 113,
-      "reqsec": 2410,
+      "reqsec": 144600,
       "reqgold": 170000
     }
   ],
@@ -3934,7 +3934,7 @@
       "rangeType": "Range",
       "coolDownTime": 0.8,
       "castDelay": 0.2,
-      "attackDamage": 60,
+      "attackDamage": 120,
       "projectileType": "Projectile",
       "projectileSpeed": 12,
       "projectileCount": 1,
@@ -3964,7 +3964,7 @@
       "rangeType": "Range",
       "coolDownTime": 0.8,
       "castDelay": 0.2,
-      "attackDamage": 80,
+      "attackDamage": 140,
       "projectileType": "Projectile",
       "projectileSpeed": 13,
       "projectileCount": 1,
@@ -3994,7 +3994,7 @@
       "rangeType": "Range",
       "coolDownTime": 0.7,
       "castDelay": 0.2,
-      "attackDamage": 100,
+      "attackDamage": 160,
       "projectileType": "Projectile",
       "projectileSpeed": 14,
       "projectileCount": 1,
@@ -4024,7 +4024,7 @@
       "rangeType": "Range",
       "coolDownTime": 0.6,
       "castDelay": 0.2,
-      "attackDamage": 120,
+      "attackDamage": 180,
       "projectileType": "Projectile",
       "projectileSpeed": 15,
       "projectileCount": 1,
@@ -4054,7 +4054,7 @@
       "rangeType": "Range",
       "coolDownTime": 0.6,
       "castDelay": 0.2,
-      "attackDamage": 160,
+      "attackDamage": 200,
       "projectileType": "Projectile",
       "projectileSpeed": 15,
       "projectileCount": 1,

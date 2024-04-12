@@ -38,6 +38,9 @@ public class GameManager : SingletoneBase<GameManager>
     {
         _pidStr = _pid.ToString();
         base.Init();
+
+        stageId = 101;
+
         // 데이터 로드 이후 루틴
         StartCoroutine(WaitForData());
     }
@@ -90,6 +93,7 @@ public class GameManager : SingletoneBase<GameManager>
         _maxActionPoint = DataManager.Instance._InitParam["MaxActionPoint"];
         _regenActionPointTime = DataManager.Instance._InitParam["RegenActionPointTime"];
         _combatActionPoint = DataManager.Instance._InitParam["CombatActionPoint"];
+        stageId = DataManager.Instance._InitParam["StartStageId"];
     }
 
     private void CalcActionPoint()

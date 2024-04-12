@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -88,7 +89,8 @@ public class IngameScene : MonoBehaviour
 
     private void GenerateLevel(int stageId)
     {
-        Instantiate(Resources.Load<GameObject>(DataManager.Instance.stageListDict[stageId].levelPrefab));
+        GameObject navMeshSurface = Instantiate(Resources.Load<GameObject>(DataManager.Instance.stageListDict[stageId].levelPrefab));
+        navMeshSurface.GetComponent<NavMeshSurface>().BuildNavMesh();
     }
 
     private void MakePlayer(int playerId)

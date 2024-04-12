@@ -352,7 +352,7 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(skillData.coolDownTime);
 
             // TODO : 계수 연산할수 있게 함수 따로 빼기
-            int damage = Mathf.RoundToInt((playeringameinfo.attackPower + skillData.attackDamage) * 0.5f);
+            int damage = Mathf.RoundToInt((playeringameinfo.attackPower + skillData.attackDamage) * 0.8f);
 
             switch (skillData.targetType)
             {
