@@ -23,6 +23,7 @@ public class IngameScene : MonoBehaviour
     Pooling objectPool;
 
     private Player player;
+    private GameObject bossMonster;
     private GameObject joyStick;
     private GameObject virtualCamera;
     public Light sunLight;
@@ -70,17 +71,19 @@ public class IngameScene : MonoBehaviour
         StartStage();
 
         // 보스찾기 화살표 생성
-        FindBossArrow();
+        // FindBossArrow();
     }
 
-    private void FindBossArrow()
-    {
-        for (int i = 0; i < player.chaseTarget.Count; i++)
-        {
-            Instantiate(Resources.Load<GameObject>("Prefabs/UI/GameObject"), player.transform);    
-        }
-        
-    }
+    // private void FindBossArrow()
+    // {
+    //     for (int i = 0; i < player.chaseTarget.Count; i++)
+    //     {
+    //         string num = i
+    //         bossMonster+num = Instantiate(Resources.Load<GameObject>("Prefabs/UI/GameObject"), player.transform);}
+    //         // 생성한거 변수에 담고 변수에서 인덱스값 넣어서 보내주기
+    //     }
+    //     
+    // }
 
     private void GenerateLevel(int stageId)
     {
