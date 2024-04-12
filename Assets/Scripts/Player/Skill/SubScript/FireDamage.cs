@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class FireDamage : MonoBehaviour
 {
     private LayerMask enemyLayerMask;
