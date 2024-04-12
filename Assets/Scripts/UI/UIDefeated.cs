@@ -14,16 +14,9 @@ public class UIDefeated : UIBase
     public TextMeshProUGUI KillCountText;
     public TextMeshProUGUI GetGoldText;
 
-    private AccountInfo accountInfo;
-    
     private void Awake()
     {
         player = GameManager.Instance.player;
-    }
-
-    private void Start()
-    {
-        accountInfo.AddGold(player.playeringameinfo.gold); // 획득 골드 account info 에 저장
     }
 
     private void OnEnable()
@@ -38,9 +31,9 @@ public class UIDefeated : UIBase
     {
         Debug.Log("부활했습니다.");
     }
+
     public void GiveUP()
     {
         SceneManager.LoadScene("MainScene");
-        //현재 얻은 골드 등을 계정에 더하는 작업 todo
     }
 }

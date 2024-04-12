@@ -557,6 +557,8 @@ public class Player : MonoBehaviour
     void OnDead()
     {
         Debug.Log("플레이어사망. 게임오버UI");
+        //GameManager.Instance.accountInfo.AddGold(playeringameinfo.gold);// 사망하면 포기
+
         UIManager.Instance.ShowUI<UIDefeated>();
         ++UIManager.Instance.popupUICount;
     }
