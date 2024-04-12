@@ -134,6 +134,7 @@ public class OutGameHUD : UIBase
     public void OnProfileImage()
     {
         UIChangeProfile popup =  UIManager.Instance.ShowUI<UIChangeProfile>();
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
         //popup.Init();
 
     }

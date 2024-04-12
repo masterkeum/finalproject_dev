@@ -51,6 +51,7 @@ public class UIChangeProfile : UIBase
     {
         selectedSlot.index = profileSlot[index].index;
         UpdateUI();
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
     }
 
     public void OnConfirmButton()
@@ -58,6 +59,7 @@ public class UIChangeProfile : UIBase
         GameManager.Instance.accountInfo.selectedProfileIndex = selectedSlot.index;
         GameManager.Instance.UpdateUI();
         gameObject.SetActive(false);
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
     }
 }
 
