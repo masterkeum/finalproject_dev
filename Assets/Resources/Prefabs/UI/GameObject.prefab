@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimPivot: {fileID: 5598978028864263846}
+  bossPos: {fileID: 0}
 --- !u!1001 &1217688126070978116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77,7 +78,7 @@ PrefabInstance:
     - target: {fileID: 6850853203771256493, guid: 3ed51956764974804a69175fb7c4b09e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6850853203771256493, guid: 3ed51956764974804a69175fb7c4b09e,
         type: 3}
