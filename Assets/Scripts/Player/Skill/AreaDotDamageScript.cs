@@ -76,24 +76,32 @@ public class AreaDotDamageScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (enemyLayerMask == (enemyLayerMask | (1 << other.gameObject.layer)))
+        if (skillInfo.skillId == 30000541)
         {
-            // TODO: 넉백 랜덤으로 추가하기
-            //System.Random random = new System.Random();
-            //int num = random.Next(0, 100);
-            //if (num < 90)
-            //{
-            //    return;
-            //}
-
-            Debug.Log($"OnTriggerEnter : {other.name}");
-            EnemyBaseController EBC = other.GetComponent<EnemyBaseController>();
-            Collider collider = other.GetComponent<Collider>();
-
-            if (EBC != null && collider != null)
+            if (enemyLayerMask == (enemyLayerMask | (1 << other.gameObject.layer)))
             {
-                Vector3 knockBackDirection = (collider.transform.position - GameManager.Instance.player.transform.position + Vector3.up).normalized;
-                EBC.Knockback(2f, 0.2f, knockBackDirection, knockBackForce);
+                // TODO: 넉백 랜덤으로 추가하기
+                System.Random random = new System.Random();
+                int num = random.Next(0, 100);
+                if (num < 90)
+                {
+                    return;
+                }
+
+                Debug.Log($"OnTriggerEnter : {other.name}");
+                EnemyBaseController EBC = other.GetComponent<EnemyBaseController>();
+                Collider collider = other.GetComponent<Collider>();
+
+                if (EBC != null && collider != null)
+                {
+                    if (EBC.characterInfo.characterType == CharacterType.BossMonster)
+                    {
+                        return;
+                    }
+
+                    Vector3 knockBackDirection = (collider.transform.position - GameManager.Instance.player.transform.position + Vector3.up).normalized;
+                    EBC.Knockback(2f, 0.2f, knockBackDirection, knockBackForce);
+                }
             }
         }
     }

@@ -59,7 +59,7 @@ public class EnemyBaseController : MonoBehaviour
     protected Player player;
     [SerializeField] protected Transform targetPlayerTransform;
     // 몬스터 정보
-    protected CharacterInfo characterInfo;
+    public CharacterInfo characterInfo;
     protected MonsterLevel monsterLevel;
 
     protected NavMeshAgent navMeshAgent;
