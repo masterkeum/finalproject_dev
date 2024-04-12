@@ -51,7 +51,7 @@ public class InventoryUI : MonoBehaviour
         UpdateUISlot(accessorriesSlot, equipItems.Accessories);
 
         coreQuantity.text = GameManager.Instance.accountInfo.core.ToString();
-        mimicLevel.text = "Lv."+GameManager.Instance.accountInfo.mimicLevel;
+        mimicLevel.text = "Lv." + GameManager.Instance.accountInfo.mimicLevel;
     }
 
     public void UpdateUISlot(ItemSlotUI slot, Item item)
@@ -208,10 +208,10 @@ public class InventoryUI : MonoBehaviour
                     selectedItem.Ap = (UnityEngine.Random.Range(selectedGradeNType.minAp, selectedGradeNType.maxAp + 1));
                     break;
                 case ItemOptions.MoveSpeed:
-                    selectedItem.MoveSpeed = (UnityEngine.Random.Range(selectedGradeNType.minMovespeed, selectedGradeNType.maxMovespeed));
+                    selectedItem.MoveSpeed = Mathf.Round(UnityEngine.Random.Range(selectedGradeNType.minMovespeed, selectedGradeNType.maxMovespeed) * 100f) / 100f;
                     break;
                 case ItemOptions.CriticalHit:
-                    selectedItem.CriticalHit = (UnityEngine.Random.Range(selectedGradeNType.minCriticalHit, selectedGradeNType.maxCriticalHit));
+                    selectedItem.CriticalHit = Mathf.Round(UnityEngine.Random.Range(selectedGradeNType.minCriticalHit, selectedGradeNType.maxCriticalHit) * 100f) / 100f;
                     break;
                 case ItemOptions.HpGen:
                     selectedItem.HpGen = (UnityEngine.Random.Range(selectedGradeNType.minHpGen, selectedGradeNType.maxHpGen + 1));
