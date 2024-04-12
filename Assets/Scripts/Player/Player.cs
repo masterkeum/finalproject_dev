@@ -527,9 +527,15 @@ public class Player : MonoBehaviour
         hudText.GetComponentInChildren<DamageText>().Init(healamount, new Color(0f, 1f, 0f)); // 초록색
     }
 
+    private float DefenseFactor()
+    {
+        // 방어력이 아무리 높아도 일정량의 데미지를 받는다.
+        return 300 / (300 + playeringameinfo.defense);
+    }
+
     public void TakeDamage(int damageAmount)
     {
-        int realDamage = Mathf.Max(0, damageAmount - playeringameinfo.defense); // 계수 계산해서 데미지계산 -70% 정도는 까야
+        int realDamage = Mathf.FloorToInt(Mathf.Max(0, damageAmount * DefenseFactor()));
         playeringameinfo.curHp -= realDamage;
         UpdateHPBar();
 
