@@ -56,8 +56,8 @@ public struct PlayerStatInfo
 
     public float hpGen;
     public float addHpGen;
-    
-    
+
+
 
 
     public PlayerStatInfo(CharacterInfo characterInfo, AccountInfo.EquipItems equipItems)
@@ -132,12 +132,12 @@ public class AccountInfo
     public int totalExp;
     public int mimicLevel;
     public int mimicTotalExp;
-    public int selectedProfileIndex=0;
+    public int selectedProfileIndex = 0;
 
     public int actionPoint; // 행동력
     public int gem;
     public int gold;
-    public int? core;
+    public int core;
     public int timeTicket;
     public int selectedStageId;
     public float lastUpdateTime;
@@ -154,6 +154,9 @@ public class AccountInfo
     public int mimicCurExp;
     public bool isLevelUpProcessing = false;
     public DateTime completeTime;
+
+    public float bgmVolume;
+    public float sfxVolume;
 
     //생성자
     public AccountInfo(string _aid, string _name)
@@ -195,6 +198,9 @@ public class AccountInfo
 
         // 플레이어 스탯
         playerStatInfo = new PlayerStatInfo(DataManager.Instance.GetCharacterInfo(DataManager.Instance._InitParam["StartCharacterId"]), equipItems);
+
+        bgmVolume = 1;
+        sfxVolume = 1;
     }
 
     public void CalcPlayerStat()
@@ -213,14 +219,14 @@ public class AccountInfo
     }
 
     // TODO : AP, gem, gold 마이너스, 현재값, 최대값 검증과정 추가
-    
+
     public void AddActionPoint(int addActionPoint)
     {
         actionPoint = Math.Min(actionPoint + addActionPoint, GameManager.Instance._maxActionPoint);
 
         GameManager.Instance.SaveGame();
         GameManager.Instance.UpdateUI();
-    } 
+    }
 
     public void AddGem(int addGem)
     {
@@ -235,7 +241,7 @@ public class AccountInfo
         GameManager.Instance.UpdateUI();
     }
 
-    public void AddCore(int? addCore)
+    public void AddCore(int addCore)
     {
         core += addCore;
         GameManager.Instance.SaveGame();

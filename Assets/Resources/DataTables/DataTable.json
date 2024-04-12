@@ -71,8 +71,8 @@
       "name": "슬라임",
       "minLevel": 1,
       "maxLevel": 10,
-      "hp": 250,
-      "attackPower": 25,
+      "hp": 150,
+      "attackPower": 35,
       "sensoryRange": 0,
       "attackRange": 2,
       "attackSpeed": 1,
@@ -86,8 +86,8 @@
       "name": "머쉬룸",
       "minLevel": 1,
       "maxLevel": 10,
-      "hp": 250,
-      "attackPower": 22,
+      "hp": 200,
+      "attackPower": 40,
       "sensoryRange": 0,
       "attackRange": 2.4,
       "attackSpeed": 1.1,
@@ -102,7 +102,7 @@
       "minLevel": 1,
       "maxLevel": 3,
       "hp": 1000,
-      "attackPower": 30,
+      "attackPower": 70,
       "sensoryRange": 10,
       "attackRange": 3,
       "attackSpeed": 1.3,
@@ -147,7 +147,7 @@
       "minLevel": 1,
       "maxLevel": 3,
       "hp": 1800,
-      "attackPower": 55,
+      "attackPower": 65,
       "sensoryRange": 20,
       "attackRange": 10,
       "attackSpeed": 1.3,
@@ -192,7 +192,7 @@
       "minLevel": 1,
       "maxLevel": 3,
       "hp": 1500,
-      "attackPower": 70,
+      "attackPower": 75,
       "sensoryRange": 25,
       "attackRange": 3.4,
       "attackSpeed": 2,
@@ -209,9 +209,7 @@
       "addAP": 0,
       "gold": 20,
       "exp": 1,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000001,
@@ -220,9 +218,7 @@
       "addAP": 30,
       "gold": 24,
       "exp": 1,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000001,
@@ -231,9 +227,7 @@
       "addAP": 35,
       "gold": 28,
       "exp": 2,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000001,
@@ -242,9 +236,7 @@
       "addAP": 40,
       "gold": 32,
       "exp": 2,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000001,
@@ -253,9 +245,7 @@
       "addAP": 45,
       "gold": 36,
       "exp": 3,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000001,
@@ -264,9 +254,7 @@
       "addAP": 50,
       "gold": 40,
       "exp": 3,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000001,
@@ -275,9 +263,7 @@
       "addAP": 55,
       "gold": 44,
       "exp": 4,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000001,
@@ -286,9 +272,7 @@
       "addAP": 60,
       "gold": 48,
       "exp": 4,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000001,
@@ -297,9 +281,7 @@
       "addAP": 65,
       "gold": 52,
       "exp": 5,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000001,
@@ -308,9 +290,7 @@
       "addAP": 70,
       "gold": 56,
       "exp": 5,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000002,
@@ -319,9 +299,7 @@
       "addAP": 0,
       "gold": 27,
       "exp": 2,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000002,
@@ -330,9 +308,7 @@
       "addAP": 40,
       "gold": 32,
       "exp": 2,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000002,
@@ -341,9 +317,7 @@
       "addAP": 45,
       "gold": 37,
       "exp": 3,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000002,
@@ -352,9 +326,7 @@
       "addAP": 50,
       "gold": 42,
       "exp": 3,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000002,
@@ -363,9 +335,7 @@
       "addAP": 55,
       "gold": 47,
       "exp": 4,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000002,
@@ -374,9 +344,7 @@
       "addAP": 60,
       "gold": 52,
       "exp": 4,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000002,
@@ -385,9 +353,7 @@
       "addAP": 65,
       "gold": 57,
       "exp": 5,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000002,
@@ -396,9 +362,7 @@
       "addAP": 70,
       "gold": 62,
       "exp": 5,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000002,
@@ -407,9 +371,7 @@
       "addAP": 75,
       "gold": 67,
       "exp": 6,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000002,
@@ -418,9 +380,7 @@
       "addAP": 80,
       "gold": 72,
       "exp": 6,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20100001,
@@ -429,9 +389,7 @@
       "addAP": 0,
       "gold": 300,
       "exp": 35,
-      "rewardType": "Resource",
-      "rewardID": 50000003,
-      "rewardAmount": 3
+      "core": 3
     },
     {
       "uid": 20100001,
@@ -440,9 +398,7 @@
       "addAP": 60,
       "gold": 700,
       "exp": 60,
-      "rewardType": "Resource",
-      "rewardID": 50000003,
-      "rewardAmount": 5
+      "core": 5
     },
     {
       "uid": 20100001,
@@ -451,9 +407,7 @@
       "addAP": 120,
       "gold": 1000,
       "exp": 80,
-      "rewardType": "Resource",
-      "rewardID": 50000003,
-      "rewardAmount": 7
+      "core": 7
     },
     {
       "uid": 20000003,
@@ -462,9 +416,7 @@
       "addAP": 0,
       "gold": 28,
       "exp": 2,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000003,
@@ -473,9 +425,7 @@
       "addAP": 35,
       "gold": 30,
       "exp": 3,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000003,
@@ -484,9 +434,7 @@
       "addAP": 40,
       "gold": 32,
       "exp": 4,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000003,
@@ -495,9 +443,7 @@
       "addAP": 45,
       "gold": 34,
       "exp": 5,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000003,
@@ -506,9 +452,7 @@
       "addAP": 50,
       "gold": 36,
       "exp": 6,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000003,
@@ -517,9 +461,7 @@
       "addAP": 55,
       "gold": 38,
       "exp": 7,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000003,
@@ -528,9 +470,7 @@
       "addAP": 60,
       "gold": 40,
       "exp": 8,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000003,
@@ -539,9 +479,7 @@
       "addAP": 65,
       "gold": 42,
       "exp": 9,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000003,
@@ -550,9 +488,7 @@
       "addAP": 70,
       "gold": 44,
       "exp": 10,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000003,
@@ -561,9 +497,7 @@
       "addAP": 75,
       "gold": 46,
       "exp": 11,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20100002,
@@ -572,9 +506,7 @@
       "addAP": 0,
       "gold": 800,
       "exp": 45,
-      "rewardType": "Resource",
-      "rewardID": 50000003,
-      "rewardAmount": 5
+      "core": 5
     },
     {
       "uid": 20100002,
@@ -583,9 +515,7 @@
       "addAP": 70,
       "gold": 950,
       "exp": 65,
-      "rewardType": "Resource",
-      "rewardID": 50000003,
-      "rewardAmount": 7
+      "core": 7
     },
     {
       "uid": 20100002,
@@ -594,9 +524,7 @@
       "addAP": 180,
       "gold": 800,
       "exp": 85,
-      "rewardType": "Resource",
-      "rewardID": 50000003,
-      "rewardAmount": 8
+      "core": 8
     },
     {
       "uid": 20000004,
@@ -605,9 +533,7 @@
       "addAP": 0,
       "gold": 33,
       "exp": 3,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000004,
@@ -616,9 +542,7 @@
       "addAP": 45,
       "gold": 34,
       "exp": 4,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000004,
@@ -627,9 +551,7 @@
       "addAP": 50,
       "gold": 35,
       "exp": 5,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000004,
@@ -638,9 +560,7 @@
       "addAP": 55,
       "gold": 36,
       "exp": 6,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000004,
@@ -649,9 +569,7 @@
       "addAP": 60,
       "gold": 37,
       "exp": 7,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000004,
@@ -660,9 +578,7 @@
       "addAP": 65,
       "gold": 38,
       "exp": 8,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000004,
@@ -671,9 +587,7 @@
       "addAP": 70,
       "gold": 39,
       "exp": 9,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000004,
@@ -682,9 +596,7 @@
       "addAP": 75,
       "gold": 40,
       "exp": 10,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000004,
@@ -693,9 +605,7 @@
       "addAP": 80,
       "gold": 41,
       "exp": 11,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000004,
@@ -704,9 +614,7 @@
       "addAP": 85,
       "gold": 42,
       "exp": 12,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000005,
@@ -715,9 +623,7 @@
       "addAP": 0,
       "gold": 33,
       "exp": 6,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000005,
@@ -726,9 +632,7 @@
       "addAP": 50,
       "gold": 34,
       "exp": 7,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000005,
@@ -737,9 +641,7 @@
       "addAP": 55,
       "gold": 35,
       "exp": 8,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000005,
@@ -748,9 +650,7 @@
       "addAP": 60,
       "gold": 36,
       "exp": 9,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000005,
@@ -759,9 +659,7 @@
       "addAP": 65,
       "gold": 37,
       "exp": 10,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000005,
@@ -770,9 +668,7 @@
       "addAP": 70,
       "gold": 38,
       "exp": 11,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000005,
@@ -781,9 +677,7 @@
       "addAP": 75,
       "gold": 39,
       "exp": 12,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000005,
@@ -792,9 +686,7 @@
       "addAP": 80,
       "gold": 40,
       "exp": 13,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000005,
@@ -803,9 +695,7 @@
       "addAP": 85,
       "gold": 41,
       "exp": 14,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20000005,
@@ -814,9 +704,7 @@
       "addAP": 90,
       "gold": 42,
       "exp": 15,
-      "rewardType": null,
-      "rewardID": null,
-      "rewardAmount": null
+      "core": 0
     },
     {
       "uid": 20100003,
@@ -825,9 +713,7 @@
       "addAP": 0,
       "gold": 800,
       "exp": 45,
-      "rewardType": "Resource",
-      "rewardID": 50000003,
-      "rewardAmount": 8
+      "core": 8
     },
     {
       "uid": 20100003,
@@ -836,9 +722,7 @@
       "addAP": 90,
       "gold": 950,
       "exp": 65,
-      "rewardType": "Resource",
-      "rewardID": 50000003,
-      "rewardAmount": 9
+      "core": 9
     },
     {
       "uid": 20100003,
@@ -847,9 +731,7 @@
       "addAP": 200,
       "gold": 800,
       "exp": 85,
-      "rewardType": "Resource",
-      "rewardID": 50000003,
-      "rewardAmount": 10
+      "core": 10
     }
   ],
   "StageList": [

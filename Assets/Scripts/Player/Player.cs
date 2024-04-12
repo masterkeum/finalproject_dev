@@ -35,6 +35,8 @@ public struct PlayerInGameInfo
     public int killCount;
     public int gold;
     public int skillpoint;
+    public int gem;
+    public int core;
 
     public PlayerInGameInfo(int _maxHp, int _attackPower, int _defense, float _moveSpeed,
                             float _critical, float _hpGen, int _level, int _sliderMaxExp)
@@ -64,6 +66,8 @@ public struct PlayerInGameInfo
         killCount = 0;
         gold = 0;
         skillpoint = 0;
+        gem = 0;
+        core = 0;
     }
 }
 
@@ -737,5 +741,31 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void AddCore(int amount)
+    {
+        playeringameinfo.core += amount;
+    }
+
+
+    public void RemoveChaseTarget(GameObject go)
+    {
+        if (chaseTarget.Contains(go))
+        {
+            chaseTarget.Remove(go);
+            if (chaseTarget.Count == 0)
+            {
+                playeringameinfo.gem += DataManager.Instance.stageListDict[GameManager.Instance.stageId].clearGem;
+                playeringameinfo.gold += DataManager.Instance.stageListDict[GameManager.Instance.stageId].clearGold;
+
+                GameManager.Instance.accountInfo.AddGold(playeringameinfo.gold);
+                GameManager.Instance.accountInfo.AddGem(playeringameinfo.gem);
+                GameManager.Instance.accountInfo.AddCore(playeringameinfo.core);
+
+                GameManager.Instance.SetState(GameState.IngameEnd);
+                UIManager.Instance.ShowUI<UIGameClear>();
+                ++UIManager.Instance.popupUICount;
+            }
+        }
+    }
     #endregion
 }

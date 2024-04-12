@@ -14,6 +14,9 @@ public class UIOption : UIBase
     public Slider BGMSlider;
     public Slider SFXSlider;
 
+    private float oldBGM;
+    private float oldSFX;
+
     private void Awake()
     {
         BGMSlider.value = SoundManager.Instance.musicAudioSource.volume;
@@ -21,9 +24,20 @@ public class UIOption : UIBase
     }
     private void Update()
     {
-        SoundManager.Instance.musicAudioSource.volume = BGMSlider.value;
-        SoundManager.Instance.soundEffectVolume = SFXSlider.value;
+        if (oldBGM != BGMSlider.value)
+        {
+            SoundManager.Instance.musicAudioSource.volume = BGMSlider.value;
+            oldBGM = BGMSlider.value;
+            GameManager.Instance.accountInfo.bgmVolume = oldBGM;
+        }
+        if (oldSFX != SFXSlider.value)
+        {
+            SoundManager.Instance.soundEffectVolume = SFXSlider.value;
+            oldSFX = SFXSlider.value;
+            GameManager.Instance.accountInfo.sfxVolume = oldSFX;
+        }
     }
+
     public void ClosePopup()
     {
         gameObject.SetActive(false);
