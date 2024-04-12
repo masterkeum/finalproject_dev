@@ -75,7 +75,11 @@ public class IngameScene : MonoBehaviour
 
     private void FindBossArrow()
     {
-        Instantiate(Resources.Load<GameObject>("Prefabs/UI/GameObject"), player.transform);
+        for (int i = 0; i < player.chaseTarget.Count; i++)
+        {
+            Instantiate(Resources.Load<GameObject>("Prefabs/UI/GameObject"), player.transform);    
+        }
+        
     }
 
     private void GenerateLevel(int stageId)

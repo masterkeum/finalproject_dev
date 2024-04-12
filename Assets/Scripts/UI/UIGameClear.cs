@@ -16,6 +16,7 @@ public class UIGameClear : UIBase
     public TextMeshProUGUI getNormalJS;
     public TextMeshProUGUI getHeroJS;
     public ItemTable itemInfos;
+
     //private AccountInfo accountInfo;
     //private MonsterLevel monsterlevel1;
     //private MonsterLevel monsterlevel2;
@@ -39,6 +40,7 @@ public class UIGameClear : UIBase
     //    //accountInfo.AddGold(player.playeringameinfo.gold);
     //    //accountInfo.AddGem(itemInfos.getExp);
     //}
+
 
     private void Update()
     {

@@ -231,6 +231,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EvilMagePAMaskTint
       objectReference: {fileID: 0}
+    - target: {fileID: 5360181621244792547, guid: 038e4171a61b46fc804926fcf8f6f673,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7088349cfa854096b5d3128a8a3a56cd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
