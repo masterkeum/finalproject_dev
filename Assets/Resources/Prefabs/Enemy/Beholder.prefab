@@ -54,6 +54,20 @@ MonoBehaviour:
   monsterID: 0
   level: 0
   targetPlayerTransform: {fileID: 0}
+  characterInfo:
+    uid: 0
+    characterType: 0
+    name: 
+    minLevel: 0
+    maxLevel: 0
+    hp: 0
+    attackPower: 0
+    sensoryRange: 0
+    attackRange: 0
+    attackSpeed: 0
+    moveSpeed: 0
+    defaultSkill: 0
+    prefabFile: 
   hudDamageText: {fileID: 0}
   hudPos: {fileID: 1375907186441370360}
 --- !u!54 &2433732503249284312
@@ -362,7 +376,7 @@ PrefabInstance:
     - target: {fileID: 4654675301757418, guid: 81974ebb44334aaf9c9cd702536280e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6dde8a74ee2c4433b62a4c9b27a167f1, type: 2}
+      objectReference: {fileID: 2100000, guid: bfd95676563b425a973ae4cbd940d5f0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

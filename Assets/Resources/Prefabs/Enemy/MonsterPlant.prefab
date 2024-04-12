@@ -85,6 +85,20 @@ MonoBehaviour:
   monsterID: 0
   level: 0
   targetPlayerTransform: {fileID: 0}
+  characterInfo:
+    uid: 0
+    characterType: 0
+    name: 
+    minLevel: 0
+    maxLevel: 0
+    hp: 0
+    attackPower: 0
+    sensoryRange: 0
+    attackRange: 0
+    attackSpeed: 0
+    moveSpeed: 0
+    defaultSkill: 0
+    prefabFile: 
   hudDamageText: {fileID: 0}
   hudPos: {fileID: 2092017949724013346}
 --- !u!54 &5615440923144973032
@@ -167,6 +181,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6243040607089561237}
     m_Modifications:
+    - target: {fileID: 5939783867841939646, guid: ae5e01a5291347578da3e43738796883,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1344b3d6d15749aa95fc5c23c6f9a4b9, type: 2}
     - target: {fileID: 6017196609115446882, guid: ae5e01a5291347578da3e43738796883,
         type: 3}
       propertyPath: m_Name

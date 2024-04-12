@@ -54,6 +54,20 @@ MonoBehaviour:
   monsterID: 0
   level: 0
   targetPlayerTransform: {fileID: 0}
+  characterInfo:
+    uid: 0
+    characterType: 0
+    name: 
+    minLevel: 0
+    maxLevel: 0
+    hp: 0
+    attackPower: 0
+    sensoryRange: 0
+    attackRange: 0
+    attackSpeed: 0
+    moveSpeed: 0
+    defaultSkill: 0
+    prefabFile: 
   hudDamageText: {fileID: 0}
   hudPos: {fileID: 1375907186441370360}
 --- !u!54 &2433732503249284312
