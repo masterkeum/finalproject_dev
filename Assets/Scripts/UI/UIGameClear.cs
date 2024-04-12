@@ -17,9 +17,11 @@ public class UIGameClear : UIBase
     public TextMeshProUGUI getHeroJS;
     public ItemTable itemInfos;
     private AccountInfo accountInfo;
-    private MonsterLevel monsterlevel1;
+    private MonsterLevel monsterlevel1; // 리스트 형으로 만들어줌
     private MonsterLevel monsterlevel2;
     private MonsterLevel monsterlevel3;
+
+    private List<MonsterLevel> monsterLevels;
 
     private void Start()
     {
