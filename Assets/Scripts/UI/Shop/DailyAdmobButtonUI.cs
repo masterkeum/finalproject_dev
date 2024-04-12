@@ -23,6 +23,8 @@ public class DailyAdmobButtonUI : MonoBehaviour
         //TODO
         // 성공 코드 넣으면 됨.
         // 보상 주고
+        GameManager.Instance.accountInfo.AddGem(10);
+        SoundManager.Instance.PlaySound("PurchaseUI_1");
     }
     private void ErrorCallback()
     {

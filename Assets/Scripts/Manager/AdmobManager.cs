@@ -102,7 +102,6 @@ public class AdmobManager : SingletoneBase<AdmobManager>
                 succes?.Invoke();
                 // TODO: Reward the user.
                 //Debug.Log(String.Format(rewardMsg, reward.Type, reward.Amount));
-                GameManager.Instance.accountInfo.AddGem(10);
             });
         }
     }

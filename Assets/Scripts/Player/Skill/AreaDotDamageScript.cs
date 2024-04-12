@@ -1,7 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
-using static Gley.MobileAds.Events;
 
 public class AreaDotDamageScript : MonoBehaviour
 {
