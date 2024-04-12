@@ -224,8 +224,9 @@ public class InventoryUI : MonoBehaviour
 
     public void StartMimicGacha()
     {
-        if (GameManager.Instance.accountInfo.core >= 0) //필요정수 조절
+        if (GameManager.Instance.accountInfo.core >= 1) //필요정수 조절
         {
+            GameManager.Instance.accountInfo.AddCore(-1);
             SetMimicGacha();
             GameManager.Instance.accountInfo.newItem = selectedItem;
 
