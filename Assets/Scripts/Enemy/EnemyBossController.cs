@@ -137,7 +137,8 @@ public class EnemyBossController : EnemyBaseController
 
     private void AttackUpdate()
     {
-        transform.Rotate(DirectionToTarget());
+        transform.LookAt(player.transform);
+        //transform.Rotate(DirectionToTarget());
         if (Time.time - lastAttackTime > characterInfo.attackSpeed)
         {
             lastAttackTime = Time.time;

@@ -60,6 +60,7 @@ public class EnemyMeleeController : EnemyBaseController
 
     private void AttackUpdate()
     {
+        transform.LookAt(player.transform);
         if (playerDistance > characterInfo.attackRange)
         {
             SetState(EnemyState.Trace);
