@@ -338,6 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joy: {fileID: 0}
+  chestObject: {fileID: 7275300251833807912}
   projectilePoint: {fileID: 7389510694482719767}
   enemyLayerMask:
     serializedVersion: 2
@@ -376,6 +377,7 @@ MonoBehaviour:
     addSkillDefense: 0
     addSkillHp: 0
     addSkillAttackPower: 0
+    addSkillCollectableRange: 0
     curLevel: 0
     sliderCurExp: 0
     sliderMaxExp: 0
@@ -384,6 +386,8 @@ MonoBehaviour:
     killCount: 0
     gold: 0
     skillpoint: 0
+    gem: 0
+    core: 0
   activeSkillSlot: []
   passiveSkillSlot: []
   _testUI: {fileID: 355903489752174307}
@@ -1334,6 +1338,12 @@ PrefabInstance:
 --- !u!4 &7275300251833640968 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2219292830553816709, guid: 05c1a9b87f5bf4846b2a29fe973695bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 8807787541049742989}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7275300251833807912 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2219292830553907877, guid: 05c1a9b87f5bf4846b2a29fe973695bd,
     type: 3}
   m_PrefabInstance: {fileID: 8807787541049742989}
   m_PrefabAsset: {fileID: 0}

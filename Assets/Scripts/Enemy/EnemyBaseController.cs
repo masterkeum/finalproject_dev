@@ -170,7 +170,7 @@ public class EnemyBaseController : MonoBehaviour
         rigidBody.constraints = RigidbodyConstraints.FreezeRotation;
         rigidBody.AddForce(knockbackDirection * knockBackForce, ForceMode.Impulse);
         yield return new WaitForSeconds(startDelay);
-        //rigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+        rigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
         if (gameObject.activeSelf)
             navMeshAgent.isStopped = false;
     }

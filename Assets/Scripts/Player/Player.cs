@@ -78,6 +78,7 @@ public class Player : MonoBehaviour
     protected Rigidbody rigid;
     protected Animator anim;
     protected Vector3 moveVec;
+    public GameObject chestObject;
 
     private bool IsInit = false;
 
@@ -155,8 +156,6 @@ public class Player : MonoBehaviour
         SkillTable defaultSkill = DataManager.Instance.GetSkillTable(DataManager.Instance._InitParam["StartSkillId"]);
         SkillUpdate(defaultSkill);
 
-
-
         // Test
         //SkillUpdate(DataManager.Instance.GetSkillTable(30000541));
         //SkillUpdate(DataManager.Instance.GetSkillTable(30001055));
@@ -191,7 +190,9 @@ public class Player : MonoBehaviour
 
         Quaternion dirQuat = Quaternion.LookRotation(moveVec);
         Quaternion moveQuat = Quaternion.Slerp(rigid.rotation, dirQuat, 0.3f);
-        rigid.MoveRotation(moveQuat);
+        //rigid.MoveRotation(moveQuat);
+        chestObject.transform.rotation = dirQuat;
+
 
         // 드랍아이템 끌어오기. 이동을 해야 발동함
         // 부하가 어떻지 모르겠음. => OverlapSphereNonAlloc 로 일단 바꿈
@@ -263,6 +264,7 @@ public class Player : MonoBehaviour
                 skillPool.DestroyDicObject(activeSkill[skillData.skillGroup].skillId);
                 skillPool.AddSkillPool(skillData);
                 skillPool.CreatePool(transform);
+
                 // 레벨업
                 activeSkill[skillData.skillGroup] = skillData;
                 skillCoroutines[skillData.skillGroup] = StartSkillCoroutine(skillData);
@@ -530,7 +532,7 @@ public class Player : MonoBehaviour
     private float DefenseFactor()
     {
         // 방어력이 아무리 높아도 일정량의 데미지를 받는다.
-        return 300 / (300 + playeringameinfo.defense);
+        return 300f / (300f + playeringameinfo.defense);
     }
 
     public void TakeDamage(int damageAmount)
@@ -555,6 +557,8 @@ public class Player : MonoBehaviour
     void OnDead()
     {
         Debug.Log("플레이어사망. 게임오버UI");
+        //GameManager.Instance.accountInfo.AddGold(playeringameinfo.gold);// 사망하면 포기
+
         UIManager.Instance.ShowUI<UIDefeated>();
         ++UIManager.Instance.popupUICount;
     }
