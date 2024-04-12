@@ -109,7 +109,7 @@ public class EnemyBaseController : MonoBehaviour
         currentHp = maxHp;
 
         navMeshAgent.speed = characterInfo.moveSpeed;
-        navMeshAgent.stoppingDistance = characterInfo.attackRange;
+        navMeshAgent.stoppingDistance = characterInfo.attackRange / 2;
 
         capsuleCollider.enabled = true;
         navMeshAgent.isStopped = false;
