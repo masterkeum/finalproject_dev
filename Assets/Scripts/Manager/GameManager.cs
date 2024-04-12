@@ -74,7 +74,15 @@ public class GameManager : SingletoneBase<GameManager>
 
         // 계정 세팅
         CheckAccount();
+
+        SettingValue();
         // TODO : 버전 체크. 에셋번들이나 어드레서블 들어가면
+    }
+
+    private void SettingValue()
+    {
+        SoundManager.Instance.musicAudioSource.volume = accountInfo.bgmVolume;
+        SoundManager.Instance.soundEffectVolume = accountInfo.sfxVolume;
     }
 
     private void InitParam()
