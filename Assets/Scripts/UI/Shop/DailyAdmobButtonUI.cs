@@ -15,7 +15,7 @@ public class DailyAdmobButtonUI : MonoBehaviour
 
     private void ShowAdmob()
     {
-        AdmobManager.Instance?.RunRewardedAd(SuccessCallback,admobCode,ErrorCallback);
+        //AdmobManager.Instance?.RunRewardedAd(SuccessCallback,admobCode,ErrorCallback);
     }
 
     private void SuccessCallback()
