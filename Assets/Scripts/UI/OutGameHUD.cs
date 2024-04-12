@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.RenderGraphModule;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -61,6 +62,16 @@ public class OutGameHUD : UIBase
         gemQuantityText.text = accountInfo.gem.ToString();
         goldQuantityText.text = accountInfo.gold.ToString();
         levelText.text = accountInfo.level.ToString();
+        string path = "Textures/SnapShot/";
+        switch (GameManager.Instance.accountInfo.selectedProfileIndex)
+        {
+            case 0:
+                userProfileIcon.sprite = Resources.Load<Sprite>(path + "profile_mimic");
+                break;
+            case 1:
+                userProfileIcon.sprite = Resources.Load<Sprite>(path + "profile_mushroom");
+                break;
+        }
 
         if (accountInfo.sliderMaxExp > 0)
         {
@@ -122,8 +133,9 @@ public class OutGameHUD : UIBase
     }
     public void OnProfileImage()
     {
-        UIChangeProfile popup = UIManager.Instance.ShowUI<UIChangeProfile>();
-        popup.Init();
+        UIChangeProfile popup =  UIManager.Instance.ShowUI<UIChangeProfile>();
+        //popup.Init();
+
     }
 
 }

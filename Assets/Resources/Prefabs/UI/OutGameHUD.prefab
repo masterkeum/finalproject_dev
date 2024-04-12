@@ -2072,7 +2072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expSlider: {fileID: 836814503665330317}
-  userProfileIcon: {fileID: 1242696542893180163}
+  userProfileIcon: {fileID: 2584975727836653801}
   levelText: {fileID: 5814699686225761215}
   userNameText: {fileID: 8201587014647583701}
   energyQuantityText: {fileID: 1023967977923228519}

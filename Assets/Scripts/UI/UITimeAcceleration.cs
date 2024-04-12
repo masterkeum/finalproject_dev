@@ -8,7 +8,7 @@ public class UITimeAcceleration : UIBase
 {
     public TextMeshProUGUI timeText;
 
-    
+
     Coroutine getTime;
 
     private void OnEnable()
@@ -24,7 +24,7 @@ public class UITimeAcceleration : UIBase
     private IEnumerator GetTimeUI()
     {
         AccountInfo accountInfo = GameManager.Instance.accountInfo;
-        while (accountInfo.completeTime>UtilityKit.GetCurrentDateTime())
+        while (accountInfo.completeTime > UtilityKit.GetCurrentDateTime())
         {
             DateTime now = UtilityKit.GetCurrentDateTime();
             TimeSpan waitTime = accountInfo.completeTime - now;
@@ -32,8 +32,11 @@ public class UITimeAcceleration : UIBase
             timeText.text = time;
             yield return new WaitForSeconds(1f);
             if (accountInfo.completeTime < UtilityKit.GetCurrentDateTime())
+            {
+                gameObject.SetActive(false);
                 break;
-            
+            }
+
         }
     }
 
@@ -43,6 +46,7 @@ public class UITimeAcceleration : UIBase
         if (accountInfo.completeTime < UtilityKit.GetCurrentDateTime())
         {
             StopCoroutine(GetTimeUI());
+
         }
     }
 
