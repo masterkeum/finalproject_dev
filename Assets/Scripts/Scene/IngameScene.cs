@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class IngameScene : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class IngameScene : MonoBehaviour
     private Player player;
     private GameObject joyStick;
     private GameObject virtualCamera;
+    public Light sunLight;
 
     private InGameHUD inGameHUD;
 
@@ -55,6 +57,8 @@ public class IngameScene : MonoBehaviour
 
         // 스테이지에 맞는 필드 생성
         GenerateLevel(stageId);
+        SetLight(stageId);
+
         // 플레이어 생성
         MakePlayer(DataManager.Instance._InitParam["StartCharacterId"]);
         // 버츄얼 카메라 세팅
@@ -181,5 +185,68 @@ public class IngameScene : MonoBehaviour
         }
 
     }
+
+    #region Light
+    private void SetLight(int stageId)
+    {
+        switch (stageId % 5)
+        {
+            case 2:
+                SetEveningLighting();
+                break;
+            case 3:
+                SetDawnLighting();
+                break;
+            case 4:
+                SetMorningLighting();
+                break;
+            case 1:
+            default:
+                SetAfternoonLighting();
+                break;
+        }
+    }
+
+    private void SetDawnLighting()
+    {
+        // 색상을 점차 밝아지는 향상된 주황색으로 변경
+        sunLight.color = Color.Lerp(new Color(0.3f, 0.2f, 0.1f), new Color(1f, 0.96f, 0.86f), Mathf.PingPong(Time.time, 1));
+
+        // 낮은 Kelvin 값 (따뜻한 색조)부터 높은 Kelvin 값 (차가운 색조)까지 변화
+        float temperature = Mathf.Lerp(2000f, 3500f, Mathf.PingPong(Time.time, 1));
+        sunLight.colorTemperature = temperature;
+        sunLight.intensity = Mathf.Lerp(0.2f, 1.2f, Mathf.PingPong(Time.time, 1)); // 밝기도 점차 증가
+        sunLight.transform.rotation = Quaternion.Euler(20f, 30f, 0f); // 적절한 방향
+    }
+
+    private void SetMorningLighting()
+    {
+        sunLight.color = new Color(1f, 0.96f, 0.86f); // 따뜻한 색조
+        sunLight.colorTemperature = 3500f; // 중간 Kelvin 값
+        sunLight.intensity = 1.2f; // 밝은 강도
+        sunLight.transform.rotation = Quaternion.Euler(50f, 30f, 0f); // 적절한 방향
+    }
+
+    private void SetAfternoonLighting()
+    {
+        sunLight.color = new Color(1f, 1f, 1f); // 중간 색조
+        sunLight.colorTemperature = 5500f; // 높은 Kelvin 값
+        sunLight.intensity = 1.0f; // 중간 강도
+        sunLight.transform.rotation = Quaternion.Euler(90f, 0f, 0f); // 적절한 방향
+    }
+
+    private void SetEveningLighting()
+    {
+        sunLight.color = new Color(0.8f, 0.5f, 0.3f); // 어두운 색조
+        sunLight.colorTemperature = 3500f; // 중간 Kelvin 값
+        sunLight.intensity = 0.6f; // 어두운 강도
+        sunLight.transform.rotation = Quaternion.Euler(160f, -30f, 0f); // 적절한 방향
+    }
+
+    #endregion
+
+
+
+
 
 }

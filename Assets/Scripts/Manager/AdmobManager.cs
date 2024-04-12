@@ -14,7 +14,7 @@ public class AdmobManager : SingletoneBase<AdmobManager>
     #region RewardAd
 
 #if UNITY_ANDROID
-        private string _adUnitId = "ca-app-pub-4896416596222918/3795569267";
+    private string _adUnitId = "ca-app-pub-4896416596222918/3795569267";
 #elif UNITY_IPHONE
           private string _adUnitId = "";
 #else
@@ -29,7 +29,8 @@ public class AdmobManager : SingletoneBase<AdmobManager>
         _adUnitId = adUnitId;
         LoadRewardedAd(() =>
         {
-            StartCoroutine(WaitTask(() => {
+            StartCoroutine(WaitTask(() =>
+            {
                 ShowRewardedAd(successCallback);
             }));
 
@@ -100,7 +101,8 @@ public class AdmobManager : SingletoneBase<AdmobManager>
             {
                 succes?.Invoke();
                 // TODO: Reward the user.
-                Debug.Log(String.Format(rewardMsg, reward.Type, reward.Amount));
+                //Debug.Log(String.Format(rewardMsg, reward.Type, reward.Amount));
+                GameManager.Instance.accountInfo.AddGem(10);
             });
         }
     }

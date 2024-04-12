@@ -12,10 +12,6 @@ public class StageSlotUI : MonoBehaviour
 
     public bool isCurStage;
 
-    private void Start()
-    {
-
-    }
     public void UpdateMark()
     {
         _selectMark.SetActive(isCurStage);

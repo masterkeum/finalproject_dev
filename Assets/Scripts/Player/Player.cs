@@ -345,6 +345,7 @@ public class Player : MonoBehaviour
         {
             yield return new WaitForSeconds(skillData.coolDownTime);
 
+            // TODO : 계수 연산할수 있게 함수 따로 빼기
             int damage = Mathf.RoundToInt((playeringameinfo.attackPower + skillData.attackDamage) * 0.5f);
 
             switch (skillData.targetType)
@@ -421,6 +422,13 @@ public class Player : MonoBehaviour
                         yield return new WaitForSeconds(castDelay);
                     }
                     break;
+                case SkillTargetType.Around:
+                    {
+                        // 발동시키고 종료
+                        skillPool.GetPoolAroundSkill(skillData.skillId, transform.position, damage);
+                    }
+                    yield break;
+
                 // Passive
                 case SkillTargetType.AddProjectile:
                     {
@@ -434,7 +442,7 @@ public class Player : MonoBehaviour
                         if (playeringameinfo.curHp < playeringameinfo.maxHp)
                         {
                             int regenAmount = Mathf.Min(skillData.regenHP, playeringameinfo.maxHp - playeringameinfo.curHp);
-                            TakeDamage(-regenAmount);
+                            Heal(regenAmount);
                         }
                     }
                     break;
@@ -501,9 +509,23 @@ public class Player : MonoBehaviour
         hpGuageSlider.value = per;
     }
 
+    public void Heal(int healamount)
+    {
+        if (playeringameinfo.curHp + healamount > playeringameinfo.maxHp)
+        {
+            healamount = playeringameinfo.curHp + healamount - playeringameinfo.maxHp;
+        }
+        playeringameinfo.curHp += healamount;
+        UpdateHPBar();
+
+        Debug.Log($"Heal : {healamount}");
+        GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText"));
+        hudText.GetComponentInChildren<DamageText>().Init(healamount, new Color(0f, 1f, 0f)); // 초록색
+    }
+
     public void TakeDamage(int damageAmount)
     {
-        int realDamage = Mathf.Max(0, damageAmount - playeringameinfo.defense);
+        int realDamage = Mathf.Max(0, damageAmount - playeringameinfo.defense); // 계수 계산해서 데미지계산 -70% 정도는 까야
         playeringameinfo.curHp -= realDamage;
         UpdateHPBar();
 
@@ -511,11 +533,7 @@ public class Player : MonoBehaviour
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText"));
 
         hudText.transform.position = hudPos.position; // 표시될 위치
-        Color color = Color.white;
-        if (realDamage > 0)
-            color = new Color(0f, 1f, 0f);
-        else
-            color = new Color(1f, 0f, 0f);
+        Color color = new Color(1f, 0f, 0f);
 
         hudText.GetComponentInChildren<DamageText>().Init(realDamage, color);
 

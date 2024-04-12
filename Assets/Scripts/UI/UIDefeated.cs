@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,9 +14,16 @@ public class UIDefeated : UIBase
     public TextMeshProUGUI KillCountText;
     public TextMeshProUGUI GetGoldText;
 
+    private AccountInfo accountInfo;
+    
     private void Awake()
     {
         player = GameManager.Instance.player;
+    }
+
+    private void Start()
+    {
+        accountInfo.AddGold(player.playeringameinfo.gold); // 획득 골드 account info 에 저장
     }
 
     private void OnEnable()
