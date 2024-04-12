@@ -42,6 +42,7 @@ public class IngameScene : MonoBehaviour
         _ = SoundManager.Instance;
         GameManager.Instance.Clear();
         UIManager.Instance.Clear();
+        SoundManager.Instance.ChangeBackGroundMusic(Resources.Load<AudioClip>("Audio/Music/rhythm_factory"), SoundManager.Instance.musicAudioSource.volume);
 
         virtualCamera = GameObject.Find("Virtual Camera");
         objectPool = GetComponent<Pooling>();
