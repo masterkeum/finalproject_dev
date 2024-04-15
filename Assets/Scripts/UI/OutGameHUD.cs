@@ -15,7 +15,7 @@ public class OutGameHUD : UIBase
     public TextMeshProUGUI gemQuantityText;
     public TextMeshProUGUI goldQuantityText;
     public TextMeshProUGUI coreQuentityText;
-    
+
 
     [Header("BottomButton")]
     public GameObject[] mainMenues;
@@ -31,13 +31,13 @@ public class OutGameHUD : UIBase
 
     private void Awake()
     {
-        
+
         SelectedStageId = GameManager.Instance.stageId;
     }
 
     private void Start()
     {
-        
+
         GameManager.Instance.updateUIAction += UpdateHUD;
         accountInfo = GameManager.Instance.accountInfo;
 
@@ -45,11 +45,11 @@ public class OutGameHUD : UIBase
 
         UpdateHUD();
         OnClickBottomButton(0);
-        
+
         goldQuantityText.text = accountInfo.gold.ToString();
         gemQuantityText.text = accountInfo.gem.ToString();
         coreQuentityText.text = accountInfo.core.ToString();
-                
+
     }
 
     private void UpdateHUD()
@@ -107,11 +107,13 @@ public class OutGameHUD : UIBase
         UIManager.Instance.ShowUI<UIStageSelect>();
         SoundManager.Instance.PlaySound("ButtonClickUI_1", 1f);
     }
+
     public void OnClickListButton()
     {
         UIManager.Instance.ShowUI<UIPropertiesList>();
         SoundManager.Instance.PlaySound("ButtonClickUI_1", 1f);
     }
+
     public void OnStartbutton()
     {
         SoundManager.Instance.PlaySound("ButtonClickUI_1", 1f);
@@ -124,19 +126,23 @@ public class OutGameHUD : UIBase
         }
         else
         {
-            // TODO : 
             SoundManager.Instance.PlaySound("ErrorUI_1", 1f);
             UINoCurrency noActionPoint = UIManager.Instance.ShowUI<UINoCurrency>();
             noActionPoint.NoActionPoint();
-            Debug.LogWarning("행동력 부족 팝업? 메세지");
         }
     }
+
     public void OnProfileImage()
     {
-        UIChangeProfile popup =  UIManager.Instance.ShowUI<UIChangeProfile>();
+        UIChangeProfile popup = UIManager.Instance.ShowUI<UIChangeProfile>();
         SoundManager.Instance.PlaySound("ButtonClickUI_1");
         //popup.Init();
 
     }
 
+    public void GoToShop()
+    {
+        //Shop으로 이동
+        OnClickBottomButton(1);
+    }
 }

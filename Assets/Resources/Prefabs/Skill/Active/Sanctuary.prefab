@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69de3a85787986340bad235f4d3b7622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetSize: 1.5
 --- !u!135 &2419240100674852643
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -59,7 +60,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1280
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0

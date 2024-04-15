@@ -32,14 +32,20 @@ public class EnemyBossController : EnemyBaseController
         StartCoroutine(CheckState());
         FindBossArrow();
     }
-    
+
     private void FindBossArrow()
     {
         var arrowPrefab = Instantiate(Resources.Load<GameObject>("Prefabs/UI/GameObject"), player.transform);
         arrowPrefab.GetComponent<FindBossArrow>().bossPos = transform;
     }
-        
-    
+    private void Update()
+    {
+        if (enemyState == EnemyState.Attack)
+        {
+            AttackUpdate();
+        }
+    }
+
     private IEnumerator CheckState()
     {
         while (true)
@@ -131,7 +137,8 @@ public class EnemyBossController : EnemyBaseController
 
     private void AttackUpdate()
     {
-        transform.Rotate(DirectionToTarget());
+        transform.LookAt(player.transform);
+        //transform.Rotate(DirectionToTarget());
         if (Time.time - lastAttackTime > characterInfo.attackSpeed)
         {
             lastAttackTime = Time.time;
