@@ -8,6 +8,7 @@ public class UICheckEquip : UIBase
     [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private TextMeshProUGUI itemStats;
     [SerializeField] private Image itemBG;
+    [SerializeField] private TextMeshProUGUI itemGrade;
 
     private void OnEnable()
     {
@@ -40,21 +41,27 @@ public class UICheckEquip : UIBase
         {
             case ItemGrade.Normal:
                 itemBG.color = new Color(1f, 1f, 1f);
+                itemGrade.text = "(노멀)";
                 break;
             case ItemGrade.Magic:
                 itemBG.color = new Color(40 / 255f, 1f, 35 / 255f);
+                itemGrade.text = "(매직)";
                 break;
             case ItemGrade.Elite:
                 itemBG.color = new Color(0f, 67 / 255f, 1f);
+                itemGrade.text = "(엘리트)";
                 break;
             case ItemGrade.Rare:
                 itemBG.color = new Color(1f, 115 / 255f, 0f);
+                itemGrade.text = "(레어)";
                 break;
             case ItemGrade.Epic:
                 itemBG.color = new Color(1f, 1f, 0f);
+                itemGrade.text = "(에픽)";
                 break;
             case ItemGrade.Legendary:
                 itemBG.color = new Color(1f, 0f, 0f);
+                itemGrade.text = "(레전더리)";
                 break;
         }
     }
