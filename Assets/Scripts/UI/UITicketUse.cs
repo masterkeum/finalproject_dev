@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using UnityEngine;
 
 public class UITicketUse : UIBase
 {
@@ -18,6 +19,7 @@ public class UITicketUse : UIBase
     private void UpdateUI()
     {
         currentticketCountText.text = GameManager.Instance.accountInfo.timeTicket.ToString();
+        ticketCountToUse = Mathf.Min(ticketCountToUse, MaxTicketCountToUse());
         ticketToUseText.text = ticketCountToUse.ToString();
 
     }
@@ -52,7 +54,7 @@ public class UITicketUse : UIBase
 
     public void UseButton()
     {
-       if(GameManager.Instance.accountInfo.timeTicket >= ticketCountToUse)
+        if (GameManager.Instance.accountInfo.timeTicket >= ticketCountToUse)
         {
             GameManager.Instance.accountInfo.AddTimeTicket(-ticketCountToUse);
             GameManager.Instance.accountInfo.completeTime = GameManager.Instance.accountInfo.completeTime.AddSeconds(-300 * ticketCountToUse);
@@ -73,10 +75,17 @@ public class UITicketUse : UIBase
         }
         else
         {
-            ticketCountToUse = ((int)remainTime.TotalSeconds / 300)+1;
+            ticketCountToUse = ((int)remainTime.TotalSeconds / 300) + 1;
             UpdateUI();
         }
         SoundManager.Instance.PlaySound("ButtonClickUI_1");
+    }
+
+    public int MaxTicketCountToUse()
+    {
+        AccountInfo accountInfo = GameManager.Instance.accountInfo;
+        TimeSpan remainTime = accountInfo.completeTime - DateTime.UtcNow;
+        return ((int)remainTime.TotalSeconds / 300) + 1;
     }
 
     public void ClosePopup()

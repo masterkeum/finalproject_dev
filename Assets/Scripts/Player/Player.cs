@@ -793,11 +793,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void DoubleReward()
-    {
-        GameManager.Instance.accountInfo.AddGold(playeringameinfo.gold);
-        GameManager.Instance.accountInfo.AddGem(playeringameinfo.gem);
-        GameManager.Instance.accountInfo.AddCore(playeringameinfo.core);
-    }
     #endregion
 }
