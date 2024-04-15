@@ -30,6 +30,7 @@ public class UIAdsPage : UIBase
     {
         Debug.Log("재화 2배 획득");
         // Player 의 RemoveChaseTarget 함수에서 보스잡으면 저장이 되는 방식이어서 이 함수에서는 UIGameClear 에서 받은 값을 한번 더 더해주었다. 추후 다듬기.
+        
         GameManager.Instance.accountInfo.AddGold(gold);
         GameManager.Instance.accountInfo.AddGem(gem);
         GameManager.Instance.accountInfo.AddCore(core);
