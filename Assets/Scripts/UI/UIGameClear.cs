@@ -13,30 +13,6 @@ public class UIGameClear : UIBase
     public TextMeshProUGUI getHeroJS;
     public ItemTable itemInfos;
 
-    //private AccountInfo accountInfo;
-    //private MonsterLevel monsterlevel1;
-    //private MonsterLevel monsterlevel2;
-    //private MonsterLevel monsterlevel3;
-
-    //private void Start()
-    //{
-    //    player = GameManager.Instance.player;
-    //    itemInfos = DataManager.Instance.itemTableDict[50000003];
-
-    //    // todo 공부하기!!
-    //    List<MonsterLevel> monaterlevel = DataManager.Instance.characterInfoDict[20100001].monsterLevelData.Values.ToList();
-
-    //    monsterlevel1 = DataManager.Instance.characterInfoDict[20100001].monsterLevelData[1];
-    //    monsterlevel2 = DataManager.Instance.characterInfoDict[20100001].monsterLevelData[2];
-    //    monsterlevel3 = DataManager.Instance.characterInfoDict[20100001].monsterLevelData[3];
-
-    //    getGemText.text = itemInfos.getExp.ToString();
-    //    getHeroJS.text = itemInfos.getExp.ToString();
-    //    getNormalJS.text = itemInfos.getGold.ToString();
-    //    //accountInfo.AddGold(player.playeringameinfo.gold);
-    //    //accountInfo.AddGem(itemInfos.getExp);
-    //}
-
     private void OnEnable()
     {
         player = GameManager.Instance.player;
@@ -53,7 +29,12 @@ public class UIGameClear : UIBase
 
     public void GetDoubleReward()
     {
+        player.DoubleReward();
+        
         Debug.Log("GetDoubleReward");
+        var adPopup = UIManager.Instance.ShowUI<UIAdsPage>();
+        ++UIManager.Instance.popupUICount;
+        adPopup.Init(AdsStates.Clear);
     }
 
     public void GetCommonReward()

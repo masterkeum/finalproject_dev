@@ -35,8 +35,8 @@ public class DropCoin : MonoBehaviour
     }
     public void moveToPlayer()
     {
-        gold = 0;
-        exp = 0;
+        //gold = 0;
+        //exp = 0;
         IsMoving = true;
     }
 
