@@ -134,13 +134,6 @@ public class GameManager : SingletoneBase<GameManager>
         {
             Time.timeScale = 1f;
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            // 뒤로 가기 버튼
-
-
-        }
     }
 
     private void OnApplicationQuit()

@@ -76,16 +76,15 @@ public class IngameScene : MonoBehaviour
         // FindBossArrow();
     }
 
-    // private void FindBossArrow()
-    // {
-    //     for (int i = 0; i < player.chaseTarget.Count; i++)
-    //     {
-    //         string num = i
-    //         bossMonster+num = Instantiate(Resources.Load<GameObject>("Prefabs/UI/GameObject"), player.transform);}
-    //         // 생성한거 변수에 담고 변수에서 인덱스값 넣어서 보내주기
-    //     }
-    //     
-    // }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UIManager.Instance.ShowUI<UIPause>();
+            ++UIManager.Instance.popupUICount;
+        }
+    }
+
 
     private void GenerateLevel(int stageId)
     {

@@ -52,6 +52,23 @@ public class OutGameHUD : UIBase
 
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // 뒤로 가기 버튼
+            UI2Btn escapePopup = UIManager.Instance.ShowUI<UI2Btn>();
+            escapePopup.SetPopup("게임을 종료 하시겠습니까?", () =>
+            {
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit(); // 어플리케이션 종료
+#endif
+            });
+        }
+    }
+
     private void UpdateHUD()
     {
         // TODO : 나중에 UI별 나누기
