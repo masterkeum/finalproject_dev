@@ -145,4 +145,19 @@ public class OutGameHUD : UIBase
         //Shop으로 이동
         OnClickBottomButton(1);
     }
+
+
+    public void ShowInfoUI(string info)
+    {
+        try
+        {
+            GameManager.Instance.infoGraphic = (InfoGraphic)System.Enum.Parse(typeof(InfoGraphic), info);
+            UIManager.Instance.ShowUI<InfoOverlay>();
+        }
+        catch
+        {
+            Debug.LogError("UIError");
+        }
+    }
+
 }
