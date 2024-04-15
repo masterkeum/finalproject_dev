@@ -16,6 +16,19 @@ public class UICheckEquip : UIBase
         string path = accountInfo.checkCurItem.ImageFile;
         itemIcon.sprite = Resources.Load<Sprite>(path);
 
+        if(accountInfo.checkCurItem.nameAlias.Length > 10)
+        {
+            itemName.fontSize = 50;
+        }
+        else if (accountInfo.checkCurItem.nameAlias.Length > 5)
+        {
+            itemName.fontSize = 60;
+        }
+        else
+        {
+            itemName.fontSize = 80;
+        }
+
         itemName.text = accountInfo.checkCurItem.nameAlias;
         string statList = "";
         if (accountInfo.checkCurItem.Hp > 0)
