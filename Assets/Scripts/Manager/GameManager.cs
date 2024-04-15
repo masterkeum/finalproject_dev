@@ -18,6 +18,7 @@ public class GameManager : SingletoneBase<GameManager>
     public int _combatActionPoint { get; private set; }
     public int stageId { get; set; } // 진입한 스테이지ID 가지고있게
 
+    public InfoGraphic infoGraphic;
 
     // 사용자
     public AccountInfo accountInfo;
@@ -132,6 +133,13 @@ public class GameManager : SingletoneBase<GameManager>
         else
         {
             Time.timeScale = 1f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // 뒤로 가기 버튼
+
+
         }
     }
 
