@@ -146,6 +146,7 @@ public class IngameScene : MonoBehaviour
 
 
         yield return new WaitForSeconds(monsterData.genTimeStart);
+        Debug.Log($"{monsterData.monsterId} lv.{monsterData.level} : {monsterInfo.name}");
         float startTime = Time.time;
 
         // 몬스터 리젠
