@@ -437,11 +437,19 @@ public class Player : MonoBehaviour
                     break;
                 case SkillTargetType.Around:
                     {
-                        // 발동시키고 종료
-                        skillPool.GetPoolAroundSkill(skillData.skillId, transform.position, damage);
+                        if (skillData.coolDownTime == 0)
+                        {
+                            // 발동시키고 종료
+                            skillPool.GetPoolAroundSkill(skillData.skillId, transform.position, damage);
+                            yield break;
+                        }
+                        else
+                        {
+                            skillPool.GetPoolAroundSkill(skillData.skillId, transform.position, damage);
+                            yield return new WaitForSeconds(castDelay);
+                        }
                     }
-                    yield break;
-
+                    break;
                 // Passive
                 case SkillTargetType.AddProjectile:
                     {
