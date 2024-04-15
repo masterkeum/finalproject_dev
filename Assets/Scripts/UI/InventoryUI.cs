@@ -61,26 +61,52 @@ public class InventoryUI : MonoBehaviour
         {
             slot.icon.sprite = Resources.Load<Sprite>(path);
             slot.glow.enabled = true;
+            slot.decoGO.SetActive(true);
         }
         else
         {
             slot.glow.enabled = false;
+            slot.decoGO.SetActive(false);
         }
         switch (item.grade)
         {
 
             case ItemGrade.Normal:
-                slot.glow.color = new Color(1f, 1f, 1f); break;
+                {
+                    slot.glow.color = new Color(1f, 1f, 1f);
+                    slot.decoImage.color = new Color(0.5f, 0.5f, 0.5f, 1f);
+                }
+                break;
             case ItemGrade.Magic:
-                slot.glow.color = new Color(40 / 255f, 1f, 35 / 255f); break;
+                {
+                    slot.glow.color = new Color(40 / 255f, 1f, 35 / 255f);
+                    slot.decoImage.color = new Color(0f, 145/255f, 0f);
+                }
+                break;
             case ItemGrade.Elite:
-                slot.glow.color = new Color(0f, 67 / 255f, 1f); break;
+                {
+                    slot.glow.color = new Color(0f, 67 / 255f, 1f);
+                    slot.decoImage.color = new Color(0f, 35 / 255f, 130/255f);
+                }
+                break;
             case ItemGrade.Rare:
-                slot.glow.color = new Color(1f, 115 / 255f, 0f); break;
+                {
+                    slot.glow.color = new Color(1f, 115 / 255f, 0f);
+                    slot.decoImage.color = new Color(135/255f, 25 / 255f, 0f);
+                }
+                break;
             case ItemGrade.Epic:
-                slot.glow.color = new Color(1f, 1f, 0f); break;
+                {
+                    slot.glow.color = new Color(1f, 1f, 0f);
+                    slot.decoImage.color = new Color(1f, 115/255f, 0f);
+                }
+                break;
             case ItemGrade.Legendary:
-                slot.glow.color = new Color(1f, 0f, 0f); break;
+                {
+                    slot.glow.color = new Color(1f, 0f, 0f);
+                    slot.decoImage.color = new Color(1f, 138/255f, 138/255f);
+                }
+                break;
         }
     }
 
@@ -261,6 +287,7 @@ public class InventoryUI : MonoBehaviour
             uINoCurrency.NoCore();
             SoundManager.Instance.PlaySound("ErrorUI_1");
         }
+        UpdateUI();
     }
 
     public void OnEquipClick(int itemIndex)

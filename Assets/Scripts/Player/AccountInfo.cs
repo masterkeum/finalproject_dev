@@ -158,6 +158,11 @@ public class AccountInfo
     public float bgmVolume;
     public float sfxVolume;
 
+    //상점용 데이터 
+    public int totalCost = 0;
+    public bool isPurchasedStarterPack = false;
+    public bool isPurchasedAdDeletePack = false;
+
     //생성자
     public AccountInfo(string _aid, string _name)
     {
