@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,9 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private List<ShopSlotUI> dailySlotUI = new List<ShopSlotUI>();
     [SerializeField] private List<ShopSlotUI> gemSlotUI = new List<ShopSlotUI>();
     [SerializeField] private StarterPackageSlotUI starterPackage;
-    [SerializeField] private ShopSlotUI deleteAdPackage;
+    [SerializeField] private GameObject starterPackageButton;
+    [SerializeField] private GameObject adDeletePackageButton;
+    [SerializeField] private TextMeshProUGUI totalcostText;
 
     private void OnEnable()
     {
@@ -25,6 +28,8 @@ public class ShopUI : MonoBehaviour
 
     public void SetSlots()
     {
+        totalcostText.text = GameManager.Instance.accountInfo.totalCost.ToString("N0") + "원";
+        
         for (int i = 0; i < goldSlotUI.Count; i++)
         {
             goldSlotUI[i].amount.text = GoodsName(40001000 + i);
@@ -41,12 +46,25 @@ public class ShopUI : MonoBehaviour
         dailySlotUI[1].amount.text = GoodsName(40002000);
         dailySlotUI[1].price.text = GoodsPrice(40002000);
 
-        string gem = DataManager.Instance.shopDict[40100001].amount1.ToString();
-        string core = DataManager.Instance.shopDict[40100001].amount2.ToString();
-        string timeticket = DataManager.Instance.shopDict[40100001].amount3.ToString();
-        starterPackage.coreAmountText.text = core;
-        starterPackage.timeTicketAmountText.text = timeticket;
-        starterPackage.gemAmountText.text = gem;
+        if(GameManager.Instance.accountInfo.isPurchasedStarterPack == true)
+        {
+            starterPackageButton.SetActive(false);
+        }
+        else
+        {
+            starterPackageButton.SetActive(true);
+            string gem = DataManager.Instance.shopDict[40100001].amount1.ToString();
+            string core = DataManager.Instance.shopDict[40100001].amount2.ToString();
+            string timeticket = DataManager.Instance.shopDict[40100001].amount3.ToString();
+            starterPackage.coreAmountText.text = " X " + core;
+            starterPackage.timeTicketAmountText.text = " X " + timeticket;
+            starterPackage.gemAmountText.text = " X " + gem;
+        }
+        if (GameManager.Instance.accountInfo.isPurchasedAdDeletePack == true)
+            adDeletePackageButton.SetActive(false);
+        else
+            adDeletePackageButton.SetActive(true);
+
 
     }
 
@@ -97,10 +115,19 @@ public class ShopUI : MonoBehaviour
         SoundManager.Instance.PlaySound("ButtonClickUI_1");
     }
 
-    public void SelectGoodsName(int packageId)
+    public void SelectStarterPack(int packageId)
     {
         UIPurchaseConfirm popup = UIManager.Instance.ShowUI<UIPurchaseConfirm>();
-        
+        popup.SetGoodsName("초보자 패키지");
+        popup.selectedPackageId = packageId;
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
+    }
+    public void SelectAdDeletePack(int packageId)
+    {
+        UIPurchaseConfirm popup = UIManager.Instance.ShowUI<UIPurchaseConfirm>();
+        popup.SetGoodsName("영구적 광고제거");
+        popup.selectedPackageId = packageId;
+        SoundManager.Instance.PlaySound("ButtonClickUI_1");
     }
 
 }
