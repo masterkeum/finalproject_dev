@@ -1,3 +1,5 @@
+using System;
+
 public enum GameState
 {
     None,
@@ -94,4 +96,14 @@ public enum SkillRangeType
     FixedRange,
     Rotating,
     Normal,
+}
+
+public enum InfoGraphic
+{
+    None,
+    Main,
+    Inventory,
+    Shop,
+    Ingame,
+    Skill,
 }
