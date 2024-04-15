@@ -86,7 +86,7 @@ public class EnemyBaseController : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         rigidBody = GetComponent<Rigidbody>();
-        capsuleCollider = GetComponent<Collider>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
         animator = GetComponentInChildren<Animator>();
         hpGuageSlider = GetComponentInChildren<Slider>();
         player = GameManager.Instance.player;
