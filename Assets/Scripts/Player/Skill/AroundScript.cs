@@ -42,7 +42,7 @@ public class AroundScript : MonoBehaviour
             float z = Mathf.Sin(radian) * orbitRadius;
             Vector3 position = new Vector3(x, 0.2f, z) + transform.position;
             // 프리팹을 인스턴스화하여 자식으로 만듦
-            GameObject obj = Instantiate(rotateObjectPrefab, position, Quaternion.identity, transform);
+            GameObject obj = Instantiate(rotateObjectPrefab, position, Quaternion.Euler(-90f, 0f, 0f), transform);
             obj.GetComponent<SphereCollider>().isTrigger = true;
             obj.GetComponent<FireDamage>().Init(damage);
             obj.SetActive(true);
