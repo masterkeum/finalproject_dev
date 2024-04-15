@@ -21,7 +21,7 @@ public class UIAdsPage : UIBase
     }
     public void Defeated() // 게임재실행
     {
-        
+        // TODO 재실행이 아닌 체력이 다시 차면서 부활하는 것
         Debug.Log("게임 재실행");
         SceneManager.LoadScene(3);
     }
