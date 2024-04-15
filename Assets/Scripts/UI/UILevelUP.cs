@@ -114,6 +114,21 @@ public class UILevelUP : UIBase
                 selectableSkillUI[i].gameObject.SetActive(false);
             }
         }
+        for( int i = 0; i < selectableSkillUI.Count; i++ )
+        {
+            if (randomSkills[i].applyType == SkillApplyType.Active && randomSkills[i].level > 5)
+            {
+                selectableSkillUI[i].possibleAwakeGO.SetActive(true);
+                selectableSkillUI[i].possibleAwakeIcon.skillIcon.SetActive(true);
+                string path = DataManager.Instance.GetSkillTable(randomSkills[i].reqSkillId).imageAddress;
+                selectableSkillUI[i].possibleAwakeIcon.skillSprite.sprite = Resources.Load<Sprite>(path);
+            }
+            else
+            {
+                selectableSkillUI[i].possibleAwakeGO.SetActive(false);
+            }
+        }
+
     }
 
     /// <summary>

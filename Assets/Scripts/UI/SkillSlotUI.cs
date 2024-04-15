@@ -21,6 +21,10 @@ public class SkillSlotUI : MonoBehaviour
     public GameObject passiveIcon;
     public int skillGroupId;
 
+    [Header("Awaken")]
+    public GameObject possibleAwakeGO;
+    public SkillSlotUI possibleAwakeIcon;
+
     private void Start()
     {
         SetIndex();
