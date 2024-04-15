@@ -10,7 +10,6 @@ public class UIAdsPage : UIBase
     public GameObject buttonsClear;
     public GameObject buttonsFree;
     public GameObject buttonsReroll;
-    public Player player;
     
     // init 함수 만들어주기
     public void Init(AdsStates adsStates)
@@ -29,8 +28,7 @@ public class UIAdsPage : UIBase
 
     public void GameClear() // 재화2배획득
     {
-        Debug.Log("재화 2배 획득");
-        player.DoubleReward();
+        Debug.Log("광고시청 완료, 재화 2배 획득");
         SceneManager.LoadScene(2);
     }
 

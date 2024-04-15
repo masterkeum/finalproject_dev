@@ -29,11 +29,12 @@ public class UIGameClear : UIBase
 
     public void GetDoubleReward()
     {
+        player.DoubleReward();
+        
         Debug.Log("GetDoubleReward");
         var adPopup = UIManager.Instance.ShowUI<UIAdsPage>();
         ++UIManager.Instance.popupUICount;
         adPopup.Init(AdsStates.Clear);
-        adPopup.GameClear();
     }
 
     public void GetCommonReward()
