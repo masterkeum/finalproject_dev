@@ -12,10 +12,12 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private List<ShopSlotUI> goldSlotUI = new List<ShopSlotUI>();
     [SerializeField] private List<ShopSlotUI> dailySlotUI = new List<ShopSlotUI>();
     [SerializeField] private List<ShopSlotUI> gemSlotUI = new List<ShopSlotUI>();
+    [SerializeField] private StarterPackageSlotUI adDeletePackage;
     [SerializeField] private StarterPackageSlotUI starterPackage;
     [SerializeField] private GameObject starterPackageButton;
     [SerializeField] private GameObject adDeletePackageButton;
     [SerializeField] private TextMeshProUGUI totalcostText;
+    
 
     private void OnEnable()
     {
@@ -53,7 +55,7 @@ public class ShopUI : MonoBehaviour
         else
         {
             starterPackageButton.SetActive(true);
-            string gem = DataManager.Instance.shopDict[40100001].amount1.ToString();
+            string gem = DataManager.Instance.shopDict[40100001].amount1.ToString("N0");
             string core = DataManager.Instance.shopDict[40100001].amount2.ToString();
             string timeticket = DataManager.Instance.shopDict[40100001].amount3.ToString();
             starterPackage.coreAmountText.text = " X " + core;
@@ -63,15 +65,17 @@ public class ShopUI : MonoBehaviour
         if (GameManager.Instance.accountInfo.isPurchasedAdDeletePack == true)
             adDeletePackageButton.SetActive(false);
         else
+        {
             adDeletePackageButton.SetActive(true);
+            adDeletePackage.priceText.text = DataManager.Instance.shopDict[40100000].price.ToString("N0")+"원";
 
-
+        }
     }
 
     
     public string GoodsName(int packageId)
     {
-        string goods = DataManager.Instance.shopDict[packageId].amount1.ToString();
+        string goods = DataManager.Instance.shopDict[packageId].amount1.ToString("N0");
         switch (DataManager.Instance.shopDict[packageId].itemId1)
         {
             case 50000001:
@@ -91,7 +95,7 @@ public class ShopUI : MonoBehaviour
     }
     public string GoodsPrice(int packageId)
     {
-        string price = DataManager.Instance.shopDict[packageId].price.ToString();
+        string price = DataManager.Instance.shopDict[packageId].price.ToString("N0");
         switch (DataManager.Instance.shopDict[packageId].currencyID)
         {
             case 0:
