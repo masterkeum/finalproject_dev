@@ -437,11 +437,19 @@ public class Player : MonoBehaviour
                     break;
                 case SkillTargetType.Around:
                     {
-                        // 발동시키고 종료
-                        skillPool.GetPoolAroundSkill(skillData.skillId, transform.position, damage);
+                        if (skillData.coolDownTime == 0)
+                        {
+                            // 발동시키고 종료
+                            skillPool.GetPoolAroundSkill(skillData.skillId, transform.position, damage);
+                            yield break;
+                        }
+                        else
+                        {
+                            skillPool.GetPoolAroundSkill(skillData.skillId, transform.position, damage);
+                            yield return new WaitForSeconds(castDelay);
+                        }
                     }
-                    yield break;
-
+                    break;
                 // Passive
                 case SkillTargetType.AddProjectile:
                     {
@@ -785,11 +793,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void DoubleReward()
-    {
-        GameManager.Instance.accountInfo.AddGold(playeringameinfo.gold);
-        GameManager.Instance.accountInfo.AddGem(playeringameinfo.gem);
-        GameManager.Instance.accountInfo.AddCore(playeringameinfo.core);
-    }
     #endregion
 }
