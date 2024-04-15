@@ -193,25 +193,25 @@ public class Player : MonoBehaviour
         //rigid.MoveRotation(moveQuat);
         chestObject.transform.rotation = dirQuat;
 
-
         // 드랍아이템 끌어오기. 이동을 해야 발동함
         // 부하가 어떻지 모르겠음. => OverlapSphereNonAlloc 로 일단 바꿈
         // 범위안에 있는것을 끌어당기면서 거의 동일한 시간에 유닛에게 들어오게 하고
         // 미리 경험치/골드를 한꺼번에 계산해서 플러스 해준다. OnTrigger에서는 그냥 없애기만하기
         int dropItemCount = Physics.OverlapSphereNonAlloc(transform.position, playeringameinfo.addSkillCollectableRange, dropItemColliders, dropItemLayerMask);
-        int golds = 0;
-        int exps = 0;
+        // **** 최적화 취소. 하나씩 먹을때마다 수치 오르게 변경
+        //int golds = 0;
+        //int exps = 0;
         for (int i = 0; i < dropItemCount; i++)
         {
             DropCoin dropCoin = dropItemColliders[i].GetComponent<DropCoin>();
             if (dropCoin != null)
             {
-                golds += dropCoin.gold;
-                exps += dropCoin.exp;
+                //golds += dropCoin.gold;
+                //exps += dropCoin.exp;
                 dropCoin.moveToPlayer();
             }
         }
-        StartCoroutine(DropItemRoutine(golds, exps));
+        //StartCoroutine(DropItemRoutine(golds, exps));
     }
 
     private void OnTriggerEnter(Collider other)
@@ -219,6 +219,13 @@ public class Player : MonoBehaviour
         if (dropItemLayerMask == (dropItemLayerMask | (1 << other.gameObject.layer)))
         {
             // dropitem 끌어당긴것 디스트로이
+            DropCoin dropCoin = other.GetComponent<DropCoin>();
+            if (dropCoin != null)
+            {
+                AddGold(dropCoin.gold);
+                AddExp(dropCoin.exp);
+            }
+
             Destroy(other.gameObject);
         }
     }
@@ -526,6 +533,7 @@ public class Player : MonoBehaviour
 
         Debug.Log($"Heal : {healamount}");
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText"));
+        hudText.transform.position = hudPos.position; // 표시될 위치
         hudText.GetComponentInChildren<DamageText>().Init(healamount, new Color(0f, 1f, 0f)); // 초록색
     }
 
