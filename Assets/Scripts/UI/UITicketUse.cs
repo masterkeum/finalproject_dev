@@ -19,7 +19,7 @@ public class UITicketUse : UIBase
     private void UpdateUI()
     {
         currentticketCountText.text = GameManager.Instance.accountInfo.timeTicket.ToString();
-        ticketCountToUse = Mathf.Min(ticketCountToUse, MaxTicketCountToUse());
+        ticketCountToUse = Mathf.Max(0, Mathf.Min(ticketCountToUse, MaxTicketCountToUse()));
         ticketToUseText.text = ticketCountToUse.ToString();
 
     }
@@ -85,7 +85,7 @@ public class UITicketUse : UIBase
     {
         AccountInfo accountInfo = GameManager.Instance.accountInfo;
         TimeSpan remainTime = accountInfo.completeTime - DateTime.UtcNow;
-        return ((int)remainTime.TotalSeconds / 300) + 1;
+        return Mathf.Min(GameManager.Instance.accountInfo.timeTicket, ((int)remainTime.TotalSeconds / 300) + 1);
     }
 
     public void ClosePopup()
