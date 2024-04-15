@@ -98,6 +98,7 @@ public enum SkillRangeType
     Normal,
 }
 
+
 public enum InfoGraphic
 {
     None,
@@ -107,3 +108,12 @@ public enum InfoGraphic
     Ingame,
     Skill,
 }
+
+public enum AdsStates
+{
+    Defeated,
+    Clear,
+    Free,
+    Reroll,
+}
+

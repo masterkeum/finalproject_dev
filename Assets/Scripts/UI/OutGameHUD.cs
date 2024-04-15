@@ -163,6 +163,7 @@ public class OutGameHUD : UIBase
     }
 
 
+
     public void ShowInfoUI(string info)
     {
         try
@@ -174,6 +175,15 @@ public class OutGameHUD : UIBase
         {
             Debug.LogError("UIError");
         }
+    }
+
+
+    public void GetFreeGem()
+    {
+        Debug.Log("GetFreeGem");
+        var adPopup = UIManager.Instance.ShowUI<UIAdsPage>();
+        ++UIManager.Instance.popupUICount;
+        adPopup.Init(AdsStates.Free);
     }
 
 }
