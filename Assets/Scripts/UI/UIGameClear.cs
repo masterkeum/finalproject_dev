@@ -29,20 +29,11 @@ public class UIGameClear : UIBase
 
     public void GetDoubleReward()
     {
-
-        // player.DoubleReward();
-        // SceneManager.LoadScene(2);
-
         Debug.Log("GetDoubleReward");
         var adPopup = UIManager.Instance.ShowUI<UIAdsPage>();
         ++UIManager.Instance.popupUICount;
         adPopup.Init(AdsStates.Clear);
-        var killCount = player.playeringameinfo.killCount;
-        var gold = player.playeringameinfo.gold;
-        var gem = player.playeringameinfo.gem;
-        var core = player.playeringameinfo.core;
-        adPopup.GameClear(gold, gem, core);
-
+        adPopup.GameClear();
     }
 
     public void GetCommonReward()

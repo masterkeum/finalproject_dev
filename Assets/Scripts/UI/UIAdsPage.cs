@@ -10,6 +10,7 @@ public class UIAdsPage : UIBase
     public GameObject buttonsClear;
     public GameObject buttonsFree;
     public GameObject buttonsReroll;
+    public Player player;
     
     // init 함수 만들어주기
     public void Init(AdsStates adsStates)
@@ -23,18 +24,14 @@ public class UIAdsPage : UIBase
     {
         
         Debug.Log("게임 재실행");
-        SceneManager.LoadScene("IngameScene");
+        SceneManager.LoadScene(3);
     }
 
-    public void GameClear(int gold, int gem, int core) // 재화2배획득
+    public void GameClear() // 재화2배획득
     {
         Debug.Log("재화 2배 획득");
-        // Player 의 RemoveChaseTarget 함수에서 보스잡으면 저장이 되는 방식이어서 이 함수에서는 UIGameClear 에서 받은 값을 한번 더 더해주었다. 추후 다듬기.
-        
-        GameManager.Instance.accountInfo.AddGold(gold);
-        GameManager.Instance.accountInfo.AddGem(gem);
-        GameManager.Instance.accountInfo.AddCore(core);
-        SceneManager.LoadScene("MainScene");
+        player.DoubleReward();
+        SceneManager.LoadScene(2);
     }
 
    public void GetFreeGem() // 무료재화 잼 획득
