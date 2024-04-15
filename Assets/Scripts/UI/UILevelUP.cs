@@ -114,6 +114,21 @@ public class UILevelUP : UIBase
                 selectableSkillUI[i].gameObject.SetActive(false);
             }
         }
+        for( int i = 0; i < selectableSkillUI.Count; i++ ) // 초월에 필요한 스킬 표기하기
+        {
+            if (randomSkills[i].applyType == SkillApplyType.Active && randomSkills[i].level > 5)
+            {
+                selectableSkillUI[i].possibleAwakeGO.SetActive(true);
+                selectableSkillUI[i].possibleAwakeIcon.skillIcon.SetActive(true);
+                string path = DataManager.Instance.GetSkillTable(randomSkills[i].reqSkillId).imageAddress;
+                selectableSkillUI[i].possibleAwakeIcon.skillSprite.sprite = Resources.Load<Sprite>(path);
+            }
+            else
+            {
+                selectableSkillUI[i].possibleAwakeGO.SetActive(false);
+            }
+        }
+
     }
 
     /// <summary>
@@ -161,20 +176,27 @@ public class UILevelUP : UIBase
     {
         for (int i = 0; i < selectableSkillUI.Count; i++)
         {
+            bool skillFound = false;
             selectableSkillUI[i].ClearStars();
             for (int j = 0; j < player.activeSkillSlot.Count; j++)
             {
                 if (selectableSkillUI[i].skillGroupId == player.activeSkillSlot[j].skillGroup)
                 {
-                    selectableSkillUI[i].SetStars(player.activeSkillSlot[j].level);
+                    selectableSkillUI[i].SetStars(player.activeSkillSlot[j].level +1);
+                    skillFound = true;
                 }
             }
             for (int j = 0; j < player.passiveSkillSlot.Count; j++)
             {
                 if (selectableSkillUI[i].skillGroupId == player.passiveSkillSlot[j].skillGroup)
                 {
-                    selectableSkillUI[i].SetStars(player.passiveSkillSlot[j].level);
+                    selectableSkillUI[i].SetStars(player.passiveSkillSlot[j].level +1);
+                    skillFound = true;
                 }
+            }
+            if (!skillFound)
+            {
+                selectableSkillUI[i].SetStars(1);
             }
         }
 
