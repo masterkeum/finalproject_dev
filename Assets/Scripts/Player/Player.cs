@@ -353,7 +353,7 @@ public class Player : MonoBehaviour
         float castDelay = skillData.castDelay;
 
         Debug.Log($"Coroutine started with parameter: {skillData.skillId}");
-        Debug.Log(projectileTotalCount);
+        //Debug.Log(projectileTotalCount);
         while (true)
         {
             yield return new WaitForSeconds(skillData.coolDownTime);
@@ -622,7 +622,7 @@ public class Player : MonoBehaviour
         {
             nearEnemy.Add(col.transform);
         }
-
+        Debug.Log($"hitColliders : {hitColliders.Length} / nearEnemy : {nearEnemy.Count}");
         if (nearEnemy.Count > 0)
         {
             Transform nearestEnemy = GetNearestEnemy();
@@ -783,6 +783,13 @@ public class Player : MonoBehaviour
                 ++UIManager.Instance.popupUICount;
             }
         }
+    }
+
+    public void DoubleReward()
+    {
+        GameManager.Instance.accountInfo.AddGold(playeringameinfo.gold);
+        GameManager.Instance.accountInfo.AddGem(playeringameinfo.gem);
+        GameManager.Instance.accountInfo.AddCore(playeringameinfo.core);
     }
     #endregion
 }
