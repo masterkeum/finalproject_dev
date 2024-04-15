@@ -20,7 +20,7 @@ public class UIMimicLevelUp : UIBase
     public GameObject levelUpButton;
     public GameObject completeButton;
     public TextMeshProUGUI reqExpText;
-
+    public InventoryUI inventoryUI;
 
     
     Coroutine timerRoutine;
@@ -42,6 +42,12 @@ public class UIMimicLevelUp : UIBase
     public TextMeshProUGUI probabilityEpicNext;
     public TextMeshProUGUI probabilityLegendaryNext;
 
+
+    private void Start()
+    {
+        inventoryUI = FindObjectOfType<InventoryUI>();
+        
+    }
     private void OnEnable()
     {
         AccountInfo accountInfo = GameManager.Instance.accountInfo;
@@ -178,6 +184,7 @@ public class UIMimicLevelUp : UIBase
         accountInfo.mimicCurExp = 0;
 
         UpdateUI();
+        inventoryUI.UpdateUI();
         completeButton.SetActive(false);
         SoundManager.Instance.PlaySound("ButtonClickUI_1");
     }
