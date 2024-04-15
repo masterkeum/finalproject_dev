@@ -20927,8 +20927,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4776990164140034005}
   m_HandleRect: {fileID: 1237807162825730483}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.48660567
+  m_Value: 1.0000004
+  m_Size: 0.7031164
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -22704,6 +22704,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShopSlot_Gem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942961164981020795, guid: 5f3998149db66ed4f9c468502ac75d91,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942961164981020795, guid: 5f3998149db66ed4f9c468502ac75d91,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942961164981020795, guid: 5f3998149db66ed4f9c468502ac75d91,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5360180799612668077}
+    - target: {fileID: 1942961164981020795, guid: 5f3998149db66ed4f9c468502ac75d91,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942961164981020795, guid: 5f3998149db66ed4f9c468502ac75d91,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetFreeGem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942961164981020795, guid: 5f3998149db66ed4f9c468502ac75d91,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OutGameHUD, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942961164981020795, guid: 5f3998149db66ed4f9c468502ac75d91,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116576661911909463, guid: 5f3998149db66ed4f9c468502ac75d91,
+        type: 3}
+      propertyPath: admobCode
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116576661911909463, guid: 5f3998149db66ed4f9c468502ac75d91,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6555418076779633578, guid: 5f3998149db66ed4f9c468502ac75d91,
         type: 3}
