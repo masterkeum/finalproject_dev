@@ -246,6 +246,13 @@ public class AccountInfo
         GameManager.Instance.UpdateUI();
     }
 
+    public void MinusGold(int minusGold)
+    {
+        gold -= minusGold;
+        GameManager.Instance.SaveGame();
+        GameManager.Instance.UpdateUI();
+    }
+
     public void AddCore(int addCore)
     {
         core += addCore;

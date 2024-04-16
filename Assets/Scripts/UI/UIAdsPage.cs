@@ -44,5 +44,8 @@ public class UIAdsPage : UIBase
     public void SkillReroll()
     {
         Debug.Log("SkillReroll" );
+        uiAdsPage.SetActive(false);
+        // UIManager.Instance.Clear();
+        --UIManager.Instance.popupUICount;
     }
 }

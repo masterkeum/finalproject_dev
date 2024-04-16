@@ -17,10 +17,14 @@ public class UILevelUP : UIBase
     public TextMeshProUGUI skillPointText;
 
     private Player player;
+    private int reRollCount;
+    public GameObject reRollBtn;
+    public GameObject reRollAdsBtn;
 
     private void Awake()
     {
         player = GameManager.Instance.player;
+        reRollCount = 0;
 
         foreach (SkillTable skill in DataManager.Instance.skillTableDict.Values)
         {
@@ -297,5 +301,34 @@ public class UILevelUP : UIBase
     {
         SetSelectableSkills();
         SetStar();
+        
+        reRollCount++;
+        OnThreeTimeSelect();
+        Debug.Log("rerollcount 실행횟수 "+reRollCount);
     }
+
+    public void OnThreeTimeSelect()
+    {
+        // todo 3번 호출 가능 골드 100씩 차감
+        GameManager.Instance.accountInfo.MinusGold(100);
+        
+        // 광고보기 버튼 띄우기,기존버튼 비활성화
+        if (reRollCount > 2)
+        {
+            reRollBtn.SetActive(false);
+            reRollAdsBtn.SetActive(true);
+        }
+    }
+
+    public void OnReRollAdsButton()
+    {
+        // todo 광고 띄우기
+        var adPopup = UIManager.Instance.ShowUI<UIAdsPage>();
+        ++UIManager.Instance.popupUICount;
+        adPopup.Init(AdsStates.Reroll);
+        
+        SetSelectableSkills();
+        SetStar();
+    }
+    
 }
