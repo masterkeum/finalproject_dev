@@ -188,6 +188,7 @@ public class Shop
     public ItemType itemType3;
     public int? itemId3;
     public int? amount3;
+    public string imageAddress;
 }
 
 [Serializable]

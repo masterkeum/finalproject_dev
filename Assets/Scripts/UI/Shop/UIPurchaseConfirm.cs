@@ -57,6 +57,8 @@ public class UIPurchaseConfirm : UIBase
                             }
 
                             SoundManager.Instance.PlaySound("PurchaseUI_1");
+                            UIGetPurchasedGoods goodsPopup = UIManager.Instance.ShowUI<UIGetPurchasedGoods>();
+                            goodsPopup.SetGoods(selectedPackageId);
 
                         }
                     }
@@ -79,6 +81,8 @@ public class UIPurchaseConfirm : UIBase
                                     break;
                             }
                             SoundManager.Instance.PlaySound("PurchaseUI_1");
+                            UIGetPurchasedGoods goodsPopup = UIManager.Instance.ShowUI<UIGetPurchasedGoods>();
+                            goodsPopup.SetGoods(selectedPackageId);
                         }
                         else
                         {
@@ -92,9 +96,10 @@ public class UIPurchaseConfirm : UIBase
         }
         shopUI.SetSlots();
         GameManager.Instance.UpdateUI();
-        selectedPackageId = 0;
         gameObject.SetActive(false);
         SoundManager.Instance.PlaySound("ButtonClickUI_1");
+
+        selectedPackageId = 0;
     }
 
     public void Cancel()
