@@ -786,12 +786,10 @@ public class Player : MonoBehaviour
             chaseTarget.Remove(go);
             if (chaseTarget.Count == 0)
             {
-                playeringameinfo.gem += DataManager.Instance.stageListDict[GameManager.Instance.stageId].clearGem;
-                playeringameinfo.gold += DataManager.Instance.stageListDict[GameManager.Instance.stageId].clearGold;
-
                 GameManager.Instance.accountInfo.AddGold(playeringameinfo.gold);
                 GameManager.Instance.accountInfo.AddGem(playeringameinfo.gem);
                 GameManager.Instance.accountInfo.AddCore(playeringameinfo.core);
+
                 GameManager.Instance.selectNextStage();
 
                 GameManager.Instance.SetState(GameState.IngameEnd);

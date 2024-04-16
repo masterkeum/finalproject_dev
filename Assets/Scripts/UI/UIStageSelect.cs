@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 //public class StageSlot
@@ -15,14 +16,16 @@ public class UIStageSelect : UIBase
     private void OnEnable()
     {
         // TODO : 현재 선택된 스테이지 셀렉트 상태
-
-        int tmpSelect = GameManager.Instance.stageId % 100 - 1;
+        int tmpSelect = GameManager.Instance.accountInfo.selectedStageId % 100 - 1;
         SelectCurSlot(tmpSelect);
+
+        HideSlot(GameManager.Instance.accountInfo.clearStageId);
     }
+
 
     public void OnSelectButton()
     {
-        GameManager.Instance.stageId = _curStage.index;
+        GameManager.Instance.SelectStage(_curStage.index);
         GameManager.Instance.UpdateUI();
         gameObject.SetActive(false);
         SoundManager.Instance.PlaySound("ConfirmUI_1", 1f);
@@ -52,4 +55,21 @@ public class UIStageSelect : UIBase
         SoundManager.Instance.PlaySound("NextPageUI_1", 1f);
     }
 
+    private void HideSlot(int clearStageId)
+    {
+        int open = clearStageId % 100;
+        for (int i = 0; i < _stageSlots.Length; i++)
+        {
+            if (i <= open)
+            {
+                _stageSlots[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                _stageSlots[i].gameObject.SetActive(false);
+            }
+
+        }
+
+    }
 }

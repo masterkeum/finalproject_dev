@@ -40,7 +40,19 @@ public class SkillSlotUI : MonoBehaviour
 
         if (up)
         {
-            starSlot[level].SetYellowStar(0.5f);
+            //level 가 5로 들어오면 각성
+            if (level < 5)
+            {
+                starSlot[level].SetYellowStar(0.5f);
+            }
+            else
+            {
+                starSlot[0].SetYellowStar(0.5f);
+                starSlot[1].SetYellowStar(0.5f);
+                starSlot[2].SetYellowStar(0.5f);
+                starSlot[3].SetYellowStar(0.5f);
+                starSlot[4].SetYellowStar(0.5f);
+            }
         }
     }
 

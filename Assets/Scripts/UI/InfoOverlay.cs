@@ -15,6 +15,9 @@ public class InfoOverlay : UIBase
             case InfoGraphic.Main:
                 image.sprite = Resources.Load<Sprite>("Textures/info/main");
                 break;
+            case InfoGraphic.Shop:
+                image.sprite = Resources.Load<Sprite>("Textures/info/shop");
+                break;
             default:
                 Debug.LogError("UI Error");
                 break;
