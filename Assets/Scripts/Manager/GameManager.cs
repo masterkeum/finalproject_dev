@@ -214,6 +214,14 @@ public class GameManager : SingletoneBase<GameManager>
         UpdateUI();
     }
 
+    public void selectNextStage()
+    {
+        // TODO : 데이터로 빼야됨
+        if (stageId < 105)
+        {
+            stageId++;
+        }
+    }
     #endregion
 
     #region MainScene
