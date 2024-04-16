@@ -4,6 +4,7 @@ using System.Data;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.Android;
 
 public class UILevelUP : UIBase
 {
@@ -18,6 +19,7 @@ public class UILevelUP : UIBase
 
     private Player player;
     private int reRollCount;
+    private int adCount;
     public GameObject reRollBtn;
     public GameObject reRollAdsBtn;
 
@@ -25,6 +27,7 @@ public class UILevelUP : UIBase
     {
         player = GameManager.Instance.player;
         reRollCount = 0;
+        adCount = 0;
 
         foreach (SkillTable skill in DataManager.Instance.skillTableDict.Values)
         {
@@ -300,18 +303,29 @@ public class UILevelUP : UIBase
     /// </summary>
     public void OnReRollButton()
     {
+        if (player.playeringameinfo.gold >= 100)
+        {
+            player.playeringameinfo.gold -= 100; // 인게임 골드 차감  
+            // Ui새로고침
+            GameManager.Instance.UpdateUI();
+        }
+        else
+        {
+            UIManager.Instance.ShowUI<UINotEnoughGold>();
+            return;
+        }
+        
         SetSelectableSkills();
         SetStar();
-        
         reRollCount++;
         OnThreeTimeSelect();
+        
         Debug.Log("rerollcount 실행횟수 "+reRollCount);
     }
 
     public void OnThreeTimeSelect()
     {
         // todo 3번 호출 가능 골드 100씩 차감
-        GameManager.Instance.accountInfo.MinusGold(100);
         
         // 광고보기 버튼 띄우기,기존버튼 비활성화
         if (reRollCount > 2)
@@ -323,13 +337,22 @@ public class UILevelUP : UIBase
 
     public void OnReRollAdsButton()
     {
-        // todo 광고 띄우기
-        var adPopup = UIManager.Instance.ShowUI<UIAdsPage>();
-        ++UIManager.Instance.popupUICount;
-        adPopup.Init(AdsStates.Reroll);
+        if (adCount < 1)
+        {
+            // todo 광고 띄우기
+            var adPopup = UIManager.Instance.ShowUI<UIAdsPage>();
+            ++UIManager.Instance.popupUICount;
+            adPopup.Init(AdsStates.Reroll);
         
-        SetSelectableSkills();
-        SetStar();
+            SetSelectableSkills();
+            SetStar();    
+            ++adCount;
+        }
+        else
+        {
+            UIManager.Instance.ShowUI<UINoAds>();
+        }
+        
     }
     
 }

@@ -38,6 +38,8 @@ public struct PlayerInGameInfo
     public int gem;
     public int core;
 
+    public int resurectionCount;
+
     public PlayerInGameInfo(int _maxHp, int _attackPower, int _defense, float _moveSpeed,
                             float _critical, float _hpGen, int _level, int _sliderMaxExp)
     {
@@ -68,6 +70,8 @@ public struct PlayerInGameInfo
         skillpoint = 0;
         gem = 0;
         core = 0;
+
+        resurectionCount = 0;
     }
 }
 
@@ -532,7 +536,7 @@ public class Player : MonoBehaviour
 
     public void ResetPlayerHP()
     {
-        playeringameinfo.curHp = 500;
+        playeringameinfo.curHp = playeringameinfo.maxHp;
     }
 
     public void Heal(int healamount)
