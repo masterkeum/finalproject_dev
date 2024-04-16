@@ -130,6 +130,7 @@ public class SkillTable
     public string prefabAsset;
     public string prefabAddress;
     public string prefabAfterEffect;
+    public int? awakenReqSkill;
 }
 
 [Serializable]

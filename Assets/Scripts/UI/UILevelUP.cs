@@ -116,11 +116,11 @@ public class UILevelUP : UIBase
         }
         for( int i = 0; i < selectableSkillUI.Count; i++ ) // 초월에 필요한 스킬 표기하기
         {
-            if (randomSkills[i].applyType == SkillApplyType.Active && randomSkills[i].level > 5)
+            if (randomSkills[i].applyType == SkillApplyType.Active)
             {
                 selectableSkillUI[i].possibleAwakeGO.SetActive(true);
                 selectableSkillUI[i].possibleAwakeIcon.skillIcon.SetActive(true);
-                string path = DataManager.Instance.GetSkillTable(randomSkills[i].reqSkillId).imageAddress;
+                string path = DataManager.Instance.skillTableDict[(int)randomSkills[i].awakenReqSkill].imageAddress;
                 selectableSkillUI[i].possibleAwakeIcon.skillSprite.sprite = Resources.Load<Sprite>(path);
             }
             else
