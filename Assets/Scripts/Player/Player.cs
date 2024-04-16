@@ -570,7 +570,6 @@ public class Player : MonoBehaviour
 
         // 피격 사운드
         int ran = UnityEngine.Random.Range(1, 3);
-
         SoundManager.Instance.PlayBattleSound("Hit" + ran.ToString());
 
         realDamage = -realDamage;
@@ -649,7 +648,7 @@ public class Player : MonoBehaviour
         {
             nearEnemy.Add(col.transform);
         }
-        Debug.Log($"hitColliders : {hitColliders.Length} / nearEnemy : {nearEnemy.Count}");
+        //Debug.Log($"hitColliders : {hitColliders.Length} / nearEnemy : {nearEnemy.Count}");
 
         if (nearEnemy.Count > 0)
         {
