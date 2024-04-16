@@ -3946,7 +3946,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/FireballRedOBJ",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001011
     },
     {
       "skillId": 30000012,
@@ -3977,7 +3977,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/FireballRedOBJ",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001011
     },
     {
       "skillId": 30000013,
@@ -4008,7 +4008,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/FireballRedOBJ",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001011
     },
     {
       "skillId": 30000014,
@@ -4039,7 +4039,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/FireballRedOBJ",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001011
     },
     {
       "skillId": 30000015,
@@ -4070,7 +4070,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/FireballRedOBJ",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001011
     },
     {
       "skillId": 30000021,
@@ -4101,7 +4101,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/IceMissileOBJ",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001021
     },
     {
       "skillId": 30000022,
@@ -4132,7 +4132,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/IceMissileOBJ",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001021
     },
     {
       "skillId": 30000023,
@@ -4163,7 +4163,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/IceMissileOBJ",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001021
     },
     {
       "skillId": 30000024,
@@ -4194,7 +4194,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/IceMissileOBJ",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001021
     },
     {
       "skillId": 30000025,
@@ -4225,7 +4225,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/IceMissileOBJ",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001021
     },
     {
       "skillId": 30000031,
@@ -4256,7 +4256,7 @@
       "prefabAsset": "GAP",
       "prefabAddress": "Prefabs/Skill/Active/LightningStrikeYellow",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001031
     },
     {
       "skillId": 30000032,
@@ -4287,7 +4287,7 @@
       "prefabAsset": "GAP",
       "prefabAddress": "Prefabs/Skill/Active/LightningStrikeYellow",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001031
     },
     {
       "skillId": 30000033,
@@ -4318,7 +4318,7 @@
       "prefabAsset": "GAP",
       "prefabAddress": "Prefabs/Skill/Active/LightningStrikeYellow",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001031
     },
     {
       "skillId": 30000034,
@@ -4349,7 +4349,7 @@
       "prefabAsset": "GAP",
       "prefabAddress": "Prefabs/Skill/Active/LightningStrikeYellow",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001031
     },
     {
       "skillId": 30000035,
@@ -4380,7 +4380,7 @@
       "prefabAsset": "GAP",
       "prefabAddress": "Prefabs/Skill/Active/LightningStrikeYellow",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001031
     },
     {
       "skillId": 30000041,
@@ -4411,7 +4411,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/VolcanicMissileOBJ",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001041
     },
     {
       "skillId": 30000042,
@@ -4442,7 +4442,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/VolcanicMissileOBJ",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001041
     },
     {
       "skillId": 30000043,
@@ -4473,7 +4473,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/VolcanicMissileOBJ",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001041
     },
     {
       "skillId": 30000044,
@@ -4504,7 +4504,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/VolcanicMissileOBJ",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001041
     },
     {
       "skillId": 30000045,
@@ -4535,7 +4535,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/VolcanicMissileOBJ",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001041
     },
     {
       "skillId": 30000051,
@@ -4566,7 +4566,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/Sanctuary",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001051
     },
     {
       "skillId": 30000052,
@@ -4597,7 +4597,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/Sanctuary",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001051
     },
     {
       "skillId": 30000053,
@@ -4628,7 +4628,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/Sanctuary",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001051
     },
     {
       "skillId": 30000054,
@@ -4659,7 +4659,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/Sanctuary",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001051
     },
     {
       "skillId": 30000055,
@@ -4690,7 +4690,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/Sanctuary",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001051
     },
     {
       "skillId": 30000061,
@@ -4721,7 +4721,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/HellFire",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001061
     },
     {
       "skillId": 30000062,
@@ -4752,7 +4752,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/HellFire",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001061
     },
     {
       "skillId": 30000063,
@@ -4783,7 +4783,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/HellFire",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001061
     },
     {
       "skillId": 30000064,
@@ -4814,7 +4814,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/HellFire",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001061
     },
     {
       "skillId": 30000065,
@@ -4845,7 +4845,7 @@
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/HellFire",
       "prefabAfterEffect": null,
-      "awakenReqSkill": null
+      "awakenReqSkill": 30001061
     },
     {
       "skillId": 30000501,
