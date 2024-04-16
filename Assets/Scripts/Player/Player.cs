@@ -402,7 +402,7 @@ public class Player : MonoBehaviour
                         {
                             // 랜덤 단일 타겟
                             Vector3 enemyPos = DetectRandomEnemyPos();
-                            skillPool.GetPoolGroundStrikeSkill(skillData.skillId, enemyPos, damage);
+                            skillPool.GetPoolGroundStrikeSkill(skillData.skillId, enemyPos, damage / 10);
                             yield return new WaitForSeconds(castDelay);
                         }
                     }
