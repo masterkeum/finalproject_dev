@@ -8,8 +8,6 @@ public class TitleScene : MonoBehaviour
     private void Awake()
     {
         _ = DataManager.Instance;
-
-        Debug.LogError("Force the build console open");
         loginButtons.SetActive(false);
         SoundManager.Instance.CreateSFXAudioSource();
         SoundManager.Instance.ChangeBackGroundMusic(Resources.Load<AudioClip>("Audio/Music/a_small_fire_will_do"), SoundManager.Instance.musicAudioSource.volume);
