@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,29 +5,16 @@ public class StarUI : MonoBehaviour
 {
     public GameObject yellowStar;
     public int starSlotIndex;
-    private Image starImage;
-
-    private void Awake()
-    {
-        starImage = yellowStar.GetComponent<Image>();
-        yellowStar.SetActive(false);
-    }
+    public Image starImage;
 
     private void Start()
     {
         SetIndex();
     }
 
-    public void SetYellowStar(float alpha = 1f)
+    public void SetYellowStar(float alpha = 1.0f)
     {
-        if (starImage != null)
-        {
-            starImage = yellowStar.GetComponent<Image>();
-        }
-        Color color = starImage.color;
-        color.a = alpha;
-        starImage.color = color;
-
+        starImage.color = new Color(starImage.color.r, starImage.color.g, starImage.color.b, alpha);
         yellowStar.SetActive(true);
     }
 

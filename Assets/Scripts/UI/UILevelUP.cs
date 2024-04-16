@@ -196,10 +196,11 @@ public class UILevelUP : UIBase
             }
             if (!skillFound)
             {
-                selectableSkillUI[i].SetStars(1);
+                selectableSkillUI[i].SetStars(0, true);
             }
         }
 
+        // 보유목록
         for (int i = 0; i < player.activeSkillSlot.Count; i++)
         {
             curAcitveSkillUI[i].SetStars(player.activeSkillSlot[i].level);

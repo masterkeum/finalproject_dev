@@ -32,18 +32,10 @@ public class SkillSlotUI : MonoBehaviour
 
     public void SetStars(int level, bool up = false)
     {
-
+        Debug.Log("level : " + level);
         for (int i = 0; i < level; i++)
         {
-            if (level == 0)
-            {
-                starSlot[i].ClearYellowStar();
-            }
-
-            else
-            {
-                starSlot[i].SetYellowStar();
-            }
+            starSlot[i].SetYellowStar();
         }
 
         if (up)
