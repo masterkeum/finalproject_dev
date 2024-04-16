@@ -1938,6 +1938,7 @@ MonoBehaviour:
   - {fileID: 8760080103678208534}
   - {fileID: 8912964020242023896}
   - {fileID: 6456441382360562315}
+  scrollbar: {fileID: 758153377289612403}
 --- !u!1 &5054731938656040684
 GameObject:
   m_ObjectHideFlags: 0
@@ -2134,7 +2135,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 959.9999}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4769706630825312988

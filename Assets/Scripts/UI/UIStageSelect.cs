@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 //public class StageSlot
 //{
@@ -8,6 +9,7 @@ using UnityEngine;
 public class UIStageSelect : UIBase
 {
     [SerializeField] private StageSlotUI[] _stageSlots;
+    [SerializeField] private Scrollbar scrollbar;
 
     [Header("SelectedStage")]
     private StageSlotUI _curStage;
@@ -18,7 +20,10 @@ public class UIStageSelect : UIBase
         int tmpSelect = GameManager.Instance.accountInfo.selectedStageId % 100 - 1;
         SelectCurSlot(tmpSelect);
 
-        HideSlot(GameManager.Instance.accountInfo.clearStageId);
+        LockSlot(GameManager.Instance.accountInfo.clearStageId);
+
+
+        scrollbar.value = 0.5f;//1.0f - (float)tmpSelect / 4;
     }
 
 
@@ -39,7 +44,7 @@ public class UIStageSelect : UIBase
     public void SelectCurSlot(int index)
     {
         int tmpClearStageIndex = GameManager.Instance.accountInfo.clearStageId % 100;
-        Debug.Log($"{index} <= {tmpClearStageIndex}");
+        //Debug.Log($"{index} <= {tmpClearStageIndex}");
         if (index <= tmpClearStageIndex)
         {
             _curStage = _stageSlots[index];
@@ -59,7 +64,7 @@ public class UIStageSelect : UIBase
         }
     }
 
-    private void HideSlot(int clearStageId)
+    private void LockSlot(int clearStageId)
     {
         int open = clearStageId % 100;
         for (int i = 0; i < _stageSlots.Length; i++)
