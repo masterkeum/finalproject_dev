@@ -12,7 +12,6 @@ public class UIStageSelect : UIBase
     [Header("SelectedStage")]
     private StageSlotUI _curStage;
 
-
     private void OnEnable()
     {
         // TODO : 현재 선택된 스테이지 셀렉트 상태
@@ -39,20 +38,25 @@ public class UIStageSelect : UIBase
 
     public void SelectCurSlot(int index)
     {
-        _curStage = _stageSlots[index];
-        for (int i = 0; i < _stageSlots.Length; i++)
+        int tmpClearStageIndex = GameManager.Instance.accountInfo.clearStageId % 100;
+        Debug.Log($"{index} <= {tmpClearStageIndex}");
+        if (index <= tmpClearStageIndex)
         {
-            if (_curStage == _stageSlots[i])
+            _curStage = _stageSlots[index];
+            for (int i = 0; i < _stageSlots.Length; i++)
             {
-                _stageSlots[i].isCurStage = true;
+                if (_curStage == _stageSlots[i])
+                {
+                    _stageSlots[i].isCurStage = true;
+                }
+                else
+                {
+                    _stageSlots[i].isCurStage = false;
+                }
+                _stageSlots[i].UpdateMark();
             }
-            else
-            {
-                _stageSlots[i].isCurStage = false;
-            }
-            _stageSlots[i].UpdateMark();
+            SoundManager.Instance.PlaySound("NextPageUI_1", 1f);
         }
-        SoundManager.Instance.PlaySound("NextPageUI_1", 1f);
     }
 
     private void HideSlot(int clearStageId)
@@ -62,11 +66,11 @@ public class UIStageSelect : UIBase
         {
             if (i <= open)
             {
-                _stageSlots[i].gameObject.SetActive(true);
+                _stageSlots[i].GetComponent<StageSlotUI>().LockedStage(false);
             }
             else
             {
-                _stageSlots[i].gameObject.SetActive(false);
+                _stageSlots[i].GetComponent<StageSlotUI>().LockedStage(true);
             }
 
         }
