@@ -5979,7 +5979,7 @@
       "itemType3": "None",
       "itemId3": null,
       "amount3": null,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/group_image_tv1"
     },
     {
       "packageId": 40100001,
@@ -5995,7 +5995,7 @@
       "itemType3": "Timeticket",
       "itemId3": 50000005,
       "amount3": 5,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/starterPack"
     },
     {
       "packageId": 40000000,
@@ -6011,7 +6011,7 @@
       "itemType3": "None",
       "itemId3": null,
       "amount3": null,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/set_icon_gem_0"
     },
     {
       "packageId": 40000001,
@@ -6027,7 +6027,7 @@
       "itemType3": "None",
       "itemId3": null,
       "amount3": null,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/set_icon_gem_1"
     },
     {
       "packageId": 40000002,
@@ -6043,7 +6043,7 @@
       "itemType3": "None",
       "itemId3": null,
       "amount3": null,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/set_icon_gem_2"
     },
     {
       "packageId": 40000003,
@@ -6059,7 +6059,7 @@
       "itemType3": "None",
       "itemId3": null,
       "amount3": null,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/set_icon_gem_3"
     },
     {
       "packageId": 40000004,
@@ -6075,7 +6075,7 @@
       "itemType3": "None",
       "itemId3": null,
       "amount3": null,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/set_icon_gem_4"
     },
     {
       "packageId": 40000005,
@@ -6091,7 +6091,7 @@
       "itemType3": "None",
       "itemId3": null,
       "amount3": null,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/set_icon_gem_5"
     },
     {
       "packageId": 40001000,
@@ -6107,7 +6107,7 @@
       "itemType3": "None",
       "itemId3": null,
       "amount3": null,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/set_icon_gold_0"
     },
     {
       "packageId": 40001001,
@@ -6123,7 +6123,7 @@
       "itemType3": "None",
       "itemId3": null,
       "amount3": null,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/set_icon_gold_1"
     },
     {
       "packageId": 40001002,
@@ -6139,7 +6139,7 @@
       "itemType3": "None",
       "itemId3": null,
       "amount3": null,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/set_icon_gold_2"
     },
     {
       "packageId": 40001003,
@@ -6155,7 +6155,7 @@
       "itemType3": "None",
       "itemId3": null,
       "amount3": null,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/set_icon_gold_3"
     },
     {
       "packageId": 40001004,
@@ -6171,7 +6171,7 @@
       "itemType3": "None",
       "itemId3": null,
       "amount3": null,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/set_icon_gold_4"
     },
     {
       "packageId": 40001005,
@@ -6187,7 +6187,7 @@
       "itemType3": "None",
       "itemId3": null,
       "amount3": null,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/set_icon_gold_5"
     },
     {
       "packageId": 40003000,
@@ -6203,7 +6203,7 @@
       "itemType3": "None",
       "itemId3": null,
       "amount3": null,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/icon_ticket"
     },
     {
       "packageId": 40002000,
@@ -6219,7 +6219,7 @@
       "itemType3": "None",
       "itemId3": null,
       "amount3": null,
-      "imageAddress": null
+      "imageAddress": "Textures/shopGoods/status_icon_energy"
     }
   ]
 }

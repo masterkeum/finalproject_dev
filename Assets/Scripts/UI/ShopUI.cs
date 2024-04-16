@@ -85,7 +85,7 @@ public class ShopUI : MonoBehaviour
                 goods += "젬";
                 break;
             case 50000005:
-                goods += "장";
+                goods += "타임티켓";
                 break;
             case 50000004:
                 goods += "행동력";
