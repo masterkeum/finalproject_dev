@@ -20,7 +20,7 @@ PlayerSettings:
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 1
-  m_SplashScreenAnimation: 1
+  m_SplashScreenAnimation: 0
   m_SplashScreenLogoStyle: 1
   m_SplashScreenDrawMode: 0
   m_SplashScreenBackgroundAnimationZoom: 1
@@ -59,6 +59,7 @@ PlayerSettings:
   iosUseCustomAppBackgroundBehavior: 0
   allowedAutorotateToPortrait: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
   allowedAutorotateToPortraitUpsideDown: 1
   allowedAutorotateToLandscapeRight: 1
   allowedAutorotateToLandscapeLeft: 1
@@ -73,6 +74,11 @@ PlayerSettings:
   allowedAutorotateToLandscapeLeft: 1
 >>>>>>> 408b9702a (Revert "map and ingameUI")
 >>>>>>> 85c4d727b (Revert "map and ingameUI")
+=======
+  allowedAutorotateToPortraitUpsideDown: 0
+  allowedAutorotateToLandscapeRight: 0
+  allowedAutorotateToLandscapeLeft: 0
+>>>>>>> 8aec2fed1 (Reapply "map and ingameUI")
   useOSAutorotation: 1
   use32BitDisplayBuffer: 1
   preserveFramebufferAlpha: 0
@@ -838,7 +844,7 @@ PlayerSettings:
   suppressCommonWarnings: 1
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
-  selectedPlatform: 0
+  selectedPlatform: 2
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 0
@@ -920,6 +926,7 @@ PlayerSettings:
   hmiLogStartupTiming: 0
   hmiCpuConfiguration: 
 <<<<<<< HEAD
+<<<<<<< HEAD
   apiCompatibilityLevel: 6
   activeInputHandler: 0
 =======
@@ -931,6 +938,10 @@ PlayerSettings:
   activeInputHandler: 0
 >>>>>>> 408b9702a (Revert "map and ingameUI")
 >>>>>>> 85c4d727b (Revert "map and ingameUI")
+=======
+  apiCompatibilityLevel: 3
+  activeInputHandler: 2
+>>>>>>> 8aec2fed1 (Reapply "map and ingameUI")
   windowsGamepadBackendHint: 0
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0
@@ -942,4 +953,4 @@ PlayerSettings:
   hmiLoadingImage: {fileID: 0}
   platformRequiresReadableAssets: 0
   virtualTexturingSupportEnabled: 0
-  insecureHttpOption: 0
+  insecureHttpOption: 2

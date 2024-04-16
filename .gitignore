@@ -72,12 +72,18 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> 8aec2fed1 (Reapply "map and ingameUI")
 *.unitypackage.meta
 .idea/
 mono_crash.mem.*
 DataTable/~$SkillTable.xlsx
+<<<<<<< HEAD
 =======
 >>>>>>> 408b9702a (Revert "map and ingameUI")
 >>>>>>> 85c4d727b (Revert "map and ingameUI")
+=======
+>>>>>>> 8aec2fed1 (Reapply "map and ingameUI")
