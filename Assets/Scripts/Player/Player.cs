@@ -402,7 +402,7 @@ public class Player : MonoBehaviour
                         {
                             // 랜덤 단일 타겟
                             Vector3 enemyPos = DetectRandomEnemyPos();
-                            skillPool.GetPoolGroundStrikeSkill(skillData.skillId, enemyPos, damage / 10);
+                            skillPool.GetPoolGroundStrikeSkill(skillData.skillId, enemyPos, damage);
                             yield return new WaitForSeconds(castDelay);
                         }
                     }
@@ -431,7 +431,7 @@ public class Player : MonoBehaviour
                     break;
                 case SkillTargetType.AOE:
                     {
-                        skillPool.GetPoolAreaSkill(skillData.skillId, transform.position, damage);
+                        skillPool.GetPoolAreaSkill(skillData.skillId, transform.position, damage / 10);
                         yield return new WaitForSeconds(castDelay);
                     }
                     break;
