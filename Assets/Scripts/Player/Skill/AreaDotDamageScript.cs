@@ -52,11 +52,11 @@ public class AreaDotDamageScript : MonoBehaviour
                 break;
         }
 
-        if (skillInfo.skillId == 30000541)
-        {
-            // [초월]생츄어리 군주
-            damageInterval = 1.5f;
-        }
+        //if (skillInfo.skillId == 30000541)
+        //{
+        //    // [초월]생츄어리 군주
+        //    damageInterval = 1.5f;
+        //}
     }
 
     private void OnEnable()

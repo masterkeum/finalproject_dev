@@ -140,6 +140,7 @@ public class AccountInfo
     public int core;
     public int timeTicket;
     public int selectedStageId;
+    public int clearStageId;
     public float lastUpdateTime;
 
     public PlayerStatInfo playerStatInfo;
@@ -200,6 +201,8 @@ public class AccountInfo
         mimicSliderCurExp = 0;
         mimicSliderMaxExp = mimicLvData.exp;
         curExp = 0;
+
+        clearStageId = 0;
 
         // 플레이어 스탯
         playerStatInfo = new PlayerStatInfo(DataManager.Instance.GetCharacterInfo(DataManager.Instance._InitParam["StartCharacterId"]), equipItems);

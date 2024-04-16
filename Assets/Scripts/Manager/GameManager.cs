@@ -216,10 +216,19 @@ public class GameManager : SingletoneBase<GameManager>
 
     public void selectNextStage()
     {
-        // TODO : 데이터로 빼야됨
-        if (stageId < 105)
+        if (accountInfo.selectedStageId > accountInfo.clearStageId)
         {
-            stageId++;
+            // 신규 클리어
+            accountInfo.clearStageId = stageId;
+            accountInfo.AddGem(DataManager.Instance.stageListDict[stageId].clearGem);
+            accountInfo.AddGold(DataManager.Instance.stageListDict[stageId].clearGold);
+
+            // TODO : 데이터로 빼야됨
+            if (stageId < 105)
+            {
+                stageId++;
+                accountInfo.selectedStageId = stageId;
+            }
         }
     }
     #endregion
@@ -236,5 +245,10 @@ public class GameManager : SingletoneBase<GameManager>
         UpdateUI();
     }
 
+    public void SelectStage(int _stageId)
+    {
+        stageId = _stageId;
+        accountInfo.selectedStageId = _stageId;
+    }
     #endregion
 }
