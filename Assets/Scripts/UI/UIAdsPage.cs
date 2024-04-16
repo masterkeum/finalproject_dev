@@ -38,6 +38,7 @@ public class UIAdsPage : UIBase
     {
         Debug.Log("무료재화 잼 획득");
         GameManager.Instance.accountInfo.AddGem(10);
+        SoundManager.Instance.PlaySound("PurchaseUI_1");
         uiAdsPage.SetActive(false);
     }
 
