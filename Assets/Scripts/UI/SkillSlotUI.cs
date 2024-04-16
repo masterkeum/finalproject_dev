@@ -30,8 +30,9 @@ public class SkillSlotUI : MonoBehaviour
         SetIndex();
     }
 
-    public void SetStars(int level)
+    public void SetStars(int level, bool up = false)
     {
+
         for (int i = 0; i < level; i++)
         {
             if (level == 0)
@@ -44,11 +45,16 @@ public class SkillSlotUI : MonoBehaviour
                 starSlot[i].SetYellowStar();
             }
         }
+
+        if (up)
+        {
+            starSlot[level].SetYellowStar(0.5f);
+        }
     }
 
     public void ClearStars()
     {
-        for(int i = 0; i < starSlot.Count; i++)
+        for (int i = 0; i < starSlot.Count; i++)
         {
             starSlot[i].ClearYellowStar();
         }
