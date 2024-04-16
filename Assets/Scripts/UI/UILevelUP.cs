@@ -229,7 +229,7 @@ public class UILevelUP : UIBase
         if (player.playeringameinfo.skillpoint > 0)
         {
             RemoveAtVariableSkills();
-            OnReRollButton();
+            OnReRoll();
             UpdateSkillPoint();
             SetCurSkills();
         }
@@ -268,6 +268,7 @@ public class UILevelUP : UIBase
             {
                 if (DataManager.Instance.GetSkillTable(skill.nextSkillId) == null)
                 {
+
                     Debug.LogWarning($"NotFound Skill : {skill.nextSkillId}");
                     continue;
                 }
@@ -295,6 +296,13 @@ public class UILevelUP : UIBase
         }
     }
 
+
+    public void OnReRoll()
+    {
+        SetSelectableSkills();
+        SetStar();
+    }
+
     /// <summary>
     /// 스킬 선택목록 리롤
     /// </summary>
@@ -302,17 +310,17 @@ public class UILevelUP : UIBase
     {
         SetSelectableSkills();
         SetStar();
-        
+
         reRollCount++;
         OnThreeTimeSelect();
-        Debug.Log("rerollcount 실행횟수 "+reRollCount);
+        Debug.Log("rerollcount 실행횟수 " + reRollCount);
     }
 
     public void OnThreeTimeSelect()
     {
         // todo 3번 호출 가능 골드 100씩 차감
         GameManager.Instance.accountInfo.MinusGold(100);
-        
+
         // 광고보기 버튼 띄우기,기존버튼 비활성화
         if (reRollCount > 2)
         {
@@ -327,9 +335,9 @@ public class UILevelUP : UIBase
         var adPopup = UIManager.Instance.ShowUI<UIAdsPage>();
         ++UIManager.Instance.popupUICount;
         adPopup.Init(AdsStates.Reroll);
-        
+
         SetSelectableSkills();
         SetStar();
     }
-    
+
 }
