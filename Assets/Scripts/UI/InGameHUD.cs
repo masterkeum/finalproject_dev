@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class InGameHUD : UIBase
@@ -11,6 +12,8 @@ public class InGameHUD : UIBase
     public Slider hpSlider;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI curLevelText;
+
+    private float timer = 0f;
 
     private void Awake()
     {
@@ -30,6 +33,12 @@ public class InGameHUD : UIBase
         UpdateWhenEnemyDie();
         UpdateWhenGetGold();
         UpdateWhenGetGem();
+    }
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        timeText.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(timer / 60f), Mathf.FloorToInt(timer % 60f));
     }
 
     public void SetWhenStart()

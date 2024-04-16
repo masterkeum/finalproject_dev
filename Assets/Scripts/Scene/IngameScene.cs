@@ -56,6 +56,7 @@ public class IngameScene : MonoBehaviour
     {
         Debug.Log("IngameScene.Start");
         GameManager.Instance.InGameSceneProcess();
+        SoundManager.Instance.CreateBattleAudioSource();
 
         // 스테이지에 맞는 필드 생성
         GenerateLevel(stageId);

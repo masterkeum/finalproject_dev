@@ -71,7 +71,7 @@ public class SkillPool : MonoBehaviour
                 obj.transform.SetParent(parentTransform);
                 obj.SetActive(false);
 
-                Debug.LogWarning($"expanded pool : poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
+                //Debug.LogWarning($"expanded pool : poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
             }
 
             obj.transform.position = point.position;
@@ -105,7 +105,7 @@ public class SkillPool : MonoBehaviour
                 obj.transform.SetParent(parentTransform);
                 obj.SetActive(false);
 
-                Debug.LogWarning($"expanded pool : poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
+                //Debug.LogWarning($"expanded pool : poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
             }
 
             obj.transform.position = Pos;
@@ -137,7 +137,7 @@ public class SkillPool : MonoBehaviour
                 obj.transform.SetParent(parentTransform);
                 obj.SetActive(false);
 
-                Debug.LogWarning($"expanded pool : poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
+                //Debug.LogWarning($"expanded pool : poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
             }
 
             obj.transform.position = Pos;
@@ -170,7 +170,7 @@ public class SkillPool : MonoBehaviour
                 obj = Instantiate(Resources.Load<GameObject>(skillData.prefabAddress), parentTransform.position, Quaternion.identity);
                 obj.SetActive(false);
 
-                Debug.LogWarning($"expanded pool : poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
+                //Debug.LogWarning($"expanded pool : poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
             }
 
             obj.transform.position = enemyPos;
@@ -205,7 +205,7 @@ public class SkillPool : MonoBehaviour
                 obj.transform.SetParent(parentTransform);
                 obj.SetActive(false);
 
-                Debug.LogWarning($"poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
+                //Debug.LogWarning($"poolDictionary[{skillId}] : {poolDictionary[skillId].Count}");
             }
 
             obj.transform.position = enemyPos;

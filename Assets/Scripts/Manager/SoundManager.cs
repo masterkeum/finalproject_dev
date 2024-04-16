@@ -22,7 +22,7 @@ public class SoundManager : SingletoneBase<SoundManager>
 
         LoadUISoundClip();
         LoadBattleSoundclip();
-        
+
     }
 
     public void CreateSFXAudioSource()
@@ -30,6 +30,13 @@ public class SoundManager : SingletoneBase<SoundManager>
         GameObject uiSfxSource = new GameObject("uiSfxSource");
         sfxAudioSource = uiSfxSource.AddComponent<AudioSource>();
     }
+
+    public void CreateBattleAudioSource()
+    {
+        GameObject uiBattleSource = new GameObject("battleAudioSource");
+        battleAudioSource = uiBattleSource.AddComponent<AudioSource>();
+    }
+
 
     private void LoadUISoundClip()
     {

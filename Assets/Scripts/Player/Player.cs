@@ -120,6 +120,9 @@ public class Player : MonoBehaviour
 
     private Dictionary<int, GameObject> passiveObj = new Dictionary<int, GameObject>();
 
+
+    protected static readonly int Hit = Animator.StringToHash("Hit");
+
     // 치트 스크립트
     [SerializeField] private Canvas _testUI;
 
@@ -435,7 +438,7 @@ public class Player : MonoBehaviour
                     break;
                 case SkillTargetType.AOE:
                     {
-                        skillPool.GetPoolAreaSkill(skillData.skillId, transform.position, damage);
+                        skillPool.GetPoolAreaSkill(skillData.skillId, transform.position, damage / 10);
                         yield return new WaitForSeconds(castDelay);
                     }
                     break;
@@ -566,6 +569,13 @@ public class Player : MonoBehaviour
         playeringameinfo.curHp -= realDamage;
         UpdateHPBar();
 
+        // 피격 모션
+        anim.SetTrigger(Hit);
+
+        // 피격 사운드
+        int ran = UnityEngine.Random.Range(1, 3);
+        SoundManager.Instance.PlayBattleSound("Hit" + ran.ToString());
+
         realDamage = -realDamage;
 
         Color color = new Color(1f, 0f, 0f);
@@ -580,6 +590,8 @@ public class Player : MonoBehaviour
 
     void OnDead()
     {
+        // 피격 사운드
+        SoundManager.Instance.PlayBattleSound("Die");
         Debug.Log("플레이어사망. 게임오버UI");
         //GameManager.Instance.accountInfo.AddGold(playeringameinfo.gold);// 사망하면 포기
 
@@ -640,7 +652,7 @@ public class Player : MonoBehaviour
         {
             nearEnemy.Add(col.transform);
         }
-        Debug.Log($"hitColliders : {hitColliders.Length} / nearEnemy : {nearEnemy.Count}");
+        //Debug.Log($"hitColliders : {hitColliders.Length} / nearEnemy : {nearEnemy.Count}");
 
         if (nearEnemy.Count > 0)
         {
