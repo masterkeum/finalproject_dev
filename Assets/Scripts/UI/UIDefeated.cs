@@ -14,6 +14,7 @@ public class UIDefeated : UIBase
     public TextMeshProUGUI KillCountText;
     public TextMeshProUGUI GetGoldText;
 
+    public GameObject uiDefeated;
     private void Awake()
     {
         player = GameManager.Instance.player;
@@ -52,6 +53,7 @@ public class UIDefeated : UIBase
         ++UIManager.Instance.popupUICount;
         adPopup.Init(AdsStates.Defeated);
         
+        uiDefeated.SetActive(false);
         
         // 두가지 방법, 함수를 만들어주고 변수를 통해 enum , adpage 에서 처리 // 성능저하는 없다. 코드 늘어남
         // opened 로 파라미터로 값 넘겨줘서 사용할 수 있다. // 박싱언박싱 성능저하 이슈
@@ -63,4 +65,5 @@ public class UIDefeated : UIBase
     {
         SceneManager.LoadScene("MainScene");
     }
+    
 }

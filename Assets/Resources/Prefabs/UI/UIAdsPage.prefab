@@ -538,6 +538,8 @@ MonoBehaviour:
   buttonsClear: {fileID: 55355521753774317}
   buttonsFree: {fileID: 5027442620798538411}
   buttonsReroll: {fileID: 3922353532768366553}
+  uiDefeated: {fileID: 1298923645609650093, guid: 229ca46b36de3a347aaba82a86f32a13,
+    type: 3}
 --- !u!1 &1570947044030515065
 GameObject:
   m_ObjectHideFlags: 0

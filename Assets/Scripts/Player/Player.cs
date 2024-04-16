@@ -530,6 +530,11 @@ public class Player : MonoBehaviour
         hpGuageSlider.value = per;
     }
 
+    public void ResetPlayerHP()
+    {
+        playeringameinfo.curHp = 500;
+    }
+
     public void Heal(int healamount)
     {
         if (playeringameinfo.curHp + healamount > playeringameinfo.maxHp)
