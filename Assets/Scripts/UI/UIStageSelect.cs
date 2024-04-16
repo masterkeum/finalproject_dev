@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 //public class StageSlot
 //{
@@ -9,7 +10,7 @@ using UnityEngine.UI;
 public class UIStageSelect : UIBase
 {
     [SerializeField] private StageSlotUI[] _stageSlots;
-    [SerializeField] private Scrollbar scrollbar;
+    [SerializeField] private ScrollRect scrollbar;
 
     [Header("SelectedStage")]
     private StageSlotUI _curStage;
@@ -21,9 +22,7 @@ public class UIStageSelect : UIBase
         SelectCurSlot(tmpSelect);
 
         LockSlot(GameManager.Instance.accountInfo.clearStageId);
-
-
-        scrollbar.value = 0.5f;//1.0f - (float)tmpSelect / 4;
+        scrollbar.verticalNormalizedPosition = 1.0f - (float)tmpSelect / 4;
     }
 
 
