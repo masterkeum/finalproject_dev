@@ -118,7 +118,7 @@ public class UILevelUP : UIBase
                 selectableSkillUI[i].gameObject.SetActive(false);
             }
         }
-        for (int i = 0; i < selectableSkillUI.Count; i++) // 초월에 필요한 스킬 표기하기
+        for (int i = 0; i < randomSkills.Count; i++) // 초월에 필요한 스킬 표기하기
         {
             if (randomSkills[i].applyType == SkillApplyType.Active)
             {
