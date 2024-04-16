@@ -17,10 +17,14 @@ public class UILevelUP : UIBase
     public TextMeshProUGUI skillPointText;
 
     private Player player;
+    private int reRollCount;
+    public GameObject reRollBtn;
+    public GameObject reRollAdsBtn;
 
     private void Awake()
     {
         player = GameManager.Instance.player;
+        reRollCount = 0;
 
         foreach (SkillTable skill in DataManager.Instance.skillTableDict.Values)
         {
@@ -114,7 +118,7 @@ public class UILevelUP : UIBase
                 selectableSkillUI[i].gameObject.SetActive(false);
             }
         }
-        for( int i = 0; i < selectableSkillUI.Count; i++ ) // 초월에 필요한 스킬 표기하기
+        for (int i = 0; i < selectableSkillUI.Count; i++) // 초월에 필요한 스킬 표기하기
         {
             if (randomSkills[i].applyType == SkillApplyType.Active)
             {
@@ -147,7 +151,7 @@ public class UILevelUP : UIBase
             curAcitveSkillUI[i].skillSprite.sprite = Resources.Load<Sprite>(player.activeSkillSlot[i].imageAddress);
             if (player.activeSkillSlot[i].applyType == SkillApplyType.Awaken)
             {
-                curAcitveSkillUI[i].skillSprite.color = new Color(0,1,1,1); 
+                curAcitveSkillUI[i].skillSprite.color = new Color(0, 1, 1, 1);
             }
         }
         for (int i = 0; i < player.passiveSkillSlot.Count; i++)
@@ -182,7 +186,7 @@ public class UILevelUP : UIBase
             {
                 if (selectableSkillUI[i].skillGroupId == player.activeSkillSlot[j].skillGroup)
                 {
-                    selectableSkillUI[i].SetStars(player.activeSkillSlot[j].level +1);
+                    selectableSkillUI[i].SetStars(player.activeSkillSlot[j].level, true);
                     skillFound = true;
                 }
             }
@@ -190,21 +194,22 @@ public class UILevelUP : UIBase
             {
                 if (selectableSkillUI[i].skillGroupId == player.passiveSkillSlot[j].skillGroup)
                 {
-                    selectableSkillUI[i].SetStars(player.passiveSkillSlot[j].level +1);
+                    selectableSkillUI[i].SetStars(player.passiveSkillSlot[j].level, true);
                     skillFound = true;
                 }
             }
             if (!skillFound)
             {
-                selectableSkillUI[i].SetStars(1);
+                selectableSkillUI[i].SetStars(0, true);
             }
         }
 
-        for (int i = 0; i <player.activeSkillSlot.Count; i++)
+        // 보유목록
+        for (int i = 0; i < player.activeSkillSlot.Count; i++)
         {
             curAcitveSkillUI[i].SetStars(player.activeSkillSlot[i].level);
         }
-        for (int i = 0; i <player.passiveSkillSlot.Count;i++)
+        for (int i = 0; i < player.passiveSkillSlot.Count; i++)
         {
             curPassiveSkillUI[i].SetStars(player.passiveSkillSlot[i].level);
         }
@@ -297,5 +302,34 @@ public class UILevelUP : UIBase
     {
         SetSelectableSkills();
         SetStar();
+        
+        reRollCount++;
+        OnThreeTimeSelect();
+        Debug.Log("rerollcount 실행횟수 "+reRollCount);
     }
+
+    public void OnThreeTimeSelect()
+    {
+        // todo 3번 호출 가능 골드 100씩 차감
+        GameManager.Instance.accountInfo.MinusGold(100);
+        
+        // 광고보기 버튼 띄우기,기존버튼 비활성화
+        if (reRollCount > 2)
+        {
+            reRollBtn.SetActive(false);
+            reRollAdsBtn.SetActive(true);
+        }
+    }
+
+    public void OnReRollAdsButton()
+    {
+        // todo 광고 띄우기
+        var adPopup = UIManager.Instance.ShowUI<UIAdsPage>();
+        ++UIManager.Instance.popupUICount;
+        adPopup.Init(AdsStates.Reroll);
+        
+        SetSelectableSkills();
+        SetStar();
+    }
+    
 }

@@ -530,6 +530,11 @@ public class Player : MonoBehaviour
         hpGuageSlider.value = per;
     }
 
+    public void ResetPlayerHP()
+    {
+        playeringameinfo.curHp = 500;
+    }
+
     public void Heal(int healamount)
     {
         if (playeringameinfo.curHp + healamount > playeringameinfo.maxHp)
@@ -617,6 +622,7 @@ public class Player : MonoBehaviour
 
         return randomPosition;
     }
+
     /// <summary>
     /// 
     /// </summary>
@@ -631,6 +637,7 @@ public class Player : MonoBehaviour
             nearEnemy.Add(col.transform);
         }
         Debug.Log($"hitColliders : {hitColliders.Length} / nearEnemy : {nearEnemy.Count}");
+
         if (nearEnemy.Count > 0)
         {
             Transform nearestEnemy = GetNearestEnemy();
@@ -785,6 +792,7 @@ public class Player : MonoBehaviour
                 GameManager.Instance.accountInfo.AddGold(playeringameinfo.gold);
                 GameManager.Instance.accountInfo.AddGem(playeringameinfo.gem);
                 GameManager.Instance.accountInfo.AddCore(playeringameinfo.core);
+                GameManager.Instance.selectNextStage();
 
                 GameManager.Instance.SetState(GameState.IngameEnd);
                 UIManager.Instance.ShowUI<UIGameClear>();

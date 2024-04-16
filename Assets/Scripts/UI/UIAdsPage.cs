@@ -10,20 +10,22 @@ public class UIAdsPage : UIBase
     public GameObject buttonsClear;
     public GameObject buttonsFree;
     public GameObject buttonsReroll;
+    private Player player;
     
-    // init 함수 만들어주기
     public void Init(AdsStates adsStates)
     {
         buttonsDefeated.SetActive(adsStates == AdsStates.Defeated);
         buttonsClear.SetActive(adsStates == AdsStates.Clear);
         buttonsFree.SetActive(adsStates == AdsStates.Free);
         buttonsReroll.SetActive(adsStates == AdsStates.Reroll);
+        player = GameManager.Instance.player;
     }
-    public void Defeated() // 게임재실행
+    public void Defeated() // 캐릭터 부활
     {
-        // TODO 재실행이 아닌 체력이 다시 차면서 부활하는 것
-        Debug.Log("게임 재실행");
-        SceneManager.LoadScene(3);
+        Debug.Log("캐릭터 부활");
+        uiAdsPage.SetActive(false);
+        UIManager.Instance.Clear();
+        player.ResetPlayerHP();
     }
 
     public void GameClear() // 재화2배획득
@@ -42,5 +44,8 @@ public class UIAdsPage : UIBase
     public void SkillReroll()
     {
         Debug.Log("SkillReroll" );
+        uiAdsPage.SetActive(false);
+        // UIManager.Instance.Clear();
+        --UIManager.Instance.popupUICount;
     }
 }

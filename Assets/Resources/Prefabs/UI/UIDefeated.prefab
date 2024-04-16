@@ -604,6 +604,7 @@ MonoBehaviour:
   TimeOver: {fileID: 2904723396258612180}
   KillCountText: {fileID: 2026578882618611371}
   GetGoldText: {fileID: 8642455348939917019}
+  uiDefeated: {fileID: 1298923645609650093}
 --- !u!1 &1570947044030515065
 GameObject:
   m_ObjectHideFlags: 0
