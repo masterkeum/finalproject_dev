@@ -33,7 +33,7 @@ public class UIDefeated : UIBase
 
     public void Resurrection()
     {
-        Debug.Log("부활했습니다.");
+        //Debug.Log("부활했습니다.");
         if (player.playeringameinfo.resurectionCount < 1)
         {
             var adPopup = UIManager.Instance.ShowUI<UIAdsPage>();
@@ -44,7 +44,7 @@ public class UIDefeated : UIBase
             adButton.SetActive(false);
             uiDefeated.SetActive(false);
             
-            Debug.Log("부활횟수: "+player.playeringameinfo.resurectionCount);
+            //Debug.Log("부활횟수: "+player.playeringameinfo.resurectionCount);
         }
         
         

@@ -540,6 +540,7 @@ public class Player : MonoBehaviour
     public void ResetPlayerHP()
     {
         playeringameinfo.curHp = playeringameinfo.maxHp;
+        UpdateHPBar();
     }
 
     public void Heal(int healamount)
