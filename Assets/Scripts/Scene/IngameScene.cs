@@ -164,7 +164,7 @@ public class IngameScene : MonoBehaviour
                 // 각도를 바탕으로 X와 Z 좌표 계산
                 float x = Mathf.Cos(randomAngle) * spawnRadius;
                 float z = Mathf.Sin(randomAngle) * spawnRadius;
-                Vector3 randomPosition = player.transform.position + new Vector3(x, 100f, z);
+                Vector3 randomPosition = player.transform.position + new Vector3(x, 200f, z);
 
                 // 맵크기에 따른 보정 
                 randomPosition.x = Mathf.Clamp(randomPosition.x, -105, 105);

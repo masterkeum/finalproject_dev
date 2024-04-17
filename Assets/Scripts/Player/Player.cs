@@ -175,7 +175,17 @@ public class Player : MonoBehaviour
         if (transform.position.y < -10)
         {
             // 임시방편. 바닥밑으로 떨어지면 위치이동
-            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
+            Vector3 tmpPos = transform.position;
+            tmpPos.y = 200;
+            RaycastHit hit;
+            NavMeshHit navhit;
+            if (Physics.Raycast(new Ray(tmpPos, Vector3.down), out hit, Mathf.Infinity))
+            {
+                if (NavMesh.SamplePosition(hit.point, out navhit, detectionRange, NavMesh.AllAreas))
+                {
+                    transform.position = navhit.position;
+                }
+            }
         }
         //SkillRoutine();
     }
