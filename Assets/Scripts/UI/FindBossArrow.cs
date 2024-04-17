@@ -12,11 +12,6 @@ public class FindBossArrow : MonoBehaviour
     // 마우스 입력 -> 보스 방향값만 보내주기
     public Transform bossPos;
     
-    private void Start()
-    {
-        
-    }
-
     private void Update()
     {
         

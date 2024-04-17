@@ -14,7 +14,7 @@ public class EnemyBossController : EnemyBaseController
     public float maxWanderWaitTime;
 
     private Vector3 gizmoDestination;
-
+    private GameObject arrowPrefab;
     public override void Init(int _monsterID, int _level, Player target)
     {
         base.Init(_monsterID, _level, target);
@@ -35,7 +35,7 @@ public class EnemyBossController : EnemyBaseController
 
     private void FindBossArrow()
     {
-        var arrowPrefab = Instantiate(Resources.Load<GameObject>("Prefabs/UI/GameObject"), player.transform);
+        arrowPrefab = Instantiate(Resources.Load<GameObject>("Prefabs/UI/GameObject"), player.transform);
         arrowPrefab.GetComponent<FindBossArrow>().bossPos = transform;
     }
     private void Update()
@@ -167,6 +167,7 @@ public class EnemyBossController : EnemyBaseController
     protected override void OnDead()
     {
         base.OnDead();
+        Destroy(arrowPrefab);
         Debug.Log("보스 하나 죽음");
         player.AddCore(monsterLevel.core);
         player.RemoveChaseTarget(gameObject);
