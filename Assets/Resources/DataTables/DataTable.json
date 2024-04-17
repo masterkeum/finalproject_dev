@@ -49,6 +49,98 @@
       "codeDesc": "기본 스킬"
     }
   ],
+  "StageList": [
+    {
+      "stageId": 101,
+      "levelPrefab": "Prefabs/Level/Level1",
+      "BGSprite": "Textures/SnapShot/stage1_1",
+      "stageName": "1. 불청객",
+      "stageDesc": "들판",
+      "clearGold": 500,
+      "clearGem": 50
+    },
+    {
+      "stageId": 102,
+      "levelPrefab": "Prefabs/Level/Level1",
+      "BGSprite": "Textures/SnapShot/stage1_2",
+      "stageName": "2. 야간 습격",
+      "stageDesc": "들판",
+      "clearGold": 1000,
+      "clearGem": 100
+    },
+    {
+      "stageId": 103,
+      "levelPrefab": "Prefabs/Level/Level1",
+      "BGSprite": "Textures/SnapShot/stage1_3",
+      "stageName": "3. 새벽공습",
+      "stageDesc": "들판",
+      "clearGold": 1500,
+      "clearGem": 150
+    },
+    {
+      "stageId": 104,
+      "levelPrefab": "Prefabs/Level/Level1",
+      "BGSprite": "Textures/SnapShot/stage1_4",
+      "stageName": "4. 계속되는 공격",
+      "stageDesc": "들판",
+      "clearGold": 2000,
+      "clearGem": 200
+    },
+    {
+      "stageId": 105,
+      "levelPrefab": "Prefabs/Level/Level1",
+      "BGSprite": "Textures/SnapShot/stage1_5",
+      "stageName": "5. 종결",
+      "stageDesc": "들판",
+      "clearGold": 2500,
+      "clearGem": 250
+    },
+    {
+      "stageId": 201,
+      "levelPrefab": "Prefabs/Level/Level1",
+      "BGSprite": "Textures/SnapShot/stage2_1",
+      "stageName": null,
+      "stageDesc": "중세",
+      "clearGold": 3000,
+      "clearGem": 300
+    },
+    {
+      "stageId": 202,
+      "levelPrefab": "Prefabs/Level/Level1",
+      "BGSprite": "Textures/SnapShot/stage2_2",
+      "stageName": null,
+      "stageDesc": "중세",
+      "clearGold": 3500,
+      "clearGem": 350
+    },
+    {
+      "stageId": 203,
+      "levelPrefab": "Prefabs/Level/Level1",
+      "BGSprite": "Textures/SnapShot/stage2_3",
+      "stageName": null,
+      "stageDesc": "중세",
+      "clearGold": 4000,
+      "clearGem": 400
+    },
+    {
+      "stageId": 204,
+      "levelPrefab": "Prefabs/Level/Level1",
+      "BGSprite": "Textures/SnapShot/stage2_4",
+      "stageName": null,
+      "stageDesc": "중세",
+      "clearGold": 4500,
+      "clearGem": 450
+    },
+    {
+      "stageId": 205,
+      "levelPrefab": "Prefabs/Level/Level1",
+      "BGSprite": "Textures/SnapShot/stage2_5",
+      "stageName": null,
+      "stageDesc": "중세",
+      "clearGold": 5000,
+      "clearGem": 500
+    }
+  ],
   "CharacterInfo": [
     {
       "uid": 10000001,
@@ -103,7 +195,7 @@
       "maxLevel": 3,
       "hp": 2800,
       "attackPower": 70,
-      "sensoryRange": 10,
+      "sensoryRange": 15,
       "attackRange": 3,
       "attackSpeed": 1.3,
       "moveSpeed": 3.5,
@@ -119,7 +211,7 @@
       "hp": 150,
       "attackPower": 30,
       "sensoryRange": 0,
-      "attackRange": 3,
+      "attackRange": 2.2,
       "attackSpeed": 1.4,
       "moveSpeed": 2.5,
       "defaultSkill": 30100001,
@@ -134,7 +226,7 @@
       "hp": 170,
       "attackPower": 33,
       "sensoryRange": 0,
-      "attackRange": 2.6,
+      "attackRange": 2.4,
       "attackSpeed": 1.5,
       "moveSpeed": 4,
       "defaultSkill": 30100001,
@@ -187,7 +279,7 @@
     },
     {
       "uid": 20100003,
-      "characterType": "Monster",
+      "characterType": "BossMonster",
       "name": "플라잉데몬",
       "minLevel": 1,
       "maxLevel": 3,
@@ -208,7 +300,7 @@
       "addHP": 0,
       "addAP": 0,
       "gold": 20,
-      "exp": 4,
+      "exp": 3,
       "core": 0
     },
     {
@@ -734,105 +826,13 @@
       "core": 10
     }
   ],
-  "StageList": [
-    {
-      "stageId": 101,
-      "levelPrefab": "Prefabs/Level/Level1",
-      "BGSprite": "Textures/SnapShot/stage1_1",
-      "stageName": "1. 불청객",
-      "stageDesc": "들판",
-      "clearGold": 500,
-      "clearGem": 50
-    },
-    {
-      "stageId": 102,
-      "levelPrefab": "Prefabs/Level/Level1",
-      "BGSprite": "Textures/SnapShot/stage1_2",
-      "stageName": "2. 야간 습격",
-      "stageDesc": "들판",
-      "clearGold": 1000,
-      "clearGem": 100
-    },
-    {
-      "stageId": 103,
-      "levelPrefab": "Prefabs/Level/Level1",
-      "BGSprite": "Textures/SnapShot/stage1_3",
-      "stageName": "3. 새벽공습",
-      "stageDesc": "들판",
-      "clearGold": 1500,
-      "clearGem": 150
-    },
-    {
-      "stageId": 104,
-      "levelPrefab": "Prefabs/Level/Level1",
-      "BGSprite": "Textures/SnapShot/stage1_4",
-      "stageName": "4. 계속되는 공격",
-      "stageDesc": "들판",
-      "clearGold": 2000,
-      "clearGem": 200
-    },
-    {
-      "stageId": 105,
-      "levelPrefab": "Prefabs/Level/Level1",
-      "BGSprite": "Textures/SnapShot/stage1_5",
-      "stageName": "5. 종결",
-      "stageDesc": "들판",
-      "clearGold": 2500,
-      "clearGem": 250
-    },
-    {
-      "stageId": 201,
-      "levelPrefab": "Prefabs/Level/Level1",
-      "BGSprite": "Textures/SnapShot/stage2_1",
-      "stageName": null,
-      "stageDesc": "중세",
-      "clearGold": 3000,
-      "clearGem": 300
-    },
-    {
-      "stageId": 202,
-      "levelPrefab": "Prefabs/Level/Level1",
-      "BGSprite": "Textures/SnapShot/stage2_2",
-      "stageName": null,
-      "stageDesc": "중세",
-      "clearGold": 3500,
-      "clearGem": 350
-    },
-    {
-      "stageId": 203,
-      "levelPrefab": "Prefabs/Level/Level1",
-      "BGSprite": "Textures/SnapShot/stage2_3",
-      "stageName": null,
-      "stageDesc": "중세",
-      "clearGold": 4000,
-      "clearGem": 400
-    },
-    {
-      "stageId": 204,
-      "levelPrefab": "Prefabs/Level/Level1",
-      "BGSprite": "Textures/SnapShot/stage2_4",
-      "stageName": null,
-      "stageDesc": "중세",
-      "clearGold": 4500,
-      "clearGem": 450
-    },
-    {
-      "stageId": 205,
-      "levelPrefab": "Prefabs/Level/Level1",
-      "BGSprite": "Textures/SnapShot/stage2_5",
-      "stageName": null,
-      "stageDesc": "중세",
-      "clearGold": 5000,
-      "clearGem": 500
-    }
-  ],
   "StageInfoTable": [
     {
       "stageId": 101,
       "monsterId": 20000001,
-      "level": 2,
+      "level": 1,
       "genTimeStart": 0,
-      "genTimeEnd": 15,
+      "genTimeEnd": 20,
       "genAmount": 3,
       "genTime": 3,
       "genMax": 30,
@@ -841,7 +841,7 @@
     {
       "stageId": 101,
       "monsterId": 20000001,
-      "level": 2,
+      "level": 1,
       "genTimeStart": 10,
       "genTimeEnd": 60,
       "genAmount": 3,
@@ -852,22 +852,22 @@
     {
       "stageId": 101,
       "monsterId": 20000001,
-      "level": 1,
+      "level": 2,
       "genTimeStart": 40,
       "genTimeEnd": 70,
       "genAmount": 3,
-      "genTime": 10,
+      "genTime": 15,
       "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 101,
       "monsterId": 20000001,
-      "level": 1,
+      "level": 2,
       "genTimeStart": 80,
-      "genTimeEnd": 100,
+      "genTimeEnd": 150,
       "genAmount": 2,
-      "genTime": 15,
+      "genTime": 12,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -875,10 +875,10 @@
       "stageId": 101,
       "monsterId": 20000002,
       "level": 1,
-      "genTimeStart": 15,
-      "genTimeEnd": 200,
+      "genTimeStart": 20,
+      "genTimeEnd": 100,
       "genAmount": 3,
-      "genTime": 20,
+      "genTime": 10,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -889,7 +889,7 @@
       "genTimeStart": 30,
       "genTimeEnd": 300,
       "genAmount": 3,
-      "genTime": 40,
+      "genTime": 15,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -900,7 +900,7 @@
       "genTimeStart": 160,
       "genTimeEnd": 380,
       "genAmount": 4,
-      "genTime": 50,
+      "genTime": 20,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -911,7 +911,7 @@
       "genTimeStart": 180,
       "genTimeEnd": 400,
       "genAmount": 4,
-      "genTime": 70,
+      "genTime": 30,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -933,9 +933,9 @@
     {
       "stageId": 102,
       "monsterId": 20000001,
-      "level": 3,
+      "level": 1,
       "genTimeStart": 0,
-      "genTimeEnd": 15,
+      "genTimeEnd": 20,
       "genAmount": 4,
       "genTime": 3,
       "genMax": 30,
@@ -944,7 +944,7 @@
     {
       "stageId": 102,
       "monsterId": 20000001,
-      "level": 3,
+      "level": 2,
       "genTimeStart": 10,
       "genTimeEnd": 60,
       "genAmount": 3,
@@ -955,7 +955,7 @@
     {
       "stageId": 102,
       "monsterId": 20000001,
-      "level": 4,
+      "level": 3,
       "genTimeStart": 40,
       "genTimeEnd": 70,
       "genAmount": 2,
@@ -966,7 +966,7 @@
     {
       "stageId": 102,
       "monsterId": 20000001,
-      "level": 5,
+      "level": 4,
       "genTimeStart": 70,
       "genTimeEnd": 100,
       "genAmount": 4,
@@ -981,7 +981,7 @@
       "genTimeStart": 15,
       "genTimeEnd": 45,
       "genAmount": 3,
-      "genTime": 1,
+      "genTime": 5,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -1034,9 +1034,9 @@
       "monsterId": 20000003,
       "level": 4,
       "genTimeStart": 15,
-      "genTimeEnd": 45,
+      "genTimeEnd": 75,
       "genAmount": 3,
-      "genTime": 5,
+      "genTime": 26,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -1047,7 +1047,7 @@
       "genTimeStart": 17,
       "genTimeEnd": 150,
       "genAmount": 3,
-      "genTime": 6,
+      "genTime": 30,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -1069,10 +1069,10 @@
     {
       "stageId": 103,
       "monsterId": 20000001,
-      "level": 4,
+      "level": 3,
       "genTimeStart": 0,
-      "genTimeEnd": 15,
-      "genAmount": 2,
+      "genTimeEnd": 20,
+      "genAmount": 3,
       "genTime": 3,
       "genMax": 30,
       "genPosVecter3": null
@@ -1117,7 +1117,7 @@
       "genTimeStart": 15,
       "genTimeEnd": 45,
       "genAmount": 4,
-      "genTime": 1,
+      "genTime": 5,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -1220,7 +1220,7 @@
     {
       "stageId": 104,
       "monsterId": 20000001,
-      "level": 6,
+      "level": 5,
       "genTimeStart": 0,
       "genTimeEnd": 15,
       "genAmount": 3,
@@ -1286,7 +1286,7 @@
     {
       "stageId": 104,
       "monsterId": 20000003,
-      "level": 4,
+      "level": 3,
       "genTimeStart": 150,
       "genTimeEnd": 210,
       "genAmount": 3,
@@ -1319,7 +1319,7 @@
     {
       "stageId": 104,
       "monsterId": 20000003,
-      "level": 4,
+      "level": 5,
       "genTimeStart": 15,
       "genTimeEnd": 45,
       "genAmount": 3,
@@ -1330,7 +1330,7 @@
     {
       "stageId": 104,
       "monsterId": 20000003,
-      "level": 4,
+      "level": 5,
       "genTimeStart": 17,
       "genTimeEnd": 150,
       "genAmount": 2,
@@ -1385,8 +1385,8 @@
       "level": 4,
       "genTimeStart": 10,
       "genTimeEnd": 60,
-      "genAmount": 2,
-      "genTime": 5,
+      "genAmount": 3,
+      "genTime": 4,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -1396,7 +1396,7 @@
       "level": 5,
       "genTimeStart": 40,
       "genTimeEnd": 70,
-      "genAmount": 2,
+      "genAmount": 3,
       "genTime": 5,
       "genMax": 30,
       "genPosVecter3": null
@@ -1407,7 +1407,7 @@
       "level": 9,
       "genTimeStart": 70,
       "genTimeEnd": 100,
-      "genAmount": 3,
+      "genAmount": 5,
       "genTime": 10,
       "genMax": 30,
       "genPosVecter3": null
@@ -1418,8 +1418,8 @@
       "level": 10,
       "genTimeStart": 15,
       "genTimeEnd": 45,
-      "genAmount": 1,
-      "genTime": 1,
+      "genAmount": 4,
+      "genTime": 5,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -1429,8 +1429,8 @@
       "level": 8,
       "genTimeStart": 30,
       "genTimeEnd": 150,
-      "genAmount": 1,
-      "genTime": 4,
+      "genAmount": 3,
+      "genTime": 6,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -1451,7 +1451,7 @@
       "level": 10,
       "genTimeStart": 200,
       "genTimeEnd": 275,
-      "genAmount": 1,
+      "genAmount": 4,
       "genTime": 5,
       "genMax": 30,
       "genPosVecter3": null
@@ -1462,8 +1462,19 @@
       "level": 1,
       "genTimeStart": 70,
       "genTimeEnd": 100,
-      "genAmount": 2,
+      "genAmount": 3,
       "genTime": 4,
+      "genMax": 30,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20000005,
+      "level": 2,
+      "genTimeStart": 90,
+      "genTimeEnd": 200,
+      "genAmount": 4,
+      "genTime": 5,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -1474,7 +1485,7 @@
       "genTimeStart": 15,
       "genTimeEnd": 45,
       "genAmount": 3,
-      "genTime": 5,
+      "genTime": 10,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -1484,7 +1495,7 @@
       "level": 3,
       "genTimeStart": 17,
       "genTimeEnd": 150,
-      "genAmount": 3,
+      "genAmount": 4,
       "genTime": 6,
       "genMax": 30,
       "genPosVecter3": null
