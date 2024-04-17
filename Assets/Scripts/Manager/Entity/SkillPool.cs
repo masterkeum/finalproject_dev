@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillPool : MonoBehaviour
 {
-    [System.Serializable]
+    [Serializable]
     public struct Projectile
     {
         public int id;
