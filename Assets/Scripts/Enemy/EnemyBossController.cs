@@ -118,7 +118,6 @@ public class EnemyBossController : EnemyBaseController
             navMeshAgent.CalculatePath(defaultPos, path); // 원위치
             navMeshAgent.SetPath(path);
             navMeshAgent.speed = characterInfo.moveSpeed * 2;
-            animator.speed = 2;
             animator.SetBool(IsWalking, true);
             SetState(EnemyState.Flee);
         }
@@ -142,8 +141,8 @@ public class EnemyBossController : EnemyBaseController
         if (Time.time - lastAttackTime > characterInfo.attackSpeed)
         {
             lastAttackTime = Time.time;
-            player.TakeDamage(damage);
             animator.SetTrigger(Attack);
+            player.TakeDamage(damage);
         }
 
         // 공격 범위 벗어나면
@@ -158,7 +157,6 @@ public class EnemyBossController : EnemyBaseController
         if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance)
         {
             navMeshAgent.speed = characterInfo.moveSpeed;
-            animator.speed = 1;
             animator.SetBool(IsWalking, false);
             SetState(EnemyState.Wander);
         }

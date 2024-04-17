@@ -17,7 +17,6 @@ public class EnemyMeleeController : EnemyBaseController
         SetState(EnemyState.Trace);
 
         StartCoroutine(CheckState());
-
     }
     // 상태 초기화
     private IEnumerator CheckState()
@@ -70,9 +69,8 @@ public class EnemyMeleeController : EnemyBaseController
         if (Time.time - lastAttackTime > characterInfo.attackSpeed)
         {
             lastAttackTime = Time.time;
-            player.TakeDamage(damage);
-            animator.speed = 1;
             animator.SetTrigger(Attack);
+            player.TakeDamage(damage);
         }
     }
 

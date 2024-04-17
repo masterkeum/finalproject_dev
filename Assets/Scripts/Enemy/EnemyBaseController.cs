@@ -122,17 +122,34 @@ public class EnemyBaseController : MonoBehaviour
         enemyState = newState;
         switch (enemyState)
         {
+            case EnemyState.Idle:
+            case EnemyState.Wander:
             case EnemyState.Trace:
                 {
+                    animator.speed = 1;
                     navMeshAgent.isStopped = false;
                 }
                 break;
             case EnemyState.Attack:
+                {
+                    animator.speed = 2;
+                    navMeshAgent.isStopped = true;
+                }
+                break;
+            case EnemyState.Flee:
+                {
+                    animator.speed = 2;
+                    navMeshAgent.isStopped = false;
+                }
+                break;
             case EnemyState.Die:
             case EnemyState.Freeze:
                 {
                     navMeshAgent.isStopped = true;
                 }
+                break;
+            default:
+                animator.speed = 1;
                 break;
         }
 
