@@ -45,7 +45,10 @@ public class AreaDotDamageScript : MonoBehaviour
         {
             case 30000050: // 생츄어리 크기 변경
                 {
-                    float scale = 1.2f * (skillInfo.level + 1);
+                    /*
+                    //float scale = 1.2f + 1.2f * Mathf.CeilToInt((skillInfo.level + 1) / 2);
+                    */
+                    float scale = 1.8f + 1.2f * (skillInfo.level / 2f);
                     skillRange = scale;
                     transform.localScale = new Vector3(scale, 1, scale);
                 }
