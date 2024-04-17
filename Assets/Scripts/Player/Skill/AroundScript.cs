@@ -35,7 +35,7 @@ public class AroundScript : MonoBehaviour
         damage = _damage;
 
         FireDamage[] childs = gameObject.GetComponentsInChildren<FireDamage>();
-        Debug.Log(childs.Length);
+        //Debug.Log(childs.Length);
         if (childs.Length == 0)
         {
             numberOfObjects = skillInfo.level;

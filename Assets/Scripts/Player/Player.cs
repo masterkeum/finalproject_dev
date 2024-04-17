@@ -369,7 +369,7 @@ public class Player : MonoBehaviour
         int projectileTotalCount = skillData.projectileCount;
         float castDelay = skillData.castDelay;
 
-        Debug.Log($"Coroutine started with parameter: {skillData.skillId}");
+        //Debug.Log($"Coroutine started with parameter: {skillData.skillId}");
         //Debug.Log(projectileTotalCount);
         while (true)
         {
