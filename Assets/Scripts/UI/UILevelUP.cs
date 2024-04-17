@@ -229,9 +229,10 @@ public class UILevelUP : UIBase
 
         --player.playeringameinfo.skillpoint;
 
+        RemoveAtVariableSkills();
+
         if (player.playeringameinfo.skillpoint > 0)
         {
-            RemoveAtVariableSkills();
             OnReRoll();
             UpdateSkillPoint();
             SetCurSkills();
