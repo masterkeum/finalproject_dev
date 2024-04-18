@@ -177,5 +177,4 @@ public class ProjectileScript : MonoBehaviour
         go.SetActive(false);
         yield break;
     }
-
 }

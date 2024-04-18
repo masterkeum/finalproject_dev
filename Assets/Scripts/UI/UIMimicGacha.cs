@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,12 +5,6 @@ public class UIMimicGacha : UIBase
 {
     public Image itemImage;
     public Image glowEffect;
-
-
-    private void Awake()
-    {
-
-    }
 
     private void OnEnable()
     {
@@ -33,22 +25,22 @@ public class UIMimicGacha : UIBase
         switch (item.grade)
         {
             case ItemGrade.Normal:
-                glowEffect.color = new Color(1f, 1f, 1f);
+                glowEffect.color = ColorTable.normalColor;
                 break;
             case ItemGrade.Magic:
-                glowEffect.color = new Color(40/255f, 1f, 35/255f);
+                glowEffect.color = ColorTable.magicColor;
                 break;
             case ItemGrade.Elite:
-                glowEffect.color = new Color(0f,67/255f,1f);
+                glowEffect.color = ColorTable.eliteColor;
                 break;
             case ItemGrade.Rare:
-                glowEffect.color = new Color(1f, 115/255f, 0f);
+                glowEffect.color = ColorTable.rareColor;
                 break;
             case ItemGrade.Epic:
-                glowEffect.color = new Color(1f, 1f, 0f);
+                glowEffect.color = ColorTable.epicColor;
                 break;
             case ItemGrade.Legendary:
-                glowEffect.color = new Color(1f, 0f, 0f);
+                glowEffect.color = ColorTable.legendaryColor;
                 break;
 
         }

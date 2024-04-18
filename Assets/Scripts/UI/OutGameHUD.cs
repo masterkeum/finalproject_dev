@@ -15,7 +15,6 @@ public class OutGameHUD : UIBase
     public TextMeshProUGUI goldQuantityText;
     public TextMeshProUGUI coreQuentityText;
 
-
     [Header("BottomButton")]
     public GameObject[] mainMenues;
     public RectTransform[] buttonRect;
@@ -100,7 +99,6 @@ public class OutGameHUD : UIBase
         StageNameText.text = DataManager.Instance.stageListDict[SelectedStageId].stageName;
     }
 
-
     public void OnClickBottomButton(int index)
     {
         for (int i = 0; i < mainMenues.Length; i++)
@@ -162,8 +160,6 @@ public class OutGameHUD : UIBase
         OnClickBottomButton(1);
     }
 
-
-
     public void ShowInfoUI(string info)
     {
         try
@@ -177,7 +173,6 @@ public class OutGameHUD : UIBase
         }
     }
 
-
     public void GetFreeGem()
     {
         Debug.Log("GetFreeGem");
@@ -185,5 +180,4 @@ public class OutGameHUD : UIBase
         ++UIManager.Instance.popupUICount;
         adPopup.Init(AdsStates.Free);
     }
-
 }

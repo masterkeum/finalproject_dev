@@ -51,11 +51,13 @@ public class InGameHUD : UIBase
         //인게임 획득 골드 표시 업데이트
         goldText.text = player.playeringameinfo.gold.ToString();
     }
+
     public void UpdateWhenEnemyDie()
     {
         //킬카운트
         killText.text = player.playeringameinfo.killCount.ToString();
     }
+
     public void UpdateWhenGetGem()
     {
         // 인게임 경험치슬라이더,인게임 레벨 표시 업데이트

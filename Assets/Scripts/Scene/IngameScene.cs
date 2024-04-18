@@ -86,7 +86,6 @@ public class IngameScene : MonoBehaviour
         }
     }
 
-
     private void GenerateLevel(int stageId)
     {
         GameObject navMeshSurface = Instantiate(Resources.Load<GameObject>(DataManager.Instance.stageListDict[stageId].levelPrefab));
@@ -144,7 +143,6 @@ public class IngameScene : MonoBehaviour
                 yield break;
             }
         }
-
 
         yield return new WaitForSeconds(monsterData.genTimeStart);
         Debug.Log($"{monsterData.monsterId} lv.{monsterData.level} : {monsterInfo.name}");
@@ -254,9 +252,4 @@ public class IngameScene : MonoBehaviour
     }
 
     #endregion
-
-
-
-
-
 }

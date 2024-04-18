@@ -33,13 +33,13 @@ public class DropCoin : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.fixedDeltaTime / timeToReachPlayer);
         }
     }
+
     public void moveToPlayer()
     {
         //gold = 0;
         //exp = 0;
         IsMoving = true;
     }
-
 
     public Vector3 GetGroundPosition(Vector3 startPosition)
     {
@@ -52,5 +52,4 @@ public class DropCoin : MonoBehaviour
         // 바닥이 아닌 
         return startPosition;
     }
-
 }

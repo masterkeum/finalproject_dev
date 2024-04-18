@@ -1,10 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.ReloadAttribute;
 
 public class ShopUI : MonoBehaviour
 {
@@ -17,7 +14,6 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private GameObject starterPackageButton;
     [SerializeField] private GameObject adDeletePackageButton;
     [SerializeField] private TextMeshProUGUI totalcostText;
-    
 
     private void OnEnable()
     {
