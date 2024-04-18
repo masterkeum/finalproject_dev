@@ -170,25 +170,25 @@ public class Player : MonoBehaviour
         IsInit = true;
     }
 
-    private void Update()
-    {
-        if (transform.position.y < -10)
-        {
-            // 임시방편. 바닥밑으로 떨어지면 위치이동
-            Vector3 tmpPos = transform.position;
-            tmpPos.y = 200;
-            RaycastHit hit;
-            NavMeshHit navhit;
-            if (Physics.Raycast(new Ray(tmpPos, Vector3.down), out hit, Mathf.Infinity))
-            {
-                if (NavMesh.SamplePosition(hit.point, out navhit, detectionRange, NavMesh.AllAreas))
-                {
-                    transform.position = navhit.position;
-                }
-            }
-        }
-        //SkillRoutine();
-    }
+    //private void Update()
+    //{
+    //    if (transform.position.y < -10)
+    //    {
+    //        // 임시방편. 바닥밑으로 떨어지면 위치이동
+    //        Vector3 tmpPos = transform.position;
+    //        tmpPos.y = 200;
+    //        RaycastHit hit;
+    //        NavMeshHit navhit;
+    //        if (Physics.Raycast(new Ray(tmpPos, Vector3.down), out hit, Mathf.Infinity))
+    //        {
+    //            if (NavMesh.SamplePosition(hit.point, out navhit, detectionRange, NavMesh.AllAreas))
+    //            {
+    //                transform.position = navhit.position;
+    //            }
+    //        }
+    //    }
+    //    //SkillRoutine();
+    //}
 
 
     #region Physics
@@ -247,13 +247,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    IEnumerator DropItemRoutine(int golds, int exps)
-    {
-        yield return new WaitForSeconds(0.8f); // 코인 이동속도와 맞춰야한다.
-        AddGold(golds);
-        AddExp(exps);
-        yield break;
-    }
+    //IEnumerator DropItemRoutine(int golds, int exps)
+    //{
+    //    yield return new WaitForSeconds(0.8f); // 코인 이동속도와 맞춰야한다.
+    //    AddGold(golds);
+    //    AddExp(exps);
+    //    yield break;
+    //}
     #endregion
 
 
@@ -367,13 +367,14 @@ public class Player : MonoBehaviour
         // 패시브의 경우 시작할때 한번 이펙트 발현
         //최종 데미지 = (기본 공격력 + 아이템 공격력 보정치) x (공격력 배율) - (방어력*방어력배율) + 스킬 추가 데미지 + (크리티컬 데미지 보정치 * 크리티컬 여부)
         int projectileTotalCount = skillData.projectileCount;
-        float castDelay = skillData.castDelay;
+        WaitForSeconds coolDownTime = new WaitForSeconds(skillData.coolDownTime);
+        WaitForSeconds castDelay = new WaitForSeconds(skillData.castDelay);
 
         //Debug.Log($"Coroutine started with parameter: {skillData.skillId}");
         //Debug.Log(projectileTotalCount);
         while (true)
         {
-            yield return new WaitForSeconds(skillData.coolDownTime);
+            yield return coolDownTime;
 
             // TODO : 계수 연산할수 있게 함수 따로 빼기
             int damage = Mathf.RoundToInt((playeringameinfo.attackPower + skillData.attackDamage) * 0.8f);
@@ -393,7 +394,7 @@ public class Player : MonoBehaviour
                         {
                             Vector3 direction = DetectEnemyDirection();
                             skillPool.GetPoolProjectileSkill(skillData.skillId, projectilePoint, direction, damage);
-                            yield return new WaitForSeconds(castDelay);
+                            yield return castDelay;
                         }
                     }
                     break;
@@ -420,7 +421,7 @@ public class Player : MonoBehaviour
                             // 랜덤 단일 타겟
                             Vector3 enemyPos = DetectRandomEnemyPos();
                             skillPool.GetPoolGroundStrikeSkill(skillData.skillId, enemyPos, damage);
-                            yield return new WaitForSeconds(castDelay);
+                            yield return castDelay;
                         }
                     }
                     break;
@@ -441,7 +442,7 @@ public class Player : MonoBehaviour
                         //        // 랜덤 포지션
                         //        Vector3 randomPos = DetectRandomPos();
                         //        skillPool.GetPoolSkyFallSkill(skillData.skillId, randomPos, damage);
-                        //        yield return new WaitForSeconds(castDelay);
+                        //        yield return castDelay;
                         //    }
                         //}
                     }
@@ -449,7 +450,7 @@ public class Player : MonoBehaviour
                 case SkillTargetType.AOE:
                     {
                         skillPool.GetPoolAreaSkill(skillData.skillId, transform.position, damage / 10);
-                        yield return new WaitForSeconds(castDelay);
+                        yield return castDelay;
                     }
                     break;
                 case SkillTargetType.Around:
@@ -463,7 +464,7 @@ public class Player : MonoBehaviour
                         else
                         {
                             skillPool.GetPoolAroundSkill(skillData.skillId, transform.position, damage);
-                            yield return new WaitForSeconds(castDelay);
+                            yield return castDelay;
                         }
                     }
                     break;
@@ -565,7 +566,7 @@ public class Player : MonoBehaviour
         Debug.Log($"Heal : {healamount}");
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText"));
         hudText.transform.position = hudPos.position; // 표시될 위치
-        hudText.GetComponentInChildren<DamageText>().Init(healamount, new Color(0f, 1f, 0f)); // 초록색
+        hudText.GetComponentInChildren<DamageText>().Init(healamount, Color.green); // 초록색
     }
 
     private float DefenseFactor()
@@ -589,10 +590,9 @@ public class Player : MonoBehaviour
 
         realDamage = -realDamage;
 
-        Color color = new Color(1f, 0f, 0f);
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText"));
         hudText.transform.position = hudPos.position; // 표시될 위치
-        hudText.GetComponentInChildren<DamageText>().Init(realDamage, color);
+        hudText.GetComponentInChildren<DamageText>().Init(realDamage, Color.red);
 
         //Debug.Log("플레이어 현재 HP" + per);
         if (playeringameinfo.curHp <= 0)
