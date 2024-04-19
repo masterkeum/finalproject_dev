@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class AccountLevelUpRewardSlotUI : MonoBehaviour
 {
-    public Image rewardIcon;
+    public TextMeshProUGUI rewardName;
     public TextMeshProUGUI rewardAmount;
 
     private int index;
@@ -14,6 +14,7 @@ public class AccountLevelUpRewardSlotUI : MonoBehaviour
     private void OnEnable()
     {
         SetIndex();
+        SetReward();
     }
 
     private void SetIndex()
@@ -23,21 +24,20 @@ public class AccountLevelUpRewardSlotUI : MonoBehaviour
 
     private void SetReward()
     {
+        AccountInfo accountInfo = GameManager.Instance.accountInfo;
         switch (index)
         {
             case 0:
                 {
+                    rewardName.text = "체력";
+                    rewardAmount.text = DataManager.Instance.playerLevelDict[accountInfo.level].hp.ToString();
 
                 }
                 break;
             case 1:
                 {
-
-                }
-                break;
-            case 2:
-                {
-
+                    rewardName.text = "공격력";
+                    rewardAmount.text = DataManager.Instance.playerLevelDict[accountInfo.level].attack.ToString();
                 }
                 break;
         }

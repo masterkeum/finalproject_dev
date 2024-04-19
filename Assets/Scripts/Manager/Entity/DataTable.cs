@@ -89,6 +89,8 @@ public class PlayerLevel
     public int level;
     public int exp;
     public int totalExp;
+    public int hp;
+    public int attack;
 }
 
 [Serializable]
