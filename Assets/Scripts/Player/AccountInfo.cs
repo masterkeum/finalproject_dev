@@ -296,6 +296,7 @@ public class AccountInfo
                 curExp = 0;
                 sliderCurExp = curExp;
                 ++level;
+                UIManager.Instance.ShowUI<UIAccountLevelUp>();
             }
             else
             {

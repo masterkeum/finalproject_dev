@@ -429,7 +429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB808\uBCA8 \uC5C5"
+  m_text: "\uB808\uBCA8 \uC5C5 \uC644\uB8CC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9dca5736728843b4c8f1d2568890cb39, type: 2}
   m_sharedMaterial: {fileID: 8170138667926860177, guid: 9dca5736728843b4c8f1d2568890cb39,
@@ -627,6 +627,7 @@ MonoBehaviour:
   levelUpButton: {fileID: 359564024443674873}
   completeButton: {fileID: 5112479655676057289}
   reqExpText: {fileID: 2348846208965264372}
+  inventoryUI: {fileID: 0}
   probabilityNormalCur: {fileID: 4543857895900459555}
   probabilityMagicCur: {fileID: 4628212852377909108}
   probabilityEliteCur: {fileID: 5987967490770960843}
