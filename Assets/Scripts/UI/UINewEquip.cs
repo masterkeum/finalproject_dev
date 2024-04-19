@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,7 +15,6 @@ public class UINewEquip : UIBase
     {
         SetNewItem();
         inventoryUI = FindObjectOfType<InventoryUI>();
-
     }
 
     private void SetNewItem()
@@ -27,7 +22,7 @@ public class UINewEquip : UIBase
         Item newItem = GameManager.Instance.accountInfo.newItem;
         string psth = newItem.ImageFile;
         itemIcon.sprite = Resources.Load<Sprite>(psth);
-        if(newItem.nameAlias.Length > 10)
+        if (newItem.nameAlias.Length > 10)
         {
             itemName.fontSize = 50;
         }
@@ -47,7 +42,6 @@ public class UINewEquip : UIBase
         if (newItem.HpGen > 0)
             statList += "재생 : " + newItem.HpGen + "\n";
         itemStats.text = statList;
-            
 
         GlowColorChange(newItem);
     }
@@ -62,28 +56,28 @@ public class UINewEquip : UIBase
 
     public void GlowColorChange(Item item)
     {
-        switch(item.grade)
+        switch (item.grade)
         {
             case ItemGrade.Normal:
-                itemBG.color = new Color(1f, 1f, 1f);
+                itemBG.color = ColorTable.normalColor;
                 break;
             case ItemGrade.Magic:
-                itemBG.color = new Color(40 / 255f, 1f, 35 / 255f);
+                itemBG.color = ColorTable.magicColor;
                 break;
             case ItemGrade.Elite:
-                itemBG.color = new Color(0f, 67 / 255f, 1f);
+                itemBG.color = ColorTable.eliteColor;
                 break;
             case ItemGrade.Rare:
-                itemBG.color = new Color(1f, 115 / 255f, 0f);
+                itemBG.color = ColorTable.rareColor;
                 break;
             case ItemGrade.Epic:
-                itemBG.color = new Color(1f, 1f, 0f);
+                itemBG.color = ColorTable.epicColor;
                 break;
             case ItemGrade.Legendary:
-                itemBG.color = new Color(1f, 0f, 0f);
+                itemBG.color = ColorTable.legendaryColor;
                 break;
         }
     }
 
-   
+
 }

@@ -75,3 +75,4 @@ crashlytics-build.properties
 .idea/
 mono_crash.mem.*
 DataTable/~$SkillTable.xlsx
+*.cd

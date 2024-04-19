@@ -20,5 +20,4 @@ public class FireDamage : MonoBehaviour
             other.GetComponent<EnemyBaseController>().TakeDamage(damage);
         }
     }
-
 }

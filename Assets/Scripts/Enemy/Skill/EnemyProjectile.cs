@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ProjectileScript : MonoBehaviour
+public class EnemyProjectile : MonoBehaviour
 {
     public GameObject impactParticle;
     public GameObject projectileParticle;
@@ -177,4 +177,5 @@ public class ProjectileScript : MonoBehaviour
         go.SetActive(false);
         yield break;
     }
+
 }

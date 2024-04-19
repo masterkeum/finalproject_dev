@@ -16,7 +16,7 @@ public class UICheckEquip : UIBase
         string path = accountInfo.checkCurItem.ImageFile;
         itemIcon.sprite = Resources.Load<Sprite>(path);
 
-        if(accountInfo.checkCurItem.nameAlias.Length > 10)
+        if (accountInfo.checkCurItem.nameAlias.Length > 10)
         {
             itemName.fontSize = 50;
         }
@@ -53,27 +53,27 @@ public class UICheckEquip : UIBase
         switch (item.grade)
         {
             case ItemGrade.Normal:
-                itemBG.color = new Color(1f, 1f, 1f);
+                itemBG.color = ColorTable.normalColor;
                 itemGrade.text = "(노멀)";
                 break;
             case ItemGrade.Magic:
-                itemBG.color = new Color(40 / 255f, 1f, 35 / 255f);
+                itemBG.color = ColorTable.magicColor;
                 itemGrade.text = "(매직)";
                 break;
             case ItemGrade.Elite:
-                itemBG.color = new Color(0f, 67 / 255f, 1f);
+                itemBG.color = ColorTable.eliteColor;
                 itemGrade.text = "(엘리트)";
                 break;
             case ItemGrade.Rare:
-                itemBG.color = new Color(1f, 115 / 255f, 0f);
+                itemBG.color = ColorTable.rareColor;
                 itemGrade.text = "(레어)";
                 break;
             case ItemGrade.Epic:
-                itemBG.color = new Color(1f, 1f, 0f);
+                itemBG.color = ColorTable.epicColor;
                 itemGrade.text = "(에픽)";
                 break;
             case ItemGrade.Legendary:
-                itemBG.color = new Color(1f, 0f, 0f);
+                itemBG.color = ColorTable.legendaryColor;
                 itemGrade.text = "(레전더리)";
                 break;
         }

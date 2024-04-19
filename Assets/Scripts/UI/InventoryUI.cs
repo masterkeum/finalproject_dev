@@ -4,14 +4,10 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-
-
-
 public class InventoryUI : MonoBehaviour
 {
     public TextMeshProUGUI coreQuantity;
     public TextMeshProUGUI mimicLevel;
-
 
     [Header("UISlots")]
     public ItemSlotUI weaponSlot;
@@ -20,8 +16,6 @@ public class InventoryUI : MonoBehaviour
     public ItemSlotUI bootsSlot;
     public ItemSlotUI armorSlot;
     public ItemSlotUI accessorriesSlot;
-
-
 
     private Item selectedItem;
 
@@ -32,11 +26,9 @@ public class InventoryUI : MonoBehaviour
     private float epic;
     private float legendary;
 
-
     private void Start()
     {
         UpdateUI();
-
     }
 
     public void UpdateUI()
@@ -73,38 +65,38 @@ public class InventoryUI : MonoBehaviour
 
             case ItemGrade.Normal:
                 {
-                    slot.glow.color = new Color(1f, 1f, 1f);
-                    slot.decoImage.color = new Color(0.5f, 0.5f, 0.5f, 1f);
+                    slot.glow.color = ColorTable.normalColor;
+                    slot.decoImage.color = ColorTable.normalDecoColor;
                 }
                 break;
             case ItemGrade.Magic:
                 {
-                    slot.glow.color = new Color(40 / 255f, 1f, 35 / 255f);
-                    slot.decoImage.color = new Color(0f, 145/255f, 0f);
+                    slot.glow.color = ColorTable.magicColor;
+                    slot.decoImage.color = ColorTable.magicDecoColor;
                 }
                 break;
             case ItemGrade.Elite:
                 {
-                    slot.glow.color = new Color(0f, 67 / 255f, 1f);
-                    slot.decoImage.color = new Color(0f, 35 / 255f, 130/255f);
+                    slot.glow.color = ColorTable.eliteColor;
+                    slot.decoImage.color = ColorTable.eliteDecoColor;
                 }
                 break;
             case ItemGrade.Rare:
                 {
-                    slot.glow.color = new Color(1f, 115 / 255f, 0f);
-                    slot.decoImage.color = new Color(135/255f, 25 / 255f, 0f);
+                    slot.glow.color = ColorTable.rareColor;
+                    slot.decoImage.color = ColorTable.rareDecoColor;
                 }
                 break;
             case ItemGrade.Epic:
                 {
-                    slot.glow.color = new Color(1f, 1f, 0f);
-                    slot.decoImage.color = new Color(1f, 115/255f, 0f);
+                    slot.glow.color = ColorTable.epicColor;
+                    slot.decoImage.color = ColorTable.epicDecoColor;
                 }
                 break;
             case ItemGrade.Legendary:
                 {
-                    slot.glow.color = new Color(1f, 0f, 0f);
-                    slot.decoImage.color = new Color(1f, 138/255f, 138/255f);
+                    slot.glow.color = ColorTable.legendaryColor;
+                    slot.decoImage.color = ColorTable.legendaryDecoColor;
                 }
                 break;
         }
@@ -221,7 +213,6 @@ public class InventoryUI : MonoBehaviour
 
         foreach (ItemOptions randomOption in options)
         {
-            // TODO : 스탯 소수점 보정
             switch (randomOption)
             {
                 case ItemOptions.Hp:
