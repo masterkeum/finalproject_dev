@@ -12,7 +12,7 @@ public class UIDefeated : UIBase
     public TextMeshProUGUI GetGoldText;
 
     public GameObject uiDefeated;
-    
+
     public GameObject adButton;
     private void Awake()
     {
@@ -39,22 +39,16 @@ public class UIDefeated : UIBase
             var adPopup = UIManager.Instance.ShowUI<UIAdsPage>();
             ++UIManager.Instance.popupUICount;
             adPopup.Init(AdsStates.Defeated);
-            
+
             player.playeringameinfo.resurectionCount++;
             adButton.SetActive(false);
             uiDefeated.SetActive(false);
-            
+
             //Debug.Log("부활횟수: "+player.playeringameinfo.resurectionCount);
         }
-        
-        
-        
 
-        
         // 두가지 방법, 함수를 만들어주고 변수를 통해 enum , adpage 에서 처리 // 성능저하는 없다. 코드 늘어남
         // opened 로 파라미터로 값 넘겨줘서 사용할 수 있다. // 박싱언박싱 성능저하 이슈
-
-
     }
 
     public void GiveUP()

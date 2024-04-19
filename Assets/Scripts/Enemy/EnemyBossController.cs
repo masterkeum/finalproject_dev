@@ -15,6 +15,10 @@ public class EnemyBossController : EnemyBaseController
 
     private Vector3 gizmoDestination;
     private GameObject arrowPrefab;
+
+    private GameObject effectSkullProjectile;
+    private GameObject effectSlashAttack;
+
     public override void Init(int _monsterID, int _level, Player target)
     {
         base.Init(_monsterID, _level, target);
@@ -31,6 +35,10 @@ public class EnemyBossController : EnemyBaseController
 
         StartCoroutine(CheckState());
         FindBossArrow();
+
+
+        effectSkullProjectile = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SkullProjectile");
+        effectSlashAttack = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SlashAttack");
     }
 
     private void FindBossArrow()
@@ -38,6 +46,7 @@ public class EnemyBossController : EnemyBaseController
         arrowPrefab = Instantiate(Resources.Load<GameObject>("Prefabs/UI/GameObject"), player.transform);
         arrowPrefab.GetComponent<FindBossArrow>().bossPos = transform;
     }
+
     private void Update()
     {
         if (enemyState == EnemyState.Attack)
@@ -141,14 +150,39 @@ public class EnemyBossController : EnemyBaseController
         if (Time.time - lastAttackTime > characterInfo.attackSpeed)
         {
             lastAttackTime = Time.time;
-            animator.SetTrigger(Attack);
-            player.TakeDamage(damage);
+            PlayEffect();
         }
 
         // 공격 범위 벗어나면
         if (playerDistance > characterInfo.attackRange)
         {
             SetState(EnemyState.Trace);
+        }
+    }
+
+    private void PlayEffect()
+    {
+        Vector3 direction = DirectionToTarget();
+        switch (characterInfo.uid)
+        {
+            case 20100002:
+                {
+                    GameObject newEffect = Instantiate(effectSkullProjectile, transform.position + Vector3.up, Quaternion.LookRotation(direction));
+                    Destroy(newEffect, 5f); // 일정 시간 후에 이펙트를 파괴
+                    animator.SetTrigger(Attack);
+                }
+                break;
+            case 20100001:
+            case 20100003:
+            default:
+                {
+                    // 슬래시 0.9
+                    GameObject newEffect = Instantiate(effectSlashAttack, transform.position + Vector3.up, Quaternion.LookRotation(direction));
+                    Destroy(newEffect, 0.9f); // 일정 시간 후에 이펙트를 파괴
+                    player.TakeDamage(damage);
+                    animator.SetTrigger(Attack);
+                }
+                break;
         }
     }
 

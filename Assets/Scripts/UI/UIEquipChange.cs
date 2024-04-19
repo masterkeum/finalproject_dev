@@ -31,10 +31,10 @@ public class UIEquipChange : UIBase
 
         string statList = "";
         Item curItem = CurChangeableItme();
-        if (newItem.Hp > 0 ||curItem.Hp>0)
-            statList += "체력 : " + newItem.Hp + GetArrow(newItem.Hp,curItem.Hp) + "\n";
-        if (newItem.Dp > 0 || curItem.Dp>0)
-            statList += "방어력 : " + newItem.Dp + GetArrow(newItem.Dp,curItem.Dp) + "\n";
+        if (newItem.Hp > 0 || curItem.Hp > 0)
+            statList += "체력 : " + newItem.Hp + GetArrow(newItem.Hp, curItem.Hp) + "\n";
+        if (newItem.Dp > 0 || curItem.Dp > 0)
+            statList += "방어력 : " + newItem.Dp + GetArrow(newItem.Dp, curItem.Dp) + "\n";
         if (newItem.Ap > 0 || curItem.Ap > 0)
             statList += "공격력 : " + newItem.Ap + GetArrow(newItem.Ap, curItem.Ap) + "\n";
         if (newItem.MoveSpeed > 0 || curItem.MoveSpeed > 0)
@@ -49,7 +49,7 @@ public class UIEquipChange : UIBase
         string curPath = CurChangeableItme().ImageFile;
         curIcon.sprite = Resources.Load<Sprite>(curPath);
         GlowColorChange(curGlow, CurChangeableItme());
-        
+
         string curStatList = "";
         if (CurChangeableItme().Hp > 0)
             curStatList += "체력 : " + CurChangeableItme().Hp + "\n";
@@ -93,26 +93,26 @@ public class UIEquipChange : UIBase
         switch (item.grade)
         {
             case ItemGrade.Normal:
-                glow.color = new Color(1f, 1f, 1f);
+                glow.color = ColorTable.normalColor;
                 break;
             case ItemGrade.Magic:
-                glow.color = new Color(40 / 255f, 1f, 35 / 255f);
+                glow.color = ColorTable.magicColor;
                 break;
             case ItemGrade.Elite:
-                glow.color = new Color(0f, 67 / 255f, 1f);
+                glow.color = ColorTable.eliteColor;
                 break;
             case ItemGrade.Rare:
-                glow.color = new Color(1f, 115 / 255f, 0f);
+                glow.color = ColorTable.rareColor;
                 break;
             case ItemGrade.Epic:
-                glow.color = new Color(1f, 1f, 0f);
+                glow.color = ColorTable.epicColor;
                 break;
             case ItemGrade.Legendary:
-                glow.color = new Color(1f, 0f, 0f);
+                glow.color = ColorTable.legendaryColor;
                 break;
         }
     }
-    
+
     private string GetArrow(float newValue, float curValue)
     {
         string arrow = "";

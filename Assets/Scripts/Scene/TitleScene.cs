@@ -5,6 +5,7 @@ public class TitleScene : MonoBehaviour
 {
     public GameObject tapToStart;
     public GameObject loginButtons;
+
     private void Awake()
     {
         _ = DataManager.Instance;
@@ -42,5 +43,4 @@ public class TitleScene : MonoBehaviour
         Debug.Log("GetCommonReward");
         SceneManager.LoadScene("MainScene");
     }
-
 }

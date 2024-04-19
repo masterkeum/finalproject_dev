@@ -51,7 +51,7 @@ public class DataManager : SingletoneBase<DataManager>
         }
     }
 
-    public void ConvertJsonToDictionary(string json)
+    private void ConvertJsonToDictionary(string json)
     {
         //DataTable jsonData = JsonUtility.FromJson<DataTable>(json);
         DataTable jsonData = JsonConvert.DeserializeObject<DataTable>(json, settings);

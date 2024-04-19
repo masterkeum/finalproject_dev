@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-
 [Serializable]
 public class Item
 {
@@ -56,9 +55,6 @@ public struct PlayerStatInfo
 
     public float hpGen;
     public float addHpGen;
-
-
-
 
     public PlayerStatInfo(CharacterInfo characterInfo, AccountInfo.EquipItems equipItems)
     {

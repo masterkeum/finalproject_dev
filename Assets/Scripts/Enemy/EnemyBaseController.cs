@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-
 public enum EnemyState
 {
     None,
@@ -168,7 +167,7 @@ public class EnemyBaseController : MonoBehaviour
         GameObject hudText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DamageText")); // 생성할 텍스트 오브젝트
         //Debug.Log("데미지텍스트 프리팹 " + hudText);
         hudText.transform.position = hudPos.position; // 표시될 위치
-        hudText.GetComponentInChildren<DamageText>().Init(damageAmount, new Color(1f, 1f, 1f));
+        hudText.GetComponentInChildren<DamageText>().Init(damageAmount, Color.white);
     }
 
     public void Knockback(float knockBackTerm, float startDelay, Vector3 knockbackDirection, float knockBackForce)
@@ -182,7 +181,6 @@ public class EnemyBaseController : MonoBehaviour
 
     private IEnumerator KnockbackRountine(float startDelay, Vector3 knockbackDirection, float knockBackForce)
     {
-        //yield return new WaitForSeconds(startDelay);
         navMeshAgent.isStopped = true;
         rigidBody.constraints = RigidbodyConstraints.FreezeRotation;
         rigidBody.AddForce(knockbackDirection * knockBackForce, ForceMode.Impulse);
