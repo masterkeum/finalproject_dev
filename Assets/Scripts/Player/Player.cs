@@ -173,9 +173,14 @@ public class Player : MonoBehaviour
     {
         if (transform.position.y < -10)
         {
+            // 
+            Vector3 newPos = transform.position;
+            newPos.y = 0;
+            transform.position = newPos;
+
             OnDead(GameState.DropDie);
             // 임시방편. 바닥밑으로 떨어지면 위치이동
-            
+
             // Vector3 tmpPos = transform.position;
             // tmpPos.y = 200;
             // RaycastHit hit;
@@ -346,7 +351,7 @@ public class Player : MonoBehaviour
             {
                 case 30001050: // 블랙홀 크기 변경
                     {
-                        float scale = 1.8f + 1.2f * (skillData.level / 2f);
+                        float scale = 1.8f + 0.6f * (skillData.level / 2f);
                         passiveObj[skillData.skillGroup].transform.localScale = new Vector3(scale, scale, 1);
                     }
                     break;

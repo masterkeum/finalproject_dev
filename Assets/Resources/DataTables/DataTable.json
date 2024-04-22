@@ -49,6 +49,807 @@
       "codeDesc": "기본 스킬"
     }
   ],
+  "CharacterInfo": [
+    {
+      "uid": 10000001,
+      "characterType": "Player",
+      "name": "미믹",
+      "minLevel": 1,
+      "maxLevel": 10,
+      "hp": 500,
+      "attackPower": 10,
+      "sensoryRange": 2,
+      "attackRange": 2,
+      "attackSpeed": 1.2,
+      "moveSpeed": 4,
+      "defaultSkill": 30000001,
+      "prefabFile": "Prefabs/Player/Player",
+      "range": "Range"
+    },
+    {
+      "uid": 20000001,
+      "characterType": "Monster",
+      "name": "슬라임",
+      "minLevel": 1,
+      "maxLevel": 10,
+      "hp": 50,
+      "attackPower": 35,
+      "sensoryRange": 0,
+      "attackRange": 2,
+      "attackSpeed": 1,
+      "moveSpeed": 2,
+      "defaultSkill": 30100001,
+      "prefabFile": "Prefabs/Enemy/SlimeRed",
+      "range": "Melee"
+    },
+    {
+      "uid": 20000002,
+      "characterType": "Monster",
+      "name": "머쉬룸",
+      "minLevel": 1,
+      "maxLevel": 10,
+      "hp": 100,
+      "attackPower": 40,
+      "sensoryRange": 0,
+      "attackRange": 2.4,
+      "attackSpeed": 1.1,
+      "moveSpeed": 3.5,
+      "defaultSkill": 30100001,
+      "prefabFile": "Prefabs/Enemy/MushroomA",
+      "range": "Melee"
+    },
+    {
+      "uid": 20100001,
+      "characterType": "BossMonster",
+      "name": "오크",
+      "minLevel": 1,
+      "maxLevel": 3,
+      "hp": 4500,
+      "attackPower": 80,
+      "sensoryRange": 15,
+      "attackRange": 3,
+      "attackSpeed": 1.3,
+      "moveSpeed": 3.8,
+      "defaultSkill": 30100003,
+      "prefabFile": "Prefabs/Enemy/OrcGreen",
+      "range": "Melee"
+    },
+    {
+      "uid": 20000003,
+      "characterType": "Monster",
+      "name": "살라맨더",
+      "minLevel": 1,
+      "maxLevel": 10,
+      "hp": 150,
+      "attackPower": 50,
+      "sensoryRange": 0,
+      "attackRange": 2.6,
+      "attackSpeed": 1.4,
+      "moveSpeed": 2.5,
+      "defaultSkill": 30100001,
+      "prefabFile": "Prefabs/Enemy/Salamander",
+      "range": "Melee"
+    },
+    {
+      "uid": 20000004,
+      "characterType": "Monster",
+      "name": "비홀더",
+      "minLevel": 1,
+      "maxLevel": 10,
+      "hp": 200,
+      "attackPower": 45,
+      "sensoryRange": 0,
+      "attackRange": 2.4,
+      "attackSpeed": 1.5,
+      "moveSpeed": 4,
+      "defaultSkill": 30100001,
+      "prefabFile": "Prefabs/Enemy/Beholder",
+      "range": "Melee"
+    },
+    {
+      "uid": 20100002,
+      "characterType": "BossMonster",
+      "name": "이블메이지",
+      "minLevel": 1,
+      "maxLevel": 3,
+      "hp": 3500,
+      "attackPower": 65,
+      "sensoryRange": 20,
+      "attackRange": 12,
+      "attackSpeed": 1.3,
+      "moveSpeed": 3.5,
+      "defaultSkill": 30100003,
+      "prefabFile": "Prefabs/Enemy/EvilMage",
+      "range": "Range"
+    },
+    {
+      "uid": 20000005,
+      "characterType": "Monster",
+      "name": "몬스터플랜트",
+      "minLevel": 1,
+      "maxLevel": 10,
+      "hp": 230,
+      "attackPower": 45,
+      "sensoryRange": 0,
+      "attackRange": 5,
+      "attackSpeed": 1,
+      "moveSpeed": 3,
+      "defaultSkill": 30100001,
+      "prefabFile": "Prefabs/Enemy/MonsterPlant",
+      "range": "Range"
+    },
+    {
+      "uid": 20000006,
+      "characterType": "Monster",
+      "name": "선인장",
+      "minLevel": 1,
+      "maxLevel": 10,
+      "hp": 300,
+      "attackPower": 60,
+      "sensoryRange": 0,
+      "attackRange": 2.4,
+      "attackSpeed": 1.8,
+      "moveSpeed": 2.8,
+      "defaultSkill": 30100001,
+      "prefabFile": "Prefabs/Enemy/Cactus",
+      "range": "Melee"
+    },
+    {
+      "uid": 20000007,
+      "characterType": "Monster",
+      "name": "전투말벌",
+      "minLevel": 1,
+      "maxLevel": 10,
+      "hp": 250,
+      "attackPower": 50,
+      "sensoryRange": 0,
+      "attackRange": 7,
+      "attackSpeed": 1.8,
+      "moveSpeed": 2.8,
+      "defaultSkill": 30100001,
+      "prefabFile": "Prefabs/Enemy/BattleBee",
+      "range": "Range"
+    },
+    {
+      "uid": 20100003,
+      "characterType": "BossMonster",
+      "name": "플라잉데몬",
+      "minLevel": 1,
+      "maxLevel": 3,
+      "hp": 4500,
+      "attackPower": 75,
+      "sensoryRange": 25,
+      "attackRange": 3.4,
+      "attackSpeed": 2,
+      "moveSpeed": 4,
+      "defaultSkill": 30100003,
+      "prefabFile": "Prefabs/Enemy/FylingDemon",
+      "range": "Melee"
+    }
+  ],
+  "MonsterLevel": [
+    {
+      "uid": 20000001,
+      "level": 1,
+      "addHP": 0,
+      "addAP": 0,
+      "gold": 5,
+      "exp": 3,
+      "core": 0
+    },
+    {
+      "uid": 20000001,
+      "level": 2,
+      "addHP": 20,
+      "addAP": 30,
+      "gold": 5,
+      "exp": 3,
+      "core": 0
+    },
+    {
+      "uid": 20000001,
+      "level": 3,
+      "addHP": 30,
+      "addAP": 35,
+      "gold": 6,
+      "exp": 4,
+      "core": 0
+    },
+    {
+      "uid": 20000001,
+      "level": 4,
+      "addHP": 40,
+      "addAP": 40,
+      "gold": 6,
+      "exp": 4,
+      "core": 0
+    },
+    {
+      "uid": 20000001,
+      "level": 5,
+      "addHP": 50,
+      "addAP": 45,
+      "gold": 7,
+      "exp": 5,
+      "core": 0
+    },
+    {
+      "uid": 20000001,
+      "level": 6,
+      "addHP": 60,
+      "addAP": 50,
+      "gold": 7,
+      "exp": 5,
+      "core": 0
+    },
+    {
+      "uid": 20000001,
+      "level": 7,
+      "addHP": 70,
+      "addAP": 55,
+      "gold": 8,
+      "exp": 6,
+      "core": 0
+    },
+    {
+      "uid": 20000001,
+      "level": 8,
+      "addHP": 80,
+      "addAP": 60,
+      "gold": 8,
+      "exp": 6,
+      "core": 0
+    },
+    {
+      "uid": 20000001,
+      "level": 9,
+      "addHP": 90,
+      "addAP": 65,
+      "gold": 9,
+      "exp": 7,
+      "core": 0
+    },
+    {
+      "uid": 20000001,
+      "level": 10,
+      "addHP": 100,
+      "addAP": 70,
+      "gold": 9,
+      "exp": 7,
+      "core": 0
+    },
+    {
+      "uid": 20000002,
+      "level": 1,
+      "addHP": 0,
+      "addAP": 0,
+      "gold": 6,
+      "exp": 4,
+      "core": 0
+    },
+    {
+      "uid": 20000002,
+      "level": 2,
+      "addHP": 20,
+      "addAP": 40,
+      "gold": 6,
+      "exp": 4,
+      "core": 0
+    },
+    {
+      "uid": 20000002,
+      "level": 3,
+      "addHP": 30,
+      "addAP": 45,
+      "gold": 7,
+      "exp": 5,
+      "core": 0
+    },
+    {
+      "uid": 20000002,
+      "level": 4,
+      "addHP": 40,
+      "addAP": 50,
+      "gold": 7,
+      "exp": 5,
+      "core": 0
+    },
+    {
+      "uid": 20000002,
+      "level": 5,
+      "addHP": 50,
+      "addAP": 55,
+      "gold": 8,
+      "exp": 6,
+      "core": 0
+    },
+    {
+      "uid": 20000002,
+      "level": 6,
+      "addHP": 60,
+      "addAP": 60,
+      "gold": 8,
+      "exp": 6,
+      "core": 0
+    },
+    {
+      "uid": 20000002,
+      "level": 7,
+      "addHP": 70,
+      "addAP": 65,
+      "gold": 9,
+      "exp": 7,
+      "core": 0
+    },
+    {
+      "uid": 20000002,
+      "level": 8,
+      "addHP": 80,
+      "addAP": 70,
+      "gold": 9,
+      "exp": 8,
+      "core": 0
+    },
+    {
+      "uid": 20000002,
+      "level": 9,
+      "addHP": 90,
+      "addAP": 75,
+      "gold": 10,
+      "exp": 9,
+      "core": 0
+    },
+    {
+      "uid": 20000002,
+      "level": 10,
+      "addHP": 100,
+      "addAP": 80,
+      "gold": 10,
+      "exp": 10,
+      "core": 0
+    },
+    {
+      "uid": 20100001,
+      "level": 1,
+      "addHP": 0,
+      "addAP": 0,
+      "gold": 100,
+      "exp": 35,
+      "core": 3
+    },
+    {
+      "uid": 20100001,
+      "level": 2,
+      "addHP": 2000,
+      "addAP": 60,
+      "gold": 150,
+      "exp": 60,
+      "core": 5
+    },
+    {
+      "uid": 20100001,
+      "level": 3,
+      "addHP": 3000,
+      "addAP": 120,
+      "gold": 200,
+      "exp": 80,
+      "core": 7
+    },
+    {
+      "uid": 20000003,
+      "level": 1,
+      "addHP": 0,
+      "addAP": 0,
+      "gold": 7,
+      "exp": 5,
+      "core": 0
+    },
+    {
+      "uid": 20000003,
+      "level": 2,
+      "addHP": 20,
+      "addAP": 35,
+      "gold": 7,
+      "exp": 5,
+      "core": 0
+    },
+    {
+      "uid": 20000003,
+      "level": 3,
+      "addHP": 30,
+      "addAP": 40,
+      "gold": 7,
+      "exp": 6,
+      "core": 0
+    },
+    {
+      "uid": 20000003,
+      "level": 4,
+      "addHP": 40,
+      "addAP": 45,
+      "gold": 8,
+      "exp": 6,
+      "core": 0
+    },
+    {
+      "uid": 20000003,
+      "level": 5,
+      "addHP": 50,
+      "addAP": 50,
+      "gold": 8,
+      "exp": 7,
+      "core": 0
+    },
+    {
+      "uid": 20000003,
+      "level": 6,
+      "addHP": 60,
+      "addAP": 55,
+      "gold": 8,
+      "exp": 7,
+      "core": 0
+    },
+    {
+      "uid": 20000003,
+      "level": 7,
+      "addHP": 70,
+      "addAP": 60,
+      "gold": 9,
+      "exp": 8,
+      "core": 0
+    },
+    {
+      "uid": 20000003,
+      "level": 8,
+      "addHP": 80,
+      "addAP": 65,
+      "gold": 9,
+      "exp": 9,
+      "core": 0
+    },
+    {
+      "uid": 20000003,
+      "level": 9,
+      "addHP": 90,
+      "addAP": 70,
+      "gold": 9,
+      "exp": 10,
+      "core": 0
+    },
+    {
+      "uid": 20000003,
+      "level": 10,
+      "addHP": 100,
+      "addAP": 75,
+      "gold": 10,
+      "exp": 11,
+      "core": 0
+    },
+    {
+      "uid": 20100002,
+      "level": 1,
+      "addHP": 0,
+      "addAP": 0,
+      "gold": 200,
+      "exp": 45,
+      "core": 5
+    },
+    {
+      "uid": 20100002,
+      "level": 2,
+      "addHP": 2000,
+      "addAP": 70,
+      "gold": 250,
+      "exp": 65,
+      "core": 7
+    },
+    {
+      "uid": 20100002,
+      "level": 3,
+      "addHP": 3500,
+      "addAP": 180,
+      "gold": 300,
+      "exp": 85,
+      "core": 8
+    },
+    {
+      "uid": 20000004,
+      "level": 1,
+      "addHP": 0,
+      "addAP": 0,
+      "gold": 8,
+      "exp": 6,
+      "core": 0
+    },
+    {
+      "uid": 20000004,
+      "level": 2,
+      "addHP": 30,
+      "addAP": 45,
+      "gold": 8,
+      "exp": 6,
+      "core": 0
+    },
+    {
+      "uid": 20000004,
+      "level": 3,
+      "addHP": 40,
+      "addAP": 50,
+      "gold": 8,
+      "exp": 6,
+      "core": 0
+    },
+    {
+      "uid": 20000004,
+      "level": 4,
+      "addHP": 50,
+      "addAP": 55,
+      "gold": 9,
+      "exp": 7,
+      "core": 0
+    },
+    {
+      "uid": 20000004,
+      "level": 5,
+      "addHP": 70,
+      "addAP": 60,
+      "gold": 9,
+      "exp": 7,
+      "core": 0
+    },
+    {
+      "uid": 20000004,
+      "level": 6,
+      "addHP": 80,
+      "addAP": 65,
+      "gold": 9,
+      "exp": 8,
+      "core": 0
+    },
+    {
+      "uid": 20000004,
+      "level": 7,
+      "addHP": 90,
+      "addAP": 70,
+      "gold": 10,
+      "exp": 8,
+      "core": 0
+    },
+    {
+      "uid": 20000004,
+      "level": 8,
+      "addHP": 110,
+      "addAP": 75,
+      "gold": 10,
+      "exp": 9,
+      "core": 0
+    },
+    {
+      "uid": 20000004,
+      "level": 9,
+      "addHP": 125,
+      "addAP": 80,
+      "gold": 10,
+      "exp": 10,
+      "core": 0
+    },
+    {
+      "uid": 20000004,
+      "level": 10,
+      "addHP": 140,
+      "addAP": 85,
+      "gold": 10,
+      "exp": 11,
+      "core": 0
+    },
+    {
+      "uid": 20000005,
+      "level": 1,
+      "addHP": 0,
+      "addAP": 0,
+      "gold": 9,
+      "exp": 7,
+      "core": 0
+    },
+    {
+      "uid": 20000005,
+      "level": 2,
+      "addHP": 30,
+      "addAP": 50,
+      "gold": 9,
+      "exp": 7,
+      "core": 0
+    },
+    {
+      "uid": 20000005,
+      "level": 3,
+      "addHP": 40,
+      "addAP": 55,
+      "gold": 9,
+      "exp": 8,
+      "core": 0
+    },
+    {
+      "uid": 20000005,
+      "level": 4,
+      "addHP": 50,
+      "addAP": 60,
+      "gold": 10,
+      "exp": 8,
+      "core": 0
+    },
+    {
+      "uid": 20000005,
+      "level": 5,
+      "addHP": 70,
+      "addAP": 65,
+      "gold": 10,
+      "exp": 9,
+      "core": 0
+    },
+    {
+      "uid": 20000005,
+      "level": 6,
+      "addHP": 80,
+      "addAP": 70,
+      "gold": 10,
+      "exp": 9,
+      "core": 0
+    },
+    {
+      "uid": 20000005,
+      "level": 7,
+      "addHP": 90,
+      "addAP": 75,
+      "gold": 11,
+      "exp": 10,
+      "core": 0
+    },
+    {
+      "uid": 20000005,
+      "level": 8,
+      "addHP": 110,
+      "addAP": 80,
+      "gold": 11,
+      "exp": 11,
+      "core": 0
+    },
+    {
+      "uid": 20000005,
+      "level": 9,
+      "addHP": 125,
+      "addAP": 85,
+      "gold": 11,
+      "exp": 12,
+      "core": 0
+    },
+    {
+      "uid": 20000005,
+      "level": 10,
+      "addHP": 140,
+      "addAP": 90,
+      "gold": 11,
+      "exp": 13,
+      "core": 0
+    },
+    {
+      "uid": 20100003,
+      "level": 1,
+      "addHP": 0,
+      "addAP": 0,
+      "gold": 300,
+      "exp": 45,
+      "core": 8
+    },
+    {
+      "uid": 20100003,
+      "level": 2,
+      "addHP": 2800,
+      "addAP": 90,
+      "gold": 350,
+      "exp": 65,
+      "core": 9
+    },
+    {
+      "uid": 20100003,
+      "level": 3,
+      "addHP": 3800,
+      "addAP": 200,
+      "gold": 400,
+      "exp": 85,
+      "core": 10
+    },
+    {
+      "uid": 20000007,
+      "level": 1,
+      "addHP": 0,
+      "addAP": 0,
+      "gold": 8,
+      "exp": 6,
+      "core": 0
+    },
+    {
+      "uid": 20000007,
+      "level": 2,
+      "addHP": 20,
+      "addAP": 50,
+      "gold": 8,
+      "exp": 6,
+      "core": 0
+    },
+    {
+      "uid": 20000007,
+      "level": 3,
+      "addHP": 30,
+      "addAP": 55,
+      "gold": 8,
+      "exp": 6,
+      "core": 0
+    },
+    {
+      "uid": 20000007,
+      "level": 4,
+      "addHP": 45,
+      "addAP": 60,
+      "gold": 9,
+      "exp": 7,
+      "core": 0
+    },
+    {
+      "uid": 20000007,
+      "level": 5,
+      "addHP": 60,
+      "addAP": 65,
+      "gold": 9,
+      "exp": 7,
+      "core": 0
+    },
+    {
+      "uid": 20000007,
+      "level": 6,
+      "addHP": 75,
+      "addAP": 70,
+      "gold": 9,
+      "exp": 8,
+      "core": 0
+    },
+    {
+      "uid": 20000007,
+      "level": 7,
+      "addHP": 90,
+      "addAP": 75,
+      "gold": 10,
+      "exp": 8,
+      "core": 0
+    },
+    {
+      "uid": 20000007,
+      "level": 8,
+      "addHP": 110,
+      "addAP": 80,
+      "gold": 10,
+      "exp": 9,
+      "core": 0
+    },
+    {
+      "uid": 20000007,
+      "level": 9,
+      "addHP": 130,
+      "addAP": 85,
+      "gold": 10,
+      "exp": 10,
+      "core": 0
+    },
+    {
+      "uid": 20000007,
+      "level": 10,
+      "addHP": 170,
+      "addAP": 90,
+      "gold": 10,
+      "exp": 11,
+      "core": 0
+    }
+  ],
   "StageList": [
     {
       "stageId": 101,
@@ -141,691 +942,6 @@
       "clearGem": 500
     }
   ],
-  "CharacterInfo": [
-    {
-      "uid": 10000001,
-      "characterType": "Player",
-      "name": "미믹",
-      "minLevel": 1,
-      "maxLevel": 10,
-      "hp": 500,
-      "attackPower": 10,
-      "sensoryRange": 2,
-      "attackRange": 2,
-      "attackSpeed": 1.2,
-      "moveSpeed": 4,
-      "defaultSkill": 30000001,
-      "prefabFile": "Prefabs/Player/Player"
-    },
-    {
-      "uid": 20000001,
-      "characterType": "Monster",
-      "name": "슬라임",
-      "minLevel": 1,
-      "maxLevel": 10,
-      "hp": 50,
-      "attackPower": 35,
-      "sensoryRange": 0,
-      "attackRange": 2,
-      "attackSpeed": 1,
-      "moveSpeed": 2,
-      "defaultSkill": 30100001,
-      "prefabFile": "Prefabs/Enemy/SlimeRed"
-    },
-    {
-      "uid": 20000002,
-      "characterType": "Monster",
-      "name": "머쉬룸",
-      "minLevel": 1,
-      "maxLevel": 10,
-      "hp": 100,
-      "attackPower": 40,
-      "sensoryRange": 0,
-      "attackRange": 2.4,
-      "attackSpeed": 1.1,
-      "moveSpeed": 3.5,
-      "defaultSkill": 30100001,
-      "prefabFile": "Prefabs/Enemy/MushroomA"
-    },
-    {
-      "uid": 20100001,
-      "characterType": "BossMonster",
-      "name": "오크",
-      "minLevel": 1,
-      "maxLevel": 3,
-      "hp": 2800,
-      "attackPower": 70,
-      "sensoryRange": 15,
-      "attackRange": 3,
-      "attackSpeed": 1.3,
-      "moveSpeed": 3.5,
-      "defaultSkill": 30100003,
-      "prefabFile": "Prefabs/Enemy/OrcGreen"
-    },
-    {
-      "uid": 20000003,
-      "characterType": "Monster",
-      "name": "살라맨더",
-      "minLevel": 1,
-      "maxLevel": 10,
-      "hp": 150,
-      "attackPower": 30,
-      "sensoryRange": 0,
-      "attackRange": 2.6,
-      "attackSpeed": 1.4,
-      "moveSpeed": 2.5,
-      "defaultSkill": 30100001,
-      "prefabFile": "Prefabs/Enemy/Salamander"
-    },
-    {
-      "uid": 20000004,
-      "characterType": "Monster",
-      "name": "비홀더",
-      "minLevel": 1,
-      "maxLevel": 10,
-      "hp": 170,
-      "attackPower": 33,
-      "sensoryRange": 0,
-      "attackRange": 2.4,
-      "attackSpeed": 1.5,
-      "moveSpeed": 4,
-      "defaultSkill": 30100001,
-      "prefabFile": "Prefabs/Enemy/Beholder"
-    },
-    {
-      "uid": 20100002,
-      "characterType": "BossMonster",
-      "name": "이블메이지",
-      "minLevel": 1,
-      "maxLevel": 3,
-      "hp": 3500,
-      "attackPower": 65,
-      "sensoryRange": 20,
-      "attackRange": 10,
-      "attackSpeed": 1.3,
-      "moveSpeed": 3,
-      "defaultSkill": 30100003,
-      "prefabFile": "Prefabs/Enemy/EvilMage"
-    },
-    {
-      "uid": 20000005,
-      "characterType": "Monster",
-      "name": "몬스터플랜트",
-      "minLevel": 1,
-      "maxLevel": 10,
-      "hp": 200,
-      "attackPower": 45,
-      "sensoryRange": 0,
-      "attackRange": 2.6,
-      "attackSpeed": 1,
-      "moveSpeed": 3,
-      "defaultSkill": 30100001,
-      "prefabFile": "Prefabs/Enemy/MonsterPlant"
-    },
-    {
-      "uid": 20000006,
-      "characterType": "Monster",
-      "name": "선인장",
-      "minLevel": 1,
-      "maxLevel": 10,
-      "hp": 250,
-      "attackPower": 60,
-      "sensoryRange": 0,
-      "attackRange": 2.6,
-      "attackSpeed": 1.8,
-      "moveSpeed": 2.8,
-      "defaultSkill": 30100001,
-      "prefabFile": "Prefabs/Enemy/Cactus"
-    },
-    {
-      "uid": 20100003,
-      "characterType": "BossMonster",
-      "name": "플라잉데몬",
-      "minLevel": 1,
-      "maxLevel": 3,
-      "hp": 4500,
-      "attackPower": 75,
-      "sensoryRange": 25,
-      "attackRange": 3.4,
-      "attackSpeed": 2,
-      "moveSpeed": 2.7,
-      "defaultSkill": 30100003,
-      "prefabFile": "Prefabs/Enemy/FylingDemon"
-    }
-  ],
-  "MonsterLevel": [
-    {
-      "uid": 20000001,
-      "level": 1,
-      "addHP": 0,
-      "addAP": 0,
-      "gold": 20,
-      "exp": 3,
-      "core": 0
-    },
-    {
-      "uid": 20000001,
-      "level": 2,
-      "addHP": 20,
-      "addAP": 30,
-      "gold": 24,
-      "exp": 5,
-      "core": 0
-    },
-    {
-      "uid": 20000001,
-      "level": 3,
-      "addHP": 30,
-      "addAP": 35,
-      "gold": 28,
-      "exp": 6,
-      "core": 0
-    },
-    {
-      "uid": 20000001,
-      "level": 4,
-      "addHP": 40,
-      "addAP": 40,
-      "gold": 32,
-      "exp": 7,
-      "core": 0
-    },
-    {
-      "uid": 20000001,
-      "level": 5,
-      "addHP": 50,
-      "addAP": 45,
-      "gold": 36,
-      "exp": 8,
-      "core": 0
-    },
-    {
-      "uid": 20000001,
-      "level": 6,
-      "addHP": 60,
-      "addAP": 50,
-      "gold": 40,
-      "exp": 9,
-      "core": 0
-    },
-    {
-      "uid": 20000001,
-      "level": 7,
-      "addHP": 70,
-      "addAP": 55,
-      "gold": 44,
-      "exp": 10,
-      "core": 0
-    },
-    {
-      "uid": 20000001,
-      "level": 8,
-      "addHP": 80,
-      "addAP": 60,
-      "gold": 48,
-      "exp": 11,
-      "core": 0
-    },
-    {
-      "uid": 20000001,
-      "level": 9,
-      "addHP": 90,
-      "addAP": 65,
-      "gold": 52,
-      "exp": 12,
-      "core": 0
-    },
-    {
-      "uid": 20000001,
-      "level": 10,
-      "addHP": 100,
-      "addAP": 70,
-      "gold": 56,
-      "exp": 13,
-      "core": 0
-    },
-    {
-      "uid": 20000002,
-      "level": 1,
-      "addHP": 0,
-      "addAP": 0,
-      "gold": 27,
-      "exp": 7,
-      "core": 0
-    },
-    {
-      "uid": 20000002,
-      "level": 2,
-      "addHP": 20,
-      "addAP": 40,
-      "gold": 32,
-      "exp": 8,
-      "core": 0
-    },
-    {
-      "uid": 20000002,
-      "level": 3,
-      "addHP": 30,
-      "addAP": 45,
-      "gold": 37,
-      "exp": 9,
-      "core": 0
-    },
-    {
-      "uid": 20000002,
-      "level": 4,
-      "addHP": 40,
-      "addAP": 50,
-      "gold": 42,
-      "exp": 10,
-      "core": 0
-    },
-    {
-      "uid": 20000002,
-      "level": 5,
-      "addHP": 50,
-      "addAP": 55,
-      "gold": 47,
-      "exp": 11,
-      "core": 0
-    },
-    {
-      "uid": 20000002,
-      "level": 6,
-      "addHP": 60,
-      "addAP": 60,
-      "gold": 52,
-      "exp": 12,
-      "core": 0
-    },
-    {
-      "uid": 20000002,
-      "level": 7,
-      "addHP": 70,
-      "addAP": 65,
-      "gold": 57,
-      "exp": 13,
-      "core": 0
-    },
-    {
-      "uid": 20000002,
-      "level": 8,
-      "addHP": 80,
-      "addAP": 70,
-      "gold": 62,
-      "exp": 14,
-      "core": 0
-    },
-    {
-      "uid": 20000002,
-      "level": 9,
-      "addHP": 90,
-      "addAP": 75,
-      "gold": 67,
-      "exp": 15,
-      "core": 0
-    },
-    {
-      "uid": 20000002,
-      "level": 10,
-      "addHP": 100,
-      "addAP": 80,
-      "gold": 72,
-      "exp": 16,
-      "core": 0
-    },
-    {
-      "uid": 20100001,
-      "level": 1,
-      "addHP": 0,
-      "addAP": 0,
-      "gold": 300,
-      "exp": 35,
-      "core": 3
-    },
-    {
-      "uid": 20100001,
-      "level": 2,
-      "addHP": 2000,
-      "addAP": 60,
-      "gold": 700,
-      "exp": 60,
-      "core": 5
-    },
-    {
-      "uid": 20100001,
-      "level": 3,
-      "addHP": 3000,
-      "addAP": 120,
-      "gold": 1000,
-      "exp": 80,
-      "core": 7
-    },
-    {
-      "uid": 20000003,
-      "level": 1,
-      "addHP": 0,
-      "addAP": 0,
-      "gold": 28,
-      "exp": 8,
-      "core": 0
-    },
-    {
-      "uid": 20000003,
-      "level": 2,
-      "addHP": 20,
-      "addAP": 35,
-      "gold": 30,
-      "exp": 9,
-      "core": 0
-    },
-    {
-      "uid": 20000003,
-      "level": 3,
-      "addHP": 30,
-      "addAP": 40,
-      "gold": 32,
-      "exp": 10,
-      "core": 0
-    },
-    {
-      "uid": 20000003,
-      "level": 4,
-      "addHP": 40,
-      "addAP": 45,
-      "gold": 34,
-      "exp": 11,
-      "core": 0
-    },
-    {
-      "uid": 20000003,
-      "level": 5,
-      "addHP": 50,
-      "addAP": 50,
-      "gold": 36,
-      "exp": 12,
-      "core": 0
-    },
-    {
-      "uid": 20000003,
-      "level": 6,
-      "addHP": 60,
-      "addAP": 55,
-      "gold": 38,
-      "exp": 13,
-      "core": 0
-    },
-    {
-      "uid": 20000003,
-      "level": 7,
-      "addHP": 70,
-      "addAP": 60,
-      "gold": 40,
-      "exp": 14,
-      "core": 0
-    },
-    {
-      "uid": 20000003,
-      "level": 8,
-      "addHP": 80,
-      "addAP": 65,
-      "gold": 42,
-      "exp": 15,
-      "core": 0
-    },
-    {
-      "uid": 20000003,
-      "level": 9,
-      "addHP": 90,
-      "addAP": 70,
-      "gold": 44,
-      "exp": 16,
-      "core": 0
-    },
-    {
-      "uid": 20000003,
-      "level": 10,
-      "addHP": 100,
-      "addAP": 75,
-      "gold": 46,
-      "exp": 17,
-      "core": 0
-    },
-    {
-      "uid": 20100002,
-      "level": 1,
-      "addHP": 0,
-      "addAP": 0,
-      "gold": 800,
-      "exp": 45,
-      "core": 5
-    },
-    {
-      "uid": 20100002,
-      "level": 2,
-      "addHP": 2000,
-      "addAP": 70,
-      "gold": 950,
-      "exp": 65,
-      "core": 7
-    },
-    {
-      "uid": 20100002,
-      "level": 3,
-      "addHP": 3500,
-      "addAP": 180,
-      "gold": 800,
-      "exp": 85,
-      "core": 8
-    },
-    {
-      "uid": 20000004,
-      "level": 1,
-      "addHP": 0,
-      "addAP": 0,
-      "gold": 33,
-      "exp": 9,
-      "core": 0
-    },
-    {
-      "uid": 20000004,
-      "level": 2,
-      "addHP": 20,
-      "addAP": 45,
-      "gold": 34,
-      "exp": 10,
-      "core": 0
-    },
-    {
-      "uid": 20000004,
-      "level": 3,
-      "addHP": 30,
-      "addAP": 50,
-      "gold": 35,
-      "exp": 11,
-      "core": 0
-    },
-    {
-      "uid": 20000004,
-      "level": 4,
-      "addHP": 40,
-      "addAP": 55,
-      "gold": 36,
-      "exp": 12,
-      "core": 0
-    },
-    {
-      "uid": 20000004,
-      "level": 5,
-      "addHP": 50,
-      "addAP": 60,
-      "gold": 37,
-      "exp": 13,
-      "core": 0
-    },
-    {
-      "uid": 20000004,
-      "level": 6,
-      "addHP": 60,
-      "addAP": 65,
-      "gold": 38,
-      "exp": 14,
-      "core": 0
-    },
-    {
-      "uid": 20000004,
-      "level": 7,
-      "addHP": 70,
-      "addAP": 70,
-      "gold": 39,
-      "exp": 15,
-      "core": 0
-    },
-    {
-      "uid": 20000004,
-      "level": 8,
-      "addHP": 80,
-      "addAP": 75,
-      "gold": 40,
-      "exp": 16,
-      "core": 0
-    },
-    {
-      "uid": 20000004,
-      "level": 9,
-      "addHP": 90,
-      "addAP": 80,
-      "gold": 41,
-      "exp": 17,
-      "core": 0
-    },
-    {
-      "uid": 20000004,
-      "level": 10,
-      "addHP": 100,
-      "addAP": 85,
-      "gold": 42,
-      "exp": 18,
-      "core": 0
-    },
-    {
-      "uid": 20000005,
-      "level": 1,
-      "addHP": 0,
-      "addAP": 0,
-      "gold": 33,
-      "exp": 11,
-      "core": 0
-    },
-    {
-      "uid": 20000005,
-      "level": 2,
-      "addHP": 20,
-      "addAP": 50,
-      "gold": 34,
-      "exp": 12,
-      "core": 0
-    },
-    {
-      "uid": 20000005,
-      "level": 3,
-      "addHP": 30,
-      "addAP": 55,
-      "gold": 35,
-      "exp": 13,
-      "core": 0
-    },
-    {
-      "uid": 20000005,
-      "level": 4,
-      "addHP": 40,
-      "addAP": 60,
-      "gold": 36,
-      "exp": 14,
-      "core": 0
-    },
-    {
-      "uid": 20000005,
-      "level": 5,
-      "addHP": 50,
-      "addAP": 65,
-      "gold": 37,
-      "exp": 15,
-      "core": 0
-    },
-    {
-      "uid": 20000005,
-      "level": 6,
-      "addHP": 60,
-      "addAP": 70,
-      "gold": 38,
-      "exp": 16,
-      "core": 0
-    },
-    {
-      "uid": 20000005,
-      "level": 7,
-      "addHP": 70,
-      "addAP": 75,
-      "gold": 39,
-      "exp": 17,
-      "core": 0
-    },
-    {
-      "uid": 20000005,
-      "level": 8,
-      "addHP": 80,
-      "addAP": 80,
-      "gold": 40,
-      "exp": 18,
-      "core": 0
-    },
-    {
-      "uid": 20000005,
-      "level": 9,
-      "addHP": 90,
-      "addAP": 85,
-      "gold": 41,
-      "exp": 19,
-      "core": 0
-    },
-    {
-      "uid": 20000005,
-      "level": 10,
-      "addHP": 100,
-      "addAP": 90,
-      "gold": 42,
-      "exp": 20,
-      "core": 0
-    },
-    {
-      "uid": 20100003,
-      "level": 1,
-      "addHP": 0,
-      "addAP": 0,
-      "gold": 800,
-      "exp": 45,
-      "core": 8
-    },
-    {
-      "uid": 20100003,
-      "level": 2,
-      "addHP": 2800,
-      "addAP": 90,
-      "gold": 950,
-      "exp": 65,
-      "core": 9
-    },
-    {
-      "uid": 20100003,
-      "level": 3,
-      "addHP": 3800,
-      "addAP": 200,
-      "gold": 800,
-      "exp": 85,
-      "core": 10
-    }
-  ],
   "StageInfoTable": [
     {
       "stageId": 101,
@@ -909,7 +1025,7 @@
       "monsterId": 20000002,
       "level": 3,
       "genTimeStart": 180,
-      "genTimeEnd": 400,
+      "genTimeEnd": 600,
       "genAmount": 4,
       "genTime": 20,
       "genMax": 30,
@@ -1045,7 +1161,7 @@
       "monsterId": 20000003,
       "level": 4,
       "genTimeStart": 60,
-      "genTimeEnd": 400,
+      "genTimeEnd": 600,
       "genAmount": 3,
       "genTime": 20,
       "genMax": 30,
@@ -1181,7 +1297,7 @@
       "monsterId": 20000003,
       "level": 6,
       "genTimeStart": 60,
-      "genTimeEnd": 400,
+      "genTimeEnd": 600,
       "genAmount": 3,
       "genTime": 20,
       "genMax": 30,
@@ -1220,7 +1336,7 @@
     {
       "stageId": 104,
       "monsterId": 20000001,
-      "level": 5,
+      "level": 8,
       "genTimeStart": 0,
       "genTimeEnd": 15,
       "genAmount": 4,
@@ -1231,7 +1347,7 @@
     {
       "stageId": 104,
       "monsterId": 20000001,
-      "level": 7,
+      "level": 9,
       "genTimeStart": 10,
       "genTimeEnd": 60,
       "genAmount": 3,
@@ -1241,8 +1357,8 @@
     },
     {
       "stageId": 104,
-      "monsterId": 20000001,
-      "level": 8,
+      "monsterId": 20000004,
+      "level": 1,
       "genTimeStart": 40,
       "genTimeEnd": 70,
       "genAmount": 3,
@@ -1252,8 +1368,8 @@
     },
     {
       "stageId": 104,
-      "monsterId": 20000001,
-      "level": 9,
+      "monsterId": 20000004,
+      "level": 2,
       "genTimeStart": 70,
       "genTimeEnd": 100,
       "genAmount": 4,
@@ -1266,9 +1382,9 @@
       "monsterId": 20000002,
       "level": 6,
       "genTimeStart": 15,
-      "genTimeEnd": 45,
+      "genTimeEnd": 60,
       "genAmount": 3,
-      "genTime": 5,
+      "genTime": 4,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -1279,7 +1395,7 @@
       "genTimeStart": 30,
       "genTimeEnd": 150,
       "genAmount": 3,
-      "genTime": 4,
+      "genTime": 3,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -1332,7 +1448,7 @@
       "monsterId": 20000003,
       "level": 7,
       "genTimeStart": 60,
-      "genTimeEnd": 400,
+      "genTimeEnd": 600,
       "genAmount": 2,
       "genTime": 20,
       "genMax": 30,
@@ -1417,9 +1533,9 @@
       "monsterId": 20000001,
       "level": 10,
       "genTimeStart": 15,
-      "genTimeEnd": 45,
+      "genTimeEnd": 60,
       "genAmount": 4,
-      "genTime": 5,
+      "genTime": 4,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -1430,7 +1546,7 @@
       "genTimeStart": 30,
       "genTimeEnd": 150,
       "genAmount": 3,
-      "genTime": 5,
+      "genTime": 3,
       "genMax": 30,
       "genPosVecter3": null
     },
@@ -1494,7 +1610,7 @@
       "monsterId": 20000005,
       "level": 3,
       "genTimeStart": 60,
-      "genTimeEnd": 400,
+      "genTimeEnd": 600,
       "genAmount": 4,
       "genTime": 19,
       "genMax": 30,
@@ -1758,680 +1874,680 @@
       "level": 4,
       "exp": 164,
       "totalExp": 234,
-      "hp": 0,
-      "attack": 0
+      "hp": 70,
+      "attack": 30
     },
     {
       "level": 5,
       "exp": 337,
       "totalExp": 571,
-      "hp": 0,
-      "attack": 0
+      "hp": 80,
+      "attack": 40
     },
     {
       "level": 6,
       "exp": 588,
       "totalExp": 1159,
-      "hp": 0,
-      "attack": 0
+      "hp": 90,
+      "attack": 50
     },
     {
       "level": 7,
       "exp": 927,
       "totalExp": 2086,
-      "hp": 0,
-      "attack": 0
+      "hp": 100,
+      "attack": 60
     },
     {
       "level": 8,
       "exp": 1364,
       "totalExp": 3450,
-      "hp": 0,
-      "attack": 0
+      "hp": 110,
+      "attack": 70
     },
     {
       "level": 9,
       "exp": 1904,
       "totalExp": 5354,
-      "hp": 0,
-      "attack": 0
+      "hp": 120,
+      "attack": 80
     },
     {
       "level": 10,
       "exp": 2556,
       "totalExp": 7910,
-      "hp": 0,
-      "attack": 0
+      "hp": 130,
+      "attack": 90
     },
     {
       "level": 11,
       "exp": 3326,
       "totalExp": 11236,
-      "hp": 0,
-      "attack": 0
+      "hp": 140,
+      "attack": 100
     },
     {
       "level": 12,
       "exp": 4221,
       "totalExp": 15457,
-      "hp": 0,
-      "attack": 0
+      "hp": 150,
+      "attack": 110
     },
     {
       "level": 13,
       "exp": 5247,
       "totalExp": 20704,
-      "hp": 0,
-      "attack": 0
+      "hp": 160,
+      "attack": 120
     },
     {
       "level": 14,
       "exp": 6409,
       "totalExp": 27113,
-      "hp": 0,
-      "attack": 0
+      "hp": 170,
+      "attack": 130
     },
     {
       "level": 15,
       "exp": 7714,
       "totalExp": 34827,
-      "hp": 0,
-      "attack": 0
+      "hp": 180,
+      "attack": 140
     },
     {
       "level": 16,
       "exp": 9166,
       "totalExp": 43993,
-      "hp": 0,
-      "attack": 0
+      "hp": 190,
+      "attack": 150
     },
     {
       "level": 17,
       "exp": 10770,
       "totalExp": 54763,
-      "hp": 0,
-      "attack": 0
+      "hp": 200,
+      "attack": 160
     },
     {
       "level": 18,
       "exp": 12533,
       "totalExp": 67296,
-      "hp": 0,
-      "attack": 0
+      "hp": 210,
+      "attack": 170
     },
     {
       "level": 19,
       "exp": 14458,
       "totalExp": 81754,
-      "hp": 0,
-      "attack": 0
+      "hp": 220,
+      "attack": 180
     },
     {
       "level": 20,
       "exp": 16551,
       "totalExp": 98305,
-      "hp": 0,
-      "attack": 0
+      "hp": 230,
+      "attack": 190
     },
     {
       "level": 21,
       "exp": 18815,
       "totalExp": 117120,
-      "hp": 0,
-      "attack": 0
+      "hp": 240,
+      "attack": 200
     },
     {
       "level": 22,
       "exp": 21256,
       "totalExp": 138376,
-      "hp": 0,
-      "attack": 0
+      "hp": 250,
+      "attack": 210
     },
     {
       "level": 23,
       "exp": 23878,
       "totalExp": 162254,
-      "hp": 0,
-      "attack": 0
+      "hp": 260,
+      "attack": 220
     },
     {
       "level": 24,
       "exp": 26684,
       "totalExp": 188938,
-      "hp": 0,
-      "attack": 0
+      "hp": 270,
+      "attack": 230
     },
     {
       "level": 25,
       "exp": 29680,
       "totalExp": 218618,
-      "hp": 0,
-      "attack": 0
+      "hp": 280,
+      "attack": 240
     },
     {
       "level": 26,
       "exp": 32869,
       "totalExp": 251487,
-      "hp": 0,
-      "attack": 0
+      "hp": 290,
+      "attack": 250
     },
     {
       "level": 27,
       "exp": 36255,
       "totalExp": 287742,
-      "hp": 0,
-      "attack": 0
+      "hp": 300,
+      "attack": 260
     },
     {
       "level": 28,
       "exp": 39842,
       "totalExp": 327584,
-      "hp": 0,
-      "attack": 0
+      "hp": 310,
+      "attack": 270
     },
     {
       "level": 29,
       "exp": 43634,
       "totalExp": 371218,
-      "hp": 0,
-      "attack": 0
+      "hp": 320,
+      "attack": 280
     },
     {
       "level": 30,
       "exp": 47635,
       "totalExp": 418853,
-      "hp": 0,
-      "attack": 0
+      "hp": 330,
+      "attack": 290
     },
     {
       "level": 31,
       "exp": 51849,
       "totalExp": 470702,
-      "hp": 0,
-      "attack": 0
+      "hp": 340,
+      "attack": 300
     },
     {
       "level": 32,
       "exp": 56278,
       "totalExp": 526980,
-      "hp": 0,
-      "attack": 0
+      "hp": 350,
+      "attack": 310
     },
     {
       "level": 33,
       "exp": 60927,
       "totalExp": 587907,
-      "hp": 0,
-      "attack": 0
+      "hp": 360,
+      "attack": 320
     },
     {
       "level": 34,
       "exp": 65799,
       "totalExp": 653706,
-      "hp": 0,
-      "attack": 0
+      "hp": 370,
+      "attack": 330
     },
     {
       "level": 35,
       "exp": 70898,
       "totalExp": 724604,
-      "hp": 0,
-      "attack": 0
+      "hp": 380,
+      "attack": 340
     },
     {
       "level": 36,
       "exp": 76226,
       "totalExp": 800830,
-      "hp": 0,
-      "attack": 0
+      "hp": 390,
+      "attack": 350
     },
     {
       "level": 37,
       "exp": 81788,
       "totalExp": 882618,
-      "hp": 0,
-      "attack": 0
+      "hp": 400,
+      "attack": 360
     },
     {
       "level": 38,
       "exp": 87587,
       "totalExp": 970205,
-      "hp": 0,
-      "attack": 0
+      "hp": 410,
+      "attack": 370
     },
     {
       "level": 39,
       "exp": 93625,
       "totalExp": 1063830,
-      "hp": 0,
-      "attack": 0
+      "hp": 420,
+      "attack": 380
     },
     {
       "level": 40,
       "exp": 99907,
       "totalExp": 1163737,
-      "hp": 0,
-      "attack": 0
+      "hp": 430,
+      "attack": 390
     },
     {
       "level": 41,
       "exp": 106435,
       "totalExp": 1270172,
-      "hp": 0,
-      "attack": 0
+      "hp": 440,
+      "attack": 400
     },
     {
       "level": 42,
       "exp": 113213,
       "totalExp": 1383385,
-      "hp": 0,
-      "attack": 0
+      "hp": 450,
+      "attack": 410
     },
     {
       "level": 43,
       "exp": 120243,
       "totalExp": 1503628,
-      "hp": 0,
-      "attack": 0
+      "hp": 460,
+      "attack": 420
     },
     {
       "level": 44,
       "exp": 127528,
       "totalExp": 1631156,
-      "hp": 0,
-      "attack": 0
+      "hp": 470,
+      "attack": 430
     },
     {
       "level": 45,
       "exp": 135072,
       "totalExp": 1766228,
-      "hp": 0,
-      "attack": 0
+      "hp": 480,
+      "attack": 440
     },
     {
       "level": 46,
       "exp": 142878,
       "totalExp": 1909106,
-      "hp": 0,
-      "attack": 0
+      "hp": 490,
+      "attack": 450
     },
     {
       "level": 47,
       "exp": 150949,
       "totalExp": 2060055,
-      "hp": 0,
-      "attack": 0
+      "hp": 500,
+      "attack": 460
     },
     {
       "level": 48,
       "exp": 159287,
       "totalExp": 2219342,
-      "hp": 0,
-      "attack": 0
+      "hp": 510,
+      "attack": 470
     },
     {
       "level": 49,
       "exp": 167895,
       "totalExp": 2387237,
-      "hp": 0,
-      "attack": 0
+      "hp": 520,
+      "attack": 480
     },
     {
       "level": 50,
       "exp": 176777,
       "totalExp": 2564014,
-      "hp": 0,
-      "attack": 0
+      "hp": 530,
+      "attack": 490
     },
     {
       "level": 51,
       "exp": 185934,
       "totalExp": 2749948,
-      "hp": 0,
-      "attack": 0
+      "hp": 540,
+      "attack": 500
     },
     {
       "level": 52,
       "exp": 195371,
       "totalExp": 2945319,
-      "hp": 0,
-      "attack": 0
+      "hp": 550,
+      "attack": 510
     },
     {
       "level": 53,
       "exp": 205089,
       "totalExp": 3150408,
-      "hp": 0,
-      "attack": 0
+      "hp": 560,
+      "attack": 520
     },
     {
       "level": 54,
       "exp": 215092,
       "totalExp": 3365500,
-      "hp": 0,
-      "attack": 0
+      "hp": 570,
+      "attack": 530
     },
     {
       "level": 55,
       "exp": 225382,
       "totalExp": 3590882,
-      "hp": 0,
-      "attack": 0
+      "hp": 580,
+      "attack": 540
     },
     {
       "level": 56,
       "exp": 235962,
       "totalExp": 3826844,
-      "hp": 0,
-      "attack": 0
+      "hp": 590,
+      "attack": 550
     },
     {
       "level": 57,
       "exp": 246834,
       "totalExp": 4073678,
-      "hp": 0,
-      "attack": 0
+      "hp": 600,
+      "attack": 560
     },
     {
       "level": 58,
       "exp": 258001,
       "totalExp": 4331679,
-      "hp": 0,
-      "attack": 0
+      "hp": 610,
+      "attack": 570
     },
     {
       "level": 59,
       "exp": 269467,
       "totalExp": 4601146,
-      "hp": 0,
-      "attack": 0
+      "hp": 620,
+      "attack": 580
     },
     {
       "level": 60,
       "exp": 281232,
       "totalExp": 4882378,
-      "hp": 0,
-      "attack": 0
+      "hp": 630,
+      "attack": 590
     },
     {
       "level": 61,
       "exp": 293301,
       "totalExp": 5175679,
-      "hp": 0,
-      "attack": 0
+      "hp": 640,
+      "attack": 600
     },
     {
       "level": 62,
       "exp": 305675,
       "totalExp": 5481354,
-      "hp": 0,
-      "attack": 0
+      "hp": 650,
+      "attack": 610
     },
     {
       "level": 63,
       "exp": 318357,
       "totalExp": 5799711,
-      "hp": 0,
-      "attack": 0
+      "hp": 660,
+      "attack": 620
     },
     {
       "level": 64,
       "exp": 331349,
       "totalExp": 6131060,
-      "hp": 0,
-      "attack": 0
+      "hp": 670,
+      "attack": 630
     },
     {
       "level": 65,
       "exp": 344655,
       "totalExp": 6475715,
-      "hp": 0,
-      "attack": 0
+      "hp": 680,
+      "attack": 640
     },
     {
       "level": 66,
       "exp": 358276,
       "totalExp": 6833991,
-      "hp": 0,
-      "attack": 0
+      "hp": 690,
+      "attack": 650
     },
     {
       "level": 67,
       "exp": 372216,
       "totalExp": 7206207,
-      "hp": 0,
-      "attack": 0
+      "hp": 700,
+      "attack": 660
     },
     {
       "level": 68,
       "exp": 386475,
       "totalExp": 7592682,
-      "hp": 0,
-      "attack": 0
+      "hp": 710,
+      "attack": 670
     },
     {
       "level": 69,
       "exp": 401058,
       "totalExp": 7993740,
-      "hp": 0,
-      "attack": 0
+      "hp": 720,
+      "attack": 680
     },
     {
       "level": 70,
       "exp": 415966,
       "totalExp": 8409706,
-      "hp": 0,
-      "attack": 0
+      "hp": 730,
+      "attack": 690
     },
     {
       "level": 71,
       "exp": 431201,
       "totalExp": 8840907,
-      "hp": 0,
-      "attack": 0
+      "hp": 740,
+      "attack": 700
     },
     {
       "level": 72,
       "exp": 446767,
       "totalExp": 9287674,
-      "hp": 0,
-      "attack": 0
+      "hp": 750,
+      "attack": 710
     },
     {
       "level": 73,
       "exp": 462664,
       "totalExp": 9750338,
-      "hp": 0,
-      "attack": 0
+      "hp": 760,
+      "attack": 720
     },
     {
       "level": 74,
       "exp": 478897,
       "totalExp": 10229235,
-      "hp": 0,
-      "attack": 0
+      "hp": 770,
+      "attack": 730
     },
     {
       "level": 75,
       "exp": 495466,
       "totalExp": 10724701,
-      "hp": 0,
-      "attack": 0
+      "hp": 780,
+      "attack": 740
     },
     {
       "level": 76,
       "exp": 512375,
       "totalExp": 11237076,
-      "hp": 0,
-      "attack": 0
+      "hp": 790,
+      "attack": 750
     },
     {
       "level": 77,
       "exp": 529625,
       "totalExp": 11766701,
-      "hp": 0,
-      "attack": 0
+      "hp": 800,
+      "attack": 760
     },
     {
       "level": 78,
       "exp": 547220,
       "totalExp": 12313921,
-      "hp": 0,
-      "attack": 0
+      "hp": 810,
+      "attack": 770
     },
     {
       "level": 79,
       "exp": 565160,
       "totalExp": 12879081,
-      "hp": 0,
-      "attack": 0
+      "hp": 820,
+      "attack": 780
     },
     {
       "level": 80,
       "exp": 583449,
       "totalExp": 13462530,
-      "hp": 0,
-      "attack": 0
+      "hp": 830,
+      "attack": 790
     },
     {
       "level": 81,
       "exp": 602088,
       "totalExp": 14064618,
-      "hp": 0,
-      "attack": 0
+      "hp": 840,
+      "attack": 800
     },
     {
       "level": 82,
       "exp": 621080,
       "totalExp": 14685698,
-      "hp": 0,
-      "attack": 0
+      "hp": 850,
+      "attack": 810
     },
     {
       "level": 83,
       "exp": 640427,
       "totalExp": 15326125,
-      "hp": 0,
-      "attack": 0
+      "hp": 860,
+      "attack": 820
     },
     {
       "level": 84,
       "exp": 660131,
       "totalExp": 15986256,
-      "hp": 0,
-      "attack": 0
+      "hp": 870,
+      "attack": 830
     },
     {
       "level": 85,
       "exp": 680194,
       "totalExp": 16666450,
-      "hp": 0,
-      "attack": 0
+      "hp": 880,
+      "attack": 840
     },
     {
       "level": 86,
       "exp": 700619,
       "totalExp": 17367069,
-      "hp": 0,
-      "attack": 0
+      "hp": 890,
+      "attack": 850
     },
     {
       "level": 87,
       "exp": 721408,
       "totalExp": 18088477,
-      "hp": 0,
-      "attack": 0
+      "hp": 900,
+      "attack": 860
     },
     {
       "level": 88,
       "exp": 742562,
       "totalExp": 18831039,
-      "hp": 0,
-      "attack": 0
+      "hp": 910,
+      "attack": 870
     },
     {
       "level": 89,
       "exp": 764085,
       "totalExp": 19595124,
-      "hp": 0,
-      "attack": 0
+      "hp": 920,
+      "attack": 880
     },
     {
       "level": 90,
       "exp": 785977,
       "totalExp": 20381101,
-      "hp": 0,
-      "attack": 0
+      "hp": 930,
+      "attack": 890
     },
     {
       "level": 91,
       "exp": 808241,
       "totalExp": 21189342,
-      "hp": 0,
-      "attack": 0
+      "hp": 940,
+      "attack": 900
     },
     {
       "level": 92,
       "exp": 830880,
       "totalExp": 22020222,
-      "hp": 0,
-      "attack": 0
+      "hp": 950,
+      "attack": 910
     },
     {
       "level": 93,
       "exp": 853895,
       "totalExp": 22874117,
-      "hp": 0,
-      "attack": 0
+      "hp": 960,
+      "attack": 920
     },
     {
       "level": 94,
       "exp": 877288,
       "totalExp": 23751405,
-      "hp": 0,
-      "attack": 0
+      "hp": 970,
+      "attack": 930
     },
     {
       "level": 95,
       "exp": 901062,
       "totalExp": 24652467,
-      "hp": 0,
-      "attack": 0
+      "hp": 980,
+      "attack": 940
     },
     {
       "level": 96,
       "exp": 925217,
       "totalExp": 25577684,
-      "hp": 0,
-      "attack": 0
+      "hp": 990,
+      "attack": 950
     },
     {
       "level": 97,
       "exp": 949758,
       "totalExp": 26527442,
-      "hp": 0,
-      "attack": 0
+      "hp": 1000,
+      "attack": 960
     },
     {
       "level": 98,
       "exp": 974685,
       "totalExp": 27502127,
-      "hp": 0,
-      "attack": 0
+      "hp": 1010,
+      "attack": 970
     },
     {
       "level": 99,
       "exp": 1000000,
       "totalExp": 28502127,
-      "hp": 0,
-      "attack": 0
+      "hp": 1020,
+      "attack": 980
     },
     {
       "level": 100,
       "exp": 1025706,
       "totalExp": 29527833,
-      "hp": 0,
-      "attack": 0
+      "hp": 1030,
+      "attack": 990
     }
   ],
   "PlayerIngameLevel": [
@@ -3243,7 +3359,7 @@
       "minAp": 1,
       "maxAp": 5,
       "minMovespeed": 0.01,
-      "maxMovespeed": 0.1,
+      "maxMovespeed": 0.03,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -3268,7 +3384,7 @@
       "minAp": 5,
       "maxAp": 10,
       "minMovespeed": 0.01,
-      "maxMovespeed": 0.1,
+      "maxMovespeed": 0.04,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -3292,8 +3408,8 @@
       "maxDp": 30,
       "minAp": 10,
       "maxAp": 20,
-      "minMovespeed": 0.2,
-      "maxMovespeed": 0.31,
+      "minMovespeed": 0.02,
+      "maxMovespeed": 0.04,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -3317,8 +3433,8 @@
       "maxDp": 40,
       "minAp": 20,
       "maxAp": 35,
-      "minMovespeed": 0.4,
-      "maxMovespeed": 0.51,
+      "minMovespeed": 0.04,
+      "maxMovespeed": 0.08,
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
@@ -3342,8 +3458,8 @@
       "maxDp": 50,
       "minAp": 35,
       "maxAp": 40,
-      "minMovespeed": 0.52,
-      "maxMovespeed": 0.61,
+      "minMovespeed": 0.08,
+      "maxMovespeed": 0.1,
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
@@ -3367,8 +3483,8 @@
       "maxDp": 80,
       "minAp": 70,
       "maxAp": 80,
-      "minMovespeed": 0.71,
-      "maxMovespeed": 1.1,
+      "minMovespeed": 0.2,
+      "maxMovespeed": 0.5,
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
@@ -3392,8 +3508,8 @@
       "maxDp": 10,
       "minAp": 1,
       "maxAp": 5,
-      "minMovespeed": 1.11,
-      "maxMovespeed": 1.99,
+      "minMovespeed": 0.01,
+      "maxMovespeed": 0.03,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -3418,7 +3534,7 @@
       "minAp": 5,
       "maxAp": 10,
       "minMovespeed": 0.01,
-      "maxMovespeed": 0.1,
+      "maxMovespeed": 0.04,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -3442,8 +3558,8 @@
       "maxDp": 30,
       "minAp": 10,
       "maxAp": 20,
-      "minMovespeed": 0.2,
-      "maxMovespeed": 0.31,
+      "minMovespeed": 0.02,
+      "maxMovespeed": 0.04,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -3467,8 +3583,8 @@
       "maxDp": 40,
       "minAp": 20,
       "maxAp": 35,
-      "minMovespeed": 0.4,
-      "maxMovespeed": 0.51,
+      "minMovespeed": 0.04,
+      "maxMovespeed": 0.08,
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
@@ -3492,8 +3608,8 @@
       "maxDp": 50,
       "minAp": 35,
       "maxAp": 40,
-      "minMovespeed": 0.52,
-      "maxMovespeed": 0.61,
+      "minMovespeed": 0.08,
+      "maxMovespeed": 0.1,
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
@@ -3517,8 +3633,8 @@
       "maxDp": 80,
       "minAp": 70,
       "maxAp": 80,
-      "minMovespeed": 0.71,
-      "maxMovespeed": 1.1,
+      "minMovespeed": 0.2,
+      "maxMovespeed": 0.5,
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
@@ -3542,8 +3658,8 @@
       "maxDp": 10,
       "minAp": 1,
       "maxAp": 5,
-      "minMovespeed": 1.11,
-      "maxMovespeed": 1.99,
+      "minMovespeed": 0.01,
+      "maxMovespeed": 0.03,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -3568,7 +3684,7 @@
       "minAp": 5,
       "maxAp": 10,
       "minMovespeed": 0.01,
-      "maxMovespeed": 0.1,
+      "maxMovespeed": 0.04,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -3592,8 +3708,8 @@
       "maxDp": 30,
       "minAp": 10,
       "maxAp": 20,
-      "minMovespeed": 0.2,
-      "maxMovespeed": 0.31,
+      "minMovespeed": 0.02,
+      "maxMovespeed": 0.04,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -3617,8 +3733,8 @@
       "maxDp": 40,
       "minAp": 20,
       "maxAp": 35,
-      "minMovespeed": 0.4,
-      "maxMovespeed": 0.51,
+      "minMovespeed": 0.04,
+      "maxMovespeed": 0.08,
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
@@ -3642,8 +3758,8 @@
       "maxDp": 50,
       "minAp": 35,
       "maxAp": 40,
-      "minMovespeed": 0.52,
-      "maxMovespeed": 0.61,
+      "minMovespeed": 0.08,
+      "maxMovespeed": 0.1,
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
@@ -3667,8 +3783,8 @@
       "maxDp": 80,
       "minAp": 70,
       "maxAp": 80,
-      "minMovespeed": 0.71,
-      "maxMovespeed": 1.1,
+      "minMovespeed": 0.2,
+      "maxMovespeed": 0.5,
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
@@ -3692,8 +3808,8 @@
       "maxDp": 10,
       "minAp": 1,
       "maxAp": 5,
-      "minMovespeed": 1.11,
-      "maxMovespeed": 1.99,
+      "minMovespeed": 0.01,
+      "maxMovespeed": 0.03,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -3718,7 +3834,7 @@
       "minAp": 5,
       "maxAp": 10,
       "minMovespeed": 0.01,
-      "maxMovespeed": 0.1,
+      "maxMovespeed": 0.04,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -3742,8 +3858,8 @@
       "maxDp": 30,
       "minAp": 10,
       "maxAp": 20,
-      "minMovespeed": 0.2,
-      "maxMovespeed": 0.31,
+      "minMovespeed": 0.02,
+      "maxMovespeed": 0.04,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -3767,8 +3883,8 @@
       "maxDp": 40,
       "minAp": 20,
       "maxAp": 35,
-      "minMovespeed": 0.4,
-      "maxMovespeed": 0.51,
+      "minMovespeed": 0.04,
+      "maxMovespeed": 0.08,
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
@@ -3792,8 +3908,8 @@
       "maxDp": 50,
       "minAp": 35,
       "maxAp": 40,
-      "minMovespeed": 0.52,
-      "maxMovespeed": 0.61,
+      "minMovespeed": 0.08,
+      "maxMovespeed": 0.1,
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
@@ -3817,8 +3933,8 @@
       "maxDp": 80,
       "minAp": 70,
       "maxAp": 80,
-      "minMovespeed": 0.71,
-      "maxMovespeed": 1.1,
+      "minMovespeed": 0.2,
+      "maxMovespeed": 0.5,
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
@@ -3842,8 +3958,8 @@
       "maxDp": 10,
       "minAp": 1,
       "maxAp": 5,
-      "minMovespeed": 1.11,
-      "maxMovespeed": 1.99,
+      "minMovespeed": 0.01,
+      "maxMovespeed": 0.03,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -3868,7 +3984,7 @@
       "minAp": 5,
       "maxAp": 10,
       "minMovespeed": 0.01,
-      "maxMovespeed": 0.1,
+      "maxMovespeed": 0.04,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -3892,8 +4008,8 @@
       "maxDp": 30,
       "minAp": 10,
       "maxAp": 20,
-      "minMovespeed": 0.2,
-      "maxMovespeed": 0.31,
+      "minMovespeed": 0.02,
+      "maxMovespeed": 0.04,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -3905,7 +4021,7 @@
       "itemId": 60040004,
       "itemCategory": "Equipment",
       "itemType": "Boots",
-      "nameAlias": "지진을 일으키느 전사의 부츠",
+      "nameAlias": "지진을 일으키는 전사의 부츠",
       "descAlias": "-",
       "grade": "Rare",
       "maxStack": 1,
@@ -3917,8 +4033,8 @@
       "maxDp": 40,
       "minAp": 20,
       "maxAp": 35,
-      "minMovespeed": 0.4,
-      "maxMovespeed": 0.51,
+      "minMovespeed": 0.04,
+      "maxMovespeed": 0.08,
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
@@ -3942,8 +4058,8 @@
       "maxDp": 50,
       "minAp": 35,
       "maxAp": 40,
-      "minMovespeed": 0.52,
-      "maxMovespeed": 0.61,
+      "minMovespeed": 0.08,
+      "maxMovespeed": 0.1,
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
@@ -3967,8 +4083,8 @@
       "maxDp": 80,
       "minAp": 70,
       "maxAp": 80,
-      "minMovespeed": 0.71,
-      "maxMovespeed": 1.1,
+      "minMovespeed": 0.2,
+      "maxMovespeed": 0.5,
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
@@ -3992,8 +4108,8 @@
       "maxDp": 10,
       "minAp": 1,
       "maxAp": 5,
-      "minMovespeed": 1.11,
-      "maxMovespeed": 1.99,
+      "minMovespeed": 0.01,
+      "maxMovespeed": 0.03,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -4018,7 +4134,7 @@
       "minAp": 5,
       "maxAp": 10,
       "minMovespeed": 0.01,
-      "maxMovespeed": 0.1,
+      "maxMovespeed": 0.04,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -4042,8 +4158,8 @@
       "maxDp": 30,
       "minAp": 10,
       "maxAp": 20,
-      "minMovespeed": 0.2,
-      "maxMovespeed": 0.31,
+      "minMovespeed": 0.02,
+      "maxMovespeed": 0.04,
       "minCriticalHit": 0,
       "maxCriticalHit": 0,
       "minHpGen": 0,
@@ -4067,8 +4183,8 @@
       "maxDp": 40,
       "minAp": 20,
       "maxAp": 35,
-      "minMovespeed": 0.4,
-      "maxMovespeed": 0.51,
+      "minMovespeed": 0.04,
+      "maxMovespeed": 0.08,
       "minCriticalHit": 1,
       "maxCriticalHit": 5,
       "minHpGen": 0,
@@ -4092,8 +4208,8 @@
       "maxDp": 50,
       "minAp": 35,
       "maxAp": 40,
-      "minMovespeed": 0.52,
-      "maxMovespeed": 0.61,
+      "minMovespeed": 0.08,
+      "maxMovespeed": 0.1,
       "minCriticalHit": 6,
       "maxCriticalHit": 10,
       "minHpGen": 0,
@@ -4117,8 +4233,8 @@
       "maxDp": 80,
       "minAp": 70,
       "maxAp": 80,
-      "minMovespeed": 0.71,
-      "maxMovespeed": 1.1,
+      "minMovespeed": 0.2,
+      "maxMovespeed": 0.5,
       "minCriticalHit": 11,
       "maxCriticalHit": 20,
       "minHpGen": 1,
@@ -4827,7 +4943,7 @@
       "rangeType": "FixedRange",
       "coolDownTime": 2,
       "castDelay": 2,
-      "attackDamage": 180,
+      "attackDamage": 160,
       "projectileType": "AreaDotDamage",
       "projectileSpeed": 0,
       "projectileCount": 0,
@@ -4858,7 +4974,7 @@
       "rangeType": "FixedRange",
       "coolDownTime": 1.5,
       "castDelay": 2,
-      "attackDamage": 200,
+      "attackDamage": 180,
       "projectileType": "AreaDotDamage",
       "projectileSpeed": 0,
       "projectileCount": 0,
@@ -4889,7 +5005,7 @@
       "rangeType": "FixedRange",
       "coolDownTime": 0,
       "castDelay": 2,
-      "attackDamage": 220,
+      "attackDamage": 200,
       "projectileType": "AreaDotDamage",
       "projectileSpeed": 0,
       "projectileCount": 0,
@@ -5117,7 +5233,7 @@
       "imageAddress": "Textures/SkillIcon/Ice_S",
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Active/IceBigMissileOBJ",
-      "prefabAfterEffect": "Prefabs/Weapons/AfterEffect/Freeze",
+      "prefabAfterEffect": "Prefabs/Skill/AfterEffect/Freeze",
       "awakenReqSkill": 0
     },
     {
@@ -5199,7 +5315,7 @@
       "rangeType": "FixedRange",
       "coolDownTime": 0,
       "castDelay": 2,
-      "attackDamage": 250,
+      "attackDamage": 240,
       "projectileType": "AreaDotDamage",
       "projectileSpeed": 0,
       "projectileCount": 0,
@@ -5423,7 +5539,7 @@
       "projectilePenetration": 0,
       "addDef": 0,
       "addHP": 0,
-      "regenHP": 10,
+      "regenHP": 5,
       "imageAddress": "Textures/SkillIcon/Heal",
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Passive/HealLoop",
@@ -5454,7 +5570,7 @@
       "projectilePenetration": 0,
       "addDef": 0,
       "addHP": 0,
-      "regenHP": 20,
+      "regenHP": 10,
       "imageAddress": "Textures/SkillIcon/Heal",
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Passive/HealLoop",
@@ -5485,7 +5601,7 @@
       "projectilePenetration": 0,
       "addDef": 0,
       "addHP": 0,
-      "regenHP": 30,
+      "regenHP": 15,
       "imageAddress": "Textures/SkillIcon/Heal",
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Passive/HealLoop",
@@ -5516,7 +5632,7 @@
       "projectilePenetration": 0,
       "addDef": 0,
       "addHP": 0,
-      "regenHP": 40,
+      "regenHP": 20,
       "imageAddress": "Textures/SkillIcon/Heal",
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Passive/HealLoop",
@@ -5547,7 +5663,7 @@
       "projectilePenetration": 0,
       "addDef": 0,
       "addHP": 0,
-      "regenHP": 50,
+      "regenHP": 25,
       "imageAddress": "Textures/SkillIcon/Heal",
       "prefabAsset": "Arsenal",
       "prefabAddress": "Prefabs/Skill/Passive/HealLoop",

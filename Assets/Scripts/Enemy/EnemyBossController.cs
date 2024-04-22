@@ -19,6 +19,11 @@ public class EnemyBossController : EnemyBaseController
     private GameObject effectSkullProjectile;
     private GameObject effectSlashAttack;
 
+    private float secondAttackTime;
+
+    private float timer = 0f;
+    private float advSensoryRange = 0f;
+
     public override void Init(int _monsterID, int _level, Player target)
     {
         base.Init(_monsterID, _level, target);
@@ -53,6 +58,11 @@ public class EnemyBossController : EnemyBaseController
         {
             AttackUpdate();
         }
+        timer += Time.deltaTime;
+        if (timer > 600)
+        {
+            advSensoryRange = 240f;
+        }
     }
 
     private IEnumerator CheckState()
@@ -80,7 +90,7 @@ public class EnemyBossController : EnemyBaseController
     private void WanderUpdate()
     {
         //플레이어 거리가 감지 범위 내로 들어왔을 경우
-        if (playerDistance < characterInfo.sensoryRange)
+        if (playerDistance < characterInfo.sensoryRange + advSensoryRange)
         {
             SetState(EnemyState.Trace);
         }
@@ -122,7 +132,7 @@ public class EnemyBossController : EnemyBaseController
     private void TraceUpdate()
     {
         // 추적 거리 벗어나면 
-        if (playerDistance > characterInfo.sensoryRange)
+        if (playerDistance > characterInfo.sensoryRange + advSensoryRange)
         {
             navMeshAgent.CalculatePath(defaultPos, path); // 원위치
             navMeshAgent.SetPath(path);
@@ -168,7 +178,7 @@ public class EnemyBossController : EnemyBaseController
             case 20100002:
                 {
                     GameObject newEffect = Instantiate(effectSkullProjectile, transform.position + Vector3.up, Quaternion.LookRotation(direction));
-                    newEffect.GetComponent<EnemyProjectile>().Init(damage, 20f);
+                    newEffect.GetComponent<EnemyProjectile>().Init(damage, 30f);
                     Destroy(newEffect, 5f); // 일정 시간 후에 이펙트를 파괴
                     animator.SetTrigger(Attack);
                 }
