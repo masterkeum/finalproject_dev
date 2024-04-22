@@ -37,7 +37,7 @@ public class EnemyProjectile : MonoBehaviour
 
         originalConstraints = rb.constraints;
 
-        enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
+        enemyLayerMask = 1 << LayerMask.NameToLayer("Player");
         groundLayerMask = 1 << LayerMask.NameToLayer("Ground");
         projectileParticle = Instantiate(projectileParticle, transform.position, transform.rotation);
         projectileParticle.transform.parent = transform;
