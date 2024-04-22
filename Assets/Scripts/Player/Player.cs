@@ -173,9 +173,14 @@ public class Player : MonoBehaviour
     {
         if (transform.position.y < -10)
         {
+            // 
+            Vector3 newPos = transform.position;
+            newPos.y = 0;
+            transform.position = newPos;
+
             OnDead(GameState.DropDie);
             // 임시방편. 바닥밑으로 떨어지면 위치이동
-            
+
             // Vector3 tmpPos = transform.position;
             // tmpPos.y = 200;
             // RaycastHit hit;
