@@ -170,25 +170,27 @@ public class Player : MonoBehaviour
         IsInit = true;
     }
 
-    //private void Update()
-    //{
-    //    if (transform.position.y < -10)
-    //    {
-    //        // 임시방편. 바닥밑으로 떨어지면 위치이동
-    //        Vector3 tmpPos = transform.position;
-    //        tmpPos.y = 200;
-    //        RaycastHit hit;
-    //        NavMeshHit navhit;
-    //        if (Physics.Raycast(new Ray(tmpPos, Vector3.down), out hit, Mathf.Infinity))
-    //        {
-    //            if (NavMesh.SamplePosition(hit.point, out navhit, detectionRange, NavMesh.AllAreas))
-    //            {
-    //                transform.position = navhit.position;
-    //            }
-    //        }
-    //    }
-    //    //SkillRoutine();
-    //}
+    private void Update()
+    {
+        if (transform.position.y < -10)
+        {
+            OnDead();
+            // 임시방편. 바닥밑으로 떨어지면 위치이동
+            
+            // Vector3 tmpPos = transform.position;
+            // tmpPos.y = 200;
+            // RaycastHit hit;
+            // NavMeshHit navhit;
+            // if (Physics.Raycast(new Ray(tmpPos, Vector3.down), out hit, Mathf.Infinity))
+            // {
+            //     if (NavMesh.SamplePosition(hit.point, out navhit, detectionRange, NavMesh.AllAreas))
+            //     {
+            //         transform.position = navhit.position;
+            //     }
+            // }
+        }
+        //SkillRoutine();
+    }
 
 
     #region Physics
