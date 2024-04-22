@@ -8,6 +8,8 @@ public enum GameState
     Main,
     IngameStart,
     IngameEnd,
+    DropDie,
+    KillDie,
 }
 
 public enum CharacterType

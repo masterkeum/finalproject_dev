@@ -349,7 +349,8 @@ MonoBehaviour:
   detectionRange: 15
   detectRandomRange: 10
   chaseTarget: []
-  hudDamageText: {fileID: 0}
+  adButton: {fileID: 1298923645609650093, guid: 229ca46b36de3a347aaba82a86f32a13,
+    type: 3}
   hudPos: {fileID: 6195452119987240592}
   playerStatInfo:
     hp: 0
@@ -388,6 +389,7 @@ MonoBehaviour:
     skillpoint: 0
     gem: 0
     core: 0
+    resurectionCount: 0
   activeSkillSlot: []
   passiveSkillSlot: []
   _testUI: {fileID: 355903489752174307}

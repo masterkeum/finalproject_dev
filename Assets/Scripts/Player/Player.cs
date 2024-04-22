@@ -101,7 +101,6 @@ public class Player : MonoBehaviour
 
     public List<GameObject> chaseTarget = new List<GameObject>();
     private Slider hpGuageSlider;
-    public GameObject hudDamageText;
     public Transform hudPos;
 
     // 인게임 스탯
@@ -174,7 +173,7 @@ public class Player : MonoBehaviour
     {
         if (transform.position.y < -10)
         {
-            OnDead();
+            OnDead(GameState.DropDie);
             // 임시방편. 바닥밑으로 떨어지면 위치이동
             
             // Vector3 tmpPos = transform.position;
@@ -598,18 +597,22 @@ public class Player : MonoBehaviour
 
         //Debug.Log("플레이어 현재 HP" + per);
         if (playeringameinfo.curHp <= 0)
-            OnDead();
+            OnDead(GameState.KillDie);
     }
 
-    void OnDead()
+    void OnDead(GameState dieState)
     {
         // 피격 사운드
         SoundManager.Instance.PlayBattleSound("Die");
         Debug.Log("플레이어사망. 게임오버UI");
         //GameManager.Instance.accountInfo.AddGold(playeringameinfo.gold);// 사망하면 포기
 
-        UIManager.Instance.ShowUI<UIDefeated>();
+        var uiDefeated = UIManager.Instance.ShowUI<UIDefeated>();
         ++UIManager.Instance.popupUICount;
+        if (dieState == GameState.DropDie)
+        {
+            uiDefeated.adButton.SetActive(false);
+        }
     }
 
     protected Vector3 DetectRandomEnemyPos()

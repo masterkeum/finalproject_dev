@@ -29,6 +29,7 @@ public class UIDefeated : UIBase
         {
             adButton.SetActive(false);
         }
+        
     }
 
     public void Resurrection()
