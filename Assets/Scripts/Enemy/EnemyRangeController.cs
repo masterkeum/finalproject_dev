@@ -6,8 +6,7 @@ public class EnemyRangeController : EnemyBaseController
 {
     private NavMeshPath path;
 
-
-
+    private GameObject projectile;
 
     public override void Init(int _monsterID, int _level, Player target)
     {
@@ -17,6 +16,17 @@ public class EnemyRangeController : EnemyBaseController
         SetState(EnemyState.Trace);
 
         StartCoroutine(CheckState());
+
+        switch (_monsterID)
+        {
+            case 20000005:
+                projectile = Resources.Load<GameObject>("Prefabs/Enemy/Skill/AcidMissileOBJ");
+                break;
+            case 20000007:
+                projectile = Resources.Load<GameObject>("Prefabs/Enemy/Skill/BoneMissileOBJ");
+                break;
+        }
+
     }
 
     private IEnumerator CheckState()
@@ -60,18 +70,27 @@ public class EnemyRangeController : EnemyBaseController
     private void AttackUpdate()
     {
         transform.LookAt(player.transform);
-        if (playerDistance > characterInfo.attackRange)
-        {
-            SetState(EnemyState.Trace);
-        }
-
         // 공격
         if (Time.time - lastAttackTime > characterInfo.attackSpeed)
         {
             lastAttackTime = Time.time;
-            animator.SetTrigger(Attack);
-            player.TakeDamage(damage);
+            PlayEffect();
+            //animator.SetTrigger(Attack);
+            //player.TakeDamage(damage);
+        }
+
+        if (playerDistance > characterInfo.attackRange)
+        {
+            SetState(EnemyState.Trace);
         }
     }
 
+    private void PlayEffect()
+    {
+        Vector3 direction = DirectionToTarget();
+        GameObject newEffect = Instantiate(projectile, transform.position + Vector3.up, Quaternion.LookRotation(direction));
+        newEffect.GetComponent<EnemyProjectile>().Init(damage, 20f);
+        Destroy(newEffect, 3f); // 일정 시간 후에 이펙트를 파괴
+        animator.SetTrigger(Attack);
+    }
 }
