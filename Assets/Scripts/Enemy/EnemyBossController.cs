@@ -37,7 +37,7 @@ public class EnemyBossController : EnemyBaseController
         FindBossArrow();
 
 
-        effectSkullProjectile = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SkullProjectile");
+        effectSkullProjectile = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SkullMissilePurpleOBJ");
         effectSlashAttack = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SlashAttack");
     }
 
@@ -168,6 +168,7 @@ public class EnemyBossController : EnemyBaseController
             case 20100002:
                 {
                     GameObject newEffect = Instantiate(effectSkullProjectile, transform.position + Vector3.up, Quaternion.LookRotation(direction));
+                    newEffect.GetComponent<EnemyProjectile>().Init(damage, 20f);
                     Destroy(newEffect, 5f); // 일정 시간 후에 이펙트를 파괴
                     animator.SetTrigger(Attack);
                 }

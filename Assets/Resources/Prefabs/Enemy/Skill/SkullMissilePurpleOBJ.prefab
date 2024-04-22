@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4615003313031166}
-  - component: {fileID: 114228458808666186}
+  - component: {fileID: 7175239415310068894}
   - component: {fileID: 54969070811294218}
   - component: {fileID: 135507269612158032}
   m_Layer: 0
@@ -28,13 +28,13 @@ Transform:
   m_GameObject: {fileID: 1587250918974726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114228458808666186
+--- !u!114 &7175239415310068894
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1587250918974726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c736e84d8f869d245b3d1dba36061db9, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d538e3271ebcb140b7881d94973f96e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   impactParticle: {fileID: 1649423950464862957, guid: 2694d58c642771846a1ecd6c0f0dbc90,
@@ -52,9 +52,17 @@ MonoBehaviour:
     type: 3}
   muzzleParticle: {fileID: 6458303564107598660, guid: 7fb00a88032ed4944ba914d3e62b6d7b,
     type: 3}
-  trailParticles: []
-  colliderRadius: 1
-  collideOffset: 0.15
+  disableAfterTime: 5
+  rb: {fileID: 54969070811294218}
+  sc: {fileID: 135507269612158032}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  projectileSpeed: 20
+  projectilePenetration: 1
 --- !u!54 &54969070811294218
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -97,7 +105,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
