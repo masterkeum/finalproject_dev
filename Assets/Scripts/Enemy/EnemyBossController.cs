@@ -19,6 +19,8 @@ public class EnemyBossController : EnemyBaseController
     private GameObject effectSkullProjectile;
     private GameObject effectSlashAttack;
 
+    private float secondAttackTime;
+
     public override void Init(int _monsterID, int _level, Player target)
     {
         base.Init(_monsterID, _level, target);
@@ -168,7 +170,7 @@ public class EnemyBossController : EnemyBaseController
             case 20100002:
                 {
                     GameObject newEffect = Instantiate(effectSkullProjectile, transform.position + Vector3.up, Quaternion.LookRotation(direction));
-                    newEffect.GetComponent<EnemyProjectile>().Init(damage, 20f);
+                    newEffect.GetComponent<EnemyProjectile>().Init(damage, 30f);
                     Destroy(newEffect, 5f); // 일정 시간 후에 이펙트를 파괴
                     animator.SetTrigger(Attack);
                 }
