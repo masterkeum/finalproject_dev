@@ -2,11 +2,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMeleeController : EnemyBaseController
+public class EnemyRangeController : EnemyBaseController
 {
     private NavMeshPath path;
 
-    // 상태 초기화
     public override void Init(int _monsterID, int _level, Player target)
     {
         base.Init(_monsterID, _level, target);
