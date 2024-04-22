@@ -48,7 +48,7 @@ public class AreaDotDamageScript : MonoBehaviour
                     /*
                     //float scale = 1.2f + 1.2f * Mathf.CeilToInt((skillInfo.level + 1) / 2);
                     */
-                    float scale = 1.8f + 1.2f * (skillInfo.level / 2f);
+                    float scale = 1.8f + 0.6f * (skillInfo.level / 2f);
                     skillRange = scale;
                     transform.localScale = new Vector3(scale, 1, scale);
                 }
@@ -86,7 +86,7 @@ public class AreaDotDamageScript : MonoBehaviour
                 // TODO: 넉백 랜덤으로 추가하기
                 System.Random random = new System.Random();
                 int num = random.Next(0, 100);
-                if (num < 90)
+                if (num < 50)
                 {
                     return;
                 }
