@@ -167,7 +167,7 @@ public class EnemyBossController : EnemyBaseController
         {
             case 20100002:
                 {
-                    GameObject newEffect = Instantiate(effectSkullProjectile, transform.position + Vector3.up, Quaternion.LookRotation(direction));
+                    GameObject newEffect = Instantiate(effectSkullProjectile, transform.position + Vector3.forward, Quaternion.LookRotation(direction));
                     Destroy(newEffect, 5f); // 일정 시간 후에 이펙트를 파괴
                     animator.SetTrigger(Attack);
                 }
