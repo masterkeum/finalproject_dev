@@ -6,6 +6,9 @@ public class EnemyRangeController : EnemyBaseController
 {
     private NavMeshPath path;
 
+
+
+
     public override void Init(int _monsterID, int _level, Player target)
     {
         base.Init(_monsterID, _level, target);
