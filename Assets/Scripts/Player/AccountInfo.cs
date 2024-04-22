@@ -160,6 +160,9 @@ public class AccountInfo
     public bool isPurchasedStarterPack = false;
     public bool isPurchasedAdDeletePack = false;
 
+    // 임시 튜토리얼
+    public int tutorial = 0;
+
     //생성자
     public AccountInfo(string _aid, string _name)
     {

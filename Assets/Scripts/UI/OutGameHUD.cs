@@ -113,6 +113,11 @@ public class OutGameHUD : UIBase
 
             selectEmphasis[j].SetActive(index == j ? true : false);
         }
+        if (accountInfo.tutorial == 0 && index == 2)
+        {
+            ShowInfoUI("Inventory");
+            accountInfo.tutorial = 1; // 튜토리얼임시
+        }
         SoundManager.Instance.PlaySound("TabChangeUI_1", 1f);
     }
 
