@@ -609,6 +609,7 @@ public class Player : MonoBehaviour
 
         var uiDefeated = UIManager.Instance.ShowUI<UIDefeated>();
         ++UIManager.Instance.popupUICount;
+        // todo 추후 UIDefeated 에서 처리하게 해주기
         if (dieState == GameState.DropDie)
         {
             uiDefeated.adButton.SetActive(false);

@@ -113,6 +113,7 @@ public enum InfoGraphic
 
 public enum AdsStates
 {
+    AllFree,
     Defeated,
     Clear,
     Free,
