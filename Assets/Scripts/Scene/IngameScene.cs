@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
@@ -113,17 +114,34 @@ public class IngameScene : MonoBehaviour
     {
         foreach (StageInfoTable monsterData in stageMonsterList)
         {
-            StartCoroutine(SpawnEnemyRoutine(monsterData));
+            switch (monsterData.genType)
+            {
+                case GenType.Fixed:
+                    {
+                        StartCoroutine(SpawnFixedEnemyRoutine(monsterData));
+                    }
+                    break;
+                case GenType.Circle:
+                    {
+                        StartCoroutine(SpawnCircleEnemyRoutine(monsterData));
+                    }
+                    break;
+                case GenType.Random:
+                default:
+                    {
+                        StartCoroutine(SpawnRandomEnemyRoutine(monsterData));
+                    }
+                    break;
+            }
         }
     }
 
-    IEnumerator SpawnEnemyRoutine(StageInfoTable monsterData)
+    IEnumerator SpawnFixedEnemyRoutine(StageInfoTable monsterData)
     {
         // 프리팹 세팅
         CharacterInfo monsterInfo = DataManager.Instance.GetCharacterInfo(monsterData.monsterId);
         GameObject monster = Resources.Load<GameObject>(monsterInfo.prefabFile);
 
-        // Debug.Log("vector3: "+monsterData.genPosVecter3);
         if (monsterData.genPosVecter3 != null)
         {
             if (monsterData.genPosVecter3.Length > 0)
@@ -140,9 +158,66 @@ public class IngameScene : MonoBehaviour
                 yield break;
             }
         }
+    }
+
+    IEnumerator SpawnCircleEnemyRoutine(StageInfoTable monsterData)
+    {
+        // 프리팹 세팅
+        CharacterInfo monsterInfo = DataManager.Instance.GetCharacterInfo(monsterData.monsterId);
+        GameObject monster = Resources.Load<GameObject>(monsterInfo.prefabFile);
 
         yield return new WaitForSeconds(monsterData.genTimeStart);
-        Debug.Log($"{monsterData.monsterId} lv.{monsterData.level} : {monsterInfo.name}");
+        //Debug.Log($"{monsterData.monsterId} lv.{monsterData.level} : {monsterInfo.name}");
+        float startTime = Time.time;
+
+        // 몬스터 리젠
+        //int spawnedCount = 0;
+        while (Time.time - startTime < monsterData.genTimeEnd)
+        {
+            float monsterAngle = 360f / monsterData.genAmount;
+            float startAngle = UnityEngine.Random.Range(0f, monsterAngle);
+
+            for (int i = 0; i < monsterData.genAmount; i++)
+            {
+                float radAngle = (startAngle + i * monsterAngle) * Mathf.Deg2Rad;
+
+                // 각도를 바탕으로 X와 Z 좌표 계산
+                float x = Mathf.Cos(radAngle) * spawnRadius;
+                float z = Mathf.Sin(radAngle) * spawnRadius;
+                Vector3 randomPosition = player.transform.position + new Vector3(x, 200f, z);
+
+                // 맵크기에 따른 보정 
+                randomPosition.x = Mathf.Clamp(randomPosition.x, -105, 105);
+                randomPosition.z = Mathf.Clamp(randomPosition.z, -105, 105);
+
+                Ray ray = new Ray(randomPosition, Vector3.down);
+                RaycastHit hit;
+                NavMeshHit navhit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                {
+                    if (NavMesh.SamplePosition(hit.point, out navhit, spawnRadius, NavMesh.AllAreas))
+                    {
+                        GameObject go = Instantiate(monster, navhit.position, Quaternion.identity);
+                        go.GetComponent<EnemyBaseController>().Init(monsterData.monsterId, monsterData.level, player);
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("몬스터 생성할 위치 못찾음.");
+                }
+            }
+            yield return new WaitForSeconds(monsterData.genTime);
+        }
+    }
+
+    IEnumerator SpawnRandomEnemyRoutine(StageInfoTable monsterData)
+    {
+        // 프리팹 세팅
+        CharacterInfo monsterInfo = DataManager.Instance.GetCharacterInfo(monsterData.monsterId);
+        GameObject monster = Resources.Load<GameObject>(monsterInfo.prefabFile);
+
+        yield return new WaitForSeconds(monsterData.genTimeStart);
+        //Debug.Log($"{monsterData.monsterId} lv.{monsterData.level} : {monsterInfo.name}");
         float startTime = Time.time;
 
         // 몬스터 리젠
@@ -151,8 +226,6 @@ public class IngameScene : MonoBehaviour
         {
             for (int i = 0; i < monsterData.genAmount; i++)
             {
-                //if (spawnedCount >= monsterData.genMax) break;
-
                 // X와 Z 좌표상에서의 랜덤한 각도를 결정 (0에서 360도 사이)
                 float randomAngle = UnityEngine.Random.Range(0, 360) * Mathf.Deg2Rad;
 
@@ -180,16 +253,11 @@ public class IngameScene : MonoBehaviour
                 {
                     Debug.LogWarning("몬스터 생성할 위치 못찾음.");
                 }
-
-                // TODO : 풀매니저 적용해야됨
-
-                //spawnedCount++;
             }
-
             yield return new WaitForSeconds(monsterData.genTime);
         }
-
     }
+
 
     #region Light
     private void SetLight(int stageId)
