@@ -212,6 +212,11 @@ public class AccountInfo
 
     public void CalcPlayerStat()
     {
+        PlayerLevel levelData = DataManager.Instance.GetPlayerLevel(level);
+
+        playerStatInfo.hp = levelData.hp;
+        playerStatInfo.attackPower = levelData.attack;
+
         playerStatInfo.addHp = equipItems.Weapon.Hp + equipItems.Armor.Hp + equipItems.Helmet.Hp + equipItems.Gloves.Hp + equipItems.Boots.Hp + equipItems.Accessories.Hp;
 
         playerStatInfo.addAttackPower = equipItems.Weapon.Ap + equipItems.Armor.Ap + equipItems.Helmet.Ap + equipItems.Gloves.Ap + equipItems.Boots.Ap + equipItems.Accessories.Ap;
@@ -309,6 +314,7 @@ public class AccountInfo
                 addExp = 0;
             }
         }
+        CalcPlayerStat();
         GameManager.Instance.SaveGame();
         GameManager.Instance.UpdateUI();
     }

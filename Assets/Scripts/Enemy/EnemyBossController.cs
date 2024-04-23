@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using static SkillPool;
 
 public class EnemyBossController : EnemyBaseController
 {
@@ -16,10 +17,10 @@ public class EnemyBossController : EnemyBaseController
     private Vector3 gizmoDestination;
     private GameObject arrowPrefab;
 
-    private GameObject effectSkullProjectile;
-    private GameObject effectSlashAttack;
-
+    private GameObject effectBossAttack;
+    private GameObject effectBossAttack2;
     private float secondAttackTime;
+    private float secondAttackCooldown = 5f;
 
     private float timer = 0f;
     private float advSensoryRange = 0f;
@@ -35,15 +36,32 @@ public class EnemyBossController : EnemyBaseController
         minWanderWaitTime = 0f;
         maxWanderWaitTime = 1f;
 
+        secondAttackTime = Time.time;
+
         path = new NavMeshPath();
         SetState(EnemyState.Wander);
 
         StartCoroutine(CheckState());
         FindBossArrow();
 
-
-        effectSkullProjectile = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SkullMissilePurpleOBJ");
-        effectSlashAttack = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SlashAttack");
+        switch (_monsterID)
+        {
+            case 20100001:
+                effectBossAttack = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SlashAttack");
+                effectBossAttack2 = Resources.Load<GameObject>("Prefabs/Enemy/Skill/BossDash");
+                secondAttackCooldown = 5f;
+                break;
+            case 20100002:
+                effectBossAttack = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SkullMissilePurpleOBJ");
+                effectBossAttack2 = Resources.Load<GameObject>("Prefabs/Enemy/Skill/ChainTargetShadow");
+                secondAttackCooldown = 30f;
+                break;
+            case 20100003:
+                effectBossAttack = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SlashWideAttack");
+                effectBossAttack2 = Resources.Load<GameObject>("Prefabs/Enemy/Skill/BossDash");
+                secondAttackCooldown = 5f;
+                break;
+        }
     }
 
     private void FindBossArrow()
@@ -61,7 +79,7 @@ public class EnemyBossController : EnemyBaseController
         timer += Time.deltaTime;
         if (timer > 600)
         {
-            advSensoryRange = 240f;
+            advSensoryRange = 240f; // 맵 대각선 148쯤 되는듯
         }
     }
 
@@ -110,8 +128,15 @@ public class EnemyBossController : EnemyBaseController
         }
         SetState(EnemyState.Wander);
         animator.SetBool("IsWalking", true);
-        navMeshAgent.CalculatePath(GetWanderLocation(), path);
-        navMeshAgent.SetPath(path);
+        try
+        {
+            navMeshAgent.CalculatePath(GetWanderLocation(), path);
+            navMeshAgent.SetPath(path);
+        }
+        catch
+        {
+            Debug.LogWarning("보스 경로 못찾음");
+        }
     }
 
     private Vector3 GetWanderLocation()
@@ -142,6 +167,11 @@ public class EnemyBossController : EnemyBaseController
         }
         else
         {
+            if (Time.time - secondAttackTime >= secondAttackCooldown)
+            {
+                secondAttackTime = Time.time;
+                Attack2Update();
+            }
             navMeshAgent.CalculatePath(targetPlayerTransform.position, path);
             navMeshAgent.SetPath(path);
             animator.SetBool(IsWalking, true);
@@ -153,6 +183,23 @@ public class EnemyBossController : EnemyBaseController
         }
     }
 
+    private void Attack2Update()
+    {
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+        switch (monsterID)
+        {
+            case 20100001:
+                StartCoroutine(DashRountine(1.5f, direction));
+                break;
+            case 20100002:
+                StartCoroutine(SpawnRountine()); // 소환
+                break;
+            case 20100003:
+                StartCoroutine(DashRountine(1.5f, direction));
+                break;
+        }
+    }
+
     private void AttackUpdate()
     {
         transform.LookAt(player.transform);
@@ -161,6 +208,12 @@ public class EnemyBossController : EnemyBaseController
         {
             lastAttackTime = Time.time;
             PlayEffect();
+        }
+
+        if (Time.time - secondAttackTime >= secondAttackCooldown)
+        {
+            secondAttackTime = Time.time;
+            Attack2Update();
         }
 
         // 공격 범위 벗어나면
@@ -177,7 +230,7 @@ public class EnemyBossController : EnemyBaseController
         {
             case 20100002:
                 {
-                    GameObject newEffect = Instantiate(effectSkullProjectile, transform.position + Vector3.up, Quaternion.LookRotation(direction));
+                    GameObject newEffect = Instantiate(effectBossAttack, transform.position + Vector3.up, Quaternion.LookRotation(direction));
                     newEffect.GetComponent<EnemyProjectile>().Init(damage, 30f);
                     Destroy(newEffect, 5f); // 일정 시간 후에 이펙트를 파괴
                     animator.SetTrigger(Attack);
@@ -188,13 +241,89 @@ public class EnemyBossController : EnemyBaseController
             default:
                 {
                     // 슬래시 0.9
-                    GameObject newEffect = Instantiate(effectSlashAttack, transform.position + Vector3.up, Quaternion.LookRotation(direction));
+                    GameObject newEffect = Instantiate(effectBossAttack, transform.position + Vector3.up, Quaternion.LookRotation(direction));
                     Destroy(newEffect, 0.9f); // 일정 시간 후에 이펙트를 파괴
                     player.TakeDamage(damage);
                     animator.SetTrigger(Attack);
                 }
                 break;
         }
+    }
+
+    private IEnumerator SpawnRountine()
+    {
+        /*
+            보스 주면 원 랜덤하게 위치 뽑고
+            소환 이펙트
+            몬스터 생성 20000101 - 스켈레톤
+            소환 이펙트 파괴
+        */
+        int summonId = 20000101;
+        CharacterInfo monsterInfo = DataManager.Instance.GetCharacterInfo(summonId);
+        GameObject monster = Resources.Load<GameObject>(monsterInfo.prefabFile);
+        GameObject summonFX = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SparkleAuraPurple");
+        int spawnAmount;
+        float spawnRadius = 5f;
+        switch (level)
+        {
+            case 2:
+                spawnAmount = 20;
+                break;
+            case 3:
+                spawnAmount = 25;
+                break;
+            case 1:
+            default:
+                spawnAmount = 15;
+                break;
+        }
+
+        for (int i = 0; i < spawnAmount; i++)
+        {
+            Vector3 randomPosition = UnityEngine.Random.onUnitSphere * spawnRadius + transform.position;
+            randomPosition.y = 100f;
+            randomPosition.x = Mathf.Clamp(randomPosition.x, -105, 105);
+            randomPosition.z = Mathf.Clamp(randomPosition.z, -105, 105);
+            Ray ray = new Ray(randomPosition, Vector3.down);
+            RaycastHit hit;
+            NavMeshHit navhit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            {
+                if (NavMesh.SamplePosition(hit.point, out navhit, spawnRadius, NavMesh.AllAreas))
+                {
+                    GameObject fx = Instantiate(summonFX, navhit.position, Quaternion.identity);
+                    Destroy(fx, 1.7f);
+                    GameObject go = Instantiate(monster, navhit.position, Quaternion.identity);
+                    go.GetComponent<EnemyBaseController>().Init(summonId, level, player);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("몬스터 생성할 위치 못찾음.");
+            }
+        }
+        yield break;
+    }
+
+    private IEnumerator DashRountine(float delay, Vector3 dashDirection)
+    {
+        transform.LookAt(player.transform);
+        GameObject newEffect = Instantiate(effectBossAttack2, transform.position, Quaternion.LookRotation(-dashDirection));
+
+        capsuleCollider.isTrigger = true;
+        navMeshAgent.speed = characterInfo.moveSpeed * 3;
+        //navMeshAgent.velocity = dashDirection*2;
+        float tmpAcc = navMeshAgent.acceleration;
+        navMeshAgent.acceleration = 20f;
+        animator.speed = 2;
+
+        yield return new WaitForSeconds(delay);
+        Destroy(newEffect);
+        capsuleCollider.isTrigger = false;
+        navMeshAgent.speed = characterInfo.moveSpeed;
+        navMeshAgent.acceleration = tmpAcc;
+        animator.speed = 1;
+        yield break;
     }
 
     private void FleeUpdate()

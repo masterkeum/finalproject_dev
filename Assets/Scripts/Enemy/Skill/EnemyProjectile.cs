@@ -39,6 +39,8 @@ public class EnemyProjectile : MonoBehaviour
     {
         damage = _damage;
         projectileSpeed = speed;
+        projectilePenetration = 1;
+
         sc.enabled = true;
 
         if (muzzleParticle)

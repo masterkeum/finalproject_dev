@@ -72,9 +72,6 @@ public class IngameScene : MonoBehaviour
 
         // 몬스터 생성
         StartStage();
-
-        // 보스찾기 화살표 생성
-        // FindBossArrow();
     }
 
     private void Update()

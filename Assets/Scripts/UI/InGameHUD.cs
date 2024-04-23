@@ -11,13 +11,16 @@ public class InGameHUD : UIBase
     public Slider expSlider;
     public Slider hpSlider;
     public TextMeshProUGUI timeText;
+    public TextMeshProUGUI alertText;
     public TextMeshProUGUI curLevelText;
 
     private float timer = 0f;
+    private bool onAlert = false;
 
     private void Awake()
     {
         SetWhenStart();
+        alertText.gameObject.SetActive(false);
     }
 
     private void Start()
@@ -39,6 +42,15 @@ public class InGameHUD : UIBase
     {
         timer += Time.deltaTime;
         timeText.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(timer / 60f), Mathf.FloorToInt(timer % 60f));
+        if (timer > 540f)
+        {
+            if (!onAlert)
+            {
+                timeText.color = Color.red;
+                onAlert = true;
+                alertText.gameObject.SetActive(true);
+            }
+        }
     }
 
     public void SetWhenStart()
