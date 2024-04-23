@@ -76,3 +76,4 @@ crashlytics-build.properties
 mono_crash.mem.*
 DataTable/~$SkillTable.xlsx
 *.cd
+/WebGL Builds
