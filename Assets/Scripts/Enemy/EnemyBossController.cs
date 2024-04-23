@@ -110,8 +110,15 @@ public class EnemyBossController : EnemyBaseController
         }
         SetState(EnemyState.Wander);
         animator.SetBool("IsWalking", true);
-        navMeshAgent.CalculatePath(GetWanderLocation(), path);
-        navMeshAgent.SetPath(path);
+        try
+        {
+            navMeshAgent.CalculatePath(GetWanderLocation(), path);
+            navMeshAgent.SetPath(path);
+        }
+        catch
+        {
+            Debug.LogWarning("보스 경로 못찾음");
+        }
     }
 
     private Vector3 GetWanderLocation()
