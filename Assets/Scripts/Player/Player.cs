@@ -518,7 +518,10 @@ public class Player : MonoBehaviour
                 case SkillTargetType.CollectableRange:
                     {
                         // 범위 증가는 유니크한 스킬이라는 가정
-                        playeringameinfo.addSkillCollectableRange = (skillData.level + 1) * 2f;
+                        /*
+                            (skillData.level + 1) * 2f; 원래 획득 2 = 이펙트크기 2.4f
+                        */
+                        playeringameinfo.addSkillCollectableRange = (1.8f + 0.6f * (skillData.level / 2f)) / 1.2f;
                     }
                     yield break;
 
