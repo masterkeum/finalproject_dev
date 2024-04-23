@@ -1,7 +1,6 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
@@ -22,10 +21,7 @@ public class IngameScene : MonoBehaviour
         일시정지 로직
     */
 
-    Pooling objectPool;
-
     private Player player;
-    private GameObject bossMonster;
     private GameObject joyStick;
     private GameObject virtualCamera;
     public Light sunLight;
@@ -48,7 +44,6 @@ public class IngameScene : MonoBehaviour
         SoundManager.Instance.ChangeBackGroundMusic(Resources.Load<AudioClip>("Audio/Music/rhythm_factory"), SoundManager.Instance.musicAudioSource.volume);
 
         virtualCamera = GameObject.Find("Virtual Camera");
-        objectPool = GetComponent<Pooling>();
         stageId = GameManager.Instance.stageId;
         stageMonsterList = DataManager.Instance.GetStageInfo(stageId);
     }

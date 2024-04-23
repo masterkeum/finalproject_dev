@@ -151,8 +151,8 @@ public class Player : MonoBehaviour
         level = _level;
 
         playerStatInfo = GameManager.Instance.accountInfo.playerStatInfo;
-        playeringameinfo = new PlayerInGameInfo(playerStatInfo.hp + playerStatInfo.addHp
-            , playerStatInfo.attackPower + playerStatInfo.addAttackPower
+        playeringameinfo = new PlayerInGameInfo(playerStatInfo.hp + playerStatInfo.addLevelHp + playerStatInfo.addHp
+            , playerStatInfo.attackPower + playerStatInfo.addLevelAttack + playerStatInfo.addAttackPower
             , playerStatInfo.defense + playerStatInfo.addDefense
             , playerStatInfo.moveSpeed + playerStatInfo.addMoveSpeed
             , playerStatInfo.critical + playerStatInfo.addCritical
@@ -498,7 +498,7 @@ public class Player : MonoBehaviour
                         {
                             playeringameinfo.addSkillHp += skillTable.addHP;
                         }
-                        playeringameinfo.maxHp = playerStatInfo.hp + playerStatInfo.addHp + playeringameinfo.addSkillHp;
+                        playeringameinfo.maxHp = playerStatInfo.hp + playerStatInfo.addLevelHp + playerStatInfo.addHp + playeringameinfo.addSkillHp;
 
                         UpdateHPBar();
                     }
@@ -511,7 +511,7 @@ public class Player : MonoBehaviour
                         {
                             playeringameinfo.addSkillAttackPower += skillTable.attackDamage;
                         }
-                        playeringameinfo.attackPower = playerStatInfo.attackPower + playerStatInfo.addAttackPower + playeringameinfo.addSkillAttackPower;
+                        playeringameinfo.attackPower = playerStatInfo.attackPower + playerStatInfo.addLevelAttack + playerStatInfo.addAttackPower + playeringameinfo.addSkillAttackPower;
                     }
                     yield break;
 
