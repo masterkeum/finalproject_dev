@@ -11,7 +11,7 @@ public class InGameHUD : UIBase
     public Slider expSlider;
     public Slider hpSlider;
     public TextMeshProUGUI timeText;
-    public TextMeshProUGUI alertText;
+    public Text alertText;
     public TextMeshProUGUI curLevelText;
 
     private float timer = 0f;
