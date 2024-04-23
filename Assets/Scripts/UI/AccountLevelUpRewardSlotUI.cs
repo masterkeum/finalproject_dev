@@ -30,14 +30,14 @@ public class AccountLevelUpRewardSlotUI : MonoBehaviour
             case 0:
                 {
                     rewardName.text = "체력";
-                    rewardAmount.text = DataManager.Instance.playerLevelDict[accountInfo.level].hp.ToString();
+                    rewardAmount.text = (DataManager.Instance.playerLevelDict[accountInfo.level].hp - DataManager.Instance.playerLevelDict[accountInfo.level-1].hp).ToString();
 
                 }
                 break;
             case 1:
                 {
                     rewardName.text = "공격력";
-                    rewardAmount.text = DataManager.Instance.playerLevelDict[accountInfo.level].attack.ToString();
+                    rewardAmount.text = (DataManager.Instance.playerLevelDict[accountInfo.level].attack - DataManager.Instance.playerLevelDict[accountInfo.level-1].attack).ToString();
                 }
                 break;
         }
