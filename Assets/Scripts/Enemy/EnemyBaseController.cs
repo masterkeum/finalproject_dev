@@ -212,7 +212,6 @@ public class EnemyBaseController : MonoBehaviour
         GameManager.Instance.UpdateUI();
     }
 
-
     protected float DistanceToTarget()
     {
         // 플레이어와 거리

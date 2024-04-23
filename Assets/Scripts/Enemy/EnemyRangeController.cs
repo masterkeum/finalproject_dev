@@ -30,7 +30,6 @@ public class EnemyRangeController : EnemyBaseController
                 projectile = Resources.Load<GameObject>("Prefabs/Enemy/Skill/Sub/FlamethrowerPointyYellow");
                 break;
         }
-
     }
 
     private IEnumerator CheckState()
