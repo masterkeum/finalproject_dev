@@ -8,6 +8,8 @@ public class InventoryUI : MonoBehaviour
 {
     public TextMeshProUGUI coreQuantity;
     public TextMeshProUGUI mimicLevel;
+    public TextMeshProUGUI levelBonusText;
+    public TextMeshProUGUI equipBonusText;
 
     [Header("UISlots")]
     public ItemSlotUI weaponSlot;
@@ -29,6 +31,7 @@ public class InventoryUI : MonoBehaviour
     private void Start()
     {
         UpdateUI();
+        
     }
 
     public void UpdateUI()
@@ -44,6 +47,8 @@ public class InventoryUI : MonoBehaviour
 
         coreQuantity.text = GameManager.Instance.accountInfo.core.ToString();
         mimicLevel.text = "Lv." + GameManager.Instance.accountInfo.mimicLevel;
+
+        PrintBonusStats();
     }
 
     public void UpdateUISlot(ItemSlotUI slot, Item item)
@@ -319,6 +324,14 @@ public class InventoryUI : MonoBehaviour
     {
         UIManager.Instance.ShowUI<UIMimicLevelUp>();
         SoundManager.Instance.PlaySound("ButtonClickUI_1");
+    }
+
+    public void PrintBonusStats()
+    {
+        AccountInfo accountInfo = GameManager.Instance.accountInfo;
+        levelBonusText.text = $" - 계정레벨 : {accountInfo.level} \n HP + {accountInfo.playerStatInfo.addLevelHp+accountInfo.playerStatInfo.hp} \n 공격력 + {accountInfo.playerStatInfo.addLevelAttack+accountInfo.playerStatInfo.attackPower}";
+        equipBonusText.text = $" - 장비 능력치 합 \n HP + {accountInfo.playerStatInfo.addHp} \n 공격력 + {accountInfo.playerStatInfo.addAttackPower} \n 방어력 + {accountInfo.playerStatInfo.addDefense} \n " +
+            $"이동속도 + {accountInfo.playerStatInfo.addMoveSpeed} \n 크리티컬 + {accountInfo.playerStatInfo.addCritical} \n 체력리젠 + {accountInfo.playerStatInfo.addHpGen}";
     }
 
 
