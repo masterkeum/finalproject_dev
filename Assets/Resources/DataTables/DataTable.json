@@ -72,8 +72,8 @@
       "name": "오크",
       "minLevel": 1,
       "maxLevel": 3,
-      "hp": 4500,
-      "attackPower": 160,
+      "hp": 0,
+      "attackPower": 0,
       "sensoryRange": 15,
       "attackRange": 3,
       "attackSpeed": 1.3,
@@ -88,8 +88,8 @@
       "name": "이블메이지",
       "minLevel": 1,
       "maxLevel": 3,
-      "hp": 3500,
-      "attackPower": 130,
+      "hp": 0,
+      "attackPower": 0,
       "sensoryRange": 20,
       "attackRange": 14,
       "attackSpeed": 1.3,
@@ -104,12 +104,12 @@
       "name": "플라잉데몬",
       "minLevel": 1,
       "maxLevel": 3,
-      "hp": 5000,
-      "attackPower": 150,
+      "hp": 0,
+      "attackPower": 0,
       "sensoryRange": 25,
       "attackRange": 3.4,
       "attackSpeed": 2,
-      "moveSpeed": 4,
+      "moveSpeed": 4.5,
       "defaultSkill": 30100003,
       "prefabFile": "Prefabs/Enemy/FylingDemon",
       "range": "Melee"
@@ -125,7 +125,7 @@
       "sensoryRange": 0,
       "attackRange": 2,
       "attackSpeed": 1,
-      "moveSpeed": 2,
+      "moveSpeed": 3,
       "defaultSkill": 30100001,
       "prefabFile": "Prefabs/Enemy/SlimeRed",
       "range": "Melee"
@@ -141,7 +141,7 @@
       "sensoryRange": 0,
       "attackRange": 2.4,
       "attackSpeed": 1.1,
-      "moveSpeed": 3.5,
+      "moveSpeed": 3.6,
       "defaultSkill": 30100001,
       "prefabFile": "Prefabs/Enemy/MushroomA",
       "range": "Melee"
@@ -157,7 +157,7 @@
       "sensoryRange": 0,
       "attackRange": 2.6,
       "attackSpeed": 1.4,
-      "moveSpeed": 2.5,
+      "moveSpeed": 4,
       "defaultSkill": 30100001,
       "prefabFile": "Prefabs/Enemy/Salamander",
       "range": "Melee"
@@ -189,7 +189,7 @@
       "sensoryRange": 0,
       "attackRange": 7,
       "attackSpeed": 1.5,
-      "moveSpeed": 3,
+      "moveSpeed": 3.4,
       "defaultSkill": 30100001,
       "prefabFile": "Prefabs/Enemy/MonsterPlant",
       "range": "Range"
@@ -205,7 +205,7 @@
       "sensoryRange": 0,
       "attackRange": 2.4,
       "attackSpeed": 1.8,
-      "moveSpeed": 2.8,
+      "moveSpeed": 3.5,
       "defaultSkill": 30100001,
       "prefabFile": "Prefabs/Enemy/Cactus",
       "range": "Melee"
@@ -216,30 +216,14 @@
       "name": "전투말벌",
       "minLevel": 1,
       "maxLevel": 10,
-      "hp": 250,
+      "hp": 150,
       "attackPower": 50,
       "sensoryRange": 0,
       "attackRange": 10,
       "attackSpeed": 1.8,
-      "moveSpeed": 2.8,
+      "moveSpeed": 5,
       "defaultSkill": 30100001,
       "prefabFile": "Prefabs/Enemy/BattleBee",
-      "range": "Range"
-    },
-    {
-      "uid": 20000008,
-      "characterType": "Monster",
-      "name": "드래곤",
-      "minLevel": 1,
-      "maxLevel": 10,
-      "hp": 500,
-      "attackPower": 80,
-      "sensoryRange": 0,
-      "attackRange": 5,
-      "attackSpeed": 2,
-      "moveSpeed": 3.8,
-      "defaultSkill": 30100001,
-      "prefabFile": "Prefabs/Enemy/Dragon",
       "range": "Range"
     },
     {
@@ -253,13 +237,94 @@
       "sensoryRange": 0,
       "attackRange": 2.4,
       "attackSpeed": 1.5,
-      "moveSpeed": 4,
+      "moveSpeed": 4.5,
       "defaultSkill": 30100001,
       "prefabFile": "Prefabs/Enemy/Skeleton",
       "range": "Melee"
     }
   ],
   "MonsterLevel": [
+    {
+      "uid": 20100001,
+      "level": 1,
+      "addHP": 4000,
+      "addAP": 160,
+      "gold": 100,
+      "exp": 35,
+      "core": 3
+    },
+    {
+      "uid": 20100001,
+      "level": 2,
+      "addHP": 6000,
+      "addAP": 220,
+      "gold": 150,
+      "exp": 60,
+      "core": 5
+    },
+    {
+      "uid": 20100001,
+      "level": 3,
+      "addHP": 8000,
+      "addAP": 280,
+      "gold": 200,
+      "exp": 80,
+      "core": 7
+    },
+    {
+      "uid": 20100002,
+      "level": 1,
+      "addHP": 3500,
+      "addAP": 160,
+      "gold": 200,
+      "exp": 45,
+      "core": 5
+    },
+    {
+      "uid": 20100002,
+      "level": 2,
+      "addHP": 5500,
+      "addAP": 230,
+      "gold": 250,
+      "exp": 65,
+      "core": 7
+    },
+    {
+      "uid": 20100002,
+      "level": 3,
+      "addHP": 7500,
+      "addAP": 300,
+      "gold": 300,
+      "exp": 85,
+      "core": 8
+    },
+    {
+      "uid": 20100003,
+      "level": 1,
+      "addHP": 5000,
+      "addAP": 150,
+      "gold": 300,
+      "exp": 45,
+      "core": 8
+    },
+    {
+      "uid": 20100003,
+      "level": 2,
+      "addHP": 7800,
+      "addAP": 240,
+      "gold": 350,
+      "exp": 65,
+      "core": 9
+    },
+    {
+      "uid": 20100003,
+      "level": 3,
+      "addHP": 8800,
+      "addAP": 350,
+      "gold": 400,
+      "exp": 85,
+      "core": 10
+    },
     {
       "uid": 20000001,
       "level": 1,
@@ -441,33 +506,6 @@
       "core": 0
     },
     {
-      "uid": 20100001,
-      "level": 1,
-      "addHP": 0,
-      "addAP": 0,
-      "gold": 100,
-      "exp": 35,
-      "core": 3
-    },
-    {
-      "uid": 20100001,
-      "level": 2,
-      "addHP": 2000,
-      "addAP": 60,
-      "gold": 150,
-      "exp": 60,
-      "core": 5
-    },
-    {
-      "uid": 20100001,
-      "level": 3,
-      "addHP": 3000,
-      "addAP": 120,
-      "gold": 200,
-      "exp": 80,
-      "core": 7
-    },
-    {
       "uid": 20000003,
       "level": 1,
       "addHP": 0,
@@ -556,33 +594,6 @@
       "gold": 10,
       "exp": 11,
       "core": 0
-    },
-    {
-      "uid": 20100002,
-      "level": 1,
-      "addHP": 0,
-      "addAP": 0,
-      "gold": 200,
-      "exp": 45,
-      "core": 5
-    },
-    {
-      "uid": 20100002,
-      "level": 2,
-      "addHP": 2000,
-      "addAP": 70,
-      "gold": 250,
-      "exp": 65,
-      "core": 7
-    },
-    {
-      "uid": 20100002,
-      "level": 3,
-      "addHP": 3500,
-      "addAP": 180,
-      "gold": 300,
-      "exp": 85,
-      "core": 8
     },
     {
       "uid": 20000004,
@@ -765,33 +776,6 @@
       "core": 0
     },
     {
-      "uid": 20100003,
-      "level": 1,
-      "addHP": 0,
-      "addAP": 0,
-      "gold": 300,
-      "exp": 45,
-      "core": 8
-    },
-    {
-      "uid": 20100003,
-      "level": 2,
-      "addHP": 2800,
-      "addAP": 90,
-      "gold": 350,
-      "exp": 65,
-      "core": 9
-    },
-    {
-      "uid": 20100003,
-      "level": 3,
-      "addHP": 3800,
-      "addAP": 200,
-      "gold": 400,
-      "exp": 85,
-      "core": 10
-    },
-    {
       "uid": 20000006,
       "level": 1,
       "addHP": 0,
@@ -972,96 +956,6 @@
       "core": 0
     },
     {
-      "uid": 20000008,
-      "level": 1,
-      "addHP": 0,
-      "addAP": 0,
-      "gold": 8,
-      "exp": 6,
-      "core": 0
-    },
-    {
-      "uid": 20000008,
-      "level": 2,
-      "addHP": 20,
-      "addAP": 20,
-      "gold": 8,
-      "exp": 6,
-      "core": 0
-    },
-    {
-      "uid": 20000008,
-      "level": 3,
-      "addHP": 30,
-      "addAP": 40,
-      "gold": 8,
-      "exp": 6,
-      "core": 0
-    },
-    {
-      "uid": 20000008,
-      "level": 4,
-      "addHP": 45,
-      "addAP": 60,
-      "gold": 9,
-      "exp": 7,
-      "core": 0
-    },
-    {
-      "uid": 20000008,
-      "level": 5,
-      "addHP": 60,
-      "addAP": 85,
-      "gold": 9,
-      "exp": 7,
-      "core": 0
-    },
-    {
-      "uid": 20000008,
-      "level": 6,
-      "addHP": 75,
-      "addAP": 110,
-      "gold": 9,
-      "exp": 8,
-      "core": 0
-    },
-    {
-      "uid": 20000008,
-      "level": 7,
-      "addHP": 90,
-      "addAP": 135,
-      "gold": 10,
-      "exp": 8,
-      "core": 0
-    },
-    {
-      "uid": 20000008,
-      "level": 8,
-      "addHP": 110,
-      "addAP": 160,
-      "gold": 10,
-      "exp": 9,
-      "core": 0
-    },
-    {
-      "uid": 20000008,
-      "level": 9,
-      "addHP": 130,
-      "addAP": 185,
-      "gold": 10,
-      "exp": 10,
-      "core": 0
-    },
-    {
-      "uid": 20000008,
-      "level": 10,
-      "addHP": 170,
-      "addAP": 210,
-      "gold": 10,
-      "exp": 11,
-      "core": 0
-    },
-    {
       "uid": 20000101,
       "level": 1,
       "addHP": 0,
@@ -1195,99 +1089,110 @@
       "stageId": 101,
       "monsterId": 20000001,
       "level": 1,
+      "genType": "Random",
       "genTimeStart": 0,
       "genTimeEnd": 20,
       "genAmount": 3,
       "genTime": 3,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 101,
       "monsterId": 20000001,
       "level": 1,
+      "genType": "Circle",
+      "genTimeStart": 0,
+      "genTimeEnd": 30,
+      "genAmount": 15,
+      "genTime": 10,
+      "genPosVecter3": null
+    },
+    {
+      "stageId": 101,
+      "monsterId": 20000001,
+      "level": 1,
+      "genType": "Random",
       "genTimeStart": 10,
       "genTimeEnd": 60,
       "genAmount": 3,
       "genTime": 7,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 101,
       "monsterId": 20000001,
       "level": 2,
+      "genType": "Random",
       "genTimeStart": 40,
       "genTimeEnd": 70,
       "genAmount": 3,
       "genTime": 15,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 101,
       "monsterId": 20000001,
       "level": 2,
+      "genType": "Random",
       "genTimeStart": 80,
       "genTimeEnd": 150,
       "genAmount": 2,
       "genTime": 12,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 101,
       "monsterId": 20000002,
       "level": 1,
+      "genType": "Random",
       "genTimeStart": 20,
       "genTimeEnd": 100,
       "genAmount": 3,
       "genTime": 10,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 101,
       "monsterId": 20000002,
       "level": 2,
+      "genType": "Random",
       "genTimeStart": 30,
       "genTimeEnd": 300,
       "genAmount": 3,
       "genTime": 15,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 101,
       "monsterId": 20000002,
       "level": 2,
+      "genType": "Random",
       "genTimeStart": 160,
       "genTimeEnd": 380,
       "genAmount": 4,
       "genTime": 15,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 101,
       "monsterId": 20000002,
       "level": 3,
+      "genType": "Random",
       "genTimeStart": 180,
       "genTimeEnd": 600,
       "genAmount": 4,
       "genTime": 20,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 101,
       "monsterId": 20100001,
       "level": 1,
+      "genType": "Fixed",
       "genTimeStart": 0,
       "genTimeEnd": 0,
       "genAmount": 1,
       "genTime": 0,
-      "genMax": 1,
       "genPosVecter3": [
         -70,
         0,
@@ -1298,132 +1203,132 @@
       "stageId": 102,
       "monsterId": 20000001,
       "level": 1,
+      "genType": "Random",
       "genTimeStart": 0,
       "genTimeEnd": 20,
       "genAmount": 4,
       "genTime": 3,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 102,
       "monsterId": 20000001,
       "level": 2,
+      "genType": "Random",
       "genTimeStart": 10,
       "genTimeEnd": 60,
       "genAmount": 4,
       "genTime": 7,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 102,
       "monsterId": 20000001,
       "level": 3,
+      "genType": "Random",
       "genTimeStart": 40,
       "genTimeEnd": 80,
       "genAmount": 3,
       "genTime": 10,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 102,
       "monsterId": 20000001,
       "level": 4,
+      "genType": "Random",
       "genTimeStart": 70,
       "genTimeEnd": 100,
       "genAmount": 3,
       "genTime": 10,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 102,
       "monsterId": 20000002,
       "level": 3,
+      "genType": "Random",
       "genTimeStart": 15,
       "genTimeEnd": 45,
       "genAmount": 2,
       "genTime": 7,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 102,
       "monsterId": 20000002,
       "level": 4,
+      "genType": "Random",
       "genTimeStart": 30,
       "genTimeEnd": 150,
       "genAmount": 2,
       "genTime": 7,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 102,
       "monsterId": 20000003,
       "level": 1,
+      "genType": "Random",
       "genTimeStart": 150,
       "genTimeEnd": 210,
       "genAmount": 4,
       "genTime": 10,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 102,
       "monsterId": 20000003,
       "level": 2,
+      "genType": "Random",
       "genTimeStart": 200,
       "genTimeEnd": 275,
       "genAmount": 3,
       "genTime": 5,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 102,
       "monsterId": 20000003,
       "level": 3,
+      "genType": "Random",
       "genTimeStart": 70,
       "genTimeEnd": 100,
       "genAmount": 3,
       "genTime": 4,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 102,
       "monsterId": 20000003,
       "level": 4,
+      "genType": "Random",
       "genTimeStart": 30,
       "genTimeEnd": 380,
       "genAmount": 2,
       "genTime": 18,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 102,
       "monsterId": 20000003,
       "level": 4,
+      "genType": "Random",
       "genTimeStart": 60,
       "genTimeEnd": 600,
       "genAmount": 3,
       "genTime": 20,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 102,
       "monsterId": 20100002,
       "level": 1,
+      "genType": "Fixed",
       "genTimeStart": 0,
       "genTimeEnd": 0,
       "genAmount": 1,
       "genTime": 0,
-      "genMax": 1,
       "genPosVecter3": [
         -70,
         0,
@@ -1434,132 +1339,132 @@
       "stageId": 103,
       "monsterId": 20000001,
       "level": 3,
+      "genType": "Random",
       "genTimeStart": 0,
       "genTimeEnd": 20,
       "genAmount": 3,
       "genTime": 3,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 103,
       "monsterId": 20000001,
       "level": 5,
+      "genType": "Random",
       "genTimeStart": 10,
       "genTimeEnd": 60,
       "genAmount": 3,
       "genTime": 7,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 103,
       "monsterId": 20000001,
       "level": 6,
+      "genType": "Random",
       "genTimeStart": 40,
       "genTimeEnd": 70,
       "genAmount": 3,
       "genTime": 9,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 103,
       "monsterId": 20000001,
       "level": 7,
+      "genType": "Random",
       "genTimeStart": 70,
       "genTimeEnd": 100,
       "genAmount": 3,
       "genTime": 10,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 103,
       "monsterId": 20000002,
       "level": 4,
+      "genType": "Random",
       "genTimeStart": 15,
       "genTimeEnd": 45,
       "genAmount": 4,
       "genTime": 6,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 103,
       "monsterId": 20000002,
       "level": 5,
+      "genType": "Random",
       "genTimeStart": 30,
       "genTimeEnd": 150,
       "genAmount": 3,
       "genTime": 7,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 103,
       "monsterId": 20000003,
       "level": 2,
+      "genType": "Random",
       "genTimeStart": 150,
       "genTimeEnd": 210,
       "genAmount": 3,
       "genTime": 10,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 103,
       "monsterId": 20000003,
       "level": 3,
+      "genType": "Random",
       "genTimeStart": 200,
       "genTimeEnd": 275,
       "genAmount": 2,
       "genTime": 5,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 103,
       "monsterId": 20000003,
       "level": 4,
+      "genType": "Random",
       "genTimeStart": 70,
       "genTimeEnd": 100,
       "genAmount": 3,
       "genTime": 4,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 103,
       "monsterId": 20000003,
       "level": 5,
+      "genType": "Random",
       "genTimeStart": 30,
       "genTimeEnd": 380,
       "genAmount": 2,
       "genTime": 16,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 103,
       "monsterId": 20000003,
       "level": 6,
+      "genType": "Random",
       "genTimeStart": 60,
       "genTimeEnd": 600,
       "genAmount": 3,
       "genTime": 20,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 103,
       "monsterId": 20100001,
       "level": 1,
+      "genType": "Fixed",
       "genTimeStart": 0,
       "genTimeEnd": 0,
       "genAmount": 1,
       "genTime": 0,
-      "genMax": 1,
       "genPosVecter3": [
         -70,
         0,
@@ -1570,11 +1475,11 @@
       "stageId": 103,
       "monsterId": 20100002,
       "level": 2,
+      "genType": "Fixed",
       "genTimeStart": 0,
       "genTimeEnd": 0,
       "genAmount": 1,
       "genTime": 0,
-      "genMax": 1,
       "genPosVecter3": [
         -70,
         0,
@@ -1585,132 +1490,132 @@
       "stageId": 104,
       "monsterId": 20000001,
       "level": 8,
+      "genType": "Random",
       "genTimeStart": 0,
       "genTimeEnd": 15,
       "genAmount": 4,
       "genTime": 3,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 104,
       "monsterId": 20000001,
       "level": 9,
+      "genType": "Random",
       "genTimeStart": 10,
       "genTimeEnd": 60,
       "genAmount": 3,
       "genTime": 5,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 104,
       "monsterId": 20000004,
       "level": 1,
+      "genType": "Random",
       "genTimeStart": 40,
       "genTimeEnd": 70,
       "genAmount": 3,
       "genTime": 7,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 104,
       "monsterId": 20000004,
       "level": 2,
+      "genType": "Random",
       "genTimeStart": 70,
       "genTimeEnd": 100,
       "genAmount": 4,
       "genTime": 10,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 104,
       "monsterId": 20000002,
       "level": 6,
+      "genType": "Random",
       "genTimeStart": 15,
       "genTimeEnd": 60,
       "genAmount": 3,
       "genTime": 4,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 104,
       "monsterId": 20000002,
       "level": 7,
+      "genType": "Random",
       "genTimeStart": 30,
       "genTimeEnd": 150,
       "genAmount": 3,
       "genTime": 3,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 104,
       "monsterId": 20000003,
       "level": 3,
+      "genType": "Random",
       "genTimeStart": 150,
       "genTimeEnd": 210,
       "genAmount": 3,
       "genTime": 10,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 104,
       "monsterId": 20000003,
       "level": 4,
+      "genType": "Random",
       "genTimeStart": 200,
       "genTimeEnd": 275,
       "genAmount": 3,
       "genTime": 5,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 104,
       "monsterId": 20000003,
       "level": 5,
+      "genType": "Random",
       "genTimeStart": 70,
       "genTimeEnd": 100,
       "genAmount": 2,
       "genTime": 4,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 104,
       "monsterId": 20000003,
       "level": 6,
+      "genType": "Random",
       "genTimeStart": 30,
       "genTimeEnd": 380,
       "genAmount": 3,
       "genTime": 15,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 104,
       "monsterId": 20000003,
       "level": 7,
+      "genType": "Random",
       "genTimeStart": 60,
       "genTimeEnd": 600,
       "genAmount": 2,
       "genTime": 20,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 104,
       "monsterId": 20100001,
       "level": 1,
+      "genType": "Fixed",
       "genTimeStart": 0,
       "genTimeEnd": 0,
       "genAmount": 3,
       "genTime": 0,
-      "genMax": 1,
       "genPosVecter3": [
         -70,
         0,
@@ -1721,11 +1626,11 @@
       "stageId": 104,
       "monsterId": 20100002,
       "level": 2,
+      "genType": "Fixed",
       "genTimeStart": 0,
       "genTimeEnd": 0,
       "genAmount": 2,
       "genTime": 0,
-      "genMax": 1,
       "genPosVecter3": [
         -70,
         0,
@@ -1736,143 +1641,143 @@
       "stageId": 105,
       "monsterId": 20000004,
       "level": 3,
+      "genType": "Random",
       "genTimeStart": 0,
       "genTimeEnd": 15,
       "genAmount": 3,
       "genTime": 3,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 105,
       "monsterId": 20000004,
       "level": 4,
+      "genType": "Random",
       "genTimeStart": 10,
       "genTimeEnd": 60,
       "genAmount": 3,
       "genTime": 4,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 105,
       "monsterId": 20000004,
       "level": 5,
+      "genType": "Random",
       "genTimeStart": 40,
       "genTimeEnd": 70,
       "genAmount": 3,
       "genTime": 5,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 105,
       "monsterId": 20000001,
       "level": 9,
+      "genType": "Random",
       "genTimeStart": 70,
       "genTimeEnd": 100,
       "genAmount": 5,
       "genTime": 10,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 105,
       "monsterId": 20000001,
       "level": 10,
+      "genType": "Random",
       "genTimeStart": 15,
       "genTimeEnd": 60,
       "genAmount": 4,
       "genTime": 4,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 105,
       "monsterId": 20000002,
       "level": 8,
+      "genType": "Random",
       "genTimeStart": 30,
       "genTimeEnd": 150,
       "genAmount": 3,
       "genTime": 3,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 105,
       "monsterId": 20000002,
       "level": 9,
+      "genType": "Random",
       "genTimeStart": 150,
       "genTimeEnd": 210,
       "genAmount": 3,
       "genTime": 10,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 105,
       "monsterId": 20000002,
       "level": 10,
+      "genType": "Random",
       "genTimeStart": 200,
       "genTimeEnd": 275,
       "genAmount": 4,
       "genTime": 5,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 105,
       "monsterId": 20000005,
       "level": 1,
+      "genType": "Random",
       "genTimeStart": 70,
       "genTimeEnd": 100,
       "genAmount": 3,
       "genTime": 4,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 105,
       "monsterId": 20000005,
       "level": 2,
+      "genType": "Random",
       "genTimeStart": 90,
       "genTimeEnd": 200,
       "genAmount": 4,
       "genTime": 5,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 105,
       "monsterId": 20000005,
       "level": 2,
+      "genType": "Random",
       "genTimeStart": 30,
       "genTimeEnd": 380,
       "genAmount": 3,
       "genTime": 13,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 105,
       "monsterId": 20000005,
       "level": 3,
+      "genType": "Random",
       "genTimeStart": 60,
       "genTimeEnd": 600,
       "genAmount": 4,
       "genTime": 19,
-      "genMax": 30,
       "genPosVecter3": null
     },
     {
       "stageId": 105,
       "monsterId": 20100001,
-      "level": 2,
+      "level": 1,
+      "genType": "Fixed",
       "genTimeStart": 0,
       "genTimeEnd": 0,
       "genAmount": 1,
       "genTime": 0,
-      "genMax": 2,
       "genPosVecter3": [
         -70,
         0,
@@ -1881,13 +1786,28 @@
     },
     {
       "stageId": 105,
-      "monsterId": 20100002,
+      "monsterId": 20100001,
       "level": 2,
+      "genType": "Fixed",
       "genTimeStart": 0,
       "genTimeEnd": 0,
       "genAmount": 1,
       "genTime": 0,
-      "genMax": 1,
+      "genPosVecter3": [
+        -35,
+        0,
+        -35
+      ]
+    },
+    {
+      "stageId": 105,
+      "monsterId": 20100002,
+      "level": 2,
+      "genType": "Fixed",
+      "genTimeStart": 0,
+      "genTimeEnd": 0,
+      "genAmount": 1,
+      "genTime": 0,
       "genPosVecter3": [
         -40,
         0,
@@ -1898,27 +1818,16 @@
       "stageId": 105,
       "monsterId": 20100003,
       "level": 3,
+      "genType": "Fixed",
       "genTimeStart": 0,
       "genTimeEnd": 0,
       "genAmount": 1,
       "genTime": 0,
-      "genMax": 1,
       "genPosVecter3": [
         10,
         0,
         -50
       ]
-    },
-    {
-      "stageId": 106,
-      "monsterId": 20000008,
-      "level": 1,
-      "genTimeStart": 0,
-      "genTimeEnd": 600,
-      "genAmount": 1,
-      "genTime": 5,
-      "genMax": 30,
-      "genPosVecter3": null
     }
   ],
   "QuestList": [
@@ -2134,679 +2043,679 @@
       "exp": 164,
       "totalExp": 234,
       "hp": 70,
-      "attack": 30
+      "attack": 25
     },
     {
       "level": 5,
       "exp": 337,
       "totalExp": 571,
       "hp": 80,
-      "attack": 40
+      "attack": 27
     },
     {
       "level": 6,
       "exp": 588,
       "totalExp": 1159,
       "hp": 90,
-      "attack": 50
+      "attack": 33
     },
     {
       "level": 7,
       "exp": 927,
       "totalExp": 2086,
       "hp": 100,
-      "attack": 60
+      "attack": 36
     },
     {
       "level": 8,
       "exp": 1364,
       "totalExp": 3450,
       "hp": 110,
-      "attack": 70
+      "attack": 38
     },
     {
       "level": 9,
       "exp": 1904,
       "totalExp": 5354,
       "hp": 120,
-      "attack": 80
+      "attack": 44
     },
     {
       "level": 10,
       "exp": 2556,
       "totalExp": 7910,
       "hp": 130,
-      "attack": 90
+      "attack": 47
     },
     {
       "level": 11,
       "exp": 3326,
       "totalExp": 11236,
       "hp": 140,
-      "attack": 100
+      "attack": 48
     },
     {
       "level": 12,
       "exp": 4221,
       "totalExp": 15457,
       "hp": 150,
-      "attack": 110
+      "attack": 54
     },
     {
       "level": 13,
       "exp": 5247,
       "totalExp": 20704,
       "hp": 160,
-      "attack": 120
+      "attack": 57
     },
     {
       "level": 14,
       "exp": 6409,
       "totalExp": 27113,
       "hp": 170,
-      "attack": 130
+      "attack": 58
     },
     {
       "level": 15,
       "exp": 7714,
       "totalExp": 34827,
       "hp": 180,
-      "attack": 140
+      "attack": 64
     },
     {
       "level": 16,
       "exp": 9166,
       "totalExp": 43993,
       "hp": 190,
-      "attack": 150
+      "attack": 67
     },
     {
       "level": 17,
       "exp": 10770,
       "totalExp": 54763,
       "hp": 200,
-      "attack": 160
+      "attack": 68
     },
     {
       "level": 18,
       "exp": 12533,
       "totalExp": 67296,
       "hp": 210,
-      "attack": 170
+      "attack": 74
     },
     {
       "level": 19,
       "exp": 14458,
       "totalExp": 81754,
       "hp": 220,
-      "attack": 180
+      "attack": 77
     },
     {
       "level": 20,
       "exp": 16551,
       "totalExp": 98305,
       "hp": 230,
-      "attack": 190
+      "attack": 78
     },
     {
       "level": 21,
       "exp": 18815,
       "totalExp": 117120,
       "hp": 240,
-      "attack": 200
+      "attack": 84
     },
     {
       "level": 22,
       "exp": 21256,
       "totalExp": 138376,
       "hp": 250,
-      "attack": 210
+      "attack": 87
     },
     {
       "level": 23,
       "exp": 23878,
       "totalExp": 162254,
       "hp": 260,
-      "attack": 220
+      "attack": 88
     },
     {
       "level": 24,
       "exp": 26684,
       "totalExp": 188938,
       "hp": 270,
-      "attack": 230
+      "attack": 94
     },
     {
       "level": 25,
       "exp": 29680,
       "totalExp": 218618,
       "hp": 280,
-      "attack": 240
+      "attack": 97
     },
     {
       "level": 26,
       "exp": 32869,
       "totalExp": 251487,
       "hp": 290,
-      "attack": 250
+      "attack": 98
     },
     {
       "level": 27,
       "exp": 36255,
       "totalExp": 287742,
       "hp": 300,
-      "attack": 260
+      "attack": 104
     },
     {
       "level": 28,
       "exp": 39842,
       "totalExp": 327584,
       "hp": 310,
-      "attack": 270
+      "attack": 107
     },
     {
       "level": 29,
       "exp": 43634,
       "totalExp": 371218,
       "hp": 320,
-      "attack": 280
+      "attack": 108
     },
     {
       "level": 30,
       "exp": 47635,
       "totalExp": 418853,
       "hp": 330,
-      "attack": 290
+      "attack": 114
     },
     {
       "level": 31,
       "exp": 51849,
       "totalExp": 470702,
       "hp": 340,
-      "attack": 300
+      "attack": 117
     },
     {
       "level": 32,
       "exp": 56278,
       "totalExp": 526980,
       "hp": 350,
-      "attack": 310
+      "attack": 118
     },
     {
       "level": 33,
       "exp": 60927,
       "totalExp": 587907,
       "hp": 360,
-      "attack": 320
+      "attack": 124
     },
     {
       "level": 34,
       "exp": 65799,
       "totalExp": 653706,
       "hp": 370,
-      "attack": 330
+      "attack": 127
     },
     {
       "level": 35,
       "exp": 70898,
       "totalExp": 724604,
       "hp": 380,
-      "attack": 340
+      "attack": 128
     },
     {
       "level": 36,
       "exp": 76226,
       "totalExp": 800830,
       "hp": 390,
-      "attack": 350
+      "attack": 134
     },
     {
       "level": 37,
       "exp": 81788,
       "totalExp": 882618,
       "hp": 400,
-      "attack": 360
+      "attack": 137
     },
     {
       "level": 38,
       "exp": 87587,
       "totalExp": 970205,
       "hp": 410,
-      "attack": 370
+      "attack": 138
     },
     {
       "level": 39,
       "exp": 93625,
       "totalExp": 1063830,
       "hp": 420,
-      "attack": 380
+      "attack": 144
     },
     {
       "level": 40,
       "exp": 99907,
       "totalExp": 1163737,
       "hp": 430,
-      "attack": 390
+      "attack": 147
     },
     {
       "level": 41,
       "exp": 106435,
       "totalExp": 1270172,
       "hp": 440,
-      "attack": 400
+      "attack": 148
     },
     {
       "level": 42,
       "exp": 113213,
       "totalExp": 1383385,
       "hp": 450,
-      "attack": 410
+      "attack": 154
     },
     {
       "level": 43,
       "exp": 120243,
       "totalExp": 1503628,
       "hp": 460,
-      "attack": 420
+      "attack": 157
     },
     {
       "level": 44,
       "exp": 127528,
       "totalExp": 1631156,
       "hp": 470,
-      "attack": 430
+      "attack": 158
     },
     {
       "level": 45,
       "exp": 135072,
       "totalExp": 1766228,
       "hp": 480,
-      "attack": 440
+      "attack": 164
     },
     {
       "level": 46,
       "exp": 142878,
       "totalExp": 1909106,
       "hp": 490,
-      "attack": 450
+      "attack": 167
     },
     {
       "level": 47,
       "exp": 150949,
       "totalExp": 2060055,
       "hp": 500,
-      "attack": 460
+      "attack": 168
     },
     {
       "level": 48,
       "exp": 159287,
       "totalExp": 2219342,
       "hp": 510,
-      "attack": 470
+      "attack": 174
     },
     {
       "level": 49,
       "exp": 167895,
       "totalExp": 2387237,
       "hp": 520,
-      "attack": 480
+      "attack": 177
     },
     {
       "level": 50,
       "exp": 176777,
       "totalExp": 2564014,
       "hp": 530,
-      "attack": 490
+      "attack": 178
     },
     {
       "level": 51,
       "exp": 185934,
       "totalExp": 2749948,
       "hp": 540,
-      "attack": 500
+      "attack": 184
     },
     {
       "level": 52,
       "exp": 195371,
       "totalExp": 2945319,
       "hp": 550,
-      "attack": 510
+      "attack": 187
     },
     {
       "level": 53,
       "exp": 205089,
       "totalExp": 3150408,
       "hp": 560,
-      "attack": 520
+      "attack": 188
     },
     {
       "level": 54,
       "exp": 215092,
       "totalExp": 3365500,
       "hp": 570,
-      "attack": 530
+      "attack": 194
     },
     {
       "level": 55,
       "exp": 225382,
       "totalExp": 3590882,
       "hp": 580,
-      "attack": 540
+      "attack": 197
     },
     {
       "level": 56,
       "exp": 235962,
       "totalExp": 3826844,
       "hp": 590,
-      "attack": 550
+      "attack": 198
     },
     {
       "level": 57,
       "exp": 246834,
       "totalExp": 4073678,
       "hp": 600,
-      "attack": 560
+      "attack": 204
     },
     {
       "level": 58,
       "exp": 258001,
       "totalExp": 4331679,
       "hp": 610,
-      "attack": 570
+      "attack": 207
     },
     {
       "level": 59,
       "exp": 269467,
       "totalExp": 4601146,
       "hp": 620,
-      "attack": 580
+      "attack": 208
     },
     {
       "level": 60,
       "exp": 281232,
       "totalExp": 4882378,
       "hp": 630,
-      "attack": 590
+      "attack": 214
     },
     {
       "level": 61,
       "exp": 293301,
       "totalExp": 5175679,
       "hp": 640,
-      "attack": 600
+      "attack": 217
     },
     {
       "level": 62,
       "exp": 305675,
       "totalExp": 5481354,
       "hp": 650,
-      "attack": 610
+      "attack": 218
     },
     {
       "level": 63,
       "exp": 318357,
       "totalExp": 5799711,
       "hp": 660,
-      "attack": 620
+      "attack": 224
     },
     {
       "level": 64,
       "exp": 331349,
       "totalExp": 6131060,
       "hp": 670,
-      "attack": 630
+      "attack": 227
     },
     {
       "level": 65,
       "exp": 344655,
       "totalExp": 6475715,
       "hp": 680,
-      "attack": 640
+      "attack": 228
     },
     {
       "level": 66,
       "exp": 358276,
       "totalExp": 6833991,
       "hp": 690,
-      "attack": 650
+      "attack": 234
     },
     {
       "level": 67,
       "exp": 372216,
       "totalExp": 7206207,
       "hp": 700,
-      "attack": 660
+      "attack": 237
     },
     {
       "level": 68,
       "exp": 386475,
       "totalExp": 7592682,
       "hp": 710,
-      "attack": 670
+      "attack": 238
     },
     {
       "level": 69,
       "exp": 401058,
       "totalExp": 7993740,
       "hp": 720,
-      "attack": 680
+      "attack": 244
     },
     {
       "level": 70,
       "exp": 415966,
       "totalExp": 8409706,
       "hp": 730,
-      "attack": 690
+      "attack": 247
     },
     {
       "level": 71,
       "exp": 431201,
       "totalExp": 8840907,
       "hp": 740,
-      "attack": 700
+      "attack": 248
     },
     {
       "level": 72,
       "exp": 446767,
       "totalExp": 9287674,
       "hp": 750,
-      "attack": 710
+      "attack": 254
     },
     {
       "level": 73,
       "exp": 462664,
       "totalExp": 9750338,
       "hp": 760,
-      "attack": 720
+      "attack": 257
     },
     {
       "level": 74,
       "exp": 478897,
       "totalExp": 10229235,
       "hp": 770,
-      "attack": 730
+      "attack": 258
     },
     {
       "level": 75,
       "exp": 495466,
       "totalExp": 10724701,
       "hp": 780,
-      "attack": 740
+      "attack": 264
     },
     {
       "level": 76,
       "exp": 512375,
       "totalExp": 11237076,
       "hp": 790,
-      "attack": 750
+      "attack": 267
     },
     {
       "level": 77,
       "exp": 529625,
       "totalExp": 11766701,
       "hp": 800,
-      "attack": 760
+      "attack": 268
     },
     {
       "level": 78,
       "exp": 547220,
       "totalExp": 12313921,
       "hp": 810,
-      "attack": 770
+      "attack": 274
     },
     {
       "level": 79,
       "exp": 565160,
       "totalExp": 12879081,
       "hp": 820,
-      "attack": 780
+      "attack": 277
     },
     {
       "level": 80,
       "exp": 583449,
       "totalExp": 13462530,
       "hp": 830,
-      "attack": 790
+      "attack": 278
     },
     {
       "level": 81,
       "exp": 602088,
       "totalExp": 14064618,
       "hp": 840,
-      "attack": 800
+      "attack": 284
     },
     {
       "level": 82,
       "exp": 621080,
       "totalExp": 14685698,
       "hp": 850,
-      "attack": 810
+      "attack": 287
     },
     {
       "level": 83,
       "exp": 640427,
       "totalExp": 15326125,
       "hp": 860,
-      "attack": 820
+      "attack": 288
     },
     {
       "level": 84,
       "exp": 660131,
       "totalExp": 15986256,
       "hp": 870,
-      "attack": 830
+      "attack": 294
     },
     {
       "level": 85,
       "exp": 680194,
       "totalExp": 16666450,
       "hp": 880,
-      "attack": 840
+      "attack": 297
     },
     {
       "level": 86,
       "exp": 700619,
       "totalExp": 17367069,
       "hp": 890,
-      "attack": 850
+      "attack": 298
     },
     {
       "level": 87,
       "exp": 721408,
       "totalExp": 18088477,
       "hp": 900,
-      "attack": 860
+      "attack": 304
     },
     {
       "level": 88,
       "exp": 742562,
       "totalExp": 18831039,
       "hp": 910,
-      "attack": 870
+      "attack": 307
     },
     {
       "level": 89,
       "exp": 764085,
       "totalExp": 19595124,
       "hp": 920,
-      "attack": 880
+      "attack": 308
     },
     {
       "level": 90,
       "exp": 785977,
       "totalExp": 20381101,
       "hp": 930,
-      "attack": 890
+      "attack": 314
     },
     {
       "level": 91,
       "exp": 808241,
       "totalExp": 21189342,
       "hp": 940,
-      "attack": 900
+      "attack": 317
     },
     {
       "level": 92,
       "exp": 830880,
       "totalExp": 22020222,
       "hp": 950,
-      "attack": 910
+      "attack": 318
     },
     {
       "level": 93,
       "exp": 853895,
       "totalExp": 22874117,
       "hp": 960,
-      "attack": 920
+      "attack": 324
     },
     {
       "level": 94,
       "exp": 877288,
       "totalExp": 23751405,
       "hp": 970,
-      "attack": 930
+      "attack": 327
     },
     {
       "level": 95,
       "exp": 901062,
       "totalExp": 24652467,
       "hp": 980,
-      "attack": 940
+      "attack": 328
     },
     {
       "level": 96,
       "exp": 925217,
       "totalExp": 25577684,
       "hp": 990,
-      "attack": 950
+      "attack": 334
     },
     {
       "level": 97,
       "exp": 949758,
       "totalExp": 26527442,
       "hp": 1000,
-      "attack": 960
+      "attack": 337
     },
     {
       "level": 98,
       "exp": 974685,
       "totalExp": 27502127,
       "hp": 1010,
-      "attack": 970
+      "attack": 338
     },
     {
       "level": 99,
       "exp": 1000000,
       "totalExp": 28502127,
       "hp": 1020,
-      "attack": 980
+      "attack": 344
     },
     {
       "level": 100,
       "exp": 1025706,
       "totalExp": 29527833,
       "hp": 1030,
-      "attack": 990
+      "attack": 347
     }
   ],
   "PlayerIngameLevel": [

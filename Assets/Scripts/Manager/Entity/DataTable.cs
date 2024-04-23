@@ -75,11 +75,11 @@ public class StageInfoTable
     public int stageId;
     public int monsterId;
     public int level;
+    public GenType genType;
     public int genTimeStart;
     public int genTimeEnd;
     public int genAmount;
     public int genTime;
-    public int genMax;
     public float[] genPosVecter3;
 }
 

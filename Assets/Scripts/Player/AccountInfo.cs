@@ -39,9 +39,11 @@ public struct PlayerStatInfo
 
     */
     public int hp;
+    public int addLevelHp;
     public int addHp;
 
     public int attackPower;
+    public int addLevelAttack;
     public int addAttackPower;
 
     public int defense;
@@ -60,9 +62,11 @@ public struct PlayerStatInfo
     {
         // TODO : 아이템과 더불어 개선 필요
         hp = characterInfo.hp;
+        addLevelHp = 0;
         addHp = equipItems.Weapon.Hp + equipItems.Armor.Hp + equipItems.Helmet.Hp + equipItems.Gloves.Hp + equipItems.Boots.Hp + equipItems.Accessories.Hp;
 
         attackPower = characterInfo.attackPower;
+        addLevelAttack = 0;
         addAttackPower = equipItems.Weapon.Ap + equipItems.Armor.Ap + equipItems.Helmet.Ap + equipItems.Gloves.Ap + equipItems.Boots.Ap + equipItems.Accessories.Ap;
 
         defense = 0;
@@ -214,8 +218,8 @@ public class AccountInfo
     {
         PlayerLevel levelData = DataManager.Instance.GetPlayerLevel(level);
 
-        playerStatInfo.hp = levelData.hp;
-        playerStatInfo.attackPower = levelData.attack;
+        playerStatInfo.addLevelHp = levelData.hp;
+        playerStatInfo.addLevelAttack = levelData.attack;
 
         playerStatInfo.addHp = equipItems.Weapon.Hp + equipItems.Armor.Hp + equipItems.Helmet.Hp + equipItems.Gloves.Hp + equipItems.Boots.Hp + equipItems.Accessories.Hp;
 

@@ -20,6 +20,14 @@ public enum CharacterType
     BossMonster
 }
 
+public enum GenType
+{
+    None,
+    Random,
+    Fixed,
+    Circle,
+}
+
 public enum ItemCategory
 {
     None,
