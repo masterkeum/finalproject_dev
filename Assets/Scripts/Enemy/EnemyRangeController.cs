@@ -19,11 +19,15 @@ public class EnemyRangeController : EnemyBaseController
 
         switch (_monsterID)
         {
+            // 시간되면 데이터로 빼야함
             case 20000005:
                 projectile = Resources.Load<GameObject>("Prefabs/Enemy/Skill/AcidMissileOBJ");
                 break;
             case 20000007:
                 projectile = Resources.Load<GameObject>("Prefabs/Enemy/Skill/BoneMissileOBJ");
+                break;
+            case 20000008:
+                projectile = Resources.Load<GameObject>("Prefabs/Enemy/Skill/Sub/FlamethrowerPointyYellow");
                 break;
         }
 

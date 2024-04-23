@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using static SkillPool;
 
 public class EnemyBossController : EnemyBaseController
 {
@@ -16,10 +17,11 @@ public class EnemyBossController : EnemyBaseController
     private Vector3 gizmoDestination;
     private GameObject arrowPrefab;
 
-    private GameObject effectSkullProjectile;
-    private GameObject effectSlashAttack;
-
+    private GameObject effectBossAttack;
+    private GameObject effectBossAttack2;
     private float secondAttackTime;
+    private float secondAttackCooldown = 5f;
+    private float dashForce = 10f;
 
     private float timer = 0f;
     private float advSensoryRange = 0f;
@@ -41,9 +43,19 @@ public class EnemyBossController : EnemyBaseController
         StartCoroutine(CheckState());
         FindBossArrow();
 
-
-        effectSkullProjectile = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SkullMissilePurpleOBJ");
-        effectSlashAttack = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SlashAttack");
+        switch (_monsterID)
+        {
+            case 20100001:
+                effectBossAttack = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SlashAttack");
+                effectBossAttack2 = Resources.Load<GameObject>("Prefabs/Enemy/Skill/BossDash");
+                break;
+            case 20100002:
+                effectBossAttack = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SkullMissilePurpleOBJ");
+                break;
+            case 20100003:
+                effectBossAttack = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SlashWideAttack");
+                break;
+        }
     }
 
     private void FindBossArrow()
@@ -149,6 +161,13 @@ public class EnemyBossController : EnemyBaseController
         }
         else
         {
+            if (Time.time - secondAttackTime >= secondAttackCooldown)
+            {
+                Debug.Log("Dash");
+                secondAttackTime = Time.time;
+                Vector3 direction = (player.transform.position - transform.position).normalized;
+                StartCoroutine(DashRountine(1.5f, direction));
+            }
             navMeshAgent.CalculatePath(targetPlayerTransform.position, path);
             navMeshAgent.SetPath(path);
             animator.SetBool(IsWalking, true);
@@ -184,7 +203,7 @@ public class EnemyBossController : EnemyBaseController
         {
             case 20100002:
                 {
-                    GameObject newEffect = Instantiate(effectSkullProjectile, transform.position + Vector3.up, Quaternion.LookRotation(direction));
+                    GameObject newEffect = Instantiate(effectBossAttack, transform.position + Vector3.up, Quaternion.LookRotation(direction));
                     newEffect.GetComponent<EnemyProjectile>().Init(damage, 30f);
                     Destroy(newEffect, 5f); // 일정 시간 후에 이펙트를 파괴
                     animator.SetTrigger(Attack);
@@ -195,13 +214,34 @@ public class EnemyBossController : EnemyBaseController
             default:
                 {
                     // 슬래시 0.9
-                    GameObject newEffect = Instantiate(effectSlashAttack, transform.position + Vector3.up, Quaternion.LookRotation(direction));
+                    GameObject newEffect = Instantiate(effectBossAttack, transform.position + Vector3.up, Quaternion.LookRotation(direction));
                     Destroy(newEffect, 0.9f); // 일정 시간 후에 이펙트를 파괴
                     player.TakeDamage(damage);
                     animator.SetTrigger(Attack);
                 }
                 break;
         }
+    }
+
+    private IEnumerator DashRountine(float delay, Vector3 dashDirection)
+    {
+        transform.LookAt(player.transform);
+        GameObject newEffect = Instantiate(effectBossAttack2, transform.position, Quaternion.LookRotation(-dashDirection));
+
+        capsuleCollider.isTrigger = true;
+        navMeshAgent.speed = characterInfo.moveSpeed * 3;
+        //navMeshAgent.velocity = dashDirection*2;
+        float tmpAcc = navMeshAgent.acceleration;
+        navMeshAgent.acceleration = 20f;
+        animator.speed = 2;
+
+        yield return new WaitForSeconds(delay);
+        Destroy(newEffect);
+        capsuleCollider.isTrigger = false;
+        navMeshAgent.speed = characterInfo.moveSpeed;
+        navMeshAgent.acceleration = tmpAcc;
+        animator.speed = 1;
+        yield break;
     }
 
     private void FleeUpdate()

@@ -185,6 +185,7 @@ public class EnemyBaseController : MonoBehaviour
         rigidBody.constraints = RigidbodyConstraints.FreezeRotation;
         rigidBody.AddForce(knockbackDirection * knockBackForce, ForceMode.Impulse);
         yield return new WaitForSeconds(startDelay);
+        rigidBody.velocity = Vector3.zero;
         rigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
         if (gameObject.activeSelf)
             navMeshAgent.isStopped = false;
@@ -200,8 +201,10 @@ public class EnemyBaseController : MonoBehaviour
         animator.SetTrigger(Die);
         StartCoroutine(Remove());
 
+        Vector3 genPos = transform.position;
+        genPos.y = Mathf.Max(genPos.y, 0) + 2f;
         // 보상
-        point = Instantiate(Resources.Load<DropCoin>("Prefabs/DropItem/RupeeGold"), transform.position + Vector3.up * 2, Quaternion.identity);
+        point = Instantiate(Resources.Load<DropCoin>("Prefabs/DropItem/RupeeGold"), genPos, Quaternion.identity);
         point.Init(monsterLevel.gold, monsterLevel.exp);
 
         // UI
