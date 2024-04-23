@@ -1,17 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
 
 public class UIAccountLevelUp : UIBase
 {
+    private InventoryUI inventoryUI;
+
     public TextMeshProUGUI levelText;
     public AccountLevelUpRewardSlotUI[] rewardSlotUI;
 
     private void OnEnable()
     {
         levelText.text = GameManager.Instance.accountInfo.level.ToString();
+        inventoryUI = FindObjectOfType<InventoryUI>();
+        inventoryUI.UpdateUI();
     }
 
     public void ClosePopUp()

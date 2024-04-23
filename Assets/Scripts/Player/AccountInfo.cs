@@ -289,6 +289,7 @@ public class AccountInfo
 
     public void AddExp(int addExp)
     {
+        int up = 0;
         while (addExp > 0)
         {
             PlayerLevel levelData = DataManager.Instance.GetPlayerLevel(level + 1);
@@ -308,7 +309,7 @@ public class AccountInfo
                 curExp = 0;
                 sliderCurExp = curExp;
                 ++level;
-                UIManager.Instance.ShowUI<UIAccountLevelUp>();
+                ++up;
             }
             else
             {
@@ -319,6 +320,10 @@ public class AccountInfo
             }
         }
         CalcPlayerStat();
+        if (up > 0)
+        {
+            UIManager.Instance.ShowUI<UIAccountLevelUp>();
+        }
         GameManager.Instance.SaveGame();
         GameManager.Instance.UpdateUI();
     }

@@ -1100,17 +1100,6 @@
       "stageId": 101,
       "monsterId": 20000001,
       "level": 1,
-      "genType": "Circle",
-      "genTimeStart": 0,
-      "genTimeEnd": 30,
-      "genAmount": 15,
-      "genTime": 10,
-      "genPosVecter3": null
-    },
-    {
-      "stageId": 101,
-      "monsterId": 20000001,
-      "level": 1,
       "genType": "Random",
       "genTimeStart": 10,
       "genTimeEnd": 60,
@@ -2028,694 +2017,694 @@
       "level": 2,
       "exp": 11,
       "totalExp": 11,
-      "hp": 50,
-      "attack": 10
+      "hp": 10,
+      "attack": 5
     },
     {
       "level": 3,
       "exp": 59,
       "totalExp": 70,
-      "hp": 60,
-      "attack": 20
+      "hp": 35,
+      "attack": 12
     },
     {
       "level": 4,
       "exp": 164,
       "totalExp": 234,
-      "hp": 70,
-      "attack": 25
+      "hp": 47,
+      "attack": 16
     },
     {
       "level": 5,
       "exp": 337,
       "totalExp": 571,
-      "hp": 80,
-      "attack": 27
+      "hp": 63,
+      "attack": 18
     },
     {
       "level": 6,
       "exp": 588,
       "totalExp": 1159,
-      "hp": 90,
-      "attack": 33
+      "hp": 71,
+      "attack": 24
     },
     {
       "level": 7,
       "exp": 927,
       "totalExp": 2086,
-      "hp": 100,
-      "attack": 36
+      "hp": 85,
+      "attack": 27
     },
     {
       "level": 8,
       "exp": 1364,
       "totalExp": 3450,
-      "hp": 110,
-      "attack": 38
+      "hp": 92,
+      "attack": 28
     },
     {
       "level": 9,
       "exp": 1904,
       "totalExp": 5354,
-      "hp": 120,
-      "attack": 44
+      "hp": 106,
+      "attack": 34
     },
     {
       "level": 10,
       "exp": 2556,
       "totalExp": 7910,
-      "hp": 130,
-      "attack": 47
+      "hp": 113,
+      "attack": 37
     },
     {
       "level": 11,
       "exp": 3326,
       "totalExp": 11236,
-      "hp": 140,
-      "attack": 48
+      "hp": 126,
+      "attack": 38
     },
     {
       "level": 12,
       "exp": 4221,
       "totalExp": 15457,
-      "hp": 150,
-      "attack": 54
+      "hp": 133,
+      "attack": 44
     },
     {
       "level": 13,
       "exp": 5247,
       "totalExp": 20704,
-      "hp": 160,
-      "attack": 57
+      "hp": 146,
+      "attack": 47
     },
     {
       "level": 14,
       "exp": 6409,
       "totalExp": 27113,
-      "hp": 170,
-      "attack": 58
+      "hp": 153,
+      "attack": 48
     },
     {
       "level": 15,
       "exp": 7714,
       "totalExp": 34827,
-      "hp": 180,
-      "attack": 64
+      "hp": 166,
+      "attack": 54
     },
     {
       "level": 16,
       "exp": 9166,
       "totalExp": 43993,
-      "hp": 190,
-      "attack": 67
+      "hp": 173,
+      "attack": 57
     },
     {
       "level": 17,
       "exp": 10770,
       "totalExp": 54763,
-      "hp": 200,
-      "attack": 68
+      "hp": 186,
+      "attack": 58
     },
     {
       "level": 18,
       "exp": 12533,
       "totalExp": 67296,
-      "hp": 210,
-      "attack": 74
+      "hp": 193,
+      "attack": 64
     },
     {
       "level": 19,
       "exp": 14458,
       "totalExp": 81754,
-      "hp": 220,
-      "attack": 77
+      "hp": 206,
+      "attack": 67
     },
     {
       "level": 20,
       "exp": 16551,
       "totalExp": 98305,
-      "hp": 230,
-      "attack": 78
+      "hp": 213,
+      "attack": 68
     },
     {
       "level": 21,
       "exp": 18815,
       "totalExp": 117120,
-      "hp": 240,
-      "attack": 84
+      "hp": 226,
+      "attack": 74
     },
     {
       "level": 22,
       "exp": 21256,
       "totalExp": 138376,
-      "hp": 250,
-      "attack": 87
+      "hp": 233,
+      "attack": 77
     },
     {
       "level": 23,
       "exp": 23878,
       "totalExp": 162254,
-      "hp": 260,
-      "attack": 88
+      "hp": 246,
+      "attack": 78
     },
     {
       "level": 24,
       "exp": 26684,
       "totalExp": 188938,
-      "hp": 270,
-      "attack": 94
+      "hp": 253,
+      "attack": 84
     },
     {
       "level": 25,
       "exp": 29680,
       "totalExp": 218618,
-      "hp": 280,
-      "attack": 97
+      "hp": 266,
+      "attack": 87
     },
     {
       "level": 26,
       "exp": 32869,
       "totalExp": 251487,
-      "hp": 290,
-      "attack": 98
+      "hp": 273,
+      "attack": 88
     },
     {
       "level": 27,
       "exp": 36255,
       "totalExp": 287742,
-      "hp": 300,
-      "attack": 104
+      "hp": 286,
+      "attack": 94
     },
     {
       "level": 28,
       "exp": 39842,
       "totalExp": 327584,
-      "hp": 310,
-      "attack": 107
+      "hp": 293,
+      "attack": 97
     },
     {
       "level": 29,
       "exp": 43634,
       "totalExp": 371218,
-      "hp": 320,
-      "attack": 108
+      "hp": 306,
+      "attack": 98
     },
     {
       "level": 30,
       "exp": 47635,
       "totalExp": 418853,
-      "hp": 330,
-      "attack": 114
+      "hp": 313,
+      "attack": 104
     },
     {
       "level": 31,
       "exp": 51849,
       "totalExp": 470702,
-      "hp": 340,
-      "attack": 117
+      "hp": 326,
+      "attack": 107
     },
     {
       "level": 32,
       "exp": 56278,
       "totalExp": 526980,
-      "hp": 350,
-      "attack": 118
+      "hp": 333,
+      "attack": 108
     },
     {
       "level": 33,
       "exp": 60927,
       "totalExp": 587907,
-      "hp": 360,
-      "attack": 124
+      "hp": 346,
+      "attack": 114
     },
     {
       "level": 34,
       "exp": 65799,
       "totalExp": 653706,
-      "hp": 370,
-      "attack": 127
+      "hp": 353,
+      "attack": 117
     },
     {
       "level": 35,
       "exp": 70898,
       "totalExp": 724604,
-      "hp": 380,
-      "attack": 128
+      "hp": 366,
+      "attack": 118
     },
     {
       "level": 36,
       "exp": 76226,
       "totalExp": 800830,
-      "hp": 390,
-      "attack": 134
+      "hp": 373,
+      "attack": 124
     },
     {
       "level": 37,
       "exp": 81788,
       "totalExp": 882618,
-      "hp": 400,
-      "attack": 137
+      "hp": 386,
+      "attack": 127
     },
     {
       "level": 38,
       "exp": 87587,
       "totalExp": 970205,
-      "hp": 410,
-      "attack": 138
+      "hp": 393,
+      "attack": 128
     },
     {
       "level": 39,
       "exp": 93625,
       "totalExp": 1063830,
-      "hp": 420,
-      "attack": 144
+      "hp": 406,
+      "attack": 134
     },
     {
       "level": 40,
       "exp": 99907,
       "totalExp": 1163737,
-      "hp": 430,
-      "attack": 147
+      "hp": 413,
+      "attack": 137
     },
     {
       "level": 41,
       "exp": 106435,
       "totalExp": 1270172,
-      "hp": 440,
-      "attack": 148
+      "hp": 426,
+      "attack": 138
     },
     {
       "level": 42,
       "exp": 113213,
       "totalExp": 1383385,
-      "hp": 450,
-      "attack": 154
+      "hp": 433,
+      "attack": 144
     },
     {
       "level": 43,
       "exp": 120243,
       "totalExp": 1503628,
-      "hp": 460,
-      "attack": 157
+      "hp": 446,
+      "attack": 147
     },
     {
       "level": 44,
       "exp": 127528,
       "totalExp": 1631156,
-      "hp": 470,
-      "attack": 158
+      "hp": 453,
+      "attack": 148
     },
     {
       "level": 45,
       "exp": 135072,
       "totalExp": 1766228,
-      "hp": 480,
-      "attack": 164
+      "hp": 466,
+      "attack": 154
     },
     {
       "level": 46,
       "exp": 142878,
       "totalExp": 1909106,
-      "hp": 490,
-      "attack": 167
+      "hp": 473,
+      "attack": 157
     },
     {
       "level": 47,
       "exp": 150949,
       "totalExp": 2060055,
-      "hp": 500,
-      "attack": 168
+      "hp": 486,
+      "attack": 158
     },
     {
       "level": 48,
       "exp": 159287,
       "totalExp": 2219342,
-      "hp": 510,
-      "attack": 174
+      "hp": 493,
+      "attack": 164
     },
     {
       "level": 49,
       "exp": 167895,
       "totalExp": 2387237,
-      "hp": 520,
-      "attack": 177
+      "hp": 506,
+      "attack": 167
     },
     {
       "level": 50,
       "exp": 176777,
       "totalExp": 2564014,
-      "hp": 530,
-      "attack": 178
+      "hp": 513,
+      "attack": 168
     },
     {
       "level": 51,
       "exp": 185934,
       "totalExp": 2749948,
-      "hp": 540,
-      "attack": 184
+      "hp": 526,
+      "attack": 174
     },
     {
       "level": 52,
       "exp": 195371,
       "totalExp": 2945319,
-      "hp": 550,
-      "attack": 187
+      "hp": 533,
+      "attack": 177
     },
     {
       "level": 53,
       "exp": 205089,
       "totalExp": 3150408,
-      "hp": 560,
-      "attack": 188
+      "hp": 546,
+      "attack": 178
     },
     {
       "level": 54,
       "exp": 215092,
       "totalExp": 3365500,
-      "hp": 570,
-      "attack": 194
+      "hp": 553,
+      "attack": 184
     },
     {
       "level": 55,
       "exp": 225382,
       "totalExp": 3590882,
-      "hp": 580,
-      "attack": 197
+      "hp": 566,
+      "attack": 187
     },
     {
       "level": 56,
       "exp": 235962,
       "totalExp": 3826844,
-      "hp": 590,
-      "attack": 198
+      "hp": 573,
+      "attack": 188
     },
     {
       "level": 57,
       "exp": 246834,
       "totalExp": 4073678,
-      "hp": 600,
-      "attack": 204
+      "hp": 586,
+      "attack": 194
     },
     {
       "level": 58,
       "exp": 258001,
       "totalExp": 4331679,
-      "hp": 610,
-      "attack": 207
+      "hp": 593,
+      "attack": 197
     },
     {
       "level": 59,
       "exp": 269467,
       "totalExp": 4601146,
-      "hp": 620,
-      "attack": 208
+      "hp": 606,
+      "attack": 198
     },
     {
       "level": 60,
       "exp": 281232,
       "totalExp": 4882378,
-      "hp": 630,
-      "attack": 214
+      "hp": 613,
+      "attack": 204
     },
     {
       "level": 61,
       "exp": 293301,
       "totalExp": 5175679,
-      "hp": 640,
-      "attack": 217
+      "hp": 626,
+      "attack": 207
     },
     {
       "level": 62,
       "exp": 305675,
       "totalExp": 5481354,
-      "hp": 650,
-      "attack": 218
+      "hp": 633,
+      "attack": 208
     },
     {
       "level": 63,
       "exp": 318357,
       "totalExp": 5799711,
-      "hp": 660,
-      "attack": 224
+      "hp": 646,
+      "attack": 214
     },
     {
       "level": 64,
       "exp": 331349,
       "totalExp": 6131060,
-      "hp": 670,
-      "attack": 227
+      "hp": 653,
+      "attack": 217
     },
     {
       "level": 65,
       "exp": 344655,
       "totalExp": 6475715,
-      "hp": 680,
-      "attack": 228
+      "hp": 666,
+      "attack": 218
     },
     {
       "level": 66,
       "exp": 358276,
       "totalExp": 6833991,
-      "hp": 690,
-      "attack": 234
+      "hp": 673,
+      "attack": 224
     },
     {
       "level": 67,
       "exp": 372216,
       "totalExp": 7206207,
-      "hp": 700,
-      "attack": 237
+      "hp": 686,
+      "attack": 227
     },
     {
       "level": 68,
       "exp": 386475,
       "totalExp": 7592682,
-      "hp": 710,
-      "attack": 238
+      "hp": 693,
+      "attack": 228
     },
     {
       "level": 69,
       "exp": 401058,
       "totalExp": 7993740,
-      "hp": 720,
-      "attack": 244
+      "hp": 706,
+      "attack": 234
     },
     {
       "level": 70,
       "exp": 415966,
       "totalExp": 8409706,
-      "hp": 730,
-      "attack": 247
+      "hp": 713,
+      "attack": 237
     },
     {
       "level": 71,
       "exp": 431201,
       "totalExp": 8840907,
-      "hp": 740,
-      "attack": 248
+      "hp": 726,
+      "attack": 238
     },
     {
       "level": 72,
       "exp": 446767,
       "totalExp": 9287674,
-      "hp": 750,
-      "attack": 254
+      "hp": 733,
+      "attack": 244
     },
     {
       "level": 73,
       "exp": 462664,
       "totalExp": 9750338,
-      "hp": 760,
-      "attack": 257
+      "hp": 746,
+      "attack": 247
     },
     {
       "level": 74,
       "exp": 478897,
       "totalExp": 10229235,
-      "hp": 770,
-      "attack": 258
+      "hp": 753,
+      "attack": 248
     },
     {
       "level": 75,
       "exp": 495466,
       "totalExp": 10724701,
-      "hp": 780,
-      "attack": 264
+      "hp": 766,
+      "attack": 254
     },
     {
       "level": 76,
       "exp": 512375,
       "totalExp": 11237076,
-      "hp": 790,
-      "attack": 267
+      "hp": 773,
+      "attack": 257
     },
     {
       "level": 77,
       "exp": 529625,
       "totalExp": 11766701,
-      "hp": 800,
-      "attack": 268
+      "hp": 786,
+      "attack": 258
     },
     {
       "level": 78,
       "exp": 547220,
       "totalExp": 12313921,
-      "hp": 810,
-      "attack": 274
+      "hp": 793,
+      "attack": 264
     },
     {
       "level": 79,
       "exp": 565160,
       "totalExp": 12879081,
-      "hp": 820,
-      "attack": 277
+      "hp": 806,
+      "attack": 267
     },
     {
       "level": 80,
       "exp": 583449,
       "totalExp": 13462530,
-      "hp": 830,
-      "attack": 278
+      "hp": 813,
+      "attack": 268
     },
     {
       "level": 81,
       "exp": 602088,
       "totalExp": 14064618,
-      "hp": 840,
-      "attack": 284
+      "hp": 826,
+      "attack": 274
     },
     {
       "level": 82,
       "exp": 621080,
       "totalExp": 14685698,
-      "hp": 850,
-      "attack": 287
+      "hp": 833,
+      "attack": 277
     },
     {
       "level": 83,
       "exp": 640427,
       "totalExp": 15326125,
-      "hp": 860,
-      "attack": 288
+      "hp": 846,
+      "attack": 278
     },
     {
       "level": 84,
       "exp": 660131,
       "totalExp": 15986256,
-      "hp": 870,
-      "attack": 294
+      "hp": 853,
+      "attack": 284
     },
     {
       "level": 85,
       "exp": 680194,
       "totalExp": 16666450,
-      "hp": 880,
-      "attack": 297
+      "hp": 866,
+      "attack": 287
     },
     {
       "level": 86,
       "exp": 700619,
       "totalExp": 17367069,
-      "hp": 890,
-      "attack": 298
+      "hp": 873,
+      "attack": 288
     },
     {
       "level": 87,
       "exp": 721408,
       "totalExp": 18088477,
-      "hp": 900,
-      "attack": 304
+      "hp": 886,
+      "attack": 294
     },
     {
       "level": 88,
       "exp": 742562,
       "totalExp": 18831039,
-      "hp": 910,
-      "attack": 307
+      "hp": 893,
+      "attack": 297
     },
     {
       "level": 89,
       "exp": 764085,
       "totalExp": 19595124,
-      "hp": 920,
-      "attack": 308
+      "hp": 906,
+      "attack": 298
     },
     {
       "level": 90,
       "exp": 785977,
       "totalExp": 20381101,
-      "hp": 930,
-      "attack": 314
+      "hp": 913,
+      "attack": 304
     },
     {
       "level": 91,
       "exp": 808241,
       "totalExp": 21189342,
-      "hp": 940,
-      "attack": 317
+      "hp": 926,
+      "attack": 307
     },
     {
       "level": 92,
       "exp": 830880,
       "totalExp": 22020222,
-      "hp": 950,
-      "attack": 318
+      "hp": 933,
+      "attack": 308
     },
     {
       "level": 93,
       "exp": 853895,
       "totalExp": 22874117,
-      "hp": 960,
-      "attack": 324
+      "hp": 946,
+      "attack": 314
     },
     {
       "level": 94,
       "exp": 877288,
       "totalExp": 23751405,
-      "hp": 970,
-      "attack": 327
+      "hp": 953,
+      "attack": 317
     },
     {
       "level": 95,
       "exp": 901062,
       "totalExp": 24652467,
-      "hp": 980,
-      "attack": 328
+      "hp": 966,
+      "attack": 318
     },
     {
       "level": 96,
       "exp": 925217,
       "totalExp": 25577684,
-      "hp": 990,
-      "attack": 334
+      "hp": 973,
+      "attack": 324
     },
     {
       "level": 97,
       "exp": 949758,
       "totalExp": 26527442,
-      "hp": 1000,
-      "attack": 337
+      "hp": 986,
+      "attack": 327
     },
     {
       "level": 98,
       "exp": 974685,
       "totalExp": 27502127,
-      "hp": 1010,
-      "attack": 338
+      "hp": 993,
+      "attack": 328
     },
     {
       "level": 99,
       "exp": 1000000,
       "totalExp": 28502127,
-      "hp": 1020,
-      "attack": 344
+      "hp": 1006,
+      "attack": 334
     },
     {
       "level": 100,
       "exp": 1025706,
       "totalExp": 29527833,
-      "hp": 1030,
-      "attack": 347
+      "hp": 1013,
+      "attack": 337
     }
   ],
   "PlayerIngameLevel": [
