@@ -153,6 +153,7 @@ public class IngameScene : MonoBehaviour
                 yield break;
             }
         }
+        yield break;
     }
 
     IEnumerator SpawnCircleEnemyRoutine(StageInfoTable monsterData)
@@ -163,11 +164,11 @@ public class IngameScene : MonoBehaviour
 
         yield return new WaitForSeconds(monsterData.genTimeStart);
         //Debug.Log($"{monsterData.monsterId} lv.{monsterData.level} : {monsterInfo.name}");
-        float startTime = Time.time;
 
         // 몬스터 리젠
-        //int spawnedCount = 0;
-        while (Time.time - startTime < monsterData.genTimeEnd)
+        float spawnTime = monsterData.genTimeEnd - monsterData.genTimeStart;
+        float startTime = Time.time;
+        while (Time.time - startTime < spawnTime)
         {
             float monsterAngle = 360f / monsterData.genAmount;
             float startAngle = UnityEngine.Random.Range(0f, monsterAngle);
@@ -176,7 +177,7 @@ public class IngameScene : MonoBehaviour
             {
                 float radAngle = (startAngle + i * monsterAngle) * Mathf.Deg2Rad;
 
-                // 각도를 바탕으로 X와 Z 좌표 계산
+                // 각도를 바탕으로 X와 Z 좌표 계산3
                 float x = Mathf.Cos(radAngle) * spawnRadius;
                 float z = Mathf.Sin(radAngle) * spawnRadius;
                 Vector3 randomPosition = player.transform.position + new Vector3(x, 200f, z);
@@ -203,6 +204,7 @@ public class IngameScene : MonoBehaviour
             }
             yield return new WaitForSeconds(monsterData.genTime);
         }
+        yield break;
     }
 
     IEnumerator SpawnRandomEnemyRoutine(StageInfoTable monsterData)
@@ -213,11 +215,11 @@ public class IngameScene : MonoBehaviour
 
         yield return new WaitForSeconds(monsterData.genTimeStart);
         //Debug.Log($"{monsterData.monsterId} lv.{monsterData.level} : {monsterInfo.name}");
-        float startTime = Time.time;
 
         // 몬스터 리젠
-        //int spawnedCount = 0;
-        while (Time.time - startTime < monsterData.genTimeEnd)
+        float spawnTime = monsterData.genTimeEnd - monsterData.genTimeStart;
+        float startTime = Time.time;
+        while (Time.time - startTime < spawnTime)
         {
             for (int i = 0; i < monsterData.genAmount; i++)
             {
@@ -251,6 +253,7 @@ public class IngameScene : MonoBehaviour
             }
             yield return new WaitForSeconds(monsterData.genTime);
         }
+        yield break;
     }
 
 
