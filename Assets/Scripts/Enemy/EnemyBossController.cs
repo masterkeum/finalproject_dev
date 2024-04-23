@@ -21,7 +21,6 @@ public class EnemyBossController : EnemyBaseController
     private GameObject effectBossAttack2;
     private float secondAttackTime;
     private float secondAttackCooldown = 5f;
-    private float dashForce = 10f;
 
     private float timer = 0f;
     private float advSensoryRange = 0f;
@@ -37,6 +36,8 @@ public class EnemyBossController : EnemyBaseController
         minWanderWaitTime = 0f;
         maxWanderWaitTime = 1f;
 
+        secondAttackTime = Time.time;
+
         path = new NavMeshPath();
         SetState(EnemyState.Wander);
 
@@ -48,12 +49,17 @@ public class EnemyBossController : EnemyBaseController
             case 20100001:
                 effectBossAttack = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SlashAttack");
                 effectBossAttack2 = Resources.Load<GameObject>("Prefabs/Enemy/Skill/BossDash");
+                secondAttackCooldown = 5f;
                 break;
             case 20100002:
                 effectBossAttack = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SkullMissilePurpleOBJ");
+                effectBossAttack2 = Resources.Load<GameObject>("Prefabs/Enemy/Skill/ChainTargetShadow");
+                secondAttackCooldown = 30f;
                 break;
             case 20100003:
                 effectBossAttack = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SlashWideAttack");
+                effectBossAttack2 = Resources.Load<GameObject>("Prefabs/Enemy/Skill/BossDash");
+                secondAttackCooldown = 5f;
                 break;
         }
     }
@@ -73,7 +79,7 @@ public class EnemyBossController : EnemyBaseController
         timer += Time.deltaTime;
         if (timer > 600)
         {
-            advSensoryRange = 240f;
+            advSensoryRange = 240f; // 맵 대각선 148쯤 되는듯
         }
     }
 
@@ -163,10 +169,8 @@ public class EnemyBossController : EnemyBaseController
         {
             if (Time.time - secondAttackTime >= secondAttackCooldown)
             {
-                Debug.Log("Dash");
                 secondAttackTime = Time.time;
-                Vector3 direction = (player.transform.position - transform.position).normalized;
-                StartCoroutine(DashRountine(1.5f, direction));
+                Attack2Update();
             }
             navMeshAgent.CalculatePath(targetPlayerTransform.position, path);
             navMeshAgent.SetPath(path);
@@ -179,6 +183,23 @@ public class EnemyBossController : EnemyBaseController
         }
     }
 
+    private void Attack2Update()
+    {
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+        switch (monsterID)
+        {
+            case 20100001:
+                StartCoroutine(DashRountine(1.5f, direction));
+                break;
+            case 20100002:
+                StartCoroutine(SpawnRountine()); // 소환
+                break;
+            case 20100003:
+                StartCoroutine(DashRountine(1.5f, direction));
+                break;
+        }
+    }
+
     private void AttackUpdate()
     {
         transform.LookAt(player.transform);
@@ -187,6 +208,12 @@ public class EnemyBossController : EnemyBaseController
         {
             lastAttackTime = Time.time;
             PlayEffect();
+        }
+
+        if (Time.time - secondAttackTime >= secondAttackCooldown)
+        {
+            secondAttackTime = Time.time;
+            Attack2Update();
         }
 
         // 공격 범위 벗어나면
@@ -221,6 +248,61 @@ public class EnemyBossController : EnemyBaseController
                 }
                 break;
         }
+    }
+
+    private IEnumerator SpawnRountine()
+    {
+        /*
+            보스 주면 원 랜덤하게 위치 뽑고
+            소환 이펙트
+            몬스터 생성 20000101 - 스켈레톤
+            소환 이펙트 파괴
+        */
+        int summonId = 20000101;
+        CharacterInfo monsterInfo = DataManager.Instance.GetCharacterInfo(summonId);
+        GameObject monster = Resources.Load<GameObject>(monsterInfo.prefabFile);
+        GameObject summonFX = Resources.Load<GameObject>("Prefabs/Enemy/Skill/SparkleAuraPurple");
+        int spawnAmount;
+        float spawnRadius = 5f;
+        switch (level)
+        {
+            case 2:
+                spawnAmount = 20;
+                break;
+            case 3:
+                spawnAmount = 25;
+                break;
+            case 1:
+            default:
+                spawnAmount = 15;
+                break;
+        }
+
+        for (int i = 0; i < spawnAmount; i++)
+        {
+            Vector3 randomPosition = UnityEngine.Random.onUnitSphere * spawnRadius + transform.position;
+            randomPosition.y = 100f;
+            randomPosition.x = Mathf.Clamp(randomPosition.x, -105, 105);
+            randomPosition.z = Mathf.Clamp(randomPosition.z, -105, 105);
+            Ray ray = new Ray(randomPosition, Vector3.down);
+            RaycastHit hit;
+            NavMeshHit navhit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            {
+                if (NavMesh.SamplePosition(hit.point, out navhit, spawnRadius, NavMesh.AllAreas))
+                {
+                    GameObject fx = Instantiate(summonFX, navhit.position, Quaternion.identity);
+                    Destroy(fx, 1.7f);
+                    GameObject go = Instantiate(monster, navhit.position, Quaternion.identity);
+                    go.GetComponent<EnemyBaseController>().Init(summonId, level, player);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("몬스터 생성할 위치 못찾음.");
+            }
+        }
+        yield break;
     }
 
     private IEnumerator DashRountine(float delay, Vector3 dashDirection)

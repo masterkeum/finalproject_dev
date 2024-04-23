@@ -41,8 +41,8 @@ public class EnemyBaseController : MonoBehaviour
 
     // 일단 다 넣어놓음
     [Header("Stats")]
-    [SerializeField] private int monsterID;
-    [SerializeField] private int level;
+    [SerializeField] protected int monsterID;
+    [SerializeField] protected int level;
 
     protected float trackingTerm = 1f;
     private bool IsInit = false;

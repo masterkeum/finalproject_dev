@@ -241,6 +241,22 @@
       "defaultSkill": 30100001,
       "prefabFile": "Prefabs/Enemy/Dragon",
       "range": "Range"
+    },
+    {
+      "uid": 20000101,
+      "characterType": "Monster",
+      "name": "스켈레톤",
+      "minLevel": 1,
+      "maxLevel": 10,
+      "hp": 200,
+      "attackPower": 50,
+      "sensoryRange": 0,
+      "attackRange": 2.4,
+      "attackSpeed": 1.5,
+      "moveSpeed": 4,
+      "defaultSkill": 30100001,
+      "prefabFile": "Prefabs/Enemy/Skeleton",
+      "range": "Melee"
     }
   ],
   "MonsterLevel": [
@@ -1043,6 +1059,33 @@
       "addAP": 210,
       "gold": 10,
       "exp": 11,
+      "core": 0
+    },
+    {
+      "uid": 20000101,
+      "level": 1,
+      "addHP": 0,
+      "addAP": 0,
+      "gold": 0,
+      "exp": 2,
+      "core": 0
+    },
+    {
+      "uid": 20000101,
+      "level": 2,
+      "addHP": 200,
+      "addAP": 50,
+      "gold": 0,
+      "exp": 2,
+      "core": 0
+    },
+    {
+      "uid": 20000101,
+      "level": 3,
+      "addHP": 500,
+      "addAP": 150,
+      "gold": 0,
+      "exp": 2,
       "core": 0
     }
   ],
