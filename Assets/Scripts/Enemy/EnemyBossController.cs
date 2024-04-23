@@ -72,9 +72,10 @@ public class EnemyBossController : EnemyBaseController
 
     private void Update()
     {
-        if (enemyState == EnemyState.Attack)
+        switch (enemyState)
         {
-            AttackUpdate();
+            case EnemyState.Trace: TraceUpdate(); break;
+            case EnemyState.Attack: AttackUpdate(); break;
         }
         timer += Time.deltaTime;
         if (timer > 600)
@@ -94,8 +95,8 @@ public class EnemyBossController : EnemyBaseController
             {
                 case EnemyState.Idle: WanderUpdate(); break;
                 case EnemyState.Wander: WanderUpdate(); break;
-                case EnemyState.Trace: TraceUpdate(); break;
-                case EnemyState.Attack: AttackUpdate(); break;
+                //case EnemyState.Trace: TraceUpdate(); break;
+                //case EnemyState.Attack: AttackUpdate(); break;
                 case EnemyState.Flee: FleeUpdate(); break;
                 case EnemyState.Die: break;
 
@@ -203,17 +204,16 @@ public class EnemyBossController : EnemyBaseController
     private void AttackUpdate()
     {
         transform.LookAt(player.transform);
-        //transform.Rotate(DirectionToTarget());
-        if (Time.time - lastAttackTime > characterInfo.attackSpeed)
-        {
-            lastAttackTime = Time.time;
-            PlayEffect();
-        }
-
         if (Time.time - secondAttackTime >= secondAttackCooldown)
         {
             secondAttackTime = Time.time;
             Attack2Update();
+        }
+
+        if (Time.time - lastAttackTime > characterInfo.attackSpeed)
+        {
+            lastAttackTime = Time.time;
+            PlayEffect();
         }
 
         // 공격 범위 벗어나면
