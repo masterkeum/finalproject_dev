@@ -1,4 +1,4 @@
-![325048235-e26db359-ee44-41c4-a11c-3731f74cbaca](https://github.com/rtanunity3/finalproject/assets/58840397/7316aca4-9f3b-4102-b799-6c6a08e96b2d)
+![mimic1](https://github.com/rtanunity3/finalproject/assets/58840397/e13f77e7-bd57-4f66-87d8-217d1a7bb2b3)
 
 # finalproject
 #### 1. [게임소개](#게임소개)
@@ -13,8 +13,9 @@
 ####   다양한 아이템과 스킬들로 몬스터들을 처리하며 평온하던 그날을 되찾기 위해 열심히 싸우는 미믹.
 ####   여러분이 미믹이 되어서 함께 싸워주세요!
 
-![325048572-6285226e-88f3-47cb-8f79-55401c9e524f](https://github.com/rtanunity3/finalproject/assets/58840397/a0a554cb-3b54-4de5-adb8-1f10663e8baf)
-
+| ![mimic2](https://github.com/rtanunity3/finalproject/assets/58840397/ac5f8998-76cb-4299-8de3-c7782c024cb1) | ![mimic4](https://github.com/rtanunity3/finalproject/assets/58840397/d64660de-73e8-4d11-bd11-800cd634e7bd) |
+| --- | --- |
+| ![mimic3](https://github.com/rtanunity3/finalproject/assets/58840397/d62f19ff-0015-4ee1-a329-d11d8773ee71) | ![mimic5](https://github.com/rtanunity3/finalproject/assets/58840397/b3a98855-7de0-46ce-b082-3ccaa6c1d18a) |
 
 ## 개발환경
 #### Unity 2022.3.2f  
@@ -31,7 +32,7 @@
 
 
 | ![image](https://github.com/rtanunity3/finalproject/assets/58840397/07685b0a-ec20-41e2-ace8-ac509dc3c477) | ![image](https://github.com/rtanunity3/finalproject/assets/58840397/2878fc8c-c45c-4f13-8897-9b2a657d2a5e) |
-|--- | --- |
+| --- | --- |
 | ![image](https://github.com/rtanunity3/finalproject/assets/58840397/4a53bb8c-ccac-4629-aae8-befb09fbdf8d) | ![image](https://github.com/rtanunity3/finalproject/assets/58840397/c0ab768a-940c-48b6-bbb3-3bcac705c6c3) |
 
 
