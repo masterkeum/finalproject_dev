@@ -13,7 +13,7 @@
 ####   다양한 아이템과 스킬들로 몬스터들을 처리하며 평온하던 그날을 되찾기 위해 열심히 싸우는 미믹.
 ####   여러분이 미믹이 되어서 함께 싸워주세요!
 
-![325048235-e26db359-ee44-41c4-a11c-3731f74cbaca](https://github.com/rtanunity3/finalproject/assets/58840397/49bbea4b-b5ea-4628-963c-e50154c83eeb)
+![325048572-6285226e-88f3-47cb-8f79-55401c9e524f](https://github.com/rtanunity3/finalproject/assets/58840397/a0a554cb-3b54-4de5-adb8-1f10663e8baf)
 
 
 ## 개발환경
@@ -40,20 +40,15 @@
 
 
 ![image](https://github.com/masterkeum/solved_algorithm/assets/58840397/88e608b9-9598-41e3-902d-485917653dde)
-<p align="center">
-  <img src="(https://github.com/masterkeum/solved_algorithm/assets/58840397/c4de1409-d212-4589-b439-293b7ea2d986)" align="center" width="32%">
-  <img src="(https://github.com/masterkeum/solved_algorithm/assets/58840397/c15283ab-6c0d-4676-8b63-63790046313e)" align="center" width="32%">
-  <img src="(https://github.com/masterkeum/solved_algorithm/assets/58840397/431d44a5-f28d-4b19-89b4-d1b02258ac2c)" align="center" width="32%">
-</p>
+
 
 ## 소개영상
 
 #### ▼ 누르면 유튜브 소개영상으로 이동
-[![▼ 누르면 유튜브로 페이지 이동](https://github.com/masterkeum/solved_algorithm/assets/58840397/cb6636f1-7cfe-4346-a4d8-b4e15d7b717b)](https://www.youtube.com/watch?v=gs_Sk6kalQU)
+[![Video Label](https://github.com/rtanunity3/finalproject/assets/58840397/b7919ae3-dca9-485e-b17a-34f8c8be90fa)](https://www.youtube.com/watch?v=gs_Sk6kalQU)
 
 ## 스크린샷
-
-| ![Untitled (5)](https://github.com/masterkeum/solved_algorithm/assets/58840397/c4de1409-d212-4589-b439-293b7ea2d986) | ![Untitled (3)](https://github.com/masterkeum/solved_algorithm/assets/58840397/c15283ab-6c0d-4676-8b63-63790046313e) | ![Untitled (4)](https://github.com/masterkeum/solved_algorithm/assets/58840397/431d44a5-f28d-4b19-89b4-d1b02258ac2c) |
+| ![Untitled (5)](https://github.com/rtanunity3/finalproject/assets/58840397/2e75ca6a-8057-461c-aec1-512fcbc8ff36) | ![Untitled (3)](https://github.com/rtanunity3/finalproject/assets/58840397/6d6fbce3-937c-4963-8441-ba1abf059f62) | ![Untitled (4)](https://github.com/rtanunity3/finalproject/assets/58840397/f887b84f-8027-4532-a631-a00c9a3ab0ee) |
 | --- | --- | --- |
 | 상점탭 | 메인탭 | 장비탭 |
 
@@ -76,10 +71,10 @@
 
 
 ## 사용에셋
-![스크린샷 2024-04-24 114921](https://github.com/masterkeum/solved_algorithm/assets/58840397/4852633e-65c4-45ba-aea4-57e98b3711e4)
-![스크린샷 2024-04-24 114817](https://github.com/masterkeum/solved_algorithm/assets/58840397/74743529-5029-4e8c-9b4b-70cbfc24bd16)
-![스크린샷 2024-04-24 114737](https://github.com/masterkeum/solved_algorithm/assets/58840397/752dc2c6-caa5-4957-9d54-9eed17c78c76)
-![스크린샷 2024-04-24 114716](https://github.com/masterkeum/solved_algorithm/assets/58840397/d269c673-6827-4345-a3ce-bff3b272b38a)
-![스크린샷 2024-04-24 114655](https://github.com/masterkeum/solved_algorithm/assets/58840397/3997a0b8-8ccf-4b59-95bf-439de5c927d6)
-![스크린샷 2024-04-24 114112](https://github.com/masterkeum/solved_algorithm/assets/58840397/554898a0-d90d-429b-9e99-18138a9d4c71)
-![스크린샷 2024-04-24 114049](https://github.com/masterkeum/solved_algorithm/assets/58840397/c420d290-c1e3-47f5-9e4a-a9bd7a2ff7d2)
+![스크린샷 2024-04-24 114921](https://github.com/rtanunity3/finalproject/assets/58840397/bc8de840-c44e-4d1b-b3b9-c0b5e85c06e4)
+![스크린샷 2024-04-24 114817](https://github.com/rtanunity3/finalproject/assets/58840397/b10a7278-4a9b-40b9-9ec4-fb7eea7e013e)
+![스크린샷 2024-04-24 114737](https://github.com/rtanunity3/finalproject/assets/58840397/3fa2abcc-4ab4-4c62-98e2-42b402dcba20)
+![스크린샷 2024-04-24 114716](https://github.com/rtanunity3/finalproject/assets/58840397/e4f7eaed-3e04-4310-9b23-9d9e9e4e3323)
+![스크린샷 2024-04-24 114655](https://github.com/rtanunity3/finalproject/assets/58840397/ad98e725-e794-4b8b-8bc2-80126271494f)
+![스크린샷 2024-04-24 114112](https://github.com/rtanunity3/finalproject/assets/58840397/ac897e3c-ec0f-4d5a-bc65-eaaf0b28f188)
+![스크린샷 2024-04-24 114049](https://github.com/rtanunity3/finalproject/assets/58840397/916bf0d3-0faa-400d-98d7-dd886b18ec56)
