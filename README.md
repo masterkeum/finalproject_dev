@@ -18,8 +18,11 @@
 | ![mimic3](https://github.com/rtanunity3/finalproject/assets/58840397/d62f19ff-0015-4ee1-a329-d11d8773ee71) | ![mimic5](https://github.com/rtanunity3/finalproject/assets/58840397/b3a98855-7de0-46ce-b082-3ccaa6c1d18a) |
 
 ## 개발환경
-#### Unity 2022.3.2f  
-#### Visual Studio Community 2022, rider
+언어 : C# (9.0)  
+IDE : Visual Studio Community 2022, JetBrains Rider  
+게임엔진 : Unity 2022.3.2f1  
+버전관리 : Git, Github  
+데이터관리 : GoogleSpreadSheets, Json, PlayerPrefs  
 
 ## 개발기간
 #### 2024.03.06 ~ 2024.05.01
