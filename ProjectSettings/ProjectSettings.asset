@@ -58,27 +58,9 @@ PlayerSettings:
   androidShowActivityIndicatorOnLoading: -1
   iosUseCustomAppBackgroundBehavior: 0
   allowedAutorotateToPortrait: 1
-<<<<<<< HEAD
-<<<<<<< HEAD
-  allowedAutorotateToPortraitUpsideDown: 1
-  allowedAutorotateToLandscapeRight: 1
-  allowedAutorotateToLandscapeLeft: 1
-=======
-<<<<<<< HEAD
   allowedAutorotateToPortraitUpsideDown: 0
   allowedAutorotateToLandscapeRight: 0
   allowedAutorotateToLandscapeLeft: 0
-=======
-  allowedAutorotateToPortraitUpsideDown: 1
-  allowedAutorotateToLandscapeRight: 1
-  allowedAutorotateToLandscapeLeft: 1
->>>>>>> 408b9702a (Revert "map and ingameUI")
->>>>>>> 85c4d727b (Revert "map and ingameUI")
-=======
-  allowedAutorotateToPortraitUpsideDown: 0
-  allowedAutorotateToLandscapeRight: 0
-  allowedAutorotateToLandscapeLeft: 0
->>>>>>> 8aec2fed1 (Reapply "map and ingameUI")
   useOSAutorotation: 1
   use32BitDisplayBuffer: 1
   preserveFramebufferAlpha: 0
@@ -925,23 +907,8 @@ PlayerSettings:
   embeddedLinuxEnableGamepadInput: 1
   hmiLogStartupTiming: 0
   hmiCpuConfiguration: 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  apiCompatibilityLevel: 6
-  activeInputHandler: 0
-=======
-<<<<<<< HEAD
   apiCompatibilityLevel: 3
   activeInputHandler: 2
-=======
-  apiCompatibilityLevel: 6
-  activeInputHandler: 0
->>>>>>> 408b9702a (Revert "map and ingameUI")
->>>>>>> 85c4d727b (Revert "map and ingameUI")
-=======
-  apiCompatibilityLevel: 3
-  activeInputHandler: 2
->>>>>>> 8aec2fed1 (Reapply "map and ingameUI")
   windowsGamepadBackendHint: 0
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0
