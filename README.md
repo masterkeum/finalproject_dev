@@ -26,16 +26,19 @@
 #### 권순성, 금경희, 이혜미, 홍용욱
 
 ### 작업내용
-![image](https://github.com/masterkeum/solved_algorithm/assets/58840397/7c5feb23-aa6b-440b-ba7b-90233c61e80b)
+![image](https://github.com/rtanunity3/finalproject/assets/58840397/c92bad51-0b74-483e-9a44-928505336d6b)
 
-![image](https://github.com/masterkeum/solved_algorithm/assets/58840397/90d52e5a-0206-42a5-a3f4-8e322d674cb0)
-![image](https://github.com/masterkeum/solved_algorithm/assets/58840397/52dc11e8-9bca-483f-afed-bf480f9578fc)
 
-![image](https://github.com/masterkeum/solved_algorithm/assets/58840397/9a38c31e-92ae-48ff-882d-cbc051d1968e)
-![image](https://github.com/masterkeum/solved_algorithm/assets/58840397/c1d83831-1055-4349-be24-3e99b41ee299)
+![image](https://github.com/rtanunity3/finalproject/assets/58840397/438eca1e-15cb-4f01-aad4-a3948a631bda)
 
-![image](https://github.com/masterkeum/solved_algorithm/assets/58840397/68631cce-461e-471c-874b-90fbff50e687)
-![image](https://github.com/masterkeum/solved_algorithm/assets/58840397/32a06303-e83d-4375-bff7-76f31917e90f)
+
+![image](https://github.com/masterkeum/solved_algorithm/assets/58840397/283f12ae-7865-4daa-a071-874217838f37)
+
+
+![image](https://github.com/masterkeum/solved_algorithm/assets/58840397/00aab9e1-d7d1-4d1b-9a51-a34033f3f84e)
+
+
+![image](https://github.com/masterkeum/solved_algorithm/assets/58840397/88e608b9-9598-41e3-902d-485917653dde)
 <p align="center">
   <img src="(https://github.com/masterkeum/solved_algorithm/assets/58840397/c4de1409-d212-4589-b439-293b7ea2d986)" align="center" width="32%">
   <img src="(https://github.com/masterkeum/solved_algorithm/assets/58840397/c15283ab-6c0d-4676-8b63-63790046313e)" align="center" width="32%">
