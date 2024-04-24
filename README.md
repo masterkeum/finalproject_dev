@@ -1,4 +1,4 @@
-![Brochure](https://github.com/masterkeum/solved_algorithm/assets/58840397/e26db359-ee44-41c4-a11c-3731f74cbaca)
+![325048235-e26db359-ee44-41c4-a11c-3731f74cbaca](https://github.com/rtanunity3/finalproject/assets/58840397/7316aca4-9f3b-4102-b799-6c6a08e96b2d)
 
 # finalproject
 #### 1. [게임소개](#게임소개)
@@ -13,7 +13,8 @@
 ####   다양한 아이템과 스킬들로 몬스터들을 처리하며 평온하던 그날을 되찾기 위해 열심히 싸우는 미믹.
 ####   여러분이 미믹이 되어서 함께 싸워주세요!
 
-![mimicguard](https://github.com/masterkeum/solved_algorithm/assets/58840397/6285226e-88f3-47cb-8f79-55401c9e524f)
+![325048235-e26db359-ee44-41c4-a11c-3731f74cbaca](https://github.com/rtanunity3/finalproject/assets/58840397/49bbea4b-b5ea-4628-963c-e50154c83eeb)
+
 
 ## 개발환경
 #### Unity 2022.3.2f  
