@@ -8,24 +8,21 @@
 #### 5. [사용 에셋](#사용에셋)
 
 ## 게임소개
-#### - 프로젝트 명 : MimicGuard
-#### - 프로젝트 소개 : 'MimicGuard는 뱀서라이크류 게임으로 평온하게 숲속에서 쉬고 있는 미믹이 어느날 갑자기 몬스터들의 공격을 받게 되는데,
-####   다양한 아이템과 스킬들로 몬스터들을 처리하며 평온하던 그날을 되찾기 위해 열심히 싸우는 미믹.
-####   여러분이 미믹이 되어서 함께 싸워주세요!
+- 프로젝트 명 : MimicGuard
+- 프로젝트 소개 : 'MimicGuard는 뱀서라이크류 게임으로 평온하게 숲속에서 쉬고 있는 미믹이 어느날 갑자기 몬스터들의 공격을 받게 되는데,
+- 다양한 아이템과 스킬들로 몬스터들을 처리하며 평온하던 그날을 되찾기 위해 열심히 싸우는 미믹.
+- 여러분이 미믹이 되어서 함께 싸워주세요!
 
 | ![mimic2](https://github.com/rtanunity3/finalproject/assets/58840397/ac5f8998-76cb-4299-8de3-c7782c024cb1) | ![mimic4](https://github.com/rtanunity3/finalproject/assets/58840397/d64660de-73e8-4d11-bd11-800cd634e7bd) |
 | --- | --- |
 | ![mimic3](https://github.com/rtanunity3/finalproject/assets/58840397/d62f19ff-0015-4ee1-a329-d11d8773ee71) | ![mimic5](https://github.com/rtanunity3/finalproject/assets/58840397/b3a98855-7de0-46ce-b082-3ccaa6c1d18a) |
 
-## 개발환경
-언어 : C# (9.0)  
-IDE : Visual Studio Community 2022, JetBrains Rider  
-게임엔진 : Unity 2022.3.2f1  
-버전관리 : Git, Github  
-데이터관리 : GoogleSpreadSheets, Json, PlayerPrefs  
+## 개발 환경
+Unity 2022.3.2f  
+Visual Studio Community 2022, rider
 
-## 개발기간
-#### 2024.03.06 ~ 2024.05.01
+## 개발 기간
+2024.03.06 ~ 2024.05.01
 
 ## 개발인원
 #### 권순성, 금경희, 이혜미, 홍용욱
