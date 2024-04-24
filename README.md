@@ -30,17 +30,10 @@
 ![image](https://github.com/rtanunity3/finalproject/assets/58840397/d9ebb534-ad0d-46db-b9f5-3fc15bdcd5b8)
 
 
-![image](https://github.com/rtanunity3/finalproject/assets/58840397/07685b0a-ec20-41e2-ace8-ac509dc3c477)
-
-
-![image](https://github.com/rtanunity3/finalproject/assets/58840397/4a53bb8c-ccac-4629-aae8-befb09fbdf8d)
-
-
-![image](https://github.com/rtanunity3/finalproject/assets/58840397/2878fc8c-c45c-4f13-8897-9b2a657d2a5e)
-
-
-![image](https://github.com/rtanunity3/finalproject/assets/58840397/c0ab768a-940c-48b6-bbb3-3bcac705c6c3)
-
+| ![image](https://github.com/rtanunity3/finalproject/assets/58840397/07685b0a-ec20-41e2-ace8-ac509dc3c477) | ![image](https://github.com/rtanunity3/finalproject/assets/58840397/2878fc8c-c45c-4f13-8897-9b2a657d2a5e) |
+|--- | --- |
+| ![image](https://github.com/rtanunity3/finalproject/assets/58840397/4a53bb8c-ccac-4629-aae8-befb09fbdf8d) | ![image](https://github.com/rtanunity3/finalproject/assets/58840397/c0ab768a-940c-48b6-bbb3-3bcac705c6c3) |
+|--- | --- |
 
 ## 소개영상
 
